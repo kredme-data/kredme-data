@@ -1,0 +1,320 @@
+[
+  {
+    "id": 1,
+    "merchant_name": "swiggy",
+    "display_name": "Swiggy",
+    "category_id": "dining",
+    "mcc_primary": "5812",
+    "mcc_codes": ["5812"],
+    "statement_aliases": ["BUNDL TECHNOLOGIES", "SWIGGY*", "BUNDL*"],
+    "icon_asset": "assets/merchants/swiggy.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.swiggy.com",
+      "app_package": "in.swiggy.android",
+      "ios_bundle": "in.swiggy.ios"
+    }
+  },
+  {
+    "id": 2,
+    "merchant_name": "zomato",
+    "display_name": "Zomato",
+    "category_id": "dining",
+    "mcc_primary": "5812",
+    "mcc_codes": ["5812"],
+    "statement_aliases": ["ZOMATO*", "ZOMATO LTD", "ZOMATO MEDIA"],
+    "icon_asset": "assets/merchants/zomato.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.zomato.com",
+      "app_package": "com.application.zomato",
+      "ios_bundle": "com.application.zomato"
+    }
+  },
+  {
+    "id": 3,
+    "merchant_name": "amazon",
+    "display_name": "Amazon",
+    "category_id": "online_shopping",
+    "mcc_primary": "5399",
+    "mcc_codes": ["5399", "5964"],
+    "statement_aliases": ["AMAZON*", "AMZN*", "AMAZON PAY", "AMAZON SELLER"],
+    "icon_asset": "assets/merchants/amazon.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.amazon.in",
+      "app_package": "in.amazon.mShop.android.shopping",
+      "ios_bundle": "com.amazon.Amazon"
+    }
+  },
+  {
+    "id": 4,
+    "merchant_name": "flipkart",
+    "display_name": "Flipkart",
+    "category_id": "online_shopping",
+    "mcc_primary": "5399",
+    "mcc_codes": ["5399", "5964"],
+    "statement_aliases": ["FLIPKART*", "FLIPKART INTERNET", "FLIPKART PAYMENTS"],
+    "icon_asset": "assets/merchants/flipkart.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.flipkart.com",
+      "app_package": "com.flipkart.android",
+      "ios_bundle": "com.flipkart.flipkart"
+    }
+  },
+  {
+    "id": 5,
+    "merchant_name": "bigbasket",
+    "display_name": "BigBasket",
+    "category_id": "grocery",
+    "mcc_primary": "5411",
+    "mcc_codes": ["5411", "5499"],
+    "statement_aliases": ["BIGBASKET*", "SUPERMARKET GROCERY", "INNOVATIVE RETAIL"],
+    "icon_asset": "assets/merchants/bigbasket.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.bigbasket.com",
+      "app_package": "com.bigbasket.mobileapp",
+      "ios_bundle": "com.bigbasket.BigBasket"
+    }
+  },
+  {
+    "id": 6,
+    "merchant_name": "blinkit",
+    "display_name": "Blinkit",
+    "category_id": "grocery",
+    "mcc_primary": "5411",
+    "mcc_codes": ["5411", "5499"],
+    "statement_aliases": ["BLINKIT*", "GROFERS*", "ZOMATO BLINKIT"],
+    "icon_asset": "assets/merchants/blinkit.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://blinkit.com",
+      "app_package": "com.grofers.customerapp",
+      "ios_bundle": "com.grofers.customerapp"
+    }
+  },
+  {
+    "id": 7,
+    "merchant_name": "zepto",
+    "display_name": "Zepto",
+    "category_id": "grocery",
+    "mcc_primary": "5411",
+    "mcc_codes": ["5411", "5499"],
+    "statement_aliases": ["ZEPTO*", "KIRANAKART*"],
+    "icon_asset": "assets/merchants/zepto.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.zeptonow.com",
+      "app_package": "com.zeptoconsumerapp",
+      "ios_bundle": "com.kiranakart.ZeptoConsumerApp"
+    }
+  },
+  {
+    "id": 8,
+    "merchant_name": "uber",
+    "display_name": "Uber",
+    "category_id": "cabs",
+    "mcc_primary": "4121",
+    "mcc_codes": ["4121"],
+    "statement_aliases": ["UBER*", "UBER BV", "UBER INDIA"],
+    "icon_asset": "assets/merchants/uber.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.uber.com",
+      "app_package": "com.ubercab",
+      "ios_bundle": "com.ubercab.UberClient"
+    }
+  },
+  {
+    "id": 9,
+    "merchant_name": "ola",
+    "display_name": "Ola",
+    "category_id": "cabs",
+    "mcc_primary": "4121",
+    "mcc_codes": ["4121"],
+    "statement_aliases": ["OLA*", "ANI TECHNOLOGIES"],
+    "icon_asset": "assets/merchants/ola.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.olacabs.com",
+      "app_package": "com.olacabs.customer",
+      "ios_bundle": "com.olacabs.customer"
+    }
+  },
+  {
+    "id": 10,
+    "merchant_name": "myntra",
+    "display_name": "Myntra",
+    "category_id": "online_shopping",
+    "mcc_primary": "5399",
+    "mcc_codes": ["5399", "5651"],
+    "statement_aliases": ["MYNTRA*", "MYNTRA DESIGNS"],
+    "icon_asset": "assets/merchants/myntra.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.myntra.com",
+      "app_package": "com.myntra.android",
+      "ios_bundle": "com.myntra.Myntra"
+    }
+  },
+  {
+    "id": 11,
+    "merchant_name": "irctc",
+    "display_name": "IRCTC",
+    "category_id": "railways",
+    "mcc_primary": "4112",
+    "mcc_codes": ["4112"],
+    "statement_aliases": ["IRCTC*", "INDIAN RAILWAY CATERING"],
+    "icon_asset": "assets/merchants/irctc.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.irctc.co.in",
+      "app_package": "cris.org.in.prs.ima",
+      "ios_bundle": "com.Jeevat.IRCTC"
+    }
+  },
+  {
+    "id": 12,
+    "merchant_name": "bookmyshow",
+    "display_name": "BookMyShow",
+    "category_id": "entertainment",
+    "mcc_primary": "7832",
+    "mcc_codes": ["7832", "7922"],
+    "statement_aliases": ["BOOKMYSHOW*", "BIGTREE ENTERTAINMENT"],
+    "icon_asset": "assets/merchants/bookmyshow.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://in.bookmyshow.com",
+      "app_package": "com.bt.bms",
+      "ios_bundle": "com.bigtree.BookMyShow"
+    }
+  },
+  {
+    "id": 13,
+    "merchant_name": "netflix",
+    "display_name": "Netflix",
+    "category_id": "entertainment",
+    "mcc_primary": "4899",
+    "mcc_codes": ["4899", "5968"],
+    "statement_aliases": ["NETFLIX*", "NETFLIX.COM"],
+    "icon_asset": "assets/merchants/netflix.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.netflix.com",
+      "is_international": true,
+      "app_package": "com.netflix.mediaclient",
+      "ios_bundle": "com.netflix.Netflix"
+    }
+  },
+  {
+    "id": 14,
+    "merchant_name": "spotify",
+    "display_name": "Spotify",
+    "category_id": "entertainment",
+    "mcc_primary": "5968",
+    "mcc_codes": ["5968"],
+    "statement_aliases": ["SPOTIFY*"],
+    "icon_asset": "assets/merchants/spotify.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.spotify.com",
+      "is_international": true,
+      "app_package": "com.spotify.music",
+      "ios_bundle": "com.spotify.client"
+    }
+  },
+  {
+    "id": 15,
+    "merchant_name": "smartbuy",
+    "display_name": "HDFC SmartBuy",
+    "category_id": "online_shopping",
+    "mcc_primary": "5399",
+    "mcc_codes": ["5399"],
+    "statement_aliases": ["SMARTBUY*", "HDFC SMARTBUY"],
+    "icon_asset": "assets/merchants/smartbuy.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://offers.smartbuy.hdfcbank.com",
+      "is_portal": true,
+      "portal_issuer": "HDFC"
+    }
+  },
+  {
+    "id": 16,
+    "merchant_name": "dmart",
+    "display_name": "DMart",
+    "category_id": "grocery",
+    "mcc_primary": "5411",
+    "mcc_codes": ["5411", "5310"],
+    "statement_aliases": ["AVENUE SUPERMARTS*", "DMART*"],
+    "icon_asset": "assets/merchants/dmart.png",
+    "is_online": 0,
+    "metadata": {}
+  },
+  {
+    "id": 17,
+    "merchant_name": "google_pay",
+    "display_name": "Google Pay",
+    "category_id": "payments",
+    "mcc_primary": "6012",
+    "mcc_codes": ["6012"],
+    "statement_aliases": ["GOOGLE PAY*", "GOOGLE *PAY"],
+    "icon_asset": "assets/merchants/google_pay.png",
+    "is_online": 1,
+    "metadata": {
+      "is_upi": true,
+      "app_package": "com.google.android.apps.nbu.paisa.user",
+      "ios_bundle": "com.google.Tez"
+    }
+  },
+  {
+    "id": 18,
+    "merchant_name": "indigo",
+    "display_name": "IndiGo",
+    "category_id": "airlines",
+    "mcc_primary": "3000",
+    "mcc_codes": ["3000", "4511"],
+    "statement_aliases": ["INDIGO*", "INTERGLOBE AVIATION"],
+    "icon_asset": "assets/merchants/indigo.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.goindigo.in",
+      "app_package": "com.goindigo.prd",
+      "ios_bundle": "com.goindigo.IndiGo"
+    }
+  },
+  {
+    "id": 19,
+    "merchant_name": "makemytrip",
+    "display_name": "MakeMyTrip",
+    "category_id": "travel",
+    "mcc_primary": "4722",
+    "mcc_codes": ["4722"],
+    "statement_aliases": ["MAKEMYTRIP*", "MMT*"],
+    "icon_asset": "assets/merchants/makemytrip.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.makemytrip.com",
+      "app_package": "com.makemytrip",
+      "ios_bundle": "com.mmt.ios.makemytrip"
+    }
+  },
+  {
+    "id": 20,
+    "merchant_name": "jiomart",
+    "display_name": "JioMart",
+    "category_id": "grocery",
+    "mcc_primary": "5411",
+    "mcc_codes": ["5411", "5499"],
+    "statement_aliases": ["JIOMART*", "RELIANCE RETAIL"],
+    "icon_asset": "assets/merchants/jiomart.png",
+    "is_online": 1,
+    "metadata": {
+      "url": "https://www.jiomart.com",
+      "app_package": "com.jio.jiomart",
+      "ios_bundle": "com.ril.ajio.jiomart"
+    }
+  }
+]

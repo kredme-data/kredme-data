@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1-test",
+  "updated_at": "2026-03-29T00:00:00Z",
+  "min_app_version": "1.0.0",
+  "files": [
+    {
+      "name": "cards.json",
+      "path": "seed/cards.json",
+      "checksum": "1dcc7aa019b553b5ce6e87b446c17984d5b7d3f3d815adf33907b08645c29227",
+      "size_bytes": 11844
+    },
+    {
+      "name": "merchants.json",
+      "path": "seed/merchants.json",
+      "checksum": "800d3d0ebfe65241c626dade5d0b52bd0feb7ff3fbffa50bc0643da193b82558",
+      "size_bytes": 1253
+    }
+  ],
+  "delta_file": null,
+  "news_version": "0.0.1-test"
+}

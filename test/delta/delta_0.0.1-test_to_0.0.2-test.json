@@ -1,0 +1,66 @@
+{
+  "from_version": "0.0.1-test",
+  "to_version": "0.0.2-test",
+  "updated_at": "2026-03-30T00:00:00Z",
+  "changelog": "Test delta: reduces cashback card cap from ₹500 to ₹300, adds time-bound promo rule",
+  "operations": [
+    {
+      "op": "upsert",
+      "table": "reward_rules",
+      "card_id": 9001,
+      "data": {
+        "rule_name": "TEST 10% merchant-specific (capped — REDUCED)",
+        "rule_type": "merchant_specific",
+        "merchant_ref": "test_merchant_a",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.10,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 300,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 90,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    },
+    {
+      "op": "upsert",
+      "table": "reward_rules",
+      "card_id": 9001,
+      "data": {
+        "rule_name": "TEST PROMO 15% merchant_a (time-bound)",
+        "rule_type": "promotional",
+        "merchant_ref": "test_merchant_a",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.15,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 1000,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": 500,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 110,
+        "effective_date": "2026-04-01",
+        "expiry_date": "2026-04-30",
+        "conditions_json": null,
+        "is_active": 1
+      }
+    }
+  ]
+}

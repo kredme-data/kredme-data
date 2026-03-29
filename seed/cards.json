@@ -1,0 +1,864 @@
+[
+  {
+    "card": {
+      "id": 101,
+      "card_name": "HDFC Swiggy Credit Card",
+      "issuer": "HDFC",
+      "network": "visa",
+      "card_tier": "premium",
+      "annual_fee": 500,
+      "fee_waiver_spend": 200000,
+      "base_reward_rate": 0.01,
+      "reward_currency": "cashback_inr",
+      "rp_value_standard": 1.0,
+      "rp_value_travel": null,
+      "rp_value_transfer": null,
+      "forex_markup_pct": 3.5,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/hdfc_swiggy.png",
+      "metadata": {
+        "lounge_access": 0,
+        "fuel_surcharge_waiver": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "10% Swiggy cashback",
+        "rule_type": "merchant_specific",
+        "merchant_ref": "swiggy",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.10,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 1500,
+        "cap_period": "cycle",
+        "cap_scope": "rule",
+        "min_txn_amount": 100,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 100,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "5% on partner merchants",
+        "rule_type": "category_bonus",
+        "merchant_ref": null,
+        "category_id": "online_shopping",
+        "channel": "online",
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.05,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 1500,
+        "cap_period": "cycle",
+        "cap_scope": "rule",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 50,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "1% base cashback",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.01,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 500,
+        "cap_period": "cycle",
+        "cap_scope": "card",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "txn_type", "exclusion_value": "wallet_load", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 250
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 102,
+      "card_name": "HDFC Infinia Credit Card",
+      "issuer": "HDFC",
+      "network": "visa",
+      "card_tier": "ultra",
+      "annual_fee": 12500,
+      "fee_waiver_spend": 1000000,
+      "base_reward_rate": 0.0333,
+      "reward_currency": "reward_points",
+      "rp_value_standard": 0.50,
+      "rp_value_travel": 1.00,
+      "rp_value_transfer": 1.00,
+      "forex_markup_pct": 2.0,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/hdfc_infinia.png",
+      "metadata": {
+        "lounge_access": 12,
+        "lounge_access_period": "year",
+        "insurance_cover": true,
+        "concierge": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "10X SmartBuy bonus",
+        "rule_type": "portal_bonus",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": "portal",
+        "portal_name": "smartbuy",
+        "reward_type": "multiplier",
+        "reward_rate": 10,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 15000,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 80,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "5 RP per ₹150 base",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "points_per_spend",
+        "reward_rate": 5,
+        "reward_unit_spend": 150,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [
+      {
+        "milestone_name": "₹8L annual spend bonus",
+        "spend_target": 800000,
+        "period": "year",
+        "bonus_type": "reward_points",
+        "bonus_value": 10000,
+        "bonus_description": "10,000 bonus reward points on ₹8L annual spend",
+        "is_progressive": 0,
+        "conditions_json": null
+      }
+    ],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 400
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 201,
+      "card_name": "SBI Cashback Credit Card",
+      "issuer": "SBI",
+      "network": "visa",
+      "card_tier": "premium",
+      "annual_fee": 999,
+      "fee_waiver_spend": 200000,
+      "base_reward_rate": 0.01,
+      "reward_currency": "cashback_inr",
+      "rp_value_standard": 1.0,
+      "rp_value_travel": null,
+      "rp_value_transfer": null,
+      "forex_markup_pct": 3.5,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/sbi_cashback.png",
+      "metadata": {
+        "lounge_access": 0,
+        "fuel_surcharge_waiver": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "5% online cashback",
+        "rule_type": "category_bonus",
+        "merchant_ref": null,
+        "category_id": "online_shopping",
+        "channel": "online",
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.05,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 5000,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 50,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "1% offline cashback",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.01,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 5000,
+        "cap_period": "month",
+        "cap_scope": "card",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "wallet_load", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 100
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 301,
+      "card_name": "Axis Magnus Credit Card",
+      "issuer": "Axis",
+      "network": "visa",
+      "card_tier": "ultra",
+      "annual_fee": 12500,
+      "fee_waiver_spend": null,
+      "base_reward_rate": 0.012,
+      "reward_currency": "edge_points",
+      "rp_value_standard": 0.20,
+      "rp_value_travel": 0.50,
+      "rp_value_transfer": 1.00,
+      "forex_markup_pct": 2.0,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/axis_magnus.png",
+      "metadata": {
+        "lounge_access": 8,
+        "lounge_access_period": "year",
+        "meet_and_greet": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "35 EDGE RP per ₹200 above ₹1.5L",
+        "rule_type": "threshold_tier",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "points_per_spend",
+        "reward_rate": 35,
+        "reward_unit_spend": 200,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": 150000,
+        "spend_threshold_max": null,
+        "threshold_period": "month",
+        "priority": 70,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "12 EDGE RP per ₹200 base",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "points_per_spend",
+        "reward_rate": 12,
+        "reward_unit_spend": 200,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": 150000,
+        "threshold_period": "month",
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "wallet_load", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "6300", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "category", "exclusion_value": "government", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "category", "exclusion_value": "utilities", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [
+      {
+        "milestone_name": "₹4L quarterly spend bonus",
+        "spend_target": 400000,
+        "period": "quarter",
+        "bonus_type": "reward_points",
+        "bonus_value": 10000,
+        "bonus_description": "10,000 EDGE Reward Points on ₹4L quarterly spend",
+        "is_progressive": 0,
+        "conditions_json": null
+      }
+    ],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 500
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 401,
+      "card_name": "Amazon Pay ICICI Credit Card",
+      "issuer": "ICICI",
+      "network": "visa",
+      "card_tier": "entry",
+      "annual_fee": 0,
+      "fee_waiver_spend": null,
+      "base_reward_rate": 0.01,
+      "reward_currency": "cashback_inr",
+      "rp_value_standard": 1.0,
+      "rp_value_travel": null,
+      "rp_value_transfer": null,
+      "forex_markup_pct": 3.5,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/amazon_pay_icici.png",
+      "metadata": {
+        "lounge_access": 0,
+        "fuel_surcharge_waiver": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "5% Amazon Prime cashback",
+        "rule_type": "merchant_specific",
+        "merchant_ref": "amazon",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.05,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 95,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": {
+          "match_all": [
+            { "field": "user.is_prime_member", "op": "eq", "value": true }
+          ]
+        },
+        "is_active": 1
+      },
+      {
+        "rule_name": "3% Amazon non-Prime cashback",
+        "rule_type": "merchant_specific",
+        "merchant_ref": "amazon",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.03,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 10,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": {
+          "match_all": [
+            { "field": "user.is_prime_member", "op": "eq", "value": false }
+          ]
+        },
+        "is_active": 1
+      },
+      {
+        "rule_name": "2% partner cashback",
+        "rule_type": "category_bonus",
+        "merchant_ref": null,
+        "category_id": "online_shopping",
+        "channel": "online",
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.02,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 50,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "1% base cashback",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.01,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 100
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 501,
+      "card_name": "IDFC FIRST Mayura Credit Card",
+      "issuer": "IDFC",
+      "network": "visa",
+      "card_tier": "premium",
+      "annual_fee": 0,
+      "fee_waiver_spend": null,
+      "base_reward_rate": 0.005,
+      "reward_currency": "reward_points",
+      "rp_value_standard": 0.25,
+      "rp_value_travel": 0.25,
+      "rp_value_transfer": null,
+      "forex_markup_pct": 0.0,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/idfc_mayura.png",
+      "metadata": {
+        "lounge_access": 4,
+        "lounge_access_period": "quarter",
+        "zero_forex": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "6X online rewards",
+        "rule_type": "channel_specific",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": "online",
+        "portal_name": null,
+        "reward_type": "multiplier",
+        "reward_rate": 6,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 5000,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 40,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "3X offline rewards",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "multiplier",
+        "reward_rate": 3,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 250
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 103,
+      "card_name": "HDFC Diners Club Black Credit Card",
+      "issuer": "HDFC",
+      "network": "diners",
+      "card_tier": "super_premium",
+      "annual_fee": 10000,
+      "fee_waiver_spend": 500000,
+      "base_reward_rate": 0.0333,
+      "reward_currency": "reward_points",
+      "rp_value_standard": 0.50,
+      "rp_value_travel": 1.00,
+      "rp_value_transfer": 1.00,
+      "forex_markup_pct": 2.0,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/hdfc_diners_black.png",
+      "metadata": {
+        "lounge_access": 8,
+        "lounge_access_period": "quarter",
+        "golf": true,
+        "concierge": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "10X dining rewards",
+        "rule_type": "category_bonus",
+        "merchant_ref": null,
+        "category_id": "dining",
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "multiplier",
+        "reward_rate": 10,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 10000,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": 150,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 60,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "5 RP per ₹150 base",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "points_per_spend",
+        "reward_rate": 5,
+        "reward_unit_spend": 150,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [
+      {
+        "milestone_name": "₹4L quarterly spend bonus",
+        "spend_target": 400000,
+        "period": "quarter",
+        "bonus_type": "reward_points",
+        "bonus_value": 10000,
+        "bonus_description": "10,000 bonus reward points on ₹4L quarterly spend",
+        "is_progressive": 0,
+        "conditions_json": null
+      }
+    ],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 400
+      }
+    ]
+  },
+  {
+    "card": {
+      "id": 601,
+      "card_name": "Axis ACE Credit Card",
+      "issuer": "Axis",
+      "network": "visa",
+      "card_tier": "entry",
+      "annual_fee": 499,
+      "fee_waiver_spend": 200000,
+      "base_reward_rate": 0.01,
+      "reward_currency": "cashback_inr",
+      "rp_value_standard": 1.0,
+      "rp_value_travel": null,
+      "rp_value_transfer": null,
+      "forex_markup_pct": 3.5,
+      "has_rupay_upi": 0,
+      "image_asset": "assets/cards/axis_ace.png",
+      "metadata": {
+        "lounge_access": 0,
+        "fuel_surcharge_waiver": true
+      },
+      "is_active": 1
+    },
+    "reward_rules": [
+      {
+        "rule_name": "5% Google Pay cashback",
+        "rule_type": "merchant_specific",
+        "merchant_ref": "google_pay",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.05,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": 500,
+        "cap_period": "month",
+        "cap_scope": "rule",
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 90,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "4% Swiggy/Zomato cashback",
+        "rule_type": "merchant_specific",
+        "merchant_ref": "swiggy",
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.04,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 90,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      },
+      {
+        "rule_name": "2% all other spend",
+        "rule_type": "base_rate",
+        "merchant_ref": null,
+        "category_id": null,
+        "channel": null,
+        "portal_name": null,
+        "reward_type": "cashback_pct",
+        "reward_rate": 0.02,
+        "reward_unit_spend": null,
+        "reward_currency": null,
+        "cap_amount": null,
+        "cap_period": null,
+        "cap_scope": null,
+        "min_txn_amount": null,
+        "spend_threshold_min": null,
+        "spend_threshold_max": null,
+        "threshold_period": null,
+        "priority": 20,
+        "effective_date": null,
+        "expiry_date": null,
+        "conditions_json": null,
+        "is_active": 1
+      }
+    ],
+    "exclusion_rules": [
+      { "exclusion_type": "mcc", "exclusion_value": "5541", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "mcc", "exclusion_value": "5542", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "emi", "also_excludes_from_threshold": 0 },
+      { "exclusion_type": "mcc", "exclusion_value": "6540", "also_excludes_from_threshold": 1 },
+      { "exclusion_type": "txn_type", "exclusion_value": "wallet_load", "also_excludes_from_threshold": 1 }
+    ],
+    "milestone_rules": [],
+    "fuel_surcharge_rules": [
+      {
+        "waiver_pct": 1.0,
+        "min_txn_amount": 400,
+        "max_txn_amount": 5000,
+        "monthly_cap": 200
+      }
+    ]
+  }
+]

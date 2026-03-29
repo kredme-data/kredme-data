@@ -1,0 +1,38 @@
+[
+  {
+    "id": 9001,
+    "merchant_name": "test_merchant_a",
+    "display_name": "Test Merchant A (Online Shopping)",
+    "category_id": "online_shopping",
+    "mcc_primary": "5399",
+    "mcc_codes": ["5399"],
+    "statement_aliases": ["TEST MERCHANT A*"],
+    "icon_asset": null,
+    "is_online": 1,
+    "metadata": { "_test_note": "Use to test: merchant-specific rules, cap exhaustion waterfall, conditional (Prime/non-Prime)" }
+  },
+  {
+    "id": 9002,
+    "merchant_name": "test_merchant_b",
+    "display_name": "Test Merchant B (Portal)",
+    "category_id": "online_shopping",
+    "mcc_primary": "5399",
+    "mcc_codes": ["5399"],
+    "statement_aliases": ["TEST MERCHANT B*"],
+    "icon_asset": null,
+    "is_online": 1,
+    "metadata": { "_test_note": "Use to test: multiplier reward_type, RP valuation bug (rpValueStandard != 1.0)" }
+  },
+  {
+    "id": 9003,
+    "merchant_name": "test_fuel_station",
+    "display_name": "Test Fuel Station",
+    "category_id": "fuel",
+    "mcc_primary": "5541",
+    "mcc_codes": ["5541", "5542"],
+    "statement_aliases": ["TEST FUEL*"],
+    "icon_asset": null,
+    "is_online": 0,
+    "metadata": { "_test_note": "Use to test: exclusion rules (all test cards exclude fuel MCC), fuel surcharge waiver" }
+  }
+]
