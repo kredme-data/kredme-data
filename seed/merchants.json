@@ -1,320 +1,183 @@
-[
-  {
-    "id": 1,
-    "merchant_name": "swiggy",
-    "display_name": "Swiggy",
-    "category_id": "dining",
-    "mcc_primary": "5812",
-    "mcc_codes": ["5812"],
-    "statement_aliases": ["BUNDL TECHNOLOGIES", "SWIGGY*", "BUNDL*"],
-    "icon_asset": "assets/merchants/swiggy.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.swiggy.com",
-      "app_package": "in.swiggy.android",
-      "ios_bundle": "in.swiggy.ios"
-    }
+{
+  "_metadata": {
+    "version": "3.1.0",
+    "updated_at": "2026-04-05T00:00:00Z",
+    "total_merchants": 120,
+    "notes": "Comprehensive merchant catalog for KredMe TestFlight. Merchants are organized by category. Every merchant explicitly named in a card reward rule MUST be present here. MCC codes verified against Visa/Mastercard MCC directories and Indian statement data from TechnoFino."
   },
-  {
-    "id": 2,
-    "merchant_name": "zomato",
-    "display_name": "Zomato",
-    "category_id": "dining",
-    "mcc_primary": "5812",
-    "mcc_codes": ["5812"],
-    "statement_aliases": ["ZOMATO*", "ZOMATO LTD", "ZOMATO MEDIA"],
-    "icon_asset": "assets/merchants/zomato.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.zomato.com",
-      "app_package": "com.application.zomato",
-      "ios_bundle": "com.application.zomato"
-    }
-  },
-  {
-    "id": 3,
-    "merchant_name": "amazon",
-    "display_name": "Amazon",
-    "category_id": "online_shopping",
-    "mcc_primary": "5399",
-    "mcc_codes": ["5399", "5964"],
-    "statement_aliases": ["AMAZON*", "AMZN*", "AMAZON PAY", "AMAZON SELLER"],
-    "icon_asset": "assets/merchants/amazon.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.amazon.in",
-      "app_package": "in.amazon.mShop.android.shopping",
-      "ios_bundle": "com.amazon.Amazon"
-    }
-  },
-  {
-    "id": 4,
-    "merchant_name": "flipkart",
-    "display_name": "Flipkart",
-    "category_id": "online_shopping",
-    "mcc_primary": "5399",
-    "mcc_codes": ["5399", "5964"],
-    "statement_aliases": ["FLIPKART*", "FLIPKART INTERNET", "FLIPKART PAYMENTS"],
-    "icon_asset": "assets/merchants/flipkart.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.flipkart.com",
-      "app_package": "com.flipkart.android",
-      "ios_bundle": "com.flipkart.flipkart"
-    }
-  },
-  {
-    "id": 5,
-    "merchant_name": "bigbasket",
-    "display_name": "BigBasket",
-    "category_id": "grocery",
-    "mcc_primary": "5411",
-    "mcc_codes": ["5411", "5499"],
-    "statement_aliases": ["BIGBASKET*", "SUPERMARKET GROCERY", "INNOVATIVE RETAIL"],
-    "icon_asset": "assets/merchants/bigbasket.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.bigbasket.com",
-      "app_package": "com.bigbasket.mobileapp",
-      "ios_bundle": "com.bigbasket.BigBasket"
-    }
-  },
-  {
-    "id": 6,
-    "merchant_name": "blinkit",
-    "display_name": "Blinkit",
-    "category_id": "grocery",
-    "mcc_primary": "5411",
-    "mcc_codes": ["5411", "5499"],
-    "statement_aliases": ["BLINKIT*", "GROFERS*", "ZOMATO BLINKIT"],
-    "icon_asset": "assets/merchants/blinkit.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://blinkit.com",
-      "app_package": "com.grofers.customerapp",
-      "ios_bundle": "com.grofers.customerapp"
-    }
-  },
-  {
-    "id": 7,
-    "merchant_name": "zepto",
-    "display_name": "Zepto",
-    "category_id": "grocery",
-    "mcc_primary": "5411",
-    "mcc_codes": ["5411", "5499"],
-    "statement_aliases": ["ZEPTO*", "KIRANAKART*"],
-    "icon_asset": "assets/merchants/zepto.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.zeptonow.com",
-      "app_package": "com.zeptoconsumerapp",
-      "ios_bundle": "com.kiranakart.ZeptoConsumerApp"
-    }
-  },
-  {
-    "id": 8,
-    "merchant_name": "uber",
-    "display_name": "Uber",
-    "category_id": "cabs",
-    "mcc_primary": "4121",
-    "mcc_codes": ["4121"],
-    "statement_aliases": ["UBER*", "UBER BV", "UBER INDIA"],
-    "icon_asset": "assets/merchants/uber.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.uber.com",
-      "app_package": "com.ubercab",
-      "ios_bundle": "com.ubercab.UberClient"
-    }
-  },
-  {
-    "id": 9,
-    "merchant_name": "ola",
-    "display_name": "Ola",
-    "category_id": "cabs",
-    "mcc_primary": "4121",
-    "mcc_codes": ["4121"],
-    "statement_aliases": ["OLA*", "ANI TECHNOLOGIES"],
-    "icon_asset": "assets/merchants/ola.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.olacabs.com",
-      "app_package": "com.olacabs.customer",
-      "ios_bundle": "com.olacabs.customer"
-    }
-  },
-  {
-    "id": 10,
-    "merchant_name": "myntra",
-    "display_name": "Myntra",
-    "category_id": "online_shopping",
-    "mcc_primary": "5399",
-    "mcc_codes": ["5399", "5651"],
-    "statement_aliases": ["MYNTRA*", "MYNTRA DESIGNS"],
-    "icon_asset": "assets/merchants/myntra.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.myntra.com",
-      "app_package": "com.myntra.android",
-      "ios_bundle": "com.myntra.Myntra"
-    }
-  },
-  {
-    "id": 11,
-    "merchant_name": "irctc",
-    "display_name": "IRCTC",
-    "category_id": "railways",
-    "mcc_primary": "4112",
-    "mcc_codes": ["4112"],
-    "statement_aliases": ["IRCTC*", "INDIAN RAILWAY CATERING"],
-    "icon_asset": "assets/merchants/irctc.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.irctc.co.in",
-      "app_package": "cris.org.in.prs.ima",
-      "ios_bundle": "com.Jeevat.IRCTC"
-    }
-  },
-  {
-    "id": 12,
-    "merchant_name": "bookmyshow",
-    "display_name": "BookMyShow",
-    "category_id": "entertainment",
-    "mcc_primary": "7832",
-    "mcc_codes": ["7832", "7922"],
-    "statement_aliases": ["BOOKMYSHOW*", "BIGTREE ENTERTAINMENT"],
-    "icon_asset": "assets/merchants/bookmyshow.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://in.bookmyshow.com",
-      "app_package": "com.bt.bms",
-      "ios_bundle": "com.bigtree.BookMyShow"
-    }
-  },
-  {
-    "id": 13,
-    "merchant_name": "netflix",
-    "display_name": "Netflix",
-    "category_id": "entertainment",
-    "mcc_primary": "4899",
-    "mcc_codes": ["4899", "5968"],
-    "statement_aliases": ["NETFLIX*", "NETFLIX.COM"],
-    "icon_asset": "assets/merchants/netflix.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.netflix.com",
-      "is_international": true,
-      "app_package": "com.netflix.mediaclient",
-      "ios_bundle": "com.netflix.Netflix"
-    }
-  },
-  {
-    "id": 14,
-    "merchant_name": "spotify",
-    "display_name": "Spotify",
-    "category_id": "entertainment",
-    "mcc_primary": "5968",
-    "mcc_codes": ["5968"],
-    "statement_aliases": ["SPOTIFY*"],
-    "icon_asset": "assets/merchants/spotify.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.spotify.com",
-      "is_international": true,
-      "app_package": "com.spotify.music",
-      "ios_bundle": "com.spotify.client"
-    }
-  },
-  {
-    "id": 15,
-    "merchant_name": "smartbuy",
-    "display_name": "HDFC SmartBuy",
-    "category_id": "online_shopping",
-    "mcc_primary": "5399",
-    "mcc_codes": ["5399"],
-    "statement_aliases": ["SMARTBUY*", "HDFC SMARTBUY"],
-    "icon_asset": "assets/merchants/smartbuy.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://offers.smartbuy.hdfcbank.com",
-      "is_portal": true,
-      "portal_issuer": "HDFC"
-    }
-  },
-  {
-    "id": 16,
-    "merchant_name": "dmart",
-    "display_name": "DMart",
-    "category_id": "grocery",
-    "mcc_primary": "5411",
-    "mcc_codes": ["5411", "5310"],
-    "statement_aliases": ["AVENUE SUPERMARTS*", "DMART*"],
-    "icon_asset": "assets/merchants/dmart.png",
-    "is_online": 0,
-    "metadata": {}
-  },
-  {
-    "id": 17,
-    "merchant_name": "google_pay",
-    "display_name": "Google Pay",
-    "category_id": "payments",
-    "mcc_primary": "6012",
-    "mcc_codes": ["6012"],
-    "statement_aliases": ["GOOGLE PAY*", "GOOGLE *PAY"],
-    "icon_asset": "assets/merchants/google_pay.png",
-    "is_online": 1,
-    "metadata": {
-      "is_upi": true,
-      "app_package": "com.google.android.apps.nbu.paisa.user",
-      "ios_bundle": "com.google.Tez"
-    }
-  },
-  {
-    "id": 18,
-    "merchant_name": "indigo",
-    "display_name": "IndiGo",
-    "category_id": "airlines",
-    "mcc_primary": "3000",
-    "mcc_codes": ["3000", "4511"],
-    "statement_aliases": ["INDIGO*", "INTERGLOBE AVIATION"],
-    "icon_asset": "assets/merchants/indigo.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.goindigo.in",
-      "app_package": "com.goindigo.prd",
-      "ios_bundle": "com.goindigo.IndiGo"
-    }
-  },
-  {
-    "id": 19,
-    "merchant_name": "makemytrip",
-    "display_name": "MakeMyTrip",
-    "category_id": "travel",
-    "mcc_primary": "4722",
-    "mcc_codes": ["4722"],
-    "statement_aliases": ["MAKEMYTRIP*", "MMT*"],
-    "icon_asset": "assets/merchants/makemytrip.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.makemytrip.com",
-      "app_package": "com.makemytrip",
-      "ios_bundle": "com.mmt.ios.makemytrip"
-    }
-  },
-  {
-    "id": 20,
-    "merchant_name": "jiomart",
-    "display_name": "JioMart",
-    "category_id": "grocery",
-    "mcc_primary": "5411",
-    "mcc_codes": ["5411", "5499"],
-    "statement_aliases": ["JIOMART*", "RELIANCE RETAIL"],
-    "icon_asset": "assets/merchants/jiomart.png",
-    "is_online": 1,
-    "metadata": {
-      "url": "https://www.jiomart.com",
-      "app_package": "com.jio.jiomart",
-      "ios_bundle": "com.ril.ajio.jiomart"
-    }
-  }
-]
+  "categories": [
+    {"id": "dining", "display_name": "Dining & Restaurants", "parent_id": null, "mcc_ranges": [{"from": "5812", "to": "5814"}, {"exact": "5811"}], "is_excluded_default": 0},
+    {"id": "food_delivery", "display_name": "Food Delivery", "parent_id": "dining", "mcc_ranges": [{"exact": "5812"}, {"exact": "5814"}], "is_excluded_default": 0},
+    {"id": "grocery", "display_name": "Grocery & Supermarkets", "parent_id": null, "mcc_ranges": [{"exact": "5411"}, {"exact": "5451"}, {"exact": "5499"}], "is_excluded_default": 0},
+    {"id": "quick_commerce", "display_name": "Quick Commerce", "parent_id": "grocery", "mcc_ranges": [{"exact": "5411"}, {"exact": "5499"}], "is_excluded_default": 0},
+    {"id": "fuel", "display_name": "Fuel", "parent_id": null, "mcc_ranges": [{"exact": "5541"}, {"exact": "5542"}], "is_excluded_default": 1},
+    {"id": "travel", "display_name": "Travel & Tourism", "parent_id": null, "mcc_ranges": [{"exact": "4722"}, {"exact": "7011"}, {"exact": "7012"}], "is_excluded_default": 0},
+    {"id": "airlines", "display_name": "Airlines", "parent_id": "travel", "mcc_ranges": [{"from": "3000", "to": "3350"}, {"exact": "4511"}], "is_excluded_default": 0},
+    {"id": "railways", "display_name": "Railways", "parent_id": "travel", "mcc_ranges": [{"exact": "4112"}], "is_excluded_default": 0},
+    {"id": "hotels", "display_name": "Hotels & Lodging", "parent_id": "travel", "mcc_ranges": [{"from": "3501", "to": "3999"}, {"exact": "7011"}], "is_excluded_default": 0},
+    {"id": "cabs", "display_name": "Cabs & Rideshare", "parent_id": null, "mcc_ranges": [{"exact": "4121"}], "is_excluded_default": 0},
+    {"id": "online_shopping", "display_name": "Online Shopping", "parent_id": null, "mcc_ranges": [{"exact": "5399"}, {"exact": "5964"}, {"exact": "5969"}], "is_excluded_default": 0},
+    {"id": "electronics", "display_name": "Electronics & Appliances", "parent_id": null, "mcc_ranges": [{"exact": "5732"}, {"exact": "5734"}, {"exact": "5045"}], "is_excluded_default": 0},
+    {"id": "fashion", "display_name": "Fashion & Apparel", "parent_id": null, "mcc_ranges": [{"exact": "5651"}, {"exact": "5691"}, {"exact": "5699"}], "is_excluded_default": 0},
+    {"id": "entertainment", "display_name": "Entertainment & Movies", "parent_id": null, "mcc_ranges": [{"exact": "7832"}, {"exact": "7922"}, {"exact": "7829"}], "is_excluded_default": 0},
+    {"id": "streaming", "display_name": "Streaming & Digital", "parent_id": "entertainment", "mcc_ranges": [{"exact": "4899"}, {"exact": "5815"}, {"exact": "5816"}], "is_excluded_default": 0},
+    {"id": "telecom", "display_name": "Telecom & Recharges", "parent_id": null, "mcc_ranges": [{"exact": "4812"}, {"exact": "4813"}, {"exact": "4814"}], "is_excluded_default": 0},
+    {"id": "utilities", "display_name": "Utilities & Bills", "parent_id": null, "mcc_ranges": [{"exact": "4900"}], "is_excluded_default": 0},
+    {"id": "payments", "display_name": "Payments & Wallets", "parent_id": null, "mcc_ranges": [{"exact": "6540"}, {"exact": "6012"}], "is_excluded_default": 1},
+    {"id": "pharmacy", "display_name": "Pharmacy & Health", "parent_id": null, "mcc_ranges": [{"exact": "5912"}, {"exact": "5047"}], "is_excluded_default": 0},
+    {"id": "diagnostics", "display_name": "Pathology & Diagnostics", "parent_id": "pharmacy", "mcc_ranges": [{"exact": "8099"}, {"exact": "8011"}], "is_excluded_default": 0},
+    {"id": "jewellery", "display_name": "Jewellery & Gold", "parent_id": null, "mcc_ranges": [{"exact": "5944"}, {"exact": "5094"}], "is_excluded_default": 1},
+    {"id": "insurance", "display_name": "Insurance", "parent_id": null, "mcc_ranges": [{"exact": "6300"}], "is_excluded_default": 1},
+    {"id": "education", "display_name": "Education", "parent_id": null, "mcc_ranges": [{"exact": "8211"}, {"exact": "8220"}, {"exact": "8241"}, {"exact": "8299"}], "is_excluded_default": 0},
+    {"id": "government", "display_name": "Government Payments", "parent_id": null, "mcc_ranges": [{"exact": "9399"}, {"exact": "9311"}, {"exact": "9211"}], "is_excluded_default": 1},
+    {"id": "rent", "display_name": "Rent Payments", "parent_id": null, "mcc_ranges": [{"exact": "6513"}], "is_excluded_default": 1},
+    {"id": "beauty", "display_name": "Beauty & Personal Care", "parent_id": null, "mcc_ranges": [{"exact": "5977"}, {"exact": "7230"}], "is_excluded_default": 0},
+    {"id": "department_store", "display_name": "Department Stores", "parent_id": null, "mcc_ranges": [{"exact": "5311"}, {"exact": "5310"}], "is_excluded_default": 0},
+    {"id": "gifting", "display_name": "Gifting & Flowers", "parent_id": null, "mcc_ranges": [{"exact": "5947"}, {"exact": "5992"}], "is_excluded_default": 0},
+    {"id": "duty_free", "display_name": "Duty Free Shopping", "parent_id": null, "mcc_ranges": [{"exact": "5309"}], "is_excluded_default": 0}
+  ],
+  "merchants": [
+    {"id": 1, "merchant_name": "swiggy", "display_name": "Swiggy", "category_id": "food_delivery", "mcc_primary": "5812", "mcc_codes": ["5812", "5814"], "statement_aliases": ["BUNDL TECHNOLOGIES*", "SWIGGY*", "SWIGGY ORDER*"], "is_online": 1, "metadata": {"url": "https://www.swiggy.com", "app_package": "in.swiggy.android", "ios_bundle": "com.swiggy.iphoneapp"}},
+    {"id": 2, "merchant_name": "zomato", "display_name": "Zomato", "category_id": "food_delivery", "mcc_primary": "5812", "mcc_codes": ["5812", "5814"], "statement_aliases": ["ZOMATO*", "ZOMATO ORDER*", "ZOMATO LTD*"], "is_online": 1, "metadata": {"url": "https://www.zomato.com", "app_package": "com.application.zomato", "ios_bundle": "com.application.zomato"}},
+    {"id": 3, "merchant_name": "dominos", "display_name": "Domino's Pizza", "category_id": "food_delivery", "mcc_primary": "5812", "mcc_codes": ["5812", "5814"], "statement_aliases": ["JUBILANT FOODWORKS*", "DOMINOS*", "DOMINO'S*"], "is_online": 1, "metadata": {"url": "https://www.dominos.co.in", "app_package": "com.dominosindia"}},
+    {"id": 4, "merchant_name": "mcdonalds", "display_name": "McDonald's", "category_id": "dining", "mcc_primary": "5812", "mcc_codes": ["5812", "5814"], "statement_aliases": ["MCDONALDS*", "HARDCASTLE REST*", "CONNAUGHT PLAZA*"], "is_online": 1, "metadata": {}},
+    {"id": 5, "merchant_name": "starbucks", "display_name": "Starbucks", "category_id": "dining", "mcc_primary": "5812", "mcc_codes": ["5812"], "statement_aliases": ["STARBUCKS*", "TATA STARBUCKS*"], "is_online": 0, "metadata": {}},
+    {"id": 6, "merchant_name": "swiggy_dineout", "display_name": "Swiggy Dineout", "category_id": "dining", "mcc_primary": "5812", "mcc_codes": ["5812"], "statement_aliases": ["DINEOUT*", "SWIGGY DINEOUT*"], "is_online": 1, "metadata": {"note": "HDFC cards offer up to 10% off via Swiggy Dineout"}},
+    {"id": 7, "merchant_name": "eazydiner", "display_name": "EazyDiner", "category_id": "dining", "mcc_primary": "5812", "mcc_codes": ["5812"], "statement_aliases": ["EAZYDINER*"], "is_online": 1, "metadata": {"note": "ICICI Amazon Pay offers 1-month free EazyDiner Prime"}},
+
+    {"id": 10, "merchant_name": "amazon", "display_name": "Amazon", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399", "5964", "5969"], "statement_aliases": ["AMAZON*", "AMAZON PAY*", "AMZN*", "AMAZON SELLER*", "CLOUDTAIL*"], "is_online": 1, "metadata": {"url": "https://www.amazon.in", "app_package": "in.amazon.mShop.android.shopping", "ios_bundle": "com.amazon.AmazonIN"}},
+    {"id": 11, "merchant_name": "flipkart", "display_name": "Flipkart", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399", "5964"], "statement_aliases": ["FLIPKART*", "FK*", "FLIPKART INTERNET*", "INSTAKART*"], "is_online": 1, "metadata": {"url": "https://www.flipkart.com", "app_package": "com.flipkart.android", "ios_bundle": "com.flipkart.flipkart"}},
+    {"id": 12, "merchant_name": "myntra", "display_name": "Myntra", "category_id": "fashion", "mcc_primary": "5699", "mcc_codes": ["5699", "5651"], "statement_aliases": ["MYNTRA*", "MYNTRA DESIGNS*"], "is_online": 1, "metadata": {"url": "https://www.myntra.com", "app_package": "com.myntra.android", "ios_bundle": "com.myntra.Myntra"}},
+    {"id": 13, "merchant_name": "ajio", "display_name": "AJIO", "category_id": "fashion", "mcc_primary": "5699", "mcc_codes": ["5699"], "statement_aliases": ["AJIO*", "RELIANCE AJIO*"], "is_online": 1, "metadata": {"url": "https://www.ajio.com"}},
+    {"id": 14, "merchant_name": "meesho", "display_name": "Meesho", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["MEESHO*", "FASHNEAR*"], "is_online": 1, "metadata": {}},
+    {"id": 15, "merchant_name": "tata_neu", "display_name": "Tata Neu", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["TATA NEU*", "TATA DIGITAL*", "TATA UNISTORE*"], "is_online": 1, "metadata": {"url": "https://www.tataneu.com", "note": "HDFC Tata Neu cards earn 5-10% NeuCoins on Tata ecosystem"}},
+    {"id": 16, "merchant_name": "nykaa", "display_name": "Nykaa", "category_id": "beauty", "mcc_primary": "5977", "mcc_codes": ["5977"], "statement_aliases": ["NYKAA*", "FSN ECOMMERCE*", "NYKAA FASHION*"], "is_online": 1, "metadata": {"url": "https://www.nykaa.com"}},
+
+    {"id": 20, "merchant_name": "bigbasket", "display_name": "BigBasket", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411", "5499"], "statement_aliases": ["BIGBASKET*", "SUPERMARKET GROCERY*", "INNOVATIVE RETAIL*"], "is_online": 1, "metadata": {"url": "https://www.bigbasket.com", "app_package": "com.bigbasket.mobileapp"}},
+    {"id": 21, "merchant_name": "blinkit", "display_name": "Blinkit", "category_id": "quick_commerce", "mcc_primary": "5411", "mcc_codes": ["5411", "5499"], "statement_aliases": ["BLINKIT*", "GROFERS*", "ZOMATO BLINKIT*"], "is_online": 1, "metadata": {"url": "https://blinkit.com", "app_package": "com.grofers.customerapp"}},
+    {"id": 22, "merchant_name": "zepto", "display_name": "Zepto", "category_id": "quick_commerce", "mcc_primary": "5411", "mcc_codes": ["5411", "5499"], "statement_aliases": ["ZEPTO*", "KIRANAKART*"], "is_online": 1, "metadata": {"url": "https://www.zeptonow.com", "app_package": "com.zeptoconsumerapp"}},
+    {"id": 23, "merchant_name": "jiomart", "display_name": "JioMart", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411", "5499"], "statement_aliases": ["JIOMART*", "RELIANCE RETAIL*"], "is_online": 1, "metadata": {"url": "https://www.jiomart.com"}},
+    {"id": 24, "merchant_name": "dmart", "display_name": "DMart", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411", "5310"], "statement_aliases": ["AVENUE SUPERMARTS*", "DMART*"], "is_online": 0, "metadata": {}},
+    {"id": 25, "merchant_name": "smart_bazaar", "display_name": "Smart Bazaar / Reliance Smart", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411", "5311"], "statement_aliases": ["SMART BAZAAR*", "RELIANCE SMART*", "RELIANCE FRESH*"], "is_online": 0, "metadata": {"note": "HDFC MoneyBack+ 10X CashPoints partner"}},
+    {"id": 26, "merchant_name": "spencers", "display_name": "Spencer's Retail", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411"], "statement_aliases": ["SPENCERS*", "SPENCER RETAIL*"], "is_online": 0, "metadata": {}},
+    {"id": 27, "merchant_name": "nature_basket", "display_name": "Nature's Basket", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411"], "statement_aliases": ["NATURES BASKET*", "GODREJ NATURE*"], "is_online": 1, "metadata": {}},
+    {"id": 28, "merchant_name": "swiggy_instamart", "display_name": "Swiggy Instamart", "category_id": "quick_commerce", "mcc_primary": "5411", "mcc_codes": ["5411", "5499"], "statement_aliases": ["BUNDL TECHNOLOGIES*", "SWIGGY INSTAMART*"], "is_online": 1, "metadata": {"note": "May code differently from Swiggy food on statements"}},
+
+    {"id": 30, "merchant_name": "apollo_pharmacy", "display_name": "Apollo Pharmacy / Apollo 24|7", "category_id": "pharmacy", "mcc_primary": "5912", "mcc_codes": ["5912"], "statement_aliases": ["APOLLO*", "APOLLO PHARMACY*", "APOLLO 24*", "APOLLO247*"], "is_online": 1, "metadata": {"url": "https://www.apollo247.com", "note": "SBI SimplyCLICK 10X partner, SBI SimplySAVE partner"}},
+    {"id": 31, "merchant_name": "1mg", "display_name": "1mg (Tata Health)", "category_id": "pharmacy", "mcc_primary": "5912", "mcc_codes": ["5912"], "statement_aliases": ["1MG*", "TATA 1MG*", "TATA HEALTH*"], "is_online": 1, "metadata": {"url": "https://www.1mg.com", "note": "Part of Tata ecosystem - Tata Neu cards may earn NeuCoins"}},
+    {"id": 32, "merchant_name": "pharmeasy", "display_name": "PharmEasy", "category_id": "pharmacy", "mcc_primary": "5912", "mcc_codes": ["5912"], "statement_aliases": ["PHARMEASY*", "API HOLDINGS*"], "is_online": 1, "metadata": {"url": "https://pharmeasy.in"}},
+    {"id": 33, "merchant_name": "netmeds", "display_name": "Netmeds", "category_id": "pharmacy", "mcc_primary": "5912", "mcc_codes": ["5912"], "statement_aliases": ["NETMEDS*", "DADHA*"], "is_online": 1, "metadata": {"url": "https://www.netmeds.com", "note": "SBI SimplyCLICK 10X partner"}},
+    {"id": 34, "merchant_name": "medplus", "display_name": "MedPlus", "category_id": "pharmacy", "mcc_primary": "5912", "mcc_codes": ["5912"], "statement_aliases": ["MEDPLUS*"], "is_online": 1, "metadata": {}},
+    {"id": 35, "merchant_name": "lal_pathlabs", "display_name": "Dr Lal PathLabs", "category_id": "diagnostics", "mcc_primary": "8099", "mcc_codes": ["8099"], "statement_aliases": ["LAL PATHLABS*", "DR LAL*"], "is_online": 1, "metadata": {"url": "https://www.lalpathlabs.com"}},
+    {"id": 36, "merchant_name": "thyrocare", "display_name": "Thyrocare", "category_id": "diagnostics", "mcc_primary": "8099", "mcc_codes": ["8099"], "statement_aliases": ["THYROCARE*"], "is_online": 1, "metadata": {}},
+    {"id": 37, "merchant_name": "practo", "display_name": "Practo", "category_id": "diagnostics", "mcc_primary": "8099", "mcc_codes": ["8099", "8011"], "statement_aliases": ["PRACTO*"], "is_online": 1, "metadata": {"url": "https://www.practo.com"}},
+
+    {"id": 40, "merchant_name": "croma", "display_name": "Croma", "category_id": "electronics", "mcc_primary": "5732", "mcc_codes": ["5732"], "statement_aliases": ["CROMA*", "INFINITI RETAIL*"], "is_online": 1, "metadata": {"url": "https://www.croma.com", "note": "HDFC SmartBuy sometimes has Croma deals; Tata ecosystem merchant"}},
+    {"id": 41, "merchant_name": "reliance_digital", "display_name": "Reliance Digital", "category_id": "electronics", "mcc_primary": "5732", "mcc_codes": ["5732"], "statement_aliases": ["RELIANCE DIGITAL*"], "is_online": 1, "metadata": {"url": "https://www.reliancedigital.in"}},
+    {"id": 42, "merchant_name": "vijay_sales", "display_name": "Vijay Sales", "category_id": "electronics", "mcc_primary": "5732", "mcc_codes": ["5732"], "statement_aliases": ["VIJAY SALES*"], "is_online": 1, "metadata": {}},
+    {"id": 43, "merchant_name": "apple", "display_name": "Apple", "category_id": "electronics", "mcc_primary": "5732", "mcc_codes": ["5732", "5045"], "statement_aliases": ["APPLE*", "APPLE.COM*", "APPLE STORE*", "IMAGINE TRESOR*"], "is_online": 1, "metadata": {"is_international": true, "note": "HDFC SmartBuy has Apple Imagine Tresor section"}},
+
+    {"id": 50, "merchant_name": "indian_oil", "display_name": "Indian Oil (IOCL)", "category_id": "fuel", "mcc_primary": "5541", "mcc_codes": ["5541", "5542"], "statement_aliases": ["INDIAN OIL*", "IOCL*"], "is_online": 0, "metadata": {"note": "HDFC IndianOil card gives 5% value back at IOCL pumps"}},
+    {"id": 51, "merchant_name": "bpcl", "display_name": "BPCL", "category_id": "fuel", "mcc_primary": "5541", "mcc_codes": ["5541", "5542"], "statement_aliases": ["BPCL*", "BHARAT PETROLEUM*"], "is_online": 0, "metadata": {}},
+    {"id": 52, "merchant_name": "hpcl", "display_name": "HPCL", "category_id": "fuel", "mcc_primary": "5541", "mcc_codes": ["5541", "5542"], "statement_aliases": ["HPCL*", "HINDUSTAN PETROLEUM*"], "is_online": 0, "metadata": {}},
+    {"id": 53, "merchant_name": "shell", "display_name": "Shell", "category_id": "fuel", "mcc_primary": "5541", "mcc_codes": ["5541", "5542"], "statement_aliases": ["SHELL*"], "is_online": 0, "metadata": {}},
+
+    {"id": 55, "merchant_name": "uber", "display_name": "Uber", "category_id": "cabs", "mcc_primary": "4121", "mcc_codes": ["4121"], "statement_aliases": ["UBER*", "UBER BV*", "UBER INDIA*"], "is_online": 1, "metadata": {"url": "https://www.uber.com", "app_package": "com.ubercab"}},
+    {"id": 56, "merchant_name": "ola", "display_name": "Ola", "category_id": "cabs", "mcc_primary": "4121", "mcc_codes": ["4121"], "statement_aliases": ["OLA*", "ANI TECHNOLOGIES*"], "is_online": 1, "metadata": {"url": "https://www.olacabs.com", "app_package": "com.olacabs.customer"}},
+    {"id": 57, "merchant_name": "rapido", "display_name": "Rapido", "category_id": "cabs", "mcc_primary": "4121", "mcc_codes": ["4121"], "statement_aliases": ["RAPIDO*", "ROPPEN TRANSPORTATION*"], "is_online": 1, "metadata": {}},
+
+    {"id": 60, "merchant_name": "makemytrip", "display_name": "MakeMyTrip", "category_id": "travel", "mcc_primary": "4722", "mcc_codes": ["4722"], "statement_aliases": ["MAKEMYTRIP*", "MMT*"], "is_online": 1, "metadata": {"url": "https://www.makemytrip.com", "note": "HDFC SmartBuy partner for flights/hotels"}},
+    {"id": 61, "merchant_name": "cleartrip", "display_name": "Cleartrip", "category_id": "travel", "mcc_primary": "4722", "mcc_codes": ["4722"], "statement_aliases": ["CLEARTRIP*"], "is_online": 1, "metadata": {"url": "https://www.cleartrip.com", "note": "SBI SimplyCLICK 10X partner; Flipkart Group"}},
+    {"id": 62, "merchant_name": "yatra", "display_name": "Yatra", "category_id": "travel", "mcc_primary": "4722", "mcc_codes": ["4722"], "statement_aliases": ["YATRA*", "YATRA ONLINE*"], "is_online": 1, "metadata": {"url": "https://www.yatra.com", "note": "SBI SimplyCLICK 10X partner; milestone voucher brand"}},
+    {"id": 63, "merchant_name": "goibibo", "display_name": "Goibibo", "category_id": "travel", "mcc_primary": "4722", "mcc_codes": ["4722"], "statement_aliases": ["GOIBIBO*", "IBIBO*"], "is_online": 1, "metadata": {"url": "https://www.goibibo.com"}},
+    {"id": 64, "merchant_name": "easemytrip", "display_name": "EaseMyTrip", "category_id": "travel", "mcc_primary": "4722", "mcc_codes": ["4722"], "statement_aliases": ["EASEMYTRIP*", "EASY TRIP*"], "is_online": 1, "metadata": {"url": "https://www.easemytrip.com"}},
+    {"id": 65, "merchant_name": "ixigo", "display_name": "ixigo", "category_id": "travel", "mcc_primary": "4722", "mcc_codes": ["4722"], "statement_aliases": ["IXIGO*", "LE TRAVENUES*"], "is_online": 1, "metadata": {"url": "https://www.ixigo.com"}},
+    {"id": 66, "merchant_name": "oyo", "display_name": "OYO Rooms", "category_id": "hotels", "mcc_primary": "7011", "mcc_codes": ["7011"], "statement_aliases": ["OYO*", "ORAVEL*"], "is_online": 1, "metadata": {}},
+    {"id": 67, "merchant_name": "zoomcar", "display_name": "Zoomcar", "category_id": "travel", "mcc_primary": "7512", "mcc_codes": ["7512"], "statement_aliases": ["ZOOMCAR*"], "is_online": 1, "metadata": {"note": "HDFC SmartBuy partner"}},
+
+    {"id": 70, "merchant_name": "indigo", "display_name": "IndiGo", "category_id": "airlines", "mcc_primary": "3000", "mcc_codes": ["3000", "4511"], "statement_aliases": ["INDIGO*", "INTERGLOBE AVIATION*"], "is_online": 1, "metadata": {"url": "https://www.goindigo.in"}},
+    {"id": 71, "merchant_name": "air_india", "display_name": "Air India", "category_id": "airlines", "mcc_primary": "3000", "mcc_codes": ["3000", "4511"], "statement_aliases": ["AIR INDIA*", "AIRINDIA*"], "is_online": 1, "metadata": {"url": "https://www.airindia.com", "note": "SBI Air India co-brand cards"}},
+    {"id": 72, "merchant_name": "spicejet", "display_name": "SpiceJet", "category_id": "airlines", "mcc_primary": "3000", "mcc_codes": ["3000", "4511"], "statement_aliases": ["SPICEJET*"], "is_online": 1, "metadata": {}},
+    {"id": 73, "merchant_name": "akasa", "display_name": "Akasa Air", "category_id": "airlines", "mcc_primary": "3000", "mcc_codes": ["3000", "4511"], "statement_aliases": ["AKASA*", "SNV AVIATION*"], "is_online": 1, "metadata": {}},
+    {"id": 74, "merchant_name": "irctc", "display_name": "IRCTC", "category_id": "railways", "mcc_primary": "4112", "mcc_codes": ["4112"], "statement_aliases": ["IRCTC*", "IRCTC ETICKETING*"], "is_online": 1, "metadata": {"url": "https://www.irctc.co.in", "note": "HDFC SmartBuy ConfirmTkt partner"}},
+
+    {"id": 80, "merchant_name": "bookmyshow", "display_name": "BookMyShow", "category_id": "entertainment", "mcc_primary": "7922", "mcc_codes": ["7922", "7832"], "statement_aliases": ["BOOKMYSHOW*", "BIGTREE*"], "is_online": 1, "metadata": {"url": "https://in.bookmyshow.com", "note": "SBI SimplyCLICK 10X partner; ICICI cards get free tickets"}},
+    {"id": 81, "merchant_name": "pvr_inox", "display_name": "PVR INOX", "category_id": "entertainment", "mcc_primary": "7832", "mcc_codes": ["7832"], "statement_aliases": ["PVR*", "INOX*", "PVR INOX*"], "is_online": 1, "metadata": {}},
+
+    {"id": 85, "merchant_name": "netflix", "display_name": "Netflix", "category_id": "streaming", "mcc_primary": "4899", "mcc_codes": ["4899"], "statement_aliases": ["NETFLIX*", "NETFLIX.COM*"], "is_online": 1, "metadata": {"is_international": true, "note": "Billed in USD - forex markup applies on most cards"}},
+    {"id": 86, "merchant_name": "spotify", "display_name": "Spotify", "category_id": "streaming", "mcc_primary": "5815", "mcc_codes": ["5815"], "statement_aliases": ["SPOTIFY*"], "is_online": 1, "metadata": {"is_international": true}},
+    {"id": 87, "merchant_name": "hotstar", "display_name": "Disney+ Hotstar / JioStar", "category_id": "streaming", "mcc_primary": "4899", "mcc_codes": ["4899", "5815"], "statement_aliases": ["HOTSTAR*", "DISNEY*", "JIOSTAR*", "STAR INDIA*"], "is_online": 1, "metadata": {}},
+    {"id": 88, "merchant_name": "youtube_premium", "display_name": "YouTube Premium", "category_id": "streaming", "mcc_primary": "5815", "mcc_codes": ["5815"], "statement_aliases": ["GOOGLE*YOUTUBE*", "YOUTUBE*"], "is_online": 1, "metadata": {"is_international": true}},
+    {"id": 89, "merchant_name": "prime_video", "display_name": "Amazon Prime Video", "category_id": "streaming", "mcc_primary": "5815", "mcc_codes": ["5815", "4899"], "statement_aliases": ["AMAZON PRIME*", "PRIME VIDEO*"], "is_online": 1, "metadata": {"note": "Often bundled with Amazon Prime membership"}},
+    {"id": 90, "merchant_name": "sony_liv", "display_name": "SonyLIV", "category_id": "streaming", "mcc_primary": "5815", "mcc_codes": ["5815"], "statement_aliases": ["SONYLIV*", "CULVER MAX*"], "is_online": 1, "metadata": {}},
+
+    {"id": 93, "merchant_name": "airtel", "display_name": "Airtel", "category_id": "telecom", "mcc_primary": "4814", "mcc_codes": ["4814"], "statement_aliases": ["AIRTEL*", "BHARTI*", "BHARTI AIRTEL*"], "is_online": 1, "metadata": {"note": "Axis Airtel co-brand card"}},
+    {"id": 94, "merchant_name": "jio", "display_name": "Jio", "category_id": "telecom", "mcc_primary": "4814", "mcc_codes": ["4814"], "statement_aliases": ["JIO*", "RELIANCE JIO*"], "is_online": 1, "metadata": {}},
+    {"id": 95, "merchant_name": "vi", "display_name": "Vi (Vodafone Idea)", "category_id": "telecom", "mcc_primary": "4814", "mcc_codes": ["4814"], "statement_aliases": ["VODAFONE*", "VI*", "VODAFONE IDEA*"], "is_online": 1, "metadata": {}},
+
+    {"id": 98, "merchant_name": "paytm", "display_name": "Paytm", "category_id": "payments", "mcc_primary": "6540", "mcc_codes": ["6540"], "statement_aliases": ["PAYTM*", "ONE97*", "PAYTM MOBILE*"], "is_online": 1, "metadata": {"note": "Wallet loads excluded on most cards (MCC 6540)"}},
+    {"id": 99, "merchant_name": "phonepe", "display_name": "PhonePe", "category_id": "payments", "mcc_primary": "6540", "mcc_codes": ["6540"], "statement_aliases": ["PHONEPE*"], "is_online": 1, "metadata": {"note": "Wallet loads excluded on most cards"}},
+    {"id": 100, "merchant_name": "google_pay", "display_name": "Google Pay", "category_id": "payments", "mcc_primary": "6012", "mcc_codes": ["6012"], "statement_aliases": ["GOOGLE PAY*", "GOOGLE *PAY"], "is_online": 1, "metadata": {"is_upi": true}},
+    {"id": 101, "merchant_name": "cred", "display_name": "CRED", "category_id": "payments", "mcc_primary": "6012", "mcc_codes": ["6012", "6300"], "statement_aliases": ["CRED*", "DREAMPLUG TECH*"], "is_online": 1, "metadata": {"note": "CRED RentPay codes as MCC 6513 (rent) - excluded on most cards"}},
+
+    {"id": 103, "merchant_name": "tanishq", "display_name": "Tanishq", "category_id": "jewellery", "mcc_primary": "5944", "mcc_codes": ["5944"], "statement_aliases": ["TANISHQ*", "TITAN COMPANY*"], "is_online": 1, "metadata": {"note": "Excluded from rewards on most cards; Tata ecosystem merchant; HDFC SmartBuy has Tanishq vouchers at RP=₹1"}},
+    {"id": 104, "merchant_name": "kalyan_jewellers", "display_name": "Kalyan Jewellers", "category_id": "jewellery", "mcc_primary": "5944", "mcc_codes": ["5944"], "statement_aliases": ["KALYAN*"], "is_online": 0, "metadata": {}},
+
+    {"id": 106, "merchant_name": "igp", "display_name": "IGP (Indian Gifts Portal)", "category_id": "gifting", "mcc_primary": "5947", "mcc_codes": ["5947", "5992"], "statement_aliases": ["IGP*", "IGP.COM*"], "is_online": 1, "metadata": {"note": "SBI SimplyCLICK 10X partner (replaced Swiggy in Feb 2025); HDFC SmartBuy partner"}},
+    {"id": 107, "merchant_name": "gyftr", "display_name": "GyFTR", "category_id": "gifting", "mcc_primary": "5947", "mcc_codes": ["5947"], "statement_aliases": ["GYFTR*", "VOUCHAGRAM*"], "is_online": 1, "metadata": {"note": "SBI SimplyCLICK 10X partner; HDFC SmartBuy voucher platform"}},
+    {"id": 108, "merchant_name": "ferns_n_petals", "display_name": "Ferns N Petals", "category_id": "gifting", "mcc_primary": "5992", "mcc_codes": ["5992"], "statement_aliases": ["FNP*", "FERNS N PETALS*"], "is_online": 1, "metadata": {}},
+
+    {"id": 110, "merchant_name": "smartbuy_hdfc", "display_name": "HDFC SmartBuy Portal", "category_id": null, "mcc_primary": null, "mcc_codes": [], "statement_aliases": ["SMARTBUY*", "HDFC SMARTBUY*"], "is_online": 1, "metadata": {"is_portal": true, "portal_owner": "HDFC", "note": "Up to 10X rewards for HDFC premium cards"}},
+    {"id": 111, "merchant_name": "travel_edge_axis", "display_name": "Axis Travel Edge Portal", "category_id": null, "mcc_primary": null, "mcc_codes": [], "statement_aliases": ["TRAVEL EDGE*", "AXIS TRAVEL EDGE*"], "is_online": 1, "metadata": {"is_portal": true, "portal_owner": "Axis"}},
+    {"id": 112, "merchant_name": "idfc_app_portal", "display_name": "IDFC FIRST App (Travel)", "category_id": null, "mcc_primary": null, "mcc_codes": [], "statement_aliases": ["IDFC FIRST*"], "is_online": 1, "metadata": {"is_portal": true, "portal_owner": "IDFC FIRST", "note": "50X on hotels, 30X on flights via IDFC FIRST app"}},
+    {"id": 113, "merchant_name": "payzapp_hdfc", "display_name": "PayZapp (HDFC)", "category_id": null, "mcc_primary": null, "mcc_codes": [], "statement_aliases": ["PAYZAPP*"], "is_online": 1, "metadata": {"is_portal": true, "portal_owner": "HDFC", "note": "HDFC Millennia/MoneyBack+ get 5% CashPoints via PayZapp"}},
+
+    {"id": 115, "merchant_name": "policybazaar", "display_name": "Policybazaar", "category_id": "insurance", "mcc_primary": "6300", "mcc_codes": ["6300"], "statement_aliases": ["POLICYBAZAAR*", "PB FINTECH*"], "is_online": 1, "metadata": {"note": "Insurance MCC excluded on most non-premium cards"}},
+    {"id": 116, "merchant_name": "acko", "display_name": "Acko Insurance", "category_id": "insurance", "mcc_primary": "6300", "mcc_codes": ["6300"], "statement_aliases": ["ACKO*"], "is_online": 1, "metadata": {}},
+
+    {"id": 118, "merchant_name": "nobroker", "display_name": "NoBroker", "category_id": "rent", "mcc_primary": "6513", "mcc_codes": ["6513"], "statement_aliases": ["NOBROKER*"], "is_online": 1, "metadata": {"note": "Rent payments excluded on most cards"}},
+    {"id": 119, "merchant_name": "cred_rentpay", "display_name": "CRED RentPay", "category_id": "rent", "mcc_primary": "6513", "mcc_codes": ["6513"], "statement_aliases": ["CRED RENT*", "DREAMPLUG*RENT*"], "is_online": 1, "metadata": {"note": "Rent payments excluded on most cards; does NOT earn points"}},
+
+    {"id": 121, "merchant_name": "coursera", "display_name": "Coursera", "category_id": "education", "mcc_primary": "8299", "mcc_codes": ["8299"], "statement_aliases": ["COURSERA*"], "is_online": 1, "metadata": {"is_international": true}},
+    {"id": 122, "merchant_name": "unacademy", "display_name": "Unacademy", "category_id": "education", "mcc_primary": "8299", "mcc_codes": ["8299", "8211"], "statement_aliases": ["UNACADEMY*", "SORTING HAT*"], "is_online": 1, "metadata": {}},
+    {"id": 123, "merchant_name": "byjus", "display_name": "BYJU'S", "category_id": "education", "mcc_primary": "8299", "mcc_codes": ["8299"], "statement_aliases": ["BYJUS*", "THINK AND LEARN*"], "is_online": 1, "metadata": {}},
+    {"id": 124, "merchant_name": "upgrad", "display_name": "upGrad", "category_id": "education", "mcc_primary": "8299", "mcc_codes": ["8299"], "statement_aliases": ["UPGRAD*"], "is_online": 1, "metadata": {}},
+
+    {"id": 126, "merchant_name": "adani_duty_free", "display_name": "Adani Duty Free", "category_id": "duty_free", "mcc_primary": "5309", "mcc_codes": ["5309"], "statement_aliases": ["ADANI DUTY FREE*", "ADANI AIRPORT*"], "is_online": 0, "metadata": {"note": "HDFC SmartBuy 5X rewards partner (added 2026)"}},
+
+    {"id": 128, "merchant_name": "snapdeal", "display_name": "Snapdeal", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["SNAPDEAL*", "JASPER INFOTECH*"], "is_online": 1, "metadata": {}},
+    {"id": 129, "merchant_name": "shoppers_stop", "display_name": "Shoppers Stop", "category_id": "department_store", "mcc_primary": "5311", "mcc_codes": ["5311"], "statement_aliases": ["SHOPPERS STOP*"], "is_online": 1, "metadata": {}},
+    {"id": 130, "merchant_name": "lifestyle", "display_name": "Lifestyle", "category_id": "department_store", "mcc_primary": "5311", "mcc_codes": ["5311", "5651"], "statement_aliases": ["LIFESTYLE*", "LIFESTYLE INT*"], "is_online": 1, "metadata": {}},
+    {"id": 131, "merchant_name": "westside", "display_name": "Westside (Tata)", "category_id": "fashion", "mcc_primary": "5651", "mcc_codes": ["5651"], "statement_aliases": ["WESTSIDE*", "TRENT LTD*"], "is_online": 1, "metadata": {"note": "Tata ecosystem - Tata Neu cards earn NeuCoins"}},
+    {"id": 132, "merchant_name": "zara", "display_name": "Zara", "category_id": "fashion", "mcc_primary": "5651", "mcc_codes": ["5651"], "statement_aliases": ["ZARA*", "INDITEX*"], "is_online": 1, "metadata": {}},
+    {"id": 133, "merchant_name": "hm", "display_name": "H&M", "category_id": "fashion", "mcc_primary": "5651", "mcc_codes": ["5651"], "statement_aliases": ["H&M*", "H AND M*", "HENNES*"], "is_online": 1, "metadata": {}},
+
+    {"id": 135, "merchant_name": "urban_company", "display_name": "Urban Company", "category_id": "online_shopping", "mcc_primary": "7299", "mcc_codes": ["7299"], "statement_aliases": ["URBAN COMPANY*", "URBANCLAP*"], "is_online": 1, "metadata": {}},
+
+    {"id": 137, "merchant_name": "tataneu_bigbasket", "display_name": "BigBasket (via Tata Neu)", "category_id": "grocery", "mcc_primary": "5411", "mcc_codes": ["5411"], "statement_aliases": ["TATA NEU*BIGBASKET*"], "is_online": 1, "metadata": {"note": "HDFC MoneyBack+ 10X CashPoints partner when purchased via SmartBuy/PayZapp"}},
+
+    {"id": 139, "merchant_name": "confirmtkt", "display_name": "ConfirmTkt", "category_id": "railways", "mcc_primary": "4112", "mcc_codes": ["4112"], "statement_aliases": ["CONFIRMTKT*"], "is_online": 1, "metadata": {"note": "HDFC SmartBuy partner for train bookings"}},
+
+    {"id": 141, "merchant_name": "lenskart", "display_name": "Lenskart", "category_id": "online_shopping", "mcc_primary": "5995", "mcc_codes": ["5995"], "statement_aliases": ["LENSKART*"], "is_online": 1, "metadata": {}},
+    {"id": 142, "merchant_name": "firstcry", "display_name": "FirstCry", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["FIRSTCRY*", "BRAINBEES*"], "is_online": 1, "metadata": {}},
+    {"id": 143, "merchant_name": "pepperfry", "display_name": "Pepperfry", "category_id": "online_shopping", "mcc_primary": "5712", "mcc_codes": ["5712"], "statement_aliases": ["PEPPERFRY*", "TRENDSUTRA*"], "is_online": 1, "metadata": {}},
+    {"id": 144, "merchant_name": "ikea", "display_name": "IKEA", "category_id": "department_store", "mcc_primary": "5712", "mcc_codes": ["5712", "5311"], "statement_aliases": ["IKEA*", "INGKA*"], "is_online": 1, "metadata": {}},
+
+    {"id": 146, "merchant_name": "tata_cliq", "display_name": "Tata CLiQ", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["TATA CLIQ*", "TATA UNISTORE*"], "is_online": 1, "metadata": {"note": "Tata ecosystem merchant for Tata Neu cards"}},
+    {"id": 147, "merchant_name": "tata_cliq_luxury", "display_name": "Tata CLiQ Luxury", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["TATA CLIQ LUXURY*"], "is_online": 1, "metadata": {"note": "Tata ecosystem - luxury segment"}},
+
+    {"id": 149, "merchant_name": "taj_hotels", "display_name": "Taj Hotels (IHCL)", "category_id": "hotels", "mcc_primary": "7011", "mcc_codes": ["7011"], "statement_aliases": ["TAJ HOTEL*", "IHCL*", "INDIAN HOTELS*"], "is_online": 1, "metadata": {"note": "Tata ecosystem; HDFC SmartBuy and Tata Neu cards"}},
+    {"id": 150, "merchant_name": "itc_hotels", "display_name": "ITC Hotels", "category_id": "hotels", "mcc_primary": "7011", "mcc_codes": ["7011"], "statement_aliases": ["ITC HOTEL*", "ITC WELCOM*"], "is_online": 1, "metadata": {"note": "HDFC Infinia/Diners Black: Club ITC transfer partner"}},
+    {"id": 151, "merchant_name": "marriott", "display_name": "Marriott Hotels", "category_id": "hotels", "mcc_primary": "7011", "mcc_codes": ["7011"], "statement_aliases": ["MARRIOTT*", "STARWOOD*"], "is_online": 1, "metadata": {"note": "HDFC transfer partner (Marriott Bonvoy)"}},
+
+    {"id": 153, "merchant_name": "decathlon", "display_name": "Decathlon", "category_id": "department_store", "mcc_primary": "5941", "mcc_codes": ["5941"], "statement_aliases": ["DECATHLON*"], "is_online": 1, "metadata": {}},
+    {"id": 154, "merchant_name": "crossword", "display_name": "Crossword", "category_id": "online_shopping", "mcc_primary": "5942", "mcc_codes": ["5942"], "statement_aliases": ["CROSSWORD*"], "is_online": 1, "metadata": {}},
+
+    {"id": 156, "merchant_name": "microsoft", "display_name": "Microsoft", "category_id": "streaming", "mcc_primary": "5045", "mcc_codes": ["5045", "5734"], "statement_aliases": ["MICROSOFT*", "MSBILL*"], "is_online": 1, "metadata": {"is_international": true, "note": "Office 365, Xbox Game Pass, Azure etc."}},
+    {"id": 157, "merchant_name": "google", "display_name": "Google", "category_id": "streaming", "mcc_primary": "5815", "mcc_codes": ["5815", "5045"], "statement_aliases": ["GOOGLE*", "GOOGLE PLAY*"], "is_online": 1, "metadata": {"is_international": true, "note": "Google One, Workspace, Play Store"}},
+
+    {"id": 159, "merchant_name": "chatgpt", "display_name": "ChatGPT / OpenAI", "category_id": "streaming", "mcc_primary": "5815", "mcc_codes": ["5815"], "statement_aliases": ["OPENAI*", "CHATGPT*"], "is_online": 1, "metadata": {"is_international": true}},
+
+    {"id": 161, "merchant_name": "amazon_prime", "display_name": "Amazon Prime Membership", "category_id": "online_shopping", "mcc_primary": "5399", "mcc_codes": ["5399"], "statement_aliases": ["AMAZON PRIME*"], "is_online": 1, "metadata": {"note": "Triggers Prime-conditional rules on Amazon Pay ICICI (5% vs 3%)"}}
+  ]
+}
