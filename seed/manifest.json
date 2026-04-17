@@ -1,11 +1,11 @@
 {
-  "version": "3.1.0",
-  "updated_at": "2026-04-17T21:11:04.435167Z",
+  "version": "3.1.1",
+  "updated_at": "2026-04-18T00:08:29.607476Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline",
   "stats": {
     "total_cards": 376,
-    "total_reward_rules": 1215,
+    "total_reward_rules": 1202,
     "total_exclusion_rules": 1418,
     "total_milestone_rules": 414,
     "issuers": 34
@@ -14,14 +14,14 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "896d0bddb93937d96457d98cd80bddf390d9685f82f2a0dd03a312e4b3203733",
-      "size_bytes": 1457135
+      "checksum": "8831d3f8d1414c3f7cbb1ed3a5c8fe04ec715a69b8074cd34761b092cda6327e",
+      "size_bytes": 1451975
     },
     {
       "name": "merchants.json",
       "path": "seed/merchants.json",
-      "checksum": "adf1fb75dc6c8b94e4f478ea86e43a8818e926451ec20ac38b9f72b1ceaeaddc",
-      "size_bytes": 36386
+      "checksum": "7d7a04ed10e177be9b0ac8aa1d662167cbfe633429afdd4f559694491e4878cd",
+      "size_bytes": 53282
     }
   ],
   "delta_file": null,
