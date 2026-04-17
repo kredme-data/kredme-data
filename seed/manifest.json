@@ -1,13 +1,21 @@
 {
-  "version": "2.0.0",
-  "updated_at": "2026-04-11T00:00:00Z",
-  "min_app_version": "1.0.0",
+  "version": "3.1.0",
+  "updated_at": "2026-04-17T21:11:04.435167Z",
+  "min_app_version": "1.1.0",
+  "source": "CardInsider extraction pipeline",
+  "stats": {
+    "total_cards": 376,
+    "total_reward_rules": 1215,
+    "total_exclusion_rules": 1418,
+    "total_milestone_rules": 414,
+    "issuers": 34
+  },
   "files": [
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "f4760ca91b29f756a449d7ac4d71a5f68b7bc500f567f7c4490424c66c33e3e8",
-      "size_bytes": 1351439
+      "checksum": "896d0bddb93937d96457d98cd80bddf390d9685f82f2a0dd03a312e4b3203733",
+      "size_bytes": 1457135
     },
     {
       "name": "merchants.json",
