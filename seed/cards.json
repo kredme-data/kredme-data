@@ -3192,7 +3192,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -3696,7 +3697,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "MR_Points"
+      "point_currency": "MR_Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -4878,7 +4880,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "MR_Points"
+      "point_currency": "MR_Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -7170,7 +7173,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -7808,7 +7812,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "EDGE"
+      "point_currency": "EDGE",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -9180,7 +9185,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "EDGE"
+      "point_currency": "EDGE",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -12806,7 +12812,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "EDGE"
+      "point_currency": "EDGE",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -14907,7 +14914,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -15410,7 +15418,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -15981,7 +15990,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -20327,7 +20337,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -20661,7 +20672,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -23064,7 +23076,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Etihad_Guest_Miles"
+      "point_currency": "Etihad_Guest_Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -23560,7 +23573,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Etihad_Guest_Miles"
+      "point_currency": "Etihad_Guest_Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -26815,7 +26829,8 @@
         "invite_only": false,
         "no_preset_limit": false
       },
-      "is_active": 1
+      "is_active": 1,
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -27582,7 +27597,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -27975,7 +27991,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -28467,7 +28484,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Points"
+      "point_currency": "Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -28874,7 +28892,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -29283,7 +29302,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -29612,7 +29632,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Points"
+      "point_currency": "Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -29833,7 +29854,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RewardPoints"
+      "point_currency": "RewardPoints",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -30522,7 +30544,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -32233,7 +32256,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -32522,7 +32546,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -32859,7 +32884,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -34230,7 +34256,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Points"
+      "point_currency": "Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -34663,7 +34690,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -35517,7 +35545,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -36973,7 +37002,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -37727,7 +37757,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -38197,7 +38228,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -38469,7 +38501,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -40513,7 +40546,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -47816,7 +47850,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Skywards Miles"
+      "point_currency": "Skywards Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -48514,7 +48549,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Skywards_Miles"
+      "point_currency": "Skywards_Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -48946,7 +48982,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Avios"
+      "point_currency": "Avios",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -49195,7 +49232,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Avios"
+      "point_currency": "Avios",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -50390,7 +50428,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -50732,7 +50771,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "ICICI_RP"
+      "point_currency": "ICICI_RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -54635,7 +54675,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -56323,7 +56364,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "InterMiles"
+      "point_currency": "InterMiles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -56826,7 +56868,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "InterMiles"
+      "point_currency": "InterMiles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -57328,7 +57371,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "InterMiles"
+      "point_currency": "InterMiles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -62358,7 +62402,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -62894,7 +62939,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -64863,7 +64909,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -65229,7 +65276,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "CV_Points"
+      "point_currency": "CV_Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -66555,7 +66603,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -67133,7 +67182,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -68570,7 +68620,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -69397,7 +69448,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "CV_Points"
+      "point_currency": "CV_Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -73580,7 +73632,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -76253,7 +76306,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "InterMiles"
+      "point_currency": "InterMiles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -78640,7 +78694,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Air Miles"
+      "point_currency": "Air Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -79519,7 +79574,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "MojoPoints"
+      "point_currency": "MojoPoints",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -81596,7 +81652,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "White_Pass"
+      "point_currency": "White_Pass",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -82028,7 +82085,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "ZenPoints"
+      "point_currency": "ZenPoints",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -83383,7 +83441,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -86682,7 +86741,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -90942,7 +91002,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Travel Points"
+      "point_currency": "Travel Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -91394,7 +91455,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -93462,7 +93524,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -93791,7 +93854,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -96123,7 +96187,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "CV Points"
+      "point_currency": "CV Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -96455,7 +96520,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "CV_Points"
+      "point_currency": "CV_Points",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -97367,7 +97433,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -97728,7 +97795,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -107477,7 +107545,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -107815,7 +107884,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -108352,7 +108422,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -108952,7 +109023,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "Miles"
+      "point_currency": "Miles",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -109827,7 +109899,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -116608,7 +116681,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RewardPoints"
+      "point_currency": "RewardPoints",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -118255,7 +118329,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -118585,7 +118660,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -118712,7 +118788,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -119353,7 +119430,8 @@
         "invite_only": false,
         "no_preset_limit": false
       },
-      "is_active": 1
+      "is_active": 1,
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -119570,7 +119648,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -119939,7 +120018,8 @@
         "invite_only": false,
         "no_preset_limit": false
       },
-      "is_active": 1
+      "is_active": 1,
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -120213,7 +120293,8 @@
         "no_preset_limit": false
       },
       "is_active": 1,
-      "point_currency": "RP"
+      "point_currency": "RP",
+      "is_travel": true
     },
     "reward_rules": [
       {
@@ -121608,7 +121689,8 @@
       "base_reward_rate": 0.01,
       "rp_value_standard": 1.0,
       "point_currency": "RP",
-      "status": "active"
+      "status": "active",
+      "is_travel": true
     },
     "reward_rules": [
       {
