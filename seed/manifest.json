@@ -1,11 +1,11 @@
 {
-  "version": "4.1.0",
+  "version": "4.1.1",
   "updated_at": "2026-05-09T00:00:00.000000Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline + manual is_travel curation",
   "stats": {
     "total_cards": 420,
-    "total_reward_rules": 3539,
+    "total_reward_rules": 3536,
     "total_exclusion_rules": 1418,
     "total_milestone_rules": 414,
     "total_fuel_surcharge_rules": 353,
@@ -16,8 +16,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "f5db314c875bb3b1d23000654f008d6205c5961c465a399fd35b555b3cf1d2f6",
-      "size_bytes": 4032757
+      "checksum": "bdc41ebfdaae90aa98c83ebdc3a820f2edd9a6fc0b24d9bedfde1a4d6f9662b3",
+      "size_bytes": 4030193
     },
     {
       "name": "merchants.json",
