@@ -1,13 +1,13 @@
 {
-  "version": "5.0.0",
-  "updated_at": "2026-05-09T00:00:00.000000Z",
+  "version": "5.1.0",
+  "updated_at": "2026-05-11T00:00:00.000000Z",
   "min_app_version": "1.1.0",
-  "source": "CardInsider extraction pipeline (v3.1.1 baseline + is_travel curation preserved)",
-  "_note": "Foundation rebuilt from cleaner v3.1.1 baseline. Removed 44 stub card entries, 196 phantom rules, and ~2,300 duplicate rules from cardexpert/finology/technofino sources that v4 had multiplied. is_travel flag preserved on 81 of the 82 cards (1 lost was a stub). redemption_rules placeholder added to schema for future enrichment.",
+  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
+  "_note": "Adds redemption_rules to 366/376 cards via the kredme-data-pipeline cardinsider extracted JSONs. Also adds card-level points_expiry_months, min_redemption_points, points_clawback_on_default. 10 cards have empty redemption_rules listed in handoff_v4/cards_missing_redemption.csv.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1202,
-    "total_redemption_rules": 0,
+    "total_redemption_rules": 873,
     "total_exclusion_rules": 1418,
     "total_milestone_rules": 414,
     "total_fuel_surcharge_rules": 353,
@@ -18,8 +18,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "382c0bae567922da54fd7ef05a6f8ab024db850ef464ce6b8f049390a08c99db",
-      "size_bytes": 1470775
+      "checksum": "ea29b0c23442c6a7e8074b6cff2be9a9746580e18d8505d56a09f913f26a0e9d",
+      "size_bytes": 1948662
     },
     {
       "name": "merchants.json",
