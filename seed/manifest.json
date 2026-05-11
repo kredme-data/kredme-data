@@ -1,9 +1,9 @@
 {
-  "version": "5.1.0",
+  "version": "5.2.0",
   "updated_at": "2026-05-11T00:00:00.000000Z",
   "min_app_version": "1.1.0",
-  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Adds redemption_rules to 366/376 cards via the kredme-data-pipeline cardinsider extracted JSONs. Also adds card-level points_expiry_months, min_redemption_points, points_clawback_on_default. 10 cards have empty redemption_rules listed in handoff_v4/cards_missing_redemption.csv.",
+  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules + canonical-rate transform v1",
+  "_note": "Adds earned_inr_per_inr_spent and cap_inr to every reward_rule (canonical normalised form). Engine can now read one canonical field instead of branching on reward_type/cap_kind. Also fills card-level rp_value_standard with currency-based defaults on 101 cards that were missing it (marked with _rp_value_inferred). See seed/SCHEMA_canonical.md for conversion math.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1202,
@@ -12,14 +12,16 @@
     "total_milestone_rules": 414,
     "total_fuel_surcharge_rules": 353,
     "total_travel_cards": 81,
-    "issuers": 34
+    "issuers": 34,
+    "rules_with_canonical_earned": 1202,
+    "cards_with_inferred_rp_value": 101
   },
   "files": [
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "ea29b0c23442c6a7e8074b6cff2be9a9746580e18d8505d56a09f913f26a0e9d",
-      "size_bytes": 1948662
+      "checksum": "3a79b66d3a145ca186582c68cf924bb9783fb94378e07562bf3b5e5ea571aa65",
+      "size_bytes": 2036568
     },
     {
       "name": "merchants.json",
