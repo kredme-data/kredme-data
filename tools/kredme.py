@@ -1,36 +1,39 @@
 #!/usr/bin/env python3
 """
-kredme.py — safe publish pipeline for the kredme-data OTA backend.
-
-WHY THIS EXISTS
----------------
-This repo IS the live backend. Anything committed to `main` and pushed is
-served to every real user by GitHub Pages within a minute. There is no staging
-gate, no validation, and no way back. This tool adds all three.
+kredme.py — dev/prod data pipeline for the KredMe OTA backend.
 
 THE MODEL
 ---------
-    staging/            <- you edit HERE. Never served to users.
-      seed/{manifest,cards,merchants}.json
-      news/feed.json
+Two parallel data environments, one per git branch:
 
-    seed/ , news/       <- LIVE. Only ever written by `publish`.
+    branch `dev`   -> DEV data
+                      https://raw.githubusercontent.com/kredme-data/kredme-data/dev
+                      read by TestFlight builds and dev APKs.
+                      Safe to break: no store user ever reads it.
 
-    .published/         <- automatic snapshots of live, taken before every
-                           publish. This is what `undo` restores from.
-                           Git-ignored: never served, never pushed.
+    branch `main`  -> PROD data
+                      https://kredme-data.github.io/kredme-data
+                      read by every App Store / Play Store build, always.
+
+GitHub Pages can only serve ONE branch, which is why dev is served from
+raw.githubusercontent (branch-addressable) rather than a Pages path.
+
+    .published/    -> automatic snapshots of prod, taken before every promote.
+                      This is what `undo` restores. Git-ignored.
+
+Data flows one way: edit on dev -> test it on your phone -> promote to prod.
 
 COMMANDS
 --------
-    python3 tools/kredme.py status              what's staged vs live
-    python3 tools/kredme.py validate            check staging is safe to ship
-    python3 tools/kredme.py publish --dry-run   show exactly what would change
-    python3 tools/kredme.py publish             staging -> live (still local)
-    python3 tools/kredme.py undo                restore the previous live state
-    python3 tools/kredme.py undo --list         show restore points
+    python3 tools/kredme.py status               dev vs prod, and what is live
+    python3 tools/kredme.py validate --target dev    check dev before testing
+    python3 tools/kredme.py validate --target prod   check what users have now
+    python3 tools/kredme.py promote --dry-run    show what prod would receive
+    python3 tools/kredme.py promote              dev -> prod (still local)
+    python3 tools/kredme.py undo                 restore the previous prod data
 
-`publish` NEVER touches the network. It writes local files and prints the one
-git command that actually goes live, so pushing stays a deliberate human act.
+Nothing here touches the network. Commands write local files and print the git
+command that actually reaches users, so publishing stays a deliberate act.
 
 No third-party packages. Python 3.8+. Run from anywhere.
 """
@@ -52,16 +55,20 @@ REPO = Path(__file__).resolve().parent.parent
 
 LIVE_SEED = REPO / "seed"
 LIVE_NEWS = REPO / "news"
-STAGING = REPO / "staging"
-STAGING_SEED = STAGING / "seed"
-STAGING_NEWS = STAGING / "news"
 SNAPSHOTS = REPO / ".published"
+
+DEV_BRANCH = "dev"
+PROD_BRANCH = "main"
+
+# DEV data is the `dev` branch, served by raw.githubusercontent (branch-addressable).
+# PROD data is `main`, served by GitHub Pages. Pages can only serve ONE branch,
+# which is why dev uses raw rather than a Pages path.
+DEV_BASE = "https://raw.githubusercontent.com/kredme-data/kredme-data/dev"
+PROD_BASE = "https://kredme-data.github.io/kredme-data"
 
 SEED_FILES = ("cards.json", "merchants.json")
 MANIFEST = "manifest.json"
 FEED = "feed.json"
-
-PAGES_BASE = "https://kredme-data.github.io/kredme-data"
 
 # Keys the app's NewsArticle.fromJson actually reads. Anything else is silently
 # dropped by the app, which is how the live feed ended up invisible.
@@ -130,6 +137,14 @@ def write_json(path: Path, obj) -> None:
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(obj, fh, indent=2, ensure_ascii=False)
         fh.write("\n")
+
+
+def rel(path: Path) -> str:
+    """Display path — materialised git refs live outside the repo."""
+    try:
+        return str(path.relative_to(REPO))
+    except ValueError:
+        return f"{path.parent.name}/{path.name}"
 
 
 def size_str(n: int) -> str:
@@ -215,6 +230,20 @@ def git(*args: str):
         return 1, "", str(e)
 
 
+def git_bytes(*args: str):
+    """git output as RAW bytes — never stripped.
+
+    The text helper calls .strip(), which alters file content and makes every
+    checksum comparison fail. Anything reading a blob must use this.
+    """
+    try:
+        r = subprocess.run(["git", "-C", str(REPO), *args],
+                           capture_output=True, timeout=60)
+        return r.returncode, r.stdout
+    except Exception:
+        return 1, b""
+
+
 def git_head() -> str:
     code, out, _ = git("rev-parse", "HEAD")
     return out if code == 0 else "unknown"
@@ -276,10 +305,10 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
 
     strict_checksums=True  (live)    — a mismatch is fatal: the app rejects the
                                        sync and the user sees "Sync failed".
-    strict_checksums=False (staging) — a mismatch is expected while editing;
+    strict_checksums=False (working) — a mismatch is expected mid-edit;
                                        publish rebuilds the manifest from bytes.
     """
-    head(f"Seed  {seed_dir.relative_to(REPO)}")
+    head(f"Seed  {rel(seed_dir)}")
     card_ids: set = set()
     merchant_refs: set = set()
 
@@ -510,7 +539,7 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
 
 
 def validate_news(news_dir: Path, card_ids: set, rep: Report, manifest_news_version=None):
-    head(f"News  {news_dir.relative_to(REPO)}")
+    head(f"News  {rel(news_dir)}")
     fpath = news_dir / FEED
     if not fpath.exists():
         rep.error(f"{FEED} is missing")
@@ -611,41 +640,46 @@ def validate_news(news_dir: Path, card_ids: set, rep: Report, manifest_news_vers
         ok(f"{len(items)} news item(s) checked")
 
 
-def ensure_staging() -> None:
-    """Create staging/ from live on first use, so there is no manual setup step."""
-    if STAGING_SEED.exists() and (STAGING_SEED / MANIFEST).exists():
-        return
-    # Refuse to auto-populate over a partially-present staging tree: those may
-    # be unpublished edits, and copying live over them destroys the operator's
-    # work with no snapshot and no undo.
-    existing = [p for p in (list(STAGING_SEED.glob("*.json")) if STAGING_SEED.exists() else [])
-                + (list(STAGING_NEWS.glob("*.json")) if STAGING_NEWS.exists() else [])]
-    if existing:
-        die(f"staging/ exists but {MANIFEST} is missing, so it looks half-written "
-            f"({len(existing)} file(s) present). Refusing to overwrite possible unpublished "
-            f"edits. Inspect staging/, then run:  python3 tools/kredme.py init --force")
-    print(f"{C.DIM}  (first run — creating staging/ from the current live data){C.X}")
-    STAGING_SEED.mkdir(parents=True, exist_ok=True)
-    STAGING_NEWS.mkdir(parents=True, exist_ok=True)
-    for name in (*SEED_FILES, MANIFEST):
-        src = LIVE_SEED / name
-        if src.exists():
-            shutil.copy2(src, STAGING_SEED / name)
-    src = LIVE_NEWS / FEED
-    if src.exists():
-        shutil.copy2(src, STAGING_NEWS / FEED)
-    ensure_gitignore()
+def materialise(ref: str) -> Path:
+    """Extract seed/ and news/ from a git ref into a temp dir.
+
+    Lets us inspect the dev branch without checking it out, so validating or
+    promoting never disturbs the operator's working tree.
+    """
+    import tempfile
+    dest = Path(tempfile.mkdtemp(prefix=f"kredme-{ref.replace('/', '-')}-"))
+    (dest / "seed").mkdir(parents=True, exist_ok=True)
+    (dest / "news").mkdir(parents=True, exist_ok=True)
+    got = 0
+    for relpath in [f"seed/{n}" for n in (*SEED_FILES, MANIFEST)] + [f"news/{FEED}"]:
+        code, blob = git_bytes("show", f"{ref}:{relpath}")
+        if code == 0:
+            (dest / relpath).write_bytes(blob)
+            got += 1
+    if not got:
+        die(f"branch '{ref}' has no data files — is it the right branch?")
+    return dest
+
+
+def data_dirs(target: str):
+    """(seed_dir, news_dir, cleanup) for 'dev', 'prod' or 'working'."""
+    if target == "working":
+        return LIVE_SEED, LIVE_NEWS, None
+    ref = DEV_BRANCH if target == "dev" else PROD_BRANCH
+    code, _, _ = git("rev-parse", "--verify", ref)
+    if code != 0:
+        die(f"branch '{ref}' not found locally. Try:  git fetch origin {ref}:{ref}")
+    tmp = materialise(ref)
+    return tmp / "seed", tmp / "news", tmp
 
 
 def run_validation(target: str, allow_shrink: bool = False) -> Report:
     rep = Report()
-    if target == "staging":
-        ensure_staging()
-        seed_dir, news_dir = STAGING_SEED, STAGING_NEWS
-    else:
-        seed_dir, news_dir = LIVE_SEED, LIVE_NEWS
-
-    card_ids = validate_seed(seed_dir, rep, strict_checksums=(target == "live"),
+    seed_dir, news_dir, _tmp = data_dirs(target)
+    # Checksums must be exact for anything an app actually fetches. Both dev and
+    # prod are fetched by a real app, so both are strict; only the local working
+    # tree is lenient (it is mid-edit by definition).
+    card_ids = validate_seed(seed_dir, rep, strict_checksums=(target != "working"),
                              allow_shrink=allow_shrink)
     mnv = None
     mpath = seed_dir / MANIFEST
@@ -768,7 +802,7 @@ def ensure_gitignore() -> None:
     gi = REPO / ".gitignore"
     lines = gi.read_text(encoding="utf-8").splitlines() if gi.exists() else []
     have = {l.strip().rstrip("/") for l in lines}
-    if ".published" in have and "staging" in have:
+    if ".published" in have:
         return
     with open(gi, "a", encoding="utf-8") as fh:
         if lines and lines[-1].strip():
@@ -776,82 +810,51 @@ def ensure_gitignore() -> None:
         fh.write(
             "# local publish snapshots — never serve or commit these\n"
             ".published/\n"
-            "# local staging working area — recreated from live by any command\n"
-            "staging/\n"
         )
     info("added .published/ to .gitignore")
 
 
 # -------------------------------------------------------------- commands ----
 
-def cmd_init(args) -> None:
-    head("Initialising staging/ from the current live data")
-    if STAGING.exists() and any(STAGING.rglob("*.json")) and not args.force:
-        die("staging/ already exists. Use --force to overwrite it from live.")
-    STAGING_SEED.mkdir(parents=True, exist_ok=True)
-    STAGING_NEWS.mkdir(parents=True, exist_ok=True)
-    copied = 0
-    for name in (*SEED_FILES, MANIFEST):
-        src = LIVE_SEED / name
-        if src.exists():
-            shutil.copy2(src, STAGING_SEED / name)
-            ok(f"staging/seed/{name}  ({size_str(src.stat().st_size)})")
-            copied += 1
-    src = LIVE_NEWS / FEED
-    if src.exists():
-        shutil.copy2(src, STAGING_NEWS / FEED)
-        ok(f"staging/news/{FEED}")
-        copied += 1
-    ensure_gitignore()
-    print(f"\n{C.G}{C.BOLD}staging/ ready{C.X} — {copied} file(s) copied from live.")
-    print(f"{C.DIM}Edit staging/, then:  python3 tools/kredme.py validate{C.X}\n")
+def branch_versions(target: str):
+    seed_dir, news_dir, _ = data_dirs(target)
+    return read_versions(seed_dir, news_dir)
 
 
 def cmd_status(args) -> None:
-    head("Where things stand")
+    head("Environments")
     print(f"  repo      {REPO}")
-    print(f"  branch    {git_branch()}   {C.DIM}(live is served from 'main'){C.X}")
-    if git_branch() not in ("main", "unknown"):
-        warn(f"you are on '{git_branch()}' — publishing is only live from 'main'")
+    print(f"  on branch {git_branch()}")
 
-    lsv, lnv = read_versions(LIVE_SEED, LIVE_NEWS)
-    print(f"\n  {C.BOLD}LIVE{C.X}      seed {lsv}   news {lnv}")
-    if STAGING.exists():
-        ssv, snv = read_versions(STAGING_SEED, STAGING_NEWS)
-        print(f"  {C.BOLD}STAGING{C.X}   seed {ssv}   news {snv}")
+    try:
+        dsv, dnv = branch_versions("dev")
+    except SystemExit:
+        dsv = dnv = "?"
+    psv, pnv = branch_versions("prod")
+
+    print(f"\n  {C.BOLD}DEV{C.X}   branch '{DEV_BRANCH}'    seed {dsv}   news {dnv}")
+    print(f"        {C.DIM}{DEV_BASE}{C.X}")
+    print(f"        {C.DIM}read by TestFlight / dev APK builds{C.X}")
+    print(f"\n  {C.BOLD}PROD{C.X}  branch '{PROD_BRANCH}'   seed {psv}   news {pnv}")
+    print(f"        {C.DIM}{PROD_BASE}{C.X}")
+    print(f"        {C.DIM}read by every store build — always{C.X}")
+
+    head("Is dev ahead of prod?")
+    code, out, _ = git("log", "--oneline", f"{PROD_BRANCH}..{DEV_BRANCH}", "--", "seed", "news")
+    if code == 0 and out:
+        for line in out.split("\n")[:8]:
+            print(f"  {line}")
+        print(f"\n  {C.Y}dev has data commits not yet in prod{C.X} — promote when ready")
     else:
-        ensure_staging()
-        ssv, snv = read_versions(STAGING_SEED, STAGING_NEWS)
-        print(f"  {C.BOLD}STAGING{C.X}   seed {ssv}   news {snv}")
-
-    head("Staged changes (staging vs live)")
-    changed = False
-    pairs = [(STAGING_SEED / n, LIVE_SEED / n) for n in (*SEED_FILES, MANIFEST)]
-    pairs.append((STAGING_NEWS / FEED, LIVE_NEWS / FEED))
-    for s, l in pairs:
-        rel = s.relative_to(REPO)
-        if not s.exists():
-            continue
-        if not l.exists():
-            print(f"  {C.G}NEW{C.X}     {rel}")
-            changed = True
-        elif sha256(s) != sha256(l):
-            delta = s.stat().st_size - l.stat().st_size
-            sign = "+" if delta >= 0 else "-"
-            print(f"  {C.Y}CHANGED{C.X} {rel}  ({size_str(s.stat().st_size)}, {sign}{size_str(abs(delta))})")
-            changed = True
-    if not changed:
-        print(f"  {C.DIM}nothing staged — staging matches live{C.X}")
+        print(f"  {C.DIM}no — dev and prod data are the same{C.X}")
 
     snaps = snapshot_dirs()
-    head("Restore points")
+    head("Prod restore points")
     if snaps:
         for d in snaps[:5]:
             print(f"  {d.name}")
-        if len(snaps) > 5:
-            print(f"  {C.DIM}… and {len(snaps)-5} older{C.X}")
     else:
-        print(f"  {C.DIM}none yet — the first publish creates one{C.X}")
+        print(f"  {C.DIM}none yet — the first promote creates one{C.X}")
     print()
 
 
@@ -862,91 +865,69 @@ def cmd_validate(args) -> None:
     sys.exit(1 if rep.failed else 0)
 
 
-def cmd_publish(args) -> None:
-    ensure_staging()
+def cmd_promote(args) -> None:
+    """dev -> prod. The only path by which real users ever get new data."""
+    if git_branch() != PROD_BRANCH:
+        die(f"promote must run from '{PROD_BRANCH}' (you are on '{git_branch()}').\n"
+            f"          Run:  git checkout {PROD_BRANCH}")
+    code, dirty, _ = git("status", "--porcelain", "--", "seed", "news")
+    if code == 0 and dirty:
+        die("seed/ or news/ has uncommitted changes — commit or discard them first.")
 
-    head("Step 1 — validate staging (nothing is written until this passes)")
-    rep = run_validation("staging", allow_shrink=getattr(args, "allow_shrink", False))
-    print_verdict(rep, "staging")
+    head(f"Step 1 — validate the '{DEV_BRANCH}' branch (nothing moves until this passes)")
+    rep = run_validation("dev", allow_shrink=getattr(args, "allow_shrink", False))
+    print_verdict(rep, "dev")
     if rep.failed:
-        die("staging has errors — refusing to publish. This is the gate working.")
+        die("dev has errors — refusing to promote. This is the gate working.")
 
-    # Work out the new versions.
+    dev_seed, dev_news, _ = data_dirs("dev")
     live_sv, live_nv = read_versions(LIVE_SEED, LIVE_NEWS)
-    stage_manifest = read_json(STAGING_SEED / MANIFEST)
-    stage_feed = read_json(STAGING_NEWS / FEED)
+    dev_sv, dev_nv = read_versions(dev_seed, dev_news)
 
-    # NOTE: manifest.json is intentionally NOT part of this comparison — it is
-    # regenerated from the payload bytes on every publish, so it is an output,
-    # not an input. Only real payload changes count as "staged".
     seed_changed = any(
-        (STAGING_SEED / n).exists() and (
-            not (LIVE_SEED / n).exists()
-            or sha256(STAGING_SEED / n) != sha256(LIVE_SEED / n)
-        )
-        for n in SEED_FILES
-    )
-    news_changed = (
-        (STAGING_NEWS / FEED).exists() and (
-            not (LIVE_NEWS / FEED).exists()
-            or sha256(STAGING_NEWS / FEED) != sha256(LIVE_NEWS / FEED)
-        )
-    )
-    # Nothing staged? Say so and stop — warnings are irrelevant when there is
-    # nothing to ship.
-    if not seed_changed and not news_changed:
-        die("staging is identical to live — nothing to publish.", code=0)
+        (dev_seed / n).exists() and (
+            not (LIVE_SEED / n).exists() or sha256(dev_seed / n) != sha256(LIVE_SEED / n))
+        for n in SEED_FILES)
+    news_changed = (dev_news / FEED).exists() and (
+        not (LIVE_NEWS / FEED).exists() or sha256(dev_news / FEED) != sha256(LIVE_NEWS / FEED))
 
-    # Only now does the warnings gate apply.
+    if not seed_changed and not news_changed:
+        die("dev and prod data are identical — nothing to promote.", code=0)
+
     if rep.warnings and not args.allow_warnings and not args.dry_run:
         print(f"\n{C.Y}{C.BOLD}{len(rep.warnings)} warning(s).{C.X} "
-              f"Re-run with --allow-warnings to publish anyway.")
+              f"Re-run with --allow-warnings to promote anyway.")
         sys.exit(2)
 
-    # Refuse to guess at an unreadable live version. Emitting a LOWER news
-    # version than users already hold permanently stops them refetching, so a
-    # broken live file must stop the publish, not be silently overwritten.
     try:
         new_sv = bump_patch(live_sv, strict=True) if seed_changed else live_sv
     except VersionError as e:
-        die(f"cannot read the current LIVE seed version ({e}). "
-            f"Fix seed/{MANIFEST} before publishing — guessing would corrupt live.")
+        die(f"cannot read the current PROD seed version ({e}). Fix seed/{MANIFEST} first.")
     try:
-        # The app only refetches news when the MAJOR integer increases.
         new_nv = bump_major(live_nv, strict=True) if news_changed else live_nv
     except VersionError as e:
-        die(f"cannot read the current LIVE news version ({e}). "
-            f"Fix news/{FEED} before publishing — a wrong bump here would stop "
-            f"every installed app from ever refetching news again.")
+        die(f"cannot read the current PROD news version ({e}). Fix news/{FEED} first — "
+            f"a wrong bump would stop every app from refetching news.")
 
-    # Never re-emit a version we have already served (undo moves live's version
-    # backwards, so `live` alone is not a safe floor).
+    # dev may already carry a higher version than a naive bump would produce.
+    if seed_changed and version_gt(dev_sv, new_sv):
+        new_sv = dev_sv
+    if news_changed and version_gt(dev_nv, new_nv):
+        new_nv = dev_nv
+
     ceil_sv, ceil_nv = published_ceiling()
     if seed_changed and ceil_sv and not version_gt(new_sv, ceil_sv):
-        bumped = bump_patch(ceil_sv)
-        warn(f"seed {new_sv} was already published — raising to {bumped}")
-        new_sv = bumped
+        new_sv = bump_patch(ceil_sv)
+        warn(f"seed version already served — raising to {new_sv}")
     if news_changed and ceil_nv and not version_gt(new_nv, ceil_nv):
-        bumped = bump_major(ceil_nv)
-        warn(f"news {new_nv} was already published — raising to {bumped} "
-             f"(re-using a major would mean nobody refetches)")
-        new_nv = bumped
+        new_nv = bump_major(ceil_nv)
+        warn(f"news version already served — raising to {new_nv}")
 
-    head("Step 2 — what will change")
-    if seed_changed:
-        print(f"  seed   {live_sv}  ->  {C.G}{new_sv}{C.X}   {C.DIM}(patch bump; app compares the string){C.X}")
-    else:
-        print(f"  seed   {live_sv}      {C.DIM}unchanged{C.X}")
-    if news_changed:
-        print(f"  news   {live_nv}  ->  {C.G}{new_nv}{C.X}   {C.DIM}(MAJOR bump — app ignores minor bumps){C.X}")
-    else:
-        print(f"  news   {live_nv}      {C.DIM}unchanged{C.X}")
-    for n in (*SEED_FILES, MANIFEST):
-        s = STAGING_SEED / n
-        if s.exists() and (not (LIVE_SEED / n).exists() or sha256(s) != sha256(LIVE_SEED / n)):
-            print(f"  write  seed/{n}  ({size_str(s.stat().st_size)})")
-    if news_changed:
-        print(f"  write  news/{FEED}")
+    head("Step 2 — what prod will receive")
+    print(f"  seed   {live_sv}  ->  {C.G}{new_sv}{C.X}" if seed_changed
+          else f"  seed   {live_sv}      {C.DIM}unchanged{C.X}")
+    print(f"  news   {live_nv}  ->  {C.G}{new_nv}{C.X}   {C.DIM}(MAJOR — app ignores minor bumps){C.X}"
+          if news_changed else f"  news   {live_nv}      {C.DIM}unchanged{C.X}")
 
     if args.dry_run:
         print(f"\n{C.B}{C.BOLD}Dry run — nothing was written.{C.X}\n")
@@ -954,88 +935,57 @@ def cmd_publish(args) -> None:
 
     if not args.yes:
         print()
-        reply = input(f"  Publish staging -> live locally? {C.DIM}(y/N){C.X} ").strip().lower()
-        if reply not in ("y", "yes"):
+        if input(f"  Promote dev -> prod locally? {C.DIM}(y/N){C.X} ").strip().lower() not in ("y", "yes"):
             die("cancelled — nothing was written.", code=0)
 
-    head("Step 3 — snapshot the current live data (this is your undo)")
-    snap = take_snapshot(reason=f"pre-publish seed {live_sv}->{new_sv}, news {live_nv}->{new_nv}")
+    head("Step 3 — snapshot prod (this is your undo)")
+    snap = take_snapshot(reason=f"pre-promote seed {live_sv}->{new_sv}, news {live_nv}->{new_nv}")
     ensure_gitignore()
     ok(f"saved {snap.relative_to(REPO)}")
 
-    head("Step 4 — promote staging to live")
-    LIVE_SEED.mkdir(parents=True, exist_ok=True)
-    LIVE_NEWS.mkdir(parents=True, exist_ok=True)
-
+    head("Step 4 — copy dev data into prod")
     if news_changed:
-        stage_feed["version"] = new_nv
-        stage_feed["updated_at"] = now_iso()
-        write_json(LIVE_NEWS / FEED, stage_feed)
-        write_json(STAGING_NEWS / FEED, stage_feed)  # keep staging in step
+        feed = read_json(dev_news / FEED)
+        feed["version"] = new_nv
+        feed["updated_at"] = now_iso()
+        write_json(LIVE_NEWS / FEED, feed)
         ok(f"news/{FEED} -> {new_nv}")
-
     if seed_changed:
         for n in SEED_FILES:
-            s = STAGING_SEED / n
-            if s.exists():
-                shutil.copy2(s, LIVE_SEED / n)
+            if (dev_seed / n).exists():
+                shutil.copy2(dev_seed / n, LIVE_SEED / n)
                 ok(f"seed/{n}")
 
-    # Rebuild the manifest from the bytes we just wrote. Never trust a
-    # hand-edited checksum — a mismatch is what causes "Sync failed".
-    #
-    # Base it on STAGING's manifest only when the seed payload actually
-    # changed. On a news-only publish the staging manifest may be stale (it is
-    # a copy taken at init time), and using it would silently revert live's
-    # manifest metadata — stats, min_app_version, source — for no reason.
-    if seed_changed:
-        manifest = dict(stage_manifest)
-    else:
-        try:
-            manifest = dict(read_json(LIVE_SEED / MANIFEST))
-        except Exception:
-            manifest = dict(stage_manifest)
+    manifest = dict(read_json(dev_seed / MANIFEST)) if seed_changed else dict(read_json(LIVE_SEED / MANIFEST))
     manifest["version"] = new_sv
     manifest["updated_at"] = now_iso()
     manifest["news_version"] = new_nv
-    files = []
-    for n in SEED_FILES:
-        p = LIVE_SEED / n
-        if p.exists():
-            files.append({
-                "name": n,
-                "path": f"seed/{n}",
-                "checksum": sha256(p),
-                "size_bytes": p.stat().st_size,
-            })
-    manifest["files"] = files
+    manifest["files"] = [
+        {"name": n, "path": f"seed/{n}", "checksum": sha256(LIVE_SEED / n),
+         "size_bytes": (LIVE_SEED / n).stat().st_size}
+        for n in SEED_FILES if (LIVE_SEED / n).exists()
+    ]
     write_json(LIVE_SEED / MANIFEST, manifest)
-    ok(f"seed/{MANIFEST} rebuilt — {len(files)} file(s), checksums recomputed")
+    ok(f"seed/{MANIFEST} rebuilt — checksums recomputed")
 
-    stage_manifest_out = dict(manifest)
-    write_json(STAGING_SEED / MANIFEST, stage_manifest_out)
-
-    # Remember what we served, so undo-then-republish can never re-use it.
     record_published(new_sv, new_nv)
 
-    head("Step 5 — verify what we just wrote")
-    rep2 = run_validation("live")
-    print_verdict(rep2, "live")
+    head("Step 5 — verify what prod now holds")
+    rep2 = run_validation("working")
+    print_verdict(rep2, "prod (working tree)")
     if rep2.failed:
-        print(f"\n{C.R}The write produced invalid live data.{C.X} Roll it back now:")
+        print(f"\n{C.R}That write produced invalid prod data.{C.X} Roll back now:")
         print(f"    python3 tools/kredme.py undo\n")
         sys.exit(1)
 
-    print(f"\n{C.G}{C.BOLD}Published locally.{C.X} Nothing has reached users yet.")
-    print(f"\n{C.BOLD}To go live{C.X} (this is the only networked step):")
-    print(f"    git -C {REPO} checkout main")
+    print(f"\n{C.G}{C.BOLD}Promoted locally.{C.X} Real users have NOT received it yet.")
+    print(f"\n{C.BOLD}To reach users{C.X} (the only networked step):")
     print(f"    git -C {REPO} add seed news")
     print(f'    git -C {REPO} commit -m "data: seed {new_sv}, news {new_nv}"')
-    print(f"    git -C {REPO} push origin main")
-    print(f"\n{C.BOLD}To check it landed{C.X} (~1 min after push):")
-    print(f"    curl -s {PAGES_BASE}/seed/manifest.json | python3 -m json.tool | head -5")
-    print(f"\n{C.BOLD}If it goes wrong{C.X}:")
-    print(f"    python3 tools/kredme.py undo     {C.DIM}then commit + push again{C.X}\n")
+    print(f"    git -C {REPO} push origin {PROD_BRANCH}")
+    print(f"\n{C.BOLD}Check it landed{C.X} (~1 min):")
+    print(f"    curl -s {PROD_BASE}/seed/manifest.json | python3 -m json.tool | head -5")
+    print(f"\n{C.BOLD}If it goes wrong{C.X}:  python3 tools/kredme.py undo\n")
 
 
 def cmd_undo(args) -> None:
@@ -1072,7 +1022,7 @@ def cmd_undo(args) -> None:
     except Exception:
         pass
 
-    head("Undo — restore live from a snapshot")
+    head("Undo — restore PROD from a snapshot")
     cur_sv, cur_nv = read_versions(LIVE_SEED, LIVE_NEWS)
     print(f"  now      seed {cur_sv}   news {cur_nv}")
     print(f"  restore  seed {meta.get('seed_version','?')}   news {meta.get('news_version','?')}   {C.DIM}({target.name}){C.X}")
@@ -1094,8 +1044,8 @@ def cmd_undo(args) -> None:
         ok("news/ restored")
 
     head("Verify the restored data")
-    rep = run_validation("live")
-    print_verdict(rep, "live")
+    rep = run_validation("working")
+    print_verdict(rep, "prod (working tree)")
 
     if rep.failed:
         print(f"\n{C.R}{C.BOLD}The restored data does NOT validate.{C.X} "
@@ -1115,34 +1065,30 @@ def cmd_undo(args) -> None:
 def main() -> None:
     p = argparse.ArgumentParser(
         prog="kredme.py",
-        description="Safe publish pipeline for the kredme-data OTA backend.",
+        description="Dev/prod data pipeline for the KredMe OTA backend.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="Typical day:  edit staging/  ->  validate  ->  publish --dry-run  ->  publish  ->  git push",
+        epilog="Typical day:  edit on dev  ->  validate  ->  test on your phone  ->  promote  ->  git push",
     )
     sub = p.add_subparsers(dest="cmd", required=True)
 
-    s = sub.add_parser("init", help="create staging/ from the current live data")
-    s.add_argument("--force", action="store_true", help="overwrite an existing staging/")
-    s.set_defaults(func=cmd_init)
-
-    s = sub.add_parser("status", help="show staging vs live and restore points")
+    s = sub.add_parser("status", help="dev vs prod versions and restore points")
     s.set_defaults(func=cmd_status)
 
-    s = sub.add_parser("validate", help="check data is safe to ship")
-    s.add_argument("--target", choices=("staging", "live"), default="staging")
+    s = sub.add_parser("validate", help="check an environment's data is safe")
+    s.add_argument("--target", choices=("dev", "prod", "working"), default="dev")
     s.add_argument("--allow-shrink", action="store_true",
-                   help="permit a large drop in card count (deliberate catalog reduction)")
+                   help="permit a large drop in card count (deliberate reduction)")
     s.set_defaults(func=cmd_validate)
 
-    s = sub.add_parser("publish", help="promote staging -> live (local only)")
+    s = sub.add_parser("promote", help="dev -> prod (local only; you still push)")
     s.add_argument("--dry-run", action="store_true", help="show what would change, write nothing")
     s.add_argument("--yes", "-y", action="store_true", help="skip the confirmation prompt")
-    s.add_argument("--allow-warnings", action="store_true", help="publish despite warnings")
+    s.add_argument("--allow-warnings", action="store_true", help="promote despite warnings")
     s.add_argument("--allow-shrink", action="store_true",
-                   help="permit a large drop in card count (deliberate catalog reduction)")
-    s.set_defaults(func=cmd_publish)
+                   help="permit a large drop in card count (deliberate reduction)")
+    s.set_defaults(func=cmd_promote)
 
-    s = sub.add_parser("undo", help="restore live from the previous snapshot")
+    s = sub.add_parser("undo", help="restore prod from the previous snapshot")
     s.add_argument("--list", action="store_true", help="show restore points")
     s.add_argument("--to", metavar="SNAPSHOT", help="restore a specific snapshot")
     s.add_argument("--yes", "-y", action="store_true", help="skip the confirmation prompt")

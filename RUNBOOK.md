@@ -22,101 +22,100 @@ This repo is the **OTA backend** the app reads over the network via GitHub Pages
 
 ---
 
-## WORKSTREAM 0 — The safe pipeline (do everything through this)
+## WORKSTREAM 0 — Two data environments (do everything through this)
 
-> **This replaces hand-editing `seed/` and `news/` directly.** Those are now
-> "live" and should only ever be written by the `publish` command.
+> Replaces hand-editing `seed/` and `news/` on `main`. Those are now **prod**
+> and should only ever be written by `promote`.
 
-### The model
+### The two lanes
+
+| | Branch | URL | Read by |
+|---|---|---|---|
+| **DEV** | `dev` | `https://raw.githubusercontent.com/kredme-data/kredme-data/dev` | TestFlight / dev APK builds |
+| **PROD** | `main` | `https://kredme-data.github.io/kredme-data` | every store build, always |
+
+GitHub Pages can only serve **one** branch, which is why dev is served from
+`raw.githubusercontent.com` (branch-addressable) rather than a Pages path.
+Raw caches for ~5 minutes, so a dev change appears on your phone within that.
+
+Dev may be identical to prod, or ahead of it. Data only ever flows one way:
 
 ```
-staging/          <- you edit HERE. Never served to users.
-  seed/{manifest,cards,merchants}.json
-  news/feed.json
-
-seed/ , news/     <- LIVE. Only ever written by `publish`.
-
-.published/       <- automatic snapshots taken before every publish.
-                     This is what `undo` restores. Git-ignored.
+edit on dev  ->  validate  ->  test on your phone  ->  promote  ->  push
 ```
 
-Nothing reaches users until **you** run `git push`. The tool never touches the
-network.
-
-### The four commands
+### Commands
 
 ```bash
 cd ~/Downloads/KredMe/kredme-data
 
-python3 tools/kredme.py status              # what's staged vs live
-python3 tools/kredme.py validate            # is staging safe to ship?
-python3 tools/kredme.py publish --dry-run   # show exactly what would change
-python3 tools/kredme.py publish             # staging -> live (still LOCAL)
-python3 tools/kredme.py undo                # restore the previous live state
+python3 tools/kredme.py status                    # dev vs prod
+python3 tools/kredme.py validate --target dev     # before you test
+python3 tools/kredme.py validate --target prod    # what users have now
+python3 tools/kredme.py promote --dry-run         # what prod would receive
+python3 tools/kredme.py promote                   # dev -> prod (LOCAL)
+python3 tools/kredme.py undo                      # restore previous prod
 ```
 
-### A normal day
+`promote` must be run from `main` and refuses if `seed/`/`news/` are dirty.
+Nothing touches the network — it prints the `git push` for you to run.
+
+### Changing dev data
 
 ```bash
-# 1. edit staging/news/feed.json  (or staging/seed/*.json)
-# 2. check it
-python3 tools/kredme.py validate
-# 3. see what would change
-python3 tools/kredme.py publish --dry-run
-# 4. promote it locally
-python3 tools/kredme.py publish
-# 5. THIS is the step that goes live:
+git checkout dev
+# edit news/feed.json or seed/*.json
+python3 tools/kredme.py validate --target dev
+git add seed news && git commit -m "news: ..." && git push origin dev
+# within ~5 min your dev build sees it. Prod is untouched.
+```
+
+### Promoting to real users
+
+```bash
 git checkout main
-git add seed news
-git commit -m "data: news alerts for <thing>"
-git push origin main
+python3 tools/kredme.py promote          # validates dev, snapshots prod, bumps versions
+git add seed news && git commit -m "data: promote" && git push origin main
+curl -s https://kredme-data.github.io/kredme-data/seed/manifest.json | head -5
 ```
 
-### What the gate actually catches
+### What the gate catches
 
-`publish` refuses to run if `validate` fails. It checks, among other things:
-
-| Check | Why it matters |
+| Check | Why |
 |---|---|
-| News uses `expiry_date` / `source_url` / `severity` | the app **silently ignores** `expires_at` / `url` — this is why the live feed looks empty |
-| Every `affected_cards` id exists in `cards.json` | a typo'd card id means the alert reaches **nobody** |
-| Manifest checksums match the real bytes (live) | a mismatch is exactly what shows as **"Sync failed"** in the app |
-| Duplicate card / merchant / news ids | ambiguous lookups silently drop records |
-| Merchant `category_id` resolves to a real category | dangling refs break merchant matching |
-| Card count sanity | catches a truncated / half-written catalog |
+| News uses `expiry_date` / `source_url` / `severity` | the app **ignores** `expires_at` / `url` |
+| Every `affected_cards` id exists in `cards.json` | a typo means the alert reaches **nobody** |
+| `merchant_ref` resolves to a `merchant_name` | else that reward rule never fires |
+| Manifest checksums match real bytes | a mismatch is what shows as **"Sync failed"** |
+| Empty merchants / categories | silently breaks all merchant matching |
+| Card count vs prod (`--allow-shrink` to override) | catches a truncated export |
+| Duplicate ids, dangling category, bad JSON shape | |
 
-### Two things it does for you automatically
+### Two footguns it handles for you
 
-1. **News version MAJOR bump.** The app only refetches news when the leading
-   integer increases (`1.0.0 -> 2.0.0`). `publish` does this for you, so the
-   gotcha in Workstream A below can no longer be forgotten.
-2. **Checksum regeneration.** The manifest is rebuilt from the bytes actually
-   written, so a hand-edited checksum can never cause "Sync failed".
+1. **News MAJOR bump.** The app refetches only when the leading integer
+   increases. `promote` does it, and refuses rather than guessing if prod's
+   version is unreadable — emitting a *lower* version would stop news forever.
+2. **Checksum regeneration** from the bytes actually written.
 
-### If a bad publish gets out
+A high-water mark (`.published/HIGHWATER.json`) means a version is never
+re-used after an `undo` — otherwise a correction would reach nobody.
+
+### If a bad promote goes out
 
 ```bash
-python3 tools/kredme.py undo     # restores the previous live data locally
+python3 tools/kredme.py undo
 git add seed news && git commit -m "data: roll back" && git push origin main
 ```
 
-`undo` snapshots the current state first, so the rollback is itself reversible.
-Use `python3 tools/kredme.py undo --list` to see every restore point.
+`undo` snapshots first, so the rollback is itself reversible.
+`python3 tools/kredme.py undo --list` shows every restore point.
 
 ### Tests
 
 ```bash
-python3 tools/test_pipeline.py     # 19 tests, no dependencies
+python3 tools/test_pipeline.py     # 29 tests, no dependencies
 ```
-
-### Known limits (deliberate)
-
-- **The app does not read `staging/`.** Pointing a test build at staging needs
-  an app-side base-URL switch (a developer task). The safety guarantee here
-  comes from *validate + undo*, not from the app reading staging.
-- `.published/` snapshots are **local to this machine**. After a push, the
-  git history is the shared source of truth (`git revert`).
-- The tool never runs git for you. Pushing stays a deliberate human act.
 
 ---
 

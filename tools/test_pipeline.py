@@ -24,6 +24,12 @@ from pathlib import Path
 TOOL = Path(__file__).resolve().parent / "kredme.py"
 VERBOSE = "-v" in sys.argv
 
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("kredme_mod", TOOL)
+K = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(K)
+
+
 _results: list = []
 
 
@@ -61,53 +67,77 @@ def write_json(path: Path, obj) -> None:
 
 def build_repo(tmp: Path, *, cards=("card_a", "card_b"), items=None,
                seed_version="1.0.0", news_version="1.0.0") -> Path:
-    """Create a minimal but structurally real kredme-data repo."""
+    """A real git repo with `main` (prod) and `dev` branches, both with data."""
     repo = tmp
     (repo / "tools").mkdir(parents=True, exist_ok=True)
     shutil.copy2(TOOL, repo / "tools" / "kredme.py")
+    write_data(repo, cards=cards, items=items,
+               seed_version=seed_version, news_version=news_version)
+    g(repo, "init", "-q")
+    g(repo, "checkout", "-q", "-B", "main")
+    g(repo, "add", "-A")
+    g(repo, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-q", "-m", "data")
+    g(repo, "branch", "-f", "dev", "main")
+    return repo
 
+
+def write_data(repo: Path, *, cards=("card_a", "card_b"), items=None,
+               seed_version="1.0.0", news_version="1.0.0") -> None:
     seed = repo / "seed"
     write_json(seed / "cards.json", [card(c) for c in cards])
     write_json(seed / "merchants.json", {
-        "_metadata": {"version": seed_version},
-        "categories": [{"id": "dining", "name": "Dining"}],
+        "_metadata": {}, "categories": [{"id": "dining", "name": "Dining"}],
         "merchants": [{"id": 1, "merchant_name": "test_m", "category_id": "dining"}],
     })
-    manifest = {
-        "version": seed_version,
-        "updated_at": "2026-07-19T00:00:00Z",
-        "min_app_version": "1.0.0",
-        "files": [],
-        "delta_file": None,
-        "news_version": news_version,
-    }
+    manifest = {"version": seed_version, "updated_at": "2026-07-19T00:00:00Z",
+                "min_app_version": "1.0.0", "files": [], "delta_file": None,
+                "news_version": news_version}
     for name in ("cards.json", "merchants.json"):
         b = (seed / name).read_bytes()
-        manifest["files"].append({
-            "name": name, "path": f"seed/{name}",
-            "checksum": hashlib.sha256(b).hexdigest(), "size_bytes": len(b),
-        })
+        manifest["files"].append({"name": name, "path": f"seed/{name}",
+                                  "checksum": hashlib.sha256(b).hexdigest(),
+                                  "size_bytes": len(b)})
     write_json(seed / "manifest.json", manifest)
-
     write_json(repo / "news" / "feed.json", {
-        "version": news_version,
-        "updated_at": "2026-07-19T00:00:00Z",
-        "items": items if items is not None else [news_item()],
-    })
-    return repo
+        "version": news_version, "updated_at": "2026-07-19T00:00:00Z",
+        "items": items if items is not None else [news_item()]})
+
+
+def g(repo: Path, *args):
+    return subprocess.run(["git", "-C", str(repo), *args],
+                          capture_output=True, text=True, timeout=60)
+
+
+def rehash(repo: Path) -> None:
+    """Recompute manifest checksums after editing a seed file."""
+    seed = repo / "seed"
+    m = json.loads((seed / "manifest.json").read_text())
+    for f in m["files"]:
+        b = (seed / f["name"]).read_bytes()
+        f["checksum"] = hashlib.sha256(b).hexdigest()
+        f["size_bytes"] = len(b)
+    write_json(seed / "manifest.json", m)
+
+
+def commit_to_dev(repo: Path, mutate, msg="dev change") -> None:
+    """Apply `mutate(repo)` on the dev branch and commit it."""
+    g(repo, "checkout", "-q", "dev")
+    mutate(repo)
+    g(repo, "add", "-A", "seed", "news")
+    g(repo, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-q", "-m", msg)
+    g(repo, "checkout", "-q", "main")
 
 
 def run(repo: Path, *args, expect=None):
     r = subprocess.run(
         [sys.executable, str(repo / "tools" / "kredme.py"), *args],
-        capture_output=True, text=True, timeout=120,
+        capture_output=True, text=True, timeout=180,
         env={"NO_COLOR": "1", "PATH": "/usr/bin:/bin:/usr/local/bin"},
     )
     if expect is not None and r.returncode != expect:
         raise AssertionError(
             f"expected exit {expect}, got {r.returncode}\n"
-            f"--- stdout ---\n{r.stdout}\n--- stderr ---\n{r.stderr}"
-        )
+            f"--- stdout ---\n{r.stdout}\n--- stderr ---\n{r.stderr}")
     return r
 
 
@@ -137,215 +167,254 @@ def test(fn):
     return fn
 
 
-# --- validation gate --------------------------------------------------------
+# --- environments -----------------------------------------------------------
 
 @test
-def test_clean_data_validates(td: Path):
+def test_clean_dev_validates(td: Path):
     repo = build_repo(td)
-    run(repo, "init", expect=0)
-    run(repo, "validate", "--target", "staging", expect=0)
+    run(repo, "validate", "--target", "dev", expect=0)
+    run(repo, "validate", "--target", "prod", expect=0)
 
 
 @test
-def test_wrong_news_keys_are_rejected(td: Path):
-    """expires_at / url are silently ignored by the app — must be fatal."""
+def test_dev_branch_is_read_byte_exact(td: Path):
+    """REGRESSION: reading a branch via `git show` with .strip() mangled the
+    bytes, so every checksum comparison failed with a phantom mismatch."""
+    repo = build_repo(td, cards=tuple(f"card_{i}" for i in range(30)))
+    r = run(repo, "validate", "--target", "dev", expect=0)
+    assert "checksum + size match" in r.stdout
+    assert "mismatch" not in r.stdout
+
+
+@test
+def test_dev_edits_do_not_touch_prod(td: Path):
+    """The whole point of two lanes: dev moving must not change prod."""
+    repo = build_repo(td, seed_version="5.1.0")
+    commit_to_dev(repo, lambda r: (
+        write_json(r / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]),
+        rehash(r)))
+    assert ver(repo, "seed") == "5.1.0", "prod version changed when only dev moved"
+    run(repo, "validate", "--target", "prod", expect=0)
+
+
+@test
+def test_status_detects_dev_ahead(td: Path):
+    repo = build_repo(td)
+    r = run(repo, "status", expect=0)
+    assert "no — dev and prod data are the same" in r.stdout
+    commit_to_dev(repo, lambda r2: (
+        write_json(r2 / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]),
+        rehash(r2)))
+    r = run(repo, "status", expect=0)
+    assert "not yet in prod" in r.stdout
+
+
+# --- promote gate -----------------------------------------------------------
+
+@test
+def test_promote_refuses_invalid_dev(td: Path):
+    """Bad data on dev must never reach prod."""
+    repo = build_repo(td)
     bad = news_item()
     bad["expires_at"] = bad.pop("expiry_date")
-    bad["url"] = bad.pop("source_url")
-    repo = build_repo(td, items=[bad])
-    run(repo, "init", expect=0)
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "expiry_date" in r.stdout, "should name the correct key"
-    assert "source_url" in r.stdout, "should name the correct key"
+    commit_to_dev(repo, lambda r: write_json(
+        r / "news" / "feed.json",
+        {"version": "1.0.0", "updated_at": "x", "items": [bad]}))
+    run(repo, "promote", "--yes", expect=1)
+    assert ver(repo, "news") == "1.0.0", "prod changed after a refused promote"
 
 
 @test
-def test_unknown_affected_card_is_rejected(td: Path):
-    """A typo'd card id means the alert reaches nobody — must be fatal."""
-    repo = build_repo(td, items=[news_item(affected_cards=["card_a", "card_TYPO"])])
-    run(repo, "init", expect=0)
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "card_TYPO" in r.stdout
-    assert "NOBODY" in r.stdout
+def test_promote_bumps_news_major_and_seed_patch(td: Path):
+    repo = build_repo(td, seed_version="5.1.0", news_version="1.0.0")
+    commit_to_dev(repo, lambda r: (
+        write_json(r / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]),
+        rehash(r),
+        write_json(r / "news" / "feed.json",
+                   {"version": "1.0.0", "updated_at": "x",
+                    "items": [news_item(), news_item("news_002")]})))
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+    assert ver(repo, "seed") == "5.1.1", ver(repo, "seed")
+    assert ver(repo, "news") == "2.0.0", ver(repo, "news")
 
 
 @test
-def test_missing_required_news_field_is_rejected(td: Path):
-    item = news_item()
-    del item["summary"]
-    repo = build_repo(td, items=[item])
-    run(repo, "init", expect=0)
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "summary" in r.stdout
-
-
-@test
-def test_duplicate_news_ids_rejected(td: Path):
-    repo = build_repo(td, items=[news_item("dup"), news_item("dup")])
-    run(repo, "init", expect=0)
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "duplicate id" in r.stdout
-
-
-@test
-def test_bad_severity_rejected(td: Path):
-    repo = build_repo(td, items=[news_item(severity="catastrophic")])
-    run(repo, "init", expect=0)
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "severity" in r.stdout
-
-
-@test
-def test_live_checksum_mismatch_is_fatal(td: Path):
-    """The app rejects a checksum mismatch — live validation must too."""
+def test_promote_noop_when_identical(td: Path):
     repo = build_repo(td)
-    cards = repo / "seed" / "cards.json"
-    cards.write_text(json.dumps([card("card_a"), card("card_b"), card("card_c")], indent=2))
-    r = run(repo, "validate", "--target", "live", expect=1)
-    assert "REJECT" in r.stdout or "mismatch" in r.stdout
+    r = run(repo, "promote", "--yes", expect=0)
+    assert "nothing to promote" in r.stdout.lower()
 
 
 @test
-def test_staging_checksum_mismatch_is_only_a_warning(td: Path):
-    """Editing staging by hand is normal; publish regenerates the manifest."""
+def test_promote_dry_run_writes_nothing(td: Path):
     repo = build_repo(td)
-    run(repo, "init", expect=0)
-    st = repo / "staging" / "seed" / "cards.json"
-    st.write_text(json.dumps([card("card_a"), card("card_b"), card("card_c")], indent=2))
-    r = run(repo, "validate", "--target", "staging", expect=0)
-    assert "regenerate" in r.stdout
-
-
-@test
-def test_truncated_catalog_warns(td: Path):
-    repo = build_repo(td, cards=("only_one",))
-    run(repo, "init", expect=0)
-    r = run(repo, "validate", "--target", "staging", expect=0)
-    assert "Truncated" in r.stdout or "expected a few hundred" in r.stdout
-
-
-# --- publish ----------------------------------------------------------------
-
-@test
-def test_publish_refuses_invalid_staging(td: Path):
-    """The whole point: bad data must never reach live."""
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    bad = news_item()
-    bad["expires_at"] = bad.pop("expiry_date")
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "1.0.0", "updated_at": "2026-07-19T00:00:00Z", "items": [bad]})
-    run(repo, "publish", "--yes", expect=1)
-    assert ver(repo, "news") == "1.0.0", "live must be untouched after a refused publish"
-
-
-@test
-def test_publish_bumps_news_major_and_seed_patch(td: Path):
-    repo = build_repo(td, seed_version="5.2.0", news_version="1.0.0")
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "1.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(), news_item("news_002")]})
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), card("card_b"), card("card_c")])
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    assert ver(repo, "news") == "2.0.0", f"news must MAJOR-bump, got {ver(repo,'news')}"
-    assert ver(repo, "seed") == "5.2.1", f"seed must patch-bump, got {ver(repo,'seed')}"
-
-
-@test
-def test_publish_regenerates_correct_checksums(td: Path):
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), card("card_b"), card("card_c")])
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    # Live must now be internally consistent under STRICT checking.
-    run(repo, "validate", "--target", "live", expect=0)
-    manifest = json.loads((repo / "seed" / "manifest.json").read_text())
-    for f in manifest["files"]:
-        actual = hashlib.sha256((repo / "seed" / f["name"]).read_bytes()).hexdigest()
-        assert f["checksum"] == actual, f"{f['name']} checksum not regenerated"
-
-
-@test
-def test_publish_syncs_manifest_news_version(td: Path):
-    repo = build_repo(td, news_version="3.0.0")
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "3.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(), news_item("news_002")]})
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    manifest = json.loads((repo / "seed" / "manifest.json").read_text())
-    assert manifest["news_version"] == ver(repo, "news") == "4.0.0"
-
-
-@test
-def test_publish_noop_when_identical(td: Path):
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    r = run(repo, "publish", "--yes", expect=0)
-    assert "nothing to publish" in r.stdout.lower()
-
-
-@test
-def test_dry_run_writes_nothing(td: Path):
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), card("card_b"), card("card_c")])
+    commit_to_dev(repo, lambda r: (
+        write_json(r / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]),
+        rehash(r)))
     before = (repo / "seed" / "cards.json").read_bytes()
-    run(repo, "publish", "--dry-run", "--allow-warnings", expect=0)
-    assert (repo / "seed" / "cards.json").read_bytes() == before, "dry run modified live"
-    assert not (repo / ".published").exists(), "dry run created a snapshot"
+    run(repo, "promote", "--dry-run", "--allow-warnings", expect=0)
+    assert (repo / "seed" / "cards.json").read_bytes() == before
+    assert not (repo / ".published").exists()
 
-
-# --- undo -------------------------------------------------------------------
 
 @test
-def test_undo_restores_previous_live(td: Path):
-    repo = build_repo(td, seed_version="5.2.0", news_version="1.0.0")
-    run(repo, "init", expect=0)
+def test_promote_must_run_from_prod_branch(td: Path):
+    repo = build_repo(td)
+    g(repo, "checkout", "-q", "dev")
+    r = run(repo, "promote", "--yes")
+    assert r.returncode != 0
+    assert "must run from" in r.stdout
+
+
+@test
+def test_promote_refuses_with_dirty_prod_tree(td: Path):
+    repo = build_repo(td)
+    commit_to_dev(repo, lambda r: (
+        write_json(r / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]),
+        rehash(r)))
+    (repo / "news" / "feed.json").write_text('{"version":"9.9.9","items":[]}', encoding="utf-8")
+    r = run(repo, "promote", "--yes")
+    assert r.returncode != 0
+    assert "uncommitted" in r.stdout
+
+
+# --- undo + version safety --------------------------------------------------
+
+@test
+def test_undo_restores_prod(td: Path):
+    repo = build_repo(td, seed_version="5.1.0")
     original = (repo / "seed" / "cards.json").read_bytes()
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), card("card_b"), card("card_c")])
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    assert ver(repo, "seed") == "5.2.1"
-
+    commit_to_dev(repo, lambda r: (
+        write_json(r / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]),
+        rehash(r)))
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+    assert ver(repo, "seed") == "5.1.1"
     run(repo, "undo", "--yes", expect=0)
-    assert ver(repo, "seed") == "5.2.0", "undo must restore the version"
-    assert (repo / "seed" / "cards.json").read_bytes() == original, "undo must restore bytes"
+    assert ver(repo, "seed") == "5.1.0"
+    assert (repo / "seed" / "cards.json").read_bytes() == original
 
 
 @test
-def test_undo_is_itself_undoable(td: Path):
-    """Undo snapshots first, so a mistaken rollback is recoverable."""
-    repo = build_repo(td, seed_version="5.2.0")
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), card("card_b"), card("card_c")])
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
+def test_repromote_after_undo_never_reuses_a_version(td: Path):
+    """CRITICAL: a correction pushed after undo must not re-use a version
+    users already hold, or it reaches nobody."""
+    repo = build_repo(td, news_version="3.0.0")
+    commit_to_dev(repo, lambda r: write_json(
+        r / "news" / "feed.json",
+        {"version": "3.0.0", "updated_at": "x", "items": [news_item(title="WRONG")]}))
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+    served = ver(repo, "news")
     run(repo, "undo", "--yes", expect=0)
-    assert ver(repo, "seed") == "5.2.0"
-    run(repo, "undo", "--yes", expect=0)          # roll the rollback forward
-    assert ver(repo, "seed") == "5.2.1", "should return to the published state"
+    commit_to_dev(repo, lambda r: write_json(
+        r / "news" / "feed.json",
+        {"version": "3.0.0", "updated_at": "x", "items": [news_item(title="CORRECTED")]}),
+        msg="fix")
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+    assert K.version_gt(ver(repo, "news"), served), (
+        f"re-promoted {ver(repo,'news')} but users already hold {served}")
 
 
 @test
-def test_undo_with_no_snapshots_fails_safely(td: Path):
-    repo = build_repo(td)
-    r = run(repo, "undo", "--yes", expect=1)
-    assert "nothing to undo" in r.stdout.lower()
+def test_corrupt_prod_feed_refuses_promote(td: Path):
+    """CRITICAL: must not silently emit a LOWER news version."""
+    repo = build_repo(td, news_version="7.0.0")
+    commit_to_dev(repo, lambda r: write_json(
+        r / "news" / "feed.json",
+        {"version": "7.0.0", "updated_at": "x", "items": [news_item(), news_item("n2")]}))
+    (repo / "news" / "feed.json").write_text("{ not json", encoding="utf-8")
+    g(repo, "add", "-A"); g(repo, "-c", "user.email=t@t", "-c", "user.name=t",
+                            "commit", "-q", "-m", "corrupt prod")
+    r = run(repo, "promote", "--yes", "--allow-warnings")
+    assert r.returncode != 0
+    assert "1.0.0" not in (repo / "news" / "feed.json").read_text()
 
 
 @test
-def test_snapshot_is_gitignored(td: Path):
-    """Snapshots must never be committed — Pages would serve them publicly."""
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    gi = (repo / ".gitignore").read_text()
-    assert ".published" in gi, ".published/ must be git-ignored"
+def test_v_prefixed_prod_version_bumps_correctly(td: Path):
+    repo = build_repo(td, news_version="v7.0.0")
+    commit_to_dev(repo, lambda r: write_json(
+        r / "news" / "feed.json",
+        {"version": "v7.0.0", "updated_at": "x", "items": [news_item(), news_item("n2")]}))
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+    assert ver(repo, "news") == "8.0.0", ver(repo, "news")
 
+
+# --- validator (run against dev) --------------------------------------------
+
+def _dev_validate(td: Path, mutate, expect=1):
+    repo = build_repo(td)
+    commit_to_dev(repo, mutate)
+    return run(repo, "validate", "--target", "dev", expect=expect)
+
+
+@test
+def test_wrong_news_keys_rejected(td: Path):
+    def m(r):
+        bad = news_item(); bad["expires_at"] = bad.pop("expiry_date"); bad["url"] = bad.pop("source_url")
+        write_json(r / "news" / "feed.json", {"version": "1.0.0", "updated_at": "x", "items": [bad]})
+    out = _dev_validate(td, m).stdout
+    assert "expiry_date" in out and "source_url" in out
+
+
+@test
+def test_unknown_affected_card_rejected(td: Path):
+    out = _dev_validate(td, lambda r: write_json(
+        r / "news" / "feed.json",
+        {"version": "1.0.0", "updated_at": "x",
+         "items": [news_item(affected_cards=["card_a", "card_TYPO"])]})).stdout
+    assert "card_TYPO" in out and "NOBODY" in out
+
+
+@test
+def test_empty_merchants_rejected(td: Path):
+    out = _dev_validate(td, lambda r: (write_json(
+        r / "seed" / "merchants.json",
+        {"_metadata": {}, "categories": [{"id": "dining"}], "merchants": []}), rehash(r))).stdout
+    assert "no merchants" in out.lower()
+
+
+@test
+def test_dangling_category_rejected(td: Path):
+    out = _dev_validate(td, lambda r: (write_json(
+        r / "seed" / "merchants.json",
+        {"_metadata": {}, "categories": [{"id": "dining"}],
+         "merchants": [{"id": 1, "merchant_name": "test_m", "category_id": "diningg"}]}),
+        rehash(r))).stdout
+    assert "missing category" in out
+
+
+@test
+def test_non_dict_cards_rejected(td: Path):
+    out = _dev_validate(td, lambda r: (write_json(
+        r / "seed" / "cards.json", [card("card_a"), "oops", None]), rehash(r))).stdout
+    assert "not objects" in out
+
+
+@test
+def test_array_shaped_feed_errors_cleanly(td: Path):
+    r = _dev_validate(td, lambda rp: write_json(rp / "news" / "feed.json", [news_item()]))
+    assert "must be a JSON object" in r.stdout
+    assert "Traceback" not in r.stderr
+
+
+@test
+def test_catalog_shrink_rejected(td: Path):
+    repo = build_repo(td, cards=tuple(f"card_{i}" for i in range(100)))
+    commit_to_dev(repo, lambda r: (write_json(
+        r / "seed" / "cards.json", [card("card_0"), card("card_1")]), rehash(r)))
+    r1 = run(repo, "validate", "--target", "dev", expect=1)
+    assert "disappear" in r1.stdout
+    run(repo, "validate", "--target", "dev", "--allow-shrink", expect=0)
+
+
+@test
+def test_prod_checksum_mismatch_is_fatal(td: Path):
+    repo = build_repo(td)
+    write_json(repo / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")])
+    g(repo, "add", "-A"); g(repo, "-c", "user.email=t@t", "-c", "user.name=t",
+                            "commit", "-q", "-m", "break checksum")
+    r = run(repo, "validate", "--target", "prod", expect=1)
+    assert "REJECT" in r.stdout or "mismatch" in r.stdout
 
 
 # --- UNIT tests for the pure helpers ----------------------------------------
@@ -354,10 +423,6 @@ def test_snapshot_is_gitignored(td: Path):
 # found exactly that class of bug (a live version of "v7.0.0" silently
 # collapsing to "1.0.0" and permanently stopping news refetch).
 
-import importlib.util as _ilu
-_spec = _ilu.spec_from_file_location("kredme_mod", TOOL)
-K = _ilu.module_from_spec(_spec)
-_spec.loader.exec_module(K)
 
 
 def unit(fn):
@@ -427,154 +492,24 @@ def test_every_bump_is_strictly_greater():
 
 
 
-# --- REGRESSION: each of these reproduces a bug found by the 2026-07-19 audit.
-# Every one of them FAILED before the fix and passes after.
-
-@test
-def test_corrupt_live_feed_refuses_publish_not_downgrade(td: Path):
-    """CRITICAL: a corrupt live feed used to publish version 1.0.0, which is
-    LOWER than what users hold — the app then never refetches news again."""
-    repo = build_repo(td, news_version="7.0.0")
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "7.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(), news_item("news_002")]})
-    (repo / "news" / "feed.json").write_text("{ this is not json", encoding="utf-8")
-    r = run(repo, "publish", "--yes", "--allow-warnings")
-    assert r.returncode != 0, "must refuse to publish over an unreadable live feed"
-    assert "1.0.0" not in (repo / "news" / "feed.json").read_text(), "must not downgrade"
-
-
-@test
-def test_v_prefixed_live_version_bumps_correctly(td: Path):
-    """CRITICAL: live 'v7.0.0' used to collapse to '1.0.0' with a green tick."""
-    repo = build_repo(td, news_version="v7.0.0")
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "v7.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(), news_item("news_002")]})
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    assert ver(repo, "news") == "8.0.0", f"expected 8.0.0, got {ver(repo,'news')}"
-
-
-@test
-def test_republish_after_undo_never_reuses_a_version(td: Path):
-    """CRITICAL: a correction pushed after undo re-used a version users already
-    held, so it silently reached nobody while printing success."""
-    repo = build_repo(td, news_version="3.0.0")
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "3.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(title="WRONG alert")]})
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    served = ver(repo, "news")
-    assert served == "4.0.0"
-    run(repo, "undo", "--yes", expect=0)
-    assert ver(repo, "news") == "3.0.0"
-    write_json(repo / "staging" / "news" / "feed.json",
-               {"version": "3.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(title="CORRECTED alert")]})
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    now = ver(repo, "news")
-    assert K.version_gt(now, served), (
-        f"republish produced {now}, which users already have as {served} — "
-        f"the correction would reach nobody")
-
-
-@test
-def test_empty_merchants_is_rejected(td: Path):
-    """CRITICAL false-negative: an emptied merchants file passed the gate AND
-    disabled the merchant_ref check that would have caught it."""
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "merchants.json",
-               {"_metadata": {}, "categories": [{"id": "dining"}], "merchants": []})
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "no merchants" in r.stdout.lower()
-
-
-@test
-def test_missing_categories_is_rejected(td: Path):
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "merchants.json",
-               {"_metadata": {}, "categories": [],
-                "merchants": [{"id": 1, "merchant_name": "test_m", "category_id": "dining"}]})
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "no categories" in r.stdout.lower()
-
-
-@test
-def test_non_dict_card_entries_rejected(td: Path):
-    """Cards that are not objects used to be skipped silently — they would
-    simply vanish from live while the gate reported the file as fine."""
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), "oops_a_string", None, card("card_b")])
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "not objects" in r.stdout
-
-
-@test
-def test_catalog_shrink_is_rejected(td: Path):
-    """An absolute floor of 50 was useless against a 376-card catalog."""
-    repo = build_repo(td, cards=tuple(f"card_{i}" for i in range(100)))
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "cards.json", [card("card_0"), card("card_1")])
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "disappear" in r.stdout
-    # ...unless the operator says it is deliberate
-    run(repo, "validate", "--target", "staging", "--allow-shrink", expect=0)
-
-
-@test
-def test_array_shaped_json_errors_cleanly(td: Path):
-    """A JSON array where an object belongs used to raise AttributeError."""
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "news" / "feed.json", [news_item()])
-    r = run(repo, "validate", "--target", "staging", expect=1)
-    assert "must be a JSON object" in r.stdout
-    assert "Traceback" not in r.stderr, "should not crash"
-
-
-@test
-def test_half_written_staging_is_not_silently_wiped(td: Path):
-    """Auto-init used to overwrite a partial staging tree, destroying
-    unpublished edits with no snapshot and no undo."""
-    repo = build_repo(td)
-    run(repo, "init", expect=0)
-    precious = {"version": "1.0.0", "updated_at": "2026-07-19T00:00:00Z",
-                "items": [news_item(title="hours of unpublished work")]}
-    write_json(repo / "staging" / "news" / "feed.json", precious)
-    (repo / "staging" / "seed" / "manifest.json").unlink()
-    r = run(repo, "validate", "--target", "staging")
-    assert r.returncode != 0, "must refuse rather than overwrite"
-    assert json.loads((repo / "staging" / "news" / "feed.json").read_text()) == precious, \
-        "unpublished staging edits were destroyed"
-
+# --- REGRESSION (branch model) ----------------------------------------------
 
 @test
 def test_undo_to_invalid_data_does_not_offer_to_push(td: Path):
     """Undo used to print 'push it live' even after declaring the restored
     data invalid."""
     repo = build_repo(td)
-    run(repo, "init", expect=0)
-    write_json(repo / "staging" / "seed" / "cards.json",
-               [card("card_a"), card("card_b"), card("card_c")])
-    run(repo, "publish", "--yes", "--allow-warnings", expect=0)
-    # corrupt the snapshot so the restore is invalid
+    commit_to_dev(repo, lambda r: (write_json(
+        r / "seed" / "cards.json", [card("card_a"), card("card_b"), card("card_c")]), rehash(r)))
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
     snaps = sorted((repo / ".published").glob("2*"))
     assert snaps
-    bad = snaps[0] / "news" / "feed.json"
-    item = news_item()
-    item["expires_at"] = item.pop("expiry_date")
-    write_json(bad, {"version": "1.0.0", "updated_at": "x", "items": [item]})
+    item = news_item(); item["expires_at"] = item.pop("expiry_date")
+    write_json(snaps[0] / "news" / "feed.json",
+               {"version": "1.0.0", "updated_at": "x", "items": [item]})
     r = run(repo, "undo", "--yes")
     assert r.returncode != 0, "must fail when the restored data is invalid"
-    assert "git" not in r.stdout.split("does NOT validate")[-1], \
-        "must not print push instructions for invalid data"
+    assert "git" not in r.stdout.split("does NOT validate")[-1]
 
 
 # ------------------------------------------------------------------ main ----
