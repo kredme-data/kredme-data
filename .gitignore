@@ -1,2 +1,7 @@
 .DS_Store
 **/.DS_Store
+
+# local publish snapshots — never serve or commit these
+.published/
+# local staging working area — recreated from live by any command
+staging/
