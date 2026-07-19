@@ -140,30 +140,70 @@ def size_str(n: int) -> str:
     return f"{n/1024**2:.2f}MB"
 
 
-def version_tuple(v: str):
-    """Leading numeric components of a version string. '0.0.1-test' -> (0,0,1)."""
-    parts = re.split(r"[.\-+]", str(v))
+class VersionError(ValueError):
+    """A version string we refuse to guess at. Guessing here corrupts live."""
+
+
+def version_tuple(v, *, strict: bool = False):
+    """Leading numeric components of a version string. '0.0.1-test' -> (0,0,1).
+
+    A leading 'v' is tolerated ('v7.0.0' -> (7,0,0)) because silently reading
+    that as 0 once caused a live news version to be reset to 1.0.0.
+
+    strict=True raises VersionError instead of falling back to (0,). Publish
+    MUST use strict: if we cannot read the current live version we cannot know
+    what to bump to, and emitting a LOWER version permanently stops the app
+    from refetching (it only refetches when the leading integer increases).
+    """
+    if v is None or isinstance(v, bool):
+        if strict:
+            raise VersionError(f"version is {v!r}")
+        return (0,)
+    s = str(v).strip()
+    if s[:1] in ("v", "V"):
+        s = s[1:]
+    parts = re.split(r"[.\-+]", s)
     out = []
     for p in parts:
         if p.isdigit():
             out.append(int(p))
         else:
             break
-    return tuple(out) if out else (0,)
+    if not out:
+        if strict:
+            raise VersionError(f"cannot read a number from version {v!r}")
+        return (0,)
+    return tuple(out)
 
 
-def bump_major(v: str) -> str:
+def version_str(t) -> str:
+    t = list(t)
+    while len(t) < 3:
+        t.append(0)
+    return ".".join(str(x) for x in t[:3])
+
+
+def bump_major(v, *, strict: bool = False) -> str:
     """News: the app refetches ONLY when int(version.split('.')[0]) increases."""
-    return f"{version_tuple(v)[0] + 1}.0.0"
+    return f"{version_tuple(v, strict=strict)[0] + 1}.0.0"
 
 
-def bump_patch(v: str) -> str:
+def bump_patch(v, *, strict: bool = False) -> str:
     """Seed: the app compares the version string, so any change syncs."""
-    t = list(version_tuple(v))
+    t = list(version_tuple(v, strict=strict))
     while len(t) < 3:
         t.append(0)
     t[2] += 1
-    return ".".join(str(x) for x in t[:3])
+    return version_str(t)
+
+
+def version_gt(a, b) -> bool:
+    """Is a strictly newer than b? Compares padded numeric components."""
+    ta, tb = list(version_tuple(a)), list(version_tuple(b))
+    n = max(len(ta), len(tb), 3)
+    ta += [0] * (n - len(ta))
+    tb += [0] * (n - len(tb))
+    return tuple(ta) > tuple(tb)
 
 
 def git(*args: str):
@@ -213,7 +253,25 @@ def _iso_ok(value) -> bool:
         return False
 
 
-def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) -> set:
+def live_card_count() -> int:
+    """How many cards live serves right now — the baseline for shrink detection."""
+    try:
+        cards = read_json(LIVE_SEED / "cards.json")
+        if not isinstance(cards, list):
+            return 0
+        n = 0
+        for e in cards:
+            if isinstance(e, dict):
+                inner = e.get("card") if isinstance(e.get("card"), dict) else e
+                if inner.get("id"):
+                    n += 1
+        return n
+    except Exception:
+        return 0
+
+
+def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
+                  allow_shrink: bool = False) -> set:
     """Validate a seed/ directory. Returns the set of card IDs found.
 
     strict_checksums=True  (live)    — a mismatch is fatal: the app rejects the
@@ -234,6 +292,9 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
         manifest = read_json(mpath)
     except json.JSONDecodeError as e:
         rep.error(f"{MANIFEST} is not valid JSON: {e}")
+        return card_ids
+    if not isinstance(manifest, dict):
+        rep.error(f"{MANIFEST} must be a JSON object, got {type(manifest).__name__}")
         return card_ids
     ok(f"{MANIFEST} parses")
 
@@ -270,7 +331,7 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
                 f"actual={actual_sum[:12]}…"
             )
         elif mismatch:
-            rep.warn(f"{name}: edited since the manifest was written — publish will regenerate it")
+            info(f"{name}: edited since the manifest was written — publish will regenerate it")
         else:
             ok(f"{name}: checksum + size match ({size_str(actual_size)})")
 
@@ -287,8 +348,12 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
             seen, dupes = set(), set()
             missing_id = 0
             rule_count = 0
+            bad_shape = 0
             for entry in cards:
                 if not isinstance(entry, dict):
+                    # Was silently skipped, so cards could vanish from live
+                    # while the gate still reported the file as fine.
+                    bad_shape += 1
                     continue
                 inner = entry.get("card") if isinstance(entry.get("card"), dict) else entry
                 cid = inner.get("id")
@@ -302,6 +367,9 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
                 if isinstance(rules, list):
                     rule_count += len(rules)
             card_ids = seen
+            if bad_shape:
+                rep.error(f"cards.json: {bad_shape} entr(ies) are not objects — those cards "
+                          f"would silently vanish from live")
             # Reward rules point at merchants by SLUG (merchant_ref), which is
             # what the app keys on — not the numeric merchant id.
             def _collect_refs(node, out):
@@ -323,9 +391,20 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
                 rep.error("cards.json contains no cards")
             else:
                 ok(f"cards.json: {len(seen)} unique cards, {rule_count} reward rules")
-            # Guard against a truncated/partial publish wiping the catalog.
-            if seen and len(seen) < 50:
-                rep.warn(f"only {len(seen)} cards — expected a few hundred. Truncated file?")
+            # Guard against a truncated/partial publish gutting the catalog.
+            # An absolute floor is near-useless against a 376-card catalog, so
+            # compare against what is actually live right now.
+            if seen:
+                live_count = live_card_count()
+                if live_count and not allow_shrink and len(seen) < live_count * 0.8:
+                    lost = live_count - len(seen)
+                    rep.error(
+                        f"cards.json has {len(seen)} cards but live has {live_count} — "
+                        f"{lost} would disappear ({lost/live_count:.0%} of the catalog). "
+                        f"Truncated export? Pass --allow-shrink if this is deliberate."
+                    )
+                elif not live_count and len(seen) < 50:
+                    rep.warn(f"only {len(seen)} cards — expected a few hundred. Truncated file?")
         elif cards is not None:
             rep.error("cards.json must be a JSON array of card objects")
 
@@ -382,6 +461,15 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
                 if cref and cat_ids and cref not in cat_ids:
                     dangling.append(f"{mname or mid}->{cref}")
 
+            # An emptied merchants file used to pass silently AND disable the
+            # merchant_ref cross-check below, so the gate reported "safe" while
+            # every merchant-specific reward rule stopped matching.
+            if not merchants:
+                rep.error("merchants.json contains no merchants — every merchant-specific "
+                          "reward rule would stop matching. Truncated or failed export?")
+            if not categories:
+                rep.error("merchants.json declares no categories — category reward rules "
+                          "cannot resolve, and the dangling-category check is disabled")
             if no_name:
                 rep.error(f"merchants.json: {no_name} merchant(s) have no 'merchant_name' (the app's key)")
             if dupe_name:
@@ -405,8 +493,10 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True) ->
             ok(f"merchants.json: {len(seen_name)} merchants, {len(cat_ids)} categories")
 
             # Every merchant_ref in cards.json must resolve to a merchant_name,
-            # or that reward rule can never fire.
-            if merchant_refs and seen_name:
+            # or that reward rule can never fire. Deliberately NOT gated on
+            # seen_name being non-empty: an emptied merchants file is exactly
+            # when this check matters most.
+            if merchant_refs:
                 unresolved = sorted(merchant_refs - seen_name)
                 if unresolved:
                     rep.error(
@@ -430,6 +520,9 @@ def validate_news(news_dir: Path, card_ids: set, rep: Report, manifest_news_vers
         feed = read_json(fpath)
     except json.JSONDecodeError as e:
         rep.error(f"{FEED} is not valid JSON: {e}")
+        return
+    if not isinstance(feed, dict):
+        rep.error(f"{FEED} must be a JSON object, got {type(feed).__name__}")
         return
     ok(f"{FEED} parses")
 
@@ -522,6 +615,15 @@ def ensure_staging() -> None:
     """Create staging/ from live on first use, so there is no manual setup step."""
     if STAGING_SEED.exists() and (STAGING_SEED / MANIFEST).exists():
         return
+    # Refuse to auto-populate over a partially-present staging tree: those may
+    # be unpublished edits, and copying live over them destroys the operator's
+    # work with no snapshot and no undo.
+    existing = [p for p in (list(STAGING_SEED.glob("*.json")) if STAGING_SEED.exists() else [])
+                + (list(STAGING_NEWS.glob("*.json")) if STAGING_NEWS.exists() else [])]
+    if existing:
+        die(f"staging/ exists but {MANIFEST} is missing, so it looks half-written "
+            f"({len(existing)} file(s) present). Refusing to overwrite possible unpublished "
+            f"edits. Inspect staging/, then run:  python3 tools/kredme.py init --force")
     print(f"{C.DIM}  (first run — creating staging/ from the current live data){C.X}")
     STAGING_SEED.mkdir(parents=True, exist_ok=True)
     STAGING_NEWS.mkdir(parents=True, exist_ok=True)
@@ -535,7 +637,7 @@ def ensure_staging() -> None:
     ensure_gitignore()
 
 
-def run_validation(target: str) -> Report:
+def run_validation(target: str, allow_shrink: bool = False) -> Report:
     rep = Report()
     if target == "staging":
         ensure_staging()
@@ -543,7 +645,8 @@ def run_validation(target: str) -> Report:
     else:
         seed_dir, news_dir = LIVE_SEED, LIVE_NEWS
 
-    card_ids = validate_seed(seed_dir, rep, strict_checksums=(target == "live"))
+    card_ids = validate_seed(seed_dir, rep, strict_checksums=(target == "live"),
+                             allow_shrink=allow_shrink)
     mnv = None
     mpath = seed_dir / MANIFEST
     if mpath.exists():
@@ -584,6 +687,58 @@ def read_versions(seed_dir: Path, news_dir: Path):
     except Exception:
         pass
     return sv, nv
+
+
+HIGHWATER = SNAPSHOTS / "HIGHWATER.json"
+
+
+def published_ceiling():
+    """Highest seed/news versions we have EVER published.
+
+    `undo` moves live's version BACKWARDS. Without this, the next publish would
+    re-emit a version users already hold — and for news the app only refetches
+    when the leading integer INCREASES, so a correction pushed during an
+    incident would silently reach nobody. Every publish must clear this bar.
+
+    Derived from the ledger plus every snapshot on disk, so deleting the ledger
+    cannot quietly lower the bar.
+    """
+    seed_v = news_v = None
+
+    def raise_to(cur, cand):
+        if not cand:
+            return cur
+        if cur is None or version_gt(cand, cur):
+            return cand
+        return cur
+
+    try:
+        led = read_json(HIGHWATER)
+        seed_v = raise_to(seed_v, led.get("seed_version"))
+        news_v = raise_to(news_v, led.get("news_version"))
+    except Exception:
+        pass
+
+    for d in snapshot_dirs():
+        try:
+            meta = read_json(d / "meta.json")
+            seed_v = raise_to(seed_v, meta.get("seed_version"))
+            news_v = raise_to(news_v, meta.get("news_version"))
+        except Exception:
+            continue
+
+    return seed_v, news_v
+
+
+def record_published(seed_v: str, news_v: str) -> None:
+    cur_s, cur_n = published_ceiling()
+    SNAPSHOTS.mkdir(parents=True, exist_ok=True)
+    write_json(HIGHWATER, {
+        "seed_version": seed_v if (cur_s is None or version_gt(seed_v, cur_s)) else cur_s,
+        "news_version": news_v if (cur_n is None or version_gt(news_v, cur_n)) else cur_n,
+        "updated_at": now_iso(),
+        "note": "Highest versions ever published. publish never re-emits a version at or below these.",
+    })
 
 
 def take_snapshot(reason: str) -> Path:
@@ -701,7 +856,7 @@ def cmd_status(args) -> None:
 
 
 def cmd_validate(args) -> None:
-    rep = run_validation(args.target)
+    rep = run_validation(args.target, allow_shrink=getattr(args, "allow_shrink", False))
     print_verdict(rep, args.target)
     print()
     sys.exit(1 if rep.failed else 0)
@@ -711,7 +866,7 @@ def cmd_publish(args) -> None:
     ensure_staging()
 
     head("Step 1 — validate staging (nothing is written until this passes)")
-    rep = run_validation("staging")
+    rep = run_validation("staging", allow_shrink=getattr(args, "allow_shrink", False))
     print_verdict(rep, "staging")
     if rep.failed:
         die("staging has errors — refusing to publish. This is the gate working.")
@@ -721,6 +876,9 @@ def cmd_publish(args) -> None:
     stage_manifest = read_json(STAGING_SEED / MANIFEST)
     stage_feed = read_json(STAGING_NEWS / FEED)
 
+    # NOTE: manifest.json is intentionally NOT part of this comparison — it is
+    # regenerated from the payload bytes on every publish, so it is an output,
+    # not an input. Only real payload changes count as "staged".
     seed_changed = any(
         (STAGING_SEED / n).exists() and (
             not (LIVE_SEED / n).exists()
@@ -745,10 +903,34 @@ def cmd_publish(args) -> None:
               f"Re-run with --allow-warnings to publish anyway.")
         sys.exit(2)
 
-    new_sv = bump_patch(live_sv) if seed_changed else live_sv
-    # The app only refetches news when the MAJOR integer increases. Bake that
-    # in so the operator can never get it wrong.
-    new_nv = bump_major(live_nv) if news_changed else live_nv
+    # Refuse to guess at an unreadable live version. Emitting a LOWER news
+    # version than users already hold permanently stops them refetching, so a
+    # broken live file must stop the publish, not be silently overwritten.
+    try:
+        new_sv = bump_patch(live_sv, strict=True) if seed_changed else live_sv
+    except VersionError as e:
+        die(f"cannot read the current LIVE seed version ({e}). "
+            f"Fix seed/{MANIFEST} before publishing — guessing would corrupt live.")
+    try:
+        # The app only refetches news when the MAJOR integer increases.
+        new_nv = bump_major(live_nv, strict=True) if news_changed else live_nv
+    except VersionError as e:
+        die(f"cannot read the current LIVE news version ({e}). "
+            f"Fix news/{FEED} before publishing — a wrong bump here would stop "
+            f"every installed app from ever refetching news again.")
+
+    # Never re-emit a version we have already served (undo moves live's version
+    # backwards, so `live` alone is not a safe floor).
+    ceil_sv, ceil_nv = published_ceiling()
+    if seed_changed and ceil_sv and not version_gt(new_sv, ceil_sv):
+        bumped = bump_patch(ceil_sv)
+        warn(f"seed {new_sv} was already published — raising to {bumped}")
+        new_sv = bumped
+    if news_changed and ceil_nv and not version_gt(new_nv, ceil_nv):
+        bumped = bump_major(ceil_nv)
+        warn(f"news {new_nv} was already published — raising to {bumped} "
+             f"(re-using a major would mean nobody refetches)")
+        new_nv = bumped
 
     head("Step 2 — what will change")
     if seed_changed:
@@ -801,7 +983,18 @@ def cmd_publish(args) -> None:
 
     # Rebuild the manifest from the bytes we just wrote. Never trust a
     # hand-edited checksum — a mismatch is what causes "Sync failed".
-    manifest = dict(stage_manifest)
+    #
+    # Base it on STAGING's manifest only when the seed payload actually
+    # changed. On a news-only publish the staging manifest may be stale (it is
+    # a copy taken at init time), and using it would silently revert live's
+    # manifest metadata — stats, min_app_version, source — for no reason.
+    if seed_changed:
+        manifest = dict(stage_manifest)
+    else:
+        try:
+            manifest = dict(read_json(LIVE_SEED / MANIFEST))
+        except Exception:
+            manifest = dict(stage_manifest)
     manifest["version"] = new_sv
     manifest["updated_at"] = now_iso()
     manifest["news_version"] = new_nv
@@ -821,6 +1014,9 @@ def cmd_publish(args) -> None:
 
     stage_manifest_out = dict(manifest)
     write_json(STAGING_SEED / MANIFEST, stage_manifest_out)
+
+    # Remember what we served, so undo-then-republish can never re-use it.
+    record_published(new_sv, new_nv)
 
     head("Step 5 — verify what we just wrote")
     rep2 = run_validation("live")
@@ -901,6 +1097,12 @@ def cmd_undo(args) -> None:
     rep = run_validation("live")
     print_verdict(rep, "live")
 
+    if rep.failed:
+        print(f"\n{C.R}{C.BOLD}The restored data does NOT validate.{C.X} "
+              f"Do not push it. Try another restore point:")
+        print(f"    python3 tools/kredme.py undo --list\n")
+        sys.exit(1)
+
     print(f"\n{C.G}{C.BOLD}Restored locally.{C.X} To make the rollback live:")
     print(f"    git -C {REPO} checkout main")
     print(f"    git -C {REPO} add seed news")
@@ -928,12 +1130,16 @@ def main() -> None:
 
     s = sub.add_parser("validate", help="check data is safe to ship")
     s.add_argument("--target", choices=("staging", "live"), default="staging")
+    s.add_argument("--allow-shrink", action="store_true",
+                   help="permit a large drop in card count (deliberate catalog reduction)")
     s.set_defaults(func=cmd_validate)
 
     s = sub.add_parser("publish", help="promote staging -> live (local only)")
     s.add_argument("--dry-run", action="store_true", help="show what would change, write nothing")
     s.add_argument("--yes", "-y", action="store_true", help="skip the confirmation prompt")
     s.add_argument("--allow-warnings", action="store_true", help="publish despite warnings")
+    s.add_argument("--allow-shrink", action="store_true",
+                   help="permit a large drop in card count (deliberate catalog reduction)")
     s.set_defaults(func=cmd_publish)
 
     s = sub.add_parser("undo", help="restore live from the previous snapshot")
