@@ -2364,7 +2364,7 @@
       }
     },
     {
-      "id": 113,
+      "id": 162,
       "merchant_name": "landmark",
       "display_name": "Landmark",
       "category_id": "online_shopping",
@@ -2382,7 +2382,7 @@
       "id": 114,
       "merchant_name": "csd_canteen",
       "display_name": "CSD Canteen",
-      "category_id": "departmental_store",
+      "category_id": "department_store",
       "mcc_primary": "5300",
       "mcc_codes": [
         "5300"
@@ -2394,7 +2394,7 @@
       "metadata": {}
     },
     {
-      "id": 115,
+      "id": 163,
       "merchant_name": "samsung",
       "display_name": "Samsung",
       "category_id": "electronics",
@@ -2409,7 +2409,7 @@
       "metadata": {}
     },
     {
-      "id": 116,
+      "id": 164,
       "merchant_name": "fabindia",
       "display_name": "FabIndia",
       "category_id": "fashion",
@@ -2440,7 +2440,7 @@
       "metadata": {}
     },
     {
-      "id": 118,
+      "id": 165,
       "merchant_name": "titan",
       "display_name": "Titan",
       "category_id": "jewellery",
@@ -2472,7 +2472,7 @@
       "metadata": {}
     },
     {
-      "id": 121,
+      "id": 166,
       "merchant_name": "freecharge",
       "display_name": "Freecharge",
       "category_id": "utilities",
