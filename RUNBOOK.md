@@ -252,3 +252,21 @@ building that bridge; until then, seed edits here are manual.
 | `/seed/merchants.json` | merchant catalog + MCC + statement aliases |
 | `/news/feed.json` | in-app news feed |
 | `/delta/delta_<from>_to_<to>.json` | optional incremental patch (keep `delta_file: null` for full sync) |
+
+## Categories: merchants.json must mirror the app
+
+`seed/merchants.json` has a `categories` block. **The app never reads it** — it
+resolves a merchant's `category_id` against its own BUNDLED asset,
+`assets/data/categories/categories.json` (`lib/core/utils.dart`), and a miss
+silently yields category "Other" so the merchant's reward rules never match.
+
+That block therefore exists for one reason: so `validate` can check something
+real. It is only useful while it mirrors the app's list exactly.
+
+It had drifted: 9 slugs here did not exist in the app, orphaning 27 of 116
+merchants — Netflix, Spotify, Blinkit, Zepto, Myntra, Nykaa and 21 more could
+never match a category reward rule.
+
+**If you add or rename a category in the app's bundled asset, mirror it here in
+the same change.** Nothing can detect the drift automatically: this repo is
+public and the app repo is private, so CI here cannot read that asset.
