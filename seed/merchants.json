@@ -392,7 +392,7 @@
       "is_excluded_default": 0
     },
     {
-      "id": "department_store",
+      "id": "departmental_store",
       "display_name": "Department Stores",
       "parent_id": null,
       "mcc_ranges": [
@@ -1975,7 +1975,7 @@
       "id": 129,
       "merchant_name": "shoppers_stop",
       "display_name": "Shoppers Stop",
-      "category_id": "department_store",
+      "category_id": "departmental_store",
       "mcc_primary": "5311",
       "mcc_codes": [
         "5311"
@@ -1990,7 +1990,7 @@
       "id": 130,
       "merchant_name": "lifestyle",
       "display_name": "Lifestyle",
-      "category_id": "department_store",
+      "category_id": "departmental_store",
       "mcc_primary": "5311",
       "mcc_codes": [
         "5311",
@@ -2155,7 +2155,7 @@
       "id": 144,
       "merchant_name": "ikea",
       "display_name": "IKEA",
-      "category_id": "department_store",
+      "category_id": "departmental_store",
       "mcc_primary": "5712",
       "mcc_codes": [
         "5712",
@@ -2262,7 +2262,7 @@
       "id": 153,
       "merchant_name": "decathlon",
       "display_name": "Decathlon",
-      "category_id": "department_store",
+      "category_id": "departmental_store",
       "mcc_primary": "5941",
       "mcc_codes": [
         "5941"
@@ -2364,7 +2364,7 @@
       }
     },
     {
-      "id": 113,
+      "id": 162,
       "merchant_name": "landmark",
       "display_name": "Landmark",
       "category_id": "online_shopping",
@@ -2394,7 +2394,7 @@
       "metadata": {}
     },
     {
-      "id": 115,
+      "id": 163,
       "merchant_name": "samsung",
       "display_name": "Samsung",
       "category_id": "electronics",
@@ -2409,7 +2409,7 @@
       "metadata": {}
     },
     {
-      "id": 116,
+      "id": 164,
       "merchant_name": "fabindia",
       "display_name": "FabIndia",
       "category_id": "fashion",
@@ -2440,7 +2440,7 @@
       "metadata": {}
     },
     {
-      "id": 118,
+      "id": 165,
       "merchant_name": "titan",
       "display_name": "Titan",
       "category_id": "jewellery",
@@ -2472,7 +2472,7 @@
       "metadata": {}
     },
     {
-      "id": 121,
+      "id": 166,
       "merchant_name": "freecharge",
       "display_name": "Freecharge",
       "category_id": "utilities",

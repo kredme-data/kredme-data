@@ -1,6 +1,6 @@
 {
-  "version": "5.1.0",
-  "updated_at": "2026-05-11T00:00:00.000000Z",
+  "version": "5.1.1",
+  "updated_at": "2026-08-01T00:00:00.000000Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
   "_note": "Adds redemption_rules to 366/376 cards via the kredme-data-pipeline cardinsider extracted JSONs. Also adds card-level points_expiry_months, min_redemption_points, points_clawback_on_default. 10 cards have empty redemption_rules listed in handoff_v4/cards_missing_redemption.csv.",
@@ -24,10 +24,10 @@
     {
       "name": "merchants.json",
       "path": "seed/merchants.json",
-      "checksum": "7d7a04ed10e177be9b0ac8aa1d662167cbfe633429afdd4f559694491e4878cd",
-      "size_bytes": 53282
+      "checksum": "873ed724534e5cbe524b8ed1f532372dbfe4eb41b90f8394063386c97f59b445",
+      "size_bytes": 53293
     }
   ],
   "delta_file": null,
-  "news_version": "1.0.0"
+  "news_version": "2.0.0"
 }
