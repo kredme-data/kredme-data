@@ -1,0 +1,68 @@
+name: Validate data
+
+# This repository had NO CI at all. The tooling below ships 29 self-tests that
+# only ever ran when somebody remembered to, and the live production data has
+# been failing its own validator unnoticed.
+#
+# This repo is PUBLIC, so Actions minutes here are free — unlike the app repo,
+# where the same job is billed.
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+concurrency:
+  group: validate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Self-tests + data validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Does the pipeline tool itself still work?
+      - name: Pipeline self-tests
+        run: python3 tools/test_pipeline.py
+
+      # Does the data ON THIS BRANCH pass? --target working checks the tree as
+      # checked out, so a PR is judged on its own proposed content rather than
+      # on whatever happens to be sitting on dev or main.
+      - name: Validate the data in this branch
+        run: python3 tools/kredme.py validate --target working
+
+      # `validate --target working` deliberately runs with strict_checksums=False,
+      # because a mismatch is normal while you are mid-edit (kredme.py:308).
+      # In CI the tree is NOT mid-edit — it is exactly what would be committed —
+      # so the manifest must already be internally consistent. A stale checksum
+      # here is the precise failure that makes the app reject a sync with
+      # "Sync failed", so it must not be able to reach a branch.
+      - name: Manifest integrity (strict)
+        run: |
+          python3 - <<'PY'
+          import json, hashlib, pathlib, sys
+          man = json.load(open('seed/manifest.json'))
+          bad = []
+          for f in man['files']:
+              name = f.get('file') or f.get('name')
+              b = pathlib.Path(f'seed/{name}').read_bytes()
+              if f.get('checksum') != hashlib.sha256(b).hexdigest():
+                  bad.append(f'{name}: checksum stale')
+              if f.get('size_bytes') != len(b):
+                  bad.append(f'{name}: size stale ({f.get("size_bytes")} vs {len(b)})')
+          if bad:
+              print('MANIFEST IS STALE — the app would reject this sync:')
+              for b_ in bad: print('  ' + b_)
+              sys.exit(1)
+          print(f'manifest consistent across {len(man["files"])} file(s)')
+          PY
+
