@@ -7,97 +7,6 @@
   },
   "categories": [
     {
-      "id": "dining",
-      "display_name": "Dining & Restaurants",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "from": "5812",
-          "to": "5814"
-        },
-        {
-          "exact": "5811"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "food_delivery",
-      "display_name": "Food Delivery",
-      "parent_id": "dining",
-      "mcc_ranges": [
-        {
-          "exact": "5812"
-        },
-        {
-          "exact": "5814"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "grocery",
-      "display_name": "Grocery & Supermarkets",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "5411"
-        },
-        {
-          "exact": "5451"
-        },
-        {
-          "exact": "5499"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "quick_commerce",
-      "display_name": "Quick Commerce",
-      "parent_id": "grocery",
-      "mcc_ranges": [
-        {
-          "exact": "5411"
-        },
-        {
-          "exact": "5499"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "fuel",
-      "display_name": "Fuel",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "5541"
-        },
-        {
-          "exact": "5542"
-        }
-      ],
-      "is_excluded_default": 1
-    },
-    {
-      "id": "travel",
-      "display_name": "Travel & Tourism",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "4722"
-        },
-        {
-          "exact": "7011"
-        },
-        {
-          "exact": "7012"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
       "id": "airlines",
       "display_name": "Airlines",
       "parent_id": "travel",
@@ -113,29 +22,10 @@
       "is_excluded_default": 0
     },
     {
-      "id": "railways",
-      "display_name": "Railways",
-      "parent_id": "travel",
-      "mcc_ranges": [
-        {
-          "exact": "4112"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "hotels",
-      "display_name": "Hotels & Lodging",
-      "parent_id": "travel",
-      "mcc_ranges": [
-        {
-          "from": "3501",
-          "to": "3999"
-        },
-        {
-          "exact": "7011"
-        }
-      ],
+      "id": "apparel",
+      "display_name": "Apparel & Fashion",
+      "parent_id": null,
+      "mcc_ranges": [],
       "is_excluded_default": 0
     },
     {
@@ -150,184 +40,33 @@
       "is_excluded_default": 0
     },
     {
-      "id": "online_shopping",
-      "display_name": "Online Shopping",
+      "id": "departmental_store",
+      "display_name": "Department Stores",
       "parent_id": null,
       "mcc_ranges": [
         {
-          "exact": "5399"
+          "exact": "5311"
         },
         {
-          "exact": "5964"
-        },
-        {
-          "exact": "5969"
+          "exact": "5310"
         }
       ],
       "is_excluded_default": 0
     },
     {
-      "id": "electronics",
-      "display_name": "Electronics & Appliances",
+      "id": "dining",
+      "display_name": "Dining & Restaurants",
       "parent_id": null,
       "mcc_ranges": [
         {
-          "exact": "5732"
+          "from": "5812",
+          "to": "5814"
         },
         {
-          "exact": "5734"
-        },
-        {
-          "exact": "5045"
+          "exact": "5811"
         }
       ],
       "is_excluded_default": 0
-    },
-    {
-      "id": "fashion",
-      "display_name": "Fashion & Apparel",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "5651"
-        },
-        {
-          "exact": "5691"
-        },
-        {
-          "exact": "5699"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "entertainment",
-      "display_name": "Entertainment & Movies",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "7832"
-        },
-        {
-          "exact": "7922"
-        },
-        {
-          "exact": "7829"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "streaming",
-      "display_name": "Streaming & Digital",
-      "parent_id": "entertainment",
-      "mcc_ranges": [
-        {
-          "exact": "4899"
-        },
-        {
-          "exact": "5815"
-        },
-        {
-          "exact": "5816"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "telecom",
-      "display_name": "Telecom & Recharges",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "4812"
-        },
-        {
-          "exact": "4813"
-        },
-        {
-          "exact": "4814"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "utilities",
-      "display_name": "Utilities & Bills",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "4900"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "payments",
-      "display_name": "Payments & Wallets",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "6540"
-        },
-        {
-          "exact": "6012"
-        }
-      ],
-      "is_excluded_default": 1
-    },
-    {
-      "id": "pharmacy",
-      "display_name": "Pharmacy & Health",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "5912"
-        },
-        {
-          "exact": "5047"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "diagnostics",
-      "display_name": "Pathology & Diagnostics",
-      "parent_id": "pharmacy",
-      "mcc_ranges": [
-        {
-          "exact": "8099"
-        },
-        {
-          "exact": "8011"
-        }
-      ],
-      "is_excluded_default": 0
-    },
-    {
-      "id": "jewellery",
-      "display_name": "Jewellery & Gold",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "5944"
-        },
-        {
-          "exact": "5094"
-        }
-      ],
-      "is_excluded_default": 1
-    },
-    {
-      "id": "insurance",
-      "display_name": "Insurance",
-      "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "6300"
-        }
-      ],
-      "is_excluded_default": 1
     },
     {
       "id": "education",
@@ -350,6 +89,68 @@
       "is_excluded_default": 0
     },
     {
+      "id": "electronics",
+      "display_name": "Electronics & Appliances",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5732"
+        },
+        {
+          "exact": "5734"
+        },
+        {
+          "exact": "5045"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "entertainment",
+      "display_name": "Entertainment & Movies",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "7832"
+        },
+        {
+          "exact": "7922"
+        },
+        {
+          "exact": "7829"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "food_delivery",
+      "display_name": "Food Delivery",
+      "parent_id": "dining",
+      "mcc_ranges": [
+        {
+          "exact": "5812"
+        },
+        {
+          "exact": "5814"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "fuel",
+      "display_name": "Fuel",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5541"
+        },
+        {
+          "exact": "5542"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
       "id": "government",
       "display_name": "Government Payments",
       "parent_id": null,
@@ -367,6 +168,119 @@
       "is_excluded_default": 1
     },
     {
+      "id": "grocery",
+      "display_name": "Grocery & Supermarkets",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5411"
+        },
+        {
+          "exact": "5451"
+        },
+        {
+          "exact": "5499"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "home_decor",
+      "display_name": "Home Décor & Furnishing",
+      "parent_id": null,
+      "mcc_ranges": [],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "hotels",
+      "display_name": "Hotels & Lodging",
+      "parent_id": "travel",
+      "mcc_ranges": [
+        {
+          "from": "3501",
+          "to": "3999"
+        },
+        {
+          "exact": "7011"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "insurance",
+      "display_name": "Insurance",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "6300"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": "jewellery",
+      "display_name": "Jewellery & Gold",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5944"
+        },
+        {
+          "exact": "5094"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": "online_shopping",
+      "display_name": "Online Shopping",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5399"
+        },
+        {
+          "exact": "5964"
+        },
+        {
+          "exact": "5969"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "personal_care",
+      "display_name": "Personal Care & Beauty",
+      "parent_id": null,
+      "mcc_ranges": [],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "pharmacy",
+      "display_name": "Pharmacy & Health",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5912"
+        },
+        {
+          "exact": "5047"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": "railways",
+      "display_name": "Railways",
+      "parent_id": "travel",
+      "mcc_ranges": [
+        {
+          "exact": "4112"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
       "id": "rent",
       "display_name": "Rent Payments",
       "parent_id": null,
@@ -378,56 +292,55 @@
       "is_excluded_default": 1
     },
     {
-      "id": "beauty",
-      "display_name": "Beauty & Personal Care",
+      "id": "telecom",
+      "display_name": "Telecom & Recharges",
       "parent_id": null,
       "mcc_ranges": [
         {
-          "exact": "5977"
+          "exact": "4812"
         },
         {
-          "exact": "7230"
+          "exact": "4813"
+        },
+        {
+          "exact": "4814"
         }
       ],
       "is_excluded_default": 0
     },
     {
-      "id": "departmental_store",
-      "display_name": "Department Stores",
+      "id": "travel",
+      "display_name": "Travel & Tourism",
       "parent_id": null,
       "mcc_ranges": [
         {
-          "exact": "5311"
+          "exact": "4722"
         },
         {
-          "exact": "5310"
+          "exact": "7011"
+        },
+        {
+          "exact": "7012"
         }
       ],
       "is_excluded_default": 0
     },
     {
-      "id": "gifting",
-      "display_name": "Gifting & Flowers",
+      "id": "utilities",
+      "display_name": "Utilities & Bills",
       "parent_id": null,
       "mcc_ranges": [
         {
-          "exact": "5947"
-        },
-        {
-          "exact": "5992"
+          "exact": "4900"
         }
       ],
       "is_excluded_default": 0
     },
     {
-      "id": "duty_free",
-      "display_name": "Duty Free Shopping",
+      "id": "wallet_load",
+      "display_name": "Wallet Loads",
       "parent_id": null,
-      "mcc_ranges": [
-        {
-          "exact": "5309"
-        }
-      ],
+      "mcc_ranges": [],
       "is_excluded_default": 0
     }
   ],
@@ -618,7 +531,7 @@
       "id": 12,
       "merchant_name": "myntra",
       "display_name": "Myntra",
-      "category_id": "fashion",
+      "category_id": "apparel",
       "mcc_primary": "5699",
       "mcc_codes": [
         "5699",
@@ -639,7 +552,7 @@
       "id": 13,
       "merchant_name": "ajio",
       "display_name": "AJIO",
-      "category_id": "fashion",
+      "category_id": "apparel",
       "mcc_primary": "5699",
       "mcc_codes": [
         "5699"
@@ -693,7 +606,7 @@
       "id": 16,
       "merchant_name": "nykaa",
       "display_name": "Nykaa",
-      "category_id": "beauty",
+      "category_id": "personal_care",
       "mcc_primary": "5977",
       "mcc_codes": [
         "5977"
@@ -733,7 +646,7 @@
       "id": 21,
       "merchant_name": "blinkit",
       "display_name": "Blinkit",
-      "category_id": "quick_commerce",
+      "category_id": "grocery",
       "mcc_primary": "5411",
       "mcc_codes": [
         "5411",
@@ -754,7 +667,7 @@
       "id": 22,
       "merchant_name": "zepto",
       "display_name": "Zepto",
-      "category_id": "quick_commerce",
+      "category_id": "grocery",
       "mcc_primary": "5411",
       "mcc_codes": [
         "5411",
@@ -862,7 +775,7 @@
       "id": 28,
       "merchant_name": "swiggy_instamart",
       "display_name": "Swiggy Instamart",
-      "category_id": "quick_commerce",
+      "category_id": "grocery",
       "mcc_primary": "5411",
       "mcc_codes": [
         "5411",
@@ -974,7 +887,7 @@
       "id": 35,
       "merchant_name": "lal_pathlabs",
       "display_name": "Dr Lal PathLabs",
-      "category_id": "diagnostics",
+      "category_id": "pharmacy",
       "mcc_primary": "8099",
       "mcc_codes": [
         "8099"
@@ -992,7 +905,7 @@
       "id": 36,
       "merchant_name": "thyrocare",
       "display_name": "Thyrocare",
-      "category_id": "diagnostics",
+      "category_id": "pharmacy",
       "mcc_primary": "8099",
       "mcc_codes": [
         "8099"
@@ -1007,7 +920,7 @@
       "id": 37,
       "merchant_name": "practo",
       "display_name": "Practo",
-      "category_id": "diagnostics",
+      "category_id": "pharmacy",
       "mcc_primary": "8099",
       "mcc_codes": [
         "8099",
@@ -1493,7 +1406,7 @@
       "id": 85,
       "merchant_name": "netflix",
       "display_name": "Netflix",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "4899",
       "mcc_codes": [
         "4899"
@@ -1512,7 +1425,7 @@
       "id": 86,
       "merchant_name": "spotify",
       "display_name": "Spotify",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5815",
       "mcc_codes": [
         "5815"
@@ -1529,7 +1442,7 @@
       "id": 87,
       "merchant_name": "hotstar",
       "display_name": "Disney+ Hotstar / JioStar",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "4899",
       "mcc_codes": [
         "4899",
@@ -1548,7 +1461,7 @@
       "id": 88,
       "merchant_name": "youtube_premium",
       "display_name": "YouTube Premium",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5815",
       "mcc_codes": [
         "5815"
@@ -1566,7 +1479,7 @@
       "id": 89,
       "merchant_name": "prime_video",
       "display_name": "Amazon Prime Video",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5815",
       "mcc_codes": [
         "5815",
@@ -1585,7 +1498,7 @@
       "id": 90,
       "merchant_name": "sony_liv",
       "display_name": "SonyLIV",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5815",
       "mcc_codes": [
         "5815"
@@ -1686,7 +1599,7 @@
       "id": 106,
       "merchant_name": "igp",
       "display_name": "IGP (Indian Gifts Portal)",
-      "category_id": "gifting",
+      "category_id": "online_shopping",
       "mcc_primary": "5947",
       "mcc_codes": [
         "5947",
@@ -1705,7 +1618,7 @@
       "id": 107,
       "merchant_name": "gyftr",
       "display_name": "GyFTR",
-      "category_id": "gifting",
+      "category_id": "online_shopping",
       "mcc_primary": "5947",
       "mcc_codes": [
         "5947"
@@ -1723,7 +1636,7 @@
       "id": 108,
       "merchant_name": "ferns_n_petals",
       "display_name": "Ferns N Petals",
-      "category_id": "gifting",
+      "category_id": "online_shopping",
       "mcc_primary": "5992",
       "mcc_codes": [
         "5992"
@@ -1941,7 +1854,7 @@
       "id": 126,
       "merchant_name": "adani_duty_free",
       "display_name": "Adani Duty Free",
-      "category_id": "duty_free",
+      "category_id": "travel",
       "mcc_primary": "5309",
       "mcc_codes": [
         "5309"
@@ -2007,7 +1920,7 @@
       "id": 131,
       "merchant_name": "westside",
       "display_name": "Westside (Tata)",
-      "category_id": "fashion",
+      "category_id": "apparel",
       "mcc_primary": "5651",
       "mcc_codes": [
         "5651"
@@ -2025,7 +1938,7 @@
       "id": 132,
       "merchant_name": "zara",
       "display_name": "Zara",
-      "category_id": "fashion",
+      "category_id": "apparel",
       "mcc_primary": "5651",
       "mcc_codes": [
         "5651"
@@ -2041,7 +1954,7 @@
       "id": 133,
       "merchant_name": "hm",
       "display_name": "H&M",
-      "category_id": "fashion",
+      "category_id": "apparel",
       "mcc_primary": "5651",
       "mcc_codes": [
         "5651"
@@ -2292,7 +2205,7 @@
       "id": 156,
       "merchant_name": "microsoft",
       "display_name": "Microsoft",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5045",
       "mcc_codes": [
         "5045",
@@ -2312,7 +2225,7 @@
       "id": 157,
       "merchant_name": "google",
       "display_name": "Google",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5815",
       "mcc_codes": [
         "5815",
@@ -2332,7 +2245,7 @@
       "id": 159,
       "merchant_name": "chatgpt",
       "display_name": "ChatGPT / OpenAI",
-      "category_id": "streaming",
+      "category_id": "entertainment",
       "mcc_primary": "5815",
       "mcc_codes": [
         "5815"
@@ -2412,7 +2325,7 @@
       "id": 164,
       "merchant_name": "fabindia",
       "display_name": "FabIndia",
-      "category_id": "fashion",
+      "category_id": "apparel",
       "mcc_primary": "5651",
       "mcc_codes": [
         "5651"
@@ -2427,7 +2340,7 @@
       "id": 117,
       "merchant_name": "cultfit",
       "display_name": "cult.fit",
-      "category_id": "beauty",
+      "category_id": "personal_care",
       "mcc_primary": "7298",
       "mcc_codes": [
         "7298"

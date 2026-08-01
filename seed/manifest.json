@@ -24,8 +24,8 @@
     {
       "name": "merchants.json",
       "path": "seed/merchants.json",
-      "checksum": "873ed724534e5cbe524b8ed1f532372dbfe4eb41b90f8394063386c97f59b445",
-      "size_bytes": 53293
+      "checksum": "98b75e61f6157f08af6dce598c10b199ea89b0662422d1352e161e2400bab28b",
+      "size_bytes": 51822
     }
   ],
   "delta_file": null,
