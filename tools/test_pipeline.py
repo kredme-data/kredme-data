@@ -491,6 +491,150 @@ def test_every_bump_is_strictly_greater():
         assert K.version_gt(K.bump_patch(v), v), f"bump_patch({v}) not greater"
 
 
+# --- UNIT tests for the card-economics gate ---------------------------------
+# The validator proved JSON shape for 1,102 lines and never once read a number,
+# which is how 6 cards shipped rendering 20-75% cashback and 106 shipped
+# rendering 0.00%. These lock in the maths and the ratchet.
+#
+# The percentages below are the ones the APP computes. If a test here starts
+# failing after an app change, the gate — not the test — is what is now wrong.
+
+def _c(cid, brr, rp=None, rules=None, excl=None):
+    return {"card": {"id": cid, "base_reward_rate": brr, "rp_value_standard": rp},
+            "reward_rules": rules or [], "exclusion_rules": excl or []}
+
+
+def _gate(cards, baseline):
+    """Run validate_economics against an injected baseline. Returns the Report."""
+    import contextlib, io
+    real = K.read_rate_baseline
+    K.read_rate_baseline = lambda: baseline
+    try:
+        rep = K.Report()
+        with contextlib.redirect_stdout(io.StringIO()):
+            K.validate_economics(cards, rep)
+        return rep
+    finally:
+        K.read_rate_baseline = real
+
+
+# A baseline describing a clean 2-card catalog, so any defect reads as NEW.
+_CLEAN_BASE = {"card_count": 2, "zero_rate_cards": 0, "over_ceiling_cards": [],
+               "over_ceiling_rules": [], "under_floor_cards": [],
+               "prose_excluded_high_rate": []}
+
+
+@unit
+def test_base_pct_matches_the_app_formula():
+    # credit_card.dart:489 — baseRewardRate * sanePointValue(rp) * 100
+    assert K.card_base_pct({"base_reward_rate": 0.01, "rp_value_standard": 1.0}) == 1.0
+    # rp_value_standard null -> fromOtaJson's `?? 0.25`
+    assert K.card_base_pct({"base_reward_rate": 0.04, "rp_value_standard": None}) == 1.0
+    # sanePointValue collapses out-of-range values to 0.25, it does not clamp
+    assert K.card_base_pct({"base_reward_rate": 0.04, "rp_value_standard": 9.0}) == 1.0
+    assert K.card_base_pct({"base_reward_rate": 0.04, "rp_value_standard": 0}) == 1.0
+    # the real Axis Bank Cashback defect: 0.75 read as a fraction
+    assert K.card_base_pct({"base_reward_rate": 0.75, "rp_value_standard": None}) == 18.75
+
+
+@unit
+def test_rule_pct_per_reward_type():
+    inner = {"base_reward_rate": 0.02, "rp_value_standard": 0.25}
+    base = K.card_base_pct(inner)
+    # cashback_pct: the rate IS the fraction
+    assert K.rule_pct({"reward_type": "cashback_pct", "reward_rate": 0.05}, inner, base) == 5.0
+    # points_per_spend: (rate / unit) * point_value * 100
+    assert abs(K.rule_pct({"reward_type": "points_per_spend", "reward_rate": 4,
+                           "reward_unit_spend": 150}, inner, base) - 0.6667) < 0.001
+    # unit of 0 must fall back to the base rate, not divide by zero
+    assert K.rule_pct({"reward_type": "points_per_spend", "reward_rate": 4,
+                       "reward_unit_spend": 0}, inner, base) == base
+    # multiplier is N x the base earn, not N absolute points
+    assert K.rule_pct({"reward_type": "multiplier", "reward_rate": 5}, inner, base) == 2.5
+    # an unknown type falls back to base rather than silently scoring 0
+    assert K.rule_pct({"reward_type": "cashback_flat", "reward_rate": 500}, inner, base) == base
+
+
+@unit
+def test_new_rate_above_ceiling_is_fatal():
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("bad_card", 0.75, 1.0)], _CLEAN_BASE)
+    assert rep.failed, "a card rendering 75% must block the publish"
+    assert "bad_card" in rep.errors[0]
+
+
+@unit
+def test_baselined_rate_does_not_block():
+    base = dict(_CLEAN_BASE, over_ceiling_cards=["bad_card"],
+                prose_excluded_high_rate=[], card_count=2)
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("bad_card", 0.75, 1.0)], base)
+    assert not rep.failed, "a known defect must not block unrelated publishes"
+
+
+@unit
+def test_new_rate_below_floor_is_fatal():
+    # Axis Neo's real defect: point value applied twice -> 0.02%
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("neo", 0.001, 0.2)], _CLEAN_BASE)
+    assert rep.failed, "0.02% is a unit bug in the other direction"
+
+
+@unit
+def test_zero_rate_count_may_not_grow():
+    base = dict(_CLEAN_BASE, zero_rate_cards=0, card_count=2)
+    rep = _gate([_c("a", 0.01, 1.0), _c("b", 0.0, 1.0)], base)
+    assert rep.failed, "a card newly rendering 0.00% must be caught"
+    assert any("0.00%" in e for e in rep.errors)
+
+
+@unit
+def test_losing_even_one_card_is_fatal():
+    # The pre-existing shrink guard tolerated a 20% drop; one lost card is
+    # still a card that vanishes from a real wallet.
+    base = dict(_CLEAN_BASE, card_count=3)
+    rep = _gate([_c("a", 0.01, 1.0), _c("b", 0.01, 1.0)], base)
+    assert rep.failed and any("card count fell" in e for e in rep.errors)
+
+
+@unit
+def test_high_rate_on_a_prose_excluded_category_is_fatal():
+    """The 'Axis Cashback shows 75% at Indian Oil' defect. The exclusion is
+    free text (`other`), which the engine never reads, so only the gate can
+    see it."""
+    cards = [_c("a", 0.01, 1.0),
+             _c("pump", 0.20, 1.0,
+                excl=[{"exclusion_type": "other", "exclusion_value": "fuel purchases"}])]
+    # Baseline the ceiling violation so ONLY the prose finding can fail here —
+    # otherwise this test would pass on the wrong error.
+    base = dict(_CLEAN_BASE, over_ceiling_cards=["pump"])
+    rep = _gate(cards, base)
+    assert rep.failed, "a rate advertised on an excluded category must block"
+    assert len(rep.errors) == 1, f"expected only the prose error: {rep.errors}"
+    assert "exclusion text excludes" in rep.errors[0], rep.errors[0]
+    # And once it is known, it must stop blocking unrelated work.
+    rep2 = _gate(cards, dict(base, prose_excluded_high_rate=["pump::fuel"]))
+    assert not rep2.failed, f"a baselined prose finding must not block: {rep2.errors}"
+
+
+@unit
+def test_ordinary_cards_pass_cleanly():
+    rep = _gate([_c("cashback_1p5", 0.015, 1.0),
+                 _c("points_card", 0.0067, 0.25,
+                    rules=[{"reward_type": "points_per_spend", "reward_rate": 4,
+                            "reward_unit_spend": 150, "rule_name": "Base"}])],
+                _CLEAN_BASE)
+    assert not rep.failed, f"a normal catalog must pass: {rep.errors}"
+
+
+@unit
+def test_baseline_identity_keys_are_stable():
+    """The growth guard and the writer must derive identity the same way, or
+    the ratchet silently stops ratcheting."""
+    scan = K.scan_economics([_c("x", 0.75, 1.0,
+                                excl=[{"exclusion_type": "other",
+                                       "exclusion_value": "rent"}])])
+    payload = K.baseline_payload(scan, "test")
+    for key, ident in K.BASELINE_LISTS.items():
+        assert payload[key] == sorted(ident(scan)), f"{key} drifted between writer and guard"
+
 
 # --- REGRESSION (branch model) ----------------------------------------------
 

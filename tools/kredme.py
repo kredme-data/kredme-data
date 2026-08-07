@@ -89,6 +89,27 @@ NEWS_KEY_FIXES = {
 NEWS_SEVERITIES = {"negative", "warning", "positive", "info"}
 NEWS_REQUIRED = ("id", "title", "summary")
 
+# --- card economics thresholds ---------------------------------------------
+# No Indian credit card earns more than ~10% effective on any category, and a
+# card earning less than 0.1% is a data error rather than a bad product. Both
+# bounds exist because the SAME unit bug produces both: Axis Neo renders 0.02%
+# (5x too low) and Axis Cashback renders 75% (100x too high).
+RATE_CEILING_PCT = 10.0
+RATE_FLOOR_PCT = 0.1
+# Mirrors CreditCardData.sanePointValue (credit_card.dart:533) and the
+# `?? 0.25` fallback in fromOtaJson (credit_card.dart:766). If the app changes
+# either, this gate starts measuring the wrong thing.
+APP_POINT_VALUE_DEFAULT = 0.25
+APP_POINT_VALUE_MAX = 1.5
+# Spend categories whose exclusions live in free text the engine cannot read
+# (987 of 1,418 exclusion rules are type `other`). A high rate on one of these
+# is how "75% cashback at Indian Oil" reached users.
+PROSE_EXCLUDED_HINTS = (
+    "fuel", "petrol", "diesel", "rent", "emi", "cash withdrawal", "cash advance",
+    "wallet", "wallet load", "wallet reload",
+)
+RATE_BASELINE = REPO / "tools" / "rate_baseline.json"
+
 
 # ---------------------------------------------------------------- output ----
 
@@ -260,6 +281,9 @@ class Report:
     def __init__(self):
         self.errors: list[str] = []
         self.warnings: list[str] = []
+        # Populated by validate_economics so callers can persist a new baseline
+        # without re-parsing the 1.9 MB catalog.
+        self.economics: dict | None = None
 
     def error(self, msg): self.errors.append(msg); err(msg)
     def warn(self, msg): self.warnings.append(msg); warn(msg)
@@ -297,6 +321,299 @@ def live_card_count() -> int:
         return n
     except Exception:
         return 0
+
+
+# ------------------------------------------------------- card economics ----
+#
+# Everything above proves the FILE is well-formed. None of it reads a number.
+# That gap is why every wrong rate that ever reached a user passed validation
+# cleanly: 6 cards rendering 20-75% cashback, 106 cards rendering 0.00%, and
+# Axis Bank Cashback advertising 75% at petrol pumps where it earns nothing.
+#
+# These checks replicate the APP's own display maths, because a rate is only
+# wrong if the app RENDERS it wrong:
+#
+#     baseReward   = base_reward_rate * sanePointValue(rp_value_standard) * 100
+#     rateForRule  = per reward_type          (credit_card.dart:538-574)
+#
+# Keep them in step with lib/shared/models/credit_card.dart. If the app changes
+# a formula and this does not, the gate measures the wrong thing and goes quiet.
+#
+# THE RATCHET. The live catalog already violates these bounds in 61 places, so
+# a gate that simply failed would block every publish forever and get disabled
+# within a week. Instead it compares against a committed baseline
+# (tools/rate_baseline.json): a NEW violation is fatal, a pre-existing one is
+# reported and counted, and the count is not allowed to grow. Fix a card, run
+# `--update-baseline`, and the floor moves down permanently.
+
+
+def _fnum(v):
+    """A JSON number, or None. Booleans are not numbers here."""
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return None
+    f = float(v)
+    return None if f != f else f  # NaN
+
+
+def _sane_point_value(v):
+    """CreditCardData.sanePointValue — out-of-range point values collapse to 0.25."""
+    f = _fnum(v)
+    if f is None or f <= 0 or f > APP_POINT_VALUE_MAX:
+        return APP_POINT_VALUE_DEFAULT
+    return f
+
+
+def card_base_pct(inner: dict) -> float:
+    """The base earn % the app shows for this card (credit_card.dart:489)."""
+    rp = _fnum(inner.get("rp_value_standard"))
+    if rp is None:
+        rp = APP_POINT_VALUE_DEFAULT          # fromOtaJson `?? 0.25`
+    brr = _fnum(inner.get("base_reward_rate")) or 0.0
+    return brr * _sane_point_value(rp) * 100
+
+
+def rule_pct(rule: dict, inner: dict, base_pct: float) -> float:
+    """The % the app shows for one reward rule (credit_card.dart rateForRule)."""
+    rtype = rule.get("reward_type")
+    rate = _fnum(rule.get("reward_rate")) or 0.0
+    rp = _fnum(inner.get("rp_value_standard"))
+    if rp is None:
+        rp = APP_POINT_VALUE_DEFAULT
+    pv_raw = rule.get("point_value")
+    pv = _sane_point_value(pv_raw if _fnum(pv_raw) is not None else rp)
+
+    if rtype == "cashback_pct":
+        return rate * 100
+    if rtype == "multiplier":
+        brr = _fnum(inner.get("base_reward_rate")) or 0.0
+        return rate * brr * pv * 100
+    if rtype == "points_per_spend":
+        unit = _fnum(rule.get("reward_unit_spend")) or 0.0
+        if unit <= 0:
+            return base_pct                    # app's division-by-zero guard
+        return (rate / unit) * pv * 100
+    return base_pct
+
+
+def _rule_key(cid: str, rule: dict) -> str:
+    """Stable-enough identity for a rule: rule_name survives reordering, index does not."""
+    return f"{cid}::{(rule.get('rule_name') or '').strip()[:80]}"
+
+
+def scan_economics(cards: list) -> dict:
+    """Compute every number the gate reasons about. Pure — no reporting."""
+    over_cards, under_cards, zero_cards = [], [], []
+    over_rules, prose_risk = [], []
+    n_cards = 0
+
+    for entry in cards:
+        if not isinstance(entry, dict):
+            continue
+        inner = entry.get("card") if isinstance(entry.get("card"), dict) else entry
+        cid = inner.get("id")
+        if not cid:
+            continue
+        n_cards += 1
+
+        base = card_base_pct(inner)
+        if base == 0:
+            zero_cards.append(cid)
+        elif base > RATE_CEILING_PCT:
+            over_cards.append((cid, round(base, 2)))
+        elif base < RATE_FLOOR_PCT:
+            under_cards.append((cid, round(base, 4)))
+
+        # Exclusions the engine cannot read (type `other`/`txn_type` are free
+        # text — 1,039 of 1,418 rules). Kept as text for the prose check below.
+        prose = " ".join(
+            str(x.get("exclusion_value") or "").lower()
+            for x in (entry.get("exclusion_rules") or [])
+            if isinstance(x, dict) and x.get("exclusion_type") in ("other", "txn_type")
+        )
+        excluded_here = [h for h in PROSE_EXCLUDED_HINTS if h in prose]
+
+        # The BASE rate is what the app shows for every merchant it has no
+        # specific rule for — including the categories this card excludes in
+        # prose the engine cannot read. An inflated base rate therefore lands
+        # directly on a petrol pump. This is the "75% at Indian Oil" defect,
+        # and it is why the check keys on the base rate rather than rule names.
+        if excluded_here and base > RATE_CEILING_PCT:
+            prose_risk.append((cid, excluded_here[0], round(base, 2)))
+
+        for rule in (entry.get("reward_rules") or []):
+            if not isinstance(rule, dict):
+                continue
+            pct = rule_pct(rule, inner, base)
+            if pct > RATE_CEILING_PCT:
+                over_rules.append((_rule_key(cid, rule), round(pct, 2)))
+                # A named rule that advertises a category the card excludes.
+                name = (rule.get("rule_name") or "").lower()
+                hit = next((h for h in excluded_here if h in name), None)
+                if hit:
+                    prose_risk.append((cid, hit, round(pct, 2)))
+
+    return {
+        "card_count": n_cards,
+        "zero_rate_cards": len(zero_cards),
+        "over_ceiling_cards": sorted(over_cards, key=lambda x: -x[1]),
+        "under_floor_cards": sorted(under_cards, key=lambda x: x[1]),
+        "over_ceiling_rules": sorted(over_rules, key=lambda x: -x[1]),
+        "prose_excluded_high_rate": prose_risk,
+    }
+
+
+def read_rate_baseline() -> dict | None:
+    if not RATE_BASELINE.exists():
+        return None
+    try:
+        return read_json(RATE_BASELINE)
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def validate_economics(cards: list, rep: Report) -> dict:
+    """Numeric plausibility. Returns the scan so callers can print or persist it."""
+    head("Card economics")
+    scan = scan_economics(cards)
+    base = read_rate_baseline()
+
+    if base is None:
+        rep.warn(
+            f"{rel(RATE_BASELINE)} is missing — cannot tell a new bad rate from an old "
+            f"one. Run `kredme.py validate --target prod --update-baseline` once, review "
+            f"the file, and commit it."
+        )
+
+    known_cards = set((base or {}).get("over_ceiling_cards") or [])
+    known_rules = set((base or {}).get("over_ceiling_rules") or [])
+
+    # 1. Nothing NEW may exceed the ceiling. Pre-existing ones are reported.
+    new_cards = [c for c in scan["over_ceiling_cards"] if c[0] not in known_cards]
+    if new_cards:
+        rep.error(
+            f"{len(new_cards)} card(s) NEWLY display a base rate above "
+            f"{RATE_CEILING_PCT:g}% — that is a unit bug, not a great card: "
+            f"{[f'{c}={p}%' for c, p in new_cards[:5]]}"
+        )
+    if base is not None and scan["over_ceiling_cards"]:
+        n = len(scan["over_ceiling_cards"])
+        (ok if n < len(known_cards) else warn)(
+            f"{n} card(s) still above {RATE_CEILING_PCT:g}% (baseline {len(known_cards)}): "
+            f"{[f'{c}={p}%' for c, p in scan['over_ceiling_cards'][:6]]}"
+        )
+
+    # Two rules on the same card can share a rule_name, so compare unique keys
+    # to unique keys — counting raw findings against a deduped baseline would
+    # read as a regression forever and hide a real one.
+    seen_rule_keys = {k for k, _ in scan["over_ceiling_rules"]}
+    new_rules = sorted(seen_rule_keys - known_rules)
+    if new_rules:
+        preview = [k.split("::")[0] for k in new_rules[:5]]
+        rep.error(
+            f"{len(new_rules)} reward rule(s) NEWLY display above {RATE_CEILING_PCT:g}%: {preview}"
+        )
+    if base is not None and seen_rule_keys:
+        n = len(seen_rule_keys)
+        (ok if n < len(known_rules) else warn)(
+            f"{n} reward rule(s) still above {RATE_CEILING_PCT:g}% (baseline {len(known_rules)})"
+        )
+
+    # 2. A rate below the floor is the same unit bug pointing the other way —
+    #    Axis Neo renders 0.02% because its rate was multiplied by the point
+    #    value twice. Ratcheted, so pre-existing ones do not block a publish.
+    known_floor = set((base or {}).get("under_floor_cards") or [])
+    new_floor = [c for c in scan["under_floor_cards"] if c[0] not in known_floor]
+    if new_floor:
+        rep.error(
+            f"{len(new_floor)} card(s) NEWLY display a non-zero base rate below "
+            f"{RATE_FLOOR_PCT:g}% — the rate is almost certainly scaled wrong: {new_floor[:5]}"
+        )
+    if base is not None and scan["under_floor_cards"]:
+        n = len(scan["under_floor_cards"])
+        (ok if n < len(known_floor) else warn)(
+            f"{n} card(s) still below {RATE_FLOOR_PCT:g}% (baseline {len(known_floor)}): "
+            f"{scan['under_floor_cards'][:4]}"
+        )
+
+    # 3. Zero-rate cards render "0.00%" on every merchant. This must never grow.
+    if base is not None:
+        was = base.get("zero_rate_cards")
+        now = scan["zero_rate_cards"]
+        if isinstance(was, int) and now > was:
+            rep.error(
+                f"cards rendering 0.00% grew {was} -> {now}. Every one of those is a card "
+                f"the user is told earns nothing."
+            )
+        elif isinstance(was, int) and now < was:
+            ok(f"cards rendering 0.00%: {now} (was {was}) — {was - now} fixed")
+        else:
+            warn(f"{now} card(s) render a 0.00% base rate")
+
+    # 4. Card count must not fall. The existing shrink guard allows a 20% drop;
+    #    losing even one card removes it from a user's wallet.
+    if base is not None:
+        was = base.get("card_count")
+        if isinstance(was, int) and scan["card_count"] < was:
+            rep.error(
+                f"card count fell {was} -> {scan['card_count']} — those cards disappear "
+                f"from every wallet that holds them"
+            )
+
+    # 5. A high rate in a category the card's own exclusion text rules out.
+    #    The engine reads only `category` and `mcc` exclusions, so these never
+    #    fire and the user is shown an earn rate on a spend that earns nothing.
+    #    Ratcheted like the rest: these all resolve when the base rates are
+    #    fixed, so an unconditional failure would block unrelated publishes.
+    known_prose = set((base or {}).get("prose_excluded_high_rate") or [])
+    prose_now = [(f"{c}::{h}", c, h, p) for c, h, p in scan["prose_excluded_high_rate"]]
+    new_prose = [x for x in prose_now if x[0] not in known_prose]
+    if new_prose:
+        rep.error(
+            f"{len(new_prose)} rule(s) NEWLY show a rate above {RATE_CEILING_PCT:g}% in a "
+            f"category the card's own exclusion text excludes — the user acts on this at "
+            f"the pump: {[(c, h, p) for _, c, h, p in new_prose[:4]]}"
+        )
+    if base is not None and prose_now:
+        n = len(prose_now)
+        (ok if n < len(known_prose) else warn)(
+            f"{n} rate(s) still advertised on an excluded category "
+            f"(baseline {len(known_prose)}): {[(c, h, p) for _, c, h, p in prose_now[:4]]}"
+        )
+
+    if not rep.failed:
+        ok(f"{scan['card_count']} cards priced within {RATE_FLOOR_PCT:g}-{RATE_CEILING_PCT:g}% "
+           f"or explicitly baselined")
+    return scan
+
+
+# The identity of a finding, per field. validate_economics compares against
+# these exact keys, so the growth guard and the writer must not drift apart.
+BASELINE_LISTS = {
+    "over_ceiling_cards":       lambda scan: {c for c, _ in scan["over_ceiling_cards"]},
+    "over_ceiling_rules":       lambda scan: {k for k, _ in scan["over_ceiling_rules"]},
+    "under_floor_cards":        lambda scan: {c for c, _ in scan["under_floor_cards"]},
+    "prose_excluded_high_rate": lambda scan: {f"{c}::{h}" for c, h, _ in scan["prose_excluded_high_rate"]},
+}
+
+
+def baseline_payload(scan: dict, source: str) -> dict:
+    payload = {
+        "_note": "Known numeric defects in live card data. The gate fails on anything NOT "
+                 "listed here, and on any growth in the counts. Shrink it; never grow it.",
+        "generated_from": source,
+        "generated_at": now_iso(),
+        "ceiling_pct": RATE_CEILING_PCT,
+        "floor_pct": RATE_FLOOR_PCT,
+        "card_count": scan["card_count"],
+        "zero_rate_cards": scan["zero_rate_cards"],
+    }
+    for key, ident in BASELINE_LISTS.items():
+        payload[key] = sorted(ident(scan))
+    return payload
+
+
+def write_rate_baseline(scan: dict, source: str) -> None:
+    write_json(RATE_BASELINE, baseline_payload(scan, source))
 
 
 def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
@@ -436,6 +753,11 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
                     rep.warn(f"only {len(seen)} cards — expected a few hundred. Truncated file?")
         elif cards is not None:
             rep.error("cards.json must be a JSON array of card objects")
+
+        # Structure is proven; now read the numbers. This is the only part of
+        # the validator that can catch a rate being WRONG rather than malformed.
+        if isinstance(cards, list) and cards:
+            rep.economics = validate_economics(cards, rep)
 
     # merchants.json — {"_metadata":…, "categories":[…], "merchants":[…]}
     mch = seed_dir / "merchants.json"
@@ -860,6 +1182,28 @@ def cmd_status(args) -> None:
 
 def cmd_validate(args) -> None:
     rep = run_validation(args.target, allow_shrink=getattr(args, "allow_shrink", False))
+    if getattr(args, "update_baseline", False):
+        if rep.economics is None:
+            die("no card data was read, so there is nothing to baseline")
+        old = read_rate_baseline() or {}
+        new = rep.economics
+        # A baseline may only ever record FEWER defects. Allowing it to grow
+        # would turn the ratchet into a rubber stamp for the next bad publish.
+        for key, label in (("zero_rate_cards", "cards rendering 0.00%"),):
+            was, now = old.get(key), new.get(key)
+            if isinstance(was, int) and isinstance(now, int) and now > was:
+                die(f"refusing to update the baseline: {label} would grow {was} -> {now}.\n"
+                    f"          Fix the data instead.")
+        for key, ident in BASELINE_LISTS.items():
+            if not isinstance(old.get(key), list):
+                continue
+            now_n = len(ident(new))
+            if now_n > len(old[key]):
+                die(f"refusing to update the baseline: '{key}' would grow "
+                    f"{len(old[key])} -> {now_n}.\n          Fix the data instead.")
+        write_rate_baseline(new, f"{args.target}@{git_head()[:7]}")
+        head("Baseline")
+        ok(f"wrote {rel(RATE_BASELINE)} — review the diff, then commit it")
     print_verdict(rep, args.target)
     print()
     sys.exit(1 if rep.failed else 0)
@@ -1078,6 +1422,9 @@ def main() -> None:
     s.add_argument("--target", choices=("dev", "prod", "working"), default="dev")
     s.add_argument("--allow-shrink", action="store_true",
                    help="permit a large drop in card count (deliberate reduction)")
+    s.add_argument("--update-baseline", action="store_true",
+                   help="rewrite tools/rate_baseline.json from this target. Review the "
+                        "diff before committing — it can only be used to LOWER the floor")
     s.set_defaults(func=cmd_validate)
 
     s = sub.add_parser("promote", help="dev -> prod (local only; you still push)")
