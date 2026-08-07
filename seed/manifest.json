@@ -1,9 +1,9 @@
 {
-  "version": "5.1.1",
-  "updated_at": "2026-08-01T00:00:00.000000Z",
+  "version": "5.1.2",
+  "updated_at": "2026-08-07T00:00:00.000000Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Adds redemption_rules to 366/376 cards via the kredme-data-pipeline cardinsider extracted JSONs. Also adds card-level points_expiry_months, min_redemption_points, points_clawback_on_default. 10 cards have empty redemption_rules listed in handoff_v4/cards_missing_redemption.csv.",
+  "_note": "Corrects base_reward_rate on 4 cards where the percentage number was stored where a fraction belongs, so the app rendered 15-75% cashback. Each new value is quoted from the issuer's own product page: Axis Cashback 0.75%, YES Prosperity Cashback Plus 0.75%, Kotak Cashback+ 0.5%, Google Pay Flex Axis 0.4% (2 stars per Rs500 at Rs1/star). IDFC FIRST EARN and Paytm HDFC Mobile are NOT fixed here - their pages could not be read and the correct value must not be guessed.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1202,
@@ -18,8 +18,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "ea29b0c23442c6a7e8074b6cff2be9a9746580e18d8505d56a09f913f26a0e9d",
-      "size_bytes": 1948662
+      "checksum": "7db6f5d351a1d05d8669b2e11d23473c4f260153a1b9f100b98c0c413b7144cc",
+      "size_bytes": 1948676
     },
     {
       "name": "merchants.json",
