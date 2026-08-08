@@ -2,7 +2,7 @@
   "_metadata": {
     "version": "3.1.0",
     "updated_at": "2026-04-17T21:30:00Z",
-    "total_merchants": 116,
+    "total_merchants": 273,
     "notes": "Comprehensive merchant catalog for KredMe TestFlight. Merchants are organized by category. Every merchant explicitly named in a card reward rule MUST be present here. MCC codes verified against Visa/Mastercard MCC directories and Indian statement data from TechnoFino."
   },
   "categories": [
@@ -2399,6 +2399,2361 @@
       ],
       "is_online": 1,
       "metadata": {}
+    },
+    {
+      "id": 167,
+      "merchant_name": "zudio",
+      "display_name": "Zudio",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.zudio.com"
+      }
+    },
+    {
+      "id": 168,
+      "merchant_name": "snitch",
+      "display_name": "Snitch",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.snitch.com"
+      }
+    },
+    {
+      "id": 169,
+      "merchant_name": "bewakoof",
+      "display_name": "Bewakoof",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.bewakoof.com"
+      }
+    },
+    {
+      "id": 170,
+      "merchant_name": "the_souled_store",
+      "display_name": "The Souled Store",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.thesouledstore.com"
+      }
+    },
+    {
+      "id": 171,
+      "merchant_name": "newme",
+      "display_name": "NEWME",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://newme.asia"
+      }
+    },
+    {
+      "id": 172,
+      "merchant_name": "savana",
+      "display_name": "Savana",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://in.savana.com"
+      }
+    },
+    {
+      "id": 173,
+      "merchant_name": "urbanic",
+      "display_name": "Urbanic",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.urbanic.com"
+      }
+    },
+    {
+      "id": 174,
+      "merchant_name": "max_fashion",
+      "display_name": "Max Fashion",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.maxfashion.in"
+      }
+    },
+    {
+      "id": 175,
+      "merchant_name": "pantaloons",
+      "display_name": "Pantaloons",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.pantaloons.com"
+      }
+    },
+    {
+      "id": 176,
+      "merchant_name": "reliance_trends",
+      "display_name": "Reliance Trends",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.reliancetrends.com"
+      }
+    },
+    {
+      "id": 177,
+      "merchant_name": "uniqlo",
+      "display_name": "Uniqlo",
+      "category_id": "apparel",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.uniqlo.com/in"
+      }
+    },
+    {
+      "id": 178,
+      "merchant_name": "levis",
+      "display_name": "Levi's",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.levi.in"
+      }
+    },
+    {
+      "id": 179,
+      "merchant_name": "allen_solly",
+      "display_name": "Allen Solly",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.allensolly.com"
+      }
+    },
+    {
+      "id": 180,
+      "merchant_name": "van_heusen",
+      "display_name": "Van Heusen",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.vanheusenindia.com"
+      }
+    },
+    {
+      "id": 181,
+      "merchant_name": "louis_philippe",
+      "display_name": "Louis Philippe",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.louisphilippe.com"
+      }
+    },
+    {
+      "id": 182,
+      "merchant_name": "peter_england",
+      "display_name": "Peter England",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.peterengland.com"
+      }
+    },
+    {
+      "id": 183,
+      "merchant_name": "wrogn",
+      "display_name": "Wrogn",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.wrogn.com"
+      }
+    },
+    {
+      "id": 184,
+      "merchant_name": "biba",
+      "display_name": "BIBA",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.biba.in"
+      }
+    },
+    {
+      "id": 185,
+      "merchant_name": "w_for_woman",
+      "display_name": "W for Woman",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.wforwoman.com"
+      }
+    },
+    {
+      "id": 186,
+      "merchant_name": "global_desi",
+      "display_name": "Global Desi",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.globaldesi.in"
+      }
+    },
+    {
+      "id": 187,
+      "merchant_name": "libas",
+      "display_name": "Libas",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.libas.in"
+      }
+    },
+    {
+      "id": 188,
+      "merchant_name": "soch",
+      "display_name": "Soch",
+      "category_id": "apparel",
+      "mcc_primary": "5621",
+      "mcc_codes": [
+        "5621"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.sochstore.com"
+      }
+    },
+    {
+      "id": 189,
+      "merchant_name": "manyavar",
+      "display_name": "Manyavar",
+      "category_id": "apparel",
+      "mcc_primary": "5691",
+      "mcc_codes": [
+        "5691"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.manyavar.com"
+      }
+    },
+    {
+      "id": 190,
+      "merchant_name": "nike",
+      "display_name": "Nike",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.nike.com/in"
+      }
+    },
+    {
+      "id": 191,
+      "merchant_name": "adidas",
+      "display_name": "Adidas",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.adidas.co.in"
+      }
+    },
+    {
+      "id": 192,
+      "merchant_name": "puma",
+      "display_name": "Puma",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://in.puma.com"
+      }
+    },
+    {
+      "id": 193,
+      "merchant_name": "skechers",
+      "display_name": "Skechers",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.skechers.in"
+      }
+    },
+    {
+      "id": 194,
+      "merchant_name": "crocs",
+      "display_name": "Crocs",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.crocs.in"
+      }
+    },
+    {
+      "id": 195,
+      "merchant_name": "bata",
+      "display_name": "Bata",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.bata.in"
+      }
+    },
+    {
+      "id": 196,
+      "merchant_name": "campus_shoes",
+      "display_name": "Campus Shoes",
+      "category_id": "apparel",
+      "mcc_primary": "5661",
+      "mcc_codes": [
+        "5661"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.campusshoes.com"
+      }
+    },
+    {
+      "id": 197,
+      "merchant_name": "purplle",
+      "display_name": "Purplle",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.purplle.com"
+      }
+    },
+    {
+      "id": 198,
+      "merchant_name": "tira",
+      "display_name": "Tira Beauty",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.tirabeauty.com"
+      }
+    },
+    {
+      "id": 199,
+      "merchant_name": "sephora_india",
+      "display_name": "Sephora India",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.sephora.nnnow.com"
+      }
+    },
+    {
+      "id": 200,
+      "merchant_name": "mamaearth",
+      "display_name": "Mamaearth",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://mamaearth.in"
+      }
+    },
+    {
+      "id": 201,
+      "merchant_name": "sugar_cosmetics",
+      "display_name": "SUGAR Cosmetics",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.sugarcosmetics.com"
+      }
+    },
+    {
+      "id": 202,
+      "merchant_name": "minimalist",
+      "display_name": "Minimalist",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://beminimalist.co"
+      }
+    },
+    {
+      "id": 203,
+      "merchant_name": "plum_goodness",
+      "display_name": "Plum",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://plumgoodness.com"
+      }
+    },
+    {
+      "id": 204,
+      "merchant_name": "the_man_company",
+      "display_name": "The Man Company",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.themancompany.com"
+      }
+    },
+    {
+      "id": 205,
+      "merchant_name": "beardo",
+      "display_name": "Beardo",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://beardo.in"
+      }
+    },
+    {
+      "id": 206,
+      "merchant_name": "dot_and_key",
+      "display_name": "Dot & Key",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.dotandkey.com"
+      }
+    },
+    {
+      "id": 207,
+      "merchant_name": "forest_essentials",
+      "display_name": "Forest Essentials",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.forestessentialsindia.com"
+      }
+    },
+    {
+      "id": 208,
+      "merchant_name": "kama_ayurveda",
+      "display_name": "Kama Ayurveda",
+      "category_id": "personal_care",
+      "mcc_primary": "5977",
+      "mcc_codes": [
+        "5977"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.kamaayurveda.in"
+      }
+    },
+    {
+      "id": 209,
+      "merchant_name": "lakme_salon",
+      "display_name": "Lakme Salon",
+      "category_id": "personal_care",
+      "mcc_primary": "7298",
+      "mcc_codes": [
+        "7298"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.lakmesalon.in"
+      }
+    },
+    {
+      "id": 210,
+      "merchant_name": "naturals_salon",
+      "display_name": "Naturals Salon",
+      "category_id": "personal_care",
+      "mcc_primary": "7298",
+      "mcc_codes": [
+        "7298"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.naturals.in"
+      }
+    },
+    {
+      "id": 211,
+      "merchant_name": "firstclub",
+      "display_name": "FirstClub",
+      "category_id": "grocery",
+      "mcc_primary": "5411",
+      "mcc_codes": [
+        "5411"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.firstclub.in"
+      }
+    },
+    {
+      "id": 212,
+      "merchant_name": "flipkart_minutes",
+      "display_name": "Flipkart Minutes",
+      "category_id": "grocery",
+      "mcc_primary": "5411",
+      "mcc_codes": [
+        "5411"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.flipkart.com/minutes"
+      }
+    },
+    {
+      "id": 213,
+      "merchant_name": "country_delight",
+      "display_name": "Country Delight",
+      "category_id": "grocery",
+      "mcc_primary": "5411",
+      "mcc_codes": [
+        "5411"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.countrydelight.in"
+      }
+    },
+    {
+      "id": 214,
+      "merchant_name": "licious",
+      "display_name": "Licious",
+      "category_id": "grocery",
+      "mcc_primary": "5422",
+      "mcc_codes": [
+        "5422"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.licious.in"
+      }
+    },
+    {
+      "id": 215,
+      "merchant_name": "freshtohome",
+      "display_name": "FreshToHome",
+      "category_id": "grocery",
+      "mcc_primary": "5422",
+      "mcc_codes": [
+        "5422"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.freshtohome.com"
+      }
+    },
+    {
+      "id": 216,
+      "merchant_name": "reliance_fresh",
+      "display_name": "Reliance Fresh",
+      "category_id": "grocery",
+      "mcc_primary": "5411",
+      "mcc_codes": [
+        "5411"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.relianceretail.com"
+      }
+    },
+    {
+      "id": 217,
+      "merchant_name": "more_retail",
+      "display_name": "More Supermarket",
+      "category_id": "grocery",
+      "mcc_primary": "5411",
+      "mcc_codes": [
+        "5411"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.moreretail.in"
+      }
+    },
+    {
+      "id": 218,
+      "merchant_name": "urban_ladder",
+      "display_name": "Urban Ladder",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.urbanladder.com"
+      }
+    },
+    {
+      "id": 219,
+      "merchant_name": "wakefit",
+      "display_name": "Wakefit",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.wakefit.co"
+      }
+    },
+    {
+      "id": 220,
+      "merchant_name": "the_sleep_company",
+      "display_name": "The Sleep Company",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://thesleepcompany.in"
+      }
+    },
+    {
+      "id": 221,
+      "merchant_name": "home_centre",
+      "display_name": "Home Centre",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.homecentre.in"
+      }
+    },
+    {
+      "id": 222,
+      "merchant_name": "nilkamal",
+      "display_name": "Nilkamal",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.nilkamalfurniture.com"
+      }
+    },
+    {
+      "id": 223,
+      "merchant_name": "godrej_interio",
+      "display_name": "Godrej Interio",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.godrejinterio.com"
+      }
+    },
+    {
+      "id": 224,
+      "merchant_name": "sleepwell",
+      "display_name": "Sleepwell",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.mysleepwell.com"
+      }
+    },
+    {
+      "id": 225,
+      "merchant_name": "duroflex",
+      "display_name": "Duroflex",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.duroflexworld.com"
+      }
+    },
+    {
+      "id": 226,
+      "merchant_name": "wooden_street",
+      "display_name": "Wooden Street",
+      "category_id": "home_decor",
+      "mcc_primary": "5712",
+      "mcc_codes": [
+        "5712"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.woodenstreet.com"
+      }
+    },
+    {
+      "id": 227,
+      "merchant_name": "paytm_wallet",
+      "display_name": "Paytm Wallet",
+      "category_id": "wallet_load",
+      "mcc_primary": "6540",
+      "mcc_codes": [
+        "6540"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://paytm.com"
+      }
+    },
+    {
+      "id": 228,
+      "merchant_name": "phonepe_wallet",
+      "display_name": "PhonePe Wallet",
+      "category_id": "wallet_load",
+      "mcc_primary": "6540",
+      "mcc_codes": [
+        "6540"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.phonepe.com"
+      }
+    },
+    {
+      "id": 229,
+      "merchant_name": "amazon_pay",
+      "display_name": "Amazon Pay",
+      "category_id": "wallet_load",
+      "mcc_primary": "6540",
+      "mcc_codes": [
+        "6540"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.amazon.in/amazonpay"
+      }
+    },
+    {
+      "id": 230,
+      "merchant_name": "mobikwik",
+      "display_name": "MobiKwik",
+      "category_id": "wallet_load",
+      "mcc_primary": "6540",
+      "mcc_codes": [
+        "6540"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.mobikwik.com"
+      }
+    },
+    {
+      "id": 231,
+      "merchant_name": "ola_money",
+      "display_name": "Ola Money",
+      "category_id": "wallet_load",
+      "mcc_primary": "6540",
+      "mcc_codes": [
+        "6540"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.olamoney.com"
+      }
+    },
+    {
+      "id": 232,
+      "merchant_name": "gst_payment",
+      "display_name": "GST Payment",
+      "category_id": "government",
+      "mcc_primary": "9311",
+      "mcc_codes": [
+        "9311"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.gst.gov.in"
+      }
+    },
+    {
+      "id": 233,
+      "merchant_name": "income_tax",
+      "display_name": "Income Tax e-Filing",
+      "category_id": "government",
+      "mcc_primary": "9311",
+      "mcc_codes": [
+        "9311"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.incometax.gov.in"
+      }
+    },
+    {
+      "id": 234,
+      "merchant_name": "parivahan",
+      "display_name": "Parivahan Sewa",
+      "category_id": "government",
+      "mcc_primary": "9399",
+      "mcc_codes": [
+        "9399"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://parivahan.gov.in"
+      }
+    },
+    {
+      "id": 235,
+      "merchant_name": "passport_seva",
+      "display_name": "Passport Seva",
+      "category_id": "government",
+      "mcc_primary": "9399",
+      "mcc_codes": [
+        "9399"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.passportindia.gov.in"
+      }
+    },
+    {
+      "id": 236,
+      "merchant_name": "bharatkosh",
+      "display_name": "Bharatkosh",
+      "category_id": "government",
+      "mcc_primary": "9399",
+      "mcc_codes": [
+        "9399"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://bharatkosh.gov.in"
+      }
+    },
+    {
+      "id": 237,
+      "merchant_name": "kfc",
+      "display_name": "KFC",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://online.kfc.co.in"
+      }
+    },
+    {
+      "id": 238,
+      "merchant_name": "burger_king",
+      "display_name": "Burger King",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.burgerking.in"
+      }
+    },
+    {
+      "id": 239,
+      "merchant_name": "pizza_hut",
+      "display_name": "Pizza Hut",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.pizzahut.co.in"
+      }
+    },
+    {
+      "id": 240,
+      "merchant_name": "subway",
+      "display_name": "Subway",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.subway.com/en-IN"
+      }
+    },
+    {
+      "id": 241,
+      "merchant_name": "third_wave_coffee",
+      "display_name": "Third Wave Coffee",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.thirdwavecoffeeroasters.com"
+      }
+    },
+    {
+      "id": 242,
+      "merchant_name": "blue_tokai",
+      "display_name": "Blue Tokai",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://bluetokaicoffee.com"
+      }
+    },
+    {
+      "id": 243,
+      "merchant_name": "chaayos",
+      "display_name": "Chaayos",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://chaayos.com"
+      }
+    },
+    {
+      "id": 244,
+      "merchant_name": "cafe_coffee_day",
+      "display_name": "Cafe Coffee Day",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.cafecoffeeday.com"
+      }
+    },
+    {
+      "id": 245,
+      "merchant_name": "tim_hortons",
+      "display_name": "Tim Hortons",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://timhortons.in"
+      }
+    },
+    {
+      "id": 246,
+      "merchant_name": "taco_bell",
+      "display_name": "Taco Bell",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.tacobell.co.in"
+      }
+    },
+    {
+      "id": 247,
+      "merchant_name": "wow_momo",
+      "display_name": "Wow! Momo",
+      "category_id": "dining",
+      "mcc_primary": "5814",
+      "mcc_codes": [
+        "5814"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.wowmomo.in"
+      }
+    },
+    {
+      "id": 248,
+      "merchant_name": "barbeque_nation",
+      "display_name": "Barbeque Nation",
+      "category_id": "dining",
+      "mcc_primary": "5812",
+      "mcc_codes": [
+        "5812"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.barbequenation.com"
+      }
+    },
+    {
+      "id": 249,
+      "merchant_name": "haldirams",
+      "display_name": "Haldiram's",
+      "category_id": "dining",
+      "mcc_primary": "5812",
+      "mcc_codes": [
+        "5812"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.haldirams.com"
+      }
+    },
+    {
+      "id": 250,
+      "merchant_name": "theobroma",
+      "display_name": "Theobroma",
+      "category_id": "dining",
+      "mcc_primary": "5462",
+      "mcc_codes": [
+        "5462"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://theobroma.in"
+      }
+    },
+    {
+      "id": 251,
+      "merchant_name": "eatsure",
+      "display_name": "EatSure",
+      "category_id": "food_delivery",
+      "mcc_primary": "5812",
+      "mcc_codes": [
+        "5812"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.eatsure.com"
+      }
+    },
+    {
+      "id": 252,
+      "merchant_name": "magicpin",
+      "display_name": "magicpin",
+      "category_id": "food_delivery",
+      "mcc_primary": "5812",
+      "mcc_codes": [
+        "5812"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://magicpin.in"
+      }
+    },
+    {
+      "id": 253,
+      "merchant_name": "zee5",
+      "display_name": "ZEE5",
+      "category_id": "entertainment",
+      "mcc_primary": "5815",
+      "mcc_codes": [
+        "5815"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.zee5.com"
+      }
+    },
+    {
+      "id": 254,
+      "merchant_name": "jiohotstar",
+      "display_name": "JioHotstar",
+      "category_id": "entertainment",
+      "mcc_primary": "5815",
+      "mcc_codes": [
+        "5815"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.hotstar.com"
+      }
+    },
+    {
+      "id": 255,
+      "merchant_name": "apple_tv",
+      "display_name": "Apple TV+",
+      "category_id": "entertainment",
+      "mcc_primary": "5815",
+      "mcc_codes": [
+        "5815"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://tv.apple.com"
+      }
+    },
+    {
+      "id": 256,
+      "merchant_name": "audible",
+      "display_name": "Audible",
+      "category_id": "entertainment",
+      "mcc_primary": "5815",
+      "mcc_codes": [
+        "5815"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.audible.in"
+      }
+    },
+    {
+      "id": 257,
+      "merchant_name": "kindle",
+      "display_name": "Kindle",
+      "category_id": "entertainment",
+      "mcc_primary": "5815",
+      "mcc_codes": [
+        "5815"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.amazon.in/kindle"
+      }
+    },
+    {
+      "id": 258,
+      "merchant_name": "steam",
+      "display_name": "Steam",
+      "category_id": "entertainment",
+      "mcc_primary": "5816",
+      "mcc_codes": [
+        "5816"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://store.steampowered.com"
+      }
+    },
+    {
+      "id": 259,
+      "merchant_name": "playstation",
+      "display_name": "PlayStation Store",
+      "category_id": "entertainment",
+      "mcc_primary": "5816",
+      "mcc_codes": [
+        "5816"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://store.playstation.com"
+      }
+    },
+    {
+      "id": 260,
+      "merchant_name": "xbox",
+      "display_name": "Xbox",
+      "category_id": "entertainment",
+      "mcc_primary": "5816",
+      "mcc_codes": [
+        "5816"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.xbox.com/en-IN"
+      }
+    },
+    {
+      "id": 261,
+      "merchant_name": "district",
+      "display_name": "District by Zomato",
+      "category_id": "entertainment",
+      "mcc_primary": "7922",
+      "mcc_codes": [
+        "7922"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.district.in"
+      }
+    },
+    {
+      "id": 262,
+      "merchant_name": "insider_in",
+      "display_name": "Insider.in",
+      "category_id": "entertainment",
+      "mcc_primary": "7922",
+      "mcc_codes": [
+        "7922"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://insider.in"
+      }
+    },
+    {
+      "id": 263,
+      "merchant_name": "cinepolis",
+      "display_name": "Cinepolis",
+      "category_id": "entertainment",
+      "mcc_primary": "7832",
+      "mcc_codes": [
+        "7832"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.cinepolisindia.com"
+      }
+    },
+    {
+      "id": 264,
+      "merchant_name": "boat",
+      "display_name": "boAt",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.boat-lifestyle.com"
+      }
+    },
+    {
+      "id": 265,
+      "merchant_name": "noise",
+      "display_name": "Noise",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.gonoise.com"
+      }
+    },
+    {
+      "id": 266,
+      "merchant_name": "oneplus",
+      "display_name": "OnePlus",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.oneplus.in"
+      }
+    },
+    {
+      "id": 267,
+      "merchant_name": "xiaomi",
+      "display_name": "Xiaomi",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.mi.com/in"
+      }
+    },
+    {
+      "id": 268,
+      "merchant_name": "realme",
+      "display_name": "realme",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.realme.com/in"
+      }
+    },
+    {
+      "id": 269,
+      "merchant_name": "nothing",
+      "display_name": "Nothing",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://in.nothing.tech"
+      }
+    },
+    {
+      "id": 270,
+      "merchant_name": "poorvika",
+      "display_name": "Poorvika Mobiles",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.poorvika.com"
+      }
+    },
+    {
+      "id": 271,
+      "merchant_name": "sangeetha_mobiles",
+      "display_name": "Sangeetha Mobiles",
+      "category_id": "electronics",
+      "mcc_primary": "5732",
+      "mcc_codes": [
+        "5732"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.sangeethamobiles.com"
+      }
+    },
+    {
+      "id": 272,
+      "merchant_name": "agoda",
+      "display_name": "Agoda",
+      "category_id": "travel",
+      "mcc_primary": "4722",
+      "mcc_codes": [
+        "4722"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.agoda.com"
+      }
+    },
+    {
+      "id": 273,
+      "merchant_name": "booking_com",
+      "display_name": "Booking.com",
+      "category_id": "travel",
+      "mcc_primary": "4722",
+      "mcc_codes": [
+        "4722"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.booking.com"
+      }
+    },
+    {
+      "id": 274,
+      "merchant_name": "redbus",
+      "display_name": "redBus",
+      "category_id": "travel",
+      "mcc_primary": "4131",
+      "mcc_codes": [
+        "4131"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.redbus.in"
+      }
+    },
+    {
+      "id": 275,
+      "merchant_name": "abhibus",
+      "display_name": "AbhiBus",
+      "category_id": "travel",
+      "mcc_primary": "4131",
+      "mcc_codes": [
+        "4131"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.abhibus.com"
+      }
+    },
+    {
+      "id": 276,
+      "merchant_name": "thomas_cook",
+      "display_name": "Thomas Cook",
+      "category_id": "travel",
+      "mcc_primary": "4722",
+      "mcc_codes": [
+        "4722"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.thomascook.in"
+      }
+    },
+    {
+      "id": 277,
+      "merchant_name": "airbnb",
+      "display_name": "Airbnb",
+      "category_id": "hotels",
+      "mcc_primary": "7011",
+      "mcc_codes": [
+        "7011"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.airbnb.co.in"
+      }
+    },
+    {
+      "id": 278,
+      "merchant_name": "fabhotels",
+      "display_name": "FabHotels",
+      "category_id": "hotels",
+      "mcc_primary": "7011",
+      "mcc_codes": [
+        "7011"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.fabhotels.com"
+      }
+    },
+    {
+      "id": 279,
+      "merchant_name": "treebo",
+      "display_name": "Treebo Hotels",
+      "category_id": "hotels",
+      "mcc_primary": "7011",
+      "mcc_codes": [
+        "7011"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.treebo.com"
+      }
+    },
+    {
+      "id": 280,
+      "merchant_name": "lemon_tree",
+      "display_name": "Lemon Tree Hotels",
+      "category_id": "hotels",
+      "mcc_primary": "7011",
+      "mcc_codes": [
+        "7011"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.lemontreehotels.com"
+      }
+    },
+    {
+      "id": 281,
+      "merchant_name": "ginger_hotels",
+      "display_name": "Ginger Hotels",
+      "category_id": "hotels",
+      "mcc_primary": "7011",
+      "mcc_codes": [
+        "7011"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.gingerhotels.com"
+      }
+    },
+    {
+      "id": 282,
+      "merchant_name": "caratlane",
+      "display_name": "CaratLane",
+      "category_id": "jewellery",
+      "mcc_primary": "5944",
+      "mcc_codes": [
+        "5944"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.caratlane.com"
+      }
+    },
+    {
+      "id": 283,
+      "merchant_name": "bluestone",
+      "display_name": "BlueStone",
+      "category_id": "jewellery",
+      "mcc_primary": "5944",
+      "mcc_codes": [
+        "5944"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.bluestone.com"
+      }
+    },
+    {
+      "id": 284,
+      "merchant_name": "giva",
+      "display_name": "GIVA",
+      "category_id": "jewellery",
+      "mcc_primary": "5944",
+      "mcc_codes": [
+        "5944"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.giva.co"
+      }
+    },
+    {
+      "id": 285,
+      "merchant_name": "malabar_gold",
+      "display_name": "Malabar Gold & Diamonds",
+      "category_id": "jewellery",
+      "mcc_primary": "5944",
+      "mcc_codes": [
+        "5944"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.malabargoldanddiamonds.com"
+      }
+    },
+    {
+      "id": 286,
+      "merchant_name": "senco_gold",
+      "display_name": "Senco Gold & Diamonds",
+      "category_id": "jewellery",
+      "mcc_primary": "5944",
+      "mcc_codes": [
+        "5944"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.sencogoldanddiamonds.com"
+      }
+    },
+    {
+      "id": 287,
+      "merchant_name": "physics_wallah",
+      "display_name": "Physics Wallah",
+      "category_id": "education",
+      "mcc_primary": "8299",
+      "mcc_codes": [
+        "8299"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.pw.live"
+      }
+    },
+    {
+      "id": 288,
+      "merchant_name": "vedantu",
+      "display_name": "Vedantu",
+      "category_id": "education",
+      "mcc_primary": "8299",
+      "mcc_codes": [
+        "8299"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.vedantu.com"
+      }
+    },
+    {
+      "id": 289,
+      "merchant_name": "scaler",
+      "display_name": "Scaler",
+      "category_id": "education",
+      "mcc_primary": "8299",
+      "mcc_codes": [
+        "8299"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.scaler.com"
+      }
+    },
+    {
+      "id": 290,
+      "merchant_name": "great_learning",
+      "display_name": "Great Learning",
+      "category_id": "education",
+      "mcc_primary": "8299",
+      "mcc_codes": [
+        "8299"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.mygreatlearning.com"
+      }
+    },
+    {
+      "id": 291,
+      "merchant_name": "udemy",
+      "display_name": "Udemy",
+      "category_id": "education",
+      "mcc_primary": "8299",
+      "mcc_codes": [
+        "8299"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.udemy.com"
+      }
+    },
+    {
+      "id": 292,
+      "merchant_name": "duolingo",
+      "display_name": "Duolingo",
+      "category_id": "education",
+      "mcc_primary": "8299",
+      "mcc_codes": [
+        "8299"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.duolingo.com"
+      }
+    },
+    {
+      "id": 293,
+      "merchant_name": "truemeds",
+      "display_name": "Truemeds",
+      "category_id": "pharmacy",
+      "mcc_primary": "5912",
+      "mcc_codes": [
+        "5912"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.truemeds.in"
+      }
+    },
+    {
+      "id": 294,
+      "merchant_name": "wellness_forever",
+      "display_name": "Wellness Forever",
+      "category_id": "pharmacy",
+      "mcc_primary": "5912",
+      "mcc_codes": [
+        "5912"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.wellnessforever.com"
+      }
+    },
+    {
+      "id": 295,
+      "merchant_name": "redcliffe_labs",
+      "display_name": "Redcliffe Labs",
+      "category_id": "pharmacy",
+      "mcc_primary": "8071",
+      "mcc_codes": [
+        "8071"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://redcliffelabs.com"
+      }
+    },
+    {
+      "id": 296,
+      "merchant_name": "healthians",
+      "display_name": "Healthians",
+      "category_id": "pharmacy",
+      "mcc_primary": "8071",
+      "mcc_codes": [
+        "8071"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.healthians.com"
+      }
+    },
+    {
+      "id": 297,
+      "merchant_name": "blusmart",
+      "display_name": "BluSmart",
+      "category_id": "cabs",
+      "mcc_primary": "4121",
+      "mcc_codes": [
+        "4121"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://blu-smart.com"
+      }
+    },
+    {
+      "id": 298,
+      "merchant_name": "namma_yatri",
+      "display_name": "Namma Yatri",
+      "category_id": "cabs",
+      "mcc_primary": "4121",
+      "mcc_codes": [
+        "4121"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://nammayatri.in"
+      }
+    },
+    {
+      "id": 299,
+      "merchant_name": "digit_insurance",
+      "display_name": "Go Digit",
+      "category_id": "insurance",
+      "mcc_primary": "6300",
+      "mcc_codes": [
+        "6300"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.godigit.com"
+      }
+    },
+    {
+      "id": 300,
+      "merchant_name": "star_health",
+      "display_name": "Star Health",
+      "category_id": "insurance",
+      "mcc_primary": "6300",
+      "mcc_codes": [
+        "6300"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.starhealth.in"
+      }
+    },
+    {
+      "id": 301,
+      "merchant_name": "hdfc_ergo",
+      "display_name": "HDFC ERGO",
+      "category_id": "insurance",
+      "mcc_primary": "6300",
+      "mcc_codes": [
+        "6300"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.hdfcergo.com"
+      }
+    },
+    {
+      "id": 302,
+      "merchant_name": "icici_lombard",
+      "display_name": "ICICI Lombard",
+      "category_id": "insurance",
+      "mcc_primary": "6300",
+      "mcc_codes": [
+        "6300"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.icicilombard.com"
+      }
+    },
+    {
+      "id": 303,
+      "merchant_name": "tata_aig",
+      "display_name": "TATA AIG",
+      "category_id": "insurance",
+      "mcc_primary": "6300",
+      "mcc_codes": [
+        "6300"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.tataaig.com"
+      }
+    },
+    {
+      "id": 304,
+      "merchant_name": "bsnl",
+      "display_name": "BSNL",
+      "category_id": "telecom",
+      "mcc_primary": "4814",
+      "mcc_codes": [
+        "4814"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.bsnl.co.in"
+      }
+    },
+    {
+      "id": 305,
+      "merchant_name": "jiofiber",
+      "display_name": "JioFiber",
+      "category_id": "telecom",
+      "mcc_primary": "4814",
+      "mcc_codes": [
+        "4814"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.jio.com/fiber"
+      }
+    },
+    {
+      "id": 306,
+      "merchant_name": "act_fibernet",
+      "display_name": "ACT Fibernet",
+      "category_id": "telecom",
+      "mcc_primary": "4814",
+      "mcc_codes": [
+        "4814"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.actcorp.in"
+      }
+    },
+    {
+      "id": 307,
+      "merchant_name": "tata_play",
+      "display_name": "Tata Play",
+      "category_id": "telecom",
+      "mcc_primary": "4899",
+      "mcc_codes": [
+        "4899"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.tataplay.com"
+      }
+    },
+    {
+      "id": 308,
+      "merchant_name": "tata_power",
+      "display_name": "Tata Power",
+      "category_id": "utilities",
+      "mcc_primary": "4900",
+      "mcc_codes": [
+        "4900"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.tatapower.com"
+      }
+    },
+    {
+      "id": 309,
+      "merchant_name": "adani_electricity",
+      "display_name": "Adani Electricity",
+      "category_id": "utilities",
+      "mcc_primary": "4900",
+      "mcc_codes": [
+        "4900"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.adanielectricity.com"
+      }
+    },
+    {
+      "id": 310,
+      "merchant_name": "bses",
+      "display_name": "BSES Delhi",
+      "category_id": "utilities",
+      "mcc_primary": "4900",
+      "mcc_codes": [
+        "4900"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.bsesdelhi.com"
+      }
+    },
+    {
+      "id": 311,
+      "merchant_name": "indane_gas",
+      "display_name": "Indane Gas",
+      "category_id": "utilities",
+      "mcc_primary": "4900",
+      "mcc_codes": [
+        "4900"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://cx.indianoil.in"
+      }
+    },
+    {
+      "id": 312,
+      "merchant_name": "bharat_gas",
+      "display_name": "Bharat Gas",
+      "category_id": "utilities",
+      "mcc_primary": "4900",
+      "mcc_codes": [
+        "4900"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://my.ebharatgas.com"
+      }
+    },
+    {
+      "id": 313,
+      "merchant_name": "vishal_mega_mart",
+      "display_name": "Vishal Mega Mart",
+      "category_id": "departmental_store",
+      "mcc_primary": "5311",
+      "mcc_codes": [
+        "5311"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.vishalmegamart.com"
+      }
+    },
+    {
+      "id": 314,
+      "merchant_name": "central",
+      "display_name": "Central",
+      "category_id": "departmental_store",
+      "mcc_primary": "5311",
+      "mcc_codes": [
+        "5311"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.centralandme.com"
+      }
+    },
+    {
+      "id": 315,
+      "merchant_name": "shopsy",
+      "display_name": "Shopsy",
+      "category_id": "online_shopping",
+      "mcc_primary": "5399",
+      "mcc_codes": [
+        "5399"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.shopsy.in"
+      }
+    },
+    {
+      "id": 316,
+      "merchant_name": "nykaa_fashion",
+      "display_name": "Nykaa Fashion",
+      "category_id": "online_shopping",
+      "mcc_primary": "5651",
+      "mcc_codes": [
+        "5651"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.nykaafashion.com"
+      }
+    },
+    {
+      "id": 317,
+      "merchant_name": "mokobara",
+      "display_name": "Mokobara",
+      "category_id": "online_shopping",
+      "mcc_primary": "5699",
+      "mcc_codes": [
+        "5699"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://mokobara.com"
+      }
+    },
+    {
+      "id": 318,
+      "merchant_name": "housing_com",
+      "display_name": "Housing.com",
+      "category_id": "rent",
+      "mcc_primary": "6513",
+      "mcc_codes": [
+        "6513"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://housing.com"
+      }
+    },
+    {
+      "id": 319,
+      "merchant_name": "magicbricks",
+      "display_name": "Magicbricks",
+      "category_id": "rent",
+      "mcc_primary": "6513",
+      "mcc_codes": [
+        "6513"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.magicbricks.com"
+      }
+    },
+    {
+      "id": 320,
+      "merchant_name": "railyatri",
+      "display_name": "RailYatri",
+      "category_id": "railways",
+      "mcc_primary": "4112",
+      "mcc_codes": [
+        "4112"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.railyatri.in"
+      }
+    },
+    {
+      "id": 321,
+      "merchant_name": "nayara_energy",
+      "display_name": "Nayara Energy",
+      "category_id": "fuel",
+      "mcc_primary": "5541",
+      "mcc_codes": [
+        "5541"
+      ],
+      "statement_aliases": [],
+      "is_online": 0,
+      "metadata": {
+        "url": "https://www.nayaraenergy.com"
+      }
+    },
+    {
+      "id": 322,
+      "merchant_name": "air_india_express",
+      "display_name": "Air India Express",
+      "category_id": "airlines",
+      "mcc_primary": "4511",
+      "mcc_codes": [
+        "4511"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.airindiaexpress.com"
+      }
+    },
+    {
+      "id": 323,
+      "merchant_name": "emirates",
+      "display_name": "Emirates",
+      "category_id": "airlines",
+      "mcc_primary": "4511",
+      "mcc_codes": [
+        "4511"
+      ],
+      "statement_aliases": [],
+      "is_online": 1,
+      "metadata": {
+        "url": "https://www.emirates.com/in"
+      }
     }
   ]
 }

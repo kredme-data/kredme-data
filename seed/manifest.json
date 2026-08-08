@@ -1,9 +1,9 @@
 {
-  "version": "5.1.2",
+  "version": "5.1.3",
   "updated_at": "2026-08-07T00:00:00.000000Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Corrects base_reward_rate on 4 cards where the percentage number was stored where a fraction belongs, so the app rendered 15-75% cashback. Each new value is quoted from the issuer's own product page: Axis Cashback 0.75%, YES Prosperity Cashback Plus 0.75%, Kotak Cashback+ 0.5%, Google Pay Flex Axis 0.4% (2 stars per Rs500 at Rs1/star). IDFC FIRST EARN and Paytm HDFC Mobile are NOT fixed here - their pages could not be read and the correct value must not be guessed.",
+  "_note": "Adds 157 merchants (116 -> 273), weighted to what 20-45 Indian users actually spend on. Fills three app categories that had ZERO merchants: home_decor, wallet_load, government. apparel 6 -> 30 and personal_care 2 -> 16 were the biggest gaps. Every category_id is a slug from the app's own bundled categories.json; no non-fuel merchant carries a fuel MCC.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1202,
@@ -24,8 +24,8 @@
     {
       "name": "merchants.json",
       "path": "seed/merchants.json",
-      "checksum": "98b75e61f6157f08af6dce598c10b199ea89b0662422d1352e161e2400bab28b",
-      "size_bytes": 51822
+      "checksum": "ac09dc38116f622a4f41094497b4fdb8fa9e1eb19f61a5c930b5c996fa5a8ecb",
+      "size_bytes": 104333
     }
   ],
   "delta_file": null,
