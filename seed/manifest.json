@@ -1,9 +1,9 @@
 {
-  "version": "5.1.4",
-  "updated_at": "2026-08-09T17:02:39Z",
+  "version": "5.1.5",
+  "updated_at": "2026-08-09T17:33:17Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Corrects 136 reward rules on 47 cards whose stored number contradicted the rule's own text, plus 12 caps stated in points but stored as rupees. Every value is arithmetic on figures already in the rule's own sentence at the card's own point value - nothing researched, nothing guessed. Corrections only ever lower a displayed rate; where the prose claims MORE than we show (10 rules) the number is left alone and reported, because issuer marketing overstates. IDFC FIRST EARN's base is fixed from its own rule text ('0.5% base'); Paytm HDFC Mobile's two representations are made to agree but its value is still unverified and needs HDFC's own document. Also sets rp_value_standard to 1.0 on 31 cashback_inr cards where it was null: one unit of cashback_inr IS one rupee, and left null it falls back to 0.25 so the app showed a quarter of the truth (Axis Ace 0.38% -> 1.50%). Two cashback_inr cards carry an explicit value someone chose and are left alone.",
+  "_note": "Corrects 136 reward rules on 47 cards whose stored number contradicted the rule's own text, plus 12 caps stated in points but stored as rupees. Every value is arithmetic on figures already in the rule's own sentence at the card's own point value - nothing researched, nothing guessed. Corrections only ever lower a displayed rate; where the prose claims MORE than we show (10 rules) the number is left alone and reported, because issuer marketing overstates. IDFC FIRST EARN's base is fixed from its own rule text ('0.5% base'); Paytm HDFC Mobile's two representations are made to agree but its value is still unverified and needs HDFC's own document. Also sets rp_value_standard to 1.0 on 31 cashback_inr cards where it was null: one unit of cashback_inr IS one rupee, and left null it falls back to 0.25 so the app showed a quarter of the truth (Axis Ace 0.38% -> 1.50%). Two cashback_inr cards carry an explicit value someone chose and are left alone. Also adds 157 merchants (116 -> 273) and fills apparel, personal_care, home_decor, wallet_load and government, which had almost nothing to match the reward rules that already targeted them.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1202,
@@ -12,7 +12,8 @@
     "total_milestone_rules": 414,
     "total_fuel_surcharge_rules": 353,
     "total_travel_cards": 81,
-    "issuers": 34
+    "issuers": 34,
+    "total_merchants": 273
   },
   "files": [
     {
@@ -24,8 +25,8 @@
     {
       "name": "merchants.json",
       "path": "seed/merchants.json",
-      "checksum": "98b75e61f6157f08af6dce598c10b199ea89b0662422d1352e161e2400bab28b",
-      "size_bytes": 51822
+      "checksum": "ac09dc38116f622a4f41094497b4fdb8fa9e1eb19f61a5c930b5c996fa5a8ecb",
+      "size_bytes": 104333
     }
   ],
   "delta_file": null,
