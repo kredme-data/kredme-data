@@ -1,9 +1,9 @@
 {
-  "version": "5.1.2",
-  "updated_at": "2026-08-07T00:00:00.000000Z",
+  "version": "5.1.4",
+  "updated_at": "2026-08-09T17:02:39Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Corrects base_reward_rate on 4 cards where the percentage number was stored where a fraction belongs, so the app rendered 15-75% cashback. Each new value is quoted from the issuer's own product page: Axis Cashback 0.75%, YES Prosperity Cashback Plus 0.75%, Kotak Cashback+ 0.5%, Google Pay Flex Axis 0.4% (2 stars per Rs500 at Rs1/star). IDFC FIRST EARN and Paytm HDFC Mobile are NOT fixed here - their pages could not be read and the correct value must not be guessed.",
+  "_note": "Corrects 136 reward rules on 47 cards whose stored number contradicted the rule's own text, plus 12 caps stated in points but stored as rupees. Every value is arithmetic on figures already in the rule's own sentence at the card's own point value - nothing researched, nothing guessed. Corrections only ever lower a displayed rate; where the prose claims MORE than we show (10 rules) the number is left alone and reported, because issuer marketing overstates. IDFC FIRST EARN's base is fixed from its own rule text ('0.5% base'); Paytm HDFC Mobile's two representations are made to agree but its value is still unverified and needs HDFC's own document. Also sets rp_value_standard to 1.0 on 31 cashback_inr cards where it was null: one unit of cashback_inr IS one rupee, and left null it falls back to 0.25 so the app showed a quarter of the truth (Axis Ace 0.38% -> 1.50%). Two cashback_inr cards carry an explicit value someone chose and are left alone.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1202,
@@ -18,8 +18,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "7db6f5d351a1d05d8669b2e11d23473c4f260153a1b9f100b98c0c413b7144cc",
-      "size_bytes": 1948676
+      "checksum": "25fe3642f18fb278c089ee2898a5cb352ae91c09416da2193a94f4651d6f5ead",
+      "size_bytes": 1716583
     },
     {
       "name": "merchants.json",
