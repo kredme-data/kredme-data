@@ -96,6 +96,21 @@ NEWS_REQUIRED = ("id", "title", "summary")
 # (5x too low) and Axis Cashback renders 75% (100x too high).
 RATE_CEILING_PCT = 10.0
 RATE_FLOOR_PCT = 0.1
+# The ceiling above is ratcheted — live already violates it in 61 places, so a
+# pre-existing breach is a warning. This one is not. Nothing may EVER render
+# above 40%. The line is set on evidence, not a round number: HDFC's SmartBuy
+# 10X on Diners Club Black genuinely reaches ~33%, so a 30% ceiling would block
+# a real product. Nothing legitimate clears 40%, and every case observed above
+# it has been a unit bug. There is deliberately no baseline key for this check
+# — unlike every other one here, it cannot be grandfathered.
+HARD_CEILING_PCT = 40.0
+# How far a rule's rendered rate may drift from the rate its OWN sentence
+# states before we call it a contradiction. 1.6x is loose enough to absorb
+# rounding and issuer marketing ("up to ~8.6%") and tight enough to catch every
+# known mechanism, all of which are off by 4x or more.
+SELF_CONTRADICTION_RATIO = 1.6
+# Below this, a disagreement is arithmetic noise on two tiny numbers.
+SELF_CONTRADICTION_FLOOR_PCT = 0.4
 # Mirrors CreditCardData.sanePointValue (credit_card.dart:533) and the
 # `?? 0.25` fallback in fromOtaJson (credit_card.dart:766). If the app changes
 # either, this gate starts measuring the wrong thing.
@@ -395,6 +410,92 @@ def rule_pct(rule: dict, inner: dict, base_pct: float) -> float:
     return base_pct
 
 
+# ---------------------------------------------------------------- self-consistency
+#
+# Every check above asks "is this number plausible?". This one asks a stricter
+# and more useful question: "does this number agree with the sentence sitting
+# next to it?"
+#
+# Almost every reward rule carries the issuer's own mechanics in `rule_name`:
+#
+#     "24 reward points on every Rs. 150 spent on fuel at IndianOil outlets"
+#
+# At this card's point value (Rs.0.20) that sentence says 3.2%. The stored
+# number renders 24%. The file contradicts itself, and no issuer website is
+# needed to prove it — which is what makes this check cheap enough to run on
+# every publish and impossible to argue with.
+#
+# The parsers are deliberately narrow. A rule whose prose we cannot read
+# confidently is skipped, never guessed at: a false accusation here blocks a
+# publish, so silence is the safe failure mode.
+
+_CL_NUM = r"(\d+(?:\.\d+)?)"
+_CL_RS = r"(?:Rs\.?\s*|₹\s*|INR\s*)"
+# "24 reward points on every Rs. 150" / "(24 Points per ₹100)" / "40 RP per Rs 200"
+_CL_POINTS_PER_SPEND = re.compile(
+    _CL_NUM + r"\s*(?:reward\s+)?(?:points?|RP)\b[^.;]{0,45}?"
+    r"(?:per|on every|for every|for each|on each|each|every|/)\s*" + _CL_RS + r"(\d[\d,]*)", re.I)
+# "reward rate of 2.5%" / "up to ~8.6% reward rate" — the issuer's own effective rate
+_CL_EFFECTIVE = re.compile(
+    r"(?:reward\s+rate\s+of\s*~?\s*" + _CL_NUM + r"\s*%"
+    r"|~?\s*" + _CL_NUM + r"\s*%\s*(?:reward|earn)\s+rate)", re.I)
+# "5% cashback on ..." / "7% back on ..."
+_CL_CASHBACK = re.compile(
+    _CL_NUM + r"\s*%\s*(?:cash\s*back|cashback|back\b|discount)", re.I)
+# "50% more Reward Points" / "50% extra points" — a RELATIVE uplift on the base
+# earn, not an absolute rate. Stored as 0.5 it renders 50% cashback; the issuer
+# means base x 1.5. HDFC Superia, Solitaire and Doctors Superia all ship this.
+_CL_RELATIVE = re.compile(
+    _CL_NUM + r"\s*%\s*(?:more|extra|additional|bonus)\s+(?:reward\s+)?points?", re.I)
+# "5X Reward Points" / "10X points" — a multiple of the base earn. Stored as an
+# absolute rate it renders 5X as 500%, or as here 0.2 -> 20%.
+_CL_MULTIPLE = re.compile(
+    r"\b" + _CL_NUM + r"\s*X\s+(?:accelerated\s+)?(?:reward\s+)?points?", re.I)
+
+
+def claimed_pct(rule: dict, inner: dict, base_pct: float = 0.0) -> tuple[float | None, str]:
+    """The rate this rule's own sentence claims, and how we read it.
+
+    Returns (None, "") when the prose states nothing we can parse — which is
+    most rules, and is fine. Skipping is always safe; guessing never is.
+
+    Order matters: an issuer-stated effective rate ("reward rate of 8.6%") is
+    the strongest signal and wins over a raw points count in the same sentence.
+    """
+    name = rule.get("rule_name") or ""
+    rp = _fnum(inner.get("rp_value_standard"))
+    pv = _sane_point_value(rp if rp is not None else APP_POINT_VALUE_DEFAULT)
+
+    m = _CL_EFFECTIVE.search(name)
+    if m:
+        return float(next(g for g in m.groups() if g)), "states an effective reward rate"
+
+    m = _CL_POINTS_PER_SPEND.search(name)
+    if m:
+        pts, spend = float(m.group(1)), float(m.group(2).replace(",", ""))
+        if spend > 0:
+            return (pts * pv / spend) * 100, f"{pts:g} pts per Rs.{spend:g} at Rs.{pv:g}/pt"
+
+    # Relative forms need the card's base earn to mean anything. With no base
+    # rate there is no claim to test, so stay silent rather than invent one.
+    if base_pct > 0:
+        m = _CL_RELATIVE.search(name)
+        if m:
+            up = float(m.group(1))
+            return base_pct * (1 + up / 100), f"{up:g}% more than a {base_pct:.2f}% base"
+
+        m = _CL_MULTIPLE.search(name)
+        if m:
+            mult = float(m.group(1))
+            return base_pct * mult, f"{mult:g}x a {base_pct:.2f}% base"
+
+    m = _CL_CASHBACK.search(name)
+    if m:
+        return float(m.group(1)), "states a cashback percentage"
+
+    return None, ""
+
+
 def _rule_key(cid: str, rule: dict) -> str:
     """Stable-enough identity for a rule: rule_name survives reordering, index does not."""
     return f"{cid}::{(rule.get('rule_name') or '').strip()[:80]}"
@@ -404,6 +505,7 @@ def scan_economics(cards: list) -> dict:
     """Compute every number the gate reasons about. Pure — no reporting."""
     over_cards, under_cards, zero_cards = [], [], []
     over_rules, prose_risk = [], []
+    hard_ceiling, contradictions = [], []
     n_cards = 0
 
     for entry in cards:
@@ -416,6 +518,8 @@ def scan_economics(cards: list) -> dict:
         n_cards += 1
 
         base = card_base_pct(inner)
+        if base > HARD_CEILING_PCT:
+            hard_ceiling.append((f"{cid}::<base rate>", round(base, 2)))
         if base == 0:
             zero_cards.append(cid)
         elif base > RATE_CEILING_PCT:
@@ -444,6 +548,19 @@ def scan_economics(cards: list) -> dict:
             if not isinstance(rule, dict):
                 continue
             pct = rule_pct(rule, inner, base)
+
+            # Unwaivable. See HARD_CEILING_PCT.
+            if pct > HARD_CEILING_PCT:
+                hard_ceiling.append((_rule_key(cid, rule), round(pct, 2)))
+
+            # Does the number agree with its own sentence?
+            claim, how = claimed_pct(rule, inner, base)
+            if claim is not None and max(pct, claim) >= SELF_CONTRADICTION_FLOOR_PCT:
+                ratio = (pct / claim) if claim > 0 else float("inf")
+                if ratio > SELF_CONTRADICTION_RATIO or ratio < 1 / SELF_CONTRADICTION_RATIO:
+                    contradictions.append(
+                        (_rule_key(cid, rule), round(pct, 2), round(claim, 2), how))
+
             if pct > RATE_CEILING_PCT:
                 over_rules.append((_rule_key(cid, rule), round(pct, 2)))
                 # A named rule that advertises a category the card excludes.
@@ -459,6 +576,8 @@ def scan_economics(cards: list) -> dict:
         "under_floor_cards": sorted(under_cards, key=lambda x: x[1]),
         "over_ceiling_rules": sorted(over_rules, key=lambda x: -x[1]),
         "prose_excluded_high_rate": prose_risk,
+        "over_hard_ceiling": sorted(hard_ceiling, key=lambda x: -x[1]),
+        "self_contradicting_rules": sorted(contradictions, key=lambda x: -(x[1] / max(x[2], 1e-9))),
     }
 
 
@@ -580,9 +699,45 @@ def validate_economics(cards: list, rep: Report) -> dict:
             f"(baseline {len(known_prose)}): {[(c, h, p) for _, c, h, p in prose_now[:4]]}"
         )
 
+    # 6. THE UNWAIVABLE ONE. Every check above is ratcheted, which is what makes
+    #    them shippable — and also what let 58 known-bad rules into the baseline
+    #    on 7 Aug, after which none of them blocked anything. This check has no
+    #    baseline key on purpose. Nothing renders above 30%, ever, for any reason.
+    if scan["over_hard_ceiling"]:
+        worst = scan["over_hard_ceiling"][:6]
+        rep.error(
+            f"{len(scan['over_hard_ceiling'])} rate(s) render above {HARD_CEILING_PCT:g}% — "
+            f"no Indian card pays that, so this is a unit bug and it is not waivable: "
+            f"{[f'{k.split('::')[0]}={p}%' for k, p in worst]}"
+        )
+
+    # 7. A rule whose number contradicts its own sentence. Ratcheted so existing
+    #    debt does not block unrelated work, but a NEW one is always fatal —
+    #    there is no version of "this rule says 24 points per Rs.150 and also
+    #    24% cashback" that is a judgement call. It is a typo, provable offline.
+    known_contra = set((base or {}).get("self_contradicting_rules") or [])
+    contra_now = {k for k, _, _, _ in scan["self_contradicting_rules"]}
+    new_contra = sorted(contra_now - known_contra)
+    if new_contra:
+        detail = [f"{k.split('::')[0]}" for k in new_contra[:5]]
+        rep.error(
+            f"{len(new_contra)} reward rule(s) NEWLY display a rate their own text "
+            f"contradicts — the issuer mechanics are in the rule name and they disagree "
+            f"with the stored number: {detail}"
+        )
+    if base is not None and contra_now:
+        n = len(contra_now)
+        (ok if n < len(known_contra) else warn)(
+            f"{n} rule(s) still contradict their own text (baseline {len(known_contra)}); "
+            f"worst: " + ", ".join(
+                f"{k.split('::')[0]} shows {p}% vs {c}% claimed"
+                for k, p, c, _ in scan["self_contradicting_rules"][:3])
+        )
+
     if not rep.failed:
         ok(f"{scan['card_count']} cards priced within {RATE_FLOOR_PCT:g}-{RATE_CEILING_PCT:g}% "
-           f"or explicitly baselined")
+           f"or explicitly baselined, none above {HARD_CEILING_PCT:g}%, "
+           f"none contradicting their own text")
     return scan
 
 
@@ -593,6 +748,9 @@ BASELINE_LISTS = {
     "over_ceiling_rules":       lambda scan: {k for k, _ in scan["over_ceiling_rules"]},
     "under_floor_cards":        lambda scan: {c for c, _ in scan["under_floor_cards"]},
     "prose_excluded_high_rate": lambda scan: {f"{c}::{h}" for c, h, _ in scan["prose_excluded_high_rate"]},
+    # NOTE: `over_hard_ceiling` is deliberately absent. It is the one check with
+    # no waiver, so writing it to the baseline would defeat the point.
+    "self_contradicting_rules": lambda scan: {k for k, _, _, _ in scan["self_contradicting_rules"]},
 }
 
 
