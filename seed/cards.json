@@ -1537,7 +1537,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -1572,7 +1572,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
