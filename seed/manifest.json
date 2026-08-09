@@ -1,9 +1,9 @@
 {
-  "version": "5.1.8",
-  "updated_at": "2026-08-09T18:53:12Z",
+  "version": "5.1.9",
+  "updated_at": "2026-08-09T19:59:32Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "AU Altura Plus rebuilt from AU's own page: base to 1 RP/Rs.100 (0.25%), the online rule retyped from a multiplier that rendered 0.75% to the 2 RP/Rs.100 AU actually states (0.50%), plus the 1.5% offline cashback headline and the Utility/Telecom/Insurance rule capped at Rs.25 per transaction. AU LIT's four accelerated rules capped at Rs.2,500/cycle from the Card Member Agreement's 10,000 RP cap; its base is unchanged because AU publishes no base earn rate for LIT anywhere - product guide, product page, MITC and Member Agreement all give only purchasable packs.",
+  "_note": "Retypes 81 reward rules whose own text states an absolute points count (N points per Rs.M) but which were stored as multiplier, the field the app computes as rate x base rate x point value. 15 rendered a wrong number; the other 66 were right only because those cards happen to earn exactly 1 point per the same unit, which made both readings agree - they were one base-rate edit away from breaking silently. Same mechanism as the 24% IndianOil fuel rate. Every value comes from the rule's own sentence; nothing researched.",
   "stats": {
     "total_cards": 376,
     "total_reward_rules": 1205,
@@ -19,8 +19,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "ac87a05d9f0a079b53e1f3951827703c98175aa33a0c9bc3a7193c978e4b2ae3",
-      "size_bytes": 1718100
+      "checksum": "5a2b63c70272f61c201d8e4589f74aeca8956148aaea518ab737f1dccf456416",
+      "size_bytes": 1718669
     },
     {
       "name": "merchants.json",
