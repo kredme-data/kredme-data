@@ -521,7 +521,7 @@ def _gate(cards, baseline):
 # A baseline describing a clean 2-card catalog, so any defect reads as NEW.
 _CLEAN_BASE = {"card_count": 2, "zero_rate_cards": 0, "over_ceiling_cards": [],
                "over_ceiling_rules": [], "under_floor_cards": [],
-               "prose_excluded_high_rate": []}
+               "prose_excluded_high_rate": [], "self_contradicting_rules": []}
 
 
 @unit
@@ -564,10 +564,81 @@ def test_new_rate_above_ceiling_is_fatal():
 
 @unit
 def test_baselined_rate_does_not_block():
+    # 15% is over the ratcheted ceiling but under the unwaivable one, so the
+    # ratchet is what is under test here. (A baselined 75% is a different case
+    # and must still block — see test_hard_ceiling_cannot_be_baselined.)
     base = dict(_CLEAN_BASE, over_ceiling_cards=["bad_card"],
                 prose_excluded_high_rate=[], card_count=2)
-    rep = _gate([_c("ok_card", 0.01, 1.0), _c("bad_card", 0.75, 1.0)], base)
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("bad_card", 0.15, 1.0)], base)
     assert not rep.failed, "a known defect must not block unrelated publishes"
+
+
+@unit
+def test_hard_ceiling_cannot_be_baselined():
+    """The one check with no escape hatch.
+
+    Every other check is ratcheted, which is why 58 known-bad rules were written
+    into rate_baseline.json on 7 Aug and stopped blocking anything. A rate above
+    30% is never a card, always a bug, so listing it must not buy a pass.
+    """
+    base = dict(_CLEAN_BASE, over_ceiling_cards=["bad_card"],
+                over_ceiling_rules=["bad_card::<base rate>"], card_count=2)
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("bad_card", 0.75, 1.0)], base)
+    assert rep.failed, "75% must block even when it is in the baseline"
+    assert any("not waivable" in e for e in rep.errors), rep.errors
+
+
+@unit
+def test_rule_contradicting_its_own_text_is_fatal():
+    """IndianOil Kotak, exactly as it ships today.
+
+    The rule name states 24 points per Rs.150. At this card's Rs.0.20 point
+    value that is 3.2%. The stored 0.24 renders 24%. No issuer page needed.
+    """
+    rule = {"rule_name": "4% back as reward points on fuel spends. 24 reward points "
+                         "on every Rs. 150 spent on fuel at IndianOil outlets",
+            "reward_type": "cashback_pct", "reward_rate": 0.24}
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("indianoil", 0.02, 0.2, rules=[rule])],
+                _CLEAN_BASE)
+    assert rep.failed, "a rule contradicting its own text must block"
+    assert any("contradicts" in e for e in rep.errors), rep.errors
+
+
+@unit
+def test_corrected_rule_passes():
+    """The same rule after the fix: 0.24 -> 0.032 renders 3.2%, matching its text."""
+    rule = {"rule_name": "4% back as reward points on fuel spends. 24 reward points "
+                         "on every Rs. 150 spent on fuel at IndianOil outlets",
+            "reward_type": "cashback_pct", "reward_rate": 0.032}
+    rep = _gate([_c("ok_card", 0.01, 1.0), _c("indianoil", 0.02, 0.2, rules=[rule])],
+                _CLEAN_BASE)
+    assert not rep.failed, f"the corrected rate must pass: {rep.errors}"
+
+
+@unit
+def test_unparseable_prose_is_skipped_never_guessed():
+    """Silence is the safe failure mode: a false accusation blocks a publish."""
+    for name in ("Base reward rate", "Welcome benefit", "Lounge access", ""):
+        rule = {"rule_name": name, "reward_type": "cashback_pct", "reward_rate": 0.05}
+        rep = _gate([_c("ok_card", 0.01, 1.0), _c("x", 0.01, 1.0, rules=[rule])],
+                    _CLEAN_BASE)
+        assert not rep.failed, f"{name!r} states no claim and must not be flagged"
+
+
+@unit
+def test_claimed_pct_reads_the_issuer_units():
+    inner = {"base_reward_rate": 0.02, "rp_value_standard": 0.2}
+    pct, how = K.claimed_pct({"rule_name": "24 reward points on every Rs. 150 spent"}, inner)
+    assert abs(pct - 3.2) < 1e-9, pct
+    assert "24 pts per Rs.150" in how
+    # an issuer-stated effective rate wins over a points count in the same sentence
+    pct, _ = K.claimed_pct({"rule_name": "5X points on every ₹150, reward rate of 8.6%"}, inner)
+    assert abs(pct - 8.6) < 1e-9, pct
+    # a plain cashback percentage
+    pct, _ = K.claimed_pct({"rule_name": "5% cashback on movie tickets"}, inner)
+    assert abs(pct - 5.0) < 1e-9, pct
+    # nothing parseable -> None, never a guess
+    assert K.claimed_pct({"rule_name": "Milestone benefit"}, inner)[0] is None
 
 
 @unit
