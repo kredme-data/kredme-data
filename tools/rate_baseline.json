@@ -201,5 +201,34 @@
     "yes_bank_select::8 Reward Points on every ₹200 spent on online purchases, capped at 5,000 points ",
     "yes_bank_yes_ace::2 Reward Points for each ₹200 spent on Select categories: Recharge, Utility, Ins",
     "yes_bank_yes_privateprivate_prime::40 Reward Points for every Rs. 200 spent on international transactions"
-  ]
+  ],
+  "non_numeric_caps": [
+    "axis_bank_airtel_axis_bank::10% cashback on gas, electricity, and water bill payments via Airtel Thanks app.",
+    "axis_bank_airtel_axis_bank::25% cashback on Airtel recharges via Airtel Thanks app. Maximum cashback is twic",
+    "axis_bank_samsung_axis_bank_signature::10% cashback on purchases via Samsung physical stores, brand EMI, and Samsung E-",
+    "hdfc_bank_easy_emi::5% cashback on Amazon, Flipkart, hotel/flight bookings via PayZapp or SmartBuy, ",
+    "hdfc_bank_indianoil_hdfc_bank::5% Fuel Points on grocery spending",
+    "hdfc_bank_indianoil_hdfc_bank::5% Fuel Points on utility bill payments",
+    "hdfc_bank_indianoil_hdfc_bank::5% of spends as Fuel Points at IndianOil outlets",
+    "icici_bank_parakram::5X reward points on every Rs. 100 spent on CSDs, groceries, and departmental sto",
+    "icici_bank_parakram_select::5X reward points on every Rs. 100 spent on groceries, department stores, and CSD",
+    "kotak_mahindra_bank_essentia_platinum::10 Saving Points for every Rs. 100 spent at grocery and departmental stores. App",
+    "rbl_bank_indianoil_rbl_bank_xtra::15 Fuel Points/₹100 spent at IndianOil fuel stations. Reward rate of 7.5%. Maxim",
+    "yes_bank_yes_elite::12 Reward Points per ₹200 spent on online transactions",
+    "yes_bank_yes_elite::4 Reward Points per ₹200 spent on utilities, government services, education, and",
+    "yes_bank_yes_prosperity_rewards::4 Reward Points per ₹200 spent on dining and travel, capped at 750 RPs monthly ["
+  ],
+  "duplicate_rule_names": [
+    "amex_smartearn::500 points cap combined with other 10X brands",
+    "amex_smartearn::Max cap of 500 RPs per month, separate from other 10X brands",
+    "hdfc_bank_millennia::5% cashback as CashPoints",
+    "hdfc_bank_regalia_gold::5X accelerated Reward Points on every ₹150 spent, up to ~8.6% reward rate",
+    "kotak_mahindra_bank_royale_signature::4 Reward Points per Rs. 150 spent"
+  ],
+  "cap_without_period": [
+    "amex_gold::1 Membership Rewards Point every time you spend ₹50 on utilities, points capped ",
+    "axis_bank_reserve::Rental transactions capped at ₹1 lakh (7,500 EDGE Reward Points)",
+    "kotak_mahindra_bank_solitaire::10 Air Miles per ₹100 spent on flight and hotel bookings made through Kotak Unbo"
+  ],
+  "_note_integrity": "Structural rule defects, seeded from dev@d441d12. These are shape, not numbers: each one fails silently in the app. DO NOT 'fix' duplicate_rule_names by renaming a rule — rule_name is the cap-usage key (app_database.dart:238), so a rename resets every user's cap progress. Fix collisions in the app (shared cap groups), not here."
 }
