@@ -41444,7 +41444,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 24.0,
     "reward_unit_spend": 150.0,
-    "cap_amount": 240.0,
+    "cap_amount": 1200.0,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
@@ -41453,7 +41453,7 @@
     "conditions_json": null
    },
    {
-    "rule_name": "2% back as reward points on dining and grocery spends. 12 reward points on every Rs. 150 spent on dining and grocery, capped at 800 reward points per month. [dining]",
+    "rule_name": "2% back as reward points on dining and grocery spends. 12 reward points on every Rs. 150 spent on dining and grocery, capped at 800 reward points per month.",
     "rule_type": "category_bonus",
     "merchant_ref": null,
     "category_id": "dining",
@@ -41462,7 +41462,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 12.0,
     "reward_unit_spend": 150.0,
-    "cap_amount": 160.0,
+    "cap_amount": 800.0,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 55,
@@ -41471,7 +41471,7 @@
     "conditions_json": null
    },
    {
-    "rule_name": "2% back as reward points on dining and grocery spends. 12 reward points on every Rs. 150 spent on dining and grocery, capped at 800 reward points per month. [grocery]",
+    "rule_name": "2% back as reward points on dining and grocery spends. 12 reward points on every Rs. 150 spent on dining and grocery, capped at 800 reward points per month.",
     "rule_type": "category_bonus",
     "merchant_ref": null,
     "category_id": "grocery",
@@ -41480,7 +41480,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 12.0,
     "reward_unit_spend": 150.0,
-    "cap_amount": 160.0,
+    "cap_amount": 800.0,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 55,
@@ -41531,22 +41531,6 @@
      "cardinsider": "Kotak Rewards Catalog (kotakrewards.com)"
     },
     "confidence": "high"
-   },
-   {
-    "rule_name": "IndianOil XTRAREWARDS",
-    "channel_type": "other",
-    "point_value_inr": 0.2,
-    "min_points": null,
-    "max_points": null,
-    "redemption_fee_inr": 0.0,
-    "channel_description": "IndianOil XTRAREWARDS",
-    "_sources": [
-     "cardinsider"
-    ],
-    "_source_quotes": {
-     "cardinsider": "IndianOil XTRAREWARDS"
-    },
-    "confidence": "medium"
    }
   ]
  },
