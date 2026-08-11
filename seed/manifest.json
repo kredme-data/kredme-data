@@ -1,34 +1,34 @@
 {
-  "version": "5.1.11",
-  "updated_at": "2026-08-10T20:46:49Z",
-  "min_app_version": "1.1.0",
-  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "IndianOil Kotak caps restored to the unit Kotak publishes them in. An earlier pass converted them to rupees at Rs.0.20/point while the rules were cashback_pct; PR #17 retyped those rules to points_per_spend to restore the Rs.150 block, and usedAgainstCap reads the cap in whatever unit the rule earns in - so 1200 points had become '240 points' and the fuel cap was exhausting at Rs.1,500 instead of Rs.7,500. MITC 12.2(b) 1200 RP fuel, 12.2(c) 800 RP shared across dining AND grocery - the two rules now carry a byte-identical rule_name so they land in one cap bucket. Also drops the 'IndianOil XTRAREWARDS' redemption row, which appears nowhere in Kotak's own documents.",
-  "stats": {
-    "total_cards": 376,
-    "total_reward_rules": 1205,
-    "total_redemption_rules": 873,
-    "total_exclusion_rules": 1418,
-    "total_milestone_rules": 414,
-    "total_fuel_surcharge_rules": 353,
-    "total_travel_cards": 81,
-    "issuers": 34,
-    "total_merchants": 273
+ "version": "5.1.12",
+ "updated_at": "2026-08-12T00:00:00Z",
+ "min_app_version": "1.1.0",
+ "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
+ "_note": "WhatsApp complaints 11-Aug. Tata partner-brand rates on all four Tata Neu cards (1.5% -> 5% / 1% -> 2% at BigBasket, Croma, Tata CLiQ, Taj, Air India, 1mg, Titan, Tanishq, Westside): merchant_ref matches merchants.json merchant_name exactly and one rule at 'tata_neu' covered only the Tata Neu tile. Tata Neu Infinity SBI's uncapped 10% corrected to the 5% SBI actually states for partner brands; its fuel surcharge cap 400 -> 500 and its missing 1,499-NeuCoin welcome gift added, both from SBI's own product page. Adds CSB Edge+, YES BANK Uni (x2) and Unity Roarbank. No channel='upi' rules: recommendation_engine Phase 3b would apply them at every merchant.",
+ "stats": {
+  "total_cards": 380,
+  "total_reward_rules": 1271,
+  "total_redemption_rules": 873,
+  "total_exclusion_rules": 1613,
+  "total_milestone_rules": 415,
+  "total_fuel_surcharge_rules": 356,
+  "total_travel_cards": 81,
+  "issuers": 36,
+  "total_merchants": 273
+ },
+ "files": [
+  {
+   "name": "cards.json",
+   "path": "seed/cards.json",
+   "checksum": "2c7c4866ba9ae23c2443c230abf7d995b4cc4254121c0c8d4f170a7b302c4500",
+   "size_bytes": 1775214
   },
-  "files": [
-    {
-      "name": "cards.json",
-      "path": "seed/cards.json",
-      "checksum": "971fc540d4d296bae5ad769db34b2ea5bca94ce08ba66f6a4d2ed8f1e854bd19",
-      "size_bytes": 1718524
-    },
-    {
-      "name": "merchants.json",
-      "path": "seed/merchants.json",
-      "checksum": "ac09dc38116f622a4f41094497b4fdb8fa9e1eb19f61a5c930b5c996fa5a8ecb",
-      "size_bytes": 104333
-    }
-  ],
-  "delta_file": null,
-  "news_version": "2.0.0"
+  {
+   "name": "merchants.json",
+   "path": "seed/merchants.json",
+   "checksum": "ac09dc38116f622a4f41094497b4fdb8fa9e1eb19f61a5c930b5c996fa5a8ecb",
+   "size_bytes": 104333
+  }
+ ],
+ "delta_file": null,
+ "news_version": "2.0.0"
 }
