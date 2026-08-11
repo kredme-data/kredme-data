@@ -223,6 +223,7 @@
     "amex_smartearn::Max cap of 500 RPs per month, separate from other 10X brands",
     "hdfc_bank_millennia::5% cashback as CashPoints",
     "hdfc_bank_regalia_gold::5X accelerated Reward Points on every ₹150 spent, up to ~8.6% reward rate",
+    "kotak_mahindra_bank_indianoil_kotak::2% back as reward points on dining and grocery spends. 12 reward points on every",
     "kotak_mahindra_bank_royale_signature::4 Reward Points per Rs. 150 spent"
   ],
   "cap_without_period": [
@@ -230,5 +231,5 @@
     "axis_bank_reserve::Rental transactions capped at ₹1 lakh (7,500 EDGE Reward Points)",
     "kotak_mahindra_bank_solitaire::10 Air Miles per ₹100 spent on flight and hotel bookings made through Kotak Unbo"
   ],
-  "_note_integrity": "Structural rule defects, seeded from dev@d441d12. These are shape, not numbers: each one fails silently in the app. DO NOT 'fix' duplicate_rule_names by renaming a rule — rule_name is the cap-usage key (app_database.dart:238), so a rename resets every user's cap progress. Fix collisions in the app (shared cap groups), not here."
+  "_note_integrity": "Structural rule defects. Shape, not numbers: each fails silently in the app. DO NOT 'fix' duplicate_rule_names by renaming a rule — rule_name is the cap-usage key (app_database.dart:238), so a rename resets every user's cap progress mid-cycle. kotak_mahindra_bank_indianoil_kotak (added by #18) is ONE issuer cap of 800 points shared across dining+grocery, split into two category rows carrying the same name. There is no correct representation in this schema: distinct names would give the user 800+800, and the shared name collapses both rows onto one DB primary key so one category loses its rule. Waived here because the fix is a shared-cap-group concept in the app, not a data edit."
 }
