@@ -707,6 +707,141 @@ def test_baseline_identity_keys_are_stable():
         assert payload[key] == sorted(ident(scan)), f"{key} drifted between writer and guard"
 
 
+# --- RULE INTEGRITY ---------------------------------------------------------
+# Shape defects that never reach a number, so validate_economics cannot see
+# them. Each one fails silently in the app: no exception, no log.
+
+def _r(name, **kw):
+    r = {"rule_name": name, "rule_type": "category_bonus", "reward_type": "cashback_pct",
+         "reward_rate": 0.05, "reward_unit_spend": None, "cap_amount": None,
+         "cap_period": None, "priority": 50}
+    r.update(kw)
+    return r
+
+
+def _igate(cards, baseline):
+    """Run validate_rule_integrity against an injected baseline."""
+    import contextlib, io
+    real = K.read_rate_baseline
+    K.read_rate_baseline = lambda: baseline
+    try:
+        rep = K.Report()
+        with contextlib.redirect_stdout(io.StringIO()):
+            K.validate_rule_integrity(cards, rep)
+        return rep
+    finally:
+        K.read_rate_baseline = real
+
+
+_CLEAN_INTEG = {"non_numeric_caps": [], "duplicate_rule_names": [], "cap_without_period": []}
+
+
+@unit
+def test_non_numeric_cap_is_fatal():
+    """double.tryParse('12000 RPs per cycle') returns null, and a null cap is
+    NO cap — the rule pays its accelerated rate for ever."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount="12000 RPs per statement cycle",
+                                          cap_period="cycle")])]
+    assert _igate(cards, _CLEAN_INTEG).failed, "a string cap_amount must fail"
+    # A dict is the other live shape, and _numOf returns null for it too.
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount={"monthly": 2500}, cap_period="month")])]
+    assert _igate(cards, _CLEAN_INTEG).failed, "an object cap_amount must fail"
+
+
+@unit
+def test_numeric_cap_passes():
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount=800, cap_period="month")])]
+    assert not _igate(cards, _CLEAN_INTEG).failed
+
+
+@unit
+def test_duplicate_rule_name_is_fatal():
+    """`${cardId}|${ruleName}` is the reward-rule primary key AND the cap bucket
+    key, so two rules sharing a name on one card lose one of them."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("same name"), _r("same name")])]
+    assert _igate(cards, _CLEAN_INTEG).failed, "a duplicate rule_name must fail"
+
+
+@unit
+def test_same_rule_name_on_different_cards_is_fine():
+    """The key is scoped per card. 'Base reward rate' is on all 376."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("Base reward rate")]),
+             _c("y", 0.01, 1.0, rules=[_r("Base reward rate")])]
+    assert not _igate(cards, _CLEAN_INTEG).failed
+
+
+@unit
+def test_duplicates_are_detected_on_the_full_name():
+    """_rule_key truncates to 80 chars for baseline readability. Detecting on
+    the truncated form reported 67 collisions on dev where 24 were real."""
+    stem = "x" * 78
+    cards = [_c("x", 0.01, 1.0, rules=[_r(stem + "AAAA"), _r(stem + "BBBB")])]
+    assert not _igate(cards, _CLEAN_INTEG).failed, \
+        "two rules that differ only after char 80 are distinct to the app"
+
+
+@unit
+def test_cap_without_period_is_fatal():
+    """_checkCap returns null unless BOTH are set, so the cap never applies."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount=1200)])]
+    assert _igate(cards, _CLEAN_INTEG).failed
+
+
+@unit
+def test_baselined_integrity_defect_does_not_block():
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount=1200)])]
+    base = dict(_CLEAN_INTEG, cap_without_period=["x::a"])
+    assert not _igate(cards, base).failed, "known debt must not block a publish"
+
+
+@unit
+def test_integrity_fails_closed_when_the_baseline_is_removed():
+    """Every list-shaped ratchet in this file fails closed; the two scalar ones
+    fail open. A removed integrity baseline must behave like the lists."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount=1200)])]
+    assert _igate(cards, None).failed, "no baseline at all must fail, not skip"
+    assert _igate(cards, {}).failed, "a baseline missing the key must fail, not skip"
+
+
+@unit
+def test_points_rule_without_unit_cannot_be_baselined():
+    """Unwaivable, like over_hard_ceiling: the app would silently read the rule
+    as 'per ₹100'. Clean today (284/284) and it must stay that way."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", reward_type="points_per_spend",
+                                          reward_rate=5.0, reward_unit_spend=None)])]
+    stuffed = dict(_CLEAN_INTEG, points_rule_no_unit=["x::a"])
+    assert _igate(cards, stuffed).failed, "there must be no waiver for this"
+
+
+@unit
+def test_unknown_cap_period_cannot_be_baselined():
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount=100, cap_period="fortnight")])]
+    stuffed = dict(_CLEAN_INTEG, unknown_cap_period=["x::a"])
+    assert _igate(cards, stuffed).failed, "there must be no waiver for this"
+
+
+@unit
+def test_integrity_identity_keys_are_stable():
+    """Same contract as the economics baseline: writer and guard must derive
+    identity identically, or the ratchet stops ratcheting."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("a", cap_amount="800 pts"), _r("a", cap_amount=5)])]
+    integ = K.scan_rule_integrity(cards)
+    econ = K.scan_economics(cards)
+    payload = K.baseline_payload(econ, "test", integ)
+    for key, ident in K.INTEGRITY_LISTS.items():
+        assert payload[key] == sorted(ident(integ)), f"{key} drifted between writer and guard"
+
+
+@unit
+def test_baseline_writer_never_blanks_integrity_by_omission():
+    """A caller that cannot measure integrity must not silently erase those
+    keys — that would hand the next publish a free pass on all three."""
+    econ = K.scan_economics([_c("x", 0.01, 1.0)])
+    payload = K.baseline_payload(econ, "test")
+    for key in K.INTEGRITY_LISTS:
+        assert key not in payload, f"{key} must be absent, not empty, when unmeasured"
+
+
 # --- REGRESSION (branch model) ----------------------------------------------
 
 @test

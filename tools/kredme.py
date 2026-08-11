@@ -299,6 +299,7 @@ class Report:
         # Populated by validate_economics so callers can persist a new baseline
         # without re-parsing the 1.9 MB catalog.
         self.economics: dict | None = None
+        self.integrity: dict | None = None
 
     def error(self, msg): self.errors.append(msg); err(msg)
     def warn(self, msg): self.warnings.append(msg); warn(msg)
@@ -741,6 +742,140 @@ def validate_economics(cards: list, rep: Report) -> dict:
     return scan
 
 
+# ── Rule integrity ───────────────────────────────────────────────────────────
+# Shape defects the economics scan cannot see, because it reads numbers and
+# these rules never reach a number at all. Every class below was found live on
+# dev @ 5.1.10 and every one of them fails SILENTLY in the app: no exception,
+# no log, no error surface. A rule that is malformed in these ways still
+# renders, still ranks, and still tells the user a figure.
+
+# cap_period values the app can actually act on. Note the app collapses
+# everything except 'quarter' and 'year' into the calendar month
+# (recommendation_engine.dart _getSpentForRule), so 'cycle', 'transaction' and
+# 'day' are accepted here but NOT honoured there. Accepting them is not
+# endorsing them — it keeps this check about shape, and leaves the engine bug
+# to be fixed in the app rather than papered over by rejecting live data.
+CAP_PERIODS = {"month", "cycle", "transaction", "quarter", "year", "day"}
+
+
+def scan_rule_integrity(cards: list) -> dict:
+    """Structural defects in reward rules. Pure — no reporting."""
+    non_numeric_caps, dup_rule_names, cap_no_period = [], [], []
+    points_no_unit, unknown_cap_period = [], []
+
+    for c in cards:
+        if not isinstance(c, dict):
+            continue
+        inner = c.get("card") or {}
+        cid = inner.get("id") or "?"
+        seen = set()
+
+        for r in c.get("reward_rules") or []:
+            if not isinstance(r, dict):
+                continue
+            key = _rule_key(cid, r)
+            cap = r.get("cap_amount")
+            per = r.get("cap_period")
+
+            # The app parses cap_amount with double.tryParse (_numOf,
+            # credit_card.dart), which returns null for "12000 RPs per
+            # statement cycle" and for any object. A null cap is NO cap: the
+            # rule keeps paying its accelerated rate for ever, so the user is
+            # promised more than the issuer pays. 19 rules on 9 cards.
+            if cap is not None and _fnum(cap) is None:
+                non_numeric_caps.append((key, type(cap).__name__))
+
+            # `${cardId}|${ruleName}` is both the reward-rule primary key and
+            # the cap-usage bucket key (app_database.dart). Two rules sharing a
+            # name on one card share one cap bucket, and only one survives the
+            # per-card {ruleName: rule} map wallet_insights builds. This is the
+            # identity the whole file depends on — trap 1 forbids renaming a
+            # rule precisely because of it — so a collision is data loss.
+            #
+            # Detected on the FULL name, not _rule_key: the app keys on the
+            # whole string, while _rule_key truncates to 80 chars for baseline
+            # readability. Truncating here would report 67 collisions where 24
+            # are real, and send someone hunting rules that are actually fine.
+            full = f"{cid}::{(r.get('rule_name') or '').strip()}"
+            if full in seen:
+                dup_rule_names.append(key)
+            seen.add(full)
+
+            # _checkCap returns null unless BOTH are set, so a cap with no
+            # period is never enforced at all.
+            if cap is not None and per is None:
+                cap_no_period.append(key)
+
+            if per is not None and per not in CAP_PERIODS:
+                unknown_cap_period.append((key, str(per)))
+
+            # A points rule that loses its unit silently becomes "per ₹100":
+            # the app defaults rewardUnitSpend to 100.0 and rule_pct falls back
+            # to the base rate. Neither surfaces an error. Holds 284/284 today.
+            if r.get("reward_type") == "points_per_spend" and (_fnum(r.get("reward_unit_spend")) or 0) <= 0:
+                points_no_unit.append(key)
+
+    return {
+        "non_numeric_caps":   sorted(non_numeric_caps),
+        "duplicate_rule_names": sorted(dup_rule_names),
+        "cap_without_period": sorted(cap_no_period),
+        "unknown_cap_period": sorted(unknown_cap_period),
+        "points_rule_no_unit": sorted(points_no_unit),
+    }
+
+
+def validate_rule_integrity(cards: list, rep: Report) -> dict:
+    """Ratchet the three live defect classes; the other two are unwaivable."""
+    head("Rule integrity")
+    scan = scan_rule_integrity(cards)
+    base = read_rate_baseline()
+
+    # Ratcheted: real debt exists today, so freeze it and fail on anything new.
+    for key, label in (
+        ("non_numeric_caps",
+         "cap_amount is not a number — the app drops the cap and the rule reads as uncapped"),
+        ("duplicate_rule_names",
+         "share a rule_name with another rule on the same card — same cap bucket, one overwrites the other"),
+        ("cap_without_period",
+         "have a cap_amount but no cap_period — the cap is never enforced"),
+    ):
+        found = scan[key]
+        ident = {f[0] if isinstance(f, tuple) else f for f in found}
+        known = set((base or {}).get(key) or [])
+        new = sorted(ident - known)
+        if new:
+            rep.error(f"{len(new)} reward rule(s) NEWLY {label}: {new[:3]}")
+        elif found:
+            n = len(ident)
+            (ok if n < len(known) else warn)(
+                f"{n} reward rule(s) still {label} (baseline {len(known)})")
+        else:
+            ok(f"no reward rule {label}")
+
+    # Unwaivable: both are clean today (0 and 0). There is no baseline key for
+    # either, deliberately — the same reasoning as over_hard_ceiling. A file
+    # that has never had one of these defects should never acquire one, and a
+    # waiver is how "never" turns into "always".
+    if scan["points_rule_no_unit"]:
+        rep.error(
+            f"{len(scan['points_rule_no_unit'])} points_per_spend rule(s) have no "
+            f"reward_unit_spend — the app will silently read them as 'per ₹100': "
+            f"{scan['points_rule_no_unit'][:3]}"
+        )
+    else:
+        ok("every points_per_spend rule carries a reward_unit_spend")
+
+    if scan["unknown_cap_period"]:
+        rep.error(
+            f"{len(scan['unknown_cap_period'])} rule(s) use a cap_period outside "
+            f"{sorted(CAP_PERIODS)}: {scan['unknown_cap_period'][:3]}"
+        )
+    else:
+        ok(f"every cap_period is one of {sorted(CAP_PERIODS)}")
+
+    return scan
+
+
 # The identity of a finding, per field. validate_economics compares against
 # these exact keys, so the growth guard and the writer must not drift apart.
 BASELINE_LISTS = {
@@ -753,8 +888,19 @@ BASELINE_LISTS = {
     "self_contradicting_rules": lambda scan: {k for k, _, _, _ in scan["self_contradicting_rules"]},
 }
 
+# Same contract, for the structural defects. Kept in a second dict because
+# these come from scan_rule_integrity, not scan_economics, and merging them
+# would let one scan's missing key silently zero the other's baseline.
+# NOTE: `points_rule_no_unit` and `unknown_cap_period` are deliberately absent —
+# both are clean today and neither gets a waiver.
+INTEGRITY_LISTS = {
+    "non_numeric_caps":     lambda scan: {k for k, _ in scan["non_numeric_caps"]},
+    "duplicate_rule_names": lambda scan: set(scan["duplicate_rule_names"]),
+    "cap_without_period":   lambda scan: set(scan["cap_without_period"]),
+}
 
-def baseline_payload(scan: dict, source: str) -> dict:
+
+def baseline_payload(scan: dict, source: str, integrity: dict | None = None) -> dict:
     payload = {
         "_note": "Known numeric defects in live card data. The gate fails on anything NOT "
                  "listed here, and on any growth in the counts. Shrink it; never grow it.",
@@ -767,11 +913,22 @@ def baseline_payload(scan: dict, source: str) -> dict:
     }
     for key, ident in BASELINE_LISTS.items():
         payload[key] = sorted(ident(scan))
+    # Absent integrity scan means "don't touch those keys" — a caller that
+    # cannot measure them must not be able to blank them by omission.
+    if integrity is not None:
+        for key, ident in INTEGRITY_LISTS.items():
+            payload[key] = sorted(ident(integrity))
     return payload
 
 
-def write_rate_baseline(scan: dict, source: str) -> None:
-    write_json(RATE_BASELINE, baseline_payload(scan, source))
+def write_rate_baseline(scan: dict, source: str, integrity: dict | None = None) -> None:
+    prev = read_rate_baseline() or {}
+    payload = baseline_payload(scan, source, integrity)
+    if integrity is None:
+        for key in INTEGRITY_LISTS:
+            if key in prev:
+                payload[key] = prev[key]
+    write_json(RATE_BASELINE, payload)
 
 
 def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
@@ -916,6 +1073,7 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
         # the validator that can catch a rate being WRONG rather than malformed.
         if isinstance(cards, list) and cards:
             rep.economics = validate_economics(cards, rep)
+            rep.integrity = validate_rule_integrity(cards, rep)
 
     # merchants.json — {"_metadata":…, "categories":[…], "merchants":[…]}
     mch = seed_dir / "merchants.json"
@@ -1359,7 +1517,14 @@ def cmd_validate(args) -> None:
             if now_n > len(old[key]):
                 die(f"refusing to update the baseline: '{key}' would grow "
                     f"{len(old[key])} -> {now_n}.\n          Fix the data instead.")
-        write_rate_baseline(new, f"{args.target}@{git_head()[:7]}")
+        for key, ident in INTEGRITY_LISTS.items():
+            if not isinstance(old.get(key), list) or rep.integrity is None:
+                continue
+            now_n = len(ident(rep.integrity))
+            if now_n > len(old[key]):
+                die(f"refusing to update the baseline: '{key}' would grow "
+                    f"{len(old[key])} -> {now_n}.\n          Fix the data instead.")
+        write_rate_baseline(new, f"{args.target}@{git_head()[:7]}", rep.integrity)
         head("Baseline")
         ok(f"wrote {rel(RATE_BASELINE)} — review the diff, then commit it")
     print_verdict(rep, args.target)
