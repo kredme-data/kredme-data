@@ -1,15 +1,15 @@
 {
- "version": "5.1.13",
- "updated_at": "2026-08-12T01:40:00Z",
+ "version": "5.1.14",
+ "updated_at": "2026-08-12T02:10:00Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Reward-rule text was printing the internal merchant slug to users — 'spends at taj_hotels'. Uses the brand's display name now. Rates and caps unchanged.",
+ "_note": "IndianOil Kotak completeness pass. Base rate was typed cashback_pct so it paid smoothly; Kotak pays 3 points per WHOLE Rs.150 block, so Rs.100 showed Rs.0.40 where the card pays nothing. Caps are per statement cycle, not calendar month. Adds the department-store leg of the 2% (MCC 5311), the 1,000-point welcome benefit, and the three exclusions the engine can read. Points expire in 24 months. Redemption rows re-sourced from an aggregator to Kotak's own text.",
  "stats": {
   "total_cards": 380,
-  "total_reward_rules": 1271,
+  "total_reward_rules": 1272,
   "total_redemption_rules": 873,
-  "total_exclusion_rules": 1613,
-  "total_milestone_rules": 415,
+  "total_exclusion_rules": 1616,
+  "total_milestone_rules": 416,
   "total_fuel_surcharge_rules": 356,
   "total_travel_cards": 81,
   "issuers": 36,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "8881338216911d6beb7ea5844e73c2dd3dd048ec8c353f0112372bfca3b0c288",
-   "size_bytes": 1775300
+   "checksum": "70e0e24b12e6ec6838d09779ba3c3cb32ad5bcc2921e098eab02c48769aee737",
+   "size_bytes": 1778151
   },
   {
    "name": "merchants.json",
