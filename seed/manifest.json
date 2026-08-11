@@ -1,9 +1,9 @@
 {
- "version": "5.1.12",
- "updated_at": "2026-08-12T00:00:00Z",
+ "version": "5.1.13",
+ "updated_at": "2026-08-12T01:40:00Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "WhatsApp complaints 11-Aug. Tata partner-brand rates on all four Tata Neu cards (1.5% -> 5% / 1% -> 2% at BigBasket, Croma, Tata CLiQ, Taj, Air India, 1mg, Titan, Tanishq, Westside): merchant_ref matches merchants.json merchant_name exactly and one rule at 'tata_neu' covered only the Tata Neu tile. Tata Neu Infinity SBI's uncapped 10% corrected to the 5% SBI actually states for partner brands; its fuel surcharge cap 400 -> 500 and its missing 1,499-NeuCoin welcome gift added, both from SBI's own product page. Adds CSB Edge+, YES BANK Uni (x2) and Unity Roarbank. No channel='upi' rules: recommendation_engine Phase 3b would apply them at every merchant.",
+ "_note": "Reward-rule text was printing the internal merchant slug to users — 'spends at taj_hotels'. Uses the brand's display name now. Rates and caps unchanged.",
  "stats": {
   "total_cards": 380,
   "total_reward_rules": 1271,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "2c7c4866ba9ae23c2443c230abf7d995b4cc4254121c0c8d4f170a7b302c4500",
-   "size_bytes": 1775214
+   "checksum": "8881338216911d6beb7ea5844e73c2dd3dd048ec8c353f0112372bfca3b0c288",
+   "size_bytes": 1775300
   },
   {
    "name": "merchants.json",

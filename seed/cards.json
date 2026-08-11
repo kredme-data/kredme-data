@@ -24612,7 +24612,7 @@
     "conditions_json": null
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at croma (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "croma",
     "category_id": null,
@@ -24632,7 +24632,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tata_cliq (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq",
     "category_id": null,
@@ -24652,7 +24652,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at westside (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "westside",
     "category_id": null,
@@ -24672,7 +24672,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at taj_hotels (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "taj_hotels",
     "category_id": null,
@@ -24692,7 +24692,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at air_india (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india",
     "category_id": null,
@@ -24712,7 +24712,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at air_india_express (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india_express",
     "category_id": null,
@@ -24732,7 +24732,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at 1mg (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "1mg",
     "category_id": null,
@@ -24752,7 +24752,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at bigbasket (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at BigBasket, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "bigbasket",
     "category_id": null,
@@ -24772,7 +24772,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tataneu_bigbasket (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tataneu_bigbasket",
     "category_id": null,
@@ -24792,7 +24792,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at titan (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "titan",
     "category_id": null,
@@ -24812,7 +24812,7 @@
     "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tanishq (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tanishq",
     "category_id": null,
@@ -24971,7 +24971,7 @@
     "conditions_json": null
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at croma (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "croma",
     "category_id": null,
@@ -24991,7 +24991,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tata_cliq (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq",
     "category_id": null,
@@ -25011,7 +25011,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at westside (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "westside",
     "category_id": null,
@@ -25031,7 +25031,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at taj_hotels (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "taj_hotels",
     "category_id": null,
@@ -25051,7 +25051,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at air_india (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india",
     "category_id": null,
@@ -25071,7 +25071,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at air_india_express (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india_express",
     "category_id": null,
@@ -25091,7 +25091,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at 1mg (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "1mg",
     "category_id": null,
@@ -25111,7 +25111,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at titan (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "titan",
     "category_id": null,
@@ -25131,7 +25131,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tanishq (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tanishq",
     "category_id": null,
@@ -25151,7 +25151,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at bigbasket (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at BigBasket, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "bigbasket",
     "category_id": null,
@@ -25171,7 +25171,7 @@
     "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tataneu_bigbasket (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tataneu_bigbasket",
     "category_id": null,
@@ -60096,7 +60096,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at bigbasket (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at BigBasket, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "bigbasket",
     "category_id": null,
@@ -60117,7 +60117,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tataneu_bigbasket (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tataneu_bigbasket",
     "category_id": null,
@@ -60138,7 +60138,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at croma (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "croma",
     "category_id": null,
@@ -60159,7 +60159,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tata_cliq (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq",
     "category_id": null,
@@ -60180,7 +60180,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tata_cliq_luxury (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tata CLiQ Luxury, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq_luxury",
     "category_id": null,
@@ -60201,7 +60201,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at taj_hotels (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "taj_hotels",
     "category_id": null,
@@ -60222,7 +60222,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at air_india (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india",
     "category_id": null,
@@ -60243,7 +60243,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at air_india_express (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india_express",
     "category_id": null,
@@ -60264,7 +60264,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at 1mg (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "1mg",
     "category_id": null,
@@ -60285,7 +60285,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at titan (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "titan",
     "category_id": null,
@@ -60306,7 +60306,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at tanishq (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tanishq",
     "category_id": null,
@@ -60327,7 +60327,7 @@
     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
    },
    {
-    "rule_name": "5% NeuCoins on non-EMI spends at westside (partner Tata brand)",
+    "rule_name": "5% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "westside",
     "category_id": null,
@@ -60508,7 +60508,7 @@
     "conditions_json": null
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at bigbasket (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at BigBasket, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "bigbasket",
     "category_id": null,
@@ -60528,7 +60528,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tataneu_bigbasket (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tataneu_bigbasket",
     "category_id": null,
@@ -60548,7 +60548,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at croma (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "croma",
     "category_id": null,
@@ -60568,7 +60568,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tata_cliq (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq",
     "category_id": null,
@@ -60588,7 +60588,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tata_cliq_luxury (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tata CLiQ Luxury, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq_luxury",
     "category_id": null,
@@ -60608,7 +60608,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at taj_hotels (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "taj_hotels",
     "category_id": null,
@@ -60628,7 +60628,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at air_india (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india",
     "category_id": null,
@@ -60648,7 +60648,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at air_india_express (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "air_india_express",
     "category_id": null,
@@ -60668,7 +60668,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at 1mg (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "1mg",
     "category_id": null,
@@ -60688,7 +60688,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at titan (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "titan",
     "category_id": null,
@@ -60708,7 +60708,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at tanishq (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "tanishq",
     "category_id": null,
@@ -60728,7 +60728,7 @@
     "source_quote": "2% value back on purchases made through the Tata Neu App/Website and partner Tata brands"
    },
    {
-    "rule_name": "2% NeuCoins on non-EMI spends at westside (partner Tata brand)",
+    "rule_name": "2% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
     "rule_type": "merchant_specific",
     "merchant_ref": "westside",
     "category_id": null,
