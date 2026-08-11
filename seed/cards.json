@@ -41859,7 +41859,7 @@
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
-   "has_rupay_upi": 0,
+   "has_rupay_upi": 1,
    "image_asset": "assets/cards/kotak_mahindra_bank_indianoil_kotak.png",
    "metadata": {
     "contactless": true,
@@ -41869,27 +41869,30 @@
    },
    "is_active": 1,
    "is_travel": 0,
-   "points_expiry_months": null,
+   "points_expiry_months": 24,
    "min_redemption_points": 2000,
    "points_clawback_on_default": null
   },
   "reward_rules": [
    {
-    "rule_name": "Base reward rate",
+    "rule_name": "0.5% back as reward points on all other spends. 3 reward points on every Rs. 150 spent.",
     "rule_type": "base_rate",
     "merchant_ref": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.004,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 3.0,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
     "priority": 20,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "confidence": "high",
+    "source_quote": "On all other spends, save 0.5% back as Reward Points. Earn 3 Reward Points on every INR 150 spent",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
    },
    {
     "rule_name": "4% back as reward points on fuel spends. 24 reward points on every Rs. 150 spent on fuel at IndianOil outlets, capped at 1200 reward points per month.",
@@ -41902,7 +41905,7 @@
     "reward_rate": 24.0,
     "reward_unit_spend": 150.0,
     "cap_amount": 1200.0,
-    "cap_period": "month",
+    "cap_period": "cycle",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -41920,7 +41923,7 @@
     "reward_rate": 12.0,
     "reward_unit_spend": 150.0,
     "cap_amount": 800.0,
-    "cap_period": "month",
+    "cap_period": "cycle",
     "min_txn_amount": null,
     "priority": 55,
     "effective_date": null,
@@ -41938,16 +41941,73 @@
     "reward_rate": 12.0,
     "reward_unit_spend": 150.0,
     "cap_amount": 800.0,
-    "cap_period": "month",
+    "cap_period": "cycle",
     "min_txn_amount": null,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null
+   },
+   {
+    "rule_name": "2% back as reward points at department stores. 12 reward points on every Rs. 150 spent (MCC 5311, within Kotak's eligible list).",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "departmental_store",
+    "category_ref": "departmental stores",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 12.0,
+    "reward_unit_spend": 150.0,
+    "cap_amount": 800.0,
+    "cap_period": "cycle",
+    "min_txn_amount": null,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_quote": "Valid on only on select MCC's - 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
    }
   ],
-  "exclusion_rules": [],
-  "milestone_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "Education / Wallet Load / Rent — No Rewards/Cashback",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "Education / Wallet Load / Rent — No Rewards/Cashback",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "Education / Wallet Load / Rent — No Rewards/Cashback",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+   }
+  ],
+  "milestone_rules": [
+   {
+    "milestone_name": "Welcome benefit — 1,000 reward points",
+    "spend_threshold": 500.0,
+    "period": "onetime",
+    "benefit_type": "points",
+    "benefit_value": 1000.0,
+    "confidence": "high",
+    "source_quote": "1000 Reward Points as welcome benefit on a single transaction of INR 500 or above within 30 days of card issuance",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -41961,15 +42021,15 @@
     "rule_name": "Cashback",
     "channel_type": "cashback",
     "point_value_inr": 0.2,
-    "min_points": null,
+    "min_points": 2000,
     "max_points": null,
     "redemption_fee_inr": 0.0,
     "channel_description": "Cashback",
     "_sources": [
-     "cardinsider"
+     "kotak.bank.in"
     ],
     "_source_quotes": {
-     "cardinsider": "Cashback"
+     "kotak.bank.in": "Redeem your accrued reward points at 20p/point as cashback. Minimum 2000 points will be required to avail this redemption facility."
     },
     "confidence": "high"
    },
@@ -41982,10 +42042,10 @@
     "redemption_fee_inr": 0.0,
     "channel_description": "Kotak Rewards Catalog (kotakrewards.com)",
     "_sources": [
-     "cardinsider"
+     "kotak.bank.in"
     ],
     "_source_quotes": {
-     "cardinsider": "Kotak Rewards Catalog (kotakrewards.com)"
+     "kotak.bank.in": "Redeem your accrued reward points at 25p/point against our exclusive catalogue of benefits."
     },
     "confidence": "high"
    }
