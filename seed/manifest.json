@@ -1,33 +1,34 @@
 {
-  "version": "5.1.0",
-  "updated_at": "2026-05-11T00:00:00.000000Z",
+  "version": "5.1.14",
+  "updated_at": "2026-08-11T20:30:13Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Adds redemption_rules to 366/376 cards via the kredme-data-pipeline cardinsider extracted JSONs. Also adds card-level points_expiry_months, min_redemption_points, points_clawback_on_default. 10 cards have empty redemption_rules listed in handoff_v4/cards_missing_redemption.csv.",
+  "_note": "IndianOil Kotak completeness pass. Base rate was typed cashback_pct so it paid smoothly; Kotak pays 3 points per WHOLE Rs.150 block, so Rs.100 showed Rs.0.40 where the card pays nothing. Caps are per statement cycle, not calendar month. Adds the department-store leg of the 2% (MCC 5311), the 1,000-point welcome benefit, and the three exclusions the engine can read. Points expire in 24 months. Redemption rows re-sourced from an aggregator to Kotak's own text.",
   "stats": {
-    "total_cards": 376,
-    "total_reward_rules": 1202,
+    "total_cards": 380,
+    "total_reward_rules": 1272,
     "total_redemption_rules": 873,
-    "total_exclusion_rules": 1418,
-    "total_milestone_rules": 414,
-    "total_fuel_surcharge_rules": 353,
+    "total_exclusion_rules": 1616,
+    "total_milestone_rules": 416,
+    "total_fuel_surcharge_rules": 356,
     "total_travel_cards": 81,
-    "issuers": 34
+    "issuers": 36,
+    "total_merchants": 273
   },
   "files": [
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "ea29b0c23442c6a7e8074b6cff2be9a9746580e18d8505d56a09f913f26a0e9d",
-      "size_bytes": 1948662
+      "checksum": "70e0e24b12e6ec6838d09779ba3c3cb32ad5bcc2921e098eab02c48769aee737",
+      "size_bytes": 1778151
     },
     {
       "name": "merchants.json",
       "path": "seed/merchants.json",
-      "checksum": "7d7a04ed10e177be9b0ac8aa1d662167cbfe633429afdd4f559694491e4878cd",
-      "size_bytes": 53282
+      "checksum": "ac09dc38116f622a4f41094497b4fdb8fa9e1eb19f61a5c930b5c996fa5a8ecb",
+      "size_bytes": 104333
     }
   ],
   "delta_file": null,
-  "news_version": "1.0.0"
+  "news_version": "2.0.0"
 }
