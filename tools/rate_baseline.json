@@ -81,12 +81,7 @@
     "sbi_card_doctors_ima_sbi"
   ],
   "prose_excluded_high_rate": [
-    "axis_bank_cashback::fuel",
-    "axis_bank_google_pay_flex_axis_bank::rent",
-    "hdfc_bank_paytm_hdfc_bank_mobile::fuel",
-    "idfc_first_bank_earn::emi",
-    "kotak_mahindra_cashback::rent",
-    "yes_bank_yes_prosperity_cashback_plus::fuel"
+    "hdfc_bank_paytm_hdfc_bank_mobile::rent"
   ],
   "self_contradicting_rules": [
     "au_bank_ca_metal::1 Reward Point on every ₹100 spent on utility and insurance; capped at 100 rewar",
@@ -231,5 +226,6 @@
     "axis_bank_reserve::Rental transactions capped at ₹1 lakh (7,500 EDGE Reward Points)",
     "kotak_mahindra_bank_solitaire::10 Air Miles per ₹100 spent on flight and hotel bookings made through Kotak Unbo"
   ],
-  "_note_integrity": "Structural rule defects. Shape, not numbers: each fails silently in the app. DO NOT 'fix' duplicate_rule_names by renaming a rule — rule_name is the cap-usage key (app_database.dart:238), so a rename resets every user's cap progress mid-cycle. kotak_mahindra_bank_indianoil_kotak (added by #18) is ONE issuer cap of 800 points shared across dining+grocery, split into two category rows carrying the same name. There is no correct representation in this schema: distinct names would give the user 800+800, and the shared name collapses both rows onto one DB primary key so one category loses its rule. Waived here because the fix is a shared-cap-group concept in the app, not a data edit."
+  "_note_integrity": "Structural rule defects. Shape, not numbers: each fails silently in the app. DO NOT 'fix' duplicate_rule_names by renaming a rule — rule_name is the cap-usage key (app_database.dart:238), so a rename resets every user's cap progress mid-cycle. kotak_mahindra_bank_indianoil_kotak (added by #18) is ONE issuer cap of 800 points shared across dining+grocery, split into two category rows carrying the same name. There is no correct representation in this schema: distinct names would give the user 800+800, and the shared name collapses both rows onto one DB primary key so one category loses its rule. Waived here because the fix is a shared-cap-group concept in the app, not a data edit.",
+  "_note_prose": "Reduced 6 -> 1 on 2026-08-13 by retyping fuel exclusions from 'other' to 'category' so _isExcluded enforces them. The survivor is hdfc_bank_paytm_hdfc_bank_mobile, whose 15.0% base rate is implausible for a Paytm co-brand and is almost certainly a unit bug. It re-keyed from ::fuel to ::rent because its fuel row is now enforced. hdfc.bank.in is behind CloudFront (403) so the true rate could not be verified this pass — do that and fix the rate rather than extending this baseline again."
 }

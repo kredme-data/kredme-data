@@ -770,9 +770,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "category",
@@ -2554,9 +2555,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -5213,9 +5215,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -5395,9 +5398,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -6078,9 +6082,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    }
   ],
   "milestone_rules": [],
@@ -6340,9 +6345,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -9011,9 +9017,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -9216,9 +9223,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    }
   ],
   "milestone_rules": [
@@ -9775,9 +9783,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -9952,9 +9961,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -11316,9 +11326,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "txn_type",
@@ -11485,9 +11496,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "category",
@@ -14183,9 +14195,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    }
   ],
   "milestone_rules": [
@@ -15105,9 +15118,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel expenditures",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel expenditures"
    },
    {
     "exclusion_type": "other",
@@ -16020,9 +16034,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "txn_type",
@@ -16266,9 +16281,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions are not eligible for reward points",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions are not eligible for reward points"
    }
   ],
   "milestone_rules": [],
@@ -16633,9 +16649,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -17323,9 +17340,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions are not eligible for reward points",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions are not eligible for reward points"
    }
   ],
   "milestone_rules": [],
@@ -18390,9 +18408,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spending",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spending"
    },
    {
     "exclusion_type": "mcc",
@@ -18577,9 +18596,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -20442,9 +20462,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spending",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spending"
    },
    {
     "exclusion_type": "other",
@@ -21756,9 +21777,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "txn_type",
@@ -21897,9 +21919,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -22025,9 +22048,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -22583,9 +22607,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -24102,9 +24127,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -24454,9 +24480,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -24839,9 +24866,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -26949,9 +26977,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -27324,9 +27353,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -27948,9 +27978,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -28082,9 +28113,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions excluded from reward point earning",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions excluded from reward point earning"
    }
   ],
   "milestone_rules": [],
@@ -29164,9 +29196,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions (no reward points)",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions (no reward points)"
    },
    {
     "exclusion_type": "other",
@@ -29778,9 +29811,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases are not eligible for reward points",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases are not eligible for reward points"
    }
   ],
   "milestone_rules": [],
@@ -31743,9 +31777,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions (no intermiles earned)",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions (no intermiles earned)"
    }
   ],
   "milestone_rules": [],
@@ -32167,9 +32202,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases (0 intermiles earned)",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases (0 intermiles earned)"
    },
    {
     "exclusion_type": "other",
@@ -33940,9 +33976,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -34528,9 +34565,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -39887,9 +39925,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    }
   ],
   "milestone_rules": [],
@@ -44624,9 +44663,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions do not earn reward points",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions do not earn reward points"
    }
   ],
   "milestone_rules": [],
@@ -45365,9 +45405,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -45499,9 +45540,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -46106,9 +46148,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
@@ -46746,9 +46789,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel & auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel & auto"
    },
    {
     "exclusion_type": "category",
@@ -47453,9 +47497,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel & auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel & auto"
    },
    {
     "exclusion_type": "category",
@@ -48363,9 +48408,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel and auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel and auto"
    },
    {
     "exclusion_type": "category",
@@ -48830,9 +48876,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel & auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel & auto"
    },
    {
     "exclusion_type": "category",
@@ -49014,9 +49061,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel and auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel and auto"
    },
    {
     "exclusion_type": "category",
@@ -50360,9 +50408,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel & auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel & auto"
    },
    {
     "exclusion_type": "category",
@@ -50532,9 +50581,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel & auto",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel & auto"
    },
    {
     "exclusion_type": "category",
@@ -52984,9 +53034,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    },
    {
     "exclusion_type": "other",
@@ -53278,9 +53329,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    }
   ],
   "milestone_rules": [
@@ -54949,9 +55001,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel transactions do not earn reward points",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel transactions do not earn reward points"
    }
   ],
   "milestone_rules": [
@@ -55095,9 +55148,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    }
   ],
   "milestone_rules": [
@@ -55241,9 +55295,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    }
   ],
   "milestone_rules": [
@@ -58645,9 +58700,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "txn_type",
@@ -58854,9 +58910,10 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel spends"
    }
   ],
   "milestone_rules": [
@@ -62793,9 +62850,10 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "fuel purchases"
    },
    {
     "exclusion_type": "other",
