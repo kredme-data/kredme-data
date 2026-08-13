@@ -96,6 +96,21 @@ NEWS_REQUIRED = ("id", "title", "summary")
 # (5x too low) and Axis Cashback renders 75% (100x too high).
 RATE_CEILING_PCT = 10.0
 RATE_FLOOR_PCT = 0.1
+# The ceiling above is ratcheted — live already violates it in 61 places, so a
+# pre-existing breach is a warning. This one is not. Nothing may EVER render
+# above 40%. The line is set on evidence, not a round number: HDFC's SmartBuy
+# 10X on Diners Club Black genuinely reaches ~33%, so a 30% ceiling would block
+# a real product. Nothing legitimate clears 40%, and every case observed above
+# it has been a unit bug. There is deliberately no baseline key for this check
+# — unlike every other one here, it cannot be grandfathered.
+HARD_CEILING_PCT = 40.0
+# How far a rule's rendered rate may drift from the rate its OWN sentence
+# states before we call it a contradiction. 1.6x is loose enough to absorb
+# rounding and issuer marketing ("up to ~8.6%") and tight enough to catch every
+# known mechanism, all of which are off by 4x or more.
+SELF_CONTRADICTION_RATIO = 1.6
+# Below this, a disagreement is arithmetic noise on two tiny numbers.
+SELF_CONTRADICTION_FLOOR_PCT = 0.4
 # Mirrors CreditCardData.sanePointValue (credit_card.dart:533) and the
 # `?? 0.25` fallback in fromOtaJson (credit_card.dart:766). If the app changes
 # either, this gate starts measuring the wrong thing.
@@ -284,6 +299,7 @@ class Report:
         # Populated by validate_economics so callers can persist a new baseline
         # without re-parsing the 1.9 MB catalog.
         self.economics: dict | None = None
+        self.integrity: dict | None = None
 
     def error(self, msg): self.errors.append(msg); err(msg)
     def warn(self, msg): self.warnings.append(msg); warn(msg)
@@ -395,6 +411,92 @@ def rule_pct(rule: dict, inner: dict, base_pct: float) -> float:
     return base_pct
 
 
+# ---------------------------------------------------------------- self-consistency
+#
+# Every check above asks "is this number plausible?". This one asks a stricter
+# and more useful question: "does this number agree with the sentence sitting
+# next to it?"
+#
+# Almost every reward rule carries the issuer's own mechanics in `rule_name`:
+#
+#     "24 reward points on every Rs. 150 spent on fuel at IndianOil outlets"
+#
+# At this card's point value (Rs.0.20) that sentence says 3.2%. The stored
+# number renders 24%. The file contradicts itself, and no issuer website is
+# needed to prove it — which is what makes this check cheap enough to run on
+# every publish and impossible to argue with.
+#
+# The parsers are deliberately narrow. A rule whose prose we cannot read
+# confidently is skipped, never guessed at: a false accusation here blocks a
+# publish, so silence is the safe failure mode.
+
+_CL_NUM = r"(\d+(?:\.\d+)?)"
+_CL_RS = r"(?:Rs\.?\s*|₹\s*|INR\s*)"
+# "24 reward points on every Rs. 150" / "(24 Points per ₹100)" / "40 RP per Rs 200"
+_CL_POINTS_PER_SPEND = re.compile(
+    _CL_NUM + r"\s*(?:reward\s+)?(?:points?|RP)\b[^.;]{0,45}?"
+    r"(?:per|on every|for every|for each|on each|each|every|/)\s*" + _CL_RS + r"(\d[\d,]*)", re.I)
+# "reward rate of 2.5%" / "up to ~8.6% reward rate" — the issuer's own effective rate
+_CL_EFFECTIVE = re.compile(
+    r"(?:reward\s+rate\s+of\s*~?\s*" + _CL_NUM + r"\s*%"
+    r"|~?\s*" + _CL_NUM + r"\s*%\s*(?:reward|earn)\s+rate)", re.I)
+# "5% cashback on ..." / "7% back on ..."
+_CL_CASHBACK = re.compile(
+    _CL_NUM + r"\s*%\s*(?:cash\s*back|cashback|back\b|discount)", re.I)
+# "50% more Reward Points" / "50% extra points" — a RELATIVE uplift on the base
+# earn, not an absolute rate. Stored as 0.5 it renders 50% cashback; the issuer
+# means base x 1.5. HDFC Superia, Solitaire and Doctors Superia all ship this.
+_CL_RELATIVE = re.compile(
+    _CL_NUM + r"\s*%\s*(?:more|extra|additional|bonus)\s+(?:reward\s+)?points?", re.I)
+# "5X Reward Points" / "10X points" — a multiple of the base earn. Stored as an
+# absolute rate it renders 5X as 500%, or as here 0.2 -> 20%.
+_CL_MULTIPLE = re.compile(
+    r"\b" + _CL_NUM + r"\s*X\s+(?:accelerated\s+)?(?:reward\s+)?points?", re.I)
+
+
+def claimed_pct(rule: dict, inner: dict, base_pct: float = 0.0) -> tuple[float | None, str]:
+    """The rate this rule's own sentence claims, and how we read it.
+
+    Returns (None, "") when the prose states nothing we can parse — which is
+    most rules, and is fine. Skipping is always safe; guessing never is.
+
+    Order matters: an issuer-stated effective rate ("reward rate of 8.6%") is
+    the strongest signal and wins over a raw points count in the same sentence.
+    """
+    name = rule.get("rule_name") or ""
+    rp = _fnum(inner.get("rp_value_standard"))
+    pv = _sane_point_value(rp if rp is not None else APP_POINT_VALUE_DEFAULT)
+
+    m = _CL_EFFECTIVE.search(name)
+    if m:
+        return float(next(g for g in m.groups() if g)), "states an effective reward rate"
+
+    m = _CL_POINTS_PER_SPEND.search(name)
+    if m:
+        pts, spend = float(m.group(1)), float(m.group(2).replace(",", ""))
+        if spend > 0:
+            return (pts * pv / spend) * 100, f"{pts:g} pts per Rs.{spend:g} at Rs.{pv:g}/pt"
+
+    # Relative forms need the card's base earn to mean anything. With no base
+    # rate there is no claim to test, so stay silent rather than invent one.
+    if base_pct > 0:
+        m = _CL_RELATIVE.search(name)
+        if m:
+            up = float(m.group(1))
+            return base_pct * (1 + up / 100), f"{up:g}% more than a {base_pct:.2f}% base"
+
+        m = _CL_MULTIPLE.search(name)
+        if m:
+            mult = float(m.group(1))
+            return base_pct * mult, f"{mult:g}x a {base_pct:.2f}% base"
+
+    m = _CL_CASHBACK.search(name)
+    if m:
+        return float(m.group(1)), "states a cashback percentage"
+
+    return None, ""
+
+
 def _rule_key(cid: str, rule: dict) -> str:
     """Stable-enough identity for a rule: rule_name survives reordering, index does not."""
     return f"{cid}::{(rule.get('rule_name') or '').strip()[:80]}"
@@ -404,6 +506,7 @@ def scan_economics(cards: list) -> dict:
     """Compute every number the gate reasons about. Pure — no reporting."""
     over_cards, under_cards, zero_cards = [], [], []
     over_rules, prose_risk = [], []
+    hard_ceiling, contradictions = [], []
     n_cards = 0
 
     for entry in cards:
@@ -416,6 +519,8 @@ def scan_economics(cards: list) -> dict:
         n_cards += 1
 
         base = card_base_pct(inner)
+        if base > HARD_CEILING_PCT:
+            hard_ceiling.append((f"{cid}::<base rate>", round(base, 2)))
         if base == 0:
             zero_cards.append(cid)
         elif base > RATE_CEILING_PCT:
@@ -444,6 +549,19 @@ def scan_economics(cards: list) -> dict:
             if not isinstance(rule, dict):
                 continue
             pct = rule_pct(rule, inner, base)
+
+            # Unwaivable. See HARD_CEILING_PCT.
+            if pct > HARD_CEILING_PCT:
+                hard_ceiling.append((_rule_key(cid, rule), round(pct, 2)))
+
+            # Does the number agree with its own sentence?
+            claim, how = claimed_pct(rule, inner, base)
+            if claim is not None and max(pct, claim) >= SELF_CONTRADICTION_FLOOR_PCT:
+                ratio = (pct / claim) if claim > 0 else float("inf")
+                if ratio > SELF_CONTRADICTION_RATIO or ratio < 1 / SELF_CONTRADICTION_RATIO:
+                    contradictions.append(
+                        (_rule_key(cid, rule), round(pct, 2), round(claim, 2), how))
+
             if pct > RATE_CEILING_PCT:
                 over_rules.append((_rule_key(cid, rule), round(pct, 2)))
                 # A named rule that advertises a category the card excludes.
@@ -459,6 +577,8 @@ def scan_economics(cards: list) -> dict:
         "under_floor_cards": sorted(under_cards, key=lambda x: x[1]),
         "over_ceiling_rules": sorted(over_rules, key=lambda x: -x[1]),
         "prose_excluded_high_rate": prose_risk,
+        "over_hard_ceiling": sorted(hard_ceiling, key=lambda x: -x[1]),
+        "self_contradicting_rules": sorted(contradictions, key=lambda x: -(x[1] / max(x[2], 1e-9))),
     }
 
 
@@ -580,9 +700,179 @@ def validate_economics(cards: list, rep: Report) -> dict:
             f"(baseline {len(known_prose)}): {[(c, h, p) for _, c, h, p in prose_now[:4]]}"
         )
 
+    # 6. THE UNWAIVABLE ONE. Every check above is ratcheted, which is what makes
+    #    them shippable — and also what let 58 known-bad rules into the baseline
+    #    on 7 Aug, after which none of them blocked anything. This check has no
+    #    baseline key on purpose. Nothing renders above 30%, ever, for any reason.
+    if scan["over_hard_ceiling"]:
+        worst = scan["over_hard_ceiling"][:6]
+        rep.error(
+            f"{len(scan['over_hard_ceiling'])} rate(s) render above {HARD_CEILING_PCT:g}% — "
+            f"no Indian card pays that, so this is a unit bug and it is not waivable: "
+            f"{[f'{k.split('::')[0]}={p}%' for k, p in worst]}"
+        )
+
+    # 7. A rule whose number contradicts its own sentence. Ratcheted so existing
+    #    debt does not block unrelated work, but a NEW one is always fatal —
+    #    there is no version of "this rule says 24 points per Rs.150 and also
+    #    24% cashback" that is a judgement call. It is a typo, provable offline.
+    known_contra = set((base or {}).get("self_contradicting_rules") or [])
+    contra_now = {k for k, _, _, _ in scan["self_contradicting_rules"]}
+    new_contra = sorted(contra_now - known_contra)
+    if new_contra:
+        detail = [f"{k.split('::')[0]}" for k in new_contra[:5]]
+        rep.error(
+            f"{len(new_contra)} reward rule(s) NEWLY display a rate their own text "
+            f"contradicts — the issuer mechanics are in the rule name and they disagree "
+            f"with the stored number: {detail}"
+        )
+    if base is not None and contra_now:
+        n = len(contra_now)
+        (ok if n < len(known_contra) else warn)(
+            f"{n} rule(s) still contradict their own text (baseline {len(known_contra)}); "
+            f"worst: " + ", ".join(
+                f"{k.split('::')[0]} shows {p}% vs {c}% claimed"
+                for k, p, c, _ in scan["self_contradicting_rules"][:3])
+        )
+
     if not rep.failed:
         ok(f"{scan['card_count']} cards priced within {RATE_FLOOR_PCT:g}-{RATE_CEILING_PCT:g}% "
-           f"or explicitly baselined")
+           f"or explicitly baselined, none above {HARD_CEILING_PCT:g}%, "
+           f"none contradicting their own text")
+    return scan
+
+
+# ── Rule integrity ───────────────────────────────────────────────────────────
+# Shape defects the economics scan cannot see, because it reads numbers and
+# these rules never reach a number at all. Every class below was found live on
+# dev @ 5.1.10 and every one of them fails SILENTLY in the app: no exception,
+# no log, no error surface. A rule that is malformed in these ways still
+# renders, still ranks, and still tells the user a figure.
+
+# cap_period values the app can actually act on. Note the app collapses
+# everything except 'quarter' and 'year' into the calendar month
+# (recommendation_engine.dart _getSpentForRule), so 'cycle', 'transaction' and
+# 'day' are accepted here but NOT honoured there. Accepting them is not
+# endorsing them — it keeps this check about shape, and leaves the engine bug
+# to be fixed in the app rather than papered over by rejecting live data.
+CAP_PERIODS = {"month", "cycle", "transaction", "quarter", "year", "day"}
+
+
+def scan_rule_integrity(cards: list) -> dict:
+    """Structural defects in reward rules. Pure — no reporting."""
+    non_numeric_caps, dup_rule_names, cap_no_period = [], [], []
+    points_no_unit, unknown_cap_period = [], []
+
+    for c in cards:
+        if not isinstance(c, dict):
+            continue
+        inner = c.get("card") or {}
+        cid = inner.get("id") or "?"
+        seen = set()
+
+        for r in c.get("reward_rules") or []:
+            if not isinstance(r, dict):
+                continue
+            key = _rule_key(cid, r)
+            cap = r.get("cap_amount")
+            per = r.get("cap_period")
+
+            # The app parses cap_amount with double.tryParse (_numOf,
+            # credit_card.dart), which returns null for "12000 RPs per
+            # statement cycle" and for any object. A null cap is NO cap: the
+            # rule keeps paying its accelerated rate for ever, so the user is
+            # promised more than the issuer pays. 19 rules on 9 cards.
+            if cap is not None and _fnum(cap) is None:
+                non_numeric_caps.append((key, type(cap).__name__))
+
+            # `${cardId}|${ruleName}` is both the reward-rule primary key and
+            # the cap-usage bucket key (app_database.dart). Two rules sharing a
+            # name on one card share one cap bucket, and only one survives the
+            # per-card {ruleName: rule} map wallet_insights builds. This is the
+            # identity the whole file depends on — trap 1 forbids renaming a
+            # rule precisely because of it — so a collision is data loss.
+            #
+            # Detected on the FULL name, not _rule_key: the app keys on the
+            # whole string, while _rule_key truncates to 80 chars for baseline
+            # readability. Truncating here would report 67 collisions where 24
+            # are real, and send someone hunting rules that are actually fine.
+            full = f"{cid}::{(r.get('rule_name') or '').strip()}"
+            if full in seen:
+                dup_rule_names.append(key)
+            seen.add(full)
+
+            # _checkCap returns null unless BOTH are set, so a cap with no
+            # period is never enforced at all.
+            if cap is not None and per is None:
+                cap_no_period.append(key)
+
+            if per is not None and per not in CAP_PERIODS:
+                unknown_cap_period.append((key, str(per)))
+
+            # A points rule that loses its unit silently becomes "per ₹100":
+            # the app defaults rewardUnitSpend to 100.0 and rule_pct falls back
+            # to the base rate. Neither surfaces an error. Holds 284/284 today.
+            if r.get("reward_type") == "points_per_spend" and (_fnum(r.get("reward_unit_spend")) or 0) <= 0:
+                points_no_unit.append(key)
+
+    return {
+        "non_numeric_caps":   sorted(non_numeric_caps),
+        "duplicate_rule_names": sorted(dup_rule_names),
+        "cap_without_period": sorted(cap_no_period),
+        "unknown_cap_period": sorted(unknown_cap_period),
+        "points_rule_no_unit": sorted(points_no_unit),
+    }
+
+
+def validate_rule_integrity(cards: list, rep: Report) -> dict:
+    """Ratchet the three live defect classes; the other two are unwaivable."""
+    head("Rule integrity")
+    scan = scan_rule_integrity(cards)
+    base = read_rate_baseline()
+
+    # Ratcheted: real debt exists today, so freeze it and fail on anything new.
+    for key, label in (
+        ("non_numeric_caps",
+         "cap_amount is not a number — the app drops the cap and the rule reads as uncapped"),
+        ("duplicate_rule_names",
+         "share a rule_name with another rule on the same card — same cap bucket, one overwrites the other"),
+        ("cap_without_period",
+         "have a cap_amount but no cap_period — the cap is never enforced"),
+    ):
+        found = scan[key]
+        ident = {f[0] if isinstance(f, tuple) else f for f in found}
+        known = set((base or {}).get(key) or [])
+        new = sorted(ident - known)
+        if new:
+            rep.error(f"{len(new)} reward rule(s) NEWLY {label}: {new[:3]}")
+        elif found:
+            n = len(ident)
+            (ok if n < len(known) else warn)(
+                f"{n} reward rule(s) still {label} (baseline {len(known)})")
+        else:
+            ok(f"no reward rule {label}")
+
+    # Unwaivable: both are clean today (0 and 0). There is no baseline key for
+    # either, deliberately — the same reasoning as over_hard_ceiling. A file
+    # that has never had one of these defects should never acquire one, and a
+    # waiver is how "never" turns into "always".
+    if scan["points_rule_no_unit"]:
+        rep.error(
+            f"{len(scan['points_rule_no_unit'])} points_per_spend rule(s) have no "
+            f"reward_unit_spend — the app will silently read them as 'per ₹100': "
+            f"{scan['points_rule_no_unit'][:3]}"
+        )
+    else:
+        ok("every points_per_spend rule carries a reward_unit_spend")
+
+    if scan["unknown_cap_period"]:
+        rep.error(
+            f"{len(scan['unknown_cap_period'])} rule(s) use a cap_period outside "
+            f"{sorted(CAP_PERIODS)}: {scan['unknown_cap_period'][:3]}"
+        )
+    else:
+        ok(f"every cap_period is one of {sorted(CAP_PERIODS)}")
+
     return scan
 
 
@@ -593,10 +883,24 @@ BASELINE_LISTS = {
     "over_ceiling_rules":       lambda scan: {k for k, _ in scan["over_ceiling_rules"]},
     "under_floor_cards":        lambda scan: {c for c, _ in scan["under_floor_cards"]},
     "prose_excluded_high_rate": lambda scan: {f"{c}::{h}" for c, h, _ in scan["prose_excluded_high_rate"]},
+    # NOTE: `over_hard_ceiling` is deliberately absent. It is the one check with
+    # no waiver, so writing it to the baseline would defeat the point.
+    "self_contradicting_rules": lambda scan: {k for k, _, _, _ in scan["self_contradicting_rules"]},
+}
+
+# Same contract, for the structural defects. Kept in a second dict because
+# these come from scan_rule_integrity, not scan_economics, and merging them
+# would let one scan's missing key silently zero the other's baseline.
+# NOTE: `points_rule_no_unit` and `unknown_cap_period` are deliberately absent —
+# both are clean today and neither gets a waiver.
+INTEGRITY_LISTS = {
+    "non_numeric_caps":     lambda scan: {k for k, _ in scan["non_numeric_caps"]},
+    "duplicate_rule_names": lambda scan: set(scan["duplicate_rule_names"]),
+    "cap_without_period":   lambda scan: set(scan["cap_without_period"]),
 }
 
 
-def baseline_payload(scan: dict, source: str) -> dict:
+def baseline_payload(scan: dict, source: str, integrity: dict | None = None) -> dict:
     payload = {
         "_note": "Known numeric defects in live card data. The gate fails on anything NOT "
                  "listed here, and on any growth in the counts. Shrink it; never grow it.",
@@ -609,11 +913,22 @@ def baseline_payload(scan: dict, source: str) -> dict:
     }
     for key, ident in BASELINE_LISTS.items():
         payload[key] = sorted(ident(scan))
+    # Absent integrity scan means "don't touch those keys" — a caller that
+    # cannot measure them must not be able to blank them by omission.
+    if integrity is not None:
+        for key, ident in INTEGRITY_LISTS.items():
+            payload[key] = sorted(ident(integrity))
     return payload
 
 
-def write_rate_baseline(scan: dict, source: str) -> None:
-    write_json(RATE_BASELINE, baseline_payload(scan, source))
+def write_rate_baseline(scan: dict, source: str, integrity: dict | None = None) -> None:
+    prev = read_rate_baseline() or {}
+    payload = baseline_payload(scan, source, integrity)
+    if integrity is None:
+        for key in INTEGRITY_LISTS:
+            if key in prev:
+                payload[key] = prev[key]
+    write_json(RATE_BASELINE, payload)
 
 
 def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
@@ -758,6 +1073,7 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
         # the validator that can catch a rate being WRONG rather than malformed.
         if isinstance(cards, list) and cards:
             rep.economics = validate_economics(cards, rep)
+            rep.integrity = validate_rule_integrity(cards, rep)
 
     # merchants.json — {"_metadata":…, "categories":[…], "merchants":[…]}
     mch = seed_dir / "merchants.json"
@@ -1201,7 +1517,14 @@ def cmd_validate(args) -> None:
             if now_n > len(old[key]):
                 die(f"refusing to update the baseline: '{key}' would grow "
                     f"{len(old[key])} -> {now_n}.\n          Fix the data instead.")
-        write_rate_baseline(new, f"{args.target}@{git_head()[:7]}")
+        for key, ident in INTEGRITY_LISTS.items():
+            if not isinstance(old.get(key), list) or rep.integrity is None:
+                continue
+            now_n = len(ident(rep.integrity))
+            if now_n > len(old[key]):
+                die(f"refusing to update the baseline: '{key}' would grow "
+                    f"{len(old[key])} -> {now_n}.\n          Fix the data instead.")
+        write_rate_baseline(new, f"{args.target}@{git_head()[:7]}", rep.integrity)
         head("Baseline")
         ok(f"wrote {rel(RATE_BASELINE)} — review the diff, then commit it")
     print_verdict(rep, args.target)
