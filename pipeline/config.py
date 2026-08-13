@@ -32,6 +32,13 @@ SOURCE_STATE = STATE_DIR / "sources.json"        # card_id -> {url, sha256, fetc
 BATCH_STATE = STATE_DIR / "batch.json"           # in-flight Anthropic batch handles
 METRICS_HISTORY = STATE_DIR / "metrics.jsonl"    # one line per weekly run
 
+# Pass-1 output, tracked. It has to be: stage 2 (submit verification) and stage 3
+# (apply verdicts) are separate cron runs on separate GitHub runners, so anything left
+# in gitignored scratch is gone by the time the next stage looks for it. Committing it
+# also gives an audit trail of what the model actually claimed, which is worth having
+# the first time someone asks why a rate changed.
+EXTRACTIONS = STATE_DIR / "extractions.json"
+
 # Scratch. Gitignored — regenerated every run.
 WORK_DIR = REPO / ".pipeline-work"
 FETCH_CACHE = WORK_DIR / "fetched"

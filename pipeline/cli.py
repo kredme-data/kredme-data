@@ -178,10 +178,6 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     ST.save_batch_state(bst)
     ST.save_state(st)
 
-    # The card text goes to scratch, not to git: verification needs the same bytes the
-    # extractor saw, and re-fetching at collect time could silently read a changed page.
-    payload = {s.card_id: text for s, text in changed}
-    (_work_dir() / "documents.json").write_text(json.dumps(payload), encoding="utf-8")
     ok("stage 1 complete — pipeline-advance.yml will collect when the batch ends")
     return 0
 
@@ -206,14 +202,34 @@ def cmd_advance(args: argparse.Namespace) -> int:
     return 0
 
 
-def _load_documents() -> dict[str, str]:
-    p = C.WORK_DIR / "documents.json"
-    if not p.exists():
-        return {}
-    try:
-        return json.loads(p.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return {}
+def _redocument(card_id: str, sources_state: dict) -> tuple[str, str]:
+    """Re-fetch a card's source and return (text, why_not) — text is "" when unusable.
+
+    Verification must judge the extractor's quotes against the EXACT bytes the extractor
+    read. Stage 1 wrote those bytes to `.pipeline-work/`, which is gitignored scratch on a
+    runner that no longer exists by the time stage 2 runs — so this re-fetches instead, and
+    uses the committed content hash to prove the bytes are the same ones.
+
+    If the page moved in between, we do not verify against the new bytes and quietly hope:
+    the card is skipped this cycle and picked up on the next Monday, when extraction and
+    verification will both see the newer page. Skipping is the safe direction — the failure
+    it prevents is an observation being marked verified against a document that no longer
+    contains it.
+    """
+    entry = ST.get_source(sources_state, card_id) or {}
+    url = entry.get("url") or ""
+    expected = entry.get("content_sha256") or ""
+    if not url:
+        return "", "no recorded source url"
+    if not expected:
+        return "", "no recorded content hash"
+
+    res = F.fetch_source(url)
+    if not res.ok or not res.text:
+        return "", f"re-fetch failed: {res.error or 'no text'}"
+    if res.text_sha256 != expected:
+        return "", "source changed since extraction — deferred to the next run"
+    return res.text, ""
 
 
 def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
@@ -232,31 +248,43 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
     for k, v in list(bad.items())[:10]:
         warn(f"{k}: {v.get('error')}")
 
-    (_work_dir() / "extractions.json").write_text(json.dumps(results), encoding="utf-8")
+    # Tracked, not scratch — stage 3 is a different cron run on a different runner.
+    C.EXTRACTIONS.parent.mkdir(parents=True, exist_ok=True)
+    C.EXTRACTIONS.write_text(
+        json.dumps(results, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
     ST.mark_batch(bst, bid, "collected")
 
-    docs = _load_documents()
-    if not docs:
-        warn("scratch documents are gone (a fresh runner) — cannot verify without the "
-             "exact bytes the extractor read; re-run refresh")
-        ST.save_batch_state(bst)
-        return 1
-
     head("Building verification batch")
+    sources_state = ST.load_state()
+    # Stage 1 keyed its results by custom_id, which is sanitised and may carry a hash
+    # suffix, so it is not always recoverable by string surgery. Rebuild the map from the
+    # committed source state instead — that is the authoritative card_id list.
+    by_custom_id = {
+        B.build_extract_request(cid, "x", "https://x.invalid", "x" * 200)["custom_id"]: cid
+        for cid in sources_state.get("sources", {})
+        if not cid.startswith("__watch__")
+    }
+
     vreqs = []
+    skipped: dict[str, int] = {}
     for cid, res in good.items():
-        _, card_id = B.parse_custom_id(cid)
-        data = res.get("data") or {}
-        obs = data.get("observations") or []
+        card_id = by_custom_id.get(cid)
+        if card_id is None:
+            skipped["unmapped custom_id"] = skipped.get("unmapped custom_id", 0) + 1
+            continue
+        obs = (res.get("data") or {}).get("observations") or []
         if not obs:
             continue
-        text = docs.get(card_id) or next(
-            (t for k, t in docs.items() if B.build_extract_request(k, "", "", "")["custom_id"] == cid),
-            "",
-        )
+        text, why = _redocument(card_id, sources_state)
         if not text:
+            skipped[why] = skipped.get(why, 0) + 1
             continue
         vreqs.append(B.build_verify_request(card_id, text, obs))
+
+    for why, n in sorted(skipped.items(), key=lambda kv: -kv[1]):
+        warn(f"{n:>4} cards skipped: {why}")
 
     if not vreqs:
         ok("no observations to verify — nothing proposed this week")
@@ -292,9 +320,9 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
     ST.save_batch_state(bst)
 
     try:
-        extractions = json.loads((C.WORK_DIR / "extractions.json").read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        fail("extractions.json missing — re-run refresh")
+        extractions = json.loads(C.EXTRACTIONS.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        fail(f"pipeline/state/extractions.json unreadable ({exc}) — re-run refresh")
         return 1
 
     head("Applying verdicts")
