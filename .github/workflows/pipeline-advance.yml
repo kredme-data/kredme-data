@@ -1,0 +1,115 @@
+name: Pipeline advance (poll batches, open PR)
+
+# Stages 2 and 3. Runs on a short cycle, does nothing and exits in seconds unless a
+# batch is actually in flight.
+#
+#   stage 2  extraction batch ended  ->  collect results, submit the VERIFICATION batch
+#   stage 3  verification batch ended ->  collect, diff against seed/cards.json,
+#                                         apply only what passes the gate, open a PR to dev
+#
+# Verification is a separate batch, not a second half of the first prompt, because the
+# adversary has to see the extractor's output. Measured on a known-answer control, a
+# single pass got 100% of its numbers right and 78% of its "I could not find this"
+# claims wrong — a one-pass pipeline ships correct rates alongside a false all-clear,
+# which is the more expensive error.
+#
+# The PR is deliberate. Of 18 changes that a first pass called "confirmed at the
+# issuer", an adversarial second pass refuted 6 — a wrong effective date, an
+# overstated card list, a superseded source document. An unattended publish would
+# have shipped those to users. A human merges.
+
+on:
+  schedule:
+    - cron: '17 */2 * * *'   # every 2 hours, offset so it never collides with the kick-off
+  workflow_dispatch:
+
+concurrency:
+  group: kredme-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  advance:
+    name: Advance whatever stage is pending
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      # Cheap gate: on most of the 84 runs a week there is no batch in flight, and
+      # this exits before installing anything.
+      - name: Is anything pending?
+        id: gate
+        run: |
+          if [ ! -f pipeline/state/batch.json ]; then
+            echo 'pending=false' >> "$GITHUB_OUTPUT"; echo 'No batch state file.'; exit 0
+          fi
+          if python3 -c "import json,sys; d=json.load(open('pipeline/state/batch.json')); sys.exit(0 if any(b.get('status')=='submitted' for b in d.get('batches',[])) else 1)"; then
+            echo 'pending=true' >> "$GITHUB_OUTPUT"; echo 'A batch is in flight.'
+          else
+            echo 'pending=false' >> "$GITHUB_OUTPUT"; echo 'Nothing pending.'
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.pending == 'true'
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        if: steps.gate.outputs.pending == 'true'
+        run: pip install --quiet -r pipeline/requirements.txt
+
+      - name: Advance
+        if: steps.gate.outputs.pending == 'true'
+        id: advance
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo '::error::ANTHROPIC_API_KEY is not set — cannot collect an in-flight batch.'; exit 2
+          fi
+          python3 pipeline/cli.py advance | tee advance.log
+          # cli.py writes 'stage=<name>' to GITHUB_OUTPUT itself when it produces a patch.
+          grep -q 'PATCH_READY' advance.log && echo 'patch=true' >> "$GITHUB_OUTPUT" || echo 'patch=false' >> "$GITHUB_OUTPUT"
+
+      - name: Job summary
+        if: steps.gate.outputs.pending == 'true'
+        run: |
+          {
+            echo '## Pipeline advance'
+            echo
+            sed -n '1,150p' advance.log 2>/dev/null || echo 'no log'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit state
+        if: steps.gate.outputs.pending == 'true'
+        run: |
+          git config user.name  'kredme-pipeline[bot]'
+          git config user.email 'kredme-pipeline@users.noreply.github.com'
+          git add pipeline/state
+          git diff --cached --quiet || git commit -m 'Advance pipeline state'
+          git push origin HEAD:dev || true
+
+      # Only reached at stage 3, when there is an actual proposed change to review.
+      # Base is dev, never main: data flows dev -> validate -> promote -> main, and
+      # promoting is a separate deliberate act.
+      - name: Open PR with the proposed data changes
+        if: steps.advance.outputs.patch == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: dev
+          branch: bot/card-refresh-${{ github.run_id }}
+          delete-branch: true
+          add-paths: |
+            seed/cards.json
+            seed/manifest.json
+            pipeline/state/*
+          commit-message: 'Refresh card data from issuer documents (run ${{ github.run_id }})'
+          title: 'Weekly refresh: issuer-sourced card data changes'
+          body-path: .pipeline-work/pr_body.md

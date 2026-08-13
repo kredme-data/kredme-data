@@ -1,0 +1,21 @@
+{
+  "_comment": "Hand-pinned card_id -> issuer URL, read by pipeline/sources.py. An entry here beats any URL stored on the card and beats the issuer's landing page. Every URL must be on the config.ISSUER_DOMAINS allowlist (aggregators are rejected with a WARN and skipped) and must be a page or PDF that states the card's own mechanics — a deep link is what makes the weekly extraction worth paying for. The URLs below were confirmed to load in the week of 2026-08-10. Keys starting with '_' are documentation, not overrides.",
+
+  "hdfc_bank_regalia_gold": "https://www.hdfc.bank.in/personal/pay/cards/credit-cards/regalia-gold",
+  "hdfc_bank_diners_club_privilege": "https://www.hdfc.bank.in/personal/pay/cards/credit-cards/diners-club-privilege",
+
+  "sbi_card_phonepe_sbi_purple": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-Purple-pdf-27Apr2026.pdf",
+  "sbi_card_phonepe_sbi_select_black": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-Black-pdf-27Apr2026.pdf",
+
+  "axis_bank_select": "https://campaign.axis.bank.in/generic/terms-and-conditions-select.pdf",
+  "axis_bank_magnus": "https://campaign.axis.bank.in/generic/terms-and-conditions-magnus.pdf",
+  "axis_bank_my_zone": "https://campaign.axis.bank.in/generic/terms-and-conditions-myzone.pdf",
+  "axis_bank_privilege": "https://campaign.axis.bank.in/generic/terms-and-conditions-privilege.pdf",
+  "axis_bank_neo": "https://campaign.axis.bank.in/generic/terms-and-conditions-neo.pdf",
+  "axis_bank_burgundy_private": "https://campaign.axis.bank.in/generic/terms-and-conditions-burgundy.pdf",
+
+  "idfc_first_bank_millennia": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf",
+  "idfc_first_bank_wealth": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Wealth-Credit-Card-Communication-May-26.pdf",
+  "idfc_first_bank_indigo_idfc_first": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf",
+  "idfc_first_bank_mayura": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Mayura-Credit-Card-Communication-May-26.pdf"
+}

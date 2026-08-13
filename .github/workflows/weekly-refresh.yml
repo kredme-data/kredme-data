@@ -1,0 +1,123 @@
+name: Weekly card-data refresh (kick off)
+
+# Stage 1 of 3. Fetches every active card's issuer document, hashes it, and submits
+# an Anthropic Message Batch for ONLY the cards whose source bytes actually moved.
+#
+# Why this is split across three workflows instead of one:
+#   A synchronous 380-card sweep was measured at ~11.6 hours. GitHub Actions kills a
+#   job at 6. The Batch API decouples submission from completion — this job submits
+#   and exits in minutes, `pipeline-advance.yml` collects whenever the batch finishes.
+#   No job ever approaches the limit, and a run that dies mid-way loses nothing,
+#   because the batch keeps processing on Anthropic's side.
+#
+# This repo is PUBLIC, so Actions minutes here are free.
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'      # Mondays 03:00 UTC = 08:30 IST
+  workflow_dispatch:
+    inputs:
+      card_id:
+        description: 'Refresh a single card (blank = all active cards)'
+        required: false
+        default: ''
+      limit:
+        description: 'Stop after N cards. Blank = no limit.'
+        required: false
+        default: ''
+      force:
+        description: 'Ignore content hashes and re-extract everything (EXPENSIVE — full sweep)'
+        type: boolean
+        required: false
+        default: false
+      dry_run:
+        description: 'Fetch and diff, but submit nothing and spend nothing'
+        type: boolean
+        required: false
+        default: false
+
+# Two overlapping refreshes would fight over the same state file and could submit
+# the same cards twice. Never cancel in progress — a killed submit can orphan a
+# batch we have already paid for.
+concurrency:
+  group: kredme-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  submit:
+    name: Fetch sources and submit extraction batch
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # pdftotext. Issuer T&Cs are overwhelmingly Flate-compressed PDFs, and the
+      # generic HTML fetchers report those as empty or corrupt — a tooling failure
+      # that reads exactly like "the bank publishes nothing". poppler reads them.
+      - name: Install poppler-utils
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Install the one non-stdlib dependency
+        run: pip install --quiet -r pipeline/requirements.txt
+
+      - name: Fail early if the API key is missing
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY is not set on this repository."
+            echo "Add it under Settings -> Secrets and variables -> Actions."
+            echo "It must be on kredme-data/kredme-data — a key on any other repo has no effect."
+            exit 2
+          fi
+
+      - name: Self-tests (never submit a batch from broken code)
+        run: python3 tools/test_pipeline.py && python3 tests/run_all.py
+
+      - name: Fetch sources and submit
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          [ -n "${{ github.event.inputs.card_id }}" ] && ARGS="$ARGS --card-id ${{ github.event.inputs.card_id }}"
+          [ -n "${{ github.event.inputs.limit }}" ]   && ARGS="$ARGS --limit ${{ github.event.inputs.limit }}"
+          [ "${{ github.event.inputs.force }}" = "true" ]   && ARGS="$ARGS --force"
+          [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          echo "Running: pipeline/cli.py refresh $ARGS"
+          python3 pipeline/cli.py refresh $ARGS | tee refresh.log
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo '## Weekly refresh — stage 1 of 3'
+            echo
+            sed -n '1,120p' refresh.log 2>/dev/null || echo 'no log produced'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # The content hashes and the batch handle are committed so stage 2 can find
+      # them. Nothing here touches seed/ — no card data changes until a human
+      # merges the PR that stage 3 opens.
+      - name: Commit pipeline state
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name  'kredme-pipeline[bot]'
+          git config user.email 'kredme-pipeline@users.noreply.github.com'
+          if git diff --quiet -- pipeline/state; then
+            echo 'No state change — nothing to commit.'
+            exit 0
+          fi
+          git add pipeline/state
+          git commit -m 'Record this week source hashes and the extraction batch handle'
+          git push origin HEAD:dev

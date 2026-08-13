@@ -1,0 +1,8 @@
+# The pipeline is stdlib-only except for the Anthropic SDK, which is imported
+# lazily inside the functions that call the API. `import pipeline.<anything>` and
+# the whole test suite therefore run on a bare Python with nothing installed —
+# that property is deliberate and is asserted by tests/run_all.py.
+#
+# PDF text extraction shells out to `pdftotext` (poppler-utils), a system package,
+# not a Python one. Install it with your OS package manager.
+anthropic>=0.69.0

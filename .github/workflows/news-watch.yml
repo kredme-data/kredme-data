@@ -1,0 +1,103 @@
+name: News watch (issuer change alerts)
+
+# Polls the small set of pages where Indian issuers actually publish revisions —
+# "important changes", revised T&C, MITC — hashes them, and when one moves, asks the
+# model what changed and drafts news/feed.json items for review.
+#
+# Daily, not weekly: the value of a devaluation alert decays fast. Axis published its
+# 28-Aug revisions weeks ahead; telling a cardholder on the 27th is worth much less
+# than telling them on the day the bank posted it.
+#
+# Cheap by construction. Nothing reaches the model unless a watched page's text hash
+# actually changed, so a normal day costs one HTTP GET per issuer and nothing else.
+
+on:
+  schedule:
+    - cron: '30 2 * * *'     # daily 02:30 UTC = 08:00 IST
+  workflow_dispatch:
+    inputs:
+      issuer:
+        description: 'Check a single issuer (blank = all watched pages)'
+        required: false
+        default: ''
+      force:
+        description: 'Re-analyse even if the page hash is unchanged'
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: kredme-news-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  watch:
+    name: Poll issuer notice pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install poppler-utils
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Install dependencies
+        run: pip install --quiet -r pipeline/requirements.txt
+
+      - name: Watch
+        id: watch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          [ -n "${{ github.event.inputs.issuer }}" ] && ARGS="$ARGS --issuer ${{ github.event.inputs.issuer }}"
+          [ "${{ github.event.inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          python3 pipeline/cli.py news-watch $ARGS | tee news.log
+          grep -q 'NEWS_READY' news.log && echo 'news=true' >> "$GITHUB_OUTPUT" || echo 'news=false' >> "$GITHUB_OUTPUT"
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo '## News watch'
+            echo
+            sed -n '1,150p' news.log 2>/dev/null || echo 'no log'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit watch hashes
+        run: |
+          git config user.name  'kredme-pipeline[bot]'
+          git config user.email 'kredme-pipeline@users.noreply.github.com'
+          git add pipeline/state
+          git diff --cached --quiet || git commit -m 'Update issuer notice-page hashes'
+          git push origin HEAD:dev || true
+
+      # A draft, never a publish. Six of eighteen changes that one pass called
+      # "confirmed at the issuer" were refuted on a second look — a wrong effective
+      # date, an overstated card list, a source document that had been superseded.
+      # A false devaluation alert pushed to users is worse than sending nothing, so
+      # the last step before a user sees this is a person reading it.
+      - name: Open PR with drafted news items
+        if: steps.watch.outputs.news == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: dev
+          branch: bot/news-${{ github.run_id }}
+          delete-branch: true
+          add-paths: |
+            news/feed.json
+            pipeline/state/*
+          commit-message: 'Draft news alerts from issuer notice changes (run ${{ github.run_id }})'
+          title: 'News alerts: issuer changes detected'
+          body-path: .pipeline-work/news_pr_body.md
