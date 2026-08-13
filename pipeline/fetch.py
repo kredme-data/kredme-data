@@ -442,6 +442,14 @@ def _finish(
     is_pdf = _looks_like_pdf(raw, content_type)
     text = text[: C.MAX_PDF_CHARS if is_pdf else C.MAX_PAGE_CHARS]
 
+    # pdftotext emits one form feed per page for a scanned or image-only PDF, so
+    # the result is non-empty but carries no text and every caller's `if not text`
+    # guard silently fails to fire. Collapse it here, once, rather than in each of
+    # the three call sites. The hash is unaffected: normalise_text already maps a
+    # whitespace-only document to "".
+    if not text.strip():
+        text = ""
+
     notes: list[str] = []
     if truncated:
         notes.append(f"body truncated at {C.MAX_FETCH_BYTES} bytes")

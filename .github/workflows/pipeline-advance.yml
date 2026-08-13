@@ -23,6 +23,15 @@ on:
     - cron: '17 */2 * * *'   # every 2 hours, offset so it never collides with the kick-off
   workflow_dispatch:
 
+defaults:
+  run:
+    # GitHub's default step shell is `bash -e {0}` — no pipefail. Every step here pipes
+    # the CLI into `tee`, so without this the step's exit status is tee's and is always
+    # 0: a crashed run, a missing SDK, `advance` exiting 1, all report success. That is
+    # exactly how this repo's predecessor scanner failed 12 Mondays in a row while every
+    # job showed green.
+    shell: bash -euo pipefail {0}
+
 concurrency:
   group: kredme-pipeline
   cancel-in-progress: false
@@ -76,7 +85,13 @@ jobs:
           fi
           python3 pipeline/cli.py advance | tee advance.log
           # cli.py writes 'stage=<name>' to GITHUB_OUTPUT itself when it produces a patch.
-          grep -q 'PATCH_READY' advance.log && echo 'patch=true' >> "$GITHUB_OUTPUT" || echo 'patch=false' >> "$GITHUB_OUTPUT"
+          # grep exiting 1 means "not found", not "failed" — spell that out so it reads
+          # correctly under `set -o pipefail`.
+          if grep -q 'PATCH_READY' advance.log; then
+            echo 'patch=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'patch=false' >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Job summary
         if: steps.gate.outputs.pending == 'true'

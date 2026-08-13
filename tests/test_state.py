@@ -97,10 +97,35 @@ class TestChangeDetection(unittest.TestCase):
     def test_unseen_card_counts_as_changed(self):
         self.assertTrue(ST.has_changed(self.st, "new_card", "a" * 64))
 
-    def test_same_hash_is_unchanged(self):
+    def test_same_hash_and_completed_is_unchanged(self):
         ST.record_source(self.st, "c", url="u", content_sha256="a" * 64,
-                         fetched_at="t", status="ok")
+                         fetched_at="t", status=ST.STATUS_DONE)
         self.assertFalse(ST.has_changed(self.st, "c", "a" * 64))
+
+    def test_same_hash_but_never_completed_still_needs_work(self):
+        # The compounding leak: the hash used to be written at fetch time, so a card
+        # whose batch later expired matched next week and was never extracted again.
+        for status in ("fetched", "ok", "fetch_failed", "", None):
+            with self.subTest(status=status):
+                st = {"schema_version": 1, "sources": {}}
+                ST.record_source(st, "c", url="u", content_sha256="a" * 64,
+                                 fetched_at="t", status=status)
+                self.assertTrue(ST.has_changed(st, "c", "a" * 64))
+
+    def test_mark_done_flips_it(self):
+        ST.record_source(self.st, "c", url="u", content_sha256="a" * 64,
+                         fetched_at="t", status="fetched")
+        self.assertTrue(ST.has_changed(self.st, "c", "a" * 64))
+        self.assertTrue(ST.mark_done(self.st, "c"))
+        self.assertFalse(ST.has_changed(self.st, "c", "a" * 64))
+
+    def test_mark_done_on_unknown_card(self):
+        self.assertFalse(ST.mark_done(self.st, "never_seen"))
+
+    def test_done_card_whose_source_moved_is_changed_again(self):
+        ST.record_source(self.st, "c", url="u", content_sha256="a" * 64,
+                         fetched_at="t", status=ST.STATUS_DONE)
+        self.assertTrue(ST.has_changed(self.st, "c", "b" * 64))
 
     def test_different_hash_is_changed(self):
         ST.record_source(self.st, "c", url="u", content_sha256="a" * 64,

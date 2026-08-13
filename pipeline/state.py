@@ -94,19 +94,42 @@ def record_source(
     }
 
 
-def has_changed(state: dict[str, Any], card_id: str, new_sha: str) -> bool:
-    """True when this card's source bytes differ from what we last extracted.
+# Only a card that made it all the way through the pipeline may suppress a re-extract.
+# Any other status means we fetched the bytes but never turned them into a verdict, and
+# the work still needs doing.
+STATUS_DONE = "done"
 
-    A card we have never seen counts as changed — that is what makes the first
-    run a full sweep and every later run incremental.
+
+def has_changed(state: dict[str, Any], card_id: str, new_sha: str) -> bool:
+    """True when this card still needs extracting.
+
+    Two conditions have to hold before we skip a card: the source bytes are the ones we
+    have seen before, AND we actually finished processing them. Comparing on the hash
+    alone was a silent, compounding leak — the hash was written at fetch time, so a card
+    whose batch later expired or errored still matched next week and was never retried.
+    A card we have never seen counts as changed, which is what makes the first run a
+    full sweep and every later run incremental.
     """
     prev = get_source(state, card_id)
     if prev is None:
         return True
     old = prev.get("content_sha256")
-    if not old:
+    if not old or old != new_sha:
         return True
-    return old != new_sha
+    return prev.get("status") != STATUS_DONE
+
+
+def mark_done(state: dict[str, Any], card_id: str) -> bool:
+    """Record that this card completed the pipeline at its current hash.
+
+    Called once the card's observations have been judged — including when the verdict
+    was "nothing survived", which is a completed cycle, not a failure to retry.
+    """
+    entry = get_source(state, card_id)
+    if entry is None:
+        return False
+    entry["status"] = STATUS_DONE
+    return True
 
 
 # ---------------------------------------------------------------------------

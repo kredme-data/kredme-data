@@ -189,7 +189,15 @@ trusting the coverage number — 373 cards *resolve to a URL*, which is not the 
 the assumed size of a real response. Re-measure it from the first live batch's `usage` and
 update; the ceiling figure is the only guaranteed bound until then.
 
-**5. Nothing has run against the live API yet.** Every module is unit-tested with an
+**5. One reviewed HIGH is still open.** Two verified observations targeting the same field
+on the same card both pass the gate and are both counted in the "applied" total and listed
+under *Applied* in the PR body — but `apply_proposals` writes them in sequence, so only the
+last value survives. The write is safe (one field, one final value, provenance stamped) and
+the diff shows the truth; what lies is the summary a reviewer reads. Fix is to collapse
+per-`(card_id, path)` collisions before rendering, marking all but one
+`conflicting_observations`. Until then, read the diff and not the count.
+
+**6. Nothing has run against the live API yet.** Every module is unit-tested with an
 injected fake client and the full request shape is asserted, but no real batch has been
 submitted. The first live run should be `--limit 5` on cards with confirmed overrides.
 

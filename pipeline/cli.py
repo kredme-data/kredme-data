@@ -125,16 +125,21 @@ def cmd_refresh(args: argparse.Namespace) -> int:
 
         if not args.force and not ST.has_changed(st, s.card_id, res.text_sha256):
             unchanged += 1
+            # Keep STATUS_DONE — rewriting it to "unchanged" would make has_changed
+            # true again next week and undo the whole point of the hash gate.
             ST.record_source(
                 st, s.card_id, url=s.url, content_sha256=res.text_sha256,
-                fetched_at=_now(), status="unchanged",
+                fetched_at=_now(), status=ST.STATUS_DONE,
             )
             continue
 
         changed.append((s, res.text))
+        # "fetched", not "done": the bytes are in hand but nothing has been extracted
+        # from them yet. Only stage 3 may mark a card done, or a batch that expires
+        # silently retires the card forever.
         ST.record_source(
             st, s.card_id, url=s.url, content_sha256=res.text_sha256,
-            fetched_at=_now(), status="ok",
+            fetched_at=_now(), status="fetched",
         )
         if i % 25 == 0:
             print(f"     ... {i}/{len(resolved)}")
@@ -248,6 +253,19 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
     for k, v in list(bad.items())[:10]:
         warn(f"{k}: {v.get('error')}")
 
+    # Reconcile against what we submitted. collect() keys by custom_id and has no view of
+    # the request list, so a result that never came back is otherwise indistinguishable
+    # from a card that legitimately had nothing to report — and we have already paid for
+    # it. Fail rather than advance, so a re-run can retry.
+    expected = pending.get("request_count") or 0
+    if expected and len(results) != expected:
+        fail(f"{bid}: submitted {expected} requests but the batch returned {len(results)} "
+             f"— {expected - len(results)} paid-for cards are missing. Not advancing.")
+        return 1
+    if results and not good:
+        fail("every extraction failed — infrastructure, not the data. Not advancing.")
+        return 1
+
     # Tracked, not scratch — stage 3 is a different cron run on a different runner.
     C.EXTRACTIONS.parent.mkdir(parents=True, exist_ok=True)
     C.EXTRACTIONS.write_text(
@@ -316,6 +334,28 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         return 0
 
     verdicts = B.collect(bid)
+
+    # An infrastructure failure and an adversarial refutation are NOT the same event, and
+    # reporting them in the same sentence is how a broken run looks like a clean one. A
+    # truncated or unparseable verdict body arrives here as ok=False; if EVERY one failed,
+    # the adversary never ran and there is nothing to conclude.
+    vbad = {k: v for k, v in verdicts.items() if not v.get("ok")}
+    ok(f"collected {len(verdicts) - len(vbad)} verdicts, {len(vbad)} failed")
+    for k, v in list(vbad.items())[:10]:
+        warn(f"{k}: {v.get('error')}")
+    if verdicts and len(vbad) == len(verdicts):
+        fail("every verification result failed — that is an infrastructure failure, not "
+             "the adversary. Refusing to report it as 'refuted'; the batch stays pending "
+             "so a re-run can retry it.")
+        return 1
+
+    expected = pending.get("request_count") or 0
+    if expected and len(verdicts) != expected:
+        fail(f"{bid}: submitted {expected} verification requests but the batch returned "
+             f"{len(verdicts)} — {expected - len(verdicts)} paid-for cards are missing. "
+             "Not advancing; re-run to retry.")
+        return 1
+
     ST.mark_batch(bst, bid, "collected")
     ST.save_batch_state(bst)
 
@@ -328,15 +368,41 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
     head("Applying verdicts")
     cards = S.load_cards()
     by_id = {c["card"]["id"]: c for c in cards if isinstance(c.get("card"), dict)}
+    sources_state = ST.load_state()
+
+    # parse_custom_id returns the SANITISED id, and by_id is keyed on the original. For
+    # the 16 live cards whose ids carry parentheses or dots — every BOBCARD, AU co-brand
+    # and OneCard/Scapia entry — those differ, so the lookup missed and the card was
+    # dropped in silence AFTER we had paid to both extract and verify it. Rebuild the
+    # submit-time map instead, exactly as _advance_extract does.
+    by_custom_id = {
+        B.build_extract_request(c, "x", "https://x.invalid", "x" * 200)["custom_id"]: c
+        for c in sources_state.get("sources", {})
+        if not c.startswith("__watch__")
+    }
+    verify_key = {
+        B.build_verify_request(c, "x" * 200, [])["custom_id"]: c
+        for c in sources_state.get("sources", {})
+        if not c.startswith("__watch__")
+    }
+    by_card_verify = {v: k for k, v in verify_key.items()}
+
     proposals: list[D.Proposal] = []
-    survived = killed = 0
+    survived = killed = unmapped = 0
 
     for cid, ex in extractions.items():
         if not ex.get("ok"):
             continue
-        kind, card_id = B.parse_custom_id(cid)
+        card_id = by_custom_id.get(cid)
+        if card_id is None:
+            unmapped += 1
+            warn(f"unmapped custom_id, extraction discarded: {cid}")
+            continue
         obs = (ex.get("data") or {}).get("observations") or []
-        vres = verdicts.get(cid.replace("extract::", "verify::"), {})
+        # Derive the verify custom_id from the card, not by string surgery on the
+        # extract id — sanitisation and hash-suffixing mean they are not always related
+        # by a simple prefix swap.
+        vres = verdicts.get(by_card_verify.get(card_id, ""), {})
         vdata = (vres.get("data") or {}) if vres.get("ok") else {}
         vmap = {v["index"]: v for v in vdata.get("verdicts", []) if isinstance(v.get("index"), int)}
 
@@ -355,10 +421,15 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         entry = by_id.get(card_id)
         if entry is None or not kept:
             continue
-        src = ST.get_source(ST.load_state(), card_id) or {}
+        src = ST.get_source(sources_state, card_id) or {}
         proposals.extend(D.observations_to_proposals(entry, kept, src.get("url", "")))
 
+        ST.mark_done(sources_state, card_id)
+
+    ST.save_state(sources_state)
     ok(f"{survived} observations survived verification, {killed} refuted or unverified")
+    if unmapped:
+        warn(f"{unmapped} extraction(s) could not be mapped back to a card — investigate")
     if not proposals:
         ok("no proposals this week")
         return 0
@@ -376,7 +447,7 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
     new_cards, applied = D.apply_proposals(cards, proposals, only_auto=True)
     if applied:
         C.CARDS_JSON.write_text(
-            json.dumps(new_cards, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+            json.dumps(new_cards, indent=1, ensure_ascii=False) + "\n", encoding="utf-8"
         )
         _regen_manifest()
         ok(f"applied {len(applied)} changes to seed/cards.json and regenerated the manifest")
@@ -416,7 +487,7 @@ def _regen_manifest() -> int:
         man["version"] = ".".join(parts)
     man["updated_at"] = _now()
     C.MANIFEST_JSON.write_text(
-        json.dumps(man, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        json.dumps(man, indent=1, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     return 0
 

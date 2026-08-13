@@ -39,6 +39,15 @@ on:
 # Two overlapping refreshes would fight over the same state file and could submit
 # the same cards twice. Never cancel in progress — a killed submit can orphan a
 # batch we have already paid for.
+defaults:
+  run:
+    # GitHub's default step shell is `bash -e {0}` — no pipefail. Every step here pipes
+    # the CLI into `tee`, so without this the step's exit status is tee's and is always
+    # 0: a crashed run, a missing SDK, `advance` exiting 1, all report success. That is
+    # exactly how this repo's predecessor scanner failed 12 Mondays in a row while every
+    # job showed green.
+    shell: bash -euo pipefail {0}
+
 concurrency:
   group: kredme-pipeline
   cancel-in-progress: false
@@ -89,11 +98,14 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          # Explicit ifs, not `[ test ] && assign`: under `set -e` a false test makes the
+          # whole line non-zero and kills the step, and an empty optional input is the
+          # normal case on a scheduled run.
           ARGS=""
-          [ -n "${{ github.event.inputs.card_id }}" ] && ARGS="$ARGS --card-id ${{ github.event.inputs.card_id }}"
-          [ -n "${{ github.event.inputs.limit }}" ]   && ARGS="$ARGS --limit ${{ github.event.inputs.limit }}"
-          [ "${{ github.event.inputs.force }}" = "true" ]   && ARGS="$ARGS --force"
-          [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          if [ -n "${{ github.event.inputs.card_id }}" ]; then ARGS="$ARGS --card-id ${{ github.event.inputs.card_id }}"; fi
+          if [ -n "${{ github.event.inputs.limit }}" ]; then ARGS="$ARGS --limit ${{ github.event.inputs.limit }}"; fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
           echo "Running: pipeline/cli.py refresh $ARGS"
           python3 pipeline/cli.py refresh $ARGS | tee refresh.log
 

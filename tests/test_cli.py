@@ -172,6 +172,35 @@ class TestManifestRegeneration(unittest.TestCase):
             self.assertIn("updated_at", out)
 
 
+class TestSeedFormattingPreserved(unittest.TestCase):
+    """A one-field change must produce a one-field diff.
+
+    seed/cards.json is 1.78 MB stored at indent=1. Writing it back at indent=2
+    re-indents all 131,664 lines, and the PR — the only place a person sees what the
+    model decided — becomes unreviewable.
+    """
+
+    def test_seed_files_round_trip_at_the_indent_the_writer_uses(self):
+        for name, indent in (("cards.json", 1), ("manifest.json", 1)):
+            with self.subTest(file=name):
+                raw = (C.SEED_DIR / name).read_bytes()
+                rebuilt = (
+                    json.dumps(json.loads(raw), indent=indent, ensure_ascii=False).encode()
+                    + b"\n"
+                )
+                self.assertEqual(raw, rebuilt, f"{name} is not indent={indent} on disk")
+
+    def test_news_feed_is_indent_two(self):
+        raw = C.NEWS_FEED.read_bytes()
+        rebuilt = json.dumps(json.loads(raw), indent=2, ensure_ascii=False).encode() + b"\n"
+        self.assertEqual(raw, rebuilt)
+
+    def test_writer_uses_the_matching_indent(self):
+        src = (REPO / "pipeline" / "cli.py").read_text(encoding="utf-8")
+        self.assertIn("json.dumps(new_cards, indent=1", src)
+        self.assertIn("json.dumps(man, indent=1", src)
+
+
 class TestCliEntrypoints(unittest.TestCase):
     """Bad input must exit with a code, never a traceback — a traceback in CI is opaque."""
 

@@ -26,6 +26,15 @@ on:
         required: false
         default: false
 
+defaults:
+  run:
+    # GitHub's default step shell is `bash -e {0}` — no pipefail. Every step here pipes
+    # the CLI into `tee`, so without this the step's exit status is tee's and is always
+    # 0: a crashed run, a missing SDK, `advance` exiting 1, all report success. That is
+    # exactly how this repo's predecessor scanner failed 12 Mondays in a row while every
+    # job showed green.
+    shell: bash -euo pipefail {0}
+
 concurrency:
   group: kredme-news-watch
   cancel-in-progress: false
@@ -60,11 +69,18 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          # See weekly-refresh.yml — `[ test ] && assign` is fatal under `set -e`.
           ARGS=""
-          [ -n "${{ github.event.inputs.issuer }}" ] && ARGS="$ARGS --issuer ${{ github.event.inputs.issuer }}"
-          [ "${{ github.event.inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          if [ -n "${{ github.event.inputs.issuer }}" ]; then ARGS="$ARGS --issuer ${{ github.event.inputs.issuer }}"; fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
           python3 pipeline/cli.py news-watch $ARGS | tee news.log
-          grep -q 'NEWS_READY' news.log && echo 'news=true' >> "$GITHUB_OUTPUT" || echo 'news=false' >> "$GITHUB_OUTPUT"
+          # grep exiting 1 means "not found", not "failed" — spell that out so it reads
+          # correctly under `set -o pipefail`.
+          if grep -q 'NEWS_READY' news.log; then
+            echo 'news=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'news=false' >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Job summary
         if: always()

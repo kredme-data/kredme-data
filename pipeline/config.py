@@ -180,7 +180,13 @@ def contains_weasel(text: str) -> bool:
     """True if `text` reads like marketing rather than a stated mechanic."""
     if not text:
         return False
-    low = text.lower()
+    # Collapse every run of whitespace to one space BEFORE matching. Issuer PDFs reach
+    # us through `pdftotext -layout`, which preserves line wraps and column gaps, so a
+    # quote spanning "...can get up\nto 0.8% cashback..." would otherwise walk straight
+    # past this guard and auto-apply a marketing number to a live card. A tab, a double
+    # space or an NBSP does the same. str.split() with no argument already treats NBSP
+    # and every other Unicode space as whitespace.
+    low = " ".join(text.split()).lower()
     return any(p in low for p in WEASEL_PHRASES)
 
 

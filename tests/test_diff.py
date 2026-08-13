@@ -924,5 +924,62 @@ class TestAgainstTheRealCatalogue(unittest.TestCase):
         self.assertEqual(diff._rule_names(new), diff._rule_names(self.cards))
 
 
+# ---------------------------------------------------------------------------
+# Regression: the null point value. 71 of 380 live cards store rp_value_standard
+# null, and the app renders those at Rs 0.25 — so null is not a gap waiting to be
+# filled, it is a number the user already sees. Treating it as a gap let a proposal
+# of Rs 1.50 auto-apply with no ceiling, delta or upward check (all three
+# short-circuit on a None old value), and because the app multiplies EVERY rule on
+# the card by this one field, a single write moved the whole card and produced a
+# 60% rendered rate — past the ceiling tools/kredme.py calls unwaivable.
+# ---------------------------------------------------------------------------
+def _null_rp_card():
+    return {
+        "card": {"id": "t_null_rp", "card_name": "Test", "is_active": 1,
+                 "base_reward_rate": 0.04, "rp_value_standard": None},
+        "reward_rules": [],
+    }
+
+
+def _rp_obs(value):
+    return [{
+        "field": "point_value_inr", "value": str(value), "unit": "inr",
+        "source_quote": (
+            "Each Reward Point is worth Rs %s when redeemed against the statement." % value
+        ),
+        "confidence": "high",
+    }]
+
+
+class TestNullPointValueIsNotAGap(unittest.TestCase):
+    URL = "https://www.hdfc.bank.in/x"
+
+    def _gate(self, value):
+        ps = diff.observations_to_proposals(_null_rp_card(), _rp_obs(value), self.URL)
+        self.assertTrue(ps, "expected a proposal")
+        return [diff.gate(p) for p in ps]
+
+    def test_raising_a_null_point_value_is_blocked_as_upward(self):
+        for value in ("1.5", "1.0", "0.5", "0.26"):
+            with self.subTest(value=value):
+                for p in self._gate(value):
+                    self.assertFalse(p.auto_applicable, f"Rs {value} auto-applied")
+                    self.assertEqual(p.blocked_reason, "upward_revision")
+
+    def test_lowering_below_the_app_default_still_applies(self):
+        # Rs 0.20 is genuinely below the Rs 0.25 the user sees today, so it is a
+        # downward correction and the asymmetry lets it through by design.
+        for p in self._gate("0.20"):
+            self.assertTrue(p.auto_applicable, p.blocked_reason)
+
+    def test_the_constant_matches_the_publish_gate(self):
+        # If tools/kredme.py and this module disagree about the app's default, the
+        # pipeline can pass its own gate and then fail the publish gate — which
+        # config.py explicitly promises cannot happen.
+        src = (pathlib.Path(__file__).resolve().parent.parent / "tools" / "kredme.py").read_text()
+        self.assertIn("APP_POINT_VALUE_DEFAULT = 0.25", src)
+        self.assertEqual(diff.APP_POINT_VALUE_DEFAULT, 0.25)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2 if "-v" in sys.argv else 1)

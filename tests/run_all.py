@@ -118,6 +118,29 @@ class TestConfigInvariants(unittest.TestCase):
         )
         self.assertFalse(self.C.contains_weasel(""))
 
+    def test_weasel_survives_pdf_whitespace(self):
+        # Issuer PDFs come through `pdftotext -layout`, which keeps line wraps and
+        # column gaps. Matching on raw text let "...can get up\nto 0.8% cashback..."
+        # walk straight past this guard and auto-apply a marketing number to a live card.
+        for variant in (
+            "can get up\nto 0.8% cashback on all online spends",
+            "can get up\r\nto 0.8% cashback",
+            "earn up\tto 10% back",
+            "save up  to Rs 5,000",
+            "worth up\u00a0to Rs 2,000",
+            "UP TO 10% back",
+        ):
+            with self.subTest(variant=variant):
+                self.assertTrue(self.C.contains_weasel(variant), repr(variant))
+
+    def test_weasel_does_not_fire_on_a_real_mechanic(self):
+        for good in (
+            "You earn 4 Reward Points for every Rs 150 spent.",
+            "The annual fee is Rs 2,500 plus applicable taxes.",
+            "Cardholders receive 10% cashback on dining, capped at Rs 500 a month.",
+        ):
+            self.assertFalse(self.C.contains_weasel(good), good)
+
     def test_ceiling_is_forty_not_thirty(self):
         # 40, not 30: HDFC SmartBuy 10X genuinely reaches ~33%, and a gate that
         # blocks a real product is a gate someone switches off.

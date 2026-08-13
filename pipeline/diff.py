@@ -107,6 +107,13 @@ RULE_ARRAYS = (
 # the card with it. Two cards in the live catalogue already do this (5.0 and 300.0).
 APP_POINT_VALUE_MAX = 1.5
 
+# The app substitutes this for a missing point value (`?? 0.25` in fromOtaJson,
+# credit_card.dart:766, and the same default at :556; tools/kredme.py:117 mirrors it).
+# So a stored null is NOT an unset field waiting to be filled — it is Rs 0.25 on the
+# user's screen right now, and raising it to Rs 1.50 multiplies every reward rule on
+# that card by six at once.
+APP_POINT_VALUE_DEFAULT = 0.25
+
 # A quote shorter than this is a fragment, not a sentence, and cannot be checked
 # against the source document by the person reading the PR.
 MIN_QUOTE_CHARS = 20
@@ -485,13 +492,25 @@ def _implied_pct(p: Proposal) -> float | None:
 def _is_upward_reward_revision(p: Proposal) -> bool:
     """True when this raises what a cardholder earns.
 
-    An old value of None is a gap being filled, not a revision, and is judged on
-    confidence and quote like anything else. An old value of 0 IS a number, so 0 ->
-    anything counts as upward.
+    An old value of None is usually a gap being filled, not a revision, and is judged
+    on confidence and quote like anything else. An old value of 0 IS a number, so
+    0 -> anything counts as upward.
+
+    The point value is the exception, and it is the dangerous one. 71 of 380 live cards
+    store `rp_value_standard: null`, and the app renders those at Rs 0.25 — so null is
+    not a gap, it is a value the user already sees. Treating it as a gap let a proposal
+    of Rs 1.50 auto-apply with no ceiling check, no delta check and no upward check,
+    because every one of those comparisons short-circuits on a None old value. Since
+    the app multiplies EVERY reward rule on the card by this single field, one such
+    write moved a whole card at once and produced a 60% rendered rate — past the 40%
+    ceiling that tools/kredme.py calls unwaivable and that config.py promises this
+    module mirrors.
     """
     if p.field not in REWARD_RATE_FIELDS:
         return False
     o, n = _fnum(p.old_value), _fnum(p.new_value)
+    if o is None and p.unit == UNIT_INR_PER_POINT:
+        o = APP_POINT_VALUE_DEFAULT
     if o is None or n is None:
         return False
     return n > o
