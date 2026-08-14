@@ -66174,5 +66174,490 @@
    }
   ],
   "redemption_rules": []
+ },
+ {
+  "card": {
+   "id": "equitas_powermiles",
+   "card_name": "Equitas PowerMiles Credit Card",
+   "issuer": "Equitas Small Finance Bank",
+   "network": "unknown",
+   "card_tier": "premium",
+   "annual_fee": 5000.0,
+   "fee_waiver_spend": 480000.0,
+   "base_reward_rate": 0.03,
+   "reward_currency": "reward_points",
+   "rp_value_standard": 0.5,
+   "rp_value_travel": 0.5,
+   "rp_value_transfer": 1.0,
+   "forex_markup_pct": 2.0,
+   "has_rupay_upi": 0,
+   "image_asset": "assets/cards/equitas_powermiles.png",
+   "metadata": {
+    "contactless": null,
+    "material": "Metal",
+    "invite_only": false,
+    "no_preset_limit": false
+   },
+   "is_active": 1,
+   "is_travel": 1,
+   "points_expiry_months": 36,
+   "min_redemption_points": null,
+   "points_clawback_on_default": null
+  },
+  "reward_rules": [
+   {
+    "rule_name": "Base reward rate",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 3.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "point_value": 0.5,
+    "point_currency": "reward_points",
+    "_sources": [
+     "bank"
+    ],
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/",
+    "source_quote": "Earn 3X rewards on international transactions. Earn 3RP on every Rs.100 spent. 1 RP= 0.50",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   }
+  ],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   }
+  ],
+  "fuel_surcharge_rules": [
+   {
+    "waiver_pct": 1.0,
+    "min_txn_amount": 500.0,
+    "max_txn_amount": 3000.0,
+    "monthly_cap": 450.0
+   }
+  ],
+  "milestone_rules": [],
+  "redemption_rules": [
+   {
+    "rule_name": "Xchange Products / Vouchers / Travel",
+    "channel_type": "voucher_catalog",
+    "point_value_inr": 0.5,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Products, vouchers, flight / bus / hotel booking via the Equitas Xchange portal",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Products/ Vouchers/ Flight Booking/ Bus Booking/ Hotel Booking - 0.50"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "Cashback against statement",
+    "channel_type": "cashback",
+    "point_value_inr": 0.25,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Statement credit",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Cashback against statement - 0.25"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "Insta Redemption",
+    "channel_type": "other",
+    "point_value_inr": 0.25,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Insta Redemption",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Insta Redemption - 0.25"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "1:1 Xchange Miles",
+    "channel_type": "partner_transfer",
+    "point_value_inr": 1.0,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "1 RP = 1 mile/point across 10+ airline and hotel partners. Equitas states this goes live from Sep 2026.",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "1:1 Xchange Miles - 1"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "1:1 Xchange Brands",
+    "channel_type": "merchandise",
+    "point_value_inr": 1.0,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "1:1 redemption at Apple (Imagine), Tanishq, Taj, M&S, The Body Shop",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "1:1 Xchange Brands - 1"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   }
+  ]
+ },
+ {
+  "card": {
+   "id": "equitas_selfe",
+   "card_name": "Equitas Selfe Credit Card",
+   "issuer": "Equitas Small Finance Bank",
+   "network": "unknown",
+   "card_tier": "mid_range",
+   "annual_fee": 1000.0,
+   "fee_waiver_spend": 240000.0,
+   "base_reward_rate": 0.02,
+   "reward_currency": "reward_points",
+   "rp_value_standard": 0.35,
+   "rp_value_travel": 0.35,
+   "rp_value_transfer": null,
+   "forex_markup_pct": null,
+   "has_rupay_upi": 0,
+   "image_asset": "assets/cards/equitas_selfe.png",
+   "metadata": {
+    "contactless": null,
+    "material": null,
+    "invite_only": false,
+    "no_preset_limit": false
+   },
+   "is_active": 1,
+   "is_travel": 0,
+   "points_expiry_months": 36,
+   "min_redemption_points": null,
+   "points_clawback_on_default": null
+  },
+  "reward_rules": [
+   {
+    "rule_name": "Base reward rate",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 2.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "point_value": 0.35,
+    "point_currency": "reward_points",
+    "_sources": [
+     "bank"
+    ],
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/",
+    "source_quote": "Earn 5X rewards on spends in the categories chosen by you. Earn 2RP on every Rs.100 spent. 1 RP= 0.35",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   }
+  ],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   }
+  ],
+  "fuel_surcharge_rules": [
+   {
+    "waiver_pct": 1.0,
+    "min_txn_amount": 500.0,
+    "max_txn_amount": 3000.0,
+    "monthly_cap": 250.0
+   }
+  ],
+  "milestone_rules": [],
+  "redemption_rules": [
+   {
+    "rule_name": "Xchange Products / Vouchers / Travel",
+    "channel_type": "voucher_catalog",
+    "point_value_inr": 0.35,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Products, vouchers, flight booking and more via the Equitas Xchange portal",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Products/ Vouchers/ Flight Booking - 0.35"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "Cashback against statement",
+    "channel_type": "cashback",
+    "point_value_inr": 0.15,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Statement credit",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Cashback against statement - 0.15"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "Insta Redemption",
+    "channel_type": "other",
+    "point_value_inr": 0.15,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Insta Redemption",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Insta Redemption - 0.15"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   }
+  ]
+ },
+ {
+  "card": {
+   "id": "equitas_tiga",
+   "card_name": "Equitas Tiga Credit Card",
+   "issuer": "Equitas Small Finance Bank",
+   "network": "unknown",
+   "card_tier": "entry",
+   "annual_fee": 0.0,
+   "fee_waiver_spend": 120000.0,
+   "base_reward_rate": 0.01,
+   "reward_currency": "reward_points",
+   "rp_value_standard": 0.15,
+   "rp_value_travel": 0.15,
+   "rp_value_transfer": null,
+   "forex_markup_pct": null,
+   "has_rupay_upi": 0,
+   "image_asset": "assets/cards/equitas_tiga.png",
+   "metadata": {
+    "contactless": null,
+    "material": null,
+    "invite_only": false,
+    "no_preset_limit": false
+   },
+   "is_active": 1,
+   "is_travel": 0,
+   "points_expiry_months": 36,
+   "min_redemption_points": 500,
+   "points_clawback_on_default": null
+  },
+  "reward_rules": [
+   {
+    "rule_name": "Base reward rate",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "point_value": 0.15,
+    "point_currency": "reward_points",
+    "_sources": [
+     "bank"
+    ],
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/tiga-credit-card/",
+    "source_quote": "Enjoy 3X rewards on transactions via UPI, Contactless & Pay by 3 merchants. Earn 1RP on every Rs.100 spent. 1 RP= 0.15",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   }
+  ],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   }
+  ],
+  "fuel_surcharge_rules": [
+   {
+    "waiver_pct": 1.0,
+    "min_txn_amount": 500.0,
+    "max_txn_amount": 3000.0,
+    "monthly_cap": 100.0
+   }
+  ],
+  "milestone_rules": [],
+  "redemption_rules": [
+   {
+    "rule_name": "Xchange Vouchers",
+    "channel_type": "voucher_catalog",
+    "point_value_inr": 0.15,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Vouchers, products and travel booking via the Equitas Xchange portal",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Redeem vouchers - 0.15"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/tiga-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "Cashback against statement",
+    "channel_type": "cashback",
+    "point_value_inr": 0.1,
+    "min_points": 500,
+    "max_points": null,
+    "redemption_fee_inr": 99.0,
+    "channel_description": "Statement credit. Equitas states a minimum of 500 points and a Rs.99 redemption fee.",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Cashback against statement - 0.10"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/tiga-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   },
+   {
+    "rule_name": "Insta Redemption",
+    "channel_type": "other",
+    "point_value_inr": 0.1,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Insta Redemption",
+    "_sources": [
+     "bank"
+    ],
+    "_source_quotes": {
+     "bank": "Insta Redemption - 0.10"
+    },
+    "confidence": "high",
+    "source_url": "https://equitas.bank.in/personal-banking/pay/credit-cards/tiga-credit-card/",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-14"
+   }
+  ]
  }
 ]
