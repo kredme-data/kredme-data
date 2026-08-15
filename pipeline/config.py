@@ -211,17 +211,37 @@ NEWS_MAJOR_BUMP_REQUIRED = True
 
 # Pages that announce changes. The news watcher polls these, not the card pages —
 # issuers publish revisions on a small number of stable notice URLs.
+# Probed 16-Aug-2026 with pipeline.fetch (NOT curl — the two disagree, see below).
+# Nine of the twelve entries here were dead: eight 404s and a YES page that returned
+# 200 with zero extractable text. A dead watch page is the worst kind of defect in
+# this pipeline because it fails silently — the poller finds no change, forever, and
+# reports success every morning.
+#
+# Two traps worth keeping:
+#  - Axis's 404 shell is ~735KB, LARGER than its real 734KB announcements page. Any
+#    liveness check based on response size passes on a page serving nothing. Check
+#    the status code, and grep for a content marker like "revision is effective from".
+#  - curl and urllib disagree in BOTH directions. AU and RBL bot-block curl with a
+#    403 but serve urllib fine; bobcard serves curl but fails urllib. Verify with the
+#    fetcher CI actually uses, not with whatever is on your shell.
+#
+# Several issuers publish revisions only inside a MITC PDF and have no HTML notice
+# index at all — those entries point straight at the PDF, which fetch.py reads.
 WATCH_PAGES = (
-    ("axis", "https://www.axis.bank.in/support/terms-and-conditions/credit-card"),
-    ("hdfc", "https://www.hdfc.bank.in/personal/pay/cards/credit-cards"),
-    ("sbi", "https://www.sbicard.com/en/personal/customer-care/important-information.page"),
-    ("icici", "https://www.icicibank.com/personal-banking/cards/credit-card/upcoming-changes"),
-    ("idfc", "https://www.idfcfirst.bank.in/personal-banking/cards/credit-card"),
+    ("axis", "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"),
+    ("hdfc", "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"),
+    ("sbi", "https://www.sbicard.com/en/customer-notices.page"),
+    ("icici", "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"),
+    ("idfc", "https://www.idfcfirst.bank.in/credit-card/mitc"),
     ("indusind", "https://www.indusind.bank.in/in/personal/cards/credit-card.html"),
-    ("yes", "https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card"),
-    ("bobcard", "https://www.bobcard.co.in/service-charges"),
-    ("au", "https://www.au.bank.in/credit-card"),
+    ("yes", "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"),
+    ("au", "https://www.au.bank.in/notice-board"),
     ("kotak", "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"),
-    ("rbl", "https://www.rblbank.com/category/service-charges"),
+    ("rbl", "https://www.rbl.bank.in/service-charges"),
     ("hsbc", "https://www.hsbc.co.in/credit-cards/"),
+    # bobcard is deliberately absent. Its server sends the leaf certificate without
+    # the GlobalSign intermediate, so the chain cannot be verified. Browsers and curl
+    # recover by chasing the AIA extension; urllib does not, and neither will CI.
+    # Watching it would mean disabling certificate verification for every fetch.
+    # Its 19 cards are unwatched until BOBCARD fixes their chain.
 )

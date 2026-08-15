@@ -110,21 +110,29 @@ ISSUER_MARKERS: tuple[tuple[str, str], ...] = (
 # a typo'd host would otherwise fail silently, one whole issuer at a time.
 # ---------------------------------------------------------------------------
 ISSUER_LANDING: dict[str, str] = {
-    # RBI opened the restricted .bank.in TLD in 2025-26 and some issuers migrated.
-    # Not all of them did. axis/indusind/yes serve .bank.in today; hdfc, idfcfirst,
-    # rbl and au DO NOT — those four hosts 404, which is why 109 of this repo's
-    # cards could never be fetched. Every URL below was probed before being written
-    # here; re-probe before changing one, and do not assume the pattern generalises.
-    "hdfc": "https://www.hdfcbank.com/personal/pay/cards/credit-cards",
+    # RBI opened the restricted .bank.in TLD and the big issuers DID migrate — the
+    # legacy .com hosts 301-redirect to .bank.in and serve byte-identical content.
+    # So the 129 cards that could never be fetched were never a host problem: the
+    # HOSTS were right and the PATHS were wrong. Paths did not survive the move
+    # (/personal/pay/cards/credit-cards -> /credit-cards), and a wrong path on a
+    # live host returns a 404 that looks exactly like a dead domain.
+    #
+    # Canonical .bank.in is used below to avoid a redirect hop. RBL is the exception:
+    # www.rbl.bank.in/credit-cards 404s, so its listing stays on rblbank.com.
+    #
+    # Every URL here was fetched with pipeline.fetch before being written. Re-probe
+    # before changing one, and never infer "alive" from a non-zero byte count —
+    # Axis's 404 shell is LARGER than its real content page. Check the status code.
+    "hdfc": "https://www.hdfc.bank.in/credit-cards",
     "icici": "https://www.icicibank.com/personal-banking/cards/credit-card",
     "sbi": "https://www.sbicard.com/en/personal/credit-cards.page",
     "axis": "https://www.axis.bank.in/retail/cards/credit-card",
     "kotak": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
-    "idfc": "https://www.idfcfirstbank.com/credit-card",
+    "idfc": "https://www.idfcfirst.bank.in/credit-card",
     "rbl": "https://www.rblbank.com/category/credit-cards",   # plural; the singular 404s
     "indusind": "https://www.indusind.bank.in/in/personal/cards/credit-card.html",
     "yes": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards",
-    "au": "https://www.aubank.in/personal-banking/credit-cards",
+    "au": "https://www.au.bank.in/personal-banking/credit-cards",
     "federal": "https://www.federalbank.co.in/credit-card",
     "hsbc": "https://www.hsbc.co.in/credit-cards/",
     "amex": "https://www.americanexpress.com/in/credit-cards/",
