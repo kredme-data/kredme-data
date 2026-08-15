@@ -110,16 +110,21 @@ ISSUER_MARKERS: tuple[tuple[str, str], ...] = (
 # a typo'd host would otherwise fail silently, one whole issuer at a time.
 # ---------------------------------------------------------------------------
 ISSUER_LANDING: dict[str, str] = {
-    "hdfc": "https://www.hdfc.bank.in/personal/pay/cards/credit-cards",
+    # RBI opened the restricted .bank.in TLD in 2025-26 and some issuers migrated.
+    # Not all of them did. axis/indusind/yes serve .bank.in today; hdfc, idfcfirst,
+    # rbl and au DO NOT — those four hosts 404, which is why 109 of this repo's
+    # cards could never be fetched. Every URL below was probed before being written
+    # here; re-probe before changing one, and do not assume the pattern generalises.
+    "hdfc": "https://www.hdfcbank.com/personal/pay/cards/credit-cards",
     "icici": "https://www.icicibank.com/personal-banking/cards/credit-card",
     "sbi": "https://www.sbicard.com/en/personal/credit-cards.page",
     "axis": "https://www.axis.bank.in/retail/cards/credit-card",
     "kotak": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
-    "idfc": "https://www.idfcfirst.bank.in/personal-banking/cards/credit-card",
-    "rbl": "https://www.rblbank.com/category/credit-card",
+    "idfc": "https://www.idfcfirstbank.com/credit-card",
+    "rbl": "https://www.rblbank.com/category/credit-cards",   # plural; the singular 404s
     "indusind": "https://www.indusind.bank.in/in/personal/cards/credit-card.html",
     "yes": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards",
-    "au": "https://www.au.bank.in/credit-card",
+    "au": "https://www.aubank.in/personal-banking/credit-cards",
     "federal": "https://www.federalbank.co.in/credit-card",
     "hsbc": "https://www.hsbc.co.in/credit-cards/",
     "amex": "https://www.americanexpress.com/in/credit-cards/",
@@ -127,7 +132,7 @@ ISSUER_LANDING: dict[str, str] = {
     "bobcard": "https://www.bobcard.co.in/credit-card",
     "idbi": "https://www.idbibank.in/credit-card.aspx",
     "onecard": "https://www.onecard.app/",
-    "slice": "https://www.slice.it/",
+    "slice": "https://www.sliceit.com/",
 }
 
 _WORD_SPLIT = re.compile(r"[^a-z0-9]+")

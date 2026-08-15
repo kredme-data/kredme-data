@@ -115,7 +115,9 @@ ISSUER_DOMAINS = frozenset({
     "pnbindia.in", "unionbankofindia.co.in", "canarabank.com",
     "bankofindia.co.in", "centralbankofindia.co.in", "indianbank.in",
     "citibank.co.in", "dbs.com", "aubankcards.com",
-    "onecard.app", "slice.it", "jupiter.money",
+    # slice.it no longer resolves; the live host is sliceit.com. Both are listed so
+    # an old override or a card carrying the legacy URL still clears the guard.
+    "onecard.app", "slice.it", "sliceit.com", "jupiter.money",
     "rbi.org.in", "npci.org.in",
 })
 
