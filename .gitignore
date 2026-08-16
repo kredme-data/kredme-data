@@ -9,3 +9,6 @@ staging/
 # Python bytecode — committed by accident once already
 __pycache__/
 *.pyc
+
+# Pipeline scratch — regenerated every run. pipeline/state/ IS tracked.
+.pipeline-work/
