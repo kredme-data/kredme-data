@@ -91,6 +91,22 @@ account and two banking programmes that reuse the same product names.
 
 Hand-written entries in `sources_overrides.json` are never overwritten by a crawl.
 
+### ⚠ The workflow files live on `main`, the code lives on `dev`
+
+GitHub honours `schedule` and `workflow_dispatch` **only from the default branch**,
+which here is `main`. So the three workflow YAMLs are committed to `main`, while
+everything they run comes from `dev` — each one's first step is
+`actions/checkout@v4` with `ref: dev`. **main carries the trigger; dev carries the
+work.** Both loops open their PRs with `base: dev`, so no bot ever writes to `main`
+and publishing to users stays a deliberate act through `tools/kredme.py`.
+
+**Trap:** there are two copies of each workflow in this repo. Editing `dev`'s copy
+changes nothing about when the job runs, because `main`'s copy is the one GitHub
+reads. Change a cron, a permission, an input or a concurrency group in **both**
+places or the change silently does not take effect. If a scheduled run seems to
+have vanished, diff `main:.github/workflows/` against `dev:.github/workflows/`
+before looking anywhere else.
+
 From CI: **Actions → Weekly card-data refresh → Run workflow**. Use `dry_run` first.
 `force` re-extracts all 380 cards and costs real money — it exists for a schema change,
 not for routine use.
