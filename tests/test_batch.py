@@ -12,6 +12,7 @@ also the point — `import pipeline.batch` must work on a bare Python.
 from __future__ import annotations
 
 import dataclasses
+import importlib.util
 import json
 import pathlib
 import re
@@ -152,9 +153,26 @@ def walk_keys(node: Any) -> set[str]:
 # ---------------------------------------------------------------------------
 class TestImportsWithoutSDK(unittest.TestCase):
     def test_module_imports_without_anthropic(self):
-        # The whole point of the lazy import: the module is usable, and this
-        # suite runs, on a machine that has never pip-installed anything.
-        self.assertNotIn("anthropic", sys.modules)
+        """The lazy-import contract, checked in a FRESH interpreter.
+
+        Asserting on this process's sys.modules cannot test the contract. Where
+        the SDK is absent the assertion is vacuous; where it is present — which
+        is every CI run, because the workflow pip-installs it before the
+        self-tests — any earlier test that so much as probes for the SDK turns
+        this red for a reason that has nothing to do with pipeline.batch.
+
+        A subprocess is the only honest form of the question: import
+        pipeline.batch and nothing else, then look.
+        """
+        proc = subprocess.run(
+            [sys.executable, "-c",
+             "import sys; sys.path.insert(0, %r); import pipeline.batch; "
+             "print('LEAKED' if 'anthropic' in sys.modules else 'clean')" % str(REPO)],
+            capture_output=True, text=True, cwd=str(REPO), timeout=120,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("clean", proc.stdout,
+                      "pipeline.batch imported the Anthropic SDK at module scope")
         self.assertTrue(callable(batch.build_extract_request))
 
 
@@ -845,11 +863,13 @@ class TestCLI(unittest.TestCase):
     def test_missing_sdk_exits_2(self):
         # poll has to reach the API, so with no `anthropic` installed this is
         # the config/missing-dependency exit code, not a data error.
-        try:
-            import anthropic  # noqa: F401
-        except ImportError:
-            pass
-        else:
+        #
+        # find_spec, NOT `import anthropic`. Importing it to ask whether it is
+        # installed LEAVES IT IN sys.modules, and TestImportsWithoutSDK below then
+        # fails on a polluted interpreter — which is invisible on a laptop with no
+        # SDK installed and fatal in CI, where the workflow pip-installs it before
+        # running the suite. That is exactly how it reached the first live run.
+        if importlib.util.find_spec("anthropic") is not None:
             self.skipTest("anthropic is installed; the missing-dependency path cannot fire")
         proc = self.run_cli("poll", "--batch-id", "msgbatch_01")
         self.assertEqual(proc.returncode, 2, proc.stderr)

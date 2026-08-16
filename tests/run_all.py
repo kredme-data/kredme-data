@@ -54,16 +54,33 @@ class TestNoHardDependencies(unittest.TestCase):
                     )
 
     def test_anthropic_not_imported_at_module_scope(self):
-        for name in STDLIB_ONLY_MODULES:
-            importlib.import_module(name)
-        # Importing the pipeline must not drag the SDK in. If it is already present
-        # in this interpreter the check is vacuous, so only assert when it is absent.
-        if "anthropic" not in sys.modules:
-            self.assertNotIn(
-                "anthropic",
-                sys.modules,
-                "A pipeline module imported the Anthropic SDK at module scope.",
-            )
+        """Importing the pipeline must not drag the SDK in — checked in a fresh
+        interpreter, because this one's sys.modules proves nothing.
+
+        The previous form was `if "anthropic" not in sys.modules: assertNotIn(...)`,
+        which asserts only when the assertion already holds — a tautology that can
+        never fail. Worse, it hid the real case: in CI the workflow pip-installs the
+        SDK before running the suite, so the honest question is not "is it loaded
+        here" but "does importing our modules load it".
+        """
+        import subprocess
+
+        script = (
+            "import sys; sys.path.insert(0, %r)\n"
+            "for m in %r:\n"
+            "    __import__(m)\n"
+            "print('LEAKED' if 'anthropic' in sys.modules else 'clean')\n"
+            % (str(REPO), list(STDLIB_ONLY_MODULES))
+        )
+        proc = subprocess.run(
+            [sys.executable, "-c", script],
+            capture_output=True, text=True, cwd=str(REPO), timeout=120,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn(
+            "clean", proc.stdout,
+            "A pipeline module imported the Anthropic SDK at module scope.",
+        )
 
 
 class TestConfigInvariants(unittest.TestCase):
