@@ -52,6 +52,39 @@ Firestore-override trap below applies to prod only.
 The three errors: `csd_canteen` → `departmental_store` (category doesn't exist); `news_001` uses `expires_at`
 where the app reads `expiry_date`; `news_001` uses `url` where the app reads `source_url`.
 
+## The weekly pipeline (`pipeline/`)
+
+Two automated loops added 2026-08-13, both landing in `dev` behind a PR: a **Monday
+card-data refresh** (fetch issuer docs -> extract -> adversarially verify -> field-level
+patch) and a **daily news watch** (poll issuer notice pages -> draft `news/feed.json`).
+Operator guide, costs and known gaps: [PIPELINE.md](PIPELINE.md).
+
+```bash
+python3 pipeline/cli.py refresh --dry-run     # costs nothing, submits nothing
+python3 pipeline/cli.py advance               # idempotent; collects whatever is in flight
+python3 pipeline/cli.py news-watch --dry-run
+python3 pipeline/cli.py metrics
+python3 tests/run_all.py                      # 584 tests, stdlib unittest, no pip, no network
+```
+
+**Five things about it that are not obvious:**
+
+1. **It uses the Message Batches API, not synchronous calls.** A 380-card sweep was
+   measured at ~11.6h and Actions kills a job at 6. `refresh` submits and exits;
+   `pipeline-advance.yml` collects on a 2-hourly cron. Three short jobs, no limit problem.
+2. **`pipeline/state/sources.json` is tracked on purpose.** It holds each source
+   document's text hash and is the only reason the weekly run is affordable - cards whose
+   bytes did not move never reach the model. Deleting it forces a full paid sweep (~Rs 4,400).
+3. **Two model passes, and the second is an adversary.** A single pass was measured getting
+   100% of its numbers right and 78% of its "I could not find this" claims wrong. An
+   observation with no verdict is treated as refuted and does not ship.
+4. **It never publishes to users.** It opens a PR. Of 18 changes a first pass called
+   "confirmed at the issuer", a second pass refuted 6. Revisit when that rate is ~0.
+5. **This contradicts the stdlib-only rule below, deliberately and narrowly.** `pipeline/`
+   is the ONLY thing here allowed a third-party import (`anthropic`), and it is imported
+   lazily inside the calling functions so `tools/kredme.py` and the entire test suite still
+   run on a bare Python. `tests/run_all.py` asserts that and CI fails if someone breaks it.
+
 ## Commands
 
 ```bash

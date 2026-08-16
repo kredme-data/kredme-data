@@ -1,0 +1,22 @@
+{
+  "extract::bobcard__bank_of_baroda__card_eterna_2fe63942": {
+    "data": {
+      "card_id": "bobcard_(bank_of_baroda)_card_eterna",
+      "found": true,
+      "notes": "",
+      "observations": [
+        {
+          "category": "",
+          "confidence": "high",
+          "field": "base_reward_rate",
+          "per_spend_inr": "100",
+          "source_quote": "Earn 5 Reward Points per Rs 100 spent.",
+          "unit": "points",
+          "value": "5"
+        }
+      ]
+    },
+    "error": "",
+    "ok": true
+  }
+}
