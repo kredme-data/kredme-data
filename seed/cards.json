@@ -1799,9 +1799,9 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.025,
    "reward_currency": "reward_points",
-   "rp_value_standard": 0.2,
+   "rp_value_standard": 0.5,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 0.0,
@@ -1855,6 +1855,94 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null
+   },
+   {
+    "rule_name": "5 Reward Points on every ₹200 spent online, offline or via UPI QR",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 10000,
+    "cap_period": "month",
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "_sources": [
+     "https://www.ixigo.com/travel-credit-card"
+    ],
+    "confidence": "high"
+   },
+   {
+    "rule_name": "1 Reward Point on every ₹100 spent on utility [utilities]",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "utilities",
+    "category_ref": "utility, telecom and insurance spends",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 55,
+    "effective_date": "2024-12-22",
+    "expiry_date": null,
+    "conditions_json": null,
+    "_sources": [
+     "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf"
+    ],
+    "confidence": "high"
+   },
+   {
+    "rule_name": "1 Reward Point on every ₹100 spent on telecom [telecom]",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "telecom",
+    "category_ref": "utility, telecom and insurance spends",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 55,
+    "effective_date": "2024-12-22",
+    "expiry_date": null,
+    "conditions_json": null,
+    "_sources": [
+     "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf"
+    ],
+    "confidence": "high"
+   },
+   {
+    "rule_name": "1 Reward Point on every ₹100 spent on insurance; capped at 100 Reward Points per transaction [insurance]",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "insurance",
+    "category_ref": "utility, telecom and insurance spends",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": 100,
+    "cap_period": "transaction",
+    "min_txn_amount": null,
+    "priority": 55,
+    "effective_date": "2024-12-22",
+    "expiry_date": null,
+    "conditions_json": null,
+    "_sources": [
+     "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf"
+    ],
+    "confidence": "high"
    }
   ],
   "exclusion_rules": [
@@ -1889,11 +1977,6 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "insurance",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "other",
     "exclusion_value": "wallet reload",
     "also_excludes_from_threshold": 0
@@ -1904,13 +1987,28 @@
     "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [],
+  "milestone_rules": [
+   {
+    "milestone_name": "Quarterly Milestone",
+    "spend_target": 75000.0,
+    "period": "quarter",
+    "bonus_type": "reward_points",
+    "bonus_value": 5000.0,
+    "bonus_description": "5,000 Bonus Reward Points on spends of ₹75,000 or more per calendar quarter. These Reward Points remain valid for 2 years.",
+    "is_progressive": 0,
+    "conditions_json": null,
+    "_sources": [
+     "https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card"
+    ],
+    "confidence": "high"
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
     "min_txn_amount": 400.0,
     "max_txn_amount": 5000.0,
-    "monthly_cap": 400.0
+    "monthly_cap": 250.0
    }
   ],
   "redemption_rules": [

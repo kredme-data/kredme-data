@@ -1,15 +1,15 @@
 {
-  "version": "5.1.16",
-  "updated_at": "2026-08-14T20:36:50Z",
+  "version": "5.1.17",
+  "updated_at": "2026-08-16T14:58:11Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Added the three Equitas Small Finance Bank credit cards (PowerMiles, Selfe, Tiga) after a user reported that Equitas was missing from the add-card bank list. Every rate, fee, point value, fuel waiver and exclusion is quoted from equitas.bank.in, fetched 2026-08-14. The Selfe 5X and Tiga 3X accelerators are deliberately NOT shipped: Selfe's 5X applies to 2 of 5 categories that the holder chooses and we cannot know which, and a Tiga UPI rule would fire at every merchant on a RuPay-UPI card. Both are in the backlog.",
+  "_note": "ixigo AU Credit Card, after a user reported that redemption on ixigo money is 50 paise per Reward Point and the app showed 20. Rs.0.50 was already in the card's redemption_rules; rp_value_standard held 0.20 — the e-voucher rate, the worst of the card's three channels — and that is the field the engine values every point at. Now 0.50, so online UPI reads 2.5% and offline/base 1.25%. Also: base_reward_rate 0.0 -> 0.025 (the card scored 0% on every non-UPI spend and ranked last), the 'insurance' category exclusion dropped and replaced with the 1 RP/Rs.100 rule AU actually publishes, utility and telecom rules added, the 5,000 RP per Rs.75,000 quarterly milestone added, and the fuel waiver cap corrected to Rs.250. Sourced from AU's official reward-points T&C revision (18-Nov-2024, effective 22-Dec-2024) and AU's product page; base earn rate from ixigo's co-brand page. Caps are in reward points, not rupees.",
   "stats": {
     "total_cards": 383,
-    "total_reward_rules": 1275,
+    "total_reward_rules": 1279,
     "total_redemption_rules": 884,
-    "total_exclusion_rules": 1628,
-    "total_milestone_rules": 416,
+    "total_exclusion_rules": 1627,
+    "total_milestone_rules": 417,
     "total_fuel_surcharge_rules": 359,
     "total_travel_cards": 82,
     "issuers": 37,
@@ -19,8 +19,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "43121cf299c35f247ad6add70d7c000b3f3b3dd906b9d1a0886093d0c3c5a22c",
-      "size_bytes": 1793628
+      "checksum": "6fdfb4ef6d9c4f0e2ad63efe8be58a6730c8fa054aabb000ed9410cd5ca9d823",
+      "size_bytes": 1796746
     },
     {
       "name": "merchants.json",
