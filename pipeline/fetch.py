@@ -120,6 +120,9 @@ class Fetched:
     text_sha256: str = ""
     error: str = ""
     linked_pdfs: list[str] = field(default_factory=list)
+    # Every http(s) link on the page, for source discovery. Deliberately last and
+    # defaulted so existing positional construction in tests keeps working.
+    links: list[str] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -226,6 +229,11 @@ class _Extractor(HTMLParser):
         self.base_url = base_url
         self.chunks: list[str] = []
         self.pdfs: list[str] = []
+        # Every http(s) href on the page, absolutised and defragged. `pdfs` is a
+        # filtered view of this. Source discovery needs the rest: an issuer's card
+        # listing page IS the index of its per-card documents, and without these
+        # links every card of an issuer resolves to the same landing page.
+        self.links: list[str] = []
         self._skip = 0
 
     def handle_starttag(self, tag: str, attrs: list) -> None:
@@ -265,6 +273,7 @@ class _Extractor(HTMLParser):
             return
         if split.scheme.lower() not in ("http", "https"):
             return
+        self.links.append(target)
         # Test the PATH, not the whole URL: issuer CDNs append cache-busting
         # query strings, and "…/mitc.pdf?v=7" is still a PDF.
         if not split.path.lower().endswith(".pdf"):
@@ -280,6 +289,17 @@ def _tidy_lines(text: str) -> str:
 
 
 def _html_to_text(html: str, page_url: str) -> tuple[str, list[str]]:
+    text, pdfs, _links = _html_to_text_and_links(html, page_url)
+    return text, pdfs
+
+
+def _html_to_text_and_links(html: str, page_url: str) -> tuple[str, list[str], list[str]]:
+    """As _html_to_text, plus every http(s) link on the page.
+
+    Kept separate so `extract_text` keeps its two-value signature — it has a lot
+    of callers and tests — while discovery can get the links without parsing the
+    document a second time.
+    """
     parser = _Extractor(page_url)
     try:
         parser.feed(html)
@@ -289,7 +309,11 @@ def _html_to_text(html: str, page_url: str) -> tuple[str, list[str]]:
         # malformed page is an issuer's problem we cannot fix by crashing.
         pass
     pdfs = list(dict.fromkeys(parser.pdfs))[: C.MAX_LINKED_PDFS]
-    return _tidy_lines("".join(parser.chunks)), pdfs
+    # Links are NOT capped by MAX_LINKED_PDFS: that budget bounds what we fetch,
+    # and these are only read. An issuer listing page carries ~200 of them and
+    # truncating to 4 would silently hide most of the catalogue from discovery.
+    links = list(dict.fromkeys(parser.links))
+    return _tidy_lines("".join(parser.chunks)), pdfs, links
 
 
 def extract_text(raw: bytes, content_type: str, url: str) -> tuple[str, list[str]]:
@@ -298,17 +322,23 @@ def extract_text(raw: bytes, content_type: str, url: str) -> tuple[str, list[str
     Returns ("", []) rather than raising for anything it cannot read, including
     a missing pdftotext binary.
     """
+    text, pdfs, _links = _extract_all(raw, content_type, url)
+    return text, pdfs
+
+
+def _extract_all(raw: bytes, content_type: str, url: str) -> tuple[str, list[str], list[str]]:
+    """(text, linked_pdfs, all_links). The one place the three are derived."""
     if not isinstance(raw, (bytes, bytearray)) or not raw:
-        return "", []
+        return "", [], []
     raw = bytes(raw)
     ctype = content_type if isinstance(content_type, str) else ""
     page_url = url if isinstance(url, str) else ""
 
     if _looks_like_pdf(raw, ctype):
-        return _pdf_to_text(raw), []
+        return _pdf_to_text(raw), [], []
     if _looks_like_html(raw, ctype):
-        return _html_to_text(_decode(raw, ctype), page_url)
-    return _decode(raw, ctype), []
+        return _html_to_text_and_links(_decode(raw, ctype), page_url)
+    return _decode(raw, ctype), [], []
 
 
 # ---------------------------------------------------------------------------
@@ -435,7 +465,7 @@ def _finish(
     truncated: bool,
 ) -> Fetched:
     raw = _decompress(body, encoding)
-    text, pdfs = extract_text(raw, content_type, url)
+    text, pdfs, links = _extract_all(raw, content_type, url)
 
     # A PDF fetched directly gets the PDF budget; anything else gets the page
     # budget. Both are what bounds the per-card token bill.
@@ -472,6 +502,7 @@ def _finish(
         text_sha256=S.sha256_text(normalise_text(text)),
         error="; ".join(notes),
         linked_pdfs=pdfs,
+        links=links,
     )
 
 

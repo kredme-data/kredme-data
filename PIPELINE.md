@@ -60,7 +60,36 @@ python3 pipeline/cli.py news-watch --dry-run
 
 # This week's numbers
 python3 pipeline/cli.py metrics
+
+# Which issuer page each card is read from (offline, no model, no spend)
+python3 pipeline/cli.py discover --issuer hdfc
+python3 pipeline/cli.py discover --write        # merge verified matches
 ```
+
+### `discover` — what it does and why it matters more than it looks
+
+The seed schema has **no URL field**. Without overrides, every card of an issuer
+resolves to the same landing page: 373 cards to 35 URLs, 54 SBI cards sharing one.
+Asking the model for one card's mechanics out of a page listing forty is the
+difference between a refresh that works and one that merely runs.
+
+`discover` harvests each issuer's listing page **and its sitemap** — SBI's listing
+page yields no card links at all while its sitemap yields 209 — and matches links to
+cards on **exact** name equality. Two keys, both exact: a token set (order-insensitive,
+so "Diners Club Black" matches `black-diners-club`) and a concatenation
+(boundary-insensitive, so "MoneyBack" matches `money-back` and "Doctor's Regalia"
+matches `doctors-regalia`).
+
+It refuses far more than it accepts, on purpose. **A wrong per-card URL is much worse
+than no per-card URL**: point Regalia at Regalia Gold's page and the extractor reads
+Regalia Gold's rates, the adversarial pass finds every quote exactly where it should
+be and *confirms* them, and a real cardholder sees a confidently wrong number. A
+missing override only costs precision. So anything ambiguous keeps the landing page,
+and every match is fetched and must (a) name the card and (b) say "credit card" —
+that second check is what stopped four cards resolving to a debit card, a savings
+account and two banking programmes that reuse the same product names.
+
+Hand-written entries in `sources_overrides.json` are never overwritten by a crawl.
 
 From CI: **Actions → Weekly card-data refresh → Run workflow**. Use `dry_run` first.
 `force` re-extracts all 380 cards and costs real money — it exists for a schema change,
@@ -169,20 +198,22 @@ Actions minutes are free — this repo is public.
 
 ## Known gaps (measured, not guessed)
 
-**1. 19 AU Bank cards resolve to a 404.** The `ISSUER_LANDING` fallback for `au` is wrong,
-so every AU card that has no explicit override fetches nothing. Measured on a 40-card dry
-run: 17 of 17 AU cards failed, every other issuer in the slice fetched fine. The fix is one
-line per card in `pipeline/sources_overrides.json` — the mechanism exists and is tested,
-the URLs just have not been collected. Note `au.bank.in` serves HTML behind Cloudflare but
-its **PDFs fetch cleanly**, so point the overrides at the T&C PDFs.
+**1. Roughly half the catalogue still shares a page with its siblings.** `discover` gave
+181 cards their own document; the rest fall back to `ISSUER_LANDING`, which is correct but
+shared. BOBCARD (19 cards) cannot be fetched at all — its server omits the GlobalSign
+intermediate certificate, so the chain will not verify and the fix is theirs, not ours.
+YES Bank (17) renders its card list in JavaScript and publishes no sitemap, so there is
+nothing to harvest. Kotak (24) also has no sitemap. Those three account for most of the
+remainder; the rest are cards the issuer no longer lists.
 
 **2. Five cards have no issuer URL at all** — City Union, CSB, OneCard, SBM, Unity. One
 card each; low value, and some of these issuers publish no rates anywhere.
 
-**3. The landing-page fallback is a guess for most issuers.** Only the 14 URLs in
-`sources_overrides.json` were confirmed to fetch this week. Run
-`python3 pipeline/cli.py refresh --dry-run` and read the `fetch_failed` list before
-trusting the coverage number — 373 cards *resolve to a URL*, which is not the same as
+**3. A shared landing page is a weak source, not a wrong one.** A card on its issuer's
+listing page gets that page plus up to four linked PDFs, which is often enough — issuers
+put the numbers in the MITC. It is still worth re-running `discover` after any issuer
+redesign. Run `python3 pipeline/cli.py refresh --dry-run` and read the `fetch_failed` list
+before trusting a coverage number: 373 cards *resolve to a URL*, which is not the same as
 373 cards *whose document we can read*.
 
 **4. The typical-output token figures are estimates.** `config.TYPICAL_OUTPUT_TOKENS` is

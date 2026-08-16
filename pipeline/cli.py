@@ -7,6 +7,7 @@ Usage:
     python3 pipeline/cli.py advance [--dry-run]
     python3 pipeline/cli.py news-watch [--issuer NAME] [--force] [--dry-run]
     python3 pipeline/cli.py metrics [--write]
+    python3 pipeline/cli.py discover [--issuer NAME] [--no-verify] [--write]
 
 Design, in one paragraph:
 
@@ -601,6 +602,31 @@ def cmd_metrics(args: argparse.Namespace) -> int:
 
 
 # ---------------------------------------------------------------------------
+# discover — offline maintenance, not a CI stage
+#
+# Not wired into a workflow on purpose. It rewrites which document every card is
+# read from, which is the single highest-leverage input to the whole pipeline, so
+# it runs when a person asks and its output lands in a reviewable diff.
+def cmd_discover(args: argparse.Namespace) -> int:
+    # Absolute, not relative: cli.py is executed as a script
+    # (`python3 pipeline/cli.py`), so it has no parent package and `from . import`
+    # raises ImportError at run time — which no test caught, because the tests
+    # import the module rather than shelling out to it.
+    from pipeline import discover as discovery
+
+    argv: list[str] = []
+    if args.issuer:
+        argv += ["--issuer", args.issuer]
+    if args.json:
+        argv += ["--json"]
+    if args.no_verify:
+        argv += ["--no-verify"]
+    if args.write:
+        argv += ["--write"]
+    return discovery.main(argv)
+
+
+# ---------------------------------------------------------------------------
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -625,6 +651,15 @@ def main() -> int:
     m = sub.add_parser("metrics", help="print the weekly numbers")
     m.add_argument("--write", action="store_true")
     m.set_defaults(fn=cmd_metrics)
+
+    d = sub.add_parser("discover", help="find each card's own issuer page")
+    d.add_argument("--issuer", default="", help="one issuer slug, e.g. hdfc")
+    d.add_argument("--json", action="store_true")
+    d.add_argument("--no-verify", action="store_true",
+                   help="skip the fetch that confirms a page names its card (fast, unsafe)")
+    d.add_argument("--write", action="store_true",
+                   help="merge verified matches into pipeline/sources_overrides.json")
+    d.set_defaults(fn=cmd_discover)
 
     args = p.parse_args()
     return args.fn(args)

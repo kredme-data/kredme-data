@@ -30,6 +30,7 @@ STDLIB_ONLY_MODULES = (
     "pipeline.state",
     "pipeline.schema",
     "pipeline.sources",
+    "pipeline.discover",
     "pipeline.fetch",
     "pipeline.batch",
     "pipeline.diff",
