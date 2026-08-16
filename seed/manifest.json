@@ -1,9 +1,9 @@
 {
- "version": "5.1.17",
- "updated_at": "2026-08-16T00:00:00Z",
+ "version": "5.1.18",
+ "updated_at": "2026-08-17T00:00:00Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "ixigo AU Credit Card, after a user reported that redemption on ixigo money is 50 paise per Reward Point and the app showed 20. Rs.0.50 was already in the card's redemption_rules; rp_value_standard held 0.20 — the e-voucher rate, the worst of the card's three channels — and that is the field the engine values every point at. Now 0.50, so online UPI reads 2.5% and offline/base 1.25%. Also: base_reward_rate 0.0 -> 0.025 (the card scored 0% on every non-UPI spend and ranked last), the 'insurance' category exclusion dropped and replaced with the 1 RP/Rs.100 rule AU actually publishes, utility and telecom rules added, the 5,000 RP per Rs.75,000 quarterly milestone added, and the fuel waiver cap corrected to Rs.250. Sourced from AU's official reward-points T&C revision (18-Nov-2024, effective 22-Dec-2024) and AU's product page; base earn rate from ixigo's co-brand page. Caps are in reward points, not rupees.",
+ "_note": "Six cards now value points at the issuer's own unconditional statement-credit rate instead of a lower catalogue rate: PhonePe HDFC Ultimo and Uno, HDFC Millennia, Paytm HDFC Select (all 0.30 -> 1.00), ICICI Mine (0.50 -> 1.00) and Kotak Mojo Platinum (0.20 -> 0.40). Only the two PhonePe cards move on screen (3.0% -> 10.0% and 1.0% -> 2.0%), and both were previously contradicting their own rule text, which is named '10% Reward Points' and '2% Reward Points'. Verified against HDFC's own T&C PDFs: '1 Reward Point is equivalent to Re.1 when redeemed as cashback against statement credit' / 'Re.0.3 of SmartBuy'. Cards whose only better channel is conditional — SmartBuy flights, airmiles transfer, travel portals, merchant vouchers — were deliberately left alone; valuing points there would overstate about 40 cards. Paytm HDFC Mobile was held back because its base_reward_rate of 0.5 would render 50%.",
  "stats": {
   "total_cards": 383,
   "total_reward_rules": 1279,
@@ -19,7 +19,7 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "6fdfb4ef6d9c4f0e2ad63efe8be58a6730c8fa054aabb000ed9410cd5ca9d823",
+   "checksum": "6a571febd4b11ece3fefa3831b59c48f9acf5085fe1e149d97eaa64b2589c44b",
    "size_bytes": 1796746
   },
   {
