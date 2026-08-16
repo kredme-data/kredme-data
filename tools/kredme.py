@@ -111,6 +111,24 @@ HARD_CEILING_PCT = 40.0
 SELF_CONTRADICTION_RATIO = 1.6
 # Below this, a disagreement is arithmetic noise on two tiny numbers.
 SELF_CONTRADICTION_FLOOR_PCT = 0.4
+# How far a `base_rate` RULE may drift from the card's own `base_reward_rate`
+# FIELD before we call it a unit bug. The two describe the same thing and the
+# app renders whichever is higher, so a disagreement means the user is shown a
+# number the card's own data contradicts.
+#
+# This is the check that would have caught Paytm HDFC Mobile's 15%. That rule
+# was named "Base reward rate" — no number in it — so check 7 had nothing to
+# parse and stayed silent while the card sat baselined and green. 271 of 279
+# base_rate rules carry no number in the name, so check 7 is structurally blind
+# to 97% of them; this one needs no name at all.
+#
+# The signature is unmistakable: a base rule typed `cashback_pct` holding a
+# points-per-rupee number renders it as a percent, so the drift is almost
+# always EXACTLY 1/rp_value_standard — 4x at Rs.0.25, 5x at Rs.0.20, 10x at
+# Rs.0.10. 1.25 absorbs rounding on cards that state a base like 1.33%.
+BASE_RULE_UNIT_RATIO = 1.25
+# Two tiny numbers can differ by a large ratio and still be noise.
+BASE_RULE_UNIT_FLOOR_PCT = 0.05
 # Mirrors CreditCardData.sanePointValue (credit_card.dart:533) and the
 # `?? 0.25` fallback in fromOtaJson (credit_card.dart:766). If the app changes
 # either, this gate starts measuring the wrong thing.
@@ -507,6 +525,7 @@ def scan_economics(cards: list) -> dict:
     over_cards, under_cards, zero_cards = [], [], []
     over_rules, prose_risk = [], []
     hard_ceiling, contradictions = [], []
+    base_unit_mismatch = []
     n_cards = 0
 
     for entry in cards:
@@ -562,6 +581,16 @@ def scan_economics(cards: list) -> dict:
                     contradictions.append(
                         (_rule_key(cid, rule), round(pct, 2), round(claim, 2), how))
 
+            # The base rule and the card's base_reward_rate field describe the
+            # same thing. When they disagree, one of them is in the wrong unit
+            # and the app shows whichever is larger. No rule name needed.
+            if rule.get("rule_type") == "base_rate":
+                if (max(pct, base) >= BASE_RULE_UNIT_FLOOR_PCT
+                        and min(pct, base) > 0
+                        and max(pct, base) / min(pct, base) > BASE_RULE_UNIT_RATIO):
+                    base_unit_mismatch.append(
+                        (f"{cid}::<base rule vs field>", round(pct, 2), round(base, 2)))
+
             if pct > RATE_CEILING_PCT:
                 over_rules.append((_rule_key(cid, rule), round(pct, 2)))
                 # A named rule that advertises a category the card excludes.
@@ -579,6 +608,8 @@ def scan_economics(cards: list) -> dict:
         "prose_excluded_high_rate": prose_risk,
         "over_hard_ceiling": sorted(hard_ceiling, key=lambda x: -x[1]),
         "self_contradicting_rules": sorted(contradictions, key=lambda x: -(x[1] / max(x[2], 1e-9))),
+        "base_rule_unit_mismatch": sorted(
+            base_unit_mismatch, key=lambda x: -(max(x[1], x[2]) / max(min(x[1], x[2]), 1e-9))),
     }
 
 
@@ -735,10 +766,35 @@ def validate_economics(cards: list, rep: Report) -> dict:
                 for k, p, c, _ in scan["self_contradicting_rules"][:3])
         )
 
+    # 8. A base rule that disagrees with the card's own base_reward_rate field.
+    #    Check 7 can only fire when the rule name states mechanics, and 271 of
+    #    279 base rules carry no number at all — so this is the only check that
+    #    reaches them. Ratcheted like the rest, because the live set resolves
+    #    card by card and each one needs its unit confirmed before it moves;
+    #    but a NEW one is fatal, since it means a rule and its own card field
+    #    were written in different units in the same edit.
+    known_unit = set((base or {}).get("base_rule_unit_mismatch") or [])
+    unit_now = {k for k, _, _ in scan["base_rule_unit_mismatch"]}
+    new_unit = sorted(unit_now - known_unit)
+    if new_unit:
+        rep.error(
+            f"{len(new_unit)} card(s) NEWLY show a base rate that disagrees with their own "
+            f"base_reward_rate — one of the two is in the wrong unit: "
+            f"{[k.split('::')[0] for k in new_unit[:5]]}"
+        )
+    if base is not None and unit_now:
+        n = len(unit_now)
+        (ok if n < len(known_unit) else warn)(
+            f"{n} card(s) still show a base rate their own base_reward_rate contradicts "
+            f"(baseline {len(known_unit)}); worst: " + ", ".join(
+                f"{k.split('::')[0]} rule {p}% vs field {f}%"
+                for k, p, f in scan["base_rule_unit_mismatch"][:3])
+        )
+
     if not rep.failed:
         ok(f"{scan['card_count']} cards priced within {RATE_FLOOR_PCT:g}-{RATE_CEILING_PCT:g}% "
            f"or explicitly baselined, none above {HARD_CEILING_PCT:g}%, "
-           f"none contradicting their own text")
+           f"none contradicting their own text or their own base rate")
     return scan
 
 
@@ -886,6 +942,7 @@ BASELINE_LISTS = {
     # NOTE: `over_hard_ceiling` is deliberately absent. It is the one check with
     # no waiver, so writing it to the baseline would defeat the point.
     "self_contradicting_rules": lambda scan: {k for k, _, _, _ in scan["self_contradicting_rules"]},
+    "base_rule_unit_mismatch":  lambda scan: {k for k, _, _ in scan["base_rule_unit_mismatch"]},
 }
 
 # Same contract, for the structural defects. Kept in a second dict because
