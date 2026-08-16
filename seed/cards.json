@@ -22636,9 +22636,9 @@
    "card_tier": "entry",
    "annual_fee": 149.0,
    "fee_waiver_spend": 25000.0,
-   "base_reward_rate": 0.5,
+   "base_reward_rate": 0.005,
    "reward_currency": "cashpoints",
-   "rp_value_standard": 0.3,
+   "rp_value_standard": 1.0,
    "rp_value_travel": 0.3,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -22658,16 +22658,16 @@
   },
   "reward_rules": [
    {
-    "rule_name": "Base reward rate",
+    "rule_name": "0.5% cashback on all other spends",
     "rule_type": "base_rate",
     "merchant_ref": null,
     "category_ref": null,
     "channel": null,
     "reward_type": "cashback_pct",
-    "reward_rate": 0.15,
+    "reward_rate": 0.005,
     "reward_unit_spend": null,
-    "cap_amount": null,
-    "cap_period": null,
+    "cap_amount": 500.0,
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 20,
     "effective_date": null,
@@ -22700,8 +22700,8 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "rent payments",
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
     "also_excludes_from_threshold": 0
    },
    {
@@ -22713,6 +22713,11 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "wallet reloads",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
     "also_excludes_from_threshold": 0
    }
   ],
