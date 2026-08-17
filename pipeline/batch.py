@@ -66,7 +66,19 @@ KIND_NEWS = "news"
 KINDS = (KIND_EXTRACT, KIND_VERIFY, KIND_NEWS)
 
 CUSTOM_ID_MAX_LEN = 64
-_SEPARATOR = "::"
+# The API's charset is [a-zA-Z0-9_-] and it applies to the WHOLE custom_id, not
+# just the id half. This was "::" — every request the pipeline ever built was
+# therefore rejected before any of them ran:
+#
+#   requests.0.custom_id: String should match pattern '^[a-zA-Z0-9_-]{1,64}$'
+#
+# It failed on request 0 because it was universal, not because card 0 was odd.
+# The sanitiser below was correct all along and handled the awkward real ids
+# (parentheses, slashes, 88 characters) exactly as designed — but it validated
+# only the part it produced, so the separator glued on afterwards was never
+# checked against the same rule. _assert_api_charset now checks the assembled
+# string, which is the only thing the API actually sees.
+_SEPARATOR = "-"
 _HASH_LEN = 8
 
 # Budgeted against the LONGER prefix so a card sanitises to the same string for
@@ -77,7 +89,11 @@ ID_MAX_LEN = CUSTOM_ID_MAX_LEN - len(max(KINDS, key=len)) - len(_SEPARATOR)
 _UNSAFE_CHARS = re.compile(r"[^A-Za-z0-9_-]")
 _SAFE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,%d}$" % ID_MAX_LEN)
 _CUSTOM_ID_RE = re.compile(
-    r"^(%s)%s([A-Za-z0-9_-]{1,%d})$" % ("|".join(KINDS), _SEPARATOR, ID_MAX_LEN)
+    # re.escape on the separator: it is a literal here, and "-" happens to be
+    # harmless outside a character class, but the next person to change it
+    # should not have to know that.
+    r"^(%s)%s([A-Za-z0-9_-]{1,%d})$"
+    % ("|".join(KINDS), re.escape(_SEPARATOR), ID_MAX_LEN)
 )
 
 # ---------------------------------------------------------------------------
@@ -103,6 +119,22 @@ CHARS_PER_TOKEN = 3.6
 MIN_CACHEABLE_PREFIX_TOKENS = 512
 
 
+# Copied verbatim from the API's own error message rather than paraphrased, so
+# a future edit is checked against the real rule and not our memory of it.
+_API_CUSTOM_ID_RE = re.compile(r"^[a-zA-Z0-9_-]{1,64}$")
+
+
+def _assert_api_charset(custom_id: str) -> None:
+    if not _API_CUSTOM_ID_RE.match(custom_id):
+        bad = sorted(set(re.findall(r"[^a-zA-Z0-9_-]", custom_id)))
+        raise ValueError(
+            f"custom_id {custom_id!r} would be rejected by the API "
+            f"(pattern {_API_CUSTOM_ID_RE.pattern}); "
+            + (f"illegal character(s): {' '.join(repr(c) for c in bad)}"
+               if bad else f"length {len(custom_id)}")
+        )
+
+
 def _sanitise_card_id(card_id: str) -> str:
     """Map a raw card id onto the custom_id charset, injectively."""
     if not isinstance(card_id, str) or not card_id.strip():
@@ -125,6 +157,11 @@ def _custom_id(kind: str, card_id: str) -> str:
     cid = f"{kind}{_SEPARATOR}{_sanitise_card_id(card_id)}"
     if len(cid) > CUSTOM_ID_MAX_LEN:
         raise ValueError(f"custom_id {cid!r} exceeds {CUSTOM_ID_MAX_LEN} characters")
+    # Check what the API checks: the whole assembled string. Validating only the
+    # sanitised id half is what let a "::" separator through and made every
+    # request in every batch invalid, discovered only when a real submit was
+    # finally attempted and came back 400 on request 0.
+    _assert_api_charset(cid)
     return cid
 
 
