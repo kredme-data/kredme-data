@@ -77,6 +77,2617 @@
       "note": "",
       "status": "ok",
       "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "amex_centurion": {
+      "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/credit-cards/"
+    },
+    "amex_gold": {
+      "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/credit-cards/"
+    },
+    "amex_membership_rewards": {
+      "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/credit-cards/"
+    },
+    "amex_platinum": {
+      "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/credit-cards/"
+    },
+    "amex_platinum_reserve": {
+      "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/credit-cards/"
+    },
+    "amex_platinum_travel": {
+      "content_sha256": "516219100c287c932a5dc29c96c4b7ca0e79f682dd6cc146a997f77d919775a3",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/benefits/platinum-travel-credit-card/"
+    },
+    "amex_smartearn": {
+      "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.americanexpress.com/in/credit-cards/"
+    },
+    "au_bank_(co-branded_with_aditya_birla_finance_limited)_aditya_birla_au_bank_credit_cards": {
+      "content_sha256": "e7c4382c263999a6d0d96653e3d3cdcec32f97b15455fde3a451cf115b1651d0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards"
+    },
+    "au_bank_ca_metal": {
+      "content_sha256": "e7c4382c263999a6d0d96653e3d3cdcec32f97b15455fde3a451cf115b1651d0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards"
+    },
+    "au_bank_nomo": {
+      "content_sha256": "8e1938e4360017d72d1a949eec7130becb9f7c547961752509c689141845edfb",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card"
+    },
+    "au_bank_spont": {
+      "content_sha256": "9a5c6cd4bb9f0664528a01bf30ee631774cbfd616f171a68d596e8137fca705b",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card"
+    },
+    "au_bank_vetta": {
+      "content_sha256": "80c0f9e3915d515a886660aa5c67eb14b6af9be31708a283ab5744c75ec3e576",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card"
+    },
+    "au_bank_zenith": {
+      "content_sha256": "c8e65acd955f330fbf4f6d60fce0df4cb40f4866fbf7103f115c531ceac7f3db",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card"
+    },
+    "au_small_finance_bank_altura": {
+      "content_sha256": "4313b90b444ec0f45e9a3606bbebbe9d612e9d8409f6bfd99a15d391f0417b9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card"
+    },
+    "au_small_finance_bank_altura_plus": {
+      "content_sha256": "42f94fe374dde069cd75bd232071cf5a23784b79d1a002db5484911e5079f734",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card"
+    },
+    "au_small_finance_bank_instapay": {
+      "content_sha256": "05019deee7868c7922fa51b78e321ac67bb5b7e8f3f5c8316a40d04639628ea5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card"
+    },
+    "au_small_finance_bank_ixigo_au": {
+      "content_sha256": "305144bfff6ee5ceb1b7fe91ad87aa9575faad46e2e91064207cab482f992f4f",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card"
+    },
+    "au_small_finance_bank_kosmo": {
+      "content_sha256": "a8e11aa99c15154f0ae1290fa8b45807bebb5d770a4d046536899a2647f1d30a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card"
+    },
+    "au_small_finance_bank_lit": {
+      "content_sha256": "2aa0c74fc8f3e172b51b6bcaed3484c34f59575c16c0761839abe580bf09308e",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card"
+    },
+    "au_small_finance_bank_traverse": {
+      "content_sha256": "5b6d567f15ea0c0ceaed9983f61ae15f83fce6255e5023511b8064faa3338132",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/premium-banking/credit-cards/traverse-credit-card"
+    },
+    "au_small_finance_bank_xcite": {
+      "content_sha256": "67d20ee58151b45a211c401a7d370eac68472fd58cf73f08754a77fed77c6664",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card"
+    },
+    "au_small_finance_bank_xcite_ace": {
+      "content_sha256": "fe385a37855b627fed49abe5fed4367418a4f90e3c083a7a0ec99aba5397c922",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card"
+    },
+    "au_small_finance_bank_xcite_ultra": {
+      "content_sha256": "d0c807c55a131f826712bbedac029a491b78850c7ad2fc94492103b06b42c0d0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card"
+    },
+    "au_small_finance_bank_zenith": {
+      "content_sha256": "e7c4382c263999a6d0d96653e3d3cdcec32f97b15455fde3a451cf115b1651d0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.au.bank.in/personal-banking/credit-cards"
+    },
+    "axis_bank_ace": {
+      "content_sha256": "8445c350da540423bb980dab511f7c83eee0035dad123dfad9ab83d580c5badf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card"
+    },
+    "axis_bank_airtel_axis_bank": {
+      "content_sha256": "c3b219ced8ed4b3a8f2500acbc7bd5b55b87bff62606c6b26a9e3d423d5a1236",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card"
+    },
+    "axis_bank_atlas": {
+      "content_sha256": "2a7aa3c1134b5edbc224714628d76f15e21c7c103060ccd6960ee14a71dc117e",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card"
+    },
+    "axis_bank_aura": {
+      "content_sha256": "96b580e0eabd1959f5696f3331b84e0f174608bece2809db40759a110956701d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card"
+    },
+    "axis_bank_burgundy_private": {
+      "content_sha256": "b47391c508ddd0808a018441f6a577c63ce7a03d04186a180ef7bd22c6a91758",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://campaign.axis.bank.in/generic/terms-and-conditions-burgundy.pdf"
+    },
+    "axis_bank_cashback": {
+      "content_sha256": "99d7823d6b2059f8852ce26826e3a51168429ed30eb944d7ccdb9b403157206a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/cashback-credit-card"
+    },
+    "axis_bank_flipkart_axis_bank": {
+      "content_sha256": "d8b126732a0a798142be509517b4726de019c50a45a02894150d4c7457135840",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/retail/cards/credit-card"
+    },
+    "axis_bank_flipkart_axis_bank_super_elite": {
+      "content_sha256": "5644c61cb8a1a7a4131dd743a477d74fc26fc7fbe430e69b671d535a81945f88",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card"
+    },
+    "axis_bank_freecharge": {
+      "content_sha256": "0075d3e8bc7aa09436fcf25205a486fcd42c0e818bcb932d89bb8193d1527450",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card"
+    },
+    "axis_bank_freecharge_plus": {
+      "content_sha256": "3eaf5a3e10e5c1dbed63de03585f3b2905d08af76ed5ea05e03bfb21adca36c4",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card"
+    },
+    "axis_bank_google_pay_flex_axis_bank": {
+      "content_sha256": "5b6a3bd9bf8da3d795ff5f6c5c344f70ef26d00f7ae07a10dcf15b3fa8d747a3",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card"
+    },
+    "axis_bank_horizon": {
+      "content_sha256": "45df93108673219652419325e16c72a157b8fcccccde500d9c967564467e2a0c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card"
+    },
+    "axis_bank_ikea_family_credit_card_by_axis_bank": {
+      "content_sha256": "d8b126732a0a798142be509517b4726de019c50a45a02894150d4c7457135840",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/retail/cards/credit-card"
+    },
+    "axis_bank_indianoil_axis_bank_premium": {
+      "content_sha256": "d8ff42c11890723cbca302afd65900d78b3d006ce1a322f307e951f61d7d764d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card"
+    },
+    "axis_bank_indianoil_axis_bank_rupay": {
+      "content_sha256": "d8b126732a0a798142be509517b4726de019c50a45a02894150d4c7457135840",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/retail/cards/credit-card"
+    },
+    "axis_bank_indigo_axis_bank": {
+      "content_sha256": "bf059b09d1611dd3d2615667e278cae94fb37a35640d258d0d6219cc2e277c51",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card"
+    },
+    "axis_bank_indigo_axis_bank_premium": {
+      "content_sha256": "ca8fe9539cc2ae3c19a18b351c73df0dd1006bb0facd6f79140008c2a52f0fbd",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card"
+    },
+    "axis_bank_magnus": {
+      "content_sha256": "ce7099a12054cd10775d16e617bb094321a68178c985553970ef5cacdf88e331",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://campaign.axis.bank.in/generic/terms-and-conditions-magnus.pdf"
+    },
+    "axis_bank_miles_more": {
+      "content_sha256": "c6fa0ca376b1f0a16055de530c12a4924c9419f15d52ca45bc9d7d25a6765525",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/miles-more-credit-card"
+    },
+    "axis_bank_my_wings": {
+      "content_sha256": "aa1b5fd0ece3c065691961d8f9c74a5f65644dee56a792f87e38f035d3c3a518",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/my-wings-credit-card"
+    },
+    "axis_bank_my_zone": {
+      "content_sha256": "fc7b8cdace99e560cd53e0d67b0bea1616caa38d27adf515cee1d495a16c4d48",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://campaign.axis.bank.in/generic/terms-and-conditions-myzone.pdf"
+    },
+    "axis_bank_my_zone_easy": {
+      "content_sha256": "39e67731c0f8940373dea648e1634243ddf459cce3bf7caadc4cbc5b54a4b51d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card"
+    },
+    "axis_bank_neo": {
+      "content_sha256": "6d2770cc3eddd6058bdae95871e0a842479adec719abaaa46cd5be34b8ce7b70",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://campaign.axis.bank.in/generic/terms-and-conditions-neo.pdf"
+    },
+    "axis_bank_olympus": {
+      "content_sha256": "d8b126732a0a798142be509517b4726de019c50a45a02894150d4c7457135840",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/retail/cards/credit-card"
+    },
+    "axis_bank_platinum": {
+      "content_sha256": "1b413e534ef0a2862d5c6367c9b16a5c22e2ebf688f9f9686a80c5f31d0aa527",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/platinum-credit-card"
+    },
+    "axis_bank_pride_platinum": {
+      "content_sha256": "3b83c162d3099117379f81e9bb36cc3f92244b4799c4cfa53f411f5ab3a7c115",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card"
+    },
+    "axis_bank_pride_signature": {
+      "content_sha256": "e07e2b03bb16b8b182c2d2282a484f334b058fafeb56163958a40539e214b8bf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card"
+    },
+    "axis_bank_primus": {
+      "content_sha256": "d8b126732a0a798142be509517b4726de019c50a45a02894150d4c7457135840",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/retail/cards/credit-card"
+    },
+    "axis_bank_privilege": {
+      "content_sha256": "10ec3ca867bdd8f57817b3e7a4177d7afdefbf156b0f5430e4125ed918e303fa",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://campaign.axis.bank.in/generic/terms-and-conditions-privilege.pdf"
+    },
+    "axis_bank_reserve": {
+      "content_sha256": "8c9f8059bfe1068869acf87a4ce232e4ab6845dfb66c711f6b219ad233696fe8",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/reserve-credit-card"
+    },
+    "axis_bank_rewards": {
+      "content_sha256": "312e2f7c35ea62393d552f42648c84273ce8f6a06d11b1f109cd07a816927ee0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/rewards-credit-card"
+    },
+    "axis_bank_samsung_axis_bank_infinite": {
+      "content_sha256": "df84cd4222f6b1e8aae46e655bbff09d30864de9e2ae19d0f7d1492cc2694b3a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card"
+    },
+    "axis_bank_samsung_axis_bank_signature": {
+      "content_sha256": "5939510bf6112368b1276b4ad1c4df5603c8d9ed47b3da5ddd93ec6a922243bd",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card"
+    },
+    "axis_bank_select": {
+      "content_sha256": "5fc1902c479f38b46b5fd0d04d301466403f181ec2b591fdadb9d555681c1197",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://campaign.axis.bank.in/generic/terms-and-conditions-select.pdf"
+    },
+    "axis_bank_shoppers_stop": {
+      "content_sha256": "fae8e882c1f36e555e6e23f1dffe78f22275bd45183958a1e7551db265b89f94",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card"
+    },
+    "axis_bank_spicejet_axis_bank_voyage": {
+      "content_sha256": "652d117f0743f5267dfe92047b3c875ceffe97631099dac5ca8ac5f6dbff8bb1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card"
+    },
+    "axis_bank_spicejet_axis_bank_voyage_black": {
+      "content_sha256": "78f97b585f55c7ce7e2638877f6a3d27bed94e245787b9c699dc854ba470e123",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card"
+    },
+    "axis_bank_titanium_smart_traveler": {
+      "content_sha256": "0948e0722214064bb499cf287010c0d176dd0fc10fe1b1b35b46cb40799c5b28",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/titanium-smart-traveler-credit-card"
+    },
+    "axis_bank_vistara": {
+      "content_sha256": "ee19bfc4a4ef07e3fe78b896b1cf41ed5c257a3344dae178b7e20e87c954d583",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card"
+    },
+    "axis_bank_vistara_infinite": {
+      "content_sha256": "88999db594171cf48ecae0dbfa45210dbae2e217094475d65b1d7f90a7b8daee",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card"
+    },
+    "axis_bank_vistara_signature": {
+      "content_sha256": "b18702b0611c51654b24aa9bd0b5e4d387ba0ff1bac3440b43f22238b9d98699",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_credit_cards_reward_points": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_easy": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_eterna": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_etihad_guest": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_etihad_guest_premium": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_premier": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_card_tiara": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_cma_one_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_hpcl_energie_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_in_partnership_with_uni_app_card_uni_goldx": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_(bank_of_baroda)_snapdeal_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_card_cashback": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_card_select": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_icai_exclusive_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_indian_army_yoddha_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_limited_(bank_of_baroda)_card_sentinel": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_limited_(bank_of_baroda)_indian_navy_varunah_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_limited_card_icsi_diamond": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "bobcard_limited_irctc_rupay_bob": {
+      "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.bobcard.co.in/credit-card"
+    },
+    "federal_bank_/_bobcard_(scapia)_scapia": {
+      "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.federalbank.co.in/credit-card"
+    },
+    "federal_bank_imperio": {
+      "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.federalbank.co.in/credit-card"
+    },
+    "federal_bank_rupay_signet": {
+      "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.federalbank.co.in/credit-card"
+    },
+    "federal_bank_rupay_wave": {
+      "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.federalbank.co.in/credit-card"
+    },
+    "federal_bank_visa_celesta": {
+      "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.federalbank.co.in/credit-card"
+    },
+    "hdfc_bank_6e_rewards_indigo_hdfc_bank": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_6e_rewards_xl_indigo_hdfc_bank": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_all_miles": {
+      "content_sha256": "4af4f540a7a262409bb8e4241baa3096307157c7d852ed6c874267f608a3bed5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/all-miles-credit-card"
+    },
+    "hdfc_bank_bharat": {
+      "content_sha256": "6efebc462e725978850ee7afd2de424224701342f05b99e17adb58e2eadf41ce",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/bharat-credit-card"
+    },
+    "hdfc_bank_diners_club_black": {
+      "content_sha256": "9c38d9dc831bcc1763fcdaed4df0bae200ceb2176ad55f59a98bd45baaf00def",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/diners-club-black-credit-card"
+    },
+    "hdfc_bank_diners_club_black_metal_edition": {
+      "content_sha256": "3cea67127f458821e844057c47927bb1a5d11995dc2f063aa7789f1ba4cce5f9",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card"
+    },
+    "hdfc_bank_diners_club_miles": {
+      "content_sha256": "307ee74d0856c6206338576bfe166428efbc4c8f6735c5398a0117749891a786",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/diners-club-miles-credit-card"
+    },
+    "hdfc_bank_diners_club_premium": {
+      "content_sha256": "057152674c3c9ece52377a099cfb0edb7c284b98395b3d8921f9bf50785b702a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/diners-club-premium-credit-card"
+    },
+    "hdfc_bank_diners_club_privilege": {
+      "content_sha256": null,
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "HTTP 404",
+      "status": "fetch_failed",
+      "url": "https://www.hdfc.bank.in/personal/pay/cards/credit-cards/diners-club-privilege"
+    },
+    "hdfc_bank_diners_club_rewardz": {
+      "content_sha256": "9fd28d635f83fc4120277c22b9b0b483dc874ec2265ee6d6cab4f29617bef74e",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/diners-club-rewardz-credit-card"
+    },
+    "hdfc_bank_doctors_regalia": {
+      "content_sha256": "de650a413e94440e8376cb5be9c41a751467acf2f463363d12d03a164eae1142",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/doctors-regalia-credit-card"
+    },
+    "hdfc_bank_doctors_superia": {
+      "content_sha256": "8ab4a031dee09608fcfbab327eb08d4119d7f4e9b19caf4aa8d11573f4f953f8",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/doctors-superia-credit-card"
+    },
+    "hdfc_bank_easy_emi": {
+      "content_sha256": "061ccd62ce4ced7dfa695cdd35f1426b54a295a783f1a9eccd01035df51d29ee",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/easyemi"
+    },
+    "hdfc_bank_freedom": {
+      "content_sha256": "cfdf58e91e16da532e09d9d3daa2f9280ecb9ccc74fc638ee1696b21b4213571",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/freedom-credit-card"
+    },
+    "hdfc_bank_harley_davidson_diners_club": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_hog_diners_club": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_indianoil_hdfc_bank": {
+      "content_sha256": "a5c0062223a27610804a32720964f51c331bdf5e6eee926628429cf889a9618a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card"
+    },
+    "hdfc_bank_infinia_metal": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_intermiles_hdfc_bank_diners_club": {
+      "content_sha256": "54eb42221a48c574d29bdb4af63451f6e0e868c467fa5d67627d2c37db6e589a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/intermiles-diners-club-credit-card"
+    },
+    "hdfc_bank_intermiles_hdfc_bank_platinum": {
+      "content_sha256": "da21674af76365e83f9f4b65040a7d127f57f09b21c1f27f9c8e9c70d31b073c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/intermiles-platinum-credit-card"
+    },
+    "hdfc_bank_intermiles_hdfc_bank_signature": {
+      "content_sha256": "5fb881faf1b3cf94334cd8c46d5f3eb166c72f450d3e779e80718ad15609613d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/intermiles-signature-credit-card"
+    },
+    "hdfc_bank_marriott_bonvoy_hdfc_bank": {
+      "content_sha256": "db401492211c46f124801d1e154158773d4679d0a34d4c37d7b01810b438a3e3",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card"
+    },
+    "hdfc_bank_millennia": {
+      "content_sha256": "d85b177532e045d72afd76f139601cd7dc610163414c8c55c9b6433e4fd2cdb1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/millennia-credit-card"
+    },
+    "hdfc_bank_moneyback": {
+      "content_sha256": "47f6aabaee0aa48fa82072dca0193d822d63060c431d1b376db41e91748e651d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card"
+    },
+    "hdfc_bank_moneyback_plus": {
+      "content_sha256": "c95c05a8f249d3483beddcb1be7d20185a3c4fe491a656ce1154fbdd3d53cf33",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card"
+    },
+    "hdfc_bank_paytm_hdfc_bank": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_paytm_hdfc_bank_mobile": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_paytm_hdfc_bank_select": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_phonepe_hdfc_bank_ultimo": {
+      "content_sha256": "d514afe1c913f33b26f5e16ddf4ab7699e1b820724377b06be14a351115afc55",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card"
+    },
+    "hdfc_bank_phonepe_hdfc_bank_uno": {
+      "content_sha256": "4177fae4b6fdd5195d969b5ea0274af57c3dcf14f661d8e6afae7f8f404ab56f",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card"
+    },
+    "hdfc_bank_pixel_go": {
+      "content_sha256": "e4ea1018496857863f42e510ae7156366c0b4531b5dada58ce48e7ffdda81574",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card"
+    },
+    "hdfc_bank_pixel_play": {
+      "content_sha256": "be3b20c403a94657994cd6ecc0a1bc2527d38b5d1319f6fb27704bb26b6473ac",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card"
+    },
+    "hdfc_bank_platinum_times": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_regalia": {
+      "content_sha256": "1b311936048666b0587f9be7318d07847cf9654c121a8098da776a1c1bd1f988",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/regalia-credit-card"
+    },
+    "hdfc_bank_regalia_first": {
+      "content_sha256": "d904c981bf66e39dc02a7db745b1301f4a760ca76c8768a62d8d32914571dfdf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/regalia-first-credit-card"
+    },
+    "hdfc_bank_regalia_gold": {
+      "content_sha256": null,
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "HTTP 404",
+      "status": "fetch_failed",
+      "url": "https://www.hdfc.bank.in/personal/pay/cards/credit-cards/regalia-gold"
+    },
+    "hdfc_bank_rupay_irctc": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hdfc_bank_shoppers_stop_black_hdfc_bank": {
+      "content_sha256": "b569bdb8c97507975f0aa367f909b5d7c28fa94ef7c4ae7b2530f7773e05a999",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card"
+    },
+    "hdfc_bank_shoppers_stop_hdfc_bank": {
+      "content_sha256": "ece94c43bcf2196d6565a957eb4d212063da1e99745dcbc1266fcf6448dd96bf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card"
+    },
+    "hdfc_bank_solitaire": {
+      "content_sha256": "59def3a14eeed979343b50c1de2e4cbd048ffc01b7c9f4bf8ca6fb3fa56a5d5d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/solitaire-credit-card"
+    },
+    "hdfc_bank_superia": {
+      "content_sha256": "bf01494dabdb4e4d48fd964f08f0e034cd236e0821815abba672754cc7edd7cd",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/superia-credit-card"
+    },
+    "hdfc_bank_swiggy_blck_hdfc_bank": {
+      "content_sha256": "d736e236fbf6ed4b8ab811f3ff265182388a901450a479816c4b15e229a29d71",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card"
+    },
+    "hdfc_bank_swiggy_hdfc_bank": {
+      "content_sha256": "f4a0e70a09c43cfb526144c8573112e0baa069441f0ffd3eae00bfbeb1b184af",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card"
+    },
+    "hdfc_bank_swiggy_ornge_hdfc_bank": {
+      "content_sha256": "cfc6ec4bd091ff38a3e7099ab987e56cb18545e8fc5ab49b80601ef902d6ae50",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card"
+    },
+    "hdfc_bank_tata_neu_infinity_hdfc_bank": {
+      "content_sha256": "2bf0d8e06fe202dae465fa1ad6e9cae035400e8a04fb7727f1c1f31ac1f6943b",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card"
+    },
+    "hdfc_bank_tata_neu_plus_hdfc_bank": {
+      "content_sha256": "c2212d79b9e92c0781312a818a3f6ecbb8c47a64a047957cba47a6e1bfe3aaa7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card"
+    },
+    "hdfc_bank_titanium_edge": {
+      "content_sha256": "6cd645c09ddc6b25d2c8fee02a1d8f21ce081c4fc6f386a257c0364b566f7fff",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards/titanium-edge-credit-card"
+    },
+    "hdfc_bank_titanium_times": {
+      "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hdfc.bank.in/credit-cards"
+    },
+    "hsbc_bank_taj": {
+      "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/"
+    },
+    "hsbc_bank_visa_platinum": {
+      "content_sha256": "8afd1a24f55fb3ab86bd6f08705733559900e7c05e1866de97641b2543e61d9e",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/products/visa-platinum/"
+    },
+    "hsbc_live": {
+      "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/"
+    },
+    "hsbc_premier_metal": {
+      "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/"
+    },
+    "hsbc_rupay_cashback": {
+      "content_sha256": "e3eca202e28cb407085ee6cf39bfd1c05ed9973c9e99a3fae3a1bf389162e8ec",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/"
+    },
+    "hsbc_rupay_platinum": {
+      "content_sha256": "9bf77c8728eef3f223a0431a1499e127144d019589e1cdfb29ddabdcefd178cf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/"
+    },
+    "hsbc_smart_value": {
+      "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/"
+    },
+    "hsbc_travelone": {
+      "content_sha256": "a0e6a0bc99c5ffc63af5bb3f0c324497a9d9ddbf776ccc37100fae9d61578cf1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.hsbc.co.in/credit-cards/products/travelone/"
+    },
+    "icici_bank_accelero_icici_bank": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_adani_one_icici_bank_platinum": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_adani_one_icici_bank_signature": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_amazon_pay_icici_bank": {
+      "content_sha256": "1e978190a1aee7c7b3f91b487382cfa5efb8ee471da941c54f5735147dc2e323",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card"
+    },
+    "icici_bank_british_airways_classic": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_british_airways_premium": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_carbon": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_chennai_super_kings_icici_bank": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_coral": {
+      "content_sha256": "ab3f1eceb321eb5b247004c950da73365269817b803c6253957a09e849dc5397",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/coral-credit-card"
+    },
+    "icici_bank_diamant": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_emeralde": {
+      "content_sha256": "6ce06a1e1cd78ca69dc46b1d29f24e216671e5d15c3aa050708286b18d8b81b5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card"
+    },
+    "icici_bank_emeralde_private_metal": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_emirates_skywards_icici_bank_emeralde": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_emirates_skywards_icici_bank_rubyx": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_emirates_skywards_icici_bank_sapphiro": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_expressions": {
+      "content_sha256": "dddb2998af78648a38930e968398c15a605c548725f45e59c14e47013c96b810",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/expressions-card"
+    },
+    "icici_bank_ferrari_signature": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_hpcl_coral": {
+      "content_sha256": "99ffafd421d9a04c3ea369687dce0873a8bb3df95f65db516a12d453bd93ef6d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-coral-credit-card"
+    },
+    "icici_bank_hpcl_platinum": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_hpcl_super_saver": {
+      "content_sha256": "b59e1ef51e13f48470c7f7760bb931943242330a2082a05cf87a62d3f70c1734",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver"
+    },
+    "icici_bank_intermiles_icici_bank_coral": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_intermiles_icici_bank_rubyx": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_intermiles_icici_bank_sapphiro": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_makemytrip_icici_bank": {
+      "content_sha256": "0a487ebd4a776ed3bf0e09fe041b4387074d40a578d8989b16f3b45d6826c18a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card"
+    },
+    "icici_bank_manchester_united_platinum": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_manchester_united_signature": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_mine": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "icici_bank_parakram": {
+      "content_sha256": "1547a7d7453a879971af98cf35d472e96fdcf6941dbdccf96d0b8c8f9306a3db",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram"
+    },
+    "icici_bank_parakram_select": {
+      "content_sha256": "4b319510a018bef4dc32538da9f86b90f07a6d4f2b921f33eb282404687c2407",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select"
+    },
+    "icici_bank_platinum_chip": {
+      "content_sha256": "e0024f4d77cced5a3d27cf70f084455b8db91dc967243525bc75960c86ad149f",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card"
+    },
+    "icici_bank_rubyx": {
+      "content_sha256": "9a0c871abc47b9d683490435fd7409810439ddc754f24d0e4a20bf93d33b670c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/rubyx-credit-card"
+    },
+    "icici_bank_sapphiro": {
+      "content_sha256": "dfa8f6c9147ae90381cae052235684a1edd348a1f55bed8349a106ce81d86373",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/sapphiro-card"
+    },
+    "icici_bank_times_black_icici_bank": {
+      "content_sha256": "2c059b12742c2c680b9a802fdc0c30c181dc8f80a4c88f7cff7213beb0c833d3",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-credit-card"
+    },
+    "icici_bank_visa_signature": {
+      "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
+    },
+    "idbi_bank_aspire_platinum": {
+      "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    },
+    "idbi_bank_bank_addon": {
+      "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    },
+    "idbi_bank_bank_imperium_platinum": {
+      "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    },
+    "idbi_bank_bank_royale_signature": {
+      "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    },
+    "idbi_bank_euphoria_world": {
+      "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    },
+    "idbi_bank_winnings_rupay_select": {
+      "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    },
+    "idfc_bank_bank_first_swyp": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_ashva_metal": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_classic": {
+      "content_sha256": "ab37981d73ce0e57a3074c3b5628502fcec070194ddf46dc562909a29f70e712",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card/classic"
+    },
+    "idfc_first_bank_club_vistara_idfc_first": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_diamond_reserve": {
+      "content_sha256": "83c1f44d84e3357f6420c17062ea3d9a6bb9b3c9ea34ca6e12f2ff1eed05d377",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card"
+    },
+    "idfc_first_bank_earn": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_gaj": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_hello_cashback": {
+      "content_sha256": "b98e739e97bfe5ba4795b9c6880f440f691bb35346ff2c2f807607e3f28fb0f6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card"
+    },
+    "idfc_first_bank_hpcl_first_power": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_hpcl_first_power_plus": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_indigo_idfc_first": {
+      "content_sha256": "2285e1f8784b6eea2fb3187493b4fa534b11aca018faec4122b550eae9c62c00",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf"
+    },
+    "idfc_first_bank_mayura": {
+      "content_sha256": "090b9706b849da0e5c63978f94c2626951b041bc8deaedf5f1ecde3bdd48535c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Mayura-Credit-Card-Communication-May-26.pdf"
+    },
+    "idfc_first_bank_millennia": {
+      "content_sha256": "571215b8977c3dcafc4a3bc53766b5f9e946310dee48b81c5697ee4e1e878616",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf"
+    },
+    "idfc_first_bank_private": {
+      "content_sha256": "56fe067011c1f28232c0a56ab06938505d01f0bd81e01c88ee7595c44de37411",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/personal-banking/wealth/First-Private"
+    },
+    "idfc_first_bank_select": {
+      "content_sha256": "52b17eba8d6555417f6a9fdd042d0fa783846155515610ba7eb32d54d06fa7f1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/personal-banking/wealth/First-Select"
+    },
+    "idfc_first_bank_wealth": {
+      "content_sha256": "bba2c11977314b69d10d25bed27d2677a8fba5db4ed9eeb883c730b873ba2f9a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Wealth-Credit-Card-Communication-May-26.pdf"
+    },
+    "idfc_first_bank_wow": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "idfc_first_bank_wow_black": {
+      "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.idfcfirst.bank.in/credit-card"
+    },
+    "indusind_bank_avios_visa_infinite": {
+      "content_sha256": "ca11ee772d837c2a8b7115dfca144069ea89ed9e8addedb553fae66ee18d28c0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html"
+    },
+    "indusind_bank_celesta": {
+      "content_sha256": "d3f67b247bae801c99bdee0f04d1d19850429711d410054ab0f8926a73b15f31",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/celesta-credit-card.html"
+    },
+    "indusind_bank_club_vistara_indusind_bank_explorer": {
+      "content_sha256": "b8eea70ccefecfdcac919fedc1bfc22b1bdbf72939586e818e4cd13071d1fea7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/club-vistara-indusInd-bank-explorer-credit-card.html"
+    },
+    "indusind_bank_crest": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_duo_plus": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_eazydiner_indusind_bank": {
+      "content_sha256": "cb7b211e1bb44372e3d1e2025f695105992f0140807254eab09f270ae784b41b",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-credit-card.html"
+    },
+    "indusind_bank_eazydiner_indusind_platinum": {
+      "content_sha256": "4f5bba735695005d450ed6e7418eedd9cfd9e3be09d05bab944904776bfbe0d4",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html"
+    },
+    "indusind_bank_epay_amex": {
+      "content_sha256": "efe631c5b7b45c60ef5bca29faf982df5d74994c960f60dc946e1c9112f2598e",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/epay-amex-card.html"
+    },
+    "indusind_bank_iconia_amex": {
+      "content_sha256": "8f222c891a896782897a66fc6e2e25bb6135ce02f857faadf099443f51baf6d4",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html"
+    },
+    "indusind_bank_iconia_visa": {
+      "content_sha256": "717243dd8cef392ea06714a35abedbc95230cabcafa8b095b8bbd60d9899fc9c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-visa-credit-card.html"
+    },
+    "indusind_bank_indulge": {
+      "content_sha256": "418c369666374ec3a4e16485a38664fa9eaf7205c7b762959cb5ca681db1faae",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html"
+    },
+    "indusind_bank_indus_solitaire": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_intermiles_voyage_visa": {
+      "content_sha256": "04c6fcc74155cfd85c65d8b8b31b0ce2783e975b029c6c6b57c37a34ab620aba",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-visa-credit-card.html"
+    },
+    "indusind_bank_jiobp_mobility": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_legend": {
+      "content_sha256": "44da8e502aab622e2e8034819a21e3f7e954e3abca65c195fd4c881cf9e4ad96",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html"
+    },
+    "indusind_bank_nexxt": {
+      "content_sha256": "9ba17354af4300ccaadfda183141d9624d0799c3946ba78d7994955cb48b4db4",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/nexxt-credit-card.html"
+    },
+    "indusind_bank_payback": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_pinnacle_world": {
+      "content_sha256": "841e72afdd0a4d0615f4a9e3a2074931cad3e66743d1aba218150779eabb9068",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html"
+    },
+    "indusind_bank_pioneer_heritage": {
+      "content_sha256": "5cdb389a622b7173f2e3b27eb4c06c31113733239e95b675bfc46f81984647fd",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html"
+    },
+    "indusind_bank_pioneer_legacy": {
+      "content_sha256": "f0e11e1863a0a3d632acc2d61c000f953c40edc9179ad6e073add5d0784b21cc",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-legacy-credit-card.html"
+    },
+    "indusind_bank_pioneer_private": {
+      "content_sha256": "a23bc5ecefb187717cb806fcda2af1d471b0120c073b074cae9422c63073b3cf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html"
+    },
+    "indusind_bank_platinum": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_platinum_aura_edge": {
+      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
+    },
+    "indusind_bank_platinum_select": {
+      "content_sha256": "135637e76dadc95e46f17f34f6c15a45fd322033582d25b23dbd14b553becbbf",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-select-credit-card.html"
+    },
+    "indusind_bank_signature_visa": {
+      "content_sha256": "5cbb78da0c32fb7a89c855cbf3a2bdf4b23ee6721a4db6b924dddaaf1732c3f8",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/signature-visa-credit-card.html"
+    },
+    "indusind_bank_tiger": {
+      "content_sha256": "f77f4d93d16e2012ba69c39c6035c26afffb779660c9cd48682731b32d11dde9",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html"
+    },
+    "kotak_mahindra_bank_6e_rewards_indigo_kotak_bank": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_6e_rewards_xl_indigo_kotak_bank": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_811": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_811_dreamdifferent": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_811_super_money": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_air": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_bank_fortune_gold": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_essentia_platinum": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_indianoil_kotak": {
+      "content_sha256": "c911a2120c62394355988b65abbbfcf318469cbb955eae89464a402979987cc2",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+    },
+    "kotak_mahindra_bank_indigo_kotak": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_indigo_kotak_xl": {
+      "content_sha256": "ca5ccfb7c96585f197346c3c8c654f94dfd5991a9d6143b4b464efdb6bcbcbc1",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html"
+    },
+    "kotak_mahindra_bank_league_platinum": {
+      "content_sha256": "3180a6933af03fb0a7643fce203781aa5631eb2030321627d97e68e06b113568",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/league-platinum-card.html"
+    },
+    "kotak_mahindra_bank_metro_kotak": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_mojo_platinum": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_myntra_kotak": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_privy_league_signature": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_pvr_inox_kotak": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_pvr_kotak_gold": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_pvr_kotak_platinum": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_royale_signature": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_solitaire": {
+      "content_sha256": "e921a1601d94d496ef1404617e8c0277bf90f1c95082e9ad14a4b79066c3f1b9",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/solitaire.html"
+    },
+    "kotak_mahindra_bank_urbane_gold": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_veer_platinum": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_veer_select": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_white": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_white_reserve": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_bank_zen_signature": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "kotak_mahindra_cashback": {
+      "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
+    },
+    "rbl_bank_aspire_banking": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_bookmyshow_rbl_bank_play": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_cookies": {
+      "content_sha256": "c3f5a7a635120edfd144b0538b9632d7f369fa86f11e54a54c73448fb6650987",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/personal-banking/cards/credit-cards/cookies-credit-card"
+    },
+    "rbl_bank_dmi_finance": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_edition": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_icon": {
+      "content_sha256": "56f7d42c0a3b692e80fa6aad238f0912bf11c08f9b8f1bd5eb3c9ce66679e78d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/personal-banking/cards/credit-cards/icon-credit-card"
+    },
+    "rbl_bank_iglobe": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_indianoil_rbl_bank": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_indianoil_rbl_bank_xtra": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_insignia_preferred_banking_world": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_irctc_rbl_bank": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_monthly_treats": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_nova": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_novio": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_patanjali_rbl_bank_swarn": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_patanjali_rbl_bank_vishisht": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_platinum_delight": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_platinum_maxima_plus": {
+      "content_sha256": "0830a469f05bf7eec034663a6dc834e62dcf05b0eeed889738a665146bddf10c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card"
+    },
+    "rbl_bank_popcorn": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_quickpay": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_salaryse_up": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_shoprite": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_signature_banking": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_titanium_delight": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_tvs_credit_rbl_bank": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_tvs_credit_rbl_bank_gold": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_world_prime": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_world_safari": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_world_safari_lite": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "rbl_bank_zomato_edition_classic": {
+      "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.rblbank.com/category/credit-cards"
+    },
+    "sbi_card_aditya_birla_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_aditya_birla_sbi_card_select": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_air_india_sbi_platinum": {
+      "content_sha256": "934875e704b1b6232fa608406a38cf746994d236051695613af12108e15514cc",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html"
+    },
+    "sbi_card_air_india_sbi_signature": {
+      "content_sha256": "8436e675b660ae20a1e01ee52aae763dfb1ec9885a5d85724680e82758a7a9e4",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html"
+    },
+    "sbi_card_apollo_sbi": {
+      "content_sha256": "a7e57437841d8af6e99ce079005de17fe486f226d6e5fc7848b32faaa158dd8a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html"
+    },
+    "sbi_card_apollo_sbi_select": {
+      "content_sha256": "d492665c5b545baa5ba0b51fe9662e44dff9279622cb420e28f2c7a38c594680",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html"
+    },
+    "sbi_card_aurum": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_bpcl_sbi": {
+      "content_sha256": "3b7e55b0ceca17c1ae33e04b66d907f411323089ee8b19aa301df5aca3796429",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html"
+    },
+    "sbi_card_bpcl_sbi_octane": {
+      "content_sha256": "c173b26246a3825694b45d1c33f831b95c877b3fca0999d4c4640a589fcaf996",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html"
+    },
+    "sbi_card_cashback_sbi": {
+      "content_sha256": "09e028aa20fc220c2de2c57c83a768c939d1d553220ca560c0dd76effb5b948d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html"
+    },
+    "sbi_card_club_vistara_sbi": {
+      "content_sha256": "4d0c9b1e675584ef93116a172d2a711d0c5e97c8bad5c27076fa0a8c9d507d4b",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card.html"
+    },
+    "sbi_card_club_vistara_sbi_card_prime": {
+      "content_sha256": "ff73ac72f2afa5836d6cbba3e035e13b61411432122b90bb97b68d57ccc3ce2a",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html"
+    },
+    "sbi_card_delhi_metro_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_doctors_ima_sbi": {
+      "content_sha256": "2c2641dfd61a52f037774bcbff106439516adf9b2128710050b697a6b6ae653d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html"
+    },
+    "sbi_card_elite": {
+      "content_sha256": "3dd92dd9810fa5b2f203561256fcb0da89a47c54241ba1e8b6270e3797a9fd89",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html"
+    },
+    "sbi_card_etihad_guest_sbi": {
+      "content_sha256": "c8d3dcf63618e606f1e9c6b0b89153dc040aa07a7f4bcc9a04a5f0545182bb9f",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/etihad-guest-sbi-card.html"
+    },
+    "sbi_card_etihad_guest_sbi_premier": {
+      "content_sha256": "26ed83800facca97037cd7d63b68a2297ac42c8d8320f3362d3db4d32953cbb0",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/etihad-guest-sbi-premier-card.html"
+    },
+    "sbi_card_fabindia_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_fabindia_sbi_card_select": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_flipkart_sbi": {
+      "content_sha256": "85b82a2da30d5eb768a9c0c410eb4a04176861915bbeb24e45063a4bed9dce1c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html"
+    },
+    "sbi_card_indigo_sbi": {
+      "content_sha256": "2f8b7063123a623fec822afc33e72402e451023e909313bc325ecf07cef376d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html"
+    },
+    "sbi_card_indigo_sbi_elite": {
+      "content_sha256": "01d805101c7ea4121f8266344dc152c7fe09c17be7d19c99f5dd5ad24d561b20",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html"
+    },
+    "sbi_card_irctc_rupay_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_irctc_sbi_card_premier": {
+      "content_sha256": "1e72c280e1ee3227e1c2e20998450e6311f55cb1a2165ef7c65b1bfd17382fbb",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html"
+    },
+    "sbi_card_krisflyer_sbi": {
+      "content_sha256": "faee968cab9418e6248993abafea389d07f2cb78e52610277e17aecd72fd4008",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card.html"
+    },
+    "sbi_card_krisflyer_sbi_card_apex": {
+      "content_sha256": "4868895b8f525ff49d78dca99040f45d63fc4a60ac7c79741c9fa13c2c1e9d86",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html"
+    },
+    "sbi_card_landmark_rewards_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_landmark_rewards_sbi_prime": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_landmark_rewards_sbi_select": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_lifestyle_home_centre_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_lifestyle_home_centre_sbi_card_prime": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_max_sbi_card_select": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_miles": {
+      "content_sha256": "d5aa6108714b1e2b2f637fb17780cb461c3f2a817ab32395331d6d9048c855b5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html"
+    },
+    "sbi_card_miles_elite": {
+      "content_sha256": "c3a5e3dd7aa422b0596138a1e434f23e466abec9bd392ce37d8746459adf5545",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html"
+    },
+    "sbi_card_miles_prime": {
+      "content_sha256": "318626d81cec7f759f0378ac90d80ba9cecd17a55e45933f422388a7e2391d1d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-prime.html"
+    },
+    "sbi_card_mumbai_metro_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_natures_basket_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_natures_basket_sbi_card_elite": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_ola_money_sbi": {
+      "content_sha256": "2dd86592e329afa74024703154e71d29cb28d2a0ce34d4ef8ea0e52c5756b7b2",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/ola-money-sbi-card.html"
+    },
+    "sbi_card_paytm_sbi": {
+      "content_sha256": "426a5909ca584c54d545379177878ce42e6dbd7ad39f8659234019d2f623ec14",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html"
+    },
+    "sbi_card_paytm_sbi_credit_card_select": {
+      "content_sha256": "eaf27b59c7c26ed02868253bba9450aae12afd02a05fb03f825d2ec2174d56ea",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html"
+    },
+    "sbi_card_phonepe_sbi_purple": {
+      "content_sha256": "8efa3c6fa09f090bcd092b9b6ab33490405e0f41e771d932d46c5e7557c1b417",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-Purple-pdf-27Apr2026.pdf"
+    },
+    "sbi_card_phonepe_sbi_select_black": {
+      "content_sha256": "9236a1e58f60ad99f777c9d22031b74a5d1ae974dc13b2a815fd2aa3627118e6",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-Black-pdf-27Apr2026.pdf"
+    },
+    "sbi_card_prime": {
+      "content_sha256": "d87a8dd116d7b43091d2a1e56681ce4632a3b15f28bec9311c95c536090538a5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html"
+    },
+    "sbi_card_pulse": {
+      "content_sha256": "0d847339d32eb1bf8397398147bb400c098d7293ad8d73243e23cd5ec79d88cd",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html"
+    },
+    "sbi_card_reliance_sbi": {
+      "content_sha256": "7056d558a056cf2c52d428ecaa3d55f5dd073c24c39f74af02ba4b8c765db20d",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html"
+    },
+    "sbi_card_reliance_sbi_card_prime": {
+      "content_sha256": "96b27ec85b0e3806fe288180d950d9c10240d4f37f1ecf278cd4e52df2f1cbce",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html"
+    },
+    "sbi_card_shaurya": {
+      "content_sha256": "0b997fe946a12671486b6d2d774aa2980fc4a05572d118438c13a632832eda2c",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html"
+    },
+    "sbi_card_shaurya_select": {
+      "content_sha256": "39b8dfb4da6d01a9f365c6dc3bf7bab288c63d71cf45b1596083f1839d367848",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-select-sbi-card.html"
+    },
+    "sbi_card_simplyclick": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_simplysave_upi_rupay": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_tata_neu_infinity_sbi": {
+      "content_sha256": "71185b9575b8fc6a8f00ce5d28140edb75a5b9cb587fcc4330c57f3708c65411",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    },
+    "sbi_card_tata_neu_plus_sbi": {
+      "content_sha256": "f805873d6dca75bda215398f7cb8d527e26170153aa36306d2a4eee0217137d2",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html"
+    },
+    "sbi_card_tata_star_select": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sbi_card_titan_sbi": {
+      "content_sha256": "2b0715da64d0fde1aca8f2023091a8902a5d42183191b75959d92ab8c23c0b18",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html"
+    },
+    "sbi_card_unnati": {
+      "content_sha256": "a70b327e2b0836295c07edfd7138ee66abf16f1ae919566cd5fecb89eaf20a44",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html"
+    },
+    "sbi_card_yatra_sbi": {
+      "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sbicard.com/en/personal/credit-cards.page"
+    },
+    "sc_beyond": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "sc_digismart": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "sc_manhattan": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "sc_priority_visa_infinite": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "sc_super_value_titanium": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "sc_ultimate": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "slice_bank_slice_upi": {
+      "content_sha256": "ae36855a35b45a6862401f56a0ae08bdd591c79b533e2d6ff7982693532493f5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sliceit.com/"
+    },
+    "standard_chartered_bank_easemytrip": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "standard_chartered_bank_emirates_world": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "standard_chartered_bank_platinum_rewards": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "standard_chartered_bank_rewards": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "standard_chartered_bank_smart": {
+      "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.sc.com/in/credit-cards/"
+    },
+    "yes_bank_byoc": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_emi": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_marquee": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_pop_club": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_reserv": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_select": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_uni": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_uni_rupay": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_wellness": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_wellness_plus": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_yes_ace": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_yes_elite": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_yes_first_preferred": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_yes_privateprivate_prime": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_yes_prosperity_cashback_plus": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_yes_prosperity_rewards": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
+    },
+    "yes_bank_zagg": {
+      "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
+      "fetched_at": "2026-08-17T16:04:49Z",
+      "note": "",
+      "status": "fetched",
+      "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
     }
   }
 }

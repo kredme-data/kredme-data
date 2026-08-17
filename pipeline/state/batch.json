@@ -1,1 +1,12 @@
-{"schema_version": 1, "batches": []}
+{
+  "batches": [
+    {
+      "batch_id": "msgbatch_01UtXgrgtL4m2Fv8mA3H4E9d",
+      "kind": "extract",
+      "request_count": 371,
+      "status": "submitted",
+      "submitted_at": "2026-08-17T16:04:54Z"
+    }
+  ],
+  "schema_version": 1
+}
