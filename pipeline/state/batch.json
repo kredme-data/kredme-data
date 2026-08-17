@@ -4,8 +4,15 @@
       "batch_id": "msgbatch_01UtXgrgtL4m2Fv8mA3H4E9d",
       "kind": "extract",
       "request_count": 371,
-      "status": "submitted",
+      "status": "collected",
       "submitted_at": "2026-08-17T16:04:54Z"
+    },
+    {
+      "batch_id": "msgbatch_015Yi2EuboXc9oLW3FcjgmP1",
+      "kind": "verify",
+      "request_count": 223,
+      "status": "submitted",
+      "submitted_at": "2026-08-17T18:32:28Z"
     }
   ],
   "schema_version": 1
