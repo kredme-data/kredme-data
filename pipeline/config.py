@@ -154,6 +154,21 @@ FETCH_RETRIES = 2
 MAX_FETCH_BYTES = 12 * 1024 * 1024      # an issuer PDF over 12 MB is a scan, not a T&C
 POLITE_DELAY_S = 1.0                    # between requests to the same host
 
+# How many issuer HOSTS to fetch from at once. Concurrency is per host, never
+# within one: `fetch_many` gives each host a single worker that walks its own
+# URLs in order with POLITE_DELAY_S between them, so raising this never
+# increases the request rate any one issuer sees.
+#
+# Why this exists at all: the design assumed the refresh "submits and exits in
+# minutes", which was true when 373 cards resolved to 35 shared landing pages.
+# Per-card source discovery took that to 196 distinct URLs, the sequential
+# fetch grew past an hour, and `pipeline-advance` — which runs every 2 hours in
+# the same concurrency group — cancelled the weekly refresh mid-fetch.
+#
+# 20 hosts exist today and the busiest holds 38 distinct URLs, so that host is
+# the critical path and more workers than that buys nothing.
+MAX_FETCH_WORKERS = int(os.environ.get("KREDME_FETCH_WORKERS", "8"))
+
 # ---------------------------------------------------------------------------
 # Extraction limits (these bound the per-card token bill)
 # ---------------------------------------------------------------------------
