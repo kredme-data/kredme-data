@@ -1,0 +1,172 @@
+name: News push (notify users of a published card change)
+
+# Sends one FCM topic message when a news item actually reaches users.
+#
+# WHY THIS TRIGGER, AND NOT THE PIPELINE'S:
+#   Real installs read news/feed.json from GitHub Pages, which serves `main`.
+#   The only thing that writes main:news/feed.json is `tools/kredme.py promote`,
+#   run by a person and pushed. So a push to main touching that file IS the
+#   publish event, and it is the only moment a notification is truthful.
+#
+#   news-watch.yml opens its PR against `dev`. Firing there would notify every
+#   production user about an item their feed does not contain — and about model
+#   output no human has reviewed yet. That workflow's own header records that an
+#   adversarial second pass refuted 6 of 18 changes a first pass called
+#   issuer-confirmed. Unreviewed extractions must never reach a push.
+
+on:
+  push:
+    branches: [main]
+    paths: ['news/feed.json']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Check the guards and print the message, but send nothing'
+        type: boolean
+        required: false
+        default: true
+
+# Two publishes in quick succession must not race to notify.
+concurrency:
+  group: news-push
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write        # for Workload Identity Federation
+
+defaults:
+  run:
+    # Not `bash -e`: without pipefail a failing command piped into anything
+    # reports the exit status of the LAST command in the pipe. That is how this
+    # repo's predecessor scanner ran red for 12 weeks while every job showed
+    # green.
+    shell: bash -euo pipefail {0}
+
+jobs:
+  notify:
+    name: Notify subscribers of the new feed version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # HEAD~1 is needed to prove the version actually increased.
+          fetch-depth: 2
+
+      - name: Decide whether users will even see this publish
+        id: gate
+        run: |
+          # The app parses ONLY the leading integer of `version` and refetches
+          # only on a strict increase (news_feed_service.dart:123-127). A minor
+          # or patch bump is invisible: the push lands, the user taps, and the
+          # feed shows the old cached item with no error anywhere.
+          #
+          # So this gate is not belt-and-braces — it is the same rule the app
+          # applies. If it does not pass, notifying would be a lie.
+          new_major=$(jq -r '.version' news/feed.json | cut -d. -f1)
+          old_major=$(git show HEAD~1:news/feed.json 2>/dev/null \
+                        | jq -r '.version' | cut -d. -f1 || echo 0)
+          echo "old major: ${old_major}   new major: ${new_major}"
+
+          if ! [[ "$new_major" =~ ^[0-9]+$ ]]; then
+            echo "::error::news/feed.json version is not numeric — refusing to notify"
+            exit 1
+          fi
+          if [ "$new_major" -le "$old_major" ]; then
+            echo "::notice::Major version did not increase (${old_major} -> ${new_major})."
+            echo "The app will ignore this feed, so there is nothing to notify about."
+            echo "send=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Newest item by published_at is what the notification describes.
+          jq -r '.items | sort_by(.published_at) | last' news/feed.json > /tmp/item.json
+          title=$(jq -r '.title' /tmp/item.json)
+          summary=$(jq -r '.summary' /tmp/item.json)
+          id=$(jq -r '.id' /tmp/item.json)
+          if [ -z "$title" ] || [ "$title" = "null" ]; then
+            echo "::error::newest item has no title — refusing to send an empty notification"
+            exit 1
+          fi
+
+          {
+            echo "send=true"
+            echo "version=${new_major}"
+            echo "news_id=${id}"
+            echo "title=${title}"
+            echo "body=${summary}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Wait for GitHub Pages to actually serve the new feed
+        if: steps.gate.outputs.send == 'true'
+        run: |
+          # Pages deploys asynchronously after the push. Notifying first means
+          # the user taps through, the app fetches the OLD feed, and the new
+          # item does not appear until some later launch — with nothing to
+          # explain the gap. Wait for the bytes to be live before waking anyone.
+          want='${{ steps.gate.outputs.version }}'
+          url=https://kredme-data.github.io/kredme-data/news/feed.json
+          for i in $(seq 1 40); do          # 40 x 15s = 10 minutes
+            got=$(curl -fsSL --max-time 20 "$url" | jq -r '.version' | cut -d. -f1 || echo 0)
+            if [ "$got" = "$want" ]; then
+              echo "Pages is serving version ${got} after $((i*15))s"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::Pages never served version ${want} — not notifying."
+          exit 1
+
+      - name: Authenticate to Firebase
+        if: steps.gate.outputs.send == 'true' && github.event.inputs.dry_run != 'true'
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          # Workload Identity Federation — no long-lived service-account key
+          # stored in the repo. Both values must be set as repository secrets.
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          access_token_scopes: https://www.googleapis.com/auth/firebase.messaging
+
+      - name: Send
+        if: steps.gate.outputs.send == 'true'
+        env:
+          TOKEN: ${{ steps.auth.outputs.access_token }}
+          TITLE: ${{ steps.gate.outputs.title }}
+          BODY: ${{ steps.gate.outputs.body }}
+          NEWS_ID: ${{ steps.gate.outputs.news_id }}
+        run: |
+          # jq builds the body so a quote or newline in an issuer's wording
+          # cannot break out of the JSON.
+          #
+          # `notification` + `data`, deliberately. iOS needs the notification
+          # block to display at all when backgrounded; the app's background
+          # handler records the inbox row WITHOUT re-drawing, so Android does
+          # not show two copies. All `data` values must be strings.
+          jq -n \
+            --arg title "$TITLE" --arg body "$BODY" --arg newsId "$NEWS_ID" \
+            '{message: {
+                topic: "news_prod",
+                notification: {title: $title, body: $body},
+                data: {route: "news", newsId: $newsId},
+                android: {priority: "high"},
+                apns: {payload: {aps: {sound: "default"}}}
+             }}' > /tmp/msg.json
+
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "DRY RUN — would send:"; cat /tmp/msg.json; exit 0
+          fi
+
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d @/tmp/msg.json \
+            https://fcm.googleapis.com/v1/projects/kredme-c6206/messages:send
+
+          # ⚠️ A 200 here does NOT mean anyone received it. FCM returns 200 for
+          # a topic with zero subscribers. Subscription only begins on the first
+          # launch of an app build containing FcmService._subscribeToNewsTopic,
+          # so reach starts at 0% and grows with app updates. Measure reach in
+          # Firebase, never from this step's exit code.
+          echo "::notice::Sent. A 200 is not delivery — check Firebase for actual reach."
