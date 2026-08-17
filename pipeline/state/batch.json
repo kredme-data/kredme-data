@@ -11,7 +11,7 @@
       "batch_id": "msgbatch_015Yi2EuboXc9oLW3FcjgmP1",
       "kind": "verify",
       "request_count": 223,
-      "status": "submitted",
+      "status": "collected",
       "submitted_at": "2026-08-17T18:32:28Z"
     }
   ],
