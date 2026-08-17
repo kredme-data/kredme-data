@@ -83,7 +83,10 @@ jobs:
           if [ -z "$ANTHROPIC_API_KEY" ]; then
             echo '::error::ANTHROPIC_API_KEY is not set — cannot collect an in-flight batch.'; exit 2
           fi
-          python3 pipeline/cli.py advance | tee advance.log
+          # -u: see weekly-refresh.yml. Piping into `tee` block-buffers stdout,
+          # so a run that stalls or is killed shows an empty log and an empty
+          # step summary regardless of how much it printed.
+          python3 -u pipeline/cli.py advance | tee advance.log
           # cli.py writes 'stage=<name>' to GITHUB_OUTPUT itself when it produces a patch.
           # grep exiting 1 means "not found", not "failed" — spell that out so it reads
           # correctly under `set -o pipefail`.
