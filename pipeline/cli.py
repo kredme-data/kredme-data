@@ -256,8 +256,50 @@ def cmd_refresh(args: argparse.Namespace) -> int:
 # ---------------------------------------------------------------------------
 # advance — stages 2 and 3
 # ---------------------------------------------------------------------------
+def _recollect(bst: dict, batch_id: str) -> int:
+    """Put an already-collected batch back in front of the collector.
+
+    Why this exists. A batch is marked `collected` the moment its results are
+    read, and `pending_batches()` returns only `submitted` — so if anything
+    downstream of collection fails, the batch is finished as far as the pipeline
+    is concerned while nothing has actually been produced from it. That is not
+    hypothetical: on 2026-08-17 stage 2 collected 371 extractions, discarded 232
+    of them because the runner had no pdftotext, and exited. The results sat in
+    extractions.json with no code path that would ever read them again, and the
+    only route forward was re-running the weekly refresh — paying a second time
+    to re-extract output we already held. Recovering it took a hand-edit of
+    tool-managed state, which is exactly the kind of thing that should be a
+    command.
+
+    Re-collecting costs NOTHING. The batch has ended; retrieving an ended
+    batch's results is a read, and Anthropic keeps them for 29 days. The
+    expensive half — the model actually running — has already been paid for and
+    does not happen again.
+    """
+    match = next((b for b in bst.get("batches", []) if b.get("batch_id") == batch_id), None)
+    if match is None:
+        fail(f"no tracked batch {batch_id!r}")
+        known = [b.get("batch_id") for b in bst.get("batches", [])]
+        if known:
+            warn("tracked batches: " + ", ".join(str(k) for k in known))
+        return 1
+    if match.get("status") == "submitted":
+        ok(f"{batch_id} is already pending — nothing to reopen")
+        return 0
+
+    ST.mark_batch(bst, batch_id, "submitted")
+    ST.save_batch_state(bst)
+    ok(f"reopened {match.get('kind')} batch {batch_id} "
+       f"({match.get('request_count')} requests) — the next advance will re-collect it")
+    ok("this re-reads results already paid for; it does not re-run the model")
+    return 0
+
+
 def cmd_advance(args: argparse.Namespace) -> int:
     bst = ST.load_batch_state()
+
+    if getattr(args, "recollect", ""):
+        return _recollect(bst, args.recollect)
 
     for pending in ST.pending_batches(bst, kind="extract"):
         rc = _advance_extract(pending, bst, args)
@@ -741,6 +783,14 @@ def main() -> int:
 
     a = sub.add_parser("advance", help="stages 2-3: collect batches, propose a patch")
     a.add_argument("--dry-run", action="store_true")
+    a.add_argument(
+        "--recollect",
+        metavar="BATCH_ID",
+        default="",
+        help="reopen an already-collected batch so the next advance reads it again. "
+             "Free — the results exist and are kept for 29 days; the model does not re-run. "
+             "Use when a stage failed AFTER collection and left paid-for results stranded.",
+    )
     a.set_defaults(fn=cmd_advance)
 
     n = sub.add_parser("news-watch", help="poll issuer notice pages, draft feed items")
