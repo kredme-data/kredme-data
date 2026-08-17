@@ -117,8 +117,23 @@ jobs:
           echo "::error::Pages never served version ${want} — not notifying."
           exit 1
 
+      # Runs on EVERY manual dispatch, including a dry run, and regardless of
+      # what the version gate decided.
+      #
+      # It used to be `gate.send == 'true' && dry_run != 'true'`, which made a
+      # dry run structurally incapable of testing the one thing a dry run is
+      # for. Both clauses excluded it: dry runs skipped auth by design, and the
+      # gate returns false whenever the feed's major has not moved — which is
+      # the normal state between publishes. The 17-Aug dispatch that was meant
+      # to prove the new WIF credentials worked came back green with
+      # `Authenticate to Firebase: skipped`. It proved nothing, and the first
+      # real test would have been a live publish.
+      #
+      # Authenticating costs nothing and sends nothing: it mints a short-lived
+      # token and stops. `Send` below still requires gate.send, so no version
+      # bump means no message no matter how this step is triggered.
       - name: Authenticate to Firebase
-        if: steps.gate.outputs.send == 'true' && github.event.inputs.dry_run != 'true'
+        if: steps.gate.outputs.send == 'true' || github.event_name == 'workflow_dispatch'
         id: auth
         uses: google-github-actions/auth@v2
         with:
@@ -128,6 +143,22 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
           access_token_scopes: https://www.googleapis.com/auth/firebase.messaging
+
+      # Turns a green run into evidence. Without this, a dry run that
+      # authenticated and a dry run that skipped authentication look identical
+      # in the checkmark, and that ambiguity is what hid the missing secrets.
+      # Length only — never the token, which would land in a public repo's logs.
+      - name: Confirm the credentials actually work
+        if: steps.auth.outcome == 'success'
+        env:
+          TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: |
+          if [ -z "${TOKEN}" ]; then
+            echo "::error::Auth reported success but returned no access token."
+            exit 1
+          fi
+          echo "Workload Identity exchange succeeded — token of ${#TOKEN} chars minted."
+          echo "This proves GCP trusts this repo. It does NOT prove anyone is subscribed."
 
       - name: Send
         if: steps.gate.outputs.send == 'true'
