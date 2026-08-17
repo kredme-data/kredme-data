@@ -107,7 +107,14 @@ jobs:
           if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
           echo "Running: pipeline/cli.py refresh $ARGS"
-          python3 pipeline/cli.py refresh $ARGS | tee refresh.log
+          # -u, not plain python3. Piping into `tee` makes stdout a pipe, and
+          # Python block-buffers a pipe at ~8 KB. Run 31991962860 printed
+          # "Running: ..." and then nothing for the 60 minutes before the job
+          # timeout killed it — the progress lines existed, they were sitting in
+          # a buffer that never flushed because the process never exited. The
+          # step summary below reads refresh.log and was empty for the same
+          # reason. Unbuffered, a stall is visible at the card it stalled on.
+          python3 -u pipeline/cli.py refresh $ARGS | tee refresh.log
 
       - name: Job summary
         if: always()
