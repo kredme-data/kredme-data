@@ -1,5 +1,5 @@
 {
- "_comment": "card_id -> the issuer page that card is read from. Entries are written by `python3 pipeline/cli.py discover --write`, which only records a URL whose page it fetched and confirmed names that card and says 'credit card'. Hand-written entries are never overwritten by a later crawl \u2014 edit freely. A card with no entry falls back to sources.ISSUER_LANDING, which is correct but shared with every other card of that issuer.",
+ "_comment": "card_id -> the issuer page that card is read from. Entries are written by `python3 pipeline/cli.py discover --write`, which only records a URL whose page it fetched and confirmed names that card and says 'credit card'. Hand-written entries are never overwritten by a later crawl — edit freely. A card with no entry falls back to sources.ISSUER_LANDING, which is correct but shared with every other card of that issuer.",
  "amex_platinum_travel": "https://www.americanexpress.com/in/benefits/platinum-travel-credit-card/",
  "au_bank_nomo": "https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card",
  "au_bank_spont": "https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card",
@@ -175,5 +175,22 @@
  "sbi_card_tata_neu_infinity_sbi": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
  "sbi_card_tata_neu_plus_sbi": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html",
  "sbi_card_titan_sbi": "https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html",
- "sbi_card_unnati": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html"
+ "sbi_card_unnati": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html",
+ "yes_bank_byoc": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_emi": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_marquee": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_pop_club": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_reserv": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_select": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_uni": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_uni_rupay": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_wellness": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_wellness_plus": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_yes_ace": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_yes_elite": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_yes_first_preferred": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_yes_privateprivate_prime": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_yes_prosperity_cashback_plus": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_yes_prosperity_rewards": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf",
+ "yes_bank_zagg": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
 }
