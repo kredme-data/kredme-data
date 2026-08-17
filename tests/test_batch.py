@@ -179,6 +179,41 @@ class TestImportsWithoutSDK(unittest.TestCase):
 # ---------------------------------------------------------------------------
 class TestCustomId(unittest.TestCase):
     SAFE = re.compile(r"^[A-Za-z0-9_-]+$")
+    # The API's rule, copied from its own 400 message. Assert against THIS, not
+    # against a charset chosen to accommodate whatever we happen to emit.
+    API = re.compile(r"^[a-zA-Z0-9_-]{1,64}$")
+
+    def test_separator_is_inside_the_api_charset(self):
+        # The whole bug in one line. _SEPARATOR was "::" and colons are not in
+        # [a-zA-Z0-9_-], so EVERY request the pipeline ever built was invalid —
+        # including plain ids like extract::hdfc_bank_millennia. The first real
+        # submit died with `requests.0.custom_id` after a 14-minute fetch, and
+        # it read like card 0 was odd rather than like all 365 were.
+        self.assertRegex(batch._SEPARATOR, r"^[a-zA-Z0-9_-]+$")
+
+    def test_assembled_custom_id_is_valid_for_every_kind(self):
+        # The old tests checked the sanitised HALF and the length. Neither could
+        # see a bad separator, because the separator is glued on afterwards.
+        nasty = [
+            "hdfc_bank_millennia",                       # ordinary — also failed
+            "bobcard_(bank_of_baroda)_card_eterna",      # parentheses
+            "federal_bank_/_bobcard_(scapia)_scapia",    # slash and parentheses
+            "au_bank_(co-branded_with_aditya_birla_finance_limited)"
+            "_aditya_birla_au_bank_credit_cards",        # 88 chars
+        ]
+        for card_id in nasty:
+            for build in (
+                lambda c: batch.build_extract_request(c, "X", "https://x.test/a", DOC),
+                lambda c: batch.build_verify_request(c, DOC, []),
+            ):
+                cid = build(card_id)["custom_id"]
+                self.assertRegex(cid, self.API, f"{card_id!r} -> {cid!r}")
+
+    def test_a_bad_custom_id_is_rejected_with_the_offending_character(self):
+        # Fail loudly at build time rather than after a fetch and a 400.
+        with self.assertRaises(ValueError) as ctx:
+            batch._assert_api_charset("extract::card")
+        self.assertIn("':'", str(ctx.exception))
 
     def test_round_trip_for_id_with_parentheses(self):
         card_id = "bobcard_(bank_of_baroda)_card_eterna"
@@ -192,7 +227,7 @@ class TestCustomId(unittest.TestCase):
         self.assertLessEqual(len(req["custom_id"]), batch.CUSTOM_ID_MAX_LEN)
 
     def test_sanitised_half_is_identical_across_kinds(self):
-        # extract:: is one byte longer than verify::. If the budget were derived
+        # extract- is one byte longer than verify-. If the budget were derived
         # per-kind, the two passes would truncate differently and the caller's
         # custom_id -> card_id map would break between pass 1 and pass 2.
         card_id = "au_bank_(co-branded_with_aditya_birla_finance_limited)_aditya_birla_au_bank_credit_cards"
@@ -212,7 +247,10 @@ class TestCustomId(unittest.TestCase):
         self.assertEqual(len(card_id), 88)
         cid = batch.build_extract_request(card_id, "X", "https://x.test/a", DOC)["custom_id"]
         self.assertLessEqual(len(cid), batch.CUSTOM_ID_MAX_LEN)
-        self.assertTrue(re.match(r"^[A-Za-z0-9_:-]+$", cid))
+        # Was r"^[A-Za-z0-9_:-]+$". That ":" is the bug, written into the test
+        # that existed to catch it: the charset had been widened to accommodate
+        # the separator instead of matched to the API. Assert the API's rule.
+        self.assertRegex(cid, self.API)
 
     def test_boundary_ids_at_and_over_the_budget(self):
         at_budget = "a" * batch.ID_MAX_LEN
@@ -267,23 +305,27 @@ class TestCustomId(unittest.TestCase):
             batch._custom_id("summarise", "hdfc_regalia")
 
     def test_parse_custom_id_rejects_malformed_ids(self):
+        # Built from _SEPARATOR, not a literal. These fixtures used to spell
+        # "::" out, which is why nothing noticed when that value was itself
+        # invalid: the tests agreed with the code and both were wrong.
+        sep = batch._SEPARATOR
         bad = [
             "",
             "extract",
-            "extract:hdfc",            # single colon
-            "extract::",               # empty id half
-            "::hdfc",                  # no kind
-            "summarise::hdfc",         # unknown kind
-            "extract::hdfc regalia",   # space is outside the charset
-            "extract::hdfc(regalia)",  # parentheses are outside the charset
-            "extract::" + "a" * (batch.ID_MAX_LEN + 1),
+            f"extract{sep}",                    # empty id half
+            f"{sep}hdfc",                       # no kind
+            f"summarise{sep}hdfc",              # unknown kind
+            f"extract{sep}hdfc regalia",        # space is outside the charset
+            f"extract{sep}hdfc(regalia)",       # parentheses are outside it
+            f"extract{sep}" + "a" * (batch.ID_MAX_LEN + 1),
+            "extract::hdfc",                    # the old separator, now invalid
         ]
         for value in bad:
             with self.assertRaises(ValueError, msg=value):
                 batch.parse_custom_id(value)
 
     def test_parse_custom_id_rejects_non_strings(self):
-        for value in (None, 42, ["extract::hdfc"]):
+        for value in (None, 42, ["extract-hdfc"]):
             with self.assertRaises(ValueError):
                 batch.parse_custom_id(value)
 
@@ -426,8 +468,8 @@ class TestEstimateCost(unittest.TestCase):
 
     def two_requests(self) -> list[dict[str, Any]]:
         return [
-            raw_request("extract::a", self.PREFIX, self.VOLATILE, 1000),
-            raw_request("extract::b", self.PREFIX, self.VOLATILE, 1000),
+            raw_request("extract-a", self.PREFIX, self.VOLATILE, 1000),
+            raw_request("extract-b", self.PREFIX, self.VOLATILE, 1000),
         ]
 
     def test_hand_computed_case(self):
@@ -460,8 +502,8 @@ class TestEstimateCost(unittest.TestCase):
 
     def test_a_different_prefix_pays_its_own_cache_write(self):
         mixed = [
-            raw_request("extract::a", self.PREFIX, self.VOLATILE, 1000),
-            raw_request("verify::a", "Q" * 360, self.VOLATILE, 1000),
+            raw_request("extract-a", self.PREFIX, self.VOLATILE, 1000),
+            raw_request("verify-a", "Q" * 360, self.VOLATILE, 1000),
         ]
         est = batch.estimate_cost(mixed, "claude-opus-5")
         # Both prefixes are first-seen, so both are writes: 2 x (125 + 50) = 350.
@@ -505,15 +547,15 @@ class TestEstimateCost(unittest.TestCase):
         with self.assertRaises(ValueError):
             batch.estimate_cost(["not a dict"], "claude-opus-5")
         with self.assertRaises(ValueError):
-            batch.estimate_cost([{"custom_id": "extract::a"}], "claude-opus-5")
+            batch.estimate_cost([{"custom_id": "extract-a"}], "claude-opus-5")
         with self.assertRaises(ValueError):
             batch.estimate_cost(
-                [{"custom_id": "extract::a", "params": {"model": "m", "max_tokens": 0}}],
+                [{"custom_id": "extract-a", "params": {"model": "m", "max_tokens": 0}}],
                 "claude-opus-5",
             )
         with self.assertRaises(ValueError):
             batch.estimate_cost(
-                [{"custom_id": "extract::a", "params": {"model": "m", "max_tokens": "16000"}}],
+                [{"custom_id": "extract-a", "params": {"model": "m", "max_tokens": "16000"}}],
                 "claude-opus-5",
             )
 
@@ -528,7 +570,7 @@ class TestEstimateCost(unittest.TestCase):
 # ---------------------------------------------------------------------------
 class TestChunking(unittest.TestCase):
     def reqs(self, n: int) -> list[dict[str, Any]]:
-        return [raw_request(f"extract::c{i}", "P" * 10, "V" * 10, 100) for i in range(n)]
+        return [raw_request(f"extract-c{i}", "P" * 10, "V" * 10, 100) for i in range(n)]
 
     def test_splits_exactly_at_the_request_count_boundary(self):
         with mock.patch.object(batch, "MAX_REQUESTS_PER_BATCH", 3):
@@ -561,7 +603,7 @@ class TestChunking(unittest.TestCase):
 # ---------------------------------------------------------------------------
 class TestSubmit(unittest.TestCase):
     def reqs(self, n: int = 2) -> list[dict[str, Any]]:
-        return [raw_request(f"extract::c{i}", "P" * 10, "V" * 10, 100) for i in range(n)]
+        return [raw_request(f"extract-c{i}", "P" * 10, "V" * 10, 100) for i in range(n)]
 
     def test_dry_run_returns_a_sentinel_and_touches_no_client(self):
         self.assertEqual(
@@ -588,8 +630,8 @@ class TestSubmit(unittest.TestCase):
 
     def test_duplicate_custom_ids_are_rejected(self):
         dupes = [
-            raw_request("extract::same", "P", "V", 100),
-            raw_request("extract::same", "P", "V", 100),
+            raw_request("extract-same", "P", "V", 100),
+            raw_request("extract-same", "P", "V", 100),
         ]
         # Left alone this is silent data loss: collect() keys by custom_id, so
         # the second result would overwrite the first.
@@ -645,38 +687,38 @@ class TestPoll(unittest.TestCase):
 class TestCollect(unittest.TestCase):
     def test_keys_by_custom_id(self):
         client = fake_client([
-            succeeded("extract::a", {"card_id": "a", "found": True}),
-            succeeded("extract::b", {"card_id": "b", "found": False}),
+            succeeded("extract-a", {"card_id": "a", "found": True}),
+            succeeded("extract-b", {"card_id": "b", "found": False}),
         ])
         out = batch.collect("msgbatch_01", client=client)
-        self.assertEqual(set(out), {"extract::a", "extract::b"})
-        self.assertEqual(out["extract::a"]["data"]["card_id"], "a")
-        self.assertEqual(out["extract::b"]["data"]["found"], False)
+        self.assertEqual(set(out), {"extract-a", "extract-b"})
+        self.assertEqual(out["extract-a"]["data"]["card_id"], "a")
+        self.assertEqual(out["extract-b"]["data"]["found"], False)
 
     def test_correct_when_results_arrive_in_reverse_order(self):
         # THE trap. Anything that pairs results with inputs by position silently
         # writes card B's reward rate onto card A.
         payloads = [{"card_id": f"card{i}", "found": True} for i in range(5)]
-        forward = [succeeded(f"extract::card{i}", p) for i, p in enumerate(payloads)]
+        forward = [succeeded(f"extract-card{i}", p) for i, p in enumerate(payloads)]
 
         straight = batch.collect("b1", client=fake_client(list(forward)))
         reversed_ = batch.collect("b2", client=fake_client(list(reversed(forward))))
 
         self.assertEqual(straight, reversed_)
         for i in range(5):
-            self.assertEqual(reversed_[f"extract::card{i}"]["data"]["card_id"], f"card{i}")
+            self.assertEqual(reversed_[f"extract-card{i}"]["data"]["card_id"], f"card{i}")
 
     def test_shuffled_order_is_also_correct(self):
-        forward = [succeeded(f"extract::card{i}", {"card_id": f"card{i}"}) for i in range(6)]
+        forward = [succeeded(f"extract-card{i}", {"card_id": f"card{i}"}) for i in range(6)]
         shuffled = [forward[3], forward[0], forward[5], forward[1], forward[4], forward[2]]
         out = batch.collect("b1", client=fake_client(shuffled))
         for i in range(6):
-            self.assertEqual(out[f"extract::card{i}"]["data"]["card_id"], f"card{i}")
+            self.assertEqual(out[f"extract-card{i}"]["data"]["card_id"], f"card{i}")
 
     def test_every_entry_has_the_full_contract_shape(self):
         client = fake_client([
-            succeeded("extract::a", {"card_id": "a"}),
-            FakeResult("extract::b", FakeInner("expired")),
+            succeeded("extract-a", {"card_id": "a"}),
+            FakeResult("extract-b", FakeInner("expired")),
         ])
         for entry in batch.collect("b1", client=client).values():
             self.assertEqual(set(entry), {"ok", "data", "error"})
@@ -684,85 +726,85 @@ class TestCollect(unittest.TestCase):
             self.assertIsInstance(entry["error"], str)
 
     def test_success_carries_no_error_string(self):
-        out = batch.collect("b1", client=fake_client([succeeded("extract::a", {"x": 1})]))
-        self.assertTrue(out["extract::a"]["ok"])
-        self.assertEqual(out["extract::a"]["error"], "")
+        out = batch.collect("b1", client=fake_client([succeeded("extract-a", {"x": 1})]))
+        self.assertTrue(out["extract-a"]["ok"])
+        self.assertEqual(out["extract-a"]["error"], "")
 
     def test_errored_canceled_and_expired_are_distinguishable(self):
         client = fake_client([
             FakeResult(
-                "extract::e",
+                "extract-e",
                 FakeInner("errored", error=FakeError(type="invalid_request", message="bad schema")),
             ),
-            FakeResult("extract::c", FakeInner("canceled")),
-            FakeResult("extract::x", FakeInner("expired")),
+            FakeResult("extract-c", FakeInner("canceled")),
+            FakeResult("extract-x", FakeInner("expired")),
         ])
         out = batch.collect("b1", client=client)
 
-        for key in ("extract::e", "extract::c", "extract::x"):
+        for key in ("extract-e", "extract-c", "extract-x"):
             self.assertFalse(out[key]["ok"])
             self.assertIsNone(out[key]["data"])
 
-        self.assertIn("errored", out["extract::e"]["error"])
-        self.assertIn("invalid_request", out["extract::e"]["error"])
-        self.assertIn("bad schema", out["extract::e"]["error"])
-        self.assertEqual(out["extract::c"]["error"], "canceled")
-        self.assertEqual(out["extract::x"]["error"], "expired")
+        self.assertIn("errored", out["extract-e"]["error"])
+        self.assertIn("invalid_request", out["extract-e"]["error"])
+        self.assertIn("bad schema", out["extract-e"]["error"])
+        self.assertEqual(out["extract-c"]["error"], "canceled")
+        self.assertEqual(out["extract-x"]["error"], "expired")
         self.assertEqual(
-            len({out[k]["error"] for k in ("extract::e", "extract::c", "extract::x")}), 3
+            len({out[k]["error"] for k in ("extract-e", "extract-c", "extract-x")}), 3
         )
 
     def test_malformed_json_in_a_succeeded_result_never_raises(self):
         client = fake_client([
-            succeeded("extract::bad", "{not json at all"),
-            succeeded("extract::good", {"card_id": "good"}),
+            succeeded("extract-bad", "{not json at all"),
+            succeeded("extract-good", {"card_id": "good"}),
         ])
         out = batch.collect("b1", client=client)
 
-        self.assertFalse(out["extract::bad"]["ok"])
-        self.assertIsNone(out["extract::bad"]["data"])
-        self.assertIn("malformed JSON", out["extract::bad"]["error"])
+        self.assertFalse(out["extract-bad"]["ok"])
+        self.assertIsNone(out["extract-bad"]["data"])
+        self.assertIn("malformed JSON", out["extract-bad"]["error"])
         # One unparseable card must not throw away the ones we already paid for.
-        self.assertTrue(out["extract::good"]["ok"])
+        self.assertTrue(out["extract-good"]["ok"])
 
     def test_truncated_json_never_raises(self):
         out = batch.collect(
-            "b1", client=fake_client([succeeded("extract::a", '{"card_id": "a", "found":')])
+            "b1", client=fake_client([succeeded("extract-a", '{"card_id": "a", "found":')])
         )
-        self.assertFalse(out["extract::a"]["ok"])
-        self.assertIn("malformed JSON", out["extract::a"]["error"])
+        self.assertFalse(out["extract-a"]["ok"])
+        self.assertIn("malformed JSON", out["extract-a"]["error"])
 
     def test_succeeded_with_no_text_block_is_reported_not_raised(self):
-        empty = FakeResult("extract::a", FakeInner("succeeded", message=FakeMessage([])))
+        empty = FakeResult("extract-a", FakeInner("succeeded", message=FakeMessage([])))
         out = batch.collect("b1", client=fake_client([empty]))
-        self.assertFalse(out["extract::a"]["ok"])
-        self.assertIn("no text block", out["extract::a"]["error"])
+        self.assertFalse(out["extract-a"]["ok"])
+        self.assertIn("no text block", out["extract-a"]["error"])
 
     def test_object_shaped_content_blocks_are_read(self):
-        client = fake_client([succeeded("extract::a", {"card_id": "a"}, as_dict=False)])
+        client = fake_client([succeeded("extract-a", {"card_id": "a"}, as_dict=False)])
         out = batch.collect("b1", client=client)
-        self.assertTrue(out["extract::a"]["ok"])
-        self.assertEqual(out["extract::a"]["data"], {"card_id": "a"})
+        self.assertTrue(out["extract-a"]["ok"])
+        self.assertEqual(out["extract-a"]["data"], {"card_id": "a"})
 
     def test_non_text_blocks_are_skipped_before_the_text_block(self):
         message = FakeMessage([
             {"type": "thinking", "thinking": ""},
             {"type": "text", "text": '{"card_id": "a"}'},
         ])
-        client = fake_client([FakeResult("extract::a", FakeInner("succeeded", message=message))])
-        self.assertEqual(batch.collect("b1", client=client)["extract::a"]["data"], {"card_id": "a"})
+        client = fake_client([FakeResult("extract-a", FakeInner("succeeded", message=message))])
+        self.assertEqual(batch.collect("b1", client=client)["extract-a"]["data"], {"card_id": "a"})
 
     def test_unknown_result_type_is_reported(self):
-        client = fake_client([FakeResult("extract::a", FakeInner("teleported"))])
+        client = fake_client([FakeResult("extract-a", FakeInner("teleported"))])
         out = batch.collect("b1", client=client)
-        self.assertFalse(out["extract::a"]["ok"])
-        self.assertIn("unknown result type", out["extract::a"]["error"])
+        self.assertFalse(out["extract-a"]["ok"])
+        self.assertIn("unknown result type", out["extract-a"]["error"])
 
     def test_duplicate_custom_id_in_results_is_an_error(self):
         # Silently keeping the last one would drop a card we paid for.
         client = fake_client([
-            succeeded("extract::a", {"card_id": "a"}),
-            succeeded("extract::a", {"card_id": "a2"}),
+            succeeded("extract-a", {"card_id": "a"}),
+            succeeded("extract-a", {"card_id": "a2"}),
         ])
         with self.assertRaises(ValueError):
             batch.collect("b1", client=client)
@@ -797,8 +839,8 @@ class TestCollect(unittest.TestCase):
                 }
             ],
         }
-        out = batch.collect("b1", client=fake_client([succeeded("extract::hdfc_regalia", payload)]))
-        entry = out["extract::hdfc_regalia"]
+        out = batch.collect("b1", client=fake_client([succeeded("extract-hdfc_regalia", payload)]))
+        entry = out["extract-hdfc_regalia"]
         self.assertTrue(entry["ok"])
         # 'N points per Rs X' must survive as points x unit, never a percentage.
         obs = entry["data"]["observations"][0]
@@ -879,13 +921,13 @@ class TestCLI(unittest.TestCase):
 # ---------------------------------------------------------------------------
 class TestKindOfBatch(unittest.TestCase):
     def test_single_kind_is_returned(self):
-        reqs = [raw_request("extract::a", "P", "V", 100), raw_request("extract::b", "P", "V", 100)]
+        reqs = [raw_request("extract-a", "P", "V", 100), raw_request("extract-b", "P", "V", 100)]
         self.assertEqual(batch._kind_of(reqs), "extract")
 
     def test_mixed_kinds_are_rejected(self):
         # extract and verify have different cached prefixes and different
         # collect-time handling; mixing them in one batch state entry loses that.
-        reqs = [raw_request("extract::a", "P", "V", 100), raw_request("verify::a", "P", "V", 100)]
+        reqs = [raw_request("extract-a", "P", "V", 100), raw_request("verify-a", "P", "V", 100)]
         with self.assertRaises(ValueError):
             batch._kind_of(reqs)
 
