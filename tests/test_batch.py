@@ -177,6 +177,49 @@ class TestImportsWithoutSDK(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
+class TestSpendCeiling(unittest.TestCase):
+    """submit() refuses a batch estimated above config.MAX_BATCH_USD.
+
+    This runs unattended on a Monday cron, so there is nobody to answer a
+    prompt — it raises instead. The failure being prevented is real: the 17-Aug
+    cycle billed $94.55 against a $68.63 estimate and nothing in the pipeline
+    would have stopped that repeating every week.
+    """
+
+    def _reqs(self, n, doc=133_000):
+        return [batch.build_extract_request(f"c{i}", "C", "https://x.test/a", "y" * doc)
+                for i in range(n)]
+
+    def test_a_full_sweep_is_refused(self):
+        with self.assertRaises(ValueError) as ctx:
+            batch.submit(self._reqs(371), dry_run=True)
+        msg = str(ctx.exception)
+        self.assertIn("spend limit", msg)
+        self.assertIn("refusing to submit", msg)
+        # The error must carry BOTH numbers: est_usd is what tripped it, and
+        # est_usd_ceiling is the bound the bill genuinely cannot exceed.
+        self.assertIn("estimated at", msg)
+        self.assertIn("ceiling", msg)
+
+    def test_an_ordinary_incremental_week_passes(self):
+        self.assertEqual(batch.submit(self._reqs(30), dry_run=True), "dry-run")
+
+    def test_the_cap_can_be_raised_deliberately(self):
+        self.assertEqual(
+            batch.submit(self._reqs(371), dry_run=True, max_usd=500.0), "dry-run")
+
+    def test_none_disables_the_cap(self):
+        self.assertEqual(batch.submit(self._reqs(371), dry_run=True, max_usd=None), "dry-run")
+
+    def test_the_default_ceiling_sits_below_a_full_sweep(self):
+        # The calibration itself, pinned. 60 was the first value and it sat ON
+        # the number it was meant to catch, so it would never have fired.
+        sweep = batch.estimate_cost(self._reqs(371), C.EXTRACT_MODEL)["est_usd"]
+        week = batch.estimate_cost(self._reqs(30), C.EXTRACT_MODEL)["est_usd"]
+        self.assertLess(C.MAX_BATCH_USD, sweep, "ceiling would not stop a full sweep")
+        self.assertGreater(C.MAX_BATCH_USD, week * 2, "ceiling too tight for a normal week")
+
+
 class TestCustomId(unittest.TestCase):
     SAFE = re.compile(r"^[A-Za-z0-9_-]+$")
     # The API's rule, copied from its own 400 message. Assert against THIS, not
