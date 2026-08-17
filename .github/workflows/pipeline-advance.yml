@@ -44,7 +44,14 @@ jobs:
   advance:
     name: Advance whatever stage is pending
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 60, not 30. A timeout here is not a slow job that retries cheaply — the
+    # run at 17:12 on 2026-08-17 collected 371 extractions we had already paid
+    # ~$45 for, then was killed at exactly 30 minutes while re-reading sources,
+    # so `Commit state` never ran and all of it was discarded. The re-read is
+    # concurrent now and should finish well inside 30, but the cost of being
+    # wrong is asymmetric: idle minutes on a public repo are free, and a kill
+    # throws away paid work.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
