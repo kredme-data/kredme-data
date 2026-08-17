@@ -73,7 +73,10 @@ jobs:
           ARGS=""
           if [ -n "${{ github.event.inputs.issuer }}" ]; then ARGS="$ARGS --issuer ${{ github.event.inputs.issuer }}"; fi
           if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
-          python3 pipeline/cli.py news-watch $ARGS | tee news.log
+          # -u: see weekly-refresh.yml. Piping into `tee` block-buffers stdout,
+          # so a run that stalls or is killed shows an empty log and an empty
+          # step summary regardless of how much it printed.
+          python3 -u pipeline/cli.py news-watch $ARGS | tee news.log
           # grep exiting 1 means "not found", not "failed" — spell that out so it reads
           # correctly under `set -o pipefail`.
           if grep -q 'NEWS_READY' news.log; then
