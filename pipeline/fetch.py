@@ -35,6 +35,7 @@ is config.is_issuer_domain()'s job, enforced at validate/publish time.
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import dataclasses
 import gzip
 import shutil
@@ -617,6 +618,86 @@ def fetch_source(url: str, *, opener: Any = None, follow_pdfs: bool = True) -> F
         text_sha256=S.sha256_text(normalise_text(text)),
         error="; ".join(notes),
     )
+
+
+def fetch_many(
+    urls: "list[str] | tuple[str, ...]",
+    *,
+    opener: Any = None,
+    follow_pdfs: bool = True,
+    max_workers: int | None = None,
+    on_progress: Any = None,
+) -> dict[str, Fetched]:
+    """Fetch a set of URLs, one host at a time but many hosts at once.
+
+    Returns {url: Fetched}. Deduplicated: a URL appearing twice is fetched once.
+
+    WHY THIS EXISTS
+    ---------------
+    The weekly refresh is designed to submit a batch and exit quickly, so that
+    no job approaches Actions' 6-hour limit and the 2-hourly collector never
+    finds it still running. That held when 373 cards resolved to 35 shared
+    landing pages. Per-card source discovery took it to 196 distinct URLs, the
+    sequential fetch grew past an hour, and `pipeline-advance` — same
+    concurrency group — cancelled a refresh 60 minutes into its fetch.
+
+    POLITENESS IS STRUCTURAL, NOT A SETTING
+    ---------------------------------------
+    Work is partitioned BY HOST and each host gets exactly one worker, which
+    walks that host's URLs in order sleeping POLITE_DELAY_S between them. So no
+    issuer ever sees two concurrent requests from us no matter how high
+    max_workers goes, and there is no lock to get wrong. Raising the worker
+    count adds hosts in flight, never requests per host.
+
+    The busiest host is the critical path — today 38 distinct URLs — so more
+    workers than there are hosts buys nothing.
+
+    Like everything else in this module, it never raises: a URL that fails
+    comes back as a Fetched with ok=False and a readable error.
+    """
+    # Dedupe while preserving first-seen order, so a shared landing page is
+    # fetched once no matter how many cards point at it. 373 cards resolve to
+    # 196 URLs today; this alone removes 177 redundant fetches.
+    ordered = list(dict.fromkeys(u for u in urls if u))
+    if not ordered:
+        return {}
+
+    by_host: dict[str, list[str]] = {}
+    for url in ordered:
+        by_host.setdefault(_host(url), []).append(url)
+
+    results: dict[str, Fetched] = {}
+    done = 0
+    total = len(ordered)
+
+    def _walk_one_host(host_urls: list[str]) -> list[tuple[str, Fetched]]:
+        out: list[tuple[str, Fetched]] = []
+        for i, url in enumerate(host_urls):
+            if i:
+                # Between requests to THIS host only. The first needs no wait.
+                time.sleep(C.POLITE_DELAY_S)
+            try:
+                out.append((url, fetch_source(url, opener=opener, follow_pdfs=follow_pdfs)))
+            except Exception as exc:  # pragma: no cover - fetch_source is no-raise
+                # Belt and braces: an exception escaping into a worker would be
+                # swallowed by the executor and the URL would vanish from the
+                # results map, which reads downstream as "no cards changed".
+                out.append((url, Fetched(url=url, error=f"{type(exc).__name__}: {exc}")))
+        return out
+
+    workers = max_workers if max_workers is not None else C.MAX_FETCH_WORKERS
+    workers = max(1, min(workers, len(by_host)))
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = [pool.submit(_walk_one_host, group) for group in by_host.values()]
+        for future in concurrent.futures.as_completed(futures):
+            for url, got in future.result():
+                results[url] = got
+                done += 1
+                if on_progress is not None:
+                    on_progress(done, total)
+
+    return results
 
 
 # ---------------------------------------------------------------------------

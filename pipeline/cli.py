@@ -112,8 +112,26 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     changed: list[tuple[S.Source, str]] = []
     unchanged = failed = 0
 
+    # Fetch first, concurrently across issuers; then walk the cards in seed
+    # order to record state. Two reasons for that split, both load-bearing:
+    #
+    #   - `st` is a plain dict mutated by ST.record_source. Writing to it from
+    #     worker threads would be a data race for no gain — the network is the
+    #     slow part, not the bookkeeping.
+    #   - The per-card output stays in seed order, so a diff of two runs is
+    #     readable and the "first 10 warnings" cap shows the same cards it
+    #     always did rather than whichever host happened to finish first.
+    #
+    # fetch_many deduplicates, so the 373 cards sharing 196 URLs cost 196
+    # fetches, not 373.
+    def _tick(done: int, total: int) -> None:
+        if done % 25 == 0:
+            print(f"     ... {done}/{total} sources")
+
+    fetched = F.fetch_many([s.url for s in resolved], on_progress=_tick)
+
     for i, s in enumerate(resolved, 1):
-        res = F.fetch_source(s.url)
+        res = fetched.get(s.url) or F.Fetched(url=s.url, error="not fetched")
         if not res.ok or not res.text:
             failed += 1
             ST.record_source(
@@ -142,8 +160,6 @@ def cmd_refresh(args: argparse.Namespace) -> int:
             st, s.card_id, url=s.url, content_sha256=res.text_sha256,
             fetched_at=_now(), status="fetched",
         )
-        if i % 25 == 0:
-            print(f"     ... {i}/{len(resolved)}")
 
     ok(f"fetched {len(resolved)}: {len(changed)} changed, {unchanged} unchanged, {failed} failed")
     if unchanged and not args.force:
