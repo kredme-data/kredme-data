@@ -15,6 +15,7 @@ The first class below is the regression guard for that whole category.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import pathlib
 import sys
@@ -268,6 +269,60 @@ class TestCliEntrypoints(unittest.TestCase):
 
     def test_no_subcommand_exits_nonzero(self):
         self.assertNotEqual(self._run([]), 0)
+
+
+class TestRecollect(unittest.TestCase):
+    """Reopening a collected batch, so paid-for results are never stranded.
+
+    A batch is marked `collected` the moment its results are read, and
+    pending_batches() returns only `submitted`. So any failure downstream of
+    collection leaves the batch finished as far as the pipeline is concerned
+    while nothing has been produced from it. On 2026-08-17 that stranded 371
+    extractions worth ~$45, and the only recovery was hand-editing state.
+    """
+
+    def _state(self, status="collected"):
+        return {"schema_version": 1, "batches": [{
+            "batch_id": "msgbatch_x", "kind": "extract",
+            "request_count": 371, "status": status, "submitted_at": "t",
+        }]}
+
+    def test_a_collected_batch_becomes_pending_again(self):
+        bst = self._state("collected")
+        with mock.patch.object(cli.ST, "save_batch_state") as saved:
+            rc = cli._recollect(bst, "msgbatch_x")
+        self.assertEqual(rc, 0)
+        self.assertEqual(bst["batches"][0]["status"], "submitted")
+        self.assertEqual(cli.ST.pending_batches(bst, kind="extract")[0]["batch_id"], "msgbatch_x")
+        saved.assert_called_once()
+
+    def test_unknown_batch_id_fails_loudly_rather_than_silently(self):
+        bst = self._state()
+        with mock.patch.object(cli.ST, "save_batch_state") as saved:
+            rc = cli._recollect(bst, "msgbatch_typo")
+        self.assertEqual(rc, 1)
+        self.assertEqual(bst["batches"][0]["status"], "collected")   # untouched
+        saved.assert_not_called()
+
+    def test_reopening_an_already_pending_batch_is_a_no_op(self):
+        # Must not write state or claim it did something — a second operator
+        # running the same command should not look like it worked twice.
+        bst = self._state("submitted")
+        with mock.patch.object(cli.ST, "save_batch_state") as saved:
+            rc = cli._recollect(bst, "msgbatch_x")
+        self.assertEqual(rc, 0)
+        saved.assert_not_called()
+
+    def test_recollect_short_circuits_before_polling_anything(self):
+        # It must not fall through into the normal collect path, which would
+        # hit the network in the same run.
+        args = argparse.Namespace(recollect="msgbatch_x", dry_run=False)
+        with mock.patch.object(cli.ST, "load_batch_state", return_value=self._state()), \
+             mock.patch.object(cli.ST, "save_batch_state"), \
+             mock.patch.object(cli.B, "poll") as poll:
+            rc = cli.cmd_advance(args)
+        self.assertEqual(rc, 0)
+        poll.assert_not_called()
 
 
 class TestEveryFetchingWorkflowInstallsPoppler(unittest.TestCase):
