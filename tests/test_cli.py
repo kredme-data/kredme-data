@@ -270,6 +270,37 @@ class TestCliEntrypoints(unittest.TestCase):
         self.assertNotEqual(self._run([]), 0)
 
 
+class TestEveryFetchingWorkflowInstallsPoppler(unittest.TestCase):
+    """Any workflow that fetches an issuer source must be able to read a PDF.
+
+    pipeline-advance.yml did not install poppler-utils, and the symptom pointed
+    everywhere except the cause. fetch_source appends the text of every linked
+    PDF, and verification requires the re-read to hash IDENTICALLY to what
+    extraction read — so a missing pdftotext does not report a missing tool, it
+    reports "source changed since extraction", i.e. it looks like the bank
+    rewrote its page.
+
+    On the 17-Aug run that had 371 paid-for extractions in hand: 205 cards
+    "changed", 27 more failed outright, and the cycle proposed nothing. One
+    apt-get line. This test is cheaper than finding it again.
+    """
+
+    WORKFLOWS = ("weekly-refresh.yml", "news-watch.yml", "pipeline-advance.yml")
+
+    def test_all_of_them(self):
+        wf_dir = REPO / ".github" / "workflows"
+        for name in self.WORKFLOWS:
+            path = wf_dir / name
+            with self.subTest(workflow=name):
+                self.assertTrue(path.exists(), f"{name} is missing")
+                body = path.read_text(encoding="utf-8")
+                self.assertIn(
+                    "poppler-utils", body,
+                    f"{name} runs a fetch but never installs pdftotext; linked-PDF "
+                    f"text will vanish and hashes will silently stop matching",
+                )
+
+
 class TestWorkflowContract(unittest.TestCase):
     """The CI files reference CLI commands and paths — assert they still line up."""
 

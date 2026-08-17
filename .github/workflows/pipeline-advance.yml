@@ -77,6 +77,23 @@ jobs:
         with:
           python-version: '3.12'
 
+      # pdftotext, exactly as weekly-refresh installs it — and for a sharper
+      # reason here. Verification re-reads each source and requires the text to
+      # hash IDENTICALLY to what extraction read. fetch_source appends the text
+      # of every linked PDF, so without poppler that text silently disappears
+      # and the hash cannot match. It does not look like a missing tool; it
+      # looks like the bank rewrote its page.
+      #
+      # Measured on the 17-Aug run, which had 371 paid-for extractions in hand:
+      # 205 cards reported "source changed since extraction" and 27 more
+      # "no text extracted from PDF". 232 of 371 discarded, and the batch
+      # proposed nothing at all. hdfc millennia alone is 114,738 characters
+      # with its 4 linked PDFs and 13,115 without — different bytes, different
+      # hash, every time.
+      - name: Install poppler-utils
+        if: steps.gate.outputs.pending == 'true'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
       - name: Install dependencies
         if: steps.gate.outputs.pending == 'true'
         run: pip install --quiet -r pipeline/requirements.txt
