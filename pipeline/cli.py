@@ -273,8 +273,20 @@ def cmd_advance(args: argparse.Namespace) -> int:
     return 0
 
 
-def _redocument(card_id: str, sources_state: dict) -> tuple[str, str]:
-    """Re-fetch a card's source and return (text, why_not) — text is "" when unusable.
+def _redocument(
+    card_id: str,
+    sources_state: dict,
+    fetched: "dict[str, F.Fetched] | None" = None,
+) -> tuple[str, str]:
+    """Re-read a card's source and return (text, why_not) — text is "" when unusable.
+
+    `fetched` is a {url: Fetched} map from F.fetch_many, and passing it is what
+    keeps stage 2 inside its job timeout. Fetching here, once per card, is
+    strictly serial: 371 cards took over 30 minutes and the job was killed
+    mid-loop, discarding 371 already-paid-for extractions and reaching no
+    submit at all. Stage 1 hit the identical wall and fixed it with fetch_many;
+    this is the same fix, one stage later. Falls back to a direct fetch when no
+    map is supplied so a single-card debugging call still works.
 
     Verification must judge the extractor's quotes against the EXACT bytes the extractor
     read. Stage 1 wrote those bytes to `.pipeline-work/`, which is gitignored scratch on a
@@ -295,7 +307,7 @@ def _redocument(card_id: str, sources_state: dict) -> tuple[str, str]:
     if not expected:
         return "", "no recorded content hash"
 
-    res = F.fetch_source(url)
+    res = (fetched or {}).get(url) or F.fetch_source(url)
     if not res.ok or not res.text:
         return "", f"re-fetch failed: {res.error or 'no text'}"
     if res.text_sha256 != expected:
@@ -351,6 +363,30 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         if not cid.startswith("__watch__")
     }
 
+    # Re-fetch every source ONCE, concurrently, before building anything.
+    #
+    # Verification re-reads each card's document to prove the extractor's quotes
+    # against the exact bytes it saw. Doing that inside the loop is one serial
+    # fetch per card, which on 371 cards ran past this job's 30-minute timeout
+    # and was killed part-way — throwing away 371 extractions that had already
+    # been paid for and submitting nothing. fetch_many deduplicates and runs one
+    # worker per host, so this is the same shape of fix stage 1 already carries,
+    # and the same politeness guarantee: never two concurrent requests to one
+    # issuer.
+    wanted: list[str] = []
+    for cid in good:
+        card_id = by_custom_id.get(cid)
+        entry = ST.get_source(sources_state, card_id) if card_id else None
+        url = (entry or {}).get("url")
+        if url:
+            wanted.append(url)
+
+    def _vtick(done: int, total: int) -> None:
+        if done % 25 == 0:
+            print(f"     ... re-read {done}/{total} sources")
+
+    refetched = F.fetch_many(wanted, on_progress=_vtick) if wanted else {}
+
     vreqs = []
     skipped: dict[str, int] = {}
     for cid, res in good.items():
@@ -361,7 +397,7 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         obs = (res.get("data") or {}).get("observations") or []
         if not obs:
             continue
-        text, why = _redocument(card_id, sources_state)
+        text, why = _redocument(card_id, sources_state, refetched)
         if not text:
             skipped[why] = skipped.get(why, 0) + 1
             continue

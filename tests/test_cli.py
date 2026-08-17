@@ -100,6 +100,38 @@ class TestRedocumentHashGuard(unittest.TestCase):
         f.error = error
         return f
 
+    def test_prefetched_map_is_used_and_no_fetch_happens(self):
+        """The fix for the stage-2 timeout, pinned.
+
+        _redocument fetching for itself is one serial request per card. On 371
+        cards that ran past pipeline-advance's job timeout and the run was
+        killed mid-loop, discarding 371 extractions already paid for and
+        submitting nothing. cmd_advance now pre-fetches concurrently with
+        fetch_many and passes the map in; if this ever fetches again the
+        timeout comes back.
+        """
+        url = "https://www.hdfc.bank.in/x"
+        with mock.patch.object(cli.F, "fetch_source") as spy:
+            text, why = cli._redocument("c1", self.state, {url: self._fetched()})
+        self.assertEqual(text, "the document")
+        self.assertEqual(why, "")
+        spy.assert_not_called()
+
+    def test_falls_back_to_fetching_when_no_map_is_supplied(self):
+        # Single-card debugging calls still work.
+        with mock.patch.object(cli.F, "fetch_source", return_value=self._fetched()) as spy:
+            text, _ = cli._redocument("c1", self.state)
+        self.assertEqual(text, "the document")
+        spy.assert_called_once()
+
+    def test_a_url_missing_from_the_map_falls_back_rather_than_failing(self):
+        # fetch_many drops nothing today, but a miss must not silently skip a
+        # card — that would read downstream as "this card did not change".
+        with mock.patch.object(cli.F, "fetch_source", return_value=self._fetched()) as spy:
+            text, _ = cli._redocument("c1", self.state, {"https://other.test/y": None})
+        self.assertEqual(text, "the document")
+        spy.assert_called_once()
+
     def test_matching_hash_returns_the_text(self):
         with mock.patch.object(cli.F, "fetch_source", return_value=self._fetched()):
             text, why = cli._redocument("c1", self.state)
