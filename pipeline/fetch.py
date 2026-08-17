@@ -38,9 +38,13 @@ import argparse
 import concurrent.futures
 import dataclasses
 import gzip
+import re
 import shutil
+import socket
+import ssl
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -349,6 +353,158 @@ def _default_opener() -> Any:
     return urllib.request.build_opener().open
 
 
+# ---------------------------------------------------------------------------
+# Incomplete certificate chains (AIA chasing)
+# ---------------------------------------------------------------------------
+# A correctly configured HTTPS server sends its leaf certificate AND every
+# intermediate needed to reach a trusted root. Some issuers send only the leaf.
+# Browsers and macOS `curl` paper over it by fetching the missing intermediate
+# from the leaf's Authority Information Access extension; OpenSSL and Python's
+# urllib do not, so the handshake fails with:
+#
+#     SSL: CERTIFICATE_VERIFY_FAILED - unable to get local issuer certificate
+#
+# That is what removed www.bobcard.co.in — 19 cards, a whole issuer — from every
+# weekly refresh. The site was never down. `curl https://www.bobcard.co.in/`
+# returns 200 while `openssl s_client` reports "Verify return code: 21 (unable
+# to verify the first certificate)", which is the signature of this fault.
+#
+# So: on a verification failure, read the AIA URLs out of the server's own
+# certificate, fetch the intermediates, and retry once against a context that
+# trusts them. Verification stays ON throughout — this supplies the missing link
+# in the chain, it does not skip checking it. An attacker cannot exploit this
+# because the fetched intermediate must still chain to a root already in the
+# system store, and the hostname is still checked.
+_AIA_CACHE: dict[str, "ssl.SSLContext | None"] = {}
+_AIA_LOCK = threading.Lock()
+
+# AIA CA-Issuer URLs conventionally end in one of these. Filtering on the
+# extension separates them from the OCSP responder URL sitting in the same
+# extension, without hand-rolling a DER parser for one field.
+_CA_CERT_SUFFIXES = (b".crt", b".cer", b".der", b".p7c")
+_URL_IN_DER = re.compile(rb"https?://[A-Za-z0-9._~:/?#\[\]@!$&'()*+,;=%-]+")
+_MAX_CERT_BYTES = 64 * 1024      # a certificate is ~1-2 KB; this is a sanity bound
+
+
+def _fetch_cert_bytes(url: str) -> bytes | None:
+    """Raw bytes of a certificate. Deliberately not `fetch_url`.
+
+    `fetch_url` decompresses, sniffs content types and extracts text — all wrong
+    for a DER blob, which is binary and would come back mangled or empty. AIA
+    URLs are plain http by design (a chain that needed TLS to fetch the cert
+    that validates TLS could never bootstrap), and that is safe here: the bytes
+    are only usable if they cryptographically chain to a trusted root.
+    """
+    try:
+        with urllib.request.urlopen(_request(url), timeout=C.FETCH_TIMEOUT_S) as resp:
+            if not (200 <= _status_of(resp) < 300):
+                return None
+            return resp.read(_MAX_CERT_BYTES) or None
+    except Exception:
+        return None
+
+
+def _peer_leaf_der(host: str, port: int = 443) -> bytes | None:
+    """The server's leaf certificate, fetched WITHOUT verifying it.
+
+    Unverified on purpose and safe: the bytes are only mined for the AIA URL,
+    never trusted. The retry they enable performs full verification.
+    """
+    ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    try:
+        with socket.create_connection((host, port), timeout=C.FETCH_TIMEOUT_S) as sock:
+            with ctx.wrap_socket(sock, server_hostname=host) as tls:
+                return tls.getpeercert(binary_form=True)
+    except Exception:
+        return None
+
+
+def _ca_issuer_urls(der: bytes) -> list[str]:
+    """CA-Issuer URLs mined from a certificate's raw DER.
+
+    The URL is not length-delimited for us here: DER is binary and the bytes
+    after the URI frequently fall inside the legal-URL character class, so a
+    greedy match runs off the end of the real URL and into the next field. So
+    do not test `endswith` on the match — find the certificate suffix INSIDE it
+    and cut there. Getting this wrong yields an empty list and looks exactly
+    like a certificate that carries no AIA extension at all.
+    """
+    seen: list[str] = []
+    for match in _URL_IN_DER.findall(der or b""):
+        low = match.lower()
+        cut = -1
+        for suffix in _CA_CERT_SUFFIXES:
+            found = low.find(suffix)
+            if found != -1 and (cut == -1 or found < cut):
+                cut = found + len(suffix)
+        if cut == -1:
+            continue                       # OCSP responder or something else
+        url = match[:cut].decode("ascii", "ignore")
+        if url not in seen:
+            seen.append(url)
+    return seen
+
+
+def _aia_context(host: str) -> "ssl.SSLContext | None":
+    """A verifying context that also trusts the intermediates `host` omitted.
+
+    Returns None when nothing could be recovered, which is the signal to report
+    the original TLS error rather than retry pointlessly. Cached per host: the
+    chain is a property of the server, and the weekly run touches one host
+    dozens of times.
+    """
+    with _AIA_LOCK:
+        if host in _AIA_CACHE:
+            return _AIA_CACHE[host]
+
+    pems: list[str] = []
+    der = _peer_leaf_der(host)
+    # Depth 3: one hop covers every case seen so far, but a server may omit two
+    # intermediates. Bounded so a malicious or looping AIA cannot spin forever.
+    for _ in range(3):
+        urls = _ca_issuer_urls(der) if der else []
+        if not urls:
+            break
+        der = None
+        for url in urls:
+            blob = _fetch_cert_bytes(url)
+            if not blob:
+                continue
+            try:
+                if b"-----BEGIN CERTIFICATE-----" in blob:
+                    pems.append(blob.decode("ascii", "ignore"))
+                    der = ssl.PEM_cert_to_DER_cert(blob.decode("ascii", "ignore"))
+                else:
+                    pems.append(ssl.DER_cert_to_PEM_cert(blob))
+                    der = blob
+            except Exception:
+                continue
+            break
+
+    ctx: "ssl.SSLContext | None" = None
+    if pems:
+        try:
+            ctx = ssl.create_default_context()      # verification stays ON
+            ctx.load_verify_locations(cadata="\n".join(pems))
+        except Exception:
+            ctx = None
+
+    with _AIA_LOCK:
+        _AIA_CACHE[host] = ctx
+    return ctx
+
+
+def _is_cert_verify_error(exc: BaseException) -> bool:
+    if isinstance(exc, ssl.SSLCertVerificationError):
+        return True
+    reason = getattr(exc, "reason", None)
+    if isinstance(reason, ssl.SSLCertVerificationError):
+        return True
+    return "CERTIFICATE_VERIFY_FAILED" in f"{exc}"
+
+
 def _request(url: str) -> urllib.request.Request:
     return urllib.request.Request(
         url,
@@ -457,6 +613,36 @@ def _backoff_s(attempt: int) -> float:
     return min(C.POLITE_DELAY_S * (2 ** attempt), 8.0)
 
 
+# Matched against the raw bytes, before tag stripping — the phrase lives inside
+# the <noscript> block, which the text extractor removes along with <script>.
+_JS_SHELL_MARKERS = (
+    b"requires javascript",
+    b"enable javascript",
+    b"javascript to be enabled",
+    b"javascript is required",
+)
+
+
+def _looks_like_js_shell(raw: bytes) -> bool:
+    """True when a 200 with no extractable text is a client-rendered page.
+
+    Distinguishes "this page has no content for us" from "this page's content
+    is only assembled in a browser", which are the same symptom and completely
+    different problems. Requires a <noscript> too, so an ordinary page that
+    merely mentions JavaScript in prose is not misread.
+    """
+    if not raw:
+        return False
+    # Scan the whole body, not a prefix. These loaders put the <noscript>
+    # fallback near the END of the document, after the inlined bundle — on
+    # www.yes.bank.in it sits past byte 200,000 of a 300 KB page, so a
+    # first-200 KB window missed it and reported a plain "no text extracted".
+    # `in` on bytes is a fast substring scan and the body is already bounded by
+    # MAX_FETCH_BYTES, so there is nothing to save by truncating.
+    low = raw.lower()
+    return b"<noscript" in low and any(m in low for m in _JS_SHELL_MARKERS)
+
+
 def _finish(
     url: str,
     status: int,
@@ -485,10 +671,23 @@ def _finish(
     if truncated:
         notes.append(f"body truncated at {C.MAX_FETCH_BYTES} bytes")
     if not text:
-        notes.append(
-            "no text extracted from PDF (is pdftotext/poppler installed?)"
-            if is_pdf else "no text extracted"
-        )
+        if is_pdf:
+            notes.append("no text extracted from PDF (is pdftotext/poppler installed?)")
+        elif _looks_like_js_shell(raw):
+            # Name this one exactly. "no text extracted" reads as a parser bug
+            # someone might go and fix; it is not. The server returned 200 and a
+            # full page, and that page's entire body is a loader — the content
+            # only exists after JavaScript runs. www.yes.bank.in serves all 17
+            # YES BANK cards this way, and because ok=True and status=200 the
+            # failure looked like a healthy fetch that honestly found nothing.
+            # No parser change can read these; they need a static source
+            # (pipeline/sources_overrides.json) or a headless browser.
+            notes.append(
+                "page is a JavaScript shell — no server-rendered text; "
+                "needs a static source URL or a rendering fetcher"
+            )
+        else:
+            notes.append("no text extracted")
 
     # Hash the text we are actually keeping, after normalising it. Truncation
     # before hashing can only cause a needless re-extract of one card, never a
@@ -531,6 +730,7 @@ def fetch_url(url: str, *, opener: Any = None) -> Fetched:
     attempts = max(1, int(C.FETCH_RETRIES) + 1)
     status = 0
     error = "no attempt made"
+    tried_aia = False        # at most one chain-repair retry per fetch
 
     for attempt in range(attempts):
         content_type = ""
@@ -552,6 +752,22 @@ def fetch_url(url: str, *, opener: Any = None) -> Fetched:
             # Broad on purpose: one bad issuer must not end the weekly run.
             status = 0
             error = f"{type(exc).__name__}: {exc}"
+
+            # An incomplete chain is not a hiccup — retrying the same way fails
+            # identically every week, which is how a whole issuer went missing
+            # for months. Recover the intermediates the server should have sent
+            # and retry ONCE, with verification still on. Only when the caller
+            # did not inject an opener: a test's fake opener must stay in
+            # control, and there is no TLS in that path to fix.
+            if opener is None and not tried_aia and _is_cert_verify_error(exc):
+                tried_aia = True
+                host = _host(url)
+                ctx = _aia_context(host) if host else None
+                if ctx is not None:
+                    open_fn = urllib.request.build_opener(
+                        urllib.request.HTTPSHandler(context=ctx)
+                    ).open
+                    continue        # retry immediately; this is a fix, not a backoff
         else:
             try:
                 status = _status_of(resp)

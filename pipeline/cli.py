@@ -81,6 +81,54 @@ def _work_dir() -> pathlib.Path:
 # ---------------------------------------------------------------------------
 # refresh — stage 1
 # ---------------------------------------------------------------------------
+def _report_fetch_failures(failures: "list[tuple[str, str, str]]") -> None:
+    """Every failed fetch, grouped by host and reason.
+
+    This used to print `warn(...)` per card behind `if failed <= 10`, so a run
+    that lost 38 cards showed 10 lines — all of them the same host, with no hint
+    that 28 more existed or that they were two whole issuers. The cap was there
+    to stop a bad week flooding the log; grouping achieves that without hiding
+    the shape, because the failures that matter are correlated by host, not
+    scattered across cards.
+
+    Reads as "19 cards behind www.bobcard.co.in, all one TLS fault" rather than
+    ten unrelated-looking card ids.
+    """
+    if not failures:
+        return
+
+    from urllib.parse import urlsplit
+
+    groups: dict[tuple[str, str], list[str]] = {}
+    for card_id, url, err in failures:
+        host = (urlsplit(url).hostname or "?").lower()
+        groups.setdefault((host, _reason_of(err)), []).append(card_id)
+
+    warn(f"{len(failures)} source(s) could not be read, across "
+         f"{len({h for h, _ in groups})} host(s):")
+    for (host, reason), ids in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+        warn(f"  {len(ids):>3} cards  {host}  — {reason}")
+        # Three is enough to go and check one by hand; the host and reason are
+        # what actually identify the problem.
+        sample = ", ".join(sorted(ids)[:3])
+        more = f", +{len(ids) - 3} more" if len(ids) > 3 else ""
+        warn(f"          e.g. {sample}{more}")
+
+
+def _reason_of(err: str) -> str:
+    """Collapse an error string to the class of fault, so grouping works."""
+    low = (err or "").lower()
+    if "certificate_verify_failed" in low:
+        return "TLS chain incomplete (server omits its intermediate)"
+    if "javascript shell" in low:
+        return "JavaScript-rendered page — no static text to read"
+    if "no text extracted" in low:
+        return "fetched but no text could be extracted"
+    if low.startswith("http "):
+        return err.strip()
+    return (err or "unknown").split(":")[0].strip() or "unknown"
+
+
 def cmd_refresh(args: argparse.Namespace) -> int:
     head("Resolving sources")
     try:
@@ -110,6 +158,7 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     st = ST.load_state()
     resolved = [s for s in srcs if s.url]
     changed: list[tuple[S.Source, str]] = []
+    failures: list[tuple[str, str, str]] = []
     unchanged = failed = 0
 
     # Fetch first, concurrently across issuers; then walk the cards in seed
@@ -138,8 +187,7 @@ def cmd_refresh(args: argparse.Namespace) -> int:
                 st, s.card_id, url=s.url, content_sha256=None,
                 fetched_at=_now(), status="fetch_failed", note=res.error or "empty text",
             )
-            if failed <= 10:
-                warn(f"{s.card_id}: {res.error or 'no text extracted'}")
+            failures.append((s.card_id, s.url, res.error or "no text extracted"))
             continue
 
         if not args.force and not ST.has_changed(st, s.card_id, res.text_sha256):
@@ -164,6 +212,7 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     ok(f"fetched {len(resolved)}: {len(changed)} changed, {unchanged} unchanged, {failed} failed")
     if unchanged and not args.force:
         ok(f"skipped {unchanged} cards whose source bytes did not move — this is the saving")
+    _report_fetch_failures(failures)
 
     if not changed:
         ok("nothing to extract this week")
