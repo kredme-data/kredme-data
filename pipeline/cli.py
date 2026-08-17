@@ -238,7 +238,7 @@ def cmd_refresh(args: argparse.Namespace) -> int:
         return 0
 
     try:
-        batch_id = B.submit(reqs)
+        batch_id = B.submit(reqs, max_usd=_max_usd(args))
     except Exception as exc:  # noqa: BLE001 - surface any SDK/transport failure as exit 2
         fail(f"batch submission failed: {exc}")
         return 2
@@ -313,6 +313,20 @@ def cmd_advance(args: argparse.Namespace) -> int:
     if not ST.pending_batches(bst):
         ok("nothing in flight")
     return 0
+
+
+def _max_usd(args: argparse.Namespace) -> "float | None":
+    """The spend ceiling for this invocation.
+
+    Absent flag -> config.MAX_BATCH_USD. `--max-usd 0` disables the check, which
+    is spelled as an explicit zero rather than a separate --no-limit flag so it
+    shows up verbatim in a workflow file and in `gh run view`, where somebody
+    reviewing why a big batch went through can see it.
+    """
+    raw = getattr(args, "max_usd", None)
+    if raw is None:
+        return C.MAX_BATCH_USD
+    return None if float(raw) <= 0 else float(raw)
 
 
 def _redocument(
@@ -461,7 +475,7 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         ST.save_batch_state(bst)
         return 0
 
-    vid = B.submit(vreqs)
+    vid = B.submit(vreqs, max_usd=_max_usd(args))
     ST.add_batch(bst, batch_id=vid, kind="verify", submitted_at=_now(), count=len(vreqs))
     ST.save_batch_state(bst)
     ok(f"submitted verification batch {vid}")
@@ -779,10 +793,12 @@ def main() -> int:
     r.add_argument("--limit", type=int, default=0)
     r.add_argument("--force", action="store_true", help="ignore content hashes (full sweep)")
     r.add_argument("--dry-run", action="store_true")
+    r.add_argument("--max-usd", type=float, default=None, help="cap this batch's estimated spend in USD; 0 disables the cap. Default comes from config.MAX_BATCH_USD.")
     r.set_defaults(fn=cmd_refresh)
 
     a = sub.add_parser("advance", help="stages 2-3: collect batches, propose a patch")
     a.add_argument("--dry-run", action="store_true")
+    a.add_argument("--max-usd", type=float, default=None, help="cap this batch's estimated spend in USD; 0 disables the cap. Default comes from config.MAX_BATCH_USD.")
     a.add_argument(
         "--recollect",
         metavar="BATCH_ID",

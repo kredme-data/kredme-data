@@ -538,7 +538,13 @@ def _chunk_requests(requests: list[dict[str, Any]]) -> list[list[dict[str, Any]]
     return chunks
 
 
-def submit(requests: list[dict[str, Any]], *, client: Any = None, dry_run: bool = False) -> str:
+def submit(
+    requests: list[dict[str, Any]],
+    *,
+    client: Any = None,
+    dry_run: bool = False,
+    max_usd: float | None = -1.0,
+) -> str:
     """Submit one batch and return its id. `dry_run` returns 'dry-run', calls nothing.
 
     This returns a single id, so it refuses to submit a request list that would
@@ -546,8 +552,32 @@ def submit(requests: list[dict[str, Any]], *, client: Any = None, dry_run: bool 
     would strand the second batch's results with no handle to collect them. At
     380 cards the ceilings are three orders of magnitude away — they exist so a
     future full-catalogue sweep fails loudly here instead of at the API.
+
+    SPEND CEILING. `max_usd` defaults to the sentinel -1.0 meaning "use
+    config.MAX_BATCH_USD"; pass None to disable the check or a float to override
+    it. A batch estimated above the ceiling raises rather than prompting — this
+    runs unattended on a cron, so there is nobody to answer a prompt, and the
+    failure being prevented is a scheduled job quietly billing a full sweep. It
+    has happened: the 17-Aug cycle cost $94.55 against a $68.63 estimate, and
+    nothing in the pipeline would have stopped it repeating every Monday.
+
+    The check reads est_usd, which is an estimate — so the ceiling is a
+    tripwire, not a guarantee. est_usd_ceiling is the bound the bill cannot
+    exceed, and it is included in the error so the reader can judge both.
     """
     _validate_requests(requests)
+
+    if max_usd == -1.0:
+        max_usd = C.MAX_BATCH_USD
+    if max_usd is not None and requests:
+        est = estimate_cost(requests, C.EXTRACT_MODEL)
+        if est["est_usd"] > max_usd:
+            raise ValueError(
+                f"batch of {len(requests)} requests is estimated at "
+                f"${est['est_usd']:.2f} (ceiling ${est['est_usd_ceiling']:.2f}), "
+                f"above the ${max_usd:.2f} spend limit — refusing to submit. "
+                f"Raise it deliberately with --max-usd if this sweep is intended."
+            )
 
     chunks = _chunk_requests(requests)
     if len(chunks) > 1:

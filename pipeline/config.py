@@ -61,19 +61,50 @@ EXTRACT_EFFORT = "high"
 VERIFY_EFFORT = "xhigh"   # the refute pass is where being wrong is most expensive
 
 EXTRACT_MAX_TOKENS = 16000
-VERIFY_MAX_TOKENS = 8000
+# 16000, was 8000. The first real verification batch came back with 154 of 223
+# responses unusable, most of them "malformed JSON: Unterminated string" — the
+# signature of a reply cut off mid-token, not of a model producing bad JSON.
+# Measured output on that batch averaged ~5,500 tokens against an 8,000 ceiling,
+# so the longer verdict lists ran into it. Every truncated reply was billed in
+# full and then discarded.
+VERIFY_MAX_TOKENS = 16000
 
 # max_tokens is a ceiling, not a forecast. Pricing a batch at max_tokens overstates
 # the bill by roughly an order of magnitude, which is misleading in the other
 # direction: a founder deciding whether to approve a full sweep needs the number it
 # will probably cost as well as the number it cannot exceed.
 #
-# These are the observed size of a real schema-constrained response — an extraction
-# carrying 5-15 observations with their verbatim quotes, and a verdict list of the
-# same length. Re-measure them from a real batch's usage and update; they are an
-# estimate and the ceiling remains the guarantee.
-TYPICAL_OUTPUT_TOKENS = {"extract": 2500, "verify": 1200, "news": 1500}
-DEFAULT_TYPICAL_OUTPUT_TOKENS = 2000
+# RE-MEASURED 2026-08-18 against the first real bill, as the previous note asked.
+# Was {extract: 2500, verify: 1200, news: 1500} — a pre-flight guess, and it under-
+# reported by 38%: est_usd said $68.63 for the 17-Aug cycle, the console billed
+# $94.55. Working back, $25.92 / $12.50-per-M-output = 2.07M more output tokens than
+# assumed, over 594 requests — about 3,500 each.
+#
+# Prompt caching was ruled out as the cause arithmetically: the cached prefix is only
+# ~1,327 tokens, so billing it in full on every request instead of reading it from
+# cache costs $1.10 across the whole batch. The gap is output, nothing else.
+#
+# These figures make est_usd land near the real bill. They remain an estimate; the
+# guarantee is still est_usd_ceiling, and MAX_BATCH_USD below is the hard stop.
+TYPICAL_OUTPUT_TOKENS = {"extract": 5500, "verify": 5500, "news": 3000}
+DEFAULT_TYPICAL_OUTPUT_TOKENS = 5000
+
+# Hard spend ceiling per batch. submit() refuses above this and exits rather than
+# asking; a run that silently bills $95 twice is the failure being prevented, and it
+# has already happened once. Raise it deliberately with --max-usd, never by editing
+# this in passing. None disables the check.
+#
+# 25, priced off the real 17-Aug batch rather than guessed. Extraction of the full
+# 371-card catalogue estimates $59.74 (input $34.23 + output $25.51), and the two
+# passes together billed $94.55. Per-card that is ~$0.16 to extract:
+#
+#      20 cards  ~$3.22        150 cards  ~$24.15
+#      50 cards  ~$8.05        371 cards  ~$59.74   <- a full sweep
+#
+# So 25 clears an ordinary incremental week by roughly 3x and stops a full sweep
+# dead. 60 was the first value here and it was wrong in the way thresholds usually
+# are — it sat ON the number it was meant to catch, and would not have fired.
+MAX_BATCH_USD = 25.0
 
 # Published list prices, $/1M tokens. Batch halves both.
 PRICING = {
