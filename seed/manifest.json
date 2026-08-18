@@ -1,6 +1,6 @@
 {
- "version": "5.1.21",
- "updated_at": "2026-08-17T18:55:53Z",
+ "version": "5.1.23",
+ "updated_at": "2026-08-18T21:44:55Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
  "_note": "Eleven base_rate rules stated a point COUNT as a percentage. A base rule typed cashback_pct holding the card's points-per-rupee number renders that number as a percent: AU CA Metal earns 2 Reward Points per Rs.100, worth 0.5% at Rs.0.25/point, and displayed 2.00%. The overstatement is always exactly 1/rp_value_standard. Only the 11 cards carrying their own evidence are changed — each has a sibling rule stating explicit mechanics ('8 Reward Points on every Rs.100'), which pins the card's convention and confirms base_reward_rate is points-per-rupee rather than an already-collapsed rupee rate. Each is retyped to points_per_spend and renamed to state N, so the gate can read it. The other 45 cards in the same shape are deliberately untouched: nothing on those cards disambiguates the unit, and guessing would repeat the axis_bank_neo error in the opposite direction. All 11 corrections go DOWN.",
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "7bb129f57849377df14bff91b6d15edf630d54df6c9cbba65bbb8fca7295ce07",
-   "size_bytes": 1822638
+   "checksum": "e8e8a5a8c41c66ae967e7380bc9456edf8646e1c00a983b41ace3ebcc43253ba",
+   "size_bytes": 1875783
   },
   {
    "name": "merchants.json",
@@ -30,5 +30,5 @@
   }
  ],
  "delta_file": null,
- "news_version": "3.0.0"
+ "news_version": "4.0.0"
 }
