@@ -74,7 +74,9 @@ python3 tests/run_all.py                      # 584 tests, stdlib unittest, no p
    `pipeline-advance.yml` collects on a 2-hourly cron. Three short jobs, no limit problem.
 2. **`pipeline/state/sources.json` is tracked on purpose.** It holds each source
    document's text hash and is the only reason the weekly run is affordable - cards whose
-   bytes did not move never reach the model. Deleting it forces a full paid sweep (~Rs 4,400).
+   bytes did not move never reach the model. Deleting it forces a full paid sweep — **measured
+   17-Aug at $94.55 for both passes (~Rs 8,200), not the ~Rs 4,400 previously written here.**
+   ⚠️ The gate only skips a card once it is marked `done`, and `mark_done` runs ONLY in stage 3.
 3. **Two model passes, and the second is an adversary.** A single pass was measured getting
    100% of its numbers right and 78% of its "I could not find this" claims wrong. An
    observation with no verdict is treated as refuted and does not ship.
