@@ -12,8 +12,7 @@
       "source_url": null,
       "published_at": "2026-08-17T03:30:47Z",
       "expiry_date": null,
-      "affected_cards": [],
-      "effective_date": "2026-05-30"
+      "affected_cards": []
     },
     {
       "id": "news_axis_2026_07_01_horizon_card_free_with_new_burgundy_savi_5d628896a8",
@@ -27,8 +26,7 @@
       "expiry_date": null,
       "affected_cards": [
         "axis_bank_horizon"
-      ],
-      "effective_date": "2026-07-01"
+      ]
     },
     {
       "id": "news_axis_2026_07_01_magnus_fee_waived_for_new_burgundy_salar_5baa5180ef",
@@ -42,8 +40,7 @@
       "expiry_date": null,
       "affected_cards": [
         "axis_bank_magnus"
-      ],
-      "effective_date": "2026-07-01"
+      ]
     },
     {
       "id": "news_axis_undated_paying_abroad_in_rupees_now_costs_1_5_not_1_a666fdc016",
@@ -81,8 +78,7 @@
       "expiry_date": null,
       "affected_cards": [
         "hdfc_bank_infinia_metal"
-      ],
-      "effective_date": "2026-04-01"
+      ]
     },
     {
       "id": "news_hdfc_2026_05_15_new_1_75_markup_on_rupee_spends_abroad_fa419b9cbc",
@@ -143,8 +139,7 @@
         "hdfc_bank_swiggy_ornge_hdfc_bank",
         "hdfc_bank_tata_neu_infinity_hdfc_bank",
         "hdfc_bank_tata_neu_plus_hdfc_bank"
-      ],
-      "effective_date": "2026-05-15"
+      ]
     },
     {
       "id": "news_hdfc_2026_06_20_late_fee_on_insta_jumbo_loan_emis_from_j_64392de360",
@@ -205,8 +200,7 @@
         "hdfc_bank_swiggy_ornge_hdfc_bank",
         "hdfc_bank_tata_neu_infinity_hdfc_bank",
         "hdfc_bank_tata_neu_plus_hdfc_bank"
-      ],
-      "effective_date": "2026-06-20"
+      ]
     },
     {
       "id": "news_icici_bank_2024_02_05_government_payments_now_counted_as_da997f0b12",
@@ -218,8 +212,7 @@
       "source_url": null,
       "published_at": "2026-08-17T03:30:47Z",
       "expiry_date": null,
-      "affected_cards": [],
-      "effective_date": "2024-02-05"
+      "affected_cards": []
     },
     {
       "id": "news_icici_bank_2024_02_05_no_reward_points_on_rent_or_wallet_ea8546647c",
@@ -231,8 +224,7 @@
       "source_url": null,
       "published_at": "2026-08-17T03:30:47Z",
       "expiry_date": null,
-      "affected_cards": [],
-      "effective_date": "2024-02-05"
+      "affected_cards": []
     },
     {
       "id": "news_icici_bank_2025_01_01_free_airport_lounge_needs_75_000_s_0a4736e4c7",
@@ -244,8 +236,7 @@
       "source_url": null,
       "published_at": "2026-08-17T03:30:47Z",
       "expiry_date": null,
-      "affected_cards": [],
-      "effective_date": "2025-01-01"
+      "affected_cards": []
     },
     {
       "id": "news_icici_bank_2026_01_15_paying_in_rupees_abroad_gets_a_new_f3d31ff8cc",
@@ -262,8 +253,7 @@
         "icici_bank_emeralde_private_metal",
         "icici_bank_emeralde",
         "icici_bank_amazon_pay_icici_bank"
-      ],
-      "effective_date": "2026-01-15"
+      ]
     },
     {
       "id": "news_icici_bank_2026_04_01_free_movie_benefit_now_needs_25_00_3f8013b94d",
@@ -310,8 +300,7 @@
         "icici_bank_intermiles_icici_bank_sapphiro",
         "icici_bank_makemytrip_icici_bank",
         "icici_bank_times_black_icici_bank"
-      ],
-      "effective_date": "2026-04-01"
+      ]
     },
     {
       "id": "news_rbl_bank_2026_02_21_cardless_atm_cash_withdrawal_being_s_509cec88b7",
@@ -323,8 +312,7 @@
       "source_url": null,
       "published_at": "2026-08-17T03:30:47Z",
       "expiry_date": null,
-      "affected_cards": [],
-      "effective_date": "2026-02-21"
+      "affected_cards": []
     },
     {
       "id": "news_sbi_card_2026_04_01_cashback_sbi_card_benefits_are_being_e5ae2137af",
@@ -338,8 +326,7 @@
       "expiry_date": null,
       "affected_cards": [
         "sbi_card_cashback_sbi"
-      ],
-      "effective_date": "2026-04-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_04_01_monthly_limit_on_cashing_in_reward_p_7c8bc212ec",
@@ -409,8 +396,7 @@
         "sbi_card_tata_star_select",
         "sbi_card_titan_sbi",
         "sbi_card_yatra_sbi"
-      ],
-      "effective_date": "2026-04-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_04_01_points_redeemed_only_in_blocks_of_4_736c409a63",
@@ -480,8 +466,7 @@
         "sbi_card_tata_star_select",
         "sbi_card_titan_sbi",
         "sbi_card_yatra_sbi"
-      ],
-      "effective_date": "2026-04-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_05_01_bpcl_card_spend_1_lakh_to_dodge_rs_4_63d2047799",
@@ -495,8 +480,7 @@
       "expiry_date": null,
       "affected_cards": [
         "sbi_card_bpcl_sbi"
-      ],
-      "effective_date": "2026-05-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_05_01_late_payment_now_costs_you_on_small_c017bfbefa",
@@ -566,8 +550,7 @@
         "sbi_card_tata_star_select",
         "sbi_card_titan_sbi",
         "sbi_card_yatra_sbi"
-      ],
-      "effective_date": "2026-05-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_07_01_no_points_on_tolls_jewellery_fees_on_006969bd82",
@@ -582,8 +565,7 @@
       "affected_cards": [
         "sbi_card_phonepe_sbi_purple",
         "sbi_card_phonepe_sbi_select_black"
-      ],
-      "effective_date": "2026-07-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_07_01_phonepe_purple_card_monthly_reward_c_7bfbee6dfa",
@@ -597,8 +579,7 @@
       "expiry_date": null,
       "affected_cards": [
         "sbi_card_phonepe_sbi_purple"
-      ],
-      "effective_date": "2026-07-01"
+      ]
     },
     {
       "id": "news_sbi_card_2026_07_01_phonepe_select_black_reward_caps_hal_7db0667726",
@@ -612,8 +593,7 @@
       "expiry_date": null,
       "affected_cards": [
         "sbi_card_phonepe_sbi_select_black"
-      ],
-      "effective_date": "2026-07-01"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_01_overspending_your_limit_will_cost_in_85938d5915",
@@ -643,8 +623,7 @@
         "yes_bank_yes_privateprivate_prime",
         "yes_bank_uni",
         "yes_bank_uni_rupay"
-      ],
-      "effective_date": "2026-06-01"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_01_pop_club_fuel_waiver_limited_to_inr_64dbd465d7",
@@ -658,8 +637,7 @@
       "expiry_date": null,
       "affected_cards": [
         "yes_bank_pop_club"
-      ],
-      "effective_date": "2026-06-01"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_15_cash_withdrawal_on_your_card_gets_co_d687f9fb45",
@@ -689,8 +667,7 @@
         "yes_bank_yes_privateprivate_prime",
         "yes_bank_uni",
         "yes_bank_uni_rupay"
-      ],
-      "effective_date": "2026-06-15"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_15_failed_auto_debit_fee_jumps_cap_rise_684132c5b4",
@@ -720,8 +697,7 @@
         "yes_bank_yes_privateprivate_prime",
         "yes_bank_uni",
         "yes_bank_uni_rupay"
-      ],
-      "effective_date": "2026-06-15"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_15_forex_markup_rises_on_most_yes_bank_35f486b356",
@@ -742,8 +718,7 @@
         "yes_bank_yes_prosperity_rewards",
         "yes_bank_yes_prosperity_cashback_plus",
         "yes_bank_pop_club"
-      ],
-      "effective_date": "2026-06-15"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_15_fuel_surcharge_waiver_window_changes_52e4d79283",
@@ -755,8 +730,7 @@
       "source_url": null,
       "published_at": "2026-08-17T03:30:47Z",
       "expiry_date": null,
-      "affected_cards": [],
-      "effective_date": "2026-06-15"
+      "affected_cards": []
     },
     {
       "id": "news_yes_bank_2026_06_15_new_inr_250_fee_for_paying_by_cheque_6c0196b6c7",
@@ -786,8 +760,7 @@
         "yes_bank_yes_privateprivate_prime",
         "yes_bank_uni",
         "yes_bank_uni_rupay"
-      ],
-      "effective_date": "2026-06-15"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_15_paying_your_card_bill_in_cash_now_co_88f711376b",
@@ -817,8 +790,7 @@
         "yes_bank_yes_privateprivate_prime",
         "yes_bank_uni",
         "yes_bank_uni_rupay"
-      ],
-      "effective_date": "2026-06-15"
+      ]
     },
     {
       "id": "news_yes_bank_2026_06_15_replacing_a_lost_card_now_costs_inr_7e763761c2",
@@ -848,8 +820,7 @@
         "yes_bank_yes_privateprivate_prime",
         "yes_bank_uni",
         "yes_bank_uni_rupay"
-      ],
-      "effective_date": "2026-06-15"
+      ]
     },
     {
       "id": "news_001",
