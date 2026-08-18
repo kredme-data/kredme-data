@@ -4,6 +4,9 @@ OTA seed data and delta sync backend for KredMe, hosted via GitHub Pages.
 
 **Base URL**: `https://kredme-data.github.io/kredme-data`
 
+**Running the automated pipelines without being an engineer:** [OPERATING.md](OPERATING.md).
+Engineering detail: [PIPELINE.md](PIPELINE.md).
+
 ## Structure
 
 ```

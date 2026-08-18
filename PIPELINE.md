@@ -189,24 +189,40 @@ an app change and is blocked behind the targetSdk 36 bump.
 
 ## Cost
 
-Measured on a real 40-card dry run (23 fetched, 633,274 input tokens): **~27,500 input
-tokens and ~$0.10 per changed card** for the extraction pass, with verification adding
-roughly half again.
+**Re-measured 2026-08-18 against the first real bill.** The figures below replace an
+estimate taken from a 40-card dry run, which understated a full sweep by roughly 78%.
 
-| Scenario | Cards reaching the model | Likely | Ceiling |
-|---|---:|---:|---:|
-| Typical week (only changed sources) | 15–40 | **₹180–₹530** | ₹500–₹1,400 |
-| Heavy week (an issuer revises a portfolio) | 60–100 | ₹800–₹1,300 | ₹2,200–₹3,600 |
-| `--force` full sweep | 373 | **₹4,400** | ₹12,000 |
+Billed for the 17-Aug cycle: **$94.55** — extraction of 371 cards ~$59.74, verification of
+223 ~$34.81. That works out at **~$0.16 per card to extract and ~$0.26 fully processed**,
+against the ~$0.10 the dry run suggested.
 
-Two figures because they answer different questions: *likely* prices the observed size of
-a real schema-constrained response, *ceiling* bills every request's full `max_tokens` and
-is the number the bill cannot exceed. `refresh` prints both before submitting, and
-`--dry-run` prints them and submits nothing.
+| Scenario | Cards reaching the model | Likely |
+|---|---:|---:|
+| Typical week (only changed sources) | 20 | **~$3.20** |
+| | 50 | ~$8.05 |
+| Heavy week (an issuer revises a portfolio) | 100–150 | ~$16–24 |
+| `--force` full sweep, extraction only | 371 | **~$59.74** |
+| Full sweep, both passes | 371 | **~$94.55** (measured) |
 
-Three things hold this down: the Batch API halves everything, the shared system prefix is
-cached at ~10% of input price after the first request in a batch, and the content-hash
-gate means most cards never reach the model at all.
+`refresh` prints both a likely and a ceiling figure before submitting, and `--dry-run`
+prints them and submits nothing. **Quote the ceiling, not the likely figure**, to anyone
+deciding whether to approve a sweep: `est_usd` assumes a typical response size and was 38%
+low the first time it met reality, whereas `est_usd_ceiling` bills every request's full
+`max_tokens` and is the number the bill cannot exceed.
+
+**A batch estimated above `config.MAX_BATCH_USD` ($25) is refused, not submitted.** It
+raises rather than prompting, because this runs on a cron with nobody to answer. Override
+deliberately with `--max-usd N`; `--max-usd 0` disables it.
+
+Two things hold the cost down, and one that does not:
+
+- The Batch API halves both input and output. Real.
+- The content-hash gate means most cards never reach the model. Real, **but only once a
+  card is marked `done`** — and `mark_done` runs solely in stage 3. If stage 3 never
+  completes, every card re-extracts at full price the following Monday.
+- The shared system prefix is cached at ~10% of input price. **Real but negligible here** —
+  the prefix is ~1,327 tokens, so caching the whole batch saves about $1.10. It is not
+  what makes this affordable, and a missing cache is never the explanation for a surprise.
 
 Actions minutes are free — this repo is public.
 
