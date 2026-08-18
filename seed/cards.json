@@ -2596,6 +2596,28 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 4999.0,
+    "new_value": 4999.0,
+    "source_url": "https://www.au.bank.in/premium-banking/credit-cards/traverse-credit-card",
+    "source_quote": "Annual Membership Fee\n₹4,999 + applicable taxes",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 0.99,
+    "new_value": 0.99,
+    "source_url": "https://www.au.bank.in/premium-banking/credit-cards/traverse-credit-card",
+    "source_quote": "A 0.99% fee on international expenses.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -4212,6 +4234,18 @@
      "cardinsider": "Transfer to airline and hotel loyalty programs"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 66000.0,
+    "new_value": 66000.0,
+    "source_url": "https://www.americanexpress.com/in/credit-cards/",
+    "source_quote": "Second Year onwards: ₹66,000",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -6350,6 +6384,28 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 250.0,
+    "new_value": 250.0,
+    "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card",
+    "source_quote": "Annual Fee\n1st Year: Nil\n2nd Year: ₹250",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 3.5,
+    "new_value": 3.5,
+    "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card",
+    "source_quote": "Foreign currency transaction fee\n3.5% of the transaction value",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -7064,6 +7120,38 @@
      "cardinsider": "EDGE Rewards Portal"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.02,
+    "new_value": 0.02,
+    "source_url": "https://www.axis.bank.in/cards/credit-card/my-wings-credit-card",
+    "source_quote": "4 points on every ₹200 spent on the credit card",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 500.0,
+    "new_value": 500.0,
+    "source_url": "https://www.axis.bank.in/cards/credit-card/my-wings-credit-card",
+    "source_quote": "Annual Fee 1st Year: Nil 2nd Year onwards: ₹500",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 3.5,
+    "new_value": 3.5,
+    "source_url": "https://www.axis.bank.in/cards/credit-card/my-wings-credit-card",
+    "source_quote": "Foreign Currency Transaction Fee 3.50% of the transaction value",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -16086,7 +16174,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": null,
@@ -16272,6 +16360,18 @@
      "cardinsider": "Diners Club Privilege Reward Redemption Catalogue"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards",
+    "source_quote": "HDFC Bank Harley-Davidson Diners Club Credit Card\nThe card can be no longer applied.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -19815,7 +19915,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -19902,6 +20002,28 @@
      "cardinsider": "Cashback redemption"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/bharat-credit-card",
+    "source_quote": "Sourcing of this Credit Card has been stopped. Existing customers of this card will continue to enjoy the benefits.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 500.0,
+    "new_value": 500.0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/bharat-credit-card",
+    "source_quote": "Joining / Renewal Membership Fee – Rs. 500/- Plus Applicable Taxes",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -20297,7 +20419,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1000.0,
    "fee_waiver_spend": 100000.0,
-   "base_reward_rate": 0.02,
+   "base_reward_rate": 0.015,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -20311,7 +20433,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -20412,6 +20534,38 @@
      "cardinsider": "Internet Banking via HDFC Bank official website"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/doctors-superia-credit-card",
+    "source_quote": "Sourcing of this Credit Card has been stopped. Existing customers of this card will continue to enjoy the benefits.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.02,
+    "new_value": 0.015,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/doctors-superia-credit-card",
+    "source_quote": "Get 3 Reward Points for every ₹200 you spend",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 1000.0,
+    "new_value": 1000.0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/doctors-superia-credit-card",
+    "source_quote": "Joining / Annual membership Fee: ₹1,000",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -21369,7 +21523,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
@@ -21602,6 +21756,18 @@
      "cardinsider": "Netbanking"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards",
+    "source_quote": "HDFC Bank H-O-G Diners Club Credit Card\nThe card can be no longer applied.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -24285,6 +24451,28 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.01,
+    "new_value": 0.01,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card",
+    "source_quote": "1% CashBack* on other categories.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 1000.0,
+    "new_value": 1000.0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card",
+    "source_quote": "Joining Fee / Renewal Membership Fee: ₹1,000 + Applicable Charges",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -24637,6 +24825,28 @@
      "cardinsider": "Cashback against credit card statement"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.01,
+    "new_value": 0.01,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card",
+    "source_quote": "1% CashBack* on other categories. For more details, click here.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 500.0,
+    "new_value": 500.0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card",
+    "source_quote": "Joining Fee / Renewal Membership Fee: ₹500 + Applicable Charges",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -25015,6 +25225,28 @@
      "cardinsider": "Tata Neu app/website"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.015,
+    "new_value": 0.015,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+    "source_quote": "1.5% back as NeuCoins on Non-Tata Brand Spends and any Merchant EMI Spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 1499.0,
+    "new_value": 1499.0,
+    "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+    "source_quote": "Joining/Renewal Membership Fee – ₹1,499/- + Applicable Taxes",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -26124,6 +26356,38 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 499.0,
+    "new_value": 499.0,
+    "source_url": "https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/",
+    "source_quote": "Annual fee (waived if you spend more than INR200,000 per year) INR499",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.01,
+    "new_value": 0.01,
+    "source_url": "https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/",
+    "source_quote": "Plus earn 1% cashback on all other eligible spends[@unlimited-cashback-exclusions]",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 0.0,
+    "new_value": 0.0,
+    "source_url": "https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/",
+    "source_quote": "0% mark-up fee on all foreign currency spends on the HSBC RuPay Cashback Credit Card.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -26135,7 +26399,7 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.013333333333333334,
+   "base_reward_rate": 0.01333333,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -26297,6 +26561,28 @@
      "cardinsider": "Hotel loyalty points transfer via HSBC India Mobile Banking app"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.013333333333333334,
+    "new_value": 0.01333333,
+    "source_url": "https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/",
+    "source_quote": "Earn 2 reward points for every INR150 you spend with your card",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 0.0,
+    "new_value": 0.0,
+    "source_url": "https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/",
+    "source_quote": "Get your credit card without paying any joining or annual fees.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -34490,6 +34776,28 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 0.0,
+    "new_value": 0.0,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Wealth-Credit-Card-Communication-May-26.pdf",
+    "source_quote": "Your FIRST Wealth Credit Card stands among the most rewarding lifetime free credit cards, with no joining or annual fees, ever.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 1.5,
+    "new_value": 1.5,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Wealth-Credit-Card-Communication-May-26.pdf",
+    "source_quote": "🌍 Low 1.5% Forex Markup. (compared to industry-standard of 3–3.5%)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -35314,6 +35622,18 @@
      "cardinsider": "IndiGo Flight Bookings"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 1.49,
+    "new_value": 1.49,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf",
+    "source_quote": "🌍 Low Forex Markup of 1.49% (vs. typical 3–3.5% in the market)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -37183,6 +37503,18 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 0.0,
+    "new_value": 0.0,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Mayura-Credit-Card-Communication-May-26.pdf",
+    "source_quote": "\\ud83c\\udf0d Zero Forex Markup. (compared to industry-standard of 3\\u20133.5%)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -38971,7 +39303,7 @@
    "fee_waiver_spend": null,
    "base_reward_rate": 0.0075,
    "reward_currency": "reward_points",
-   "rp_value_standard": 1.0,
+   "rp_value_standard": 0.5,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -38983,7 +39315,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -39170,6 +39502,48 @@
      "cardinsider": "Mobile banking number"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-visa-credit-card.html",
+    "source_quote": "Disclaimer: Dear Customer, we have discontinued this product for new sourcing, and same is only displayed as a reference for existing IndusInd Bank Iconia Visa Credit Cardholders.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0075,
+    "new_value": 0.0075,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-visa-credit-card.html",
+    "source_quote": "*Earn 1 Reward Points on Weekends & 0.75 Reward Point on weekdays for every INR 100 spent",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "point_value_inr",
+    "path": "card.rp_value_standard",
+    "old_value": 1.0,
+    "new_value": 0.5,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-visa-credit-card.html",
+    "source_quote": "From 1st March 2024, the value of cash redemption will be 1 RP = Rs.0.50",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 3.5,
+    "new_value": 3.5,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-visa-credit-card.html",
+    "source_quote": "Charges for overseas transaction 3.5% of the transaction and currency conversion charges (dynamic).",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -40105,7 +40479,7 @@
    "fee_waiver_spend": null,
    "base_reward_rate": 0.006666666666666667,
    "reward_currency": "reward_points",
-   "rp_value_standard": 0.75,
+   "rp_value_standard": 0.4,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -40117,7 +40491,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -40222,6 +40596,28 @@
      "cardinsider": "IndusMoments offers"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-select-credit-card.html",
+    "source_quote": "Disclaimer: Dear Customer, we have discontinued this product for new sourcing, and same is only displayed as a reference for existing IndusInd Bank Platinum Select Credit Cardholders.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "point_value_inr",
+    "path": "card.rp_value_standard",
+    "old_value": 0.75,
+    "new_value": 0.4,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-select-credit-card.html",
+    "source_quote": "From 1st March 2024, the value of cash redemption will be 1 RP = Rs.0.40",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -40592,6 +40988,28 @@
      "cardinsider": "IndusMoments Portal"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.01,
+    "new_value": 0.01,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html",
+    "source_quote": "1 reward point for every Rs. 100 spent on weekdays",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 1.8,
+    "new_value": 1.8,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html",
+    "source_quote": "Enjoy 1.8% discounted foreign currency mark-up fee on your international transactions",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -41619,6 +42037,28 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 750.0,
+    "new_value": 750.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: ₹0 | Annual Fee: ₹750",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.005,
+    "new_value": 0.005,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "0.5% unlimited cashback on other eligible spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -42418,6 +42858,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 1500.0,
+    "new_value": 1500.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Indigo Kotak Credit Card\nJoining Fee: ₹ 1500 | Annual Fee: ₹ 1500",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -42712,6 +43164,18 @@
      "cardinsider": "Kotak Rewards Portal"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.01,
+    "new_value": 0.01,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Earn 1 Reward Point per ₹100 on other purchases",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -43113,6 +43577,18 @@
     },
     "confidence": "medium"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 999.0,
+    "new_value": 999.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee ₹0 | Annual Fee ₹999",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -43331,11 +43807,11 @@
    "issuer": "Kotak Mahindra Bank",
    "network": "unknown",
    "card_tier": "entry",
-   "annual_fee": 0.0,
+   "annual_fee": 499.0,
    "fee_waiver_spend": 50000.0,
    "base_reward_rate": 0.02666666666666667,
    "reward_currency": "reward_points",
-   "rp_value_standard": null,
+   "rp_value_standard": 0.1,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -43521,6 +43997,28 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 0.0,
+    "new_value": 499.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/league-platinum-card.html",
+    "source_quote": "Joining and Annual Fees for Kotak League Credit Card is ₹499 + GST/Nil. T&C apply, refer MITC for more information",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "point_value_inr",
+    "path": "card.rp_value_standard",
+    "old_value": null,
+    "new_value": 0.1,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/league-platinum-card.html",
+    "source_quote": "For redemption against other categories like Mobile Recharge, Shopping, etc., 1 Reward Point = ₹0.10",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -43546,7 +44044,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": 12,
    "min_redemption_points": 2000,
@@ -43759,6 +44257,28 @@
     },
     "confidence": "medium"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Discontinued for new applications",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 1000.0,
+    "new_value": 1000.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fees: INR 1000 | Annual Fee: INR 1000",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -43775,7 +44295,7 @@
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
    "rp_value_transfer": 0.25,
-   "forex_markup_pct": 3.5,
+   "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_privy_league_signature.png",
    "metadata": {
@@ -43784,7 +44304,7 @@
     "invite_only": true,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
@@ -44030,6 +44550,38 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Discontinued for new applications",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 2500.0,
+    "new_value": 2500.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: Nil | Annual Fee: INR 2,500*",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 3.5,
+    "new_value": 2.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Low forex markup fees of 2% for all your international spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -44247,6 +44799,18 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 999.0,
+    "new_value": 999.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: INR NIL|Annual Fee: INR 999 (wavied at an annual retail spend of Rs 1 Lac)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -44272,7 +44836,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 1000,
@@ -44412,6 +44976,28 @@
      "cardinsider": "Branded Merchandise / Product Purchases"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Discontinued for new applications",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 199.0,
+    "new_value": 199.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: INR 0|Annual Fee: INR 199 (waived at an annual spend of Rs 15,000/-)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -44982,6 +45568,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 3000.0,
+    "new_value": 3000.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "White Credit Card\nJoining Fees: INR 3000 | Annual Fee: INR 3000",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -45137,6 +45735,18 @@
      "cardinsider": "Cashback"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 12500.0,
+    "new_value": 12500.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fees: INR 12,500 | Annual Fee: INR 12,500",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -45786,6 +46396,18 @@
     },
     "confidence": "high"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 499.0,
+    "new_value": 499.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: ₹ 0 | Annual Fee: INR 499",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -45811,7 +46433,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -45919,6 +46541,28 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Discontinued for new applications",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 499.0,
+    "new_value": 499.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: INR 0 | Annual Fee: INR 499",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   }
   ]
  },
  {
@@ -45944,7 +46588,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": 2,
    "min_redemption_points": null,
@@ -46004,6 +46648,28 @@
      "cardinsider": "Net Banking"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "card_discontinued",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Discontinued for new applications",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 999.0,
+    "new_value": 999.0,
+    "source_url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "source_quote": "Joining Fee: INR 0 | Annual Fee: INR 999",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -46175,6 +46841,28 @@
      "cardinsider": "Transfer to partner airlines/hotels"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 0.0,
+    "new_value": 0.0,
+    "source_url": "https://www.kotak.com/en/solitaire.html",
+    "source_quote": "0% forex markup on International spends.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "annual_fee_inr",
+    "path": "card.annual_fee",
+    "old_value": 25000.0,
+    "new_value": 25000.0,
+    "source_url": "https://www.kotak.com/en/solitaire.html",
+    "source_quote": "Annual fee is waived off for Kotak Solitaire customers. However, for any reason, if you have been downgraded or unable to maintain the required relationship value, an annual fee of ₹25,000 is applicable.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -62345,7 +63033,7 @@
    "card_tier": "premium",
    "annual_fee": 5000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.03333333333333333,
+   "base_reward_rate": 0.03333333,
    "reward_currency": "reward_points",
    "rp_value_standard": 1.0,
    "rp_value_travel": null,
@@ -62561,6 +63249,38 @@
      "cardinsider": "Charity spends"
     },
     "confidence": "high"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.03333333333333333,
+    "new_value": 0.03333333,
+    "source_url": "https://www.sc.com/in/credit-cards/",
+    "source_quote": "Earn\n5 Reward* points\n5 Reward* points\nfor every INR 150 spent. Each reward point is worth INR 1",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "point_value_inr",
+    "path": "card.rp_value_standard",
+    "old_value": 1.0,
+    "new_value": 1.0,
+    "source_url": "https://www.sc.com/in/credit-cards/",
+    "source_quote": "a) 5 reward* points per INR 150 spent (1 reward point = INR 1)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "forex_markup_pct",
+    "path": "card.forex_markup_pct",
+    "old_value": 2.0,
+    "new_value": 2.0,
+    "source_url": "https://www.sc.com/in/credit-cards/",
+    "source_quote": "However, for our Ultimate credit card users, there is a reduced Forex mark-up of 2%.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -63140,6 +63860,18 @@
      "cardinsider": "Auto-credit to account"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.01,
+    "new_value": 0.01,
+    "source_url": "https://www.sc.com/in/credit-cards/",
+    "source_quote": "a) Enjoy 2%* cashback on all online spends and 1%* cashback on other spends.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
