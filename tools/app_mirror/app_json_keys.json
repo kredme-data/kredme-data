@@ -1,0 +1,41 @@
+{
+  "_this_file_is": "A MIRROR of a MEASUREMENT, not a copy of a file. For each JSON key below, the answer is whether that quoted string occurs anywhere in the app's lib/**.dart — the same substring search Ctx.app_reads_json_key() runs when a checkout IS available.",
+  "_why_it_exists": "Four checks scale their severity by whether the app can even reach the rows they are about: a defect in a block the app never reads costs a user nothing today. With no app checkout that question has no answer, and the old code resolved 'unknown' by keeping the LOUDER severity — which turned 2 warnings into errors and 128 notes into warnings on every CI run. Mirroring the measured answer makes a CI run and a developer's run agree.",
+  "_measured_how": "substring search for \"key\" and 'key' over lib/**.dart",
+  "_measured_over_files": 134,
+  "_app_commit_at_copy": "db0f6de346bd30095c0e44851d8dede8fd9240dd",
+  "_app_branch_at_copy": "HEAD",
+  "_copied_on": "2026-08-19",
+  "_over_reports_on_purpose": "A key mentioned only in a comment counts as read. That is the safe direction: over-reporting keeps a finding loud; under-reporting would silence a real defect.",
+  "_the_finding_this_encodes": "redemption_rules is false and redemption_channels is true. We write 884 redemption rows under 'redemption_rules'; the app builds its redemption list from 'redemption_channels'. The two never meet, so the entire redemption block is dead to the app today.",
+  "_update_by_hand_when": "the app starts or stops reading one of these keys — in practice, any release that touches lib/shared/models/credit_card.dart or the recommendation engine. A stale 'false' here is the dangerous direction: it would keep a real defect quiet. When in doubt, delete the key's entry — an absent key answers 'unknown', which is honest, and the check will SKIP rather than guess.",
+  "_how_to_update": "python3 tools/app_mirror/refresh.py --app-root ../KredMe-main",
+  "keys_read_by_app": {
+    "reward_rules": true,
+    "exclusion_rules": true,
+    "milestone_rules": true,
+    "fuel_surcharge_rules": true,
+    "redemption_rules": false,
+    "redemption_channels": true
+  },
+  "evidence": {
+    "reward_rules": [
+      "lib/core/database/app_database.dart:236",
+      "lib/core/database/app_database.g.dart:4096",
+      "lib/shared/models/credit_card.dart:677"
+    ],
+    "exclusion_rules": [
+      "lib/shared/models/credit_card.dart:678"
+    ],
+    "milestone_rules": [
+      "lib/shared/models/credit_card.dart:679"
+    ],
+    "fuel_surcharge_rules": [
+      "lib/shared/models/credit_card.dart:682"
+    ],
+    "redemption_rules": [],
+    "redemption_channels": [
+      "lib/shared/models/credit_card.dart:160"
+    ]
+  }
+}
