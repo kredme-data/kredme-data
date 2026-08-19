@@ -106,6 +106,70 @@ DEFAULT_TYPICAL_OUTPUT_TOKENS = 5000
 # are — it sat ON the number it was meant to catch, and would not have fired.
 MAX_BATCH_USD = 25.0
 
+# ---------------------------------------------------------------------------
+# What a card costs to read — MEASURED, not modelled.
+#
+# The 17-Aug cycle is the only real bill this pipeline has produced. It is ONE
+# bill with TWO batches, and they did not hold the same number of requests:
+#
+#     extract   371 requests   $59.74
+#     verify    223 requests   $34.81
+#
+# Dividing both by 371 was wrong in the dangerous direction. `build_verify_request`
+# is one request per CARD (pipeline/batch.py), so a card that reaches verification
+# costs $34.81/223 = $0.156, not $34.81/371 = $0.094. Pricing the verify pass off
+# the extract denominator understated a both-passes forecast by 24.4% — the
+# operator was told $84.61 for a backlog that can bill $105.28.
+#
+# So each pass is divided by its OWN request count, and the two-pass figure is
+# their sum: what a card costs when it is extracted AND verified.
+MEASURED_SWEEP_EXTRACT_CARDS = 371
+MEASURED_SWEEP_VERIFY_CARDS = 223
+MEASURED_SWEEP_EXTRACT_USD = 59.74
+MEASURED_SWEEP_VERIFY_USD = 34.81
+
+# Kept as the name the report prints beside "cards billed $94.55 on 2026-08-17".
+MEASURED_SWEEP_CARDS = MEASURED_SWEEP_EXTRACT_CARDS
+MEASURED_SWEEP_TOTAL_USD = MEASURED_SWEEP_EXTRACT_USD + MEASURED_SWEEP_VERIFY_USD
+
+USD_PER_CARD_EXTRACT = MEASURED_SWEEP_EXTRACT_USD / MEASURED_SWEEP_EXTRACT_CARDS
+USD_PER_CARD_VERIFY = MEASURED_SWEEP_VERIFY_USD / MEASURED_SWEEP_VERIFY_CARDS
+
+# THE CEILING, and the default. Every extracted card is also verified. This is
+# the number a spend decision must be made against, because the shortfall below
+# is a property of one week's data, not a discount anybody has been promised.
+USD_PER_CARD_BOTH_PASSES = USD_PER_CARD_EXTRACT + USD_PER_CARD_VERIFY
+
+# THE FLOOR, quoted alongside it and never instead of it. On 17-Aug only 223 of
+# 371 extracted cards produced an observation worth verifying (60.1%); the rest
+# were skipped before the verification batch was built. Whether that recurs
+# depends entirely on the documents, so it is reported as the optimistic end of a
+# range, with the assumption named.
+MEASURED_VERIFY_YIELD = MEASURED_SWEEP_VERIFY_CARDS / MEASURED_SWEEP_EXTRACT_CARDS
+USD_PER_CARD_BOTH_PASSES_OBSERVED = (
+    USD_PER_CARD_EXTRACT + USD_PER_CARD_VERIFY * MEASURED_VERIFY_YIELD
+)
+
+# These exist because a plan has to be priced BEFORE it is executed.
+# batch.estimate_cost() is exact, and it needs the document text, which means
+# fetching 174 issuer pages before anyone can be told what the run costs. That is
+# too late: the operator wants the number before the fetch, not after it.
+#
+# So there are two cost figures with two different jobs, and only one has
+# authority. These plan a run. estimate_cost() — computed from the real bytes and
+# checked against MAX_BATCH_USD inside submit() — gates it. Never quote a forecast
+# from here as the amount that will be billed.
+#
+# NOTE ON THE CEILING: MAX_BATCH_USD is per BATCH, not per cycle. A run that
+# clears it commits up to that much extraction PLUS a separately-gated
+# verification batch, so a "within budget" refresh can cost close to twice the
+# ceiling by the time `advance` has finished. Every message that prints the
+# ceiling says "per batch" for that reason.
+
+# Indicative only, so a founder who thinks in rupees gets a number he can feel.
+# $94.55 was reported internally as ~Rs 8,200.
+INR_PER_USD = 86.7
+
 # Published list prices, $/1M tokens. Batch halves both.
 PRICING = {
     "claude-opus-5": (5.00, 25.00),
