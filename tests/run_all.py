@@ -35,6 +35,7 @@ STDLIB_ONLY_MODULES = (
     "pipeline.batch",
     "pipeline.diff",
     "pipeline.newsgen",
+    "pipeline.provenance",
     "pipeline.report",
 )
 

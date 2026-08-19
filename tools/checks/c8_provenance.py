@@ -40,110 +40,53 @@ from __future__ import annotations
 
 import datetime
 import re
+import sys
 from collections import Counter, defaultdict
-from urllib.parse import urlsplit
+from pathlib import Path
 
 from .base import Ctx, Finding, ERROR, WARN, INFO, num, trunc, iso_ok, card_base_pct
 from .c6_reachability import _cast_faults
 
+# --------------------------------------------------------------------------- #
+# "What counts as a citation" is imported, never copied.
+#
+# The weekly pipeline decides which cards still need reading at the issuer, and
+# this layer decides how much of the file is verified. Those two have to agree on
+# what a source IS, or the day they diverge we start paying to re-read cards this
+# report already calls sourced. So the harvester and the URL parser live in
+# pipeline/provenance.py and both callers import them; there is exactly one
+# definition and it is the one below.
+#
+# Importing pipeline from tools/ is safe on a bare Python: the Anthropic SDK is
+# the only third-party import anywhere under pipeline/ and it is loaded lazily,
+# inside the functions that call the API. tests/run_all.py asserts that, and
+# tools/test_validate_cards.py already allows `pipeline` in its stdlib-only check.
+# --------------------------------------------------------------------------- #
+_REPO = Path(__file__).resolve().parent.parent.parent
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+
+from pipeline.provenance import (           # noqa: E402
+    AGGREGATOR_DOMAINS as _AGGREGATOR_DOMAINS,
+    AGGREGATOR_TOKENS as _AGGREGATOR_TOKENS,
+    ISSUER_PUBLISHES_ON as _ISSUER_DOMAINS,
+    aggregator_of as _aggregator_of,
+    aggregator_token as _aggregator_token,
+    card_has_issuer_evidence as _card_has_evidence,
+    host_matches as _host_matches,
+    issuer_domains as _issuer_domains,
+    normalise_issuer as _norm_issuer,
+    source_host as _host_of,
+    source_url_candidates as _url_candidates,
+)
+
+# The issuer -> domain table, the aggregator lists and the matching rules moved
+# to pipeline/provenance.py on 2026-08-19. They were the last thing this layer
+# and the pipeline each kept their own copy of, and they are why the same file
+# reported 26 issuer-sourced rules here and 27 in `pipeline/cli.py evidence`.
+# One table, imported twice.
+
 LAYER = "L8 provenance & confidence"
-
-# --------------------------------------------------------------------------- #
-# Issuer -> the domains that issuer actually publishes on.
-#
-# Maintained by hand ON PURPOSE. There is no way to derive this from the data,
-# and guessing is how you end up accepting a blog post as an issuer source.
-# Keys are the issuer string NORMALISED (lowercase, alphanumerics only).
-#
-# TRAP: do NOT replace this with fuzzy matching. In this file 'AU Bank' and
-# 'Axis Bank' score 0.750 similar and 'HDFC Bank' / 'IDFC Bank' score 0.889 —
-# a similarity threshold would hand Axis cards an AU source and call it verified.
-# A new issuer spelling must be added here by a human, and until it is, this
-# layer says so out loud (L8.ISSUER_DOMAIN_UNMAPPED) instead of guessing.
-# --------------------------------------------------------------------------- #
-_ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
-    "sbicard":                  ("sbicard.com", "sbi.co.in", "onlinesbi.sbi"),
-    "hdfcbank":                 ("hdfcbank.com", "hdfcbank.co.in"),
-    "axisbank":                 ("axisbank.com", "axisbank.co.in"),
-    "icicibank":                ("icicibank.com", "icicibank.co.in"),
-    "rblbank":                  ("rblbank.com",),
-    "kotakmahindrabank":        ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
-    "kotakmahindra":            ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
-    "indusindbank":             ("indusind.com", "indusindbank.com"),
-    "yesbank":                  ("yesbank.in", "yes.bank.in"),
-    "ausmallfinancebank":       ("aubank.in", "au.bank.in"),
-    "aubank":                   ("aubank.in", "au.bank.in"),
-    "aubankcobrandedwithadityabirlafinancelimited":
-                                ("aubank.in", "au.bank.in", "adityabirlacapital.com"),
-    "bobcard":                  ("bobcard.co.in", "bobfinancial.com",
-                                 "bankofbaroda.in", "bankofbaroda.co.in"),
-    "bobcardlimited":           ("bobcard.co.in", "bobfinancial.com",
-                                 "bankofbaroda.in", "bankofbaroda.co.in"),
-    "bobcardbankofbaroda":      ("bobcard.co.in", "bobfinancial.com",
-                                 "bankofbaroda.in", "bankofbaroda.co.in"),
-    "bobcardlimitedbankofbaroda": ("bobcard.co.in", "bobfinancial.com",
-                                   "bankofbaroda.in", "bankofbaroda.co.in"),
-    "bobcardbankofbarodainpartnershipwithuniapp":
-                                ("bobcard.co.in", "bobfinancial.com",
-                                 "bankofbaroda.in", "uni.cards"),
-    "idfcfirstbank":            ("idfcfirstbank.com",),
-    "idfcbank":                 ("idfcfirstbank.com",),
-    "americanexpress":          ("americanexpress.com",),
-    "hsbc":                     ("hsbc.co.in", "hsbc.com"),
-    "hsbcbank":                 ("hsbc.co.in", "hsbc.com"),
-    "idbibank":                 ("idbibank.in", "idbi.com"),
-    "standardchartered":        ("sc.com", "standardchartered.co.in"),
-    "standardcharteredbank":    ("sc.com", "standardchartered.co.in"),
-    "federalbank":              ("federalbank.co.in",),
-    "federalbankbobcardscapia": ("federalbank.co.in", "bobcard.co.in", "scapia.cards"),
-    "equitassmallfinancebank":  ("equitasbank.com", "equitas.bank.in"),
-    "cityunionbank":            ("cityunionbank.com", "cubdigital.in"),
-    "csbbank":                  ("csb.co.in",),
-    "sbmbank":                  ("sbmbank.co.in",),
-    "slicebank":                ("sliceit.com", "slice.bank.in"),
-    "unitysmallfinancebank":    ("theunitybank.com", "unitybank.co.in"),
-    "fpltechnologiespvtltd":    ("onecard.app", "getonecard.app", "fplabs.tech"),
-}
-
-# --------------------------------------------------------------------------- #
-# Domains that are NEVER an acceptable source, however good the article is.
-# KredMe policy (settled): scrape the issuer's own URL, nothing else. These sites
-# are secondary reporting — they carry the same devaluation lag we are trying to
-# eliminate, and citing one launders a guess into a footnote.
-# --------------------------------------------------------------------------- #
-_AGGREGATOR_DOMAINS: tuple[str, ...] = (
-    # card-review sites named in KredMe's own sourcing policy
-    "cardexpert.in", "cardinsider.com", "technofino.in", "cardmaven.in",
-    "creditcardz.in", "paisabazaar.com", "bankbazaar.com", "wishfin.com",
-    "mymoneymantra.com", "myloancare.in", "creditmantri.com", "indialends.com",
-    "moneytap.com", "buddyloan.com", "fincash.com", "cardsdekho.com",
-    # aggregators / marketplaces
-    "groww.in", "zerodha.com", "cred.club", "onecard.app.link", "jupiter.money",
-    "policybazaar.com", "etmoney.com", "5paisa.com", "angelone.in",
-    # general news & finance press
-    "moneycontrol.com", "economictimes.indiatimes.com", "indiatimes.com",
-    "livemint.com", "business-standard.com", "financialexpress.com",
-    "ndtv.com", "news18.com", "hindustantimes.com", "thehindu.com",
-    "zeebiz.com", "cnbctv18.com", "goodreturns.in", "bankersadda.com",
-    # user-generated / forum / video
-    "reddit.com", "quora.com", "youtube.com", "youtu.be", "medium.com",
-    "wikipedia.org", "desidime.com", "teamblind.com", "twitter.com", "x.com",
-    "facebook.com", "linkedin.com", "instagram.com", "telegram.me", "t.me",
-    "blogspot.com", "wordpress.com", "substack.com",
-)
-
-# Aggregators are not always written as a URL. This file cites several of them as
-# a bare word ("cardinsider"), which has no scheme and no dot, so host parsing
-# alone would file it as "not a URL" and miss the policy breach entirely. These
-# are matched on the whole normalised token only — never as a substring, so a
-# real issuer host can never collide with one.
-_AGGREGATOR_TOKENS: tuple[str, ...] = (
-    "cardinsider", "cardexpert", "technofino", "cardmaven", "creditcardz",
-    "paisabazaar", "bankbazaar", "wishfin", "mymoneymantra", "myloancare",
-    "creditmantri", "indialends", "cardsdekho", "moneycontrol", "livemint",
-    "economictimes", "financialexpress", "businessstandard", "goodreturns",
-    "reddit", "quora", "youtube", "wikipedia", "desidime", "blogspot",
-)
 
 # What credit_card.dart:463 will accept without complaint. It accepts anything —
 # there is no vocabulary in the Dart at all — so this is OUR vocabulary, and a
@@ -213,125 +156,6 @@ def _as_date(v):
         return datetime.date.fromisoformat(v[:10])
     except Exception:
         return None
-
-
-def _norm_issuer(v) -> str:
-    return _NON_ALNUM.sub("", (v or "").lower()) if isinstance(v, str) else ""
-
-
-def _issuer_domains(issuer) -> tuple | None:
-    """Domains this issuer publishes on, or None if we cannot say.
-
-    Exact normalised match first. The containment fallback exists only so a new
-    SPELLING of a known issuer ('Kotak Mahindra Bank Ltd.') still maps; it is
-    longest-key-first so 'aubank' can never win inside 'axisbank' (it is not a
-    substring) and short keys cannot shadow long ones.
-    """
-    n = _norm_issuer(issuer)
-    if not n:
-        return None
-    hit = _ISSUER_DOMAINS.get(n)
-    if hit:
-        return hit
-    for key in sorted(_ISSUER_DOMAINS, key=len, reverse=True):
-        if len(key) >= 6 and key in n:
-            return _ISSUER_DOMAINS[key]
-    return None
-
-
-_BARE_HOST = re.compile(r"^[a-z0-9]([a-z0-9.-]*[a-z0-9])?$")
-
-
-def _host_of(url):
-    """The host of a source, or None if the value names no website at all.
-
-    Accepts a full http(s) URL and also a bare hostname such as
-    'kotak.bank.in' — the file uses both, and a bare host is still enough to
-    decide whether the source is the issuer or an aggregator. It does NOT accept
-    a bare word like 'bank' or 'cardinsider': those have no dot, so they name no
-    site and are handled as a placeholder or an aggregator token instead.
-    """
-    if not isinstance(url, str) or not url.strip():
-        return None
-    raw = url.strip()
-    try:
-        p = urlsplit(raw)
-    except Exception:
-        return None
-    if p.scheme:
-        if p.scheme.lower() not in ("http", "https"):
-            return None
-        host = (p.netloc or "").lower().split("@")[-1].split(":")[0].strip(".")
-    elif p.netloc:
-        # protocol-relative, '//cardexpert.in/x' — still names a site
-        host = p.netloc.lower().split("@")[-1].split(":")[0].strip(".")
-    else:
-        host = raw.lower().split("/")[0].split("?")[0].strip(".")
-        if not _BARE_HOST.match(host):
-            return None
-    if not host or "." not in host:
-        return None
-    if host.startswith("www."):
-        host = host[4:]
-    return host
-
-
-def _aggregator_token(raw):
-    """An aggregator named as a bare word rather than a link, or None."""
-    if not isinstance(raw, str):
-        return None
-    t = _NON_ALNUM.sub("", raw.strip().lower())
-    return t if t in _AGGREGATOR_TOKENS else None
-
-
-def _host_matches(host, domains) -> bool:
-    if not host:
-        return False
-    for d in domains or ():
-        if host == d or host.endswith("." + d):
-            return True
-    return False
-
-
-def _aggregator_of(host):
-    for d in _AGGREGATOR_DOMAINS:
-        if host == d or host.endswith("." + d):
-            return d
-    return None
-
-
-def _url_candidates(row) -> list:
-    """Every string this row offers as a source, from source_url and _sources.
-
-    _sources is the pipeline's list form; source_url is the hand-authored single.
-    Both are treated as claims of provenance, so both are held to the same bar.
-    """
-    out = []
-    u = row.get("source_url")
-    if isinstance(u, str):
-        out.append(("source_url", u))
-    elif isinstance(u, list):
-        for x in u:
-            if isinstance(x, str):
-                out.append(("source_url", x))
-    s = row.get("_sources")
-    if isinstance(s, str):
-        out.append(("_sources", s))
-    elif isinstance(s, list):
-        for x in s:
-            if isinstance(x, str):
-                out.append(("_sources", x))
-            elif isinstance(x, dict):
-                for k in ("url", "source_url", "href"):
-                    if isinstance(x.get(k), str):
-                        out.append(("_sources", x[k]))
-                        break
-    elif isinstance(s, dict):
-        for k in ("url", "source_url", "href"):
-            if isinstance(s.get(k), str):
-                out.append(("_sources", s[k]))
-                break
-    return out
 
 
 def _numbers_in(text) -> set:
@@ -1149,6 +973,88 @@ def _check_other_blocks(ctx: Ctx, cards, out: list) -> None:
     ))
 
 
+def _check_evidence_backlog(ctx: Ctx, cards, out: list) -> None:
+    """How many switched-on cards cite nothing at all — the pipeline's work queue.
+
+    L8.HEADLINE_VERIFIED_SHARE already counts RULES, and rules are the right unit
+    for "how true is this file". This counts CARDS, because a card is the unit the
+    weekly pipeline reads: one card, one issuer document, one model call, one line
+    on the bill. A founder asking "what would it cost to fix this" needs the card
+    number, and it is not derivable from the rule number.
+
+    The predicate is `pipeline.provenance.card_has_issuer_evidence`, which is the
+    same function `refresh --unsourced-only` uses to build its batch. That is the
+    point of importing it: this finding and that selection are the same integer,
+    so a report can never say 336 while the pipeline queues something else.
+
+    INFO, not WARN: nothing here is a defect in the file. It is a measurement of
+    work not yet done, and HEADLINE_VERIFIED_SHARE already carries the severity
+    for the portfolio being unverified. Two ERRORs for one condition trains a
+    reader to skim both.
+    """
+    unsourced, active, no_id = [], 0, 0
+    for _i, entry, inner, cid in ctx.entries():
+        if not _truthy_active(inner):
+            continue
+        active += 1
+        if not cid:
+            no_id += 1
+            continue
+        if not _card_has_evidence(entry):
+            unsourced.append(cid)
+
+    if not active or not unsourced:
+        return
+
+    # Bucketed on the SLUG the pipeline's scheduler uses, not the seed's raw
+    # issuer string. This file spells 21 banks 34 ways — BOBCARD six ways, AU
+    # three, IDFC three, YES two — so grouping on the raw string split BOBCARD's
+    # 19-card gap into 10+4+2+1+1+1 and pushed four of the ten largest gaps off
+    # this list entirely. Same key as the report, so the two agree.
+    from pipeline.sources import issuer_of as _issuer_slug   # noqa: PLC0415
+
+    gap = set(unsourced)
+    by_issuer = Counter()
+    for _i, entry, inner, cid in ctx.entries():
+        if cid in gap:
+            by_issuer[_issuer_slug(entry) or "(no issuer named)"] += 1
+    worst = ", ".join("%s %d" % (name, n) for name, n in by_issuer.most_common(5))
+
+    out.append(Finding(
+        severity=INFO, code="L8.CARDS_WITH_NO_EVIDENCE",
+        message=("%d of the %d cards switched on in the app have no REWARD RULE "
+                 "citing a document. Some carry a card-level provenance stamp about "
+                 "an annual fee or a forex rate — that is evidence about a card "
+                 "field, not about the numbers this layer counts."
+                 % (len(unsourced), active)),
+        block="reward_rules", field="source_url",
+        evidence="unsourced %d/%d | worst: %s" % (len(unsourced), active, worst),
+        impact="These cards cannot be diffed against the issuer when a rate changes, "
+               "and their numbers cannot be shown to anyone who asks how we know.",
+        fix="Run `python3 pipeline/cli.py evidence` for the per-issuer backlog and what "
+            "clearing it costs, then `python3 pipeline/cli.py refresh --unsourced-only "
+            "--limit N` to read a slice of it. That command selects on this exact "
+            "predicate — it is the same function this check just called.",
+    ))
+
+
+def _truthy_active(inner) -> bool:
+    """is_active as sources.resolve_sources reads it: absent means ACTIVE.
+
+    Matching that default matters. If this layer counted an absent flag as
+    inactive it would report a smaller backlog than the pipeline queues, and the
+    two numbers would disagree for reasons nobody could see in the data.
+    """
+    v = _d(inner).get("is_active", 1)
+    if v is None:
+        return True
+    if isinstance(v, bool):
+        return v
+    if isinstance(v, (int, float)):
+        return v != 0
+    return str(v).strip().lower() not in ("0", "false", "no", "")
+
+
 def _check_unreadable_rows(ctx: Ctx, cards, out: list) -> None:
     """Rows this layer could not inspect, so nobody mistakes silence for a pass."""
     for c in cards:
@@ -1186,6 +1092,7 @@ def run(ctx: Ctx) -> list[Finding]:
 
     steps = (
         (_check_headline, (ctx, cards, out)),
+        (_check_evidence_backlog, (ctx, cards, out)),
         (_check_implicit_high_confidence, (ctx, cards, out)),
         (_check_url_quality, (ctx, cards, out)),
         (_check_quotes, (ctx, cards, out)),
