@@ -204,6 +204,21 @@ class Taxonomy:
     children: dict = field(default_factory=dict)       # slug -> set of child slugs
     merchant_category: dict = field(default_factory=dict)   # merchant name -> slug
     aliases: dict = field(default_factory=dict)        # token/phrase -> slug
+    # What an MCC MEANS IN THIS CATALOGUE, and which merchants a row would hit.
+    #
+    # An exclusion row typed 'mcc' used to carry no category at all, so the
+    # guardrail below it — "an exclusion may only be activated on a card that does
+    # not EARN in that family" — received an empty family and returned False
+    # without reading a single reward rule. Two rows typed mcc:5816 shipped that
+    # way and zeroed Steam, PlayStation Store and Xbox on both Tata Neu cards,
+    # for a sentence about Online Skill-Based Gaming.
+    #
+    # These three indexes are built from seed/merchants.json, which is the same
+    # table recommendation_engine.dart:484-495 matches against, so what they say a
+    # row hits is what the app will actually do.
+    mcc_category: dict = field(default_factory=dict)   # mcc code -> frozenset(slugs)
+    merchants_by_mcc: dict = field(default_factory=dict)       # mcc  -> frozenset(ids)
+    merchants_by_category: dict = field(default_factory=dict)  # slug -> frozenset(ids)
 
     # -- resolution -------------------------------------------------------
     def resolve(self, *texts: object) -> tuple:
@@ -219,6 +234,31 @@ class Taxonomy:
                 if slug and slug not in found:
                     found.append(slug)
         return tuple(sorted(found))
+
+    def categories_of_mcc(self, code: object) -> frozenset:
+        """Every app category the merchants carrying this MCC belong to.
+
+        Empty means "no merchant in this catalogue carries that MCC", which is a
+        real answer and not the same as "no categories": the caller must treat it
+        as "we cannot see what this row would hit".
+        """
+        return self.mcc_category.get(str(code or "").strip(), frozenset())
+
+    def merchants_hit(self, etype: object, evalue: object) -> frozenset:
+        """Exactly the merchants recommendation_engine.dart:484-495 would exclude.
+
+        The engine compares merchant.mccPrimary and merchant.categoryName to the
+        row's value with ==, no family walk and no aliasing, so this does the
+        same. Any other type ('other', 'txn_type') is inert in the app and hits
+        nothing, which is what the empty set here means.
+        """
+        v = str(evalue or "").strip()
+        t = str(etype or "").strip().lower()
+        if t == "mcc":
+            return self.merchants_by_mcc.get(v, frozenset())
+        if t == "category":
+            return self.merchants_by_category.get(v, frozenset())
+        return frozenset()
 
     def category_of_merchant(self, name: object) -> str:
         """The app category a merchant_ref belongs to, or ''."""
@@ -293,6 +333,9 @@ def build_taxonomy(merchants: object, app_categories: object) -> Taxonomy:
     children: dict = {}
     merchant_category: dict = {}
     aliases: dict = {}
+    mcc_category: dict = {}
+    merchants_by_mcc: dict = {}
+    merchants_by_category: dict = {}
 
     def edge(child: object, parent: object) -> None:
         if not isinstance(child, str) or not child:
@@ -325,12 +368,21 @@ def build_taxonomy(merchants: object, app_categories: object) -> Taxonomy:
             if not isinstance(row, dict):
                 continue
             cat = row.get("category_id")
+            mid = row.get("merchant_name")
+            mcc = row.get("mcc_primary")
             if isinstance(cat, str) and cat:
                 slugs.add(cat)
                 for name_key in ("merchant_name", "display_name"):
                     k = _key(row.get(name_key))
                     if k:
                         merchant_category.setdefault(k, cat)
+                if isinstance(mid, str) and mid:
+                    merchants_by_category.setdefault(cat, set()).add(mid)
+            if isinstance(mcc, str) and mcc:
+                if isinstance(mid, str) and mid:
+                    merchants_by_mcc.setdefault(mcc, set()).add(mid)
+                if isinstance(cat, str) and cat:
+                    mcc_category.setdefault(mcc, set()).add(cat)
 
     # --- the app's categories.json: integer ids, integer parents ---------
     if isinstance(app_categories, dict):
@@ -374,6 +426,10 @@ def build_taxonomy(merchants: object, app_categories: object) -> Taxonomy:
         children={k: frozenset(v) for k, v in children.items()},
         merchant_category=merchant_category,
         aliases=aliases,
+        mcc_category={k: frozenset(v) for k, v in mcc_category.items()},
+        merchants_by_mcc={k: frozenset(v) for k, v in merchants_by_mcc.items()},
+        merchants_by_category={k: frozenset(v)
+                               for k, v in merchants_by_category.items()},
     )
 
 

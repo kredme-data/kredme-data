@@ -278,6 +278,20 @@ REASON_QUOTE_LACKS_RATE = "quote_does_not_state_the_rule_rate"
 REASON_CARD_EARNS = "card_earns_in_that_category"
 REASON_UNTYPEABLE = "exclusion_not_typeable"
 REASON_EXCLUSION_SCOPED = "exclusion_narrower_than_a_row"
+# The bank's own words for an MCC and what that MCC means in seed/merchants.json
+# are two different things. HDFC wrote "Online Skill-Based Gaming transactions
+# (MCC-5816)"; in this catalogue 5816 is Steam, PlayStation Store and Xbox and no
+# skill-gaming merchant at all, so shipping the raw code would have zeroed three
+# video-game storefronts for a sentence about real-money gaming.
+REASON_MCC_SCOPE_MISMATCH = "mcc_means_something_else_here"
+# A row that excludes nothing the card does not already exclude is not protection.
+# It is still counted by recommendation_engine.dart:288-291, which ranks by how
+# MANY exclusion rows a card carries, so an inert row demotes the card for free.
+REASON_EXCLUSION_REDUNDANT = "already_excluded_by_an_existing_row"
+# The quote is the only thing in this file a human can check against the bank's
+# page. Scraper residue or two non-adjacent sentences joined by an ellipsis make
+# it uncheckable, and an unverifiable citation reads as proof anyway.
+REASON_QUOTE_NOT_VERBATIM = "quote_is_not_verbatim"
 
 # Reasons gate() cannot overturn because they are about the shape of the input, not
 # about whether the number is trustworthy.
@@ -286,6 +300,7 @@ _STRUCTURAL_REASONS = (
     REASON_NO_ROW, REASON_AMBIGUOUS_ROW, REASON_CONFLICT, REASON_ROW_UNIT,
     REASON_CAP_NO_PERIOD, REASON_NAME_DISAGREES, REASON_CARD_EARNS,
     REASON_UNTYPEABLE, REASON_QUOTE_LACKS_RATE, REASON_EXCLUSION_SCOPED,
+    REASON_MCC_SCOPE_MISMATCH,
 )
 
 
@@ -1384,7 +1399,19 @@ def _propose_exclusion(entry: dict, card_id: str, obs: dict, url: str, quote: st
     slugs = tax.resolve(obs.get("category"), text)
     if unit_in == "mcc" and _MCC_CODE.match(str(raw or "").strip()):
         etype, evalue = "mcc", str(raw).strip()
-        family = frozenset()
+        # An MCC is not a category, but in THIS catalogue it lands on one. Resolve
+        # it through seed/merchants.json — the same table the engine matches on —
+        # so the guardrail and the route-scope test below read a real family
+        # instead of the empty set that used to make both of them no-ops.
+        mcc_slugs = tax.categories_of_mcc(evalue)
+        family = tax.family(*sorted(mcc_slugs))
+        # And check the bank's own scoping words against it. If the issuer named a
+        # narrower thing than this MCC means here, the row would exclude spend the
+        # sentence never described.
+        if mcc_slugs and not (set(slugs) & set(family)):
+            return _blocked_row(card_id, "excluded_category", target, obs, url, quote,
+                                confidence, REASON_MCC_SCOPE_MISMATCH, fetched_on)
+        slugs = tuple(sorted(mcc_slugs))
     elif len(slugs) == 1:
         etype, evalue = "category", slugs[0]
         family = tax.family(slugs[0])
@@ -1429,6 +1456,30 @@ def _propose_exclusion(entry: dict, card_id: str, obs: dict, url: str, quote: st
             rows=(live[0],), writes=(), source_fetched_on=fetched_on,
         )
 
+    # 3b. Would this row exclude anything an existing row does not already? The
+    #     engine matches merchant.mccPrimary / merchant.categoryName with ==, so
+    #     "what a row hits" is exactly computable. A row that hits a subset of
+    #     what the card already excludes buys no protection at all, and it is not
+    #     free: tie-break 3 ranks by the NUMBER of exclusion rows a card carries,
+    #     so appending one pushes the card below equal-scoring rivals. The
+    #     evidence still belongs somewhere, so it is written onto the row that
+    #     already does the work.
+    hits = tax.merchants_hit(etype, evalue)
+    if hits and not live and not retypeable:
+        for i, row in _rows_of(entry, "exclusion_rules"):
+            covered = tax.merchants_hit(row.get("exclusion_type"),
+                                        row.get("exclusion_value"))
+            if covered and hits <= covered:
+                return Proposal(
+                    card_id=card_id, field="excluded_category",
+                    path=f"exclusion_rules[{i}].{target.key}",
+                    old_value=row.get("exclusion_type"),
+                    new_value=row.get("exclusion_type"), unit=UNIT_CATEGORY,
+                    source_url=url, source_quote=quote, confidence=confidence,
+                    delta_pct=None, block="exclusion_rules", rows=(i,), writes=(),
+                    source_fetched_on=fetched_on,
+                )
+
     if len(retypeable) > 1:
         return _blocked_row(card_id, "excluded_category", target, obs, url, quote,
                             confidence, REASON_AMBIGUOUS_ROW, fetched_on)
@@ -1472,6 +1523,22 @@ def gate(p: Proposal) -> Proposal:
     return replace(p, auto_applicable=(reason == ""), blocked_reason=reason)
 
 
+# Scraper residue, and the ellipsis a writer reaches for when two sentences that
+# prove different halves of one row are not next to each other on the page. Both
+# make the quote impossible to find on the issuer's page, which is the one thing
+# a quote is for. A real issuer sentence may of course end in "..." mid-thought,
+# so only a JOIN — text on both sides of the ellipsis — is refused.
+_QUOTE_RESIDUE = ("###", "\ufffd")
+_QUOTE_SPLICE = re.compile(r"\S\s*(?:\u2026|\.\.\.)\s*\S")
+
+
+def _is_verbatim(quote: str) -> bool:
+    """False when the quote carries pipeline residue or joins two sentences."""
+    if any(tok in quote for tok in _QUOTE_RESIDUE):
+        return False
+    return not _QUOTE_SPLICE.search(quote)
+
+
 def _block_reason(p: Proposal) -> str:
     """The first reason this change must not apply itself, or "".
 
@@ -1489,6 +1556,8 @@ def _block_reason(p: Proposal) -> str:
     quote = p.source_quote if isinstance(p.source_quote, str) else ""
     if len(quote.strip()) < MIN_QUOTE_CHARS:
         return REASON_NO_QUOTE
+    if not _is_verbatim(quote):
+        return REASON_QUOTE_NOT_VERBATIM
     if C.contains_weasel(quote):
         return REASON_WEASEL
     if not C.is_issuer_domain(p.source_url):
