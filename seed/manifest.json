@@ -1,14 +1,14 @@
 {
- "version": "5.1.26",
- "updated_at": "2026-08-19T17:51:39Z",
+ "version": "5.1.27",
+ "updated_at": "2026-08-19T18:32:21Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Eleven base_rate rules stated a point COUNT as a percentage. A base rule typed cashback_pct holding the card's points-per-rupee number renders that number as a percent: AU CA Metal earns 2 Reward Points per Rs.100, worth 0.5% at Rs.0.25/point, and displayed 2.00%. The overstatement is always exactly 1/rp_value_standard. Only the 11 cards carrying their own evidence are changed — each has a sibling rule stating explicit mechanics ('8 Reward Points on every Rs.100'), which pins the card's convention and confirms base_reward_rate is points-per-rupee rather than an already-collapsed rupee rate. Each is retyped to points_per_spend and renamed to state N, so the gate can read it. The other 45 cards in the same shape are deliberately untouched: nothing on those cards disambiguates the unit, and guessing would repeat the axis_bank_neo error in the opposite direction. All 11 corrections go DOWN.",
+ "_note": "Citation repair on the ten cards read at the issuer on 2026-08-17. No reward rate, cap, fee or point value was changed. What changed is what the file CLAIMS to have proved: 33 numbers whose cited sentence did not establish them lost their citation or their 'high' confidence, 29 card-level fetch dates were corrected from the write-time clock to the date sources.json says the bytes were read, and four exclusion rows were removed. Two of those four (mcc:5816 on both Tata Neu cards) took Steam, PlayStation Store and Xbox from 1.5%/1.0% to zero for a sentence about Online Skill-Based Gaming; the other two excluded nothing another row on the same card did not already exclude, while still demoting the card on the engine's exclusion-count tie-break. Nothing here is issuer re-verification: it is the removal of claims the evidence on disk does not support.",
  "stats": {
   "total_cards": 383,
   "total_reward_rules": 1279,
   "total_redemption_rules": 884,
-  "total_exclusion_rules": 1628,
+  "total_exclusion_rules": 1538,
   "total_milestone_rules": 417,
   "total_fuel_surcharge_rules": 359,
   "total_travel_cards": 82,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "f429a22f43a3b60495911005ea259eaa64d2080f5db1386d8a272aab90621a2d",
-   "size_bytes": 1901148
+   "checksum": "669c0492fc0884f65bd79ca967be6ac3cc7068120f14cfb413c356e9b06c1aa3",
+   "size_bytes": 1897157
   },
   {
    "name": "merchants.json",

@@ -5802,7 +5802,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "jewellery",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:gold/jewellery",
     "source_quote": "Excluded spend categories for reward earns / spend based fee waiver: Transactions made on Gold/ Jewellery, Rent, Insurance, Wallet, Government Institutions, Utilities, Fuel.",
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
@@ -5812,7 +5812,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "source_quote": "Excluded spend categories for reward earns / spend based fee waiver: Transactions made on Gold/ Jewellery, Rent, Insurance, Wallet, Government Institutions, Utilities, Fuel.",
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
     "source_fetched_on": "2026-08-17",
@@ -5821,7 +5821,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:wallet",
     "source_quote": "Excluded spend categories for reward earns / spend based fee waiver: Transactions made on Gold/ Jewellery, Rent, Insurance, Wallet, Government Institutions, Utilities, Fuel.",
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
@@ -5831,7 +5831,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "government",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:government institutions",
     "source_quote": "Excluded spend categories for reward earns / spend based fee waiver: Transactions made on Gold/ Jewellery, Rent, Insurance, Wallet, Government Institutions, Utilities, Fuel.",
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
@@ -5841,7 +5841,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "insurance",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "source_quote": "Excluded spend categories for reward earns / spend based fee waiver: Transactions made on Gold/ Jewellery, Rent, Insurance, Wallet, Government Institutions, Utilities, Fuel.",
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
     "source_fetched_on": "2026-08-17",
@@ -5850,21 +5850,16 @@
    {
     "exclusion_type": "mcc",
     "exclusion_value": "5541",
-    "also_excludes_from_threshold": 1
-   },
-   {
-    "exclusion_type": "category",
-    "exclusion_value": "utilities",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "category",
-    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 1,
     "source_quote": "Excluded spend categories for reward earns / spend based fee waiver: Transactions made on Gold/ Jewellery, Rent, Insurance, Wallet, Government Institutions, Utilities, Fuel.",
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
     "source_fetched_on": "2026-08-17",
     "confidence": "high"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [
@@ -5950,7 +5945,7 @@
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
     "source_quote": "- 2 EDGE Miles per INR 100 spent",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "annual_fee_inr",
@@ -5960,7 +5955,7 @@
     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
     "source_quote": "EDGE Miles shall be credited to cardholders’ EDGE miles account upon successful payment of the card annual fee\nof INR 5000 + GST.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -10455,7 +10450,11 @@
     "exclusion_type": "category",
     "exclusion_value": "rent",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:rental payments"
+    "_retyped_from": "other:rental payments",
+    "source_quote": "W.e.f. March 15th, 2022, supercoin reward shall not be eligible for payments made towards MCC 6513 (payment of management fees, rental commissions, rental payments or any such payments through MCC 6513)",
+    "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
+    "source_fetched_on": "2026-08-17",
+    "confidence": "high"
    },
    {
     "exclusion_type": "txn_type",
@@ -10477,15 +10476,6 @@
     "exclusion_value": "wallet_load",
     "also_excludes_from_threshold": 0,
     "source_quote": "Supercoins issuance shall not be eligible for following spends/transactions on the card, Fuel Spends , Purchase of gift cards on Flipkart, EMI transactions , Purchases converted to EMI post facto, Wallet loading transactions ,Purchase of Jewellery items , Cash advances ,Payment of outstanding balances , Payment of card fees and other card charges , Third party integrated purchase like Flipkart Health, W.e.f. March 15th, 2022, supercoin reward shall not be eligible for payments made towards MCC 6513 (payment of management fees, rental commissions, rental payments or any such payments through MCC 6513)",
-    "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
-    "source_fetched_on": "2026-08-17",
-    "confidence": "high"
-   },
-   {
-    "exclusion_type": "mcc",
-    "exclusion_value": "6513",
-    "also_excludes_from_threshold": 0,
-    "source_quote": "W.e.f. March 15th, 2022, supercoin reward shall not be eligible for payments made towards MCC 6513 (payment of management fees, rental commissions, rental payments or any such payments through MCC 6513)",
     "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
     "source_fetched_on": "2026-08-17",
     "confidence": "high"
@@ -10526,8 +10516,8 @@
     "new_value": 500.0,
     "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
     "source_quote": "2nd year Onwards: ₹ 500",
-    "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "confidence": "low",
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "fee_waiver_spend_inr",
@@ -10537,7 +10527,7 @@
     "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
     "source_quote": "Annual fee waived off on annual spends greater than ₹2,00,000.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -11099,7 +11089,7 @@
     "source_quote": "Customers get 1% fuel surcharge waiver on all fuel transactions on their IndianOil Axis Bank Premium Credit Card at IOC outlets",
     "source_url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card",
     "source_fetched_on": "2026-08-17",
-    "confidence": "high"
+    "confidence": "low"
    }
   ],
   "redemption_rules": [
@@ -11170,16 +11160,6 @@
   ],
   "_provenance": [
    {
-    "field": "point_value_inr",
-    "path": "card.rp_value_standard",
-    "old_value": 1.0,
-    "new_value": 1.0,
-    "source_url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card",
-    "source_quote": "Customer shall earn 1 EDGE Mile (1EDGE Mile = INR 1) on every INR 150 spent for all other spends apart from fuel spends at authorized IndianOil outlets and spends at grocery stores and supermarkets.",
-    "confidence": "high",
-    "source_fetched_on": "2026-08-19"
-   },
-   {
     "field": "annual_fee_inr",
     "path": "card.annual_fee",
     "old_value": 1000.0,
@@ -11187,7 +11167,7 @@
     "source_url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card",
     "source_quote": "There is a one-time joining fee of INR 1000+GST along with an annual card fee of INR 1000 + GST to be levied on the card from second year.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "forex_markup_pct",
@@ -11197,7 +11177,7 @@
     "source_url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card",
     "source_quote": "Foreign currency transactions\n3.50% of Transaction value",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -21545,8 +21525,8 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "Offline transactions earn 2 Reward Points (RP) per ₹150, while online/e-commerce transactions yield 4 Reward Points (RP) per ₹150. … The additional 2 RP per Rs ₹150 from the 2X feature is capped at 500 points monthly.",
+    "confidence": "low",
+    "source_quote": "Offline transactions earn 2 Reward Points (RP) per ₹150, while online/e-commerce transactions yield 4 Reward Points (RP) per ₹150.",
     "source_url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card",
     "source_fetched_on": "2026-08-17"
    }
@@ -21615,7 +21595,7 @@
     "source_quote": "1% fuel surcharge waiver on ₹400-₹5,000 transaction amount.",
     "source_url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card",
     "source_fetched_on": "2026-08-17",
-    "confidence": "high"
+    "confidence": "low"
    }
   ],
   "redemption_rules": [
@@ -21693,17 +21673,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card",
     "source_quote": "Sourcing of this Credit Card has been stopped. Existing customers of this card will continue to enjoy the benefits.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
-   },
-   {
-    "field": "point_value_inr",
-    "path": "card.rp_value_standard",
-    "old_value": 0.2,
-    "new_value": 0.2,
-    "source_url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card",
-    "source_quote": "Unified SmartBuy Portal (on Flights/ Hotel Bookings)\n₹0.20",
-    "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "annual_fee_inr",
@@ -21713,7 +21683,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card",
     "source_quote": "Membership Renewal Fee 2nd year onwards: ₹500 plus applicable taxes.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "fee_waiver_spend_inr",
@@ -21723,7 +21693,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/money-back-credit-card",
     "source_quote": "Get ₹500 renewal fee waived on ₹50,000+ annual spends on your MoneyBack Card.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -22583,10 +22553,7 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "Accelerated 5% Fuel Points on spends at IndianOil outlets, Groceries and Bill payments. (Accelerated 5% Fuel Points benefit will be given only for fuel transactions on IndianOil Retail Outlets.)",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17"
+    "confidence": "low"
    },
    {
     "rule_name": "5% Fuel Points on grocery spending",
@@ -22605,10 +22572,7 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "Earn 5% Fuel Points on Groceries & Bill Payments (POS & online; max 100 points/month per category*).",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17"
+    "confidence": "low"
    },
    {
     "rule_name": "5% Fuel Points on utility bill payments",
@@ -22627,10 +22591,7 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "Earn 5% Fuel Points on Groceries & Bill Payments (POS & online; max 100 points/month per category*).",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17"
+    "confidence": "low"
    }
   ],
   "exclusion_rules": [
@@ -22639,10 +22600,7 @@
     "exclusion_value": "wallet_load",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:wallet reloading",
-    "source_quote": "Exclusion for 1 FP for every INR 150 – Fuel, Rent, Government related transactions, EMI, Wallet and Jewellery.",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17",
-    "confidence": "high"
+    "confidence": "low"
    },
    {
     "exclusion_type": "category",
@@ -22664,7 +22622,7 @@
     "exclusion_value": "rent",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:rental payments",
-    "source_quote": "Exclusion for 1 FP for every INR 150 – Fuel, Rent, Government related transactions, EMI, Wallet and Jewellery.",
+    "source_quote": "There will be no Reward Points accrual on Spends made on Rental and Government category payments",
     "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
     "source_fetched_on": "2026-08-17",
     "confidence": "high"
@@ -22698,7 +22656,7 @@
     "source_quote": "1% Fuel Surcharge waiver at all Indian fuel stations (min ₹400/transaction, max ₹250/cycle)",
     "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
     "source_fetched_on": "2026-08-17",
-    "confidence": "high"
+    "confidence": "low"
    }
   ],
   "redemption_rules": [
@@ -22760,7 +22718,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
     "source_quote": "The redemption against the statement balance will be at the rate of 1 Fuel Point = ₹0.2, and can be done via Net Banking login, Phone Banking, or physical redemption form.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "annual_fee_inr",
@@ -22770,7 +22728,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
     "source_quote": "The HDFC Bank Indian Oil Credit Card has a Joining Fee of ₹500, along with an annual fee of ₹500.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "fee_waiver_spend_inr",
@@ -22780,7 +22738,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
     "source_quote": "Spend ₹50,000 or above in the first year and get a waiver on the renewal membership fee",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "forex_markup_pct",
@@ -22790,7 +22748,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
     "source_quote": "3.5% Mark-Up fee will be applicable on all International / Cross currency transaction",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -25842,7 +25800,7 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands. … Earn additional 5% back as NeuCoins on selected categories on Tata Neu App/Website, post downloading Tata Neu App and registering for NeuPass.",
+    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands.",
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_fetched_on": "2026-08-17"
    },
@@ -25863,10 +25821,7 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands. … Earn additional 5% back as NeuCoins on selected categories on Tata Neu App/Website, post downloading Tata Neu App and registering for NeuPass.",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17"
+    "confidence": "low"
    },
    {
     "rule_name": "1.5% NeuCoins on UPI spends, maximum 500 NeuCoins per calendar month",
@@ -25924,8 +25879,8 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands. … Earn additional 5% back as NeuCoins on selected categories on Tata Neu App/Website, post downloading Tata Neu App and registering for NeuPass.",
+    "confidence": "low",
+    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands.",
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_fetched_on": "2026-08-17"
    },
@@ -26138,15 +26093,6 @@
     "exclusion_type": "other",
     "exclusion_value": "emi transactions",
     "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "mcc",
-    "exclusion_value": "5816",
-    "also_excludes_from_threshold": 0,
-    "source_quote": "1. No NeuCoins will be earned on Online Skill-Based Gaming transactions (MCC-5816)",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17",
-    "confidence": "high"
    }
   ],
   "milestone_rules": [],
@@ -26159,7 +26105,7 @@
     "source_quote": "1% fuel surcharge waiver at all fuel stations across India",
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_fetched_on": "2026-08-17",
-    "confidence": "high"
+    "confidence": "low"
    }
   ],
   "redemption_rules": [
@@ -26189,7 +26135,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_quote": "1.5% back as NeuCoins on Non-Tata Brand Spends and any Merchant EMI Spends",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "annual_fee_inr",
@@ -26199,7 +26145,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_quote": "Joining/Renewal Membership Fee – ₹1,499/- + Applicable Taxes",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "fee_waiver_spend_inr",
@@ -26209,7 +26155,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_quote": "Spend ₹3,00,000 or more in a year, before your Credit Card renewal date and get your renewal fee waived off.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "points_expiry_months",
@@ -26219,7 +26165,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
     "source_quote": "Starting 01-Aug-25, NeuCoins earned on your Tata Neu HDFC Bank Credit Card will have a validity of 12 months (including lock period) from the end of the month in which they're credited to your Tata Neu Account.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -26550,15 +26496,6 @@
     "exclusion_type": "other",
     "exclusion_value": "smart emi",
     "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "mcc",
-    "exclusion_value": "5816",
-    "also_excludes_from_threshold": 0,
-    "source_quote": "No NeuCoins will be earned on Online Skill-Based Gaming transactions (MCC-5816)",
-    "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
-    "source_fetched_on": "2026-08-17",
-    "confidence": "high"
    }
   ],
   "milestone_rules": [],
@@ -26571,7 +26508,7 @@
     "source_quote": "1% fuel surcharge waiver at all fuel stations across India",
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
     "source_fetched_on": "2026-08-17",
-    "confidence": "high"
+    "confidence": "low"
    }
   ],
   "redemption_rules": [
@@ -26601,7 +26538,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
     "source_quote": "1% back as NeuCoins on Non-Tata Brand Spends and any Merchant EMI Spends",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "annual_fee_inr",
@@ -26611,7 +26548,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
     "source_quote": "Joining/Renewal Membership Fee – ₹499/- + Applicable Taxes",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "fee_waiver_spend_inr",
@@ -26621,7 +26558,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
     "source_quote": "Spend ₹1,00,000 or more in a year, before your Credit Card renewal date and get your renewal fee waived off.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "points_expiry_months",
@@ -26631,7 +26568,7 @@
     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
     "source_quote": "Starting 01-Aug-25, NeuCoins earned on your Tata Neu HDFC Bank Credit Card will have a validity of 12 months (including lock period) from the end of the month in which they're credited to your Tata Neu Account.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -35012,7 +34949,7 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
+    "confidence": "low",
     "source_quote": "• 5% Cashback* on incremental online spends above ₹10,000.",
     "source_url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card",
     "source_fetched_on": "2026-08-17"
@@ -35305,7 +35242,7 @@
     "source_url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card",
     "source_quote": "The Hello Cashback Credit Card comes with the Annual fee (2nd year onwards) of ₹1000+GST.",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -35924,7 +35861,7 @@
     "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf",
     "source_quote": "⭐ Zero Annual Fee – Forever (No Minimum Spend Conditions)",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "points_expiry_months",
@@ -35934,7 +35871,7 @@
     "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf",
     "source_quote": "Reward points will be valid for 24 months, giving you ample time to redeem them at your convenience i.e. Reward Points earned from July 2026 statement cycle will be valid for 24 months from the date they are credited",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
@@ -43983,7 +43920,7 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "Save 4% as Reward Points on IndianOil Fuel Spends. Earn 24 Reward Points on every INR 150 spent, capped at 1200 Reward Points per statement cycle###",
+    "source_quote": "Save 4% as Reward Points on IndianOil Fuel Spends. Earn 24 Reward Points on every INR 150 spent, capped at 1200 Reward Points per statement cycle",
     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
     "source_fetched_on": "2026-08-17"
    },
@@ -44048,9 +43985,7 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "high",
-    "source_quote": "Valid on only on select MCC's - 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441",
-    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+    "confidence": "low"
    }
   ],
   "exclusion_rules": [
@@ -44098,7 +44033,7 @@
     "min_txn_amount": 100.0,
     "max_txn_amount": 5000.0,
     "monthly_cap": 100.0,
-    "source_quote": "1% fuel surcharge waiver on transactions between INR 100 to INR 5000 with maximum surcharge waiver of INR 100 per statement cycle only at IndianOil outlets###",
+    "source_quote": "1% fuel surcharge waiver on transactions between INR 100 to INR 5000 with maximum surcharge waiver of INR 100 per statement cycle only at IndianOil outlets",
     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
     "source_fetched_on": "2026-08-17",
     "confidence": "high"
@@ -44147,7 +44082,7 @@
     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
     "source_quote": "On all other spends, save 0.5% back as Reward Points. Earn 3 Reward Points on every INR 150 spent",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "annual_fee_inr",
@@ -44157,7 +44092,7 @@
     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
     "source_quote": "Annual fee of INR 449 waived on spending INR 50,000 in the previous anniversary year",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    },
    {
     "field": "fee_waiver_spend_inr",
@@ -44167,7 +44102,7 @@
     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
     "source_quote": "Annual fee of INR 449 waived on spending INR 50,000 in the previous anniversary year",
     "confidence": "high",
-    "source_fetched_on": "2026-08-19"
+    "source_fetched_on": "2026-08-17"
    }
   ]
  },
