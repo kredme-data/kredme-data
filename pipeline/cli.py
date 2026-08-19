@@ -976,7 +976,12 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         if entry is None or not kept:
             continue
         src = ST.get_source(sources_state, card_id) or {}
-        proposals.extend(D.observations_to_proposals(entry, kept, src.get("url", "")))
+        # The fetch date travels with the evidence. Stamping today onto a
+        # sentence read two days ago makes a stale citation look fresh, and
+        # freshness is a third of an L8 grade.
+        proposals.extend(D.observations_to_proposals(
+            entry, kept, src.get("url", ""),
+            fetched_on=str(src.get("fetched_at") or "")))
 
     ST.save_state(sources_state)
     ok(f"{survived} observations survived verification, {killed} refuted or unverified")

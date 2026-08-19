@@ -34,7 +34,7 @@ from pipeline.diff import (  # noqa: E402
 )
 
 ISSUER_URL = "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia"
-GOOD_QUOTE = "The Card earns 4 Reward Points for every Rs 150 spent on retail purchases."
+GOOD_QUOTE = "The Card earns 3 Reward Points for every Rs 150 spent on retail purchases."
 
 
 # ---------------------------------------------------------------------------
@@ -323,7 +323,7 @@ class TestGate(unittest.TestCase):
     def test_filling_a_zero_base_rate_is_upward_and_needs_a_person(self):
         # 106 of 380 cards store 0 here. Filling one is the most valuable thing this
         # pipeline does and the one most worth reading before it ships.
-        p = one(card_entry(base_reward_rate=0.0), obs(value="4", per_spend_inr="150"))
+        p = one(card_entry(base_reward_rate=0.0), obs(value="3", per_spend_inr="150"))
         self.assertIsNone(p.delta_pct)
         self.assertEqual(p.blocked_reason, diff.REASON_UPWARD)
 
@@ -464,12 +464,13 @@ class TestGate(unittest.TestCase):
 class TestDelta(unittest.TestCase):
 
     def test_zero_old_value_gives_none_not_a_zero_division(self):
-        p = one(card_entry(base_reward_rate=0), obs(value="4", per_spend_inr="150"))
+        p = one(card_entry(base_reward_rate=0), obs(value="3", per_spend_inr="150"))
         self.assertIsNone(p.delta_pct)
 
     def test_missing_old_value_gives_none(self):
         p = one(card_entry(rp_value_standard=None),
-                obs("point_value_inr", value="0.25", unit="inr", per_spend_inr=""))
+                obs("point_value_inr", value="0.25", unit="inr", per_spend_inr="",
+                    source_quote="Each Reward Point is worth Rs 0.25 against the statement."))
         self.assertIsNone(p.delta_pct)
         self.assertTrue(p.auto_applicable)  # a gap fill, not a revision
 
@@ -654,7 +655,7 @@ class TestApply(unittest.TestCase):
 
         def drifting(cards):
             calls.append(cards)
-            return [("rule_name", len(calls))]
+            return {("rule_name", len(calls)): "a name that moved"}
 
         diff._rule_names = drifting
         try:
