@@ -64,10 +64,12 @@ python3 pipeline/cli.py refresh --dry-run     # costs nothing, submits nothing
 python3 pipeline/cli.py advance               # idempotent; collects whatever is in flight
 python3 pipeline/cli.py news-watch --dry-run
 python3 pipeline/cli.py metrics
-python3 tests/run_all.py                      # 584 tests, stdlib unittest, no pip, no network
+python3 pipeline/cli.py evidence              # the unsourced backlog + what clearing it costs
+python3 pipeline/cli.py refresh --unsourced-only --limit 40 --dry-run
+python3 tests/run_all.py                      # 813 tests, stdlib unittest, no pip, no network
 ```
 
-**Five things about it that are not obvious:**
+**Six things about it that are not obvious:**
 
 1. **It uses the Message Batches API, not synchronous calls.** A 380-card sweep was
    measured at ~11.6h and Actions kills a job at 6. `refresh` submits and exits;
@@ -82,7 +84,18 @@ python3 tests/run_all.py                      # 584 tests, stdlib unittest, no p
    observation with no verdict is treated as refuted and does not ship.
 4. **It never publishes to users.** It opens a PR. Of 18 changes a first pass called
    "confirmed at the issuer", a second pass refuted 6. Revisit when that rate is ~0.
-5. **This contradicts the stdlib-only rule below, deliberately and narrowly.** `pipeline/`
+5. **It only NOTICED change; now it can also go and get evidence.** The hash gate means a
+   card whose rates were never verified, whose page did not move this week, is skipped
+   forever — 361 of 370 active cards have no reward rule citing a document, and the
+   validator has read 2.0% issuer-sourced through every repair PR because internal
+   consistency is not evidence. `refresh --unsourced-only` selects exactly those cards,
+   drops the ones already read end-to-end at their current bytes (so the queue
+   terminates), and says before spending how much of the selection the hash gate was
+   actually blocking versus how much an ordinary refresh would fetch anyway. Composes
+   with `--limit`; `pipeline/cli.py evidence` prices the backlog — ~$95 / ~₹8,300 for all
+   301, ~$12.68 a week at `--limit 40`. What counts as evidence lives in ONE function
+   that L8 imports — see PIPELINE.md, "The evidence backlog".
+6. **This contradicts the stdlib-only rule below, deliberately and narrowly.** `pipeline/`
    is the ONLY thing here allowed a third-party import (`anthropic`), and it is imported
    lazily inside the calling functions so `tools/kredme.py` and the entire test suite still
    run on a bare Python. `tests/run_all.py` asserts that and CI fails if someone breaks it.
