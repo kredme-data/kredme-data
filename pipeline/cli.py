@@ -4,9 +4,11 @@ The pipeline entrypoint. Three commands, one per CI stage.
 
 Usage:
     python3 pipeline/cli.py refresh [--card-id ID] [--limit N] [--force] [--dry-run]
+    python3 pipeline/cli.py refresh --unsourced-only [--limit N] [--dry-run]
     python3 pipeline/cli.py advance [--dry-run]
     python3 pipeline/cli.py news-watch [--issuer NAME] [--force] [--dry-run]
     python3 pipeline/cli.py metrics [--write]
+    python3 pipeline/cli.py evidence [--per-week N] [--json]
     python3 pipeline/cli.py discover [--issuer NAME] [--no-verify] [--write]
 
 Design, in one paragraph:
@@ -18,6 +20,16 @@ either collects the extraction batch and submits the verification batch, or coll
 the verification batch, diffs it against seed/cards.json and writes a patch for a
 human to merge. `news-watch` polls the pages where issuers publish revisions and
 drafts feed items when one changes.
+
+`refresh --unsourced-only` is the one path that is NOT change-driven. The hash gate
+makes the weekly run affordable, and it has a blind spot it can never close on its
+own: a card whose rates have never been verified, whose issuer page did not move
+this week, is skipped — forever. That flag selects the cards whose reward rules
+carry no citation, drops the ones already read end to end at their current bytes
+so the queue terminates, and opens the gate for exactly what is left. It says
+before spending how much of the selection the gate was actually blocking, versus
+how much an ordinary refresh would fetch anyway. `evidence` says how many there
+are and what finishing costs — both ends of the range.
 
 Nothing here ever writes to `main`, and nothing publishes to users without a person
 merging a PR. That is not caution for its own sake: of 18 changes a first pass called
@@ -42,6 +54,7 @@ from pipeline import config as C         # noqa: E402
 from pipeline import diff as D           # noqa: E402
 from pipeline import fetch as F          # noqa: E402
 from pipeline import newsgen as N        # noqa: E402
+from pipeline import provenance as P     # noqa: E402
 from pipeline import report as R         # noqa: E402
 from pipeline import sources as S        # noqa: E402
 from pipeline import state as ST         # noqa: E402
@@ -129,6 +142,164 @@ def _reason_of(err: str) -> str:
     return (err or "unknown").split(":")[0].strip() or "unknown"
 
 
+def _gate_decision(
+    st: dict,
+    card_id: str,
+    text_sha256: str,
+    *,
+    force: bool,
+    evidence_gap: bool,
+) -> "tuple[bool, str]":
+    """Does this card's document reach the model this run, and on what grounds.
+
+    The content-hash gate is the only reason a weekly run costs rupees instead of
+    thousands, so exactly three things may open it and each one is named out loud:
+
+      "force"        the operator asked for a full sweep. Applies to every card.
+      "changed"      the ordinary weekly reason — the source bytes moved, or we
+                     have never finished processing this card at this hash.
+      "evidence gap" this card's reward rules carry no citation AND it has not
+                     been read to completion at these bytes, so its page not
+                     moving proves nothing: an unread page is unread whether or
+                     not it was rewritten last night.
+
+    `evidence_gap` is per card and comes from the catch-up selection. It is NOT
+    `--force` under another name, and the difference is the whole point: --force
+    opens the gate for all 370 active cards and bills a full sweep, while this
+    opens it only for the selection and leaves every other card gated exactly as
+    before. A card that later acquires evidence — or that is simply read to
+    completion — drops out of the selection and falls straight back under the gate
+    with no code change. The run reports how many cards this reason actually
+    applied to, which today is zero: every selected card had moved or was already
+    due, and the flag's contribution is the --limit, not the bypass.
+    """
+    if force:
+        return True, "force"
+    if ST.has_changed(st, card_id, text_sha256):
+        return True, "changed"
+    if evidence_gap:
+        return True, "evidence gap"
+    return False, "unchanged"
+
+
+def _preflight_budget(
+    cards: int, args: argparse.Namespace, *, dry_run: bool
+) -> int:
+    """Price a selection BEFORE fetching anything. 0 to proceed, 2 to stop.
+
+    This is the SAME ceiling `batch.submit` enforces — config.MAX_BATCH_USD, moved
+    by the same `--max-usd` flag, disabled by the same explicit `--max-usd 0`. It
+    is not a second mechanism and must never become one; two spend limits with two
+    thresholds is how one of them ends up quietly disabled.
+
+    What it adds is timing. submit() refuses AFTER 174 issuer pages have been
+    fetched, which is ten minutes of an operator's evening and a lot of traffic at
+    banks that did not ask for it, to learn something arithmetic that was knowable
+    in a millisecond.
+
+    EVERY LINE HERE PRINTS BOTH PASSES. The ceiling is compared against the
+    extraction forecast because extraction is what this command submits — but
+    verification is a second batch against the same ceiling, so a run that clears
+    a $25 limit can still bill close to $50 by the time `advance` has finished.
+    The advice line used to quote extraction only and call it "a run", which
+    under-budgeted a --limit 155 week by 58%.
+    """
+    extract = P.forecast_usd(cards, both_passes=False)
+    both = P.forecast_usd(cards)
+    floor = P.forecast_usd(cards, basis="observed")
+    ok(f"about ${extract:,.2f} to extract {cards} card(s); "
+       f"${both:,.2f} through both passes "
+       f"(${floor:,.2f} if 17-Aug's verification yield repeats)")
+
+    max_usd, refusal = _spend_ceiling(args, both)
+    if refusal:
+        fail(refusal)
+        return 2
+    if max_usd is None:
+        ok(f"no per-batch spend ceiling on this run — you accepted "
+           f"${float(args.i_accept_usd):,.2f} explicitly")
+        return 0
+    if extract <= max_usd:
+        return 0
+
+    room = P.cards_within_budget(max_usd)
+    cycle_room = P.cards_within_budget(max_usd, both_passes=True)
+    if dry_run:
+        warn(f"this selection is over the ${max_usd:,.2f} per-batch ceiling — a real "
+             f"run would be refused. Continuing: a dry run spends nothing.")
+        return 0
+
+    fail(f"{cards} cards forecast at ${extract:,.2f} to extract, above the "
+         f"${max_usd:,.2f} PER-BATCH ceiling in config.MAX_BATCH_USD — refusing "
+         f"before fetching anything.")
+    warn(f"spread it instead:  --unsourced-only --limit {room}   "
+         f"(about ${P.forecast_usd(room, both_passes=False):,.2f} to extract, "
+         f"${P.forecast_usd(room):,.2f} through both passes)")
+    warn(f"the ceiling is per BATCH, and verification is a second batch. For a whole "
+         f"cycle inside ${max_usd:,.2f}, use --limit {cycle_room}.")
+    warn("or raise the ceiling deliberately with --max-usd N; --max-usd 0 removes it "
+         "and then needs --i-accept-usd N.")
+    return 2
+
+
+def _in_flight_guard(args: argparse.Namespace) -> int:
+    """Refuse to submit a second extraction batch while one is still in flight.
+
+    Nothing checked this before. `cmd_refresh` loaded batch.json only AFTER
+    submitting, so two runs could have two extraction batches open at once — and
+    stage 2 overwrote `extractions.json` wholesale on collection, so the second
+    batch to end deleted the first one's paid-for results while the first one's
+    verification batch was already submitted and billed. Both halves of a ~$50
+    cycle, paid for and discarded, with nothing printed anywhere.
+
+    The `concurrency: kredme-pipeline` group used to make this unreachable by
+    serialising the workflows. `--unsourced-only` is documented as an operator
+    command run locally, off-cron, outside that group, which is exactly what
+    makes it reachable.
+    """
+    bst = ST.load_batch_state()
+    pending = ST.pending_batches(bst)
+    if not pending or getattr(args, "dry_run", False):
+        return 0
+    if getattr(args, "allow_concurrent_batch", False):
+        warn(f"{len(pending)} batch(es) already in flight and "
+             f"--allow-concurrent-batch was passed — proceeding.")
+        return 0
+    fail(f"{len(pending)} batch(es) already in flight; submitting another would "
+         f"overwrite results you have already paid for. Not fetching, not submitting.")
+    for b in pending:
+        warn(f"  {b.get('kind')} {b.get('batch_id')} — "
+             f"{b.get('request_count')} requests, submitted {b.get('submitted_at')}")
+    warn("collect them first:  python3 pipeline/cli.py advance")
+    warn("or override deliberately with --allow-concurrent-batch.")
+    return 2
+
+
+def _say_push_the_state(batch_id: str) -> None:
+    """The step that turns a paid batch into results, and it is a git command.
+
+    `pipeline-advance.yml` checks out branch `dev` and gates on the COMMITTED
+    pipeline/state/batch.json. A local run writes that file into the operator's
+    working tree and nowhere else, so a batch submitted locally and not pushed is
+    collected by nobody: the collector prints "No batch state file." forever, the
+    extraction is billed, and Anthropic drops the results after 29 days. The
+    rotation counters go with it, so the next run re-selects the same cards and
+    pays again — the exact double-payment the round-robin exists to prevent.
+
+    Printed at submit time, loudly, because a doc's last paragraph is not where
+    this belongs.
+    """
+    print("")
+    print("!!! NOT DONE YET — this batch is paid for and nobody will collect it")
+    print("!!! until pipeline/state is on branch dev, where pipeline-advance.yml")
+    print("!!! reads it. Results are dropped after 29 days.")
+    print("")
+    print("    git add pipeline/state")
+    print(f"    git commit -m 'Track extraction batch {batch_id}'")
+    print("    git push origin HEAD:dev")
+    print("")
+
+
 def cmd_refresh(args: argparse.Namespace) -> int:
     head("Resolving sources")
     try:
@@ -140,12 +311,105 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     overrides = S.load_overrides(REPO / "pipeline" / "sources_overrides.json")
     srcs = S.resolve_sources(cards, overrides=overrides)
 
+    # Loaded before selection, not after: the catch-up order reads how often each
+    # card has already been tried, so a weekly --limit walks the backlog.
+    st = ST.load_state()
+
     if args.card_id:
         srcs = [s for s in srcs if s.card_id == args.card_id]
         if not srcs:
             fail(f"no active card with id {args.card_id!r}")
             return 1
-    if args.limit:
+
+    # The set of cards allowed past the hash gate on evidence grounds. Empty on an
+    # ordinary run, which is what keeps the gate protecting every other card.
+    evidence_gap: set[str] = set()
+    still_gated = 0
+
+    if args.unsourced_only:
+        if args.force:
+            fail("--unsourced-only and --force ask for two different runs. "
+                 "--unsourced-only reads the cards that cite nothing; --force "
+                 "re-reads all %d active cards and bills a full sweep. Pick one."
+                 % len(srcs))
+            return 2
+
+        head("Selecting cards with no issuer evidence")
+        plan = P.plan_catch_up(srcs, cards, st, limit=args.limit or 0)
+
+        ok(f"{plan.sourced} of the {plan.active} card(s) this run considered have a "
+           f"reward rule citing a document; {plan.active - plan.sourced} do not")
+        if plan.provenance_only:
+            ok(f"{plan.provenance_only} of those carry a card-level stamp about an "
+               f"annual fee or a forex rate — real evidence, but not about a reward "
+               f"rule, so they stay in the queue")
+        if plan.exhausted:
+            ok(f"{plan.exhausted} card(s) left the queue: already read end to end at "
+               f"their current bytes and still citing nothing. Re-reading the same "
+               f"page returns the same nothing; they come back when it moves.")
+        if plan.unreachable:
+            warn(f"{len(plan.unreachable)} of those can never be extracted — no issuer "
+                 f"URL resolves for them:")
+            for missing in plan.unreachable:
+                warn(f"       {missing.card_id:<46} {missing.reason}")
+            warn("       fix these by hand in pipeline/sources_overrides.json; the "
+                 "pipeline cannot.")
+        if not plan.selected:
+            # Three very different situations, and calling them all "nothing to
+            # do" would hide the two that need a person.
+            if plan.unreachable and not plan.exhausted:
+                warn("nothing to read: every card here is unsourced AND unreachable. "
+                     "This pipeline cannot help them — see the list above.")
+            elif plan.exhausted:
+                ok("nothing left to read: every unsourced card has already been read "
+                   "at its current bytes. The next move is a better DOCUMENT, not "
+                   "another batch — try `discover --write`.")
+            else:
+                ok("every reachable card already cites a document — nothing to catch "
+                   "up on")
+            return 0
+
+        srcs = plan.selected
+        evidence_gap = {s.card_id for s in srcs}
+        still_gated = plan.active - len(srcs)
+
+        # WHAT THE MONEY BUYS, before the money is spent. The old line claimed all
+        # of these "have never been read", which was true of 31 of 332 — the rest
+        # had been fetched and extracted and billed already, and are re-selected
+        # by the plain weekly refresh anyway. Meanwhile the 31 it WAS true of had
+        # been read to completion at these exact bytes, so re-reading them buys
+        # nothing; they now leave the queue instead. An operator deciding whether
+        # to spend has to see that split, not a flattering blanket sentence.
+        ok(f"reading {len(srcs)} card(s) this run, {plan.deferred} still in the "
+           f"backlog for later runs ({plan.never_read} of the backlog has never "
+           f"been read)")
+        if plan.gate_blocked:
+            ok(f"{plan.gate_blocked} of the selection are blocked by the content-hash "
+               f"gate today — that is what this flag buys that an ordinary refresh "
+               f"cannot")
+        if plan.also_due:
+            warn(f"{plan.also_due} of the selection would ALSO be fetched by this "
+                 f"week's ordinary refresh — running both in one week pays for them "
+                 f"twice, in two separate batches. What this flag adds for them is "
+                 f"the --limit: an affordable slice instead of one over-budget sweep.")
+        if plan.re_reads:
+            warn(f"{plan.re_reads} of the selection have been selected before and "
+                 f"still cite nothing. A card read twice that yields nothing is a "
+                 f"document problem — run `discover --write` before paying again.")
+        if plan.on_shared_doc:
+            warn(f"{plan.on_shared_doc} of the selection are read from a page shared "
+                 f"with other cards. Asking for one card's mechanics out of a listing "
+                 f"of forty is the weakest thing this pipeline does; `discover "
+                 f"--write` fixes it offline and for free.")
+        ok(f"the gate is untouched for the other {still_gated} active card(s)")
+
+        rc = _preflight_budget(len(srcs), args, dry_run=args.dry_run)
+        if rc:
+            return rc
+        rc = _in_flight_guard(args)
+        if rc:
+            return rc
+    elif args.limit:
         srcs = srcs[: args.limit]
 
     cov = S.coverage_report(srcs)
@@ -155,11 +419,10 @@ def cmd_refresh(args: argparse.Namespace) -> int:
             warn(f"{n:>4} unresolved: {reason}")
 
     head("Fetching")
-    st = ST.load_state()
     resolved = [s for s in srcs if s.url]
     changed: list[tuple[S.Source, str]] = []
     failures: list[tuple[str, str, str]] = []
-    unchanged = failed = 0
+    unchanged = failed = gate_opened_on_evidence = 0
 
     # Fetch first, concurrently across issuers; then walk the cards in seed
     # order to record state. Two reasons for that split, both load-bearing:
@@ -190,7 +453,11 @@ def cmd_refresh(args: argparse.Namespace) -> int:
             failures.append((s.card_id, s.url, res.error or "no text extracted"))
             continue
 
-        if not args.force and not ST.has_changed(st, s.card_id, res.text_sha256):
+        extract, why = _gate_decision(
+            st, s.card_id, res.text_sha256,
+            force=args.force, evidence_gap=s.card_id in evidence_gap,
+        )
+        if not extract:
             unchanged += 1
             # Keep STATUS_DONE — rewriting it to "unchanged" would make has_changed
             # true again next week and undo the whole point of the hash gate.
@@ -200,6 +467,8 @@ def cmd_refresh(args: argparse.Namespace) -> int:
             )
             continue
 
+        if why == "evidence gap":
+            gate_opened_on_evidence += 1
         changed.append((s, res.text))
         # "fetched", not "done": the bytes are in hand but nothing has been extracted
         # from them yet. Only stage 3 may mark a card done, or a batch that expires
@@ -212,7 +481,31 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     ok(f"fetched {len(resolved)}: {len(changed)} changed, {unchanged} unchanged, {failed} failed")
     if unchanged and not args.force:
         ok(f"skipped {unchanged} cards whose source bytes did not move — this is the saving")
+    if gate_opened_on_evidence:
+        ok(f"{gate_opened_on_evidence} of these had NOT moved and were read anyway — "
+           f"they carry no citation, so an unchanged page proves nothing about them")
+        ok(f"the gate is unchanged for the other {still_gated} card(s) — nothing "
+           f"outside this selection was opened, which is what --force would have done")
+    elif evidence_gap:
+        ok(f"0 of the selection needed the gate opened — every one of them had moved "
+           f"or was already due, so an ordinary refresh would have fetched them too")
     _report_fetch_failures(failures)
+
+    # Every card this run SELECTED counts as an attempt, including the ones whose
+    # fetch failed. Counting only successes would park BOBCARD's unfetchable cards
+    # at the front of the queue forever and starve every other issuer.
+    #
+    # ONE timestamp for the whole run, and a SORTED walk. `evidence_gap` is a set,
+    # so its iteration order is hash-randomised per process, and `_now()` has
+    # one-second resolution — a loop that crossed a second boundary stamped a
+    # random subset of the week's cards a second later than the rest. `_attempt_key`
+    # tiers on (count, last_attempt_at), so that split one week's selection into two
+    # tiers at random and changed which cards later weeks picked. One run, one
+    # attempt time.
+    if evidence_gap and not args.dry_run:
+        attempted_at = _now()
+        for card_id in sorted(evidence_gap):
+            ST.note_evidence_attempt(st, card_id, attempted_at)
 
     if not changed:
         ok("nothing to extract this week")
@@ -237,8 +530,20 @@ def cmd_refresh(args: argparse.Namespace) -> int:
         )
         return 0
 
+    ceiling, refusal = _spend_ceiling(args, P.forecast_usd(len(reqs)))
+    if refusal:
+        fail(refusal)
+        return 2
+
+    # Checked here too, not only in the --unsourced-only branch: an ordinary
+    # refresh reaches this line as well, and the whole point of the guard is that
+    # nothing submits while a paid batch is uncollected.
+    rc = _in_flight_guard(args)
+    if rc:
+        return rc
+
     try:
-        batch_id = B.submit(reqs, max_usd=_max_usd(args))
+        batch_id = B.submit(reqs, max_usd=ceiling)
     except Exception as exc:  # noqa: BLE001 - surface any SDK/transport failure as exit 2
         fail(f"batch submission failed: {exc}")
         return 2
@@ -250,6 +555,7 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     ST.save_state(st)
 
     ok("stage 1 complete — pipeline-advance.yml will collect when the batch ends")
+    _say_push_the_state(batch_id)
     return 0
 
 
@@ -316,17 +622,69 @@ def cmd_advance(args: argparse.Namespace) -> int:
 
 
 def _max_usd(args: argparse.Namespace) -> "float | None":
-    """The spend ceiling for this invocation.
+    """The spend ceiling for this invocation, or None for "no ceiling".
 
     Absent flag -> config.MAX_BATCH_USD. `--max-usd 0` disables the check, which
     is spelled as an explicit zero rather than a separate --no-limit flag so it
     shows up verbatim in a workflow file and in `gh run view`, where somebody
     reviewing why a big batch went through can see it.
+
+    A NEGATIVE value is now rejected by the parser rather than silently read as
+    zero. `--max-usd -1` looked like a tighter limit and removed the limit
+    entirely, which is the wrong direction for a typo to fail in.
     """
     raw = getattr(args, "max_usd", None)
     if raw is None:
         return C.MAX_BATCH_USD
-    return None if float(raw) <= 0 else float(raw)
+    return None if float(raw) == 0 else float(raw)
+
+
+def _nonneg_usd(raw: str) -> float:
+    """argparse type for a dollar amount. Rejects negatives loudly."""
+    try:
+        value = float(raw)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"{raw!r} is not a number")
+    if value < 0:
+        raise argparse.ArgumentTypeError(
+            f"{value} is negative. A ceiling cannot be below zero; "
+            f"--max-usd 0 is how you remove it, and it needs --i-accept-usd too."
+        )
+    return value
+
+
+def _spend_ceiling(args: argparse.Namespace, forecast: float) -> "tuple[float | None, str]":
+    """(ceiling, refusal). A ceiling of None is only reachable deliberately.
+
+    `--max-usd 0` removes the only automatic protection this pipeline has, and it
+    used to do that from a single flag on a single command line with no second
+    step anywhere — no prompt, no confirmation, nothing. `refresh
+    --unsourced-only --max-usd 0` would have submitted the whole backlog.
+
+    So removing the ceiling now costs a second flag that carries a NUMBER:
+    `--i-accept-usd 120`, which must be at least the both-passes forecast this
+    run just printed. Typing the amount is the acknowledgement — it cannot be
+    pasted from a runbook that was written when the backlog was half the size,
+    because the forecast will have moved past it and the run refuses.
+    """
+    ceiling = _max_usd(args)
+    if ceiling is not None:
+        return ceiling, ""
+
+    accepted = getattr(args, "i_accept_usd", None)
+    if accepted is None:
+        return ceiling, (
+            f"--max-usd 0 removes the spend ceiling, so it needs you to name the "
+            f"amount you are accepting: add --i-accept-usd {forecast:.2f} (or more). "
+            f"This run forecasts ${forecast:,.2f} through both passes."
+        )
+    if float(accepted) + 1e-9 < forecast:
+        return ceiling, (
+            f"--i-accept-usd {float(accepted):,.2f} is below this run's "
+            f"${forecast:,.2f} both-passes forecast. Raise it deliberately or "
+            f"drop --max-usd 0."
+        )
+    return ceiling, ""
 
 
 def _redocument(
@@ -401,9 +759,30 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         return 1
 
     # Tracked, not scratch — stage 3 is a different cron run on a different runner.
+    #
+    # MERGED, not overwritten. This used to be a whole-file write, so a second
+    # extraction batch collected in the same window deleted the first batch's
+    # results — while the first batch's verification batch was already submitted
+    # and billed, and would then find nothing in extractions.json to match. Both
+    # halves of that cycle were paid for and thrown away, silently. Merging on
+    # custom_id keeps every batch's paid output; a card re-extracted later
+    # legitimately replaces its own older entry.
     C.EXTRACTIONS.parent.mkdir(parents=True, exist_ok=True)
+    merged: dict = {}
+    if C.EXTRACTIONS.exists():
+        try:
+            prior = json.loads(C.EXTRACTIONS.read_text(encoding="utf-8"))
+            if isinstance(prior, dict):
+                merged.update(prior)
+        except (OSError, json.JSONDecodeError):
+            warn("extractions.json was unreadable — starting a fresh one")
+    kept_from_before = len(set(merged) - set(results))
+    merged.update(results)
+    if kept_from_before:
+        ok(f"kept {kept_from_before} extraction(s) from an earlier batch that stage 3 "
+           f"has not consumed yet")
     C.EXTRACTIONS.write_text(
-        json.dumps(results, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        json.dumps(merged, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
     ST.mark_batch(bst, bid, "collected")
@@ -475,7 +854,11 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         ST.save_batch_state(bst)
         return 0
 
-    vid = B.submit(vreqs, max_usd=_max_usd(args))
+    vceiling, vrefusal = _spend_ceiling(args, est["est_usd"])
+    if vrefusal:
+        fail(vrefusal)
+        return 2
+    vid = B.submit(vreqs, max_usd=vceiling)
     ST.add_batch(bst, batch_id=vid, kind="verify", submitted_at=_now(), count=len(vreqs))
     ST.save_batch_state(bst)
     ok(f"submitted verification batch {vid}")
@@ -576,13 +959,24 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
             kept.append(o)
             survived += 1
 
+        # DONE MEANS THE CYCLE FINISHED, not that something survived it.
+        #
+        # This call used to sit below the `continue` on the next branch, so a card
+        # whose observations were all refuted or unverified was never marked done.
+        # has_changed() returns True for any status that is not done, so from that
+        # week on the ORDINARY, unflagged, scheduled Monday refresh re-extracted
+        # that card every single week, forever, with no byte having moved. On the
+        # 17-Aug run 232 of 371 extractions were discarded, so most cards land
+        # here. state.mark_done's own docstring already said "including when the
+        # verdict was 'nothing survived', which is a completed cycle" — the code
+        # contradicted its contract, and the contract was right.
+        ST.mark_done(sources_state, card_id)
+
         entry = by_id.get(card_id)
         if entry is None or not kept:
             continue
         src = ST.get_source(sources_state, card_id) or {}
         proposals.extend(D.observations_to_proposals(entry, kept, src.get("url", "")))
-
-        ST.mark_done(sources_state, card_id)
 
     ST.save_state(sources_state)
     ok(f"{survived} observations survived verification, {killed} refuted or unverified")
@@ -755,6 +1149,46 @@ def cmd_metrics(args: argparse.Namespace) -> int:
     if args.write:
         ST.append_metrics({"run_at": _now(), **cur})
         ok("appended to pipeline/state/metrics.jsonl")
+    ok("for the issuer-by-issuer evidence backlog and what clearing it costs, run: "
+       "python3 pipeline/cli.py evidence")
+    return 0
+
+
+# ---------------------------------------------------------------------------
+# evidence — how far from "verified" the catalogue is, and what finishing costs
+#
+# A sibling of `metrics` rather than more rows inside it, for two reasons that are
+# about the reader rather than the code.
+#
+# `metrics` answers "did this week make the data better than last week". Its
+# output is a flat row appended to metrics.jsonl and rendered as a trend table
+# with sparklines, and report.compute_metrics is documented as flat BY DESIGN —
+# a per-issuer breakdown is a nested object, cannot be sparklined or diffed, and
+# would push a 10-row table to 30 rows of which 20 never move.
+#
+# `evidence` answers a different question, asked once and acted on: "how much of
+# this can we prove, and what does finishing cost". That is a snapshot for a
+# spending decision, not a trend. It also has to stay stable — `metrics` output is
+# pasted verbatim into every weekly PR body, so adding a cost forecast there would
+# put a dollar figure in front of a reviewer who is deciding something else.
+# ---------------------------------------------------------------------------
+def cmd_evidence(args: argparse.Namespace) -> int:
+    try:
+        cards = S.load_cards()
+    except (ValueError, OSError) as exc:
+        fail(f"could not read seed/cards.json: {exc}")
+        return 1
+
+    overrides = S.load_overrides(REPO / "pipeline" / "sources_overrides.json")
+    srcs = S.resolve_sources(cards, overrides=overrides)
+    rep = P.evidence_report(
+        cards, srcs, ST.load_state(), per_week=args.per_week, max_usd=_max_usd(args)
+    )
+
+    if args.json:
+        print(json.dumps(rep, indent=2, sort_keys=True, ensure_ascii=False))
+    else:
+        print(P.render_evidence_report(rep))
     return 0
 
 
@@ -792,13 +1226,41 @@ def main() -> int:
     r.add_argument("--card-id", default="")
     r.add_argument("--limit", type=int, default=0)
     r.add_argument("--force", action="store_true", help="ignore content hashes (full sweep)")
+    r.add_argument(
+        "--unsourced-only",
+        action="store_true",
+        help="read only the cards whose REWARD RULES cite no document, least-recently "
+             "tried first and own-page-before-shared-page, skipping any card already "
+             "read end to end at its current bytes. Opens the content-hash gate for "
+             "exactly those card ids; every other card stays gated. Refused together "
+             "with --force. Composes with --limit (spread the backlog over weeks), "
+             "--card-id and --dry-run. The run prints how much of the selection the "
+             "gate was actually blocking before it prints the cost. See `evidence` for "
+             "the size of the backlog and what clearing it costs.",
+    )
     r.add_argument("--dry-run", action="store_true")
-    r.add_argument("--max-usd", type=float, default=None, help="cap this batch's estimated spend in USD; 0 disables the cap. Default comes from config.MAX_BATCH_USD.")
+    r.add_argument("--max-usd", type=_nonneg_usd, default=None, help="cap this batch's estimated spend in USD; 0 disables the cap and then requires --i-accept-usd N. Negative is rejected. The cap is PER BATCH — verification is a second batch against the same cap. Default comes from config.MAX_BATCH_USD.")
+    r.add_argument(
+        "--i-accept-usd", type=_nonneg_usd, default=None,
+        help="the amount you are knowingly accepting when --max-usd 0 removes the "
+             "ceiling. Must be at least this run's printed both-passes forecast.",
+    )
+    r.add_argument(
+        "--allow-concurrent-batch", action="store_true",
+        help="submit even though a batch is still in flight. Off by default: a "
+             "second extraction batch collected in the same window used to delete "
+             "the first one's paid-for results.",
+    )
     r.set_defaults(fn=cmd_refresh)
 
     a = sub.add_parser("advance", help="stages 2-3: collect batches, propose a patch")
     a.add_argument("--dry-run", action="store_true")
-    a.add_argument("--max-usd", type=float, default=None, help="cap this batch's estimated spend in USD; 0 disables the cap. Default comes from config.MAX_BATCH_USD.")
+    a.add_argument("--max-usd", type=_nonneg_usd, default=None, help="cap this batch's estimated spend in USD; 0 disables the cap and then requires --i-accept-usd N. Negative is rejected. The cap is PER BATCH — verification is a second batch against the same cap. Default comes from config.MAX_BATCH_USD.")
+    a.add_argument(
+        "--i-accept-usd", type=_nonneg_usd, default=None,
+        help="the amount you are knowingly accepting when --max-usd 0 removes the "
+             "ceiling. Must be at least this run's printed both-passes forecast.",
+    )
     a.add_argument(
         "--recollect",
         metavar="BATCH_ID",
@@ -818,6 +1280,19 @@ def main() -> int:
     m = sub.add_parser("metrics", help="print the weekly numbers")
     m.add_argument("--write", action="store_true")
     m.set_defaults(fn=cmd_metrics)
+
+    e = sub.add_parser(
+        "evidence",
+        help="how many cards cite a document, by issuer, and what finishing costs",
+    )
+    e.add_argument("--per-week", type=int, default=40,
+                   help="cards per weekly run, for the schedule and per-run cost")
+    e.add_argument("--json", action="store_true", help="the numbers only")
+    e.add_argument("--max-usd", type=_nonneg_usd, default=None,
+                   help="price the per-batch ceiling against this instead of "
+                        "config.MAX_BATCH_USD; 0 means no ceiling. `evidence` only "
+                        "reports, so no acknowledgement is needed here.")
+    e.set_defaults(fn=cmd_evidence)
 
     d = sub.add_parser("discover", help="find each card's own issuer page")
     d.add_argument("--issuer", default="", help="one issuer slug, e.g. hdfc")
