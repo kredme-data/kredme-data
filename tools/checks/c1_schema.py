@@ -201,6 +201,12 @@ EXCLUSION_SPEC = {
     "confidence": _f("str"),
     "source_quote": _f("str"),
     "source_url": _f("str"),
+    # Added 2026-08-19 with the writer that started citing these rows. The other
+    # two blocks that carry provenance already accept both keys; leaving them off
+    # here would have made every correctly-cited exclusion row raise
+    # L1.UNKNOWN_KEY, which teaches a reader to ignore that warning.
+    "source_doc_type": _f("str"),
+    "source_fetched_on": _f("date"),
     "_sources": _f("array"),
 }
 
@@ -223,6 +229,8 @@ MILESTONE_SPEC = {
     "confidence": _f("str"),
     "source_quote": _f("str"),
     "source_url": _f("str"),
+    "source_doc_type": _f("str"),
+    "source_fetched_on": _f("date"),
     "_sources": _f("array"),
 }
 
@@ -231,6 +239,14 @@ FUEL_SPEC = {
     "min_txn_amount": _f("num", required=True),
     "max_txn_amount": _f("num", required=True),
     "monthly_cap": _f("num", required=True),
+    # The surcharge waiver is a number a cardholder plans around, so it is
+    # citable like any other. Same five keys as the other blocks.
+    "confidence": _f("str"),
+    "source_quote": _f("str"),
+    "source_url": _f("str"),
+    "source_doc_type": _f("str"),
+    "source_fetched_on": _f("date"),
+    "_sources": _f("array"),
 }
 
 REDEMPTION_SPEC = {
