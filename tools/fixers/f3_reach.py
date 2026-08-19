@@ -55,6 +55,12 @@ Every gate below is built to fail towards "leave it alone".
                             from ctx.app_category_names()
     GATE 5  GUARDRAIL   per row, never a regex over the file: does THIS card pay
                         anything on the category we are about to switch off?
+    GATE 6  FAMILY      the same question asked of the whole category FAMILY,
+                        because the app's categories are a tree. 'railways' is a
+                        child of 'travel', so a card whose only earn is `travel`
+                        must not have 'railways' switched on. GATE 5 compares
+                        names and let exactly that through onto two live cards
+                        before this gate existed; see _family_closed().
 
 GATE 5 is the BPCL Octane rule, and it is written per-row because the near-miss
 that created it was a sweep that looked at the file and not at the card. Octane
@@ -81,11 +87,14 @@ Measured: 23 rows are left inert by those six decisions. Leaving a defect
 standing is the cheaper mistake, every time.
 
 MEASURED OUTCOME (worktree at 43d54e4, app checkout visible, 2026-08-19)
-    428 exclusion rows retyped, of 983 inert   -> L6.EXCLUSION_TYPE_INERT
+    426 exclusion rows retyped, of 983 inert   -> L6.EXCLUSION_TYPE_INERT
                                                   220 -> 187 errors, 33 cards
                                                   clear, 187 do not
-    555 rows left alone, and the census names every reason
-     10 rows blocked by the per-row guardrail   -> manual review, never auto
+    557 rows left alone, and the census names every reason
+     12 rows blocked by the per-row guardrail   -> manual review, never auto
+        (was 428 retyped / 10 blocked before GATE 6. The two rows that moved are
+        the railways-under-travel pair named there; they were applied to
+        seed/cards.json by the run at f9081f6 and f5_exclusions puts them back.)
       1 dropped category bonus retyped
      13 inactive cards proposed for removal     -> 'likely', gated, see §5
     712 -> 679 errors from the data edits alone; 679 -> 647 if the 13 card
@@ -443,6 +452,42 @@ def _card_pays_on(entry, merchants, mcc_owner) -> set:
 
 
 # --------------------------------------------------------------------------- #
+# GATE 6 — the FAMILY walk, and why GATE 5 alone was not enough
+# --------------------------------------------------------------------------- #
+def _family_closed(pays: set, ctx) -> set:
+    """`pays`, widened to every category in the same family as anything the card
+    earns on — its ancestors and its descendants in the app's own tree.
+
+    GATE 5 compares category NAMES. The app's categories are a TREE: 'railways'
+    is a child of 'travel', 'food_delivery' is a child of 'dining'. A card whose
+    only reward rule is `category_id: travel` and whose exclusion list says
+    'railways' passed GATE 5 because the two strings differ — and the engine
+    then removes that card at every railway merchant, taking the travel rule
+    with it, because _isExcluded runs at STEP 1 before any rule is matched.
+
+    That is not hypothetical. Before this gate existed the sweep wrote exactly
+    that row onto two live cards, kotak_mahindra_bank_royale_signature and
+    rbl_bank_world_safari, and the validator could not see it either:
+    L6.RULE_EXCLUDED_BY_OWN_CARD compares names for equality and never walks the
+    tree.
+
+    The walk itself lives in f5_exclusions.family_index, so there is ONE
+    definition of "same family" and the two modules cannot drift apart. If f5 is
+    unavailable this returns `pays` unchanged: a missing module must cost the
+    extra protection, never the whole run.
+    """
+    try:
+        from fixers.f5_exclusions import family_index
+    except Exception:                                   # noqa: BLE001
+        return pays
+    fams = family_index(getattr(ctx, "app_categories", None))
+    out = set(pays)
+    for p in pays:
+        out |= fams.get(p, set())
+    return out
+
+
+# --------------------------------------------------------------------------- #
 # GATE 1-4 — classify one exclusion value
 # --------------------------------------------------------------------------- #
 def classify_exclusion(value: str, app_categories: set):
@@ -520,7 +565,8 @@ def _plan_exclusions(ctx, findings, tally):
     for _i, entry, inner, cid in ctx.entries():
         if cid not in wanted:
             continue
-        pays = _card_pays_on(entry, merchants, mcc_owner)
+        # GATE 5 (what this card pays on) widened by GATE 6 (the family walk).
+        pays = _family_closed(_card_pays_on(entry, merchants, mcc_owner), ctx)
         # Two different issuer sentences on one card can mean the same category
         # ("government transactions" and "tax payments"). Both are retyped and
         # both are kept: the engine stops at the first match either way, and each

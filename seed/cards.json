@@ -45867,10 +45867,9 @@
     "also_excludes_from_threshold": 1
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "railways",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:railway transactions"
+    "exclusion_type": "other",
+    "exclusion_value": "railway transactions",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [
@@ -52121,10 +52120,9 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "category",
+    "exclusion_type": "other",
     "exclusion_value": "railways",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:railways"
+    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "category",
