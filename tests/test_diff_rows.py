@@ -46,6 +46,7 @@ MERCHANTS = {
         {"id": "utilities", "display_name": "Utility Bill Payments", "parent_id": None},
         {"id": "jewellery", "display_name": "Jewellery", "parent_id": None},
         {"id": "wallet_load", "display_name": "Wallet Loads", "parent_id": None},
+        {"id": "education", "display_name": "Education & Tuition", "parent_id": None},
     ],
     "merchants": [
         {"merchant_name": "indian_oil", "display_name": "IndianOil",
@@ -75,6 +76,8 @@ APP_CATEGORIES = {
          "parent_id": None},
         {"id": 9, "category_name": "wallet_load", "display_name": "Wallet Loads",
          "parent_id": None},
+        {"id": 10, "category_name": "education",
+         "display_name": "Education & Tuition", "parent_id": None},
     ],
 }
 
@@ -630,6 +633,59 @@ class TestExclusions(unittest.TestCase):
             category="rent_and_wallet",
             source_quote="Rent and wallet load transactions earn no Reward Points."))
         self.assertEqual(p.blocked_reason, diff.REASON_UNTYPEABLE)
+
+    def test_an_exclusion_scoped_to_a_payment_route_is_refused(self):
+        # HDFC's own sentence, on both Tata Neu cards and on Millennia. Stored as
+        # `category: education` it would stop the card earning on a fee paid
+        # straight to the school — which the card DOES pay on — and it would do
+        # that before any bonus rule ran. The bank excluded a route, not a
+        # category, and an exclusion row has nowhere to put the route.
+        p = propose(card(), obs(
+            "excluded_category", "third-party-education-payments",
+            unit="category_slug", category="education",
+            source_quote="Education payments made through third-party apps like "
+                         "(but not limited to) CRED, Cheq, MobiKwik, and others "
+                         "will NOT earn NeuCoins."))
+        self.assertEqual(p.blocked_reason, diff.REASON_EXCLUSION_SCOPED)
+
+    def test_the_route_test_reads_the_value_even_when_the_quote_is_bare(self):
+        # The extractor recorded the scope in its own value and the wider word in
+        # `category`. Taking the wider of the two is the whole mistake.
+        p = propose(card(), obs(
+            "excluded_category", "education payments via third party apps",
+            unit="category_slug", category="education",
+            source_quote="Such education payments will NOT earn Reward Points."))
+        self.assertEqual(p.blocked_reason, diff.REASON_EXCLUSION_SCOPED)
+
+    def test_an_inverted_route_scope_is_refused_rather_than_stored_backwards(self):
+        # SBI's PhonePe cards exclude utilities only when they are NOT paid on
+        # PhonePe. A plain `category: utilities` row states the opposite of that.
+        p = propose(card(), obs(
+            "excluded_category", "Utilities (non-PhonePe App spends)",
+            unit="category_slug", category="utilities",
+            source_quote="Utilities (non-PhonePe App spends) 4900, 4814, 4899"))
+        self.assertEqual(p.blocked_reason, diff.REASON_EXCLUSION_SCOPED)
+
+    def test_one_route_scoped_item_does_not_veto_the_rest_of_the_list(self):
+        # Flipkart Super Elite's exclusion list carries "Third party integrated
+        # purchase like Flipkart Health" beside six plain items. Refusing the
+        # whole sentence would throw away six good exclusions to catch one bad
+        # one, so the test is per clause, not per sentence.
+        p = propose(card(), obs(
+            "excluded_category", "wallet load", unit="category_slug",
+            category="wallet load",
+            source_quote="Supercoins shall not be eligible for Fuel Spends, EMI "
+                         "transactions, Wallet loading transactions, Purchase of "
+                         "Jewellery items, Third party integrated purchase like "
+                         "Flipkart Health"))
+        self.assertTrue(p.auto_applicable, p.blocked_reason)
+
+    def test_a_plain_unconditional_exclusion_is_untouched_by_the_route_test(self):
+        p = propose(card(), obs(
+            "excluded_category", "Jewellery", unit="category_slug",
+            category="jewellery",
+            source_quote="Purchase of jewellery or gold coins earns no points."))
+        self.assertTrue(p.auto_applicable, p.blocked_reason)
 
     def test_an_already_correct_exclusion_only_gains_its_citation(self):
         entry = card(exclusion_rules=[

@@ -277,6 +277,7 @@ REASON_QUOTE_LACKS_NUMBER = "quote_lacks_the_number"
 REASON_QUOTE_LACKS_RATE = "quote_does_not_state_the_rule_rate"
 REASON_CARD_EARNS = "card_earns_in_that_category"
 REASON_UNTYPEABLE = "exclusion_not_typeable"
+REASON_EXCLUSION_SCOPED = "exclusion_narrower_than_a_row"
 
 # Reasons gate() cannot overturn because they are about the shape of the input, not
 # about whether the number is trustworthy.
@@ -284,7 +285,7 @@ _STRUCTURAL_REASONS = (
     REASON_UNMAPPED, REASON_UNKNOWN_CARD, REASON_MALFORMED,
     REASON_NO_ROW, REASON_AMBIGUOUS_ROW, REASON_CONFLICT, REASON_ROW_UNIT,
     REASON_CAP_NO_PERIOD, REASON_NAME_DISAGREES, REASON_CARD_EARNS,
-    REASON_UNTYPEABLE, REASON_QUOTE_LACKS_RATE,
+    REASON_UNTYPEABLE, REASON_QUOTE_LACKS_RATE, REASON_EXCLUSION_SCOPED,
 )
 
 
@@ -476,6 +477,7 @@ _NOT_A_READING = (
     REASON_NO_QUOTE, REASON_WEASEL, REASON_NOT_ISSUER, REASON_QUOTE_LACKS_NUMBER,
     REASON_NO_ROW, REASON_AMBIGUOUS_ROW, REASON_ROW_UNIT, REASON_CAP_NO_PERIOD,
     REASON_NAME_DISAGREES, REASON_CARD_EARNS, REASON_UNTYPEABLE,
+    REASON_EXCLUSION_SCOPED,
 )
 
 
@@ -1287,6 +1289,66 @@ def _card_earns_in(entry: dict, family: frozenset, tax) -> bool:
     return False
 
 
+# --------------------------------------------------------------------------
+# Is the issuer's exclusion narrower than an exclusion row can say?
+# --------------------------------------------------------------------------
+# An exclusion row carries a type and a value and nothing else, and the engine
+# applies it to EVERY transaction in that category whatever rail it arrived on —
+# before any reward rule is even matched (recommendation_engine.dart:308-309).
+# So a row may only carry an exclusion the issuer states unconditionally.
+#
+# Both Tata Neu pages say:
+#   "Education payments made through third-party apps like (but not limited to)
+#    CRED, Cheq, MobiKwik, and others will NOT earn NeuCoins."
+# Stored as `category: education` that zeroes a fee paid DIRECTLY to a school —
+# which both cards do pay on, at 1.5% and 1% — and it zeroes it before the 5%
+# Tata-brand rules run. The issuer excluded a payment route, not a category.
+#
+# The extractor was not wrong. It recorded the scope in its own value,
+# "third-party-education-payments", and only its `category` field said
+# "education". Taking the wider of the two is the mistake, and without this it
+# was about to be made on two of the ten cards — the exact "wrongly-typed
+# exclusion zeroes the card" scar, arriving through the one door left open.
+_NARROWING_WORDS = frozenset({
+    "third", "thirdparty", "party", "parties",
+    "app", "apps", "application", "applications",
+    "aggregator", "aggregators", "platform", "platforms",
+    "gateway", "gateways", "intermediary", "intermediaries",
+})
+
+_WORD = re.compile(r"[a-z0-9]+")
+
+# Clause, not sentence. An issuer's exclusion list routinely carries one item that
+# IS route-scoped ("Third party integrated purchase like Flipkart Health") beside
+# six that are not; refusing the whole sentence would throw away six good
+# exclusions to catch one bad one.
+_CLAUSE_SPLIT = re.compile(r"[,;:.()\[\]•–—/\n]|\band\b|\bor\b")
+
+
+def _words(text: object) -> set:
+    if not isinstance(text, (str, int, float)) or isinstance(text, bool):
+        return set()
+    return set(_WORD.findall(str(text).lower()))
+
+
+def _exclusion_is_route_scoped(obs: dict, quote: object, slugs: tuple) -> bool:
+    """True when the issuer tied this exclusion to a payment route we cannot store."""
+    cat_words = _words(obs.get("category"))
+    slug_words = {w for s in slugs for w in _WORD.findall(str(s).lower())}
+    known = cat_words | slug_words
+    # 1. The observation's own value says more than its category does.
+    if (_words(obs.get("value")) - known) & _NARROWING_WORDS:
+        return True
+    # 2. The clause of the sentence that names this category also names a route.
+    if not known:
+        return False
+    for clause in _CLAUSE_SPLIT.split(str(quote or "")):
+        cw = _words(clause)
+        if (cw & known) and (cw & _NARROWING_WORDS):
+            return True
+    return False
+
+
 def _propose_exclusion(entry: dict, card_id: str, obs: dict, url: str, quote: str,
                        confidence: str, tax, fetched_on: str) -> Proposal:
     target = _ROW_TARGETS["excluded_category"]
@@ -1310,6 +1372,13 @@ def _propose_exclusion(entry: dict, card_id: str, obs: dict, url: str, quote: st
     else:
         return _blocked_row(card_id, "excluded_category", target, obs, url, quote,
                             confidence, REASON_UNTYPEABLE, fetched_on)
+
+    # 1b. Did the issuer exclude the CATEGORY, or only one route into it? A row
+    #     cannot say "but only when paid through CRED", so storing a route-scoped
+    #     exclusion silently widens it to every transaction in the category.
+    if _exclusion_is_route_scoped(obs, quote, slugs):
+        return _blocked_row(card_id, "excluded_category", target, obs, url, quote,
+                            confidence, REASON_EXCLUSION_SCOPED, fetched_on)
 
     # 2. THE GUARDRAIL.
     if _card_earns_in(entry, family, tax):
@@ -1898,6 +1967,7 @@ _REASON_TITLES = {
     REASON_CARD_EARNS: "This card DOES earn there, so we will not switch it off",
     REASON_UNTYPEABLE: "The app has no category for this kind of spend",
     REASON_QUOTE_LACKS_RATE: "The sentence proves the cap but not what the rule pays",
+    REASON_EXCLUSION_SCOPED: "The bank excluded one payment route, not the category",
 }
 
 _REASON_HELP = {
@@ -1986,6 +2056,14 @@ _REASON_HELP = {
         "EMI, ATM withdrawals and 'UPI through another app' are real exclusions the "
         "bank publishes, and the app has no category for any of them. Stored anyway, "
         "they would sit in the file looking like protection and do nothing."
+    ),
+    REASON_EXCLUSION_SCOPED: (
+        "The bank did not say this category earns nothing — it said this category "
+        "earns nothing WHEN PAID A PARTICULAR WAY ('education payments made through "
+        "third-party apps like CRED'). An exclusion row has no room for the 'when', "
+        "so storing it would stop the card earning on that category however it was "
+        "paid, including straight to the merchant, and it would do that before any "
+        "bonus rule runs. Needs a person, or a schema that can hold the route."
     ),
     REASON_QUOTE_LACKS_RATE: (
         "Everything the bank said about this rule proves its cap or its limit, and "
