@@ -5674,10 +5674,11 @@
     "_retyped_from": "other:wallet reloads"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "jewellery",
+    "exclusion_type": "other",
+    "exclusion_value": "purchase of gold items",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:purchase of gold items"
+    "_retyped_from": "other:purchase of gold items",
+    "_reverted_from": "category:jewellery"
    },
    {
     "exclusion_type": "other",
@@ -8332,10 +8333,11 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "jewellery",
+    "exclusion_type": "other",
+    "exclusion_value": "gold spends",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gold spends"
+    "_retyped_from": "other:gold spends",
+    "_reverted_from": "category:jewellery"
    }
   ],
   "milestone_rules": [
@@ -8849,10 +8851,11 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "jewellery",
+    "exclusion_type": "other",
+    "exclusion_value": "gold",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gold"
+    "_retyped_from": "other:gold",
+    "_reverted_from": "category:jewellery"
    },
    {
     "exclusion_type": "category",
@@ -10246,10 +10249,11 @@
     "_retyped_from": "other:wallet reload"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "jewellery",
+    "exclusion_type": "other",
+    "exclusion_value": "purchase of gold items",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:purchase of gold items"
+    "_retyped_from": "other:purchase of gold items",
+    "_reverted_from": "category:jewellery"
    },
    {
     "exclusion_type": "txn_type",
@@ -10837,10 +10841,11 @@
     "_retyped_from": "other:govt"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "jewellery",
+    "exclusion_type": "other",
+    "exclusion_value": "gold",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gold"
+    "_retyped_from": "other:gold",
+    "_reverted_from": "category:jewellery"
    },
    {
     "exclusion_type": "category",
@@ -16497,10 +16502,11 @@
     "also_excludes_from_threshold": 1
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "gift or prepaid card loads",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gift or prepaid card loads"
+    "_retyped_from": "other:gift or prepaid card loads",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "other",
@@ -19102,10 +19108,11 @@
     "also_excludes_from_threshold": 1
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "gift or prepaid card loads",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gift or prepaid card loads"
+    "_retyped_from": "other:gift or prepaid card loads",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "category",
@@ -21418,10 +21425,11 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "prepaid cards",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:prepaid cards"
+    "_retyped_from": "other:prepaid cards",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "category",
@@ -22439,10 +22447,11 @@
     "_retyped_from": "other:rental payments"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "jewellery",
+    "exclusion_type": "other",
+    "exclusion_value": "gold purchases",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gold purchases"
+    "_retyped_from": "other:gold purchases",
+    "_reverted_from": "category:jewellery"
    }
   ],
   "milestone_rules": [
@@ -23240,10 +23249,11 @@
     "also_excludes_from_threshold": 1
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "wallet reloads",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet reloads"
+    "_retyped_from": "other:wallet reloads",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "category",
@@ -23463,10 +23473,11 @@
     "_retyped_from": "fuel purchases"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "wallet reloads",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet reloads"
+    "_retyped_from": "other:wallet reloads",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "category",
@@ -24348,10 +24359,11 @@
     "also_excludes_from_threshold": 1
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "wallet load",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet load"
+    "_retyped_from": "other:wallet load",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "other",
@@ -29118,10 +29130,11 @@
     "also_excludes_from_threshold": 0
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "wallet loads (e.g. paytm)",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet loads (e.g. paytm)"
+    "_retyped_from": "other:wallet loads (e.g. paytm)",
+    "_reverted_from": "category:wallet_load"
    }
   ],
   "milestone_rules": [],
@@ -30972,10 +30985,11 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "category",
-    "exclusion_value": "fuel",
+    "exclusion_type": "other",
+    "exclusion_value": "fuel purchases are not eligible for reward points",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "fuel purchases are not eligible for reward points"
+    "_retyped_from": "fuel purchases are not eligible for reward points",
+    "_reverted_from": "category:fuel"
    }
   ],
   "milestone_rules": [],
@@ -59071,10 +59085,11 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "e-wallet loading transactions",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:e-wallet loading transactions"
+    "_retyped_from": "other:e-wallet loading transactions",
+    "_reverted_from": "category:wallet_load"
    }
   ],
   "milestone_rules": [
@@ -59300,10 +59315,11 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "wallet loading",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet loading"
+    "_retyped_from": "other:wallet loading",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "mcc",
@@ -59603,10 +59619,11 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "category",
-    "exclusion_value": "wallet_load",
+    "exclusion_type": "other",
+    "exclusion_value": "wallet loading",
     "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet loading"
+    "_retyped_from": "other:wallet loading",
+    "_reverted_from": "category:wallet_load"
    },
    {
     "exclusion_type": "mcc",
