@@ -680,6 +680,27 @@ class TestExclusions(unittest.TestCase):
                          "Flipkart Health"))
         self.assertTrue(p.auto_applicable, p.blocked_reason)
 
+    def test_a_new_row_records_whether_the_waiver_total_is_hit_too(self):
+        # Axis's Atlas sentence puts "spend based fee waiver" in the heading and
+        # the categories in the list under it, so the test reads the sentence.
+        entry, _applied, _ps = place(card(), [obs(
+            "excluded_category", "Jewellery", unit="category_slug",
+            category="jewellery",
+            source_quote="Excluded spend categories for reward earns / spend "
+                         "based fee waiver: Gold/ Jewellery, Rent, Fuel.")])
+        row = [r for r in entry["exclusion_rules"]
+               if r.get("exclusion_value") == "jewellery"][0]
+        self.assertEqual(row["also_excludes_from_threshold"], 1)
+
+    def test_a_rewards_only_exclusion_still_counts_towards_the_waiver(self):
+        entry, _applied, _ps = place(card(), [obs(
+            "excluded_category", "Jewellery", unit="category_slug",
+            category="jewellery",
+            source_quote="Purchase of jewellery or gold coins earns no points.")])
+        row = [r for r in entry["exclusion_rules"]
+               if r.get("exclusion_value") == "jewellery"][0]
+        self.assertEqual(row["also_excludes_from_threshold"], 0)
+
     def test_a_plain_unconditional_exclusion_is_untouched_by_the_route_test(self):
         p = propose(card(), obs(
             "excluded_category", "Jewellery", unit="category_slug",

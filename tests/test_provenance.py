@@ -812,7 +812,11 @@ class TestEvidenceReport(unittest.TestCase):
         self.rep = P.evidence_report(self.cards, self.srcs)
 
     def test_it_reports_the_real_catalogue(self):
-        self.assertEqual(self.rep["cards_active"], 370)
+        # 369, not 370, since 2026-08-19: HDFC's own MoneyBack page says
+        # "Sourcing of this Credit Card has been stopped", so the card is now
+        # is_active 0 like the other thirteen withdrawn cards. A card left the
+        # active count because the bank withdrew it, not because one went missing.
+        self.assertEqual(self.rep["cards_active"], 369)
         self.assertEqual(
             self.rep["cards_sourced"] + self.rep["cards_unsourced"],
             self.rep["cards_active"],

@@ -1349,6 +1349,25 @@ def _exclusion_is_route_scoped(obs: dict, quote: object, slugs: tuple) -> bool:
     return False
 
 
+# Does the bank's sentence also take this spend out of the fee-waiver total?
+# Axis says of Atlas: "Excluded spend categories for reward earns / spend based
+# fee waiver: ... Rent, Insurance, Wallet, Government Institutions, Utilities,
+# Fuel." A new row hard-coded to 0 states the opposite of that sentence — that
+# fuel spend still counts towards the waiver — and inventing nothing means not
+# inventing this either. Read over the whole sentence, not the clause: the bank
+# puts "fee waiver" in the heading and the categories in the list below it.
+#
+# The field is inert in the app today (credit_card.dart:243 parses it and nothing
+# reads it), so this corrects the record rather than a screen.
+_FEE_WAIVER_PHRASE = re.compile(
+    r"fee\s*waiver|waiver\s+of\s+(?:the\s+)?(?:annual|renewal|joining)\s+fee"
+    r"|spend[s]?\s+counted|milestone\s+spend", re.IGNORECASE)
+
+
+def _excludes_from_threshold(quote: object) -> int:
+    return 1 if _FEE_WAIVER_PHRASE.search(str(quote or "")) else 0
+
+
 def _propose_exclusion(entry: dict, card_id: str, obs: dict, url: str, quote: str,
                        confidence: str, tax, fetched_on: str) -> Proposal:
     target = _ROW_TARGETS["excluded_category"]
@@ -1436,7 +1455,8 @@ def _propose_exclusion(entry: dict, card_id: str, obs: dict, url: str, quote: st
         unit=UNIT_CATEGORY, source_url=url, source_quote=quote, confidence=confidence,
         delta_pct=None, block="exclusion_rules",
         new_row=(("exclusion_type", etype), ("exclusion_value", evalue),
-                 ("also_excludes_from_threshold", 0)),
+                 ("also_excludes_from_threshold",
+                  _excludes_from_threshold(quote))),
         source_fetched_on=fetched_on,
     )
 
