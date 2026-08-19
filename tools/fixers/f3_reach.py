@@ -10,7 +10,6 @@ say so out loud. It never guesses a rate, a category or a card.
 
 Codes handled — and, honestly, what each one gets:
 
-    L6.EXCLUSION_TYPE_INERT        edits (the big one; most rows stay inert)
     L6.CATEGORY_BONUS_DROPPED      edits (narrow: only where a channel is stated)
     L6.INACTIVE_CARD_STILL_RANKS   edits, 'likely' only — a product decision
     L6.CHANNEL_NEVER_MATCHES       NO EDITS — see §4
@@ -24,84 +23,29 @@ this module saying "I looked at all 75 of these and the right answer is to leave
 them alone", and `census()` prints the count and the reason so that nobody has
 to re-derive it later.
 
+L6.EXCLUSION_TYPE_INERT USED TO BE HERE AND IS NOT ANY MORE. See §1.
 
-§1  THE EXCLUSION REMAP — why it is guarded four deep
------------------------------------------------------
-The app's engine (recommendation_engine.dart:486-497) has exactly two cases,
-'mcc' and 'category', and no default. 983 of 1,488 exclusion rows are typed
-'other' or 'txn_type' and therefore do nothing at all. Re-expressing them looks
-like a search-and-replace and is not, for one reason:
 
-    An exclusion is checked BEFORE any reward rule. Phase 0. A wrong exclusion
-    does not show the user a wrong number — it silently removes the card from
-    the pick screen entirely.
+§1  THE EXCLUSION REMAP MOVED OUT OF THIS MODULE
+------------------------------------------------
+This module used to sweep L6.EXCLUSION_TYPE_INERT with a substring phrase table
+of its own, while f5_exclusions carried a reviewed whole-string table for the
+same class. Both ran, this one ran first, and it recognised a strict superset
+of everything the other did — so the reviewed table decided nothing at all, and
+every mapping that reached seed/cards.json came from the looser matcher with no
+trace of that in the diff.
 
-So the direction of error matters more than the count. Under-excluding leaves
-things exactly as they are today. Over-excluding takes money off a real user.
-Every gate below is built to fail towards "leave it alone".
+Two tables for one decision guarantee drift, so there is now one. The wording
+table, the family walk and the definition of what a card earns all live in
+fixers/exclusion_vocab.py; every edit to an exclusion_rules row is made by
+f5_exclusions; and this module does not touch one. Nothing was lost in the move
+— GATE 1 POISON, GATE 2 BRAND and GATE 3 MCC went into
+exclusion_vocab.map_exclusion_value ahead of the table, and the per-row
+guardrail went in beside them, widened with a fifth witness (a co-brand named in
+the card's own name) that neither module had.
 
-    GATE 1  POISON      the value is conditional, scoped or narrative
-                        ("excluded from the base rate", "reduced to 1%",
-                        "non-BPCL fuel stations"). These are not flat
-                        exclusions at all and re-typing one inverts its meaning.
-    GATE 2  BRAND       the value names a specific merchant. Excluding the whole
-                        category would take out every other merchant in it.
-    GATE 3  MCC         "mcc 6513" — the value already IS the answer.
-    GATE 4  CATEGORY    an ordered phrase map, and then three exactness tests:
-                          - exactly ONE target matched (never two)
-                          - no competing concept the app cannot express
-                            ("wallet cash withdrawals" is about cash)
-                          - the target is a name the APP actually ships, read
-                            from ctx.app_category_names()
-    GATE 5  GUARDRAIL   per row, never a regex over the file: does THIS card pay
-                        anything on the category we are about to switch off?
-    GATE 6  FAMILY      the same question asked of the whole category FAMILY,
-                        because the app's categories are a tree. 'railways' is a
-                        child of 'travel', so a card whose only earn is `travel`
-                        must not have 'railways' switched on. GATE 5 compares
-                        names and let exactly that through onto two live cards
-                        before this gate existed; see _family_closed().
-
-GATE 5 is the BPCL Octane rule, and it is written per-row because the near-miss
-that created it was a sweep that looked at the file and not at the card. Octane
-is protected twice over: its fuel row says "non-BPCL fuel stations", which GATE 1
-kills, and the card ships fuel_surcharge_rules, which GATE 5 kills. Its other
-row, "mobile wallet uploads", remaps cleanly — which is the point. The guardrail
-is meant to be survivable, not to block everything.
-
-Three mappings the taxonomy proposed are NOT taken here, because they fail the
-"exactly and unambiguously" test once you look at what the app puts IN those
-categories:
-
-    tolls / transportation -> travel   the app's 'travel' is MakeMyTrip,
-                                       Cleartrip, redbus. A card excluding toll
-                                       plazas would stop earning on flights.
-    hospitals -> pharmacy              'pharmacy' also holds Apollo Pharmacy,
-                                       1mg, Netmeds and the diagnostic labs.
-    movies -> entertainment            'entertainment' also holds Netflix,
-                                       Spotify and ChatGPT subscriptions.
-
-Same reasoning drops "wholesale clubs" from grocery, "bail and bond payments"
-and "political donations" from government, and a bare "recharges" from telecom.
-Measured: 23 rows are left inert by those six decisions. Leaving a defect
-standing is the cheaper mistake, every time.
-
-MEASURED OUTCOME (worktree at 43d54e4, app checkout visible, 2026-08-19)
-    426 exclusion rows retyped, of 983 inert   -> L6.EXCLUSION_TYPE_INERT
-                                                  220 -> 187 errors, 33 cards
-                                                  clear, 187 do not
-    557 rows left alone, and the census names every reason
-     12 rows blocked by the per-row guardrail   -> manual review, never auto
-        (was 428 retyped / 10 blocked before GATE 6. The two rows that moved are
-        the railways-under-travel pair named there; they were applied to
-        seed/cards.json by the run at f9081f6 and f5_exclusions puts them back.)
-      1 dropped category bonus retyped
-     13 inactive cards proposed for removal     -> 'likely', gated, see §5
-    712 -> 679 errors from the data edits alone; 679 -> 647 if the 13 card
-    removals are also approved, though 32 of that 32 is defects leaving with
-    the cards rather than being fixed, and it adds 2 new errors: two live HDFC
-    news alerts name four of the removed cards.
-
+What is left here is the rest of the reachability family: a category bonus the
+app drops for want of a channel, and the withdrawn cards that still rank.
 
 §2  WHY NOTHING IS WRITTEN TO rule_name, EVER
 ---------------------------------------------
@@ -170,7 +114,6 @@ from fixers.base import CERTAIN, LIKELY, Edit, trunc
 FAMILY = "reachability"
 
 HANDLES = [
-    "L6.EXCLUSION_TYPE_INERT",
     "L6.CHANNEL_NEVER_MATCHES",
     "L2.CHANNEL_NOT_IN_VOCAB",
     "L2.CHANNEL_WRONG_LANE",
@@ -204,51 +147,12 @@ NO_EDIT_BY_DESIGN = {
         "That is an engine bug; no edit to this file fixes it."),
 }
 
-LIVE_EXCLUSION_TYPES = ("mcc", "category")
-
 # --------------------------------------------------------------------------- #
-# GATE 1 — POISON. A value that is conditional, scoped, or narrative is not a
-# flat exclusion, and re-typing it inverts its meaning. "Fuel excluded from the
-# base rate" means fuel still earns the accelerated rate; switch it to a flat
-# category exclusion and the card stops earning on fuel entirely.
-# --------------------------------------------------------------------------- #
-POISON = re.compile(
-    r"reduced rate|reduced reward|reduced to|earns? (?:only|reduced|at reduced)|"
-    r"capped at|\bexcept\b|other than|excluded from|not eligible for|"
-    r"\bwhen\b|\bunless\b|\bif\b|\bonly\b|"
-    r"below (?:rs\.?|₹|inr)?\s*\d|less than|contradicted|not listed|"
-    r"specific categories|\(for |beyond|non-jio|non-bpcl|not made through|"
-    r"do not earn (?:regular|accelerated|the)|up ?to \d|post facto|"
-    r"from october|as per t&c|subject to",
-    re.I)
-
-# --------------------------------------------------------------------------- #
-# GATE 2 — BRAND. The value names one merchant. "swiggy money wallet" is a
-# wallet, but excluding the app's whole wallet_load category on the strength of
-# it would switch off Paytm, PhonePe, Amazon Pay, MobiKwik and Ola Money too.
-# An illustrative brand ("wallet loads (e.g. paytm)") is not a restriction, so
-# an example marker cancels this gate.
-# --------------------------------------------------------------------------- #
-BRAND = re.compile(
-    r"swiggy|freecharge|paytm|phonepe|amazon pay|smartbuy|bills2pay|\bjio\b|"
-    r"bpcl|\bcred\b|myntra|flipkart|cleartrip|tata neu|indianoil|hpcl",
-    re.I)
-EXAMPLE_MARKER = re.compile(r"e\.g\.|such as|including|\blike\b", re.I)
-
-# GATE 3 — the value already carries the answer.
-MCC_LITERAL = re.compile(r"^mcc[ _]?(\d{4})$", re.I)
-
-# --------------------------------------------------------------------------- #
-# GATE 4 — phrase -> app category slug. Ordered; every target is checked against
-# the app's real vocabulary before it is used, so this list can only ever be a
-# candidate generator, never an authority.
-#
-# Deliberately absent, and why, because a later reader will want to add them
-# back: travel (the app's travel is OTA bookings, not toll plazas), pharmacy
-# (also holds the diagnostic labs), entertainment (also holds streaming),
-# wholesale clubs (not in grocery's MCC set), bail-and-bond and political
-# donations (not in government's), and a bare "recharges" (reads as either a
-# telecom top-up or a wallet load).
+# phrase -> app category slug. This is NOT an exclusion table any more — the one
+# that decides an exclusion lives in fixers/exclusion_vocab.py. It survives here
+# for one much narrower job: _plan_dropped_bonus asks whether a rule's own prose
+# names ANY spending category at all, to tell a category bonus apart from a
+# channel rule. It is a detector, never an authority.
 # --------------------------------------------------------------------------- #
 CATEGORY_PHRASES = [
     ("rent", r"\brent(?:s|al|als|ing)?\b|property manage|real ?estate|"
@@ -264,46 +168,6 @@ CATEGORY_PHRASES = [
     ("fuel", r"\bfuel\b|petrol|\bdiesel\b|\blpg\b"),
     ("grocery", r"supermarket|grocer"),
 ]
-
-# Concepts the app's merchant model has no field for. A value that touches one
-# of these is not cleanly a category exclusion even when it also names a
-# category — "wallet cash withdrawals" is about cash, not about wallets.
-NO_APP_CONCEPT = [
-    ("EMI / instalment conversion",
-     r"\bemis?\b|easy ?emi|smart ?emi|dial an? emi|flexipay|instal?lment|"
-     r"smartpay|splitn-?pay"),
-    ("Cash / quasi-cash",
-     r"cash.?withdraw|cash.?advance|\bcash\b|\batm\b|quasi.?cash|encash|"
-     r"money transfer"),
-    ("Card fees / balance transfer / loans",
-     r"balance.?transfer|outstanding (?:balance|amount)|\bloan|credit card bill|"
-     r"card fee|annual fee|joining fee|late payment|interest charge|"
-     r"financial charge|finance charge|\bgst\b|\bdraft\b|\bplcc\b"),
-    ("International / forex",
-     r"international|foreign currency|forex|\bcrypto\b"),
-    ("Gambling / gaming",
-     r"gambl|gaming|casino|lotter"),
-    ("Gift cards / vouchers",
-     r"gift ?card|gift ?voucher|voucher purchase"),
-]
-
-# GATE 5 — the guardrail's vocabulary. Wider than CATEGORY_PHRASES on purpose:
-# this side is looking for any hint that the card PAYS on the target, and a
-# false positive here costs one skipped fix while a false negative costs a user
-# their rewards.
-PAYS_HINTS = {
-    "rent": r"\brent|property manage|real ?estate",
-    "wallet_load": r"wallet|prepaid",
-    "government": r"governmen?t|\bgovt\b|\btax\b",
-    "education": r"educat|school|college|universit",
-    "jewellery": r"jewel|\bgold\b|\bsilver\b|precious metal",
-    "railways": r"railway|irctc",
-    "telecom": r"telecom|recharge|mobile bill|postpaid|prepaid",
-    "insurance": r"insurance|premium",
-    "utilities": r"utilit|electricity|\bgas\b|water bill|broadband",
-    "fuel": r"\bfuel\b|petrol|diesel|\blpg\b|filling station|petrol pump",
-    "grocery": r"grocer|supermarket|kirana|departmental",
-}
 
 # The plausibility ceiling any derived rendered rate must stay under. Above this
 # the number stops being a reward and starts being a typo somebody has to read.
@@ -351,316 +215,6 @@ def _hits(text, table):
     return sorted({label for label, pat in table if re.search(pat, text, re.I)})
 
 
-# --------------------------------------------------------------------------- #
-# the app's vocabulary, as authority
-# --------------------------------------------------------------------------- #
-def _mcc_owner(ctx) -> dict:
-    """'6513' -> 'rent'. Built from the app's own categories.json mcc_ranges, so
-    an MCC exclusion can be guarded against the same card paying on whatever
-    category that MCC belongs to."""
-    out = {}
-    for c in (ctx.app_categories or []):
-        if not isinstance(c, dict):
-            continue
-        name = c.get("category_name")
-        if not name:
-            continue
-        for r in (c.get("mcc_ranges") or []):
-            if not isinstance(r, dict):
-                continue
-            ex = r.get("exact")
-            if isinstance(ex, (str, int)):
-                out.setdefault(str(ex), name)
-            lo, hi = r.get("from"), r.get("to")
-            try:
-                if lo is not None and hi is not None:
-                    for n in range(int(lo), int(hi) + 1):
-                        out.setdefault("%04d" % n, name)
-            except (TypeError, ValueError):
-                continue
-    return out
-
-
-def _merchant_index(ctx) -> dict:
-    """merchant slug -> {'category': slug, 'mccs': {...}}"""
-    m = ctx.merchants
-    rows = m.get("merchants") if isinstance(m, dict) else m
-    out = {}
-    for r in rows or []:
-        if not isinstance(r, dict):
-            continue
-        mccs = {str(x) for x in (r.get("mcc_codes") or []) if x is not None}
-        if r.get("mcc_primary") is not None:
-            mccs.add(str(r["mcc_primary"]))
-        rec = {"category": _low(r.get("category_id")), "mccs": mccs}
-        for k in ("merchant_name", "slug", "merchant_slug", "merchant_ref"):
-            key = _low(r.get(k))
-            if key:
-                out[key] = rec
-    return out
-
-
-# --------------------------------------------------------------------------- #
-# GATE 5 — what does THIS card already pay on?
-# --------------------------------------------------------------------------- #
-def _card_pays_on(entry, merchants, mcc_owner) -> set:
-    """Every app category this card looks like it rewards.
-
-    Read wide and fail safe. A rule counts as paying unless its rate is
-    explicitly zero or negative — an absent rate is unknown, and unknown is not
-    the same as nothing. Four independent witnesses are consulted, because the
-    Octane near-miss got past a check that only read one of them:
-
-        category_id      the structured field
-        category_ref     the prose that was never structured
-        rule_name        the issuer's own sentence
-        merchant_ref     resolved through merchants.json to its category and MCC
-
-    Plus the blunt one: any card shipping fuel_surcharge_rules is treated as
-    paying on fuel. 359 of 383 cards ship that block, so this single line sends
-    every fuel remap to a human. That is deliberate. Fuel is the category the
-    near-miss was in.
-    """
-    pays = set()
-    for row in _rows(entry, "reward_rules"):
-        if not isinstance(row, dict):
-            continue
-        rate = _num(row.get("reward_rate"))
-        if rate is not None and rate <= 0:
-            continue                     # this rule pays nothing; it guards nothing
-        cat = _low(row.get("category_id"))
-        if cat:
-            pays.add(cat)
-        prose = " ".join(x for x in (_low(row.get("category_ref")),
-                                     _low(row.get("rule_name"))) if x)
-        if prose:
-            for target, pat in PAYS_HINTS.items():
-                if re.search(pat, prose, re.I):
-                    pays.add(target)
-        ref = _low(row.get("merchant_ref"))
-        if ref and ref in merchants:
-            rec = merchants[ref]
-            if rec["category"]:
-                pays.add(rec["category"])
-            for code in rec["mccs"]:
-                owner = mcc_owner.get(code)
-                if owner:
-                    pays.add(owner)
-    if _rows(entry, "fuel_surcharge_rules"):
-        pays.add("fuel")
-    return pays
-
-
-# --------------------------------------------------------------------------- #
-# GATE 6 — the FAMILY walk, and why GATE 5 alone was not enough
-# --------------------------------------------------------------------------- #
-def _family_closed(pays: set, ctx) -> set:
-    """`pays`, widened to every category in the same family as anything the card
-    earns on — its ancestors and its descendants in the app's own tree.
-
-    GATE 5 compares category NAMES. The app's categories are a TREE: 'railways'
-    is a child of 'travel', 'food_delivery' is a child of 'dining'. A card whose
-    only reward rule is `category_id: travel` and whose exclusion list says
-    'railways' passed GATE 5 because the two strings differ — and the engine
-    then removes that card at every railway merchant, taking the travel rule
-    with it, because _isExcluded runs at STEP 1 before any rule is matched.
-
-    That is not hypothetical. Before this gate existed the sweep wrote exactly
-    that row onto two live cards, kotak_mahindra_bank_royale_signature and
-    rbl_bank_world_safari, and the validator could not see it either:
-    L6.RULE_EXCLUDED_BY_OWN_CARD compares names for equality and never walks the
-    tree.
-
-    The walk itself lives in f5_exclusions.family_index, so there is ONE
-    definition of "same family" and the two modules cannot drift apart. If f5 is
-    unavailable this returns `pays` unchanged: a missing module must cost the
-    extra protection, never the whole run.
-    """
-    try:
-        from fixers.f5_exclusions import family_index
-    except Exception:                                   # noqa: BLE001
-        return pays
-    fams = family_index(getattr(ctx, "app_categories", None))
-    out = set(pays)
-    for p in pays:
-        out |= fams.get(p, set())
-    return out
-
-
-# --------------------------------------------------------------------------- #
-# GATE 1-4 — classify one exclusion value
-# --------------------------------------------------------------------------- #
-def classify_exclusion(value: str, app_categories: set):
-    """(verdict, payload, detail) for one exclusion_value.
-
-    verdict is one of:
-        'mcc'          payload = the 4-digit code
-        'category'     payload = an app category_name
-        'poison'       conditional/scoped text — not a flat exclusion
-        'brand'        names one merchant
-        'ambiguous'    two or more categories in one row
-        'mixed'        a category plus a concept the app cannot express
-        'no_concept'   payload = None, detail = the concept the app is missing
-        'not_in_app'   the phrase maps somewhere the app does not ship
-        'no_vocabulary' this run cannot see the app's category list, so it
-                       refuses to decide — NOT the same answer as 'not_in_app'
-        'unmapped'     nothing recognised it
-
-    app_categories is the authority. An EMPTY set means "unknown on this run",
-    never "the app has none", and the two must not collapse into one verdict:
-    reporting a blind run's rows as "the app does not have this category" would
-    be this module inventing a fact about the app, which is the exact defect
-    that put 309 phantom errors in the validator.
-    """
-    v = (value or "").strip().lower()
-    if not v:
-        return "unmapped", None, "empty value"
-
-    if POISON.search(v):
-        return "poison", None, "conditional or scoped wording"
-
-    m = MCC_LITERAL.match(v)
-    if m:
-        return "mcc", m.group(1), "the value is already an MCC"
-
-    if BRAND.search(v) and not EXAMPLE_MARKER.search(v):
-        return "brand", None, "names one merchant, not a category"
-
-    targets = _hits(v, CATEGORY_PHRASES)
-    missing = _hits(v, NO_APP_CONCEPT)
-
-    if len(targets) > 1:
-        return "ambiguous", None, " + ".join(targets)
-    if targets and missing:
-        return "mixed", None, f"{targets[0]} mixed with {missing[0]}"
-    if targets:
-        t = targets[0]
-        if not app_categories:
-            return "no_vocabulary", None, t
-        if t not in app_categories:
-            return "not_in_app", None, t
-        return "category", t, f"'{v}' reads as {t}"
-    if missing:
-        return "no_concept", None, missing[0]
-    return "unmapped", None, "no app category matches this wording"
-
-
-# --------------------------------------------------------------------------- #
-# A. L6.EXCLUSION_TYPE_INERT
-# --------------------------------------------------------------------------- #
-def _plan_exclusions(ctx, findings, tally):
-    app_cats = ctx.app_category_names()
-    have_cats = ctx.have_categories()
-    mcc_owner = _mcc_owner(ctx) if have_cats else {}
-    merchants = _merchant_index(ctx)
-    wanted = _cards_with(findings, "L6.EXCLUSION_TYPE_INERT")
-    edits = []
-
-    if not have_cats:
-        # No app vocabulary on this run. The MCC gate still stands on its own —
-        # "mcc 6513" is the answer regardless of what the app ships — but a
-        # category remap would be this module inventing a slug it cannot check.
-        tally["exclusion.skipped_no_vocabulary"] += 1
-
-    for _i, entry, inner, cid in ctx.entries():
-        if cid not in wanted:
-            continue
-        # GATE 5 (what this card pays on) widened by GATE 6 (the family walk).
-        pays = _family_closed(_card_pays_on(entry, merchants, mcc_owner), ctx)
-        # Two different issuer sentences on one card can mean the same category
-        # ("government transactions" and "tax payments"). Both are retyped and
-        # both are kept: the engine stops at the first match either way, and each
-        # row's _retyped_from preserves a different piece of the issuer's
-        # wording. Merging them would throw evidence away to tidy a file. This
-        # only counts them so a reviewer is not surprised by the diff.
-        live_pairs = {(_low(r.get("exclusion_type")), _low(r.get("exclusion_value")))
-                      for r in _rows(entry, "exclusion_rules")
-                      if isinstance(r, dict)
-                      and _low(r.get("exclusion_type")) in LIVE_EXCLUSION_TYPES}
-        for j, row in enumerate(_rows(entry, "exclusion_rules")):
-            if not isinstance(row, dict):
-                tally["exclusion.row_not_an_object"] += 1
-                continue
-            etype = _low(row.get("exclusion_type"))
-            if etype in LIVE_EXCLUSION_TYPES:
-                continue                              # already live — idempotence
-            raw = row.get("exclusion_value")
-            value = _s(raw) or ""
-            verdict, payload, detail = classify_exclusion(value, app_cats)
-
-            def _note_duplicate(kind):
-                pair = (kind, payload.lower())
-                if pair in live_pairs:
-                    tally["exclusion.duplicate_of_existing"] += 1
-                live_pairs.add(pair)
-
-            if verdict == "mcc":
-                target = mcc_owner.get(payload)
-                if target and target in pays:
-                    tally["exclusion.guardrail_blocked"] += 1
-                    tally["exclusion.guardrail_blocked." + target] += 1
-                    continue
-                if any(payload in rec["mccs"] for rec in merchants.values()
-                       if rec["category"] and rec["category"] in pays):
-                    tally["exclusion.guardrail_blocked"] += 1
-                    continue
-                _note_duplicate("mcc")
-                new_row = dict(row)
-                new_row["exclusion_type"] = "mcc"
-                new_row["exclusion_value"] = payload
-                new_row["_retyped_from"] = f"{etype or '(none)'}:{value}"
-                edits.append(Edit(
-                    card_id=cid, block="exclusion_rules", index=j, field=None,
-                    old_value=dict(row), new_value=new_row,
-                    code="L6.EXCLUSION_TYPE_INERT",
-                    reason=("This exclusion already gives a merchant code, so it is "
-                            "written as a merchant-code exclusion, which is one of "
-                            "the only two kinds the app can actually act on."),
-                    evidence=f"exclusion_value = {trunc(value)}",
-                    confidence=CERTAIN, reversible=True, family=FAMILY,
-                    notes={"gate": "mcc-literal", "mcc": payload,
-                           "mcc_category": target},
-                ))
-                tally["exclusion.remapped_mcc"] += 1
-                continue
-
-            if verdict == "category":
-                if payload in pays:
-                    tally["exclusion.guardrail_blocked"] += 1
-                    tally["exclusion.guardrail_blocked." + payload] += 1
-                    continue
-                _note_duplicate("category")
-                new_row = dict(row)
-                new_row["exclusion_type"] = "category"
-                new_row["exclusion_value"] = payload
-                new_row["_retyped_from"] = f"{etype or '(none)'}:{value}"
-                edits.append(Edit(
-                    card_id=cid, block="exclusion_rules", index=j, field=None,
-                    old_value=dict(row), new_value=new_row,
-                    code="L6.EXCLUSION_TYPE_INERT",
-                    reason=(f"The issuer's wording here means {payload.replace('_', ' ')}, "
-                            f"which is a spending category the app can switch off — "
-                            f"today this row is written in a way the app ignores "
-                            f"completely, and we tell people they earn rewards the "
-                            f"issuer says they do not."),
-                    evidence=f"exclusion_value = {trunc(value)}",
-                    confidence=LIKELY, reversible=True, family=FAMILY,
-                    notes={"gate": "phrase-map", "target": payload,
-                           "card_pays_on": sorted(pays)},
-                ))
-                tally["exclusion.remapped_category"] += 1
-                tally["exclusion.remapped." + payload] += 1
-                continue
-
-            tally["exclusion.left_" + verdict] += 1
-            if verdict == "no_concept":
-                tally["missing_concept." + detail] += 1
-            elif verdict == "not_in_app":
-                tally["not_in_app." + detail] += 1
-    return edits
-
-
-# --------------------------------------------------------------------------- #
 # B. L6.INACTIVE_CARD_STILL_RANKS
 # --------------------------------------------------------------------------- #
 def _news_references(ctx) -> dict:
@@ -887,7 +441,6 @@ def plan(ctx, findings) -> list:
     findings = [f for f in (findings or []) if _get(f, "code") in HANDLES]
     tally = _Tally()
     edits = []
-    edits += _plan_exclusions(ctx, findings, tally)
     edits += _plan_dropped_bonus(ctx, findings, tally)
     edits += _plan_inactive(ctx, findings, tally)
     # L6.CHANNEL_NEVER_MATCHES, L2.CHANNEL_NOT_IN_VOCAB, L2.CHANNEL_WRONG_LANE,
@@ -918,7 +471,6 @@ def census(ctx, findings) -> dict:
     findings = [f for f in (findings or []) if _get(f, "code") in HANDLES]
     tally = _Tally()
     edits = []
-    edits += _plan_exclusions(ctx, findings, tally)
     edits += _plan_dropped_bonus(ctx, findings, tally)
     edits += _plan_inactive(ctx, findings, tally)
 

@@ -1929,34 +1929,95 @@ class TestEvidenceSaysWhatIsActuallyThere(unittest.TestCase):
 # finds out why. These tests exist to make that specific harm expensive to
 # reintroduce.
 # --------------------------------------------------------------------------- #
+import re                                                        # noqa: E402
+import fixers.exclusion_vocab as V                               # noqa: E402
 import fixers.f5_exclusions as F5                                # noqa: E402
 from checks.base import Ctx as _RealCtx                          # noqa: E402
+
+
+def live_census():
+    """f5's census over the real catalogue, cached — three tests want it."""
+    if getattr(live_census, "_cache", None) is None:
+        got = live_plan()
+        if got is None:
+            return None
+        _edits, extras = got
+        live_census._cache = extras.get("f5_exclusions", {}).get("census")
+    return live_census._cache
+
+
+def live_exclusion_values():
+    """Every exclusion wording in seed/cards.json — the value on an inert row,
+    and the ORIGINAL wording of a row a sweep has since made live, which the
+    `_retyped_from` stamp records verbatim."""
+    if getattr(live_exclusion_values, "_cache", None) is None:
+        path = F.LIVE_SEED / "cards.json"
+        if not path.exists():
+            return None
+        out = set()
+        for entry in json.loads(path.read_text()):
+            for row in (entry.get("exclusion_rules") or []):
+                if not isinstance(row, dict):
+                    continue
+                stamp = row.get("_retyped_from")
+                if isinstance(stamp, str):
+                    out.add(V.normalise(stamp.split(":", 1)[1]
+                                        if ":" in stamp else stamp))
+                out.add(V.normalise(row.get("exclusion_value")))
+        live_exclusion_values._cache = {v for v in out if v}
+    return live_exclusion_values._cache
 
 # The app's real tree, as of assets/data/categories/categories.json: 25
 # categories, int ids, parent_id pointing at another int id. Only the branches
 # the tests need are spelled out, but they are spelled out EXACTLY as the app
 # ships them, because a stub tree that flattened the hierarchy would make the
 # family tests pass for the wrong reason.
+# The mcc_ranges are the app's own too, and they are not decoration: the rent
+# category IS MCC 6513, which is what makes "mcc 6513" and "real estate agents
+# and managers" the same exclusion, and what lets the guardrail refuse an MCC
+# exclusion on a card that earns in the category that MCC belongs to.
 APP_TREE = [
-    {"id": 1, "parent_id": None, "category_name": "dining"},
-    {"id": 2, "parent_id": 1, "category_name": "food_delivery"},
-    {"id": 3, "parent_id": None, "category_name": "grocery"},
-    {"id": 4, "parent_id": None, "category_name": "fuel"},
-    {"id": 5, "parent_id": None, "category_name": "travel"},
-    {"id": 6, "parent_id": 5, "category_name": "airlines"},
-    {"id": 7, "parent_id": 5, "category_name": "railways"},
-    {"id": 8, "parent_id": 5, "category_name": "cabs"},
-    {"id": 9, "parent_id": 5, "category_name": "hotels"},
-    {"id": 10, "parent_id": None, "category_name": "online_shopping"},
-    {"id": 14, "parent_id": None, "category_name": "utilities"},
-    {"id": 15, "parent_id": None, "category_name": "insurance"},
-    {"id": 16, "parent_id": None, "category_name": "education"},
-    {"id": 17, "parent_id": None, "category_name": "government"},
-    {"id": 18, "parent_id": None, "category_name": "wallet_load"},
-    {"id": 19, "parent_id": None, "category_name": "jewellery"},
-    {"id": 20, "parent_id": None, "category_name": "rent"},
-    {"id": 21, "parent_id": None, "category_name": "pharmacy"},
-    {"id": 23, "parent_id": None, "category_name": "telecom"},
+    {"id": 1, "parent_id": None, "category_name": "dining",
+     "mcc_ranges": [{"from": "5812", "to": "5814"}, {"exact": "5811"}]},
+    {"id": 2, "parent_id": 1, "category_name": "food_delivery",
+     "mcc_ranges": [{"exact": "5812"}]},
+    {"id": 3, "parent_id": None, "category_name": "grocery",
+     "mcc_ranges": [{"exact": "5411"}, {"exact": "5451"}, {"exact": "5499"}]},
+    {"id": 4, "parent_id": None, "category_name": "fuel",
+     "mcc_ranges": [{"exact": "5541"}, {"exact": "5542"}]},
+    {"id": 5, "parent_id": None, "category_name": "travel",
+     "mcc_ranges": [{"from": "3000", "to": "3350"}, {"exact": "4511"},
+                    {"exact": "4722"}]},
+    {"id": 6, "parent_id": 5, "category_name": "airlines",
+     "mcc_ranges": [{"from": "3000", "to": "3350"}, {"exact": "4511"}]},
+    {"id": 7, "parent_id": 5, "category_name": "railways",
+     "mcc_ranges": [{"exact": "4112"}]},
+    {"id": 8, "parent_id": 5, "category_name": "cabs",
+     "mcc_ranges": [{"exact": "4121"}]},
+    {"id": 9, "parent_id": 5, "category_name": "hotels",
+     "mcc_ranges": [{"from": "3501", "to": "3999"}, {"exact": "7011"}]},
+    {"id": 10, "parent_id": None, "category_name": "online_shopping",
+     "mcc_ranges": [{"exact": "5399"}, {"exact": "5964"}, {"exact": "5311"}]},
+    {"id": 14, "parent_id": None, "category_name": "utilities",
+     "mcc_ranges": [{"exact": "4900"}]},
+    {"id": 15, "parent_id": None, "category_name": "insurance",
+     "mcc_ranges": [{"exact": "6300"}]},
+    {"id": 16, "parent_id": None, "category_name": "education",
+     "mcc_ranges": [{"exact": "8211"}, {"exact": "8220"}, {"exact": "8241"},
+                    {"exact": "8244"}, {"exact": "8249"}, {"exact": "8299"}]},
+    {"id": 17, "parent_id": None, "category_name": "government",
+     "mcc_ranges": [{"exact": "9399"}, {"exact": "9311"}, {"exact": "9222"}]},
+    {"id": 18, "parent_id": None, "category_name": "wallet_load",
+     "mcc_ranges": [{"exact": "6540"}]},
+    {"id": 19, "parent_id": None, "category_name": "jewellery",
+     "mcc_ranges": [{"exact": "5944"}, {"exact": "5094"}]},
+    {"id": 20, "parent_id": None, "category_name": "rent",
+     "mcc_ranges": [{"exact": "6513"}]},
+    {"id": 21, "parent_id": None, "category_name": "pharmacy",
+     "mcc_ranges": [{"exact": "5912"}, {"exact": "5122"}, {"exact": "8011"},
+                    {"exact": "8021"}]},
+    {"id": 23, "parent_id": None, "category_name": "telecom",
+     "mcc_ranges": [{"exact": "4812"}, {"exact": "4813"}, {"exact": "4814"}]},
 ]
 
 # seed/merchants.json rows key on 'merchant_name' — there is no 'slug' field —
@@ -2012,35 +2073,16 @@ def f5_findings(*card_ids, code="L6.EXCLUSION_TYPE_INERT"):
             for c in card_ids]
 
 
-class NoCession(unittest.TestCase):
-    """Base for the tests that are about f5's OWN table and guardrail.
-
-    Measured on the real catalogue: every one of the 346 rows f5's whole-string
-    table maps is ALSO mapped by f3_reach's looser regex table (f5-only: 0,
-    disagreements on target: 0), so with f3 present f5's forward half correctly
-    stands down on every row and emits nothing at all. That cession is a
-    guarantee with its own test class below — TestF5AndF3NeverWriteTheSameRow —
-    and it is exactly why it has to be suspended here: a test of the mapping
-    that ran with the cession live would assert on an empty list and pass
-    whatever the table said.
-    """
-
-    def setUp(self):
-        real = F5._f3_owns
-        F5._f3_owns = lambda value, cats: False
-        self.addCleanup(setattr, F5, "_f3_owns", real)
-
-
-class TestTheGuardrailWalksTheCategoryFamily(NoCession):
+class TestTheGuardrailWalksTheCategoryFamily(unittest.TestCase):
     """The whole reason this module exists.
 
-    f3_reach's guardrail asks "does the card pay on a category with THIS NAME?"
-    and the app's categories are a TREE: 'railways' is a child of 'travel',
-    'food_delivery' is a child of 'dining'. A card whose only reward rule is
-    `category_id: travel` and whose exclusion list says 'railways' passes a
-    name-exact guardrail because the strings differ — and then the engine
-    removes that card at every railway merchant, including the travel rule that
-    is the whole reason somebody carries it.
+    A name-exact guardrail asks "does the card pay on a category with THIS
+    NAME?" and the app's categories are a TREE: 'railways' is a child of
+    'travel', 'food_delivery' is a child of 'dining'. A card whose only reward
+    rule is `category_id: travel` and whose exclusion list says 'railways'
+    passes a name-exact guardrail because the strings differ — and then the
+    engine removes that card at every railway merchant, including the travel
+    rule that is the whole reason somebody carries it.
 
     Measured on this branch: exactly that happened twice, to
     kotak_mahindra_bank_royale_signature and rbl_bank_world_safari.
@@ -2089,7 +2131,263 @@ class TestTheGuardrailWalksTheCategoryFamily(NoCession):
         self.assertEqual(edits[0].new_value["exclusion_value"], "railways")
 
 
-class TestTheThreeNamedGuardrailCasesStayInert(NoCession):
+class TestGateSixIsMandatoryAndNeverFailsOpen(unittest.TestCase):
+    """REGRESSION — the family gate used to be an OPTIONAL import that failed
+    open and silent.
+
+    `try: from fixers.f5_exclusions import family_index / except: return pays`.
+    No tally key, no WARN, no refusal. Deleting or syntax-breaking one module
+    made the OTHER module immediately re-propose the two railways edits this
+    branch exists to prevent, at `[2 apply]`, under an `OK` verdict. A safety
+    gate that can only lose protection must never fail towards emitting.
+
+    It is now one module-scope import in fixers/exclusion_vocab.py, so a missing
+    copy takes the importing fixer down with it instead of quietly costing it a
+    gate — and the runner reports a failed fixer rather than planning past it.
+    """
+
+    def test_the_walk_is_imported_at_module_scope_not_inside_a_try(self):
+        import ast
+        src = (Path(F.__file__).parent / "fixers" / "f5_exclusions.py").read_text()
+        tree = ast.parse(src)
+        top = [n for n in tree.body
+               if isinstance(n, ast.ImportFrom) and n.module == "fixers.exclusion_vocab"]
+        self.assertTrue(top, "the shared vocabulary must be a top-level import")
+        names = {a.name for n in top for a in n.names}
+        for needed in ("family_index", "card_earns_in", "map_exclusion_value"):
+            self.assertIn(needed, names)
+        # and nothing may re-import it inside a handler, which is how the
+        # fail-open crept in the first time.
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Try):
+                for sub in ast.walk(node):
+                    if isinstance(sub, (ast.Import, ast.ImportFrom)):
+                        self.fail("an import inside a try/except is how GATE 6 "
+                                  "failed open; keep it at module scope")
+
+    def test_a_tree_whose_ids_are_strings_still_resolves(self):
+        # Change nothing but the JSON *type* of `id` — int -> string, parent_id
+        # left an int — and every family used to collapse to a singleton, which
+        # is plain name equality, with no error and no counter.
+        mixed = [dict(c, id=str(c["id"])) for c in APP_TREE]
+        fam = F5.family_index(mixed)
+        self.assertIn("travel", fam["railways"])
+        self.assertIn("railways", fam["travel"])
+
+    def test_an_unreadable_tree_is_refused_not_flattened(self):
+        flat = [{"id": c["id"], "parent_id": None,
+                 "category_name": c["category_name"]} for c in APP_TREE]
+        with self.assertRaises(V.FamilyTreeUnreadable):
+            F5.family_index(flat)
+        dangling = [dict(c) for c in APP_TREE]
+        dangling[6]["parent_id"] = 999
+        with self.assertRaises(V.FamilyTreeUnreadable):
+            F5.family_index(dangling)
+
+    def test_a_refused_tree_emits_nothing_and_says_why(self):
+        entry = excl_card("unreadable", [inert("railways")],
+                          rules=[earns("dining", 5.0)])
+        flat = [{"id": c["id"], "parent_id": None,
+                 "category_name": c["category_name"]} for c in APP_TREE]
+        ctx = f5_ctx(entry, categories=flat)
+        self.assertEqual(F5.plan(ctx, f5_findings("unreadable")), [],
+                         "a gate that cannot run must stop the edits, not the gate")
+        c = F5.census(ctx, f5_findings("unreadable"))
+        self.assertEqual(c["tally"].get("gate.family_tree_unreadable"), 2)
+        self.assertEqual(c["tally"].get("forward.skipped_family_tree_unreadable"), 1)
+        self.assertEqual(c["tally"].get("repair.skipped_family_tree_unreadable"), 1)
+
+    def test_a_cycle_cannot_hang_the_walk(self):
+        cyc = [dict(c) for c in APP_TREE]
+        cyc[4]["parent_id"] = 7          # travel <-> railways
+        fam = F5.family_index(cyc)
+        self.assertIn("travel", fam["railways"])
+
+    def test_the_two_railways_rows_are_blocked_on_the_real_catalogue(self):
+        # GATE 6's only behaviour change on real data, asserted end to end.
+        got = live_plan()
+        if got is None:
+            self.skipTest("no live catalogue")
+        edits, _extras = got
+        for e in edits:
+            if e.block == "exclusion_rules" and isinstance(e.new_value, dict):
+                self.assertNotEqual(e.new_value.get("exclusion_value"), "railways",
+                                    f"{e.card_id}: a railways row was activated")
+
+
+class TestACoBrandEarnsThroughItsPartnersCategory(unittest.TestCase):
+    """REGRESSION — three PhonePe cards were switched off at the PhonePe
+    merchant, and an HPCL co-brand at every fuel pump.
+
+    A co-brand's earning is expressed through the categories its partner's
+    spends fall into. The PhonePe SBI SELECT BLACK's rules are named "10 Reward
+    Points per 100 spent on eligible PhonePe and Pincode spends" and are filed
+    under telecom, utilities, insurance and travel — never merchant_ref
+    'phonepe_wallet'. phonepe_wallet is the ONLY PhonePe row in merchants.json,
+    so a `wallet_load` exclusion removed all three cards from the pick screen at
+    the one merchant they are best at, and a guardrail reading only structured
+    fields could not see it.
+    """
+
+    MERCHANTS = {"merchants": [
+        {"merchant_name": "phonepe_wallet", "display_name": "PhonePe Wallet",
+         "category_id": "wallet_load", "mcc_primary": "6540"},
+        {"merchant_name": "hpcl", "display_name": "HPCL",
+         "category_id": "fuel", "mcc_primary": "5541"},
+        {"merchant_name": "swiggy", "display_name": "Swiggy",
+         "category_id": "food_delivery"},
+    ]}
+
+    def ctx(self, entry):
+        return f5_ctx(entry, merchants=self.MERCHANTS)
+
+    def phonepe(self, exclusions):
+        e = excl_card("sbi_card_phonepe_sbi_select_black", exclusions, rules=[
+            earns("telecom", 5.0, name="10 Reward Points per 100 spent on "
+                                       "eligible PhonePe and Pincode spends"),
+            earns("utilities", 5.0, name="10 Reward Points per 100 spent on "
+                                         "eligible PhonePe and Pincode spends"),
+        ])
+        e["card"]["card_name"] = "PhonePe SBI Card SELECT BLACK"
+        return e
+
+    def test_the_card_name_names_the_partner_and_that_is_an_earning(self):
+        entry = self.phonepe([inert("wallet loading")])
+        self.assertEqual(F5.plan(self.ctx(entry), f5_findings(
+            "sbi_card_phonepe_sbi_select_black")), [],
+            "wallet_load is the only PhonePe row the app ships")
+
+    def test_a_rule_name_naming_the_partner_is_an_earning_too(self):
+        e = excl_card("nameless", [inert("wallet loading")], rules=[
+            earns("telecom", 5.0, name="10 Reward Points per 100 spent on "
+                                       "eligible PhonePe and Pincode spends")])
+        e["card"]["card_name"] = "A Card With No Brand In Its Name"
+        self.assertEqual(F5.plan(self.ctx(e), f5_findings("nameless")), [])
+
+    def test_the_live_row_is_put_back(self):
+        live = {"exclusion_type": "category", "exclusion_value": "wallet_load",
+                "also_excludes_from_threshold": 0,
+                "_retyped_from": "other:wallet loading"}
+        edits = F5.plan(self.ctx(self.phonepe([live])), [])
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].new_value["exclusion_type"], "other")
+        self.assertEqual(edits[0].new_value["exclusion_value"], "wallet loading")
+
+    def test_a_fuel_cobrand_is_not_switched_off_at_its_own_pumps(self):
+        # icici_bank_hpcl_coral, verbatim: one rule called "Base reward rate",
+        # a stamp with no type prefix, and `category: fuel` live.
+        e = excl_card("icici_bank_hpcl_coral", [{
+            "exclusion_type": "category", "exclusion_value": "fuel",
+            "also_excludes_from_threshold": 0,
+            "_retyped_from": "fuel purchases are not eligible for reward points",
+        }], rules=[earns(None, 0.01, name="Base reward rate")])
+        e["card"]["card_name"] = "ICICI Bank HPCL Coral Credit Card"
+        edits = F5.plan(self.ctx(e), [])
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].notes["conflicting_earn"], "fuel")
+
+    def test_a_brand_that_is_an_ordinary_word_is_not_read_as_a_brand(self):
+        # seed/merchants.json really does ship a merchant called 'Nothing'.
+        mer = {"merchants": [{"merchant_name": "nothing",
+                              "display_name": "Nothing",
+                              "category_id": "online_shopping"}]}
+        e = excl_card("words", [inert("railways")], rules=[
+            earns("dining", 5.0, name="Nothing is earned on rent")])
+        self.assertEqual(
+            len(F5.plan(f5_ctx(e, merchants=mer), f5_findings("words"))), 1)
+
+    def test_a_short_token_that_names_two_merchants_is_dropped(self):
+        # 'amazon' derived from `amazon_pay` is exactly the merchant `amazon`,
+        # so "3% cashback on Amazon" would have handed the card a wallet_load
+        # earning and blocked every wallet exclusion on it.
+        mer = {"merchants": [
+            {"merchant_name": "amazon", "display_name": "Amazon",
+             "category_id": "online_shopping"},
+            {"merchant_name": "amazon_pay", "display_name": "Amazon Pay",
+             "category_id": "wallet_load"},
+        ]}
+        e = excl_card("amz", [inert("wallet reloads")], rules=[
+            earns(None, 3.0, name="3% cashback on Amazon")])
+        self.assertEqual(len(F5.plan(f5_ctx(e, merchants=mer),
+                                     f5_findings("amz"))), 1)
+        # ...while the card actually co-branded with the wallet is still seen.
+        e2 = excl_card("apay", [inert("wallet reloads")], rules=[earns("dining")])
+        e2["card"]["card_name"] = "Amazon Pay ICICI Bank Credit Card"
+        self.assertEqual(F5.plan(f5_ctx(e2, merchants=mer),
+                                 f5_findings("apay")), [])
+
+
+class TestOneDefinitionOfWhatACardEarns(unittest.TestCase):
+    """REGRESSION — the write gate read five witnesses and the undo gate read
+    two, so the only mechanism that can undo a bad activation was blind to 63
+    live rows the other gate would refuse to write today.
+
+    There is now one function. The only difference left between the two gates is
+    declared, deliberate and reported: `wide` adds fuel_surcharge_rules, which
+    359 of 383 cards ship.
+    """
+
+    def test_both_gates_call_the_same_function(self):
+        src = (Path(F.__file__).parent / "fixers" / "f5_exclusions.py").read_text()
+        self.assertEqual(src.count("card_earns_in(entry, merchants, mccs, cobrands"), 3)
+        self.assertNotIn("def card_earns_in", src,
+                         "the definition belongs in exclusion_vocab, once")
+
+    def test_f3_no_longer_carries_a_second_copy(self):
+        import fixers.f3_reach as F3
+        for gone in ("_card_pays_on", "_family_closed", "classify_exclusion",
+                     "PAYS_HINTS", "NO_APP_CONCEPT", "POISON", "MCC_LITERAL"):
+            self.assertFalse(hasattr(F3, gone),
+                             f"f3 still carries {gone}; two copies always drift")
+
+    def test_the_wide_gate_is_wider_by_exactly_the_surcharge_line(self):
+        entry = excl_card("surch", [inert("fuel purchases")],
+                          rules=[earns("dining", 5.0)])
+        entry["fuel_surcharge_rules"] = [{"rule_name": "1% waiver"}]
+        ctx = f5_ctx(entry)
+        mi = V.merchant_index(ctx)
+        mo = V.mcc_owner(ctx)
+        cb = V.cobrand_index(ctx)
+        narrow = V.card_earns_in(entry, mi, mo, cb, wide=False)
+        wide = V.card_earns_in(entry, mi, mo, cb, wide=True)
+        self.assertEqual(wide - narrow, {"fuel"})
+
+    def test_a_surcharge_waiver_blocks_the_write_but_not_the_revert(self):
+        # A fee waiver is not a reward. Writing waits for a human; reverting an
+        # exclusion the issuer really does apply would be the worse mistake.
+        entry = excl_card("surch", [inert("fuel purchases")],
+                          rules=[earns("dining", 5.0)])
+        entry["fuel_surcharge_rules"] = [{"rule_name": "1% waiver"}]
+        self.assertEqual(F5.plan(f5_ctx(entry), f5_findings("surch")), [])
+
+        live = excl_card("surch2", [{
+            "exclusion_type": "category", "exclusion_value": "fuel",
+            "also_excludes_from_threshold": 0,
+            "_retyped_from": "other:fuel purchases"}], rules=[earns("dining", 5.0)])
+        live["fuel_surcharge_rules"] = [{"rule_name": "1% waiver"}]
+        ctx = f5_ctx(live)
+        self.assertEqual(F5.plan(ctx, []), [], "not reverted on a fee waiver")
+        c = F5.census(ctx, [])
+        self.assertEqual(c["tally"].get("repair.kept_but_write_gate_would_block"), 1)
+        self.assertEqual(c["kept_but_write_gate_would_block"], ["surch2 excl fuel"])
+
+    def test_lpg_is_a_utility_not_a_petrol_pump(self):
+        # The app's fuel is MCC 5541/5542 — service stations. A cooking-gas
+        # cylinder is MCC 4900, which categories.json files under utilities, and
+        # both LPG merchants the app ships sit there. Left on `fuel`, the Axis
+        # ACE's utilities rule ("electricity, gas, water, internet, LPG,
+        # broadband") counted as an earning at petrol pumps.
+        entry = excl_card("ace", [inert("fuel purchases")], rules=[
+            earns("utilities", 5.0, name="5% cashback on electricity, gas, "
+                                         "water, internet, LPG, broadband")])
+        ctx = f5_ctx(entry)
+        earned = V.card_earns_in(entry, V.merchant_index(ctx), V.mcc_owner(ctx),
+                                 V.cobrand_index(ctx), wide=False)
+        self.assertIn("utilities", earned)
+        self.assertNotIn("fuel", earned)
+
+
+class TestTheThreeNamedGuardrailCasesStayInert(unittest.TestCase):
     """The three cards the audit named, each reproduced from its real shape in
     seed/cards.json. Each one maps cleanly onto an app category and each one
     must still produce NO edit, for a different reason:
@@ -2143,7 +2441,7 @@ class TestTheThreeNamedGuardrailCasesStayInert(NoCession):
                 self.assertEqual((verdict, got), ("category", target))
 
 
-class TestAMerchantRefIsAnEarning(NoCession):
+class TestAMerchantRefIsAnEarning(unittest.TestCase):
     """A card can earn in a category without ever naming it: the rule points at
     a merchant, and seed/merchants.json says what that merchant is. The key on
     a merchant row is 'merchant_name' — there is no 'slug' field, and a helper
@@ -2157,8 +2455,6 @@ class TestAMerchantRefIsAnEarning(NoCession):
                          "irctc resolves to railways through merchants.json")
 
     def test_a_merchant_only_earn_blocks_through_the_family_too(self):
-        # swiggy -> food_delivery -> child of dining. Excluding dining on a
-        # card whose only earn is a Swiggy rule must be blocked.
         entry = excl_card("m_fam", [inert("wallet reloads")],
                           rules=[earns(None, 5.0, merchant_ref="paytm")])
         self.assertEqual(F5.plan(f5_ctx(entry), f5_findings("m_fam")), [],
@@ -2179,8 +2475,8 @@ class TestAMerchantRefIsAnEarning(NoCession):
         self.assertEqual(F5.plan(f5_ctx(unknown), f5_findings("u")), [])
 
 
-class TestConceptsTheAppCannotExpressAreNeverForced(NoCession):
-    """Roughly 440 of the 983 inert rows name something the app's merchant model
+class TestConceptsTheAppCannotExpressAreNeverForced(unittest.TestCase):
+    """Roughly 430 of the 983 inert rows name something the app's merchant model
     has no field for at all. Forcing one into a near-miss category is the worst
     outcome available: 'gift cards' filed as wallet_load switches off Paytm and
     PhonePe for a user whose bank only ever excluded gift vouchers.
@@ -2191,6 +2487,8 @@ class TestConceptsTheAppCannotExpressAreNeverForced(NoCession):
     NEVER = [
         ("gift cards", "a gift card is a PURCHASE of a stored-value "
                        "instrument; a wallet load is a TRANSFER into one"),
+        ("gift or prepaid card loads", "names both, so it can only be refused"),
+        ("prepaid cards", "a prepaid card is an instrument, not a wallet load"),
         ("emi", "the app has no instalment field"),
         ("emi transactions", "same"),
         ("cash withdrawals", "quasi-cash, not a merchant category"),
@@ -2229,6 +2527,205 @@ class TestConceptsTheAppCannotExpressAreNeverForced(NoCession):
         self.assertIn("Cash & quasi-cash", c["app_cannot_express"])
 
 
+class TestDigitalGoldIsNotTheJewelleryAisle(unittest.TestCase):
+    """REGRESSION — a platform-scoped gold clause was mapped to the global
+    jewellery category.
+
+    On the Amazon Pay ICICI the issuer's clause is about digital/physical gold
+    sold ON AMAZON — the card's own rule_name says "excluding digital/physical
+    gold and EMI purchases" — and the app's jewellery category is MCC 5944/5094,
+    eight physical jewellers, while Amazon transacts on 5399. The emitted
+    exclusion fired at 100% of the merchants the clause does not cover and 0% of
+    the ones it does. The same row was already live on the Flipkart Axis card.
+    """
+
+    REFUSED = ["gold", "silver", "gold purchases", "silver purchases",
+               "gold spends", "purchase of gold items",
+               "precious metal purchases"]
+    STILL_MAPS = ["jewelry", "jewellery purchases", "gold/jewellery",
+                  "gold and jewellery", "jewellery items"]
+
+    def test_the_bare_metal_wording_is_refused(self):
+        names = {c["category_name"] for c in APP_TREE}
+        for value in self.REFUSED:
+            with self.subTest(value=value):
+                self.assertNotEqual(
+                    F5.map_exclusion_value(value, names)[0], "category")
+
+    def test_wording_that_names_the_category_still_maps(self):
+        names = {c["category_name"] for c in APP_TREE}
+        for value in self.STILL_MAPS:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    F5.map_exclusion_value(value, names)[:2],
+                    ("category", "jewellery"))
+
+    def test_the_live_flipkart_row_is_put_back(self):
+        live = {"exclusion_type": "category", "exclusion_value": "jewellery",
+                "also_excludes_from_threshold": 0,
+                "_retyped_from": "other:purchase of gold items"}
+        entry = excl_card("axis_bank_flipkart_axis_bank", [live],
+                          rules=[earns("online_shopping", 5.0)])
+        edits = F5.plan(f5_ctx(entry), [])
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].new_value["exclusion_value"],
+                         "purchase of gold items")
+        self.assertEqual(edits[0].code, "L6.EXCLUSION_TYPE_INERT")
+
+
+class TestARowIsPutBackWhenWeNoLongerStandBehindTheReading(unittest.TestCase):
+    """REGRESSION — 87 live rows carried wording the reviewed table refused, and
+    nothing in the change removed them: the family walk only looks at the
+    family, and the repair half only looked at family violations. So a report
+    could say "zero violations remain" while the file shipped 87 activations
+    nobody stood behind.
+
+    The trigger is derived, not guessed: the issuer's original string is in the
+    row, and it is re-checked against the table on every run.
+    """
+
+    def row(self, value, stamp):
+        return {"exclusion_type": "category", "exclusion_value": value,
+                "also_excludes_from_threshold": 0, "_retyped_from": stamp}
+
+    def test_a_reading_the_table_no_longer_accepts_is_reverted(self):
+        entry = excl_card("hd", [self.row("wallet_load", "other:prepaid cards")],
+                          rules=[earns("dining", 5.0)])
+        edits = F5.plan(f5_ctx(entry), [])
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].new_value["exclusion_value"], "prepaid cards")
+
+    def test_a_reading_the_table_still_accepts_is_left_alone(self):
+        entry = excl_card("hd", [self.row("wallet_load", "other:wallet reloads")],
+                          rules=[earns("dining", 5.0)])
+        self.assertEqual(F5.plan(f5_ctx(entry), []), [])
+
+    def test_the_reverts_are_named_in_the_census(self):
+        entry = excl_card("hd", [self.row("wallet_load", "other:prepaid cards")],
+                          rules=[earns("dining", 5.0)])
+        c = F5.census(f5_ctx(entry), [])
+        self.assertEqual(c["tally"].get("repair.wording_no_longer_maps"), 1)
+        self.assertEqual(c["wording_repairs"],
+                         ["hd wallet_load <- prepaid cards"])
+
+    def test_the_two_readings_that_are_arguments_are_listed_for_signoff(self):
+        # Bare wallet and bare rental wording ARE activated — on an elimination
+        # argument, not on the issuer's word — so every row is listed by card
+        # and wording rather than shipping under a count.
+        entry = excl_card("rbl", [self.row("rent", "other:rentals"),
+                                  self.row("wallet_load", "other:wallets")],
+                          rules=[earns("dining", 5.0)])
+        c = F5.census(f5_ctx(entry), [])
+        listed = c["activated_rows_for_review"]
+        self.assertEqual(len(listed), 2)
+        self.assertTrue(any("rbl" in row for rows in listed.values()
+                            for row in rows))
+
+
+class TestTheRepairNeverWritesATypeTheSchemaDoesNotKnow(unittest.TestCase):
+    """REGRESSION — `_retyped_from` is free text and the repair copied its
+    prefix straight into exclusion_type, at confidence `certain`.
+
+    58 of the 484 stamps in seed/cards.json have no colon at all, so the format
+    is demonstrably not controlled, and a stamp of the shape "reduced rate:
+    fuel" wrote `exclusion_type: "reduced rate"` into the shipped file.
+    """
+
+    def live(self, stamp):
+        return {"exclusion_type": "category", "exclusion_value": "railways",
+                "also_excludes_from_threshold": 0, "_retyped_from": stamp}
+
+    def test_an_unknown_type_is_refused_rather_than_written(self):
+        entry = excl_card("bad", [self.live("category_id:railways")],
+                          rules=[earns("travel", 5.0)])
+        ctx = f5_ctx(entry)
+        self.assertEqual(F5.plan(ctx, []), [])
+        c = F5.census(ctx, [])
+        self.assertEqual(c["tally"].get("repair.stamp_type_not_recognised"), 1)
+        self.assertEqual(c["repair_refusals"], ["stamp type 'category_id'"])
+
+    def test_every_known_type_is_still_restored(self):
+        for t in ("other", "txn_type", "mcc", "category"):
+            with self.subTest(t=t):
+                entry = excl_card("ok", [self.live(f"{t}:railways")],
+                                  rules=[earns("travel", 5.0)])
+                edits = F5.plan(f5_ctx(entry), [])
+                self.assertEqual(len(edits), 1)
+                self.assertEqual(edits[0].new_value["exclusion_type"], t)
+
+    def test_a_none_stamp_removes_the_key_as_it_found_it(self):
+        entry = excl_card("nn", [self.live("(none):railways")],
+                          rules=[earns("travel", 5.0)])
+        edits = F5.plan(f5_ctx(entry), [])
+        self.assertNotIn("exclusion_type", edits[0].new_value)
+
+    def test_a_stamp_with_no_type_prefix_is_counted_and_restored_to_other(self):
+        # These used to be dropped with no tally key and no census entry, and
+        # every one is a live `category: fuel` row — the shape the guardrail
+        # exists for. census() emitted zero repair.* keys about them.
+        entry = excl_card("np", [{
+            "exclusion_type": "category", "exclusion_value": "fuel",
+            "also_excludes_from_threshold": 0,
+            "_retyped_from": "fuel purchases are not eligible for reward points",
+        }], rules=[earns("fuel", 5.0)])
+        ctx = f5_ctx(entry)
+        edits = F5.plan(ctx, [])
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].new_value["exclusion_type"], "other")
+        self.assertEqual(edits[0].new_value["exclusion_value"],
+                         "fuel purchases are not eligible for reward points")
+        c = F5.census(ctx, [])
+        self.assertEqual(c["tally"].get("repair.stamp_missing_type_prefix"), 1)
+        self.assertEqual(c["tally"].get("repair.stamp_type_assumed_other"), 1)
+
+    def test_the_colon_less_stamps_are_counted_on_the_real_catalogue(self):
+        # Counted off the file rather than pinned to a number, so the test keeps
+        # meaning something after the next sweep moves it. It was 58 when the
+        # silence was found; every one is a live `category: fuel` row.
+        got = live_census()
+        if got is None:
+            self.skipTest("no live catalogue")
+        want = 0
+        for entry in json.loads((F.LIVE_SEED / "cards.json").read_text()):
+            for row in (entry.get("exclusion_rules") or []):
+                if not isinstance(row, dict):
+                    continue
+                stamp = row.get("_retyped_from")
+                if (row.get("exclusion_type") in V.LIVE_EXCLUSION_TYPES
+                        and isinstance(stamp, str) and ":" not in stamp):
+                    want += 1
+        self.assertGreater(want, 0)
+        self.assertEqual(got["tally"].get("repair.stamp_missing_type_prefix"), want)
+
+
+class TestNoSecondIdenticalExclusionRowIsEmitted(unittest.TestCase):
+    """REGRESSION — the module never looked at what the card already carried, so
+    it emitted rows that duplicated a live exclusion or collapsed onto each
+    other. Eight cards ended up with two or three exclusion rows byte-identical
+    except for their provenance stamp."""
+
+    def test_a_target_the_card_already_enforces_is_left_inert(self):
+        entry = excl_card("dupe", [
+            {"exclusion_type": "category", "exclusion_value": "government",
+             "also_excludes_from_threshold": 0},
+            inert("government services"),
+        ], rules=[earns("dining", 5.0)])
+        ctx = f5_ctx(entry)
+        self.assertEqual(F5.plan(ctx, f5_findings("dupe")), [])
+        c = F5.census(ctx, f5_findings("dupe"))
+        self.assertEqual(c["tally"].get("forward.duplicate_of_live_row"), 1)
+        self.assertEqual(c["duplicate_rows_left_inert"],
+                         ["dupe already excludes government"])
+
+    def test_two_new_rows_that_collapse_onto_one_target_emit_once(self):
+        entry = excl_card("dupe2", [inert("government services"),
+                                    inert("tax payments")],
+                          rules=[earns("dining", 5.0)])
+        edits = F5.plan(f5_ctx(entry), f5_findings("dupe2"))
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].index, 0)
+
+
 class TestOnlyWholeStringsMatch(unittest.TestCase):
     """No substring search, no edit distance, no fuzzy anything.
 
@@ -2246,7 +2743,6 @@ class TestOnlyWholeStringsMatch(unittest.TestCase):
         "utility bill payments (reduced rate)",
         "insurance premiums (reduced to 1 InterMile per 100)",
         "rent payments via Freecharge app (excluded from cashback as per T&C update)",
-        "government spends like advance tax",
         "educational transactions (from October 11, 2025)",
         "utility spends beyond Rs 35,000 per billing cycle",
         "wallet cash withdrawals",
@@ -2270,6 +2766,22 @@ class TestOnlyWholeStringsMatch(unittest.TestCase):
                 self.assertEqual(
                     F5.map_exclusion_value(value, names)[:2], ("category", target))
 
+    def test_the_longhand_exclusions_are_listed_not_inferred(self):
+        # Seven rows in the file say "fuel transactions are not eligible for
+        # reward points" and the like. Those are flat exclusions written as a
+        # sentence, so each is spelled out whole in the table and exempted from
+        # POISON by name — never by loosening POISON itself.
+        names = {c["category_name"] for c in APP_TREE}
+        for value in ("fuel transactions are not eligible for reward points",
+                      "fuel transactions do not earn reward points",
+                      "fuel purchases (0 intermiles earned)"):
+            with self.subTest(value=value):
+                self.assertEqual(
+                    F5.map_exclusion_value(value, names)[:2], ("category", "fuel"))
+        # ...and the scoped ones are still refused.
+        self.assertNotEqual(F5.map_exclusion_value(
+            "fuel purchases at non-BPCL fuel stations", names)[0], "category")
+
     def test_normalisation_is_case_space_and_trailing_punctuation_only(self):
         names = {c["category_name"] for c in APP_TREE}
         for value in ("  Rent Payments  ", "RENT   PAYMENTS.", "Rent payments;"):
@@ -2277,42 +2789,112 @@ class TestOnlyWholeStringsMatch(unittest.TestCase):
                 self.assertEqual(
                     F5.map_exclusion_value(value, names)[:2], ("category", "rent"))
 
+    def test_every_pattern_in_the_table_matches_a_row_that_exists(self):
+        # The table's claim to auditability is that its counts are MEASURED. A
+        # pattern matching nothing in seed/cards.json used to sit here implying
+        # a count it did not have.
+        values = live_exclusion_values()
+        if values is None:
+            self.skipTest("no live catalogue")
+        for cat, conf, pat in V.SYNONYMS:
+            with self.subTest(pattern=pat):
+                self.assertTrue(any(re.fullmatch(pat, v) for v in values),
+                                f"{cat}: no row in the file matches this pattern")
 
-class TestF5AndF3NeverWriteTheSameRow(unittest.TestCase):
-    """Two fixers writing one row is not a merge conflict — the runner resolves
-    collisions by position and the second write silently wins, so the diff a
-    human reviewed and the diff that landed would differ.
 
-    f5 asks f3, per row, and stands down. The cession is COUNTED rather than
-    implied, so a future change to either table shows up as a number moving."""
+class TestMccLiteralsAndPublishedMccNamesAreTaken(unittest.TestCase):
+    """A value that already IS the answer, and the published names of the MCCs
+    the app's own categories.json claims.
 
-    def test_a_row_f3_would_map_produces_no_f5_edit(self):
-        import fixers.f3_reach as F3
+    Refusing "real estate agents and managers" — the published name of MCC 6513,
+    which categories.json puts in `rent` — was the clearest case of the phrasing
+    lottery: one issuer's single published list was split across sibling cards
+    because our scraper spelled one slot ten different ways.
+    """
+
+    def test_a_literal_mcc_is_typed_as_an_mcc(self):
         names = {c["category_name"] for c in APP_TREE}
-        value = "rent payments"
-        self.assertEqual(F3.classify_exclusion(value, names)[0], "category")
-        self.assertEqual(F5.map_exclusion_value(value, names)[0], "category")
-        entry = excl_card("ceded", [inert(value)], rules=[earns("dining")])
-        self.assertEqual(F5.plan(f5_ctx(entry), f5_findings("ceded")), [],
-                         "f3 owns this row; f5 must not write it too")
+        self.assertEqual(F5.map_exclusion_value("mcc 6513", names)[:2],
+                         ("mcc", "6513"))
 
-    def test_the_cession_is_visible_in_the_census(self):
-        entry = excl_card("ceded", [inert("rent payments")], rules=[earns("dining")])
-        c = F5.census(f5_ctx(entry), f5_findings("ceded"))
-        self.assertEqual(c["tally"].get("forward.ceded_to_f3"), 1)
-        self.assertEqual(c["tally"].get("forward.would_map"), 1)
+    def test_the_row_is_written_as_an_mcc_exclusion(self):
+        entry = excl_card("mccrow", [inert("mcc 6513")], rules=[earns("dining")])
+        edits = F5.plan(f5_ctx(entry), f5_findings("mccrow"))
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].new_value["exclusion_type"], "mcc")
+        self.assertEqual(edits[0].new_value["exclusion_value"], "6513")
 
-    def test_the_guardrail_is_checked_before_the_cession(self):
-        # Load-bearing order. Ceding first would make f5 SILENT about exactly
-        # the rows f3 is about to write against the family guardrail — which is
-        # how the two railways rows got into the file. The outcome is 'no edit'
-        # either way; the difference is whether anyone is told.
-        entry = excl_card("rbl", [inert("railways")], rules=[earns("travel", 5.0)])
-        c = F5.census(f5_ctx(entry), f5_findings("rbl"))
-        self.assertEqual(c["tally"].get("forward.guardrail_blocked"), 1)
-        self.assertEqual(c["tally"].get("forward.ceded_to_f3", 0), 0)
-        self.assertEqual(c["guardrail_blocked_cases"],
-                         ["rbl excl railways earns travel"])
+    def test_an_mcc_the_card_earns_on_is_still_blocked(self):
+        entry = excl_card("mccblock", [inert("mcc 6513")],
+                          rules=[earns("rent", 5.0)])
+        self.assertEqual(F5.plan(f5_ctx(entry), f5_findings("mccblock")), [])
+
+    def test_the_published_name_of_the_rent_mcc_maps_to_rent(self):
+        names = {c["category_name"] for c in APP_TREE}
+        self.assertEqual(
+            F5.map_exclusion_value("real estate agents and managers", names)[:2],
+            ("category", "rent"))
+
+    def test_one_issuers_slot_is_no_longer_split_across_sibling_cards(self):
+        # RBL ships the same published list on 13 cards. The scraper wrote
+        # "rental payments" on one and "rentals"/"real estate/rental" on the
+        # others, and the table used to map one and refuse nine.
+        names = {c["category_name"] for c in APP_TREE}
+        for value in ("rental payments", "rentals", "rental",
+                      "real estate/rental", "property rental",
+                      "real estate services"):
+            with self.subTest(value=value):
+                self.assertEqual(F5.map_exclusion_value(value, names)[:2],
+                                 ("category", "rent"))
+        for value in ("wallet reloads", "wallets", "wallet transactions",
+                      "wallets/service providers"):
+            with self.subTest(value=value):
+                self.assertEqual(F5.map_exclusion_value(value, names)[:2],
+                                 ("category", "wallet_load"))
+
+    def test_the_elimination_readings_are_never_certain(self):
+        # They are activated on an argument, not on the issuer's word, so a
+        # default `--confidence certain` run can never newly switch one on.
+        names = {c["category_name"] for c in APP_TREE}
+        for value in ("rentals", "real estate", "wallets", "wallet transactions"):
+            with self.subTest(value=value):
+                self.assertEqual(F5.map_exclusion_value(value, names)[2], LIKELY)
+
+
+class TestOnlyOneModuleOwnsAnExclusionRow(unittest.TestCase):
+    """REGRESSION — two fixers handled L6.EXCLUSION_TYPE_INERT with two
+    different tables.
+
+    f3 ran first, recognised a strict superset of everything f5's reviewed
+    whole-string table did, and f5 ceded unconditionally at import time. So the
+    342-pattern table decided NOTHING on any real dataset, both of its
+    documented narrowings silently did not happen, and every mapping that
+    reached seed/cards.json came from the looser matcher with no trace in the
+    diff. Two tables for one decision guarantee drift; there is now one.
+    """
+
+    def test_f3_no_longer_declares_the_exclusion_code(self):
+        import fixers.f3_reach as F3
+        self.assertNotIn("L6.EXCLUSION_TYPE_INERT", F3.HANDLES)
+        self.assertIn("L6.EXCLUSION_TYPE_INERT", F5.HANDLES)
+
+    def test_f3_proposes_no_exclusion_row_edit_on_the_real_catalogue(self):
+        got = live_plan()
+        if got is None:
+            self.skipTest("no live catalogue")
+        edits, _extras = got
+        theirs = [e for e in edits if e.block == "exclusion_rules"
+                  and getattr(e, "module", "") != "f5_exclusions"]
+        self.assertEqual(theirs, [])
+
+    def test_the_table_actually_decides_something(self):
+        # The defect was that the forward half could not emit an edit on any
+        # real dataset. A row only this table maps must now produce one.
+        entry = excl_card("decides", [inert("rent payments")],
+                          rules=[earns("dining")])
+        edits = F5.plan(f5_ctx(entry), f5_findings("decides"))
+        self.assertEqual(len(edits), 1)
+        self.assertEqual(edits[0].new_value["exclusion_value"], "rent")
 
     def test_neither_fixer_writes_the_same_anchor_on_the_real_catalogue(self):
         got = live_plan()
@@ -2328,7 +2910,7 @@ class TestF5AndF3NeverWriteTheSameRow(unittest.TestCase):
             seen[key] = getattr(e, "module", "?")
 
 
-class TestAnAlreadyLiveRowIsLeftAlone(NoCession):
+class TestAnAlreadyLiveRowIsLeftAlone(unittest.TestCase):
     """Idempotence, and the reason it is not merely tidy: applying a plan twice
     must be a no-op, or nobody can reason about what a rerun does."""
 
@@ -2355,7 +2937,7 @@ class TestAnAlreadyLiveRowIsLeftAlone(NoCession):
         self.assertEqual(F5.plan(f5_ctx(applied), f5_findings("twice")), [])
 
 
-class TestTheRowKeepsEverythingElseItHad(NoCession):
+class TestTheRowKeepsEverythingElseItHad(unittest.TestCase):
     """All 983 inert rows carry also_excludes_from_threshold = 0, so they are
     pure reward-exclusions and not milestone-threshold exclusions. The app parses
     that field at credit_card.dart:243-244. Dropping it while retyping the row
@@ -2394,7 +2976,7 @@ class TestTheRowKeepsEverythingElseItHad(NoCession):
         self.assertIsNone(e.field)
 
 
-class TestRuleNameIsNeverTouchedByF5(NoCession):
+class TestRuleNameIsNeverTouchedByF5(unittest.TestCase):
     """The app keys every user's saved cap progress on the rule NAME string, so
     changing one wipes their progress. Asserted here as well as in the runner's
     own guard, because two independent checks of that is the right number."""
@@ -2406,17 +2988,33 @@ class TestRuleNameIsNeverTouchedByF5(NoCession):
             self.assertNotEqual(e.field, "rule_name")
             self.assertEqual(e.block, "exclusion_rules")
 
-    def test_the_runners_guard_passes_every_f5_edit_on_the_real_catalogue(self):
+    def test_the_runners_guard_passes_every_f5_edit(self):
+        # REGRESSION — this used to run over the live catalogue and assert only
+        # that `blocked == []`. On a catalogue f5 has nothing left to say to,
+        # that is `F.guard([]) -> ([], [])` and the assertion is trivially true
+        # while checking zero edits. It now runs over a fixture that is
+        # guaranteed to produce edits, and asserts there ARE some first.
+        entry = excl_card("guarded", [inert("railway bookings"),
+                                      inert("wallet reloads"),
+                                      inert("government services")],
+                          rules=[earns("dining")])
+        mine = F5.plan(f5_ctx(entry), f5_findings("guarded"))
+        self.assertEqual(len(mine), 3, "nothing to check — the fixture is wrong")
+        self.assertTrue(all(e.family == F5.FAMILY for e in mine))
+        _kept, blocked = F.guard(mine)
+        self.assertEqual(blocked, [], f"guard blocked: {[b[1] for b in blocked]}")
+
+    def test_the_guard_still_passes_whatever_f5_says_about_the_real_catalogue(self):
         got = live_plan()
         if got is None:
             self.skipTest("no live catalogue")
         edits, _extras = got
-        mine = [e for e in edits if getattr(e, "module", "") == "f5_exclusions"]
+        mine = [e for e in edits if e.family == F5.FAMILY]
         _kept, blocked = F.guard(mine)
         self.assertEqual(blocked, [], f"guard blocked: {[b[1] for b in blocked]}")
 
 
-class TestPlanIsPure(NoCession):
+class TestPlanIsPure(unittest.TestCase):
     """A dry run that had already changed something is not a dry run."""
 
     def test_plan_does_not_mutate_the_ctx_it_is_given(self):
@@ -2450,7 +3048,7 @@ class TestPlanIsPure(NoCession):
         self.assertEqual(ctx.cards, before)
 
 
-class TestABlindRunDecidesNothing(NoCession):
+class TestABlindRunDecidesNothing(unittest.TestCase):
     """No app checkout means the category vocabulary is UNKNOWN, which is not
     the same answer as "the app has no such category". Collapsing the two would
     be this module inventing a fact about the app — the exact defect that once
@@ -2486,8 +3084,27 @@ class TestTheRepairPutsBackWhatItCanProve(unittest.TestCase):
         self.assertEqual(len(edits), 1)
         self.assertEqual(edits[0].new_value["exclusion_type"], "other")
         self.assertEqual(edits[0].new_value["exclusion_value"], "railways")
-        self.assertNotIn("_retyped_from", edits[0].new_value)
         self.assertEqual(edits[0].confidence, CERTAIN)
+
+    def test_the_revert_is_recorded_in_the_file_it_leaves_behind(self):
+        # REGRESSION — the revert used to DELETE `_retyped_from`, the only
+        # record that the row was ever activated. Nothing then marked the row as
+        # deliberately inert, so the next sweep re-activated it with no trace of
+        # the earlier decision.
+        entry = excl_card("rbl", [self.live_row()], rules=[earns("travel", 5.0)])
+        new = F5.plan(f5_ctx(entry), [])[0].new_value
+        self.assertEqual(new["_retyped_from"], "other:railways")
+        self.assertEqual(new["_reverted_from"], "category:railways")
+
+    def test_a_reverted_row_is_never_re_activated_by_the_forward_half(self):
+        entry = excl_card("rbl", [self.live_row()], rules=[earns("travel", 5.0)])
+        reverted = F5.plan(f5_ctx(entry), [])[0].new_value
+        # even on a card the guardrail would NOT block, the marker holds.
+        again = excl_card("rbl", [reverted], rules=[earns("dining", 5.0)])
+        ctx = f5_ctx(again)
+        self.assertEqual(F5.plan(ctx, f5_findings("rbl")), [])
+        c = F5.census(ctx, f5_findings("rbl"))
+        self.assertEqual(c["tally"].get("forward.left_reverted_on_purpose"), 1)
 
     def test_a_retype_the_card_does_not_earn_against_is_left_alone(self):
         entry = excl_card("fine", [self.live_row()], rules=[earns("dining", 5.0)])

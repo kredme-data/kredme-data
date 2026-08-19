@@ -187,7 +187,17 @@ EXCLUSION_SPEC = {
     "also_excludes_from_threshold": _f("flag01", required=True, hard=True,
                                        why="the app casts it straight to a whole "
                                            "number; true/false or \"1\" throws"),
+    # The two provenance stamps a fix stage writes on an exclusion row, and
+    # the reason they are BOTH in the agreed schema rather than one:
+    #   _retyped_from   what the issuer's own words were before a sweep made
+    #                   this row live. It is the only thing that makes the
+    #                   change reversible without inventing a value.
+    #   _reverted_from  what the row was made into, and then put back from. A
+    #                   revert that deleted the stamp left nothing in the file
+    #                   marking the row as deliberately inert, so the next
+    #                   sweep re-activated it with no trace of the decision.
     "_retyped_from": _f("str"),
+    "_reverted_from": _f("str"),
     "confidence": _f("str"),
     "source_quote": _f("str"),
     "source_url": _f("str"),
