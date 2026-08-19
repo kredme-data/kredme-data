@@ -658,6 +658,57 @@ class TestInjectedDefects(unittest.TestCase):
             mutate(lambda e: e["reward_rules"][1].__setitem__("reward_rate", 0.02)),
             "L8.QUOTE_DOES_NOT_SUPPORT_RATE")
 
+    # The same question, asked of the blocks the verification ledger never
+    # harvested. A fuel-surcharge row stamped 'high' on a sentence that proves
+    # only its 1%, while carrying a min, a max and a monthly cap the sentence
+    # never mentions, shipped on five cards and no layer said a word.
+    def test_a_fuel_surcharge_band_that_is_not_in_its_own_quote(self):
+        def m(e):
+            e["fuel_surcharge_rules"] = [{
+                "waiver_pct": 1.0, "min_txn_amount": 400.0,
+                "max_txn_amount": 5000.0, "monthly_cap": 250.0,
+                "confidence": "high", "source_url": SOURCE,
+                "source_fetched_on": "2026-08-15",
+                "source_quote": "1% fuel surcharge waiver at all fuel stations "
+                                "across India",
+            }]
+        self.assertFires(mutate(m), "L8.ROW_NUMBER_NOT_IN_QUOTE")
+
+    def test_a_fuel_surcharge_band_fully_stated_by_its_quote_is_silent(self):
+        def m(e):
+            e["fuel_surcharge_rules"] = [{
+                "waiver_pct": 1.0, "min_txn_amount": 100.0,
+                "max_txn_amount": 5000.0, "monthly_cap": 100.0,
+                "confidence": "high", "source_url": SOURCE,
+                "source_fetched_on": "2026-08-15",
+                "source_quote": "1% fuel surcharge waiver on transactions between "
+                                "INR 100 to INR 5000 with maximum surcharge waiver "
+                                "of INR 100 per statement cycle",
+            }]
+        found = run_layers(make_ctx([mutate(m)]))
+        self.assertNotIn("L8.ROW_NUMBER_NOT_IN_QUOTE", {f.code for _l, f in found})
+
+    def test_a_milestone_target_that_is_not_in_its_own_quote(self):
+        def m(e):
+            e["milestone_rules"] = [{
+                "milestone_name": "Quarterly voucher", "spend_target": 50000.0,
+                "period": "quarter", "bonus_type": "voucher", "bonus_value": 500.0,
+                "bonus_description": "", "is_progressive": 0,
+                "conditions_json": None, "confidence": "high", "source_url": SOURCE,
+                "source_fetched_on": "2026-08-15",
+                "source_quote": "Spend milestones earn you a gift voucher.",
+            }]
+        self.assertFires(mutate(m), "L8.ROW_NUMBER_NOT_IN_QUOTE")
+
+    def test_a_row_with_no_quote_is_not_accused_of_a_bad_one(self):
+        def m(e):
+            e["fuel_surcharge_rules"] = [{
+                "waiver_pct": 1.0, "min_txn_amount": 400.0,
+                "max_txn_amount": 5000.0, "monthly_cap": 250.0,
+            }]
+        found = run_layers(make_ctx([mutate(m)]))
+        self.assertNotIn("L8.ROW_NUMBER_NOT_IN_QUOTE", {f.code for _l, f in found})
+
     def test_date_that_is_not_a_real_day(self):
         self.assertFires(
             mutate(lambda e: e["reward_rules"][1].__setitem__("expiry_date", "2026-02-30")),

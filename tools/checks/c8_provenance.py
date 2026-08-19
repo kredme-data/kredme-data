@@ -18,6 +18,9 @@ What it checks
     an ERROR, not a warning: a rate copied from a blog is a rumour with a citation.
   * the quote actually contains the number the rule claims. A quote that does not
     support its own rule is WORSE than no quote — it manufactures false confidence.
+    This is asked of the fuel-surcharge, milestone and redemption blocks too, not
+    just of reward_rules: eleven unsupported numbers shipped on six cards while
+    only reward_rules were inspected.
   * staleness: source_fetched_on older than `provenance_max_age_days`
     (ctx.config, default 90). Indian issuers devalue several times a year.
   * the 'confidence defaults to high' trap. credit_card.dart:463 reads
@@ -1055,6 +1058,71 @@ def _truthy_active(inner) -> bool:
     return str(v).strip().lower() not in ("0", "false", "no", "")
 
 
+# The numbers OUTSIDE reward_rules were never read.
+#
+# _check_quotes above walks c["rules"], and the ledger only harvests reward_rules,
+# so a fuel-surcharge band, a milestone target or a redemption floor could carry a
+# quote that proves none of its numbers and no layer would ever say so. That is
+# not hypothetical: eleven such values shipped on six of the ten cards in the
+# 19-Aug provenance pass — a surcharge row stamped 'high' on a sentence that
+# proves only its 1%, while carrying a min, a max and a cap the sentence never
+# mentions — and the review that signed the pass off reported "zero new errors"
+# because the tool was blind to exactly this.
+#
+# A row-level source_quote certifies the WHOLE row. So the rule is the same one
+# reward rules already live under: every number in the row must appear in the
+# sentence cited for it, or the row must not claim to be sourced.
+_OTHER_BLOCK_NUMBERS = {
+    "fuel_surcharge_rules": ("waiver_pct", "min_txn_amount",
+                             "max_txn_amount", "monthly_cap"),
+    "milestone_rules": ("spend_target", "bonus_value"),
+    "redemption_rules": ("point_value_inr", "min_points", "min_redemption_points"),
+}
+
+
+def _check_other_block_numbers(ctx: Ctx, cards, out: list) -> None:
+    """Same bar as a reward rule, for the blocks the ledger never reached."""
+    per_card = defaultdict(list)
+    for block, fields in _OTHER_BLOCK_NUMBERS.items():
+        for cid, _inner, j, r in ctx.rules(block):
+            if not isinstance(r, dict):
+                continue
+            q = _s(r.get("source_quote"))
+            if q is None:
+                continue                       # no quote claimed, nothing to disprove
+            said = _numbers_in(q)
+            missing = []
+            for f in fields:
+                v = num(r.get(f))
+                if v is None or v == 0:
+                    continue
+                if not any(_close(v, x) for x in said):
+                    missing.append("%s=%g" % (f, v))
+            if missing:
+                per_card[cid or "(card with no id)"].append(
+                    (block, j, r.get("confidence"), missing, q))
+
+    for cid, rows in sorted(per_card.items()):
+        high = [r for r in rows if str(r[2] or "high").lower() == "high"]
+        block, idx, _conf, missing, quote = rows[0]
+        out.append(Finding(
+            severity=WARN, code="L8.ROW_NUMBER_NOT_IN_QUOTE",
+            message=("%d row(s) outside reward_rules on this card carry a number that "
+                     "does not appear in the sentence cited as their source%s."
+                     % (len(rows),
+                        "; %d of them still read confidence 'high'" % len(high)
+                        if high else "")),
+            card_id=cid, block=block, field="source_quote", index=idx,
+            evidence=trunc("%s[%d]: %s | quote says: %s"
+                           % (block, idx, ", ".join(missing), quote), 240),
+            impact="These numbers decide a surcharge band, a milestone target or what "
+                   "a point is worth, and they read as issuer-verified in every "
+                   "report. Nothing else in this file inspects them.",
+            fix="Quote the sentence that states each number, or set confidence to "
+                "'low' on any row whose quote covers only part of it.",
+        ))
+
+
 def _check_unreadable_rows(ctx: Ctx, cards, out: list) -> None:
     """Rows this layer could not inspect, so nobody mistakes silence for a pass."""
     for c in cards:
@@ -1099,6 +1167,7 @@ def run(ctx: Ctx) -> list[Finding]:
         (_check_dates, (ctx, cards, out, today, max_age)),
         (_check_confidence_values, (ctx, cards, out)),
         (_check_other_blocks, (ctx, cards, out)),
+        (_check_other_block_numbers, (ctx, cards, out)),
         (_check_unreadable_rows, (ctx, cards, out)),
         (_check_grades, (ctx, cards, out)),
     )
