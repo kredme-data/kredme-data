@@ -32,6 +32,11 @@ from pipeline import report as R          # noqa: E402
 
 UTC = dt.timezone.utc
 
+# A source has to name a real site. 'https://x' has no dot, so it names nothing a
+# person could open, and the counted definition rejects it exactly as the
+# validator's L8 layer always has.
+SOURCE = "https://www.hdfc.bank.in/credit-cards/regalia"
+
 
 # ---------------------------------------------------------------------------
 # Fixtures — the real nested seed shape: {"card": {...}, "reward_rules": [...]}
@@ -147,8 +152,14 @@ class TestComputeMetricsHappyPath(unittest.TestCase):
     def test_keys_match_the_direction_map(self) -> None:
         # If these drift, diff_metrics silently stops labelling a metric and the
         # trend table quietly loses a column.
-        self.assertEqual(set(self.m), set(R.GOOD_DIRECTION))
-        self.assertEqual(set(self.m), set(R.METRIC_LABELS))
+        #
+        # NOT_A_METRIC is subtracted rather than the assertion being loosened:
+        # the row also carries `metric_definition_version`, which is bookkeeping
+        # and has no direction because it is not a measurement. Every remaining
+        # key still has to be labelled and directed.
+        measured = set(self.m) - R.NOT_A_METRIC
+        self.assertEqual(measured, set(R.GOOD_DIRECTION))
+        self.assertEqual(measured, set(R.METRIC_LABELS))
 
     def test_input_is_not_mutated(self) -> None:
         before = copy.deepcopy(self.cards)
@@ -350,13 +361,31 @@ class TestSourcedRules(unittest.TestCase):
     def count(self, *rules) -> dict:
         return R.compute_metrics([card("a", rules=rules)], EMPTY_SOURCES)
 
-    def test_each_provenance_shape_counts(self) -> None:
-        self.assertEqual(self.count(rule("r", source_url="https://x"))["sourced_rules"], 1)
-        self.assertEqual(self.count(rule("r", source_quote="Earn 4 points"))["sourced_rules"], 1)
-        self.assertEqual(self.count(rule("r", _sources=[{"url": "https://x"}]))["sourced_rules"], 1)
+    def test_a_rule_naming_a_document_counts(self) -> None:
+        # Both key names, because three passes wrote provenance three ways.
+        self.assertEqual(
+            self.count(rule("r", source_url=SOURCE))["sourced_rules"], 1)
+        self.assertEqual(
+            self.count(rule("r", _sources=[{"url": SOURCE}]))["sourced_rules"], 1)
+
+    def test_a_quote_with_no_document_does_not_count(self) -> None:
+        """Tightened 2026-08-19, and this is the change that moved the number.
+
+        A quote alone cannot be re-read when the issuer devalues next quarter,
+        which is the entire purpose of a source. Counting it took the reported
+        figure to 61 of 1,279 (4.8%) while the validator, reading the same file,
+        said 26 (2.0%). One of those numbers had to go, and it was not the
+        stricter one.
+        """
+        self.assertEqual(
+            self.count(rule("r", source_quote="Earn 4 points"))["sourced_rules"], 0)
+
+    def test_a_placeholder_that_names_no_site_does_not_count(self) -> None:
+        # Seven rules in the real catalogue cite the literal string "bank".
+        self.assertEqual(self.count(rule("r", _sources=["bank"]))["sourced_rules"], 0)
 
     def test_all_three_on_one_rule_counts_once(self) -> None:
-        r = rule("r", source_url="https://x", source_quote="q", _sources=[{"url": "https://x"}])
+        r = rule("r", source_url=SOURCE, source_quote="q", _sources=[{"url": SOURCE}])
         self.assertEqual(self.count(r)["sourced_rules"], 1)
 
     def test_empty_provenance_does_not_count(self) -> None:
@@ -365,8 +394,19 @@ class TestSourcedRules(unittest.TestCase):
         self.assertEqual(self.count(rule("r", _sources=[]))["sourced_rules"], 0)
         self.assertEqual(self.count(rule("r", source_url=None))["sourced_rules"], 0)
 
+    def test_the_count_is_the_pipeline_s_own_predicate(self) -> None:
+        """Not merely equal today — the same function.
+
+        Three copies of "what counts as a source" produced three answers for one
+        file (4.8%, 2.1%, 2.0%) before this was centralised.
+        """
+        from pipeline import provenance
+
+        self.assertEqual(R._has_source(rule("r", source_url=SOURCE)),
+                         bool(provenance.row_document_urls(rule("r", source_url=SOURCE))))
+
     def test_pct_is_rounded(self) -> None:
-        m = self.count(rule("a", source_url="https://x"), rule("b"), rule("c"))
+        m = self.count(rule("a", source_url=SOURCE), rule("b"), rule("c"))
         self.assertEqual(m["sourced_rules_pct"], 33.33)
 
     def test_no_rules_does_not_divide_by_zero(self) -> None:
@@ -394,7 +434,8 @@ class TestMalformedInput(unittest.TestCase):
         self.assertEqual(m["total_cards"], 0)
         self.assertEqual(m["sourced_rules_pct"], 0.0)
         self.assertEqual(m["sources_stale_days"], 0)
-        self.assertEqual(sum(m.values()), 0)
+        measured = {k: v for k, v in m.items() if k not in R.NOT_A_METRIC}
+        self.assertEqual(sum(measured.values()), 0)
 
     def test_junk_entries_are_skipped_not_counted(self) -> None:
         cards = [None, "hdfc", 42, [], {}, {"card": "not a dict"}, {"card": {"no": "id"}},
@@ -541,7 +582,7 @@ class TestDiffMetrics(unittest.TestCase):
     def test_prev_none_is_all_flat(self) -> None:
         cur = R.compute_metrics([card("a", rules=[rule("x")])], EMPTY_SOURCES)
         d = R.diff_metrics(None, cur)
-        self.assertEqual(set(d), set(cur))
+        self.assertEqual(set(d), set(cur) - R.NOT_A_METRIC)
         for metric, entry in d.items():
             self.assertEqual(entry["direction"], "flat", metric)
             self.assertIsNone(entry["prev"], metric)
@@ -725,7 +766,8 @@ class TestRenderReport(unittest.TestCase):
     def test_table_has_a_row_per_metric(self) -> None:
         out = R.render_report(self.cur, dict(self.cur))
         rows = [ln for ln in out.splitlines() if ln.startswith("| ") and "---" not in ln]
-        self.assertEqual(len(rows), len(self.cur) + 1)  # + the header row
+        measured = set(self.cur) - R.NOT_A_METRIC
+        self.assertEqual(len(rows), len(measured) + 1)  # + the header row
 
     def test_history_row_with_a_timestamp_renders(self) -> None:
         prev = dict(self.cur, run_at="2026-08-06T00:00:00+00:00")
@@ -786,7 +828,7 @@ class TestCLI(unittest.TestCase):
                                str(pathlib.Path(tmp) / "h.jsonl"), "--json")
             self.assertEqual(res.returncode, 0, res.stderr)
             row = json.loads(res.stdout)
-            self.assertEqual(set(row), set(R.GOOD_DIRECTION))
+            self.assertEqual(set(row) - R.NOT_A_METRIC, set(R.GOOD_DIRECTION))
 
     def test_missing_cards_file_is_a_data_error(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

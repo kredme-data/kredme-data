@@ -35,6 +35,7 @@ import sys
 from typing import Any
 
 from pipeline import config as C
+from pipeline import provenance as P
 from pipeline import state as S
 
 # ---------------------------------------------------------------------------
@@ -52,6 +53,34 @@ APP_POINT_VALUE_MAX = 1.5
 # state.record_source's vocabulary. Anything else (fetch_failed, no_url,
 # not_issuer_domain) means we still have no issuer document for that card.
 RESOLVED_STATUSES = frozenset({"ok", "unchanged"})
+
+# ---------------------------------------------------------------------------
+# Definition version
+#
+# Bumped whenever a metric stops meaning what it meant. Two rows measured by
+# different rules are not comparable, and a trend table that subtracts them
+# anyway prints a fiction — here, a definition tightening would have rendered as
+# "34 reward rules LOST the citation they had", which is the single most alarming
+# sentence this report can produce and it would have been false.
+#
+#   1  sourced_rules counted source_url, source_quote OR any non-empty _sources.
+#      That included 34 rules whose only provenance is a quote with no document,
+#      and seven citing the placeholder string "bank".
+#   2  sourced_rules counts only rules naming a document anyone can open
+#      (pipeline.provenance.row_document_urls) — the same definition the
+#      validator's L8 layer and `refresh --unsourced-only` use. 61 -> 27.
+#
+# The guard is small on purpose: it suppresses the COMPARISON, never the
+# measurement. This run's number is always reported truthfully.
+METRIC_DEFINITION_VERSION = 2
+
+# Metrics whose meaning changed at the version above. Only these lose their
+# week-over-week comparison when the version moves; a cap count is a cap count.
+DEFINITION_SENSITIVE = ("sourced_rules", "sourced_rules_pct")
+
+# Row keys that are bookkeeping, not measurements. They never appear in the
+# trend table and are never diffed.
+NOT_A_METRIC = frozenset({"run_at", "metric_definition_version"})
 
 # ---------------------------------------------------------------------------
 # What each metric means, and which way is good
@@ -224,22 +253,28 @@ def _rule_pct(rule: dict[str, Any], inner: dict[str, Any], base_pct: float) -> f
 
 
 def _has_source(rule: dict[str, Any]) -> bool:
-    """True when this rule carries any evidence of where its number came from.
+    """True when this rule names a document somebody could go and re-read.
 
-    Three key names are in the seed already (source_url, source_quote, _sources)
-    because three different passes added provenance in three different shapes.
-    Counting all three is what makes the metric honest rather than flattering.
+    Delegates to `pipeline.provenance`, which is the one place that decides what
+    counts as a citation. The validator's L8 layer and `refresh --unsourced-only`
+    read the same function, so the number in this report, the number in a
+    validation report and the cards the pipeline queues can never be three
+    different answers to one question.
+
+    STEP CHANGE, 2026-08-19. This used to count `source_quote` and any non-empty
+    `_sources` as well, and reported 61 of 1,279 rules (4.8%) while the validator
+    reported 26 (2.0%) for the same file. The gap was not a rounding difference —
+    it was 34 rules whose only "provenance" is a quote with no document behind it,
+    plus seven citing the literal placeholder string "bank". Neither can be
+    re-read when the issuer devalues next quarter, which is the entire purpose of
+    a source, so neither is one.
+
+    The metric therefore drops 61 -> 27 in one run, and the week that happens the
+    report will say citations were LOST. They were not; the count was flattering.
+    Every earlier row in metrics.jsonl is on the old, looser definition and is not
+    comparable across that boundary.
     """
-    for key in ("source_url", "source_quote"):
-        v = rule.get(key)
-        if isinstance(v, str) and v.strip():
-            return True
-    sources = rule.get("_sources")
-    if isinstance(sources, (list, tuple, dict)) and len(sources) > 0:
-        return True
-    if isinstance(sources, str) and sources.strip():
-        return True
-    return False
+    return bool(P.row_document_urls(rule))
 
 
 def _has_cap_value(rule: dict[str, Any]) -> bool:
@@ -362,6 +397,7 @@ def compute_metrics(
     stale_days = 0 if oldest is None else max(0, (now - oldest).days)
 
     return {
+        "metric_definition_version": METRIC_DEFINITION_VERSION,
         "total_cards": total_cards,
         "active_cards": active_cards,
         "total_reward_rules": total_rules,
@@ -425,12 +461,29 @@ def diff_metrics(prev: dict | None, cur: dict) -> dict:
     if prev is not None and not isinstance(prev, dict):
         raise TypeError(f"prev must be a metrics dict or None, got {type(prev).__name__}")
 
+    # Compared SYMMETRICALLY, and a row written before the key existed is version
+    # 1. Two hand-built rows that carry no version therefore still diff normally —
+    # only a real history row (no key, so 1) meeting a real compute_metrics row
+    # (key, so 2) trips the guard, which is exactly the boundary that matters.
+    same_definition = not isinstance(prev, dict) or (
+        _fnum(prev.get("metric_definition_version", 1))
+        == _fnum(cur.get("metric_definition_version", 1))
+    )
+
     out: dict[str, dict[str, Any]] = {}
     for metric, raw_cur in cur.items():
+        if metric in NOT_A_METRIC:
+            continue
         cur_val = _fnum(raw_cur)
         if cur_val is None:
             continue
         prev_val = _fnum(prev.get(metric)) if isinstance(prev, dict) else None
+
+        # Measured by a different rule last week, so there is nothing to subtract.
+        # Reported as "no comparison", never as a change.
+        if prev_val is not None and metric in DEFINITION_SENSITIVE and not same_definition:
+            out[metric] = {"prev": None, "cur": raw_cur, "delta": None, "direction": "flat"}
+            continue
 
         if prev_val is None:
             out[metric] = {"prev": None, "cur": raw_cur, "delta": None, "direction": "flat"}
@@ -516,6 +569,18 @@ def _headline(cur: dict, diffs: dict) -> str:
     if not diffs or all(d.get("delta") is None for d in diffs.values()):
         return f"First run. Baseline: {standing} — everything else is unverified."
 
+    # Past the first-run branch, so the history has comparable rows — but THIS
+    # metric has no previous value, which can only mean its definition moved.
+    # Saying "34 citations lost" here would be the most alarming and least true
+    # sentence this report can print.
+    if moved and moved.get("prev") is None:
+        return (
+            f"Citations are now counted strictly — only a rule naming a document "
+            f"anyone can open, the same test the validator and the catch-up run "
+            f"use. On that measure, {standing}. Last week's figure used a looser "
+            f"rule and is not comparable to it."
+        )
+
     if delta and delta > 0:
         noun = "reward rule now cites" if delta == 1 else "reward rules now cite"
         return f"{_num(delta)} more {noun} the bank's own document — now {short}."
@@ -541,7 +606,11 @@ def _headline(cur: dict, diffs: dict) -> str:
 def _ordered(metrics: dict) -> list[str]:
     """Declaration order first, then anything new, so the table never reshuffles."""
     known = [m for m in GOOD_DIRECTION if m in metrics]
-    extra = sorted(m for m in metrics if m not in GOOD_DIRECTION and _fnum(metrics[m]) is not None)
+    extra = sorted(
+        m for m in metrics
+        if m not in GOOD_DIRECTION and m not in NOT_A_METRIC
+        and _fnum(metrics[m]) is not None
+    )
     return known + extra
 
 
