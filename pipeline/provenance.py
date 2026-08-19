@@ -113,15 +113,26 @@ _BARE_HOST = re.compile(r"^[a-z0-9]([a-z0-9.-]*[a-z0-9])?$")
 # A new issuer spelling must be added here by a human, and until it is, this
 # layer says so out loud (L8.ISSUER_DOMAIN_UNMAPPED) instead of guessing.
 # --------------------------------------------------------------------------- #
+# ★ THE .bank.in MIGRATION. Indian banks moved onto the RBI-restricted .bank.in
+# TLD during 2025-26 and every URL this pipeline fetches from HDFC, Axis, IDFC
+# FIRST, IndusInd and ICICI is on the new host. Those hosts were in
+# pipeline/config.ISSUER_DOMAINS (the allowlist the fetcher obeys) and NOT here,
+# so the pipeline would fetch a page, quote it, stamp it — and this table would
+# then call the citation "not an issuer website" on 135 of 383 cards, leaving
+# every one of them at grade F with the evidence sitting right there on the row.
+# One migration, two tables, and only one of them had been updated. Added
+# 2026-08-19, by hand, from the allowlist — never by string similarity.
 ISSUER_PUBLISHES_ON: dict[str, tuple[str, ...]] = {
-    "sbicard":                  ("sbicard.com", "sbi.co.in", "onlinesbi.sbi"),
-    "hdfcbank":                 ("hdfcbank.com", "hdfcbank.co.in"),
-    "axisbank":                 ("axisbank.com", "axisbank.co.in"),
-    "icicibank":                ("icicibank.com", "icicibank.co.in"),
-    "rblbank":                  ("rblbank.com",),
+    "sbicard":                  ("sbicard.com", "sbi.co.in", "onlinesbi.sbi",
+                                 "sbi.bank.in"),
+    "hdfcbank":                 ("hdfcbank.com", "hdfcbank.co.in", "hdfc.bank.in"),
+    "axisbank":                 ("axisbank.com", "axisbank.co.in", "axis.bank.in"),
+    "icicibank":                ("icicibank.com", "icicibank.co.in", "icici.bank.in"),
+    "rblbank":                  ("rblbank.com", "rbl.bank.in"),
     "kotakmahindrabank":        ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
     "kotakmahindra":            ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
-    "indusindbank":             ("indusind.com", "indusindbank.com"),
+    "indusindbank":             ("indusind.com", "indusindbank.com",
+                                 "indusind.bank.in"),
     "yesbank":                  ("yesbank.in", "yes.bank.in"),
     "ausmallfinancebank":       ("aubank.in", "au.bank.in"),
     "aubank":                   ("aubank.in", "au.bank.in"),
@@ -138,16 +149,17 @@ ISSUER_PUBLISHES_ON: dict[str, tuple[str, ...]] = {
     "bobcardbankofbarodainpartnershipwithuniapp":
                                 ("bobcard.co.in", "bobfinancial.com",
                                  "bankofbaroda.in", "uni.cards"),
-    "idfcfirstbank":            ("idfcfirstbank.com",),
-    "idfcbank":                 ("idfcfirstbank.com",),
+    "idfcfirstbank":            ("idfcfirstbank.com", "idfcfirst.bank.in"),
+    "idfcbank":                 ("idfcfirstbank.com", "idfcfirst.bank.in"),
     "americanexpress":          ("americanexpress.com",),
     "hsbc":                     ("hsbc.co.in", "hsbc.com"),
     "hsbcbank":                 ("hsbc.co.in", "hsbc.com"),
-    "idbibank":                 ("idbibank.in", "idbi.com"),
+    "idbibank":                 ("idbibank.in", "idbi.com", "idbi.bank.in"),
     "standardchartered":        ("sc.com", "standardchartered.co.in"),
     "standardcharteredbank":    ("sc.com", "standardchartered.co.in"),
-    "federalbank":              ("federalbank.co.in",),
-    "federalbankbobcardscapia": ("federalbank.co.in", "bobcard.co.in", "scapia.cards"),
+    "federalbank":              ("federalbank.co.in", "federal.bank.in"),
+    "federalbankbobcardscapia": ("federalbank.co.in", "federal.bank.in",
+                                 "bobcard.co.in", "scapia.cards"),
     "equitassmallfinancebank":  ("equitasbank.com", "equitas.bank.in"),
     "cityunionbank":            ("cityunionbank.com", "cubdigital.in"),
     "csbbank":                  ("csb.co.in",),
