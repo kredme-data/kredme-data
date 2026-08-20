@@ -1,14 +1,14 @@
 {
- "version": "5.1.26",
- "updated_at": "2026-08-20T09:32:15Z",
+ "version": "5.1.27",
+ "updated_at": "2026-08-20T10:18:59Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Nine cards re-sourced from the issuers' own T&C / MITC / fee PDFs on 2026-08-20. Every number written or changed carries source_url + source_quote + source_fetched_on + an honest confidence ON THE ROW THAT HOLDS THE NUMBER; a card-level stamp is never treated as evidence for a rule. Four cards shipped base_reward_rate = 0.0 alongside multiplier rules, which made every rate on them compute to zero and rank them last on every purchase; all four now carry the issuer's real base earn and a matching base rule. Flipkart Super Elite — the fifth zero-base card — is deliberately untouched: its SuperCoin rupee value is an aggregator estimate that Flipkart itself disclaims. No rule_name was edited, because the app keys users' saved cap progress on that string, so three corrected rules still carry names quoting the superseded rate and the gate reports them on purpose.",
+ "_note": "Ten cards re-sourced from the issuers' own T&C / MITC / fee PDFs on 2026-08-20. Every number written or changed carries source_url + source_quote + source_fetched_on + an honest confidence ON THE ROW THAT HOLDS THE NUMBER, and card-level numbers (base_reward_rate, rp_value_standard, fee_waiver_spend) carry the same stamp in a card-level _provenance block that is never counted as evidence for a reward rule. Five cards shipped base_reward_rate = 0.0 alongside multiplier rules, which made every rate on them compute to zero and rank them last on every purchase; all five now carry the issuer's real base earn and a matching base rule. Flipkart Super Elite's rp_value_standard was DELETED rather than kept: 1.0 was an aggregator estimate and the program owner states SuperCoins have no assigned monetary value, so the app now substitutes its own invented Rs 0.25 and every percentage that card shows is that fabrication. Axis Atlas rp_value_standard stays null for the same reason. No rule_name was edited, because the app keys users' saved cap progress on that string, so SEVEN corrected rules across five cards still carry names quoting the superseded rate; tools/validate_cards.py reports all seven and nothing is grandfathered. Nineteen validator errors remain across the ten cards and are listed in the PR; none of these ten cards is defect-free.",
  "stats": {
   "total_cards": 383,
-  "total_reward_rules": 1280,
+  "total_reward_rules": 1284,
   "total_redemption_rules": 884,
-  "total_exclusion_rules": 1544,
+  "total_exclusion_rules": 1555,
   "total_milestone_rules": 417,
   "total_fuel_surcharge_rules": 359,
   "total_travel_cards": 82,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "8260684af176451e23504f66ab3c91b08752a33e369702072a4ceb9ee1fd3481",
-   "size_bytes": 1914164
+   "checksum": "fe62c78c01e7f32e8b7c8dcd06636c725b1bdb00d055079b10a880289e5f74fa",
+   "size_bytes": 1971984
   },
   {
    "name": "merchants.json",
