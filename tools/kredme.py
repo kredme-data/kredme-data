@@ -186,10 +186,17 @@ def read_json(path: Path):
         return json.load(fh)
 
 
-def write_json(path: Path, obj) -> None:
+def write_json(path: Path, obj, indent: int = 2) -> None:
+    """Write JSON at the indent the rest of the repo uses for that file.
+
+    The seed files are indent=1 and news/feed.json is indent=2 -- tests/test_cli.py
+    asserts both. Writing the manifest at 2 made every promote leave a manifest the
+    repo's own test rejects, so main went red on each publish. Callers that touch a
+    seed file must pass indent=1; the default stays 2 for everything else.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
-        json.dump(obj, fh, indent=2, ensure_ascii=False)
+        json.dump(obj, fh, indent=indent, ensure_ascii=False)
         fh.write("\n")
 
 
@@ -1736,7 +1743,8 @@ def cmd_promote(args) -> None:
          "size_bytes": (LIVE_SEED / n).stat().st_size}
         for n in SEED_FILES if (LIVE_SEED / n).exists()
     ]
-    write_json(LIVE_SEED / MANIFEST, manifest)
+    # indent=1: the seed files are indent=1 on disk and tests/test_cli.py asserts it.
+    write_json(LIVE_SEED / MANIFEST, manifest, indent=1)
     ok(f"seed/{MANIFEST} rebuilt — checksums recomputed")
 
     record_published(new_sv, new_nv)
