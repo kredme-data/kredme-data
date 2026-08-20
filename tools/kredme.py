@@ -574,7 +574,18 @@ def scan_economics(cards: list) -> dict:
                 hard_ceiling.append((_rule_key(cid, rule), round(pct, 2)))
 
             # Does the number agree with its own sentence?
+            #
+            # EVIDENCE BEATS THE PARSER. This check reads the rule NAME, which is
+            # the issuer's marketing sentence, and issuers write things like
+            # "33% Bonus Reward Points" meaning 33% MORE POINTS, not 33% of spend.
+            # Parsing that as a percentage and then overriding a number taken
+            # verbatim from the bank's own T&C would be exactly backwards.
+            # So a rule whose stored value is quoted from the issuer is exempt --
+            # but only when the quote actually contains the number, so an
+            # unrelated quote cannot be pinned on a rule to wave it through.
             claim, how = claimed_pct(rule, inner, base)
+            if _issuer_quoted(rule):
+                claim = None
             if claim is not None and max(pct, claim) >= SELF_CONTRADICTION_FLOOR_PCT:
                 ratio = (pct / claim) if claim > 0 else float("inf")
                 if ratio > SELF_CONTRADICTION_RATIO or ratio < 1 / SELF_CONTRADICTION_RATIO:
@@ -611,6 +622,42 @@ def scan_economics(cards: list) -> dict:
         "base_rule_unit_mismatch": sorted(
             base_unit_mismatch, key=lambda x: -(max(x[1], x[2]) / max(min(x[1], x[2]), 1e-9))),
     }
+
+
+def _issuer_quoted(rule: dict) -> bool:
+    """True when this rule's stored rate is backed by the issuer's own words.
+
+    Requires BOTH a source_url and a source_quote, AND the quote must literally
+    contain the rate's digits. Attaching a quote that does not mention the number
+    grants no exemption -- that restriction is the whole point, otherwise this
+    becomes a way to silence the self-consistency gate with any stray sentence.
+    """
+    if not isinstance(rule, dict):
+        return False
+    url, quote = rule.get("source_url"), rule.get("source_quote")
+    if not (isinstance(url, str) and url and isinstance(quote, str) and quote):
+        return False
+    rate = rule.get("reward_rate")
+    if not isinstance(rate, (int, float)) or isinstance(rate, bool):
+        return False
+    # Match the number as a WHOLE TOKEN in the quote, not as a digit substring:
+    # searching a concatenated digit soup would let "25" match inside "1,250"
+    # and hand out exemptions the quote never justified.
+    numbers = set()
+    for tok in re.findall(r"\d+(?:,\d{2,3})*(?:\.\d+)?", quote):
+        try:
+            numbers.add(float(tok.replace(",", "")))
+        except ValueError:
+            continue
+    if not numbers:
+        return False
+    # A rate may be written as a fraction, a percent, or a count of points, so
+    # accept any of those spellings of the same value.
+    for cand in (rate, rate * 100, rate / 100):
+        for seen in numbers:
+            if abs(seen - cand) <= max(abs(cand), 1.0) * 1e-6:
+                return True
+    return False
 
 
 def read_rate_baseline() -> dict | None:

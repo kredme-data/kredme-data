@@ -139,6 +139,14 @@ CARD_SPEC = {
     "point_currency": _f("str", hard=True),
     "redemption": _f("object", hard=True),
     "issuer_key": _f("str"),
+    # Evidence for a CARD-LEVEL number the reward-rule rows cannot carry:
+    # base_reward_rate, rp_value_standard, fee_waiver_spend. One entry per field,
+    # each holding source_url / source_quote / source_doc_type /
+    # source_fetched_on / confidence. Declared here, deliberately, because the
+    # alternative was to keep writing the stamp into a key the schema did not
+    # know — which is how a field silently stops surviving a sync. A card-level
+    # stamp is NEVER evidence for a reward rule; L8 grades rules only.
+    "_provenance": _f("object"),
 }
 
 REWARD_SPEC = {
@@ -179,6 +187,11 @@ REWARD_SPEC = {
     "source_doc_type": _f("str"),
     "source_fetched_on": _f("date"),
     "_sources": _f("array"),
+    # Free text saying WHAT the conflict is, next to source_conflict, which is a
+    # bare boolean and therefore records only that one exists. Also carries the
+    # second citation when a quote is spliced across two issuer documents and
+    # the row has room for only one source_url.
+    "_note": _f("str"),
 }
 
 EXCLUSION_SPEC = {
@@ -201,6 +214,12 @@ EXCLUSION_SPEC = {
     "confidence": _f("str"),
     "source_quote": _f("str"),
     "source_url": _f("str"),
+    # The same two stamps the reward rows carry. An exclusion takes a card off
+    # the screen at a whole category, so it needs the date and the document type
+    # for exactly the reason a reward rate does.
+    "source_doc_type": _f("str"),
+    "source_fetched_on": _f("date"),
+    "_note": _f("str"),
     "_sources": _f("array"),
 }
 
