@@ -5765,9 +5765,9 @@
     "merchant_ref": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.02,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 2.0,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -5775,7 +5775,13 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "point_value": 1.0,
+    "point_currency": "EDGE Miles",
+    "source_quote": "2 EDGE Miles per INR 100 spent",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5 EDGE Miles for every ₹100 spent on travel spends including Axis Bank Travel Edge, hotels, and flight bookings. Accelerated EDGE Miles earned on cumulative spends up to ₹2,00,000 per month.",
@@ -5784,9 +5790,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": "portal",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": 200000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -5794,38 +5800,69 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "cap_kind": "spend"
+    "confidence": "high",
+    "cap_kind": "spend",
+    "point_value": 1.0,
+    "point_currency": "EDGE Miles",
+    "source_quote": "Earn 5 EDGE Miles for every Rs. 100 spent on Travel EDGE, airline and hotel merchants up to cumulative transactions of Rs. 2,00,000 per month … 1 EDGE Mile is equal to INR 1",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
    {
     "exclusion_type": "category",
     "exclusion_value": "jewellery",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:gold/jewellery"
+    "also_excludes_from_threshold": 1,
+    "_retyped_from": "other:gold/jewellery",
+    "confidence": "high",
+    "source_quote": "In addition to current category exclusions, spends threshold for Milestone achievement will exclude transactions done on Gold/ Jewellery, Rent, Wallet, Government Institution, Insurance, Fuel, Utilities and Telecom merchants w.e.f. 20th April, 2024",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1,
+    "confidence": "high",
+    "source_quote": "In addition to current category exclusions, spends threshold for Milestone achievement will exclude transactions done on Gold/ Jewellery, Rent, Wallet, Government Institution, Insurance, Fuel, Utilities and Telecom merchants w.e.f. 20th April, 2024",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet"
+    "also_excludes_from_threshold": 1,
+    "_retyped_from": "other:wallet",
+    "confidence": "high",
+    "source_quote": "In addition to current category exclusions, spends threshold for Milestone achievement will exclude transactions done on Gold/ Jewellery, Rent, Wallet, Government Institution, Insurance, Fuel, Utilities and Telecom merchants w.e.f. 20th April, 2024",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "government",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:government institutions"
+    "also_excludes_from_threshold": 1,
+    "_retyped_from": "other:government institutions",
+    "confidence": "high",
+    "source_quote": "In addition to current category exclusions, spends threshold for Milestone achievement will exclude transactions done on Gold/ Jewellery, Rent, Wallet, Government Institution, Insurance, Fuel, Utilities and Telecom merchants w.e.f. 20th April, 2024",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "insurance",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1,
+    "confidence": "high",
+    "source_quote": "In addition to current category exclusions, spends threshold for Milestone achievement will exclude transactions done on Gold/ Jewellery, Rent, Wallet, Government Institution, Insurance, Fuel, Utilities and Telecom merchants w.e.f. 20th April, 2024",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "exclusion_type": "mcc",
@@ -5835,7 +5872,32 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "utilities",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1,
+    "confidence": "high",
+    "source_quote": "In addition to current category exclusions, spends threshold for Milestone achievement will exclude transactions done on Gold/ Jewellery, Rent, Wallet, Government Institution, Insurance, Fuel, Utilities and Telecom merchants w.e.f. 20th April, 2024",
+    "source_url": "https://www.axis.bank.in/docs/default-source/atlas-credit-card/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1,
+    "confidence": "high",
+    "source_quote": "Gold/ Jewellery 5094, 5944 | Rent 6513 | Insurance 6300, 6381, 5960, 6012, 6051 | Government Institutions 9222, 9311, 9399, 9402 | Utilities 4814, 4816, 4899, 4900 | Fuel 5541, 5542, 5983",
+    "source_url": "https://campaign.axis.bank.in/generic/axis-atlas-credit-card-terms-and-conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1,
+    "confidence": "high",
+    "source_quote": "Gold/ Jewellery 5094, 5944 | Rent 6513 | Insurance 6300, 6381, 5960, 6012, 6051 | Government Institutions 9222, 9311, 9399, 9402 | Utilities 4814, 4816, 4899, 4900 | Fuel 5541, 5542, 5983",
+    "source_url": "https://campaign.axis.bank.in/generic/axis-atlas-credit-card-terms-and-conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "milestone_rules": [
@@ -10889,8 +10951,8 @@
    "network": "unknown",
    "card_tier": "mid_range",
    "annual_fee": 1000.0,
-   "fee_waiver_spend": 100000.0,
-   "base_reward_rate": 0.0,
+   "fee_waiver_spend": 30000.0,
+   "base_reward_rate": 0.0066667,
    "reward_currency": "reward_points",
    "rp_value_standard": 1.0,
    "rp_value_travel": 0.2,
@@ -10908,7 +10970,17 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "fee_waiver_spend": {
+     "confidence": "high",
+     "source_quote": "A card member shall be exempted from annual fee payment of the anniversary year in which INR 30,000 or more is spent on this card. (Wallet, Rent & Insurance payments will be excluded",
+     "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-indianoil-axis-bank-premium-credit-card.pdf",
+     "source_doc_type": "tnc",
+     "source_fetched_on": "2026-08-20",
+     "_note": "card-level stamp — evidence for THIS field only, never for a reward rule"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -10920,15 +10992,19 @@
     "channel": null,
     "reward_type": "multiplier",
     "reward_rate": 6.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 600,
     "cap_period": "month",
-    "min_txn_amount": null,
+    "min_txn_amount": 150.0,
     "priority": 90,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Customer shall earn 6X (5X Accelerated rewards +1X- Base) EDGE Miles on every INR 150 spent at registered IndianOil fuel pumps up to INR 15,000 per statement month … 5X is capped at 600 EDGE Miles in total (5X Accelerated + 1X Base) i.e., on cumulative fuel spends of 15,000 per month. Customer will be eligible for the 1X Edge Mile on transactions more than INR 15,000 … Also, EDGE Miles will not be awarded for any transactions below Rs. 150.",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-indianoil-axis-bank-premium-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2X EDGE Miles for every ₹150 spent on groceries and supermarkets, max 33 EDGE Miles at this rate for spending up to ₹5,000.",
@@ -10939,15 +11015,42 @@
     "channel": null,
     "reward_type": "multiplier",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
-    "cap_amount": 33,
+    "reward_unit_spend": 150.0,
+    "cap_amount": 66.0,
     "cap_period": "month",
-    "min_txn_amount": null,
+    "min_txn_amount": 150.0,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Customer shall earn 2X (1X accelerated rewards + 1X base) EDGE.Mile on every INR 150 spent at Grocery and Supermarkets up to INR 5,000 per statement month (33 EDGE Miles) … 13-11-2022 Grocery / Supermarkets (C) Purchase 5,000 2x 33 NA 33 66 … Also, EDGE Miles will not be awarded for any transactions below Rs. 150.",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-indianoil-axis-bank-premium-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "rule_name": "0.67% back as EDGE Miles on all other spends. 1 EDGE Mile on every ₹150 spent.",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": "all other spends",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 150.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": 150.0,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_quote": "Base points: EDGE MILE on every INR 150 spent: Customer shall earn 1 EDGE Mile (1EDGE Mile = INR 1) on every INR 150 spent … Also, EDGE Miles will not be awarded for any transactions below Rs. 150.",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-indianoil-axis-bank-premium-credit-card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
@@ -10988,6 +11091,16 @@
     "exclusion_type": "category",
     "exclusion_value": "rent",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "For reward earn: Transactions made on Utility & Telecom, Education, Rent, Wallet load, Government services, Insurance, Gold & Jewellery, Financial Institutions, Cash advances and Repayments.",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-iocl-premium-final.pdf?sfvrsn=deed1e2c_1",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "milestone_rules": [],
@@ -21372,7 +21485,7 @@
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 50000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.013333,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.2,
    "rp_value_travel": 0.25,
@@ -21410,7 +21523,34 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Earn 2X Reward Points i.e. 4 Reward Points on every Rs. 150 spent online* … With effect from 15th July 2020, customers can earn up to 500 Reward Points per statement cycle for online spends, under the 2X RP feature (i,e, Online spends of up to Rs 37,500 per cycle will earn 2X RP as per the product feature. Any amount in excess of this will continue to earn 2 RP per Rs 150 )",
+    "source_url": "https://v.hdfc.bank.in/htdocs/amp/personal/pay/cards/money-back-credit-card.html",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "rule_name": "0.27% back as Reward Points on all spends. 2 Reward Points on every ₹150 spent.",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": "all spends",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 2.0,
+    "reward_unit_spend": 150.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_quote": "Earn 2 Reward Points on every Rs 150 spent",
+    "source_url": "https://v.hdfc.bank.in/htdocs/amp/personal/pay/cards/money-back-credit-card.html",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
@@ -21436,6 +21576,26 @@
     "exclusion_value": "wallet_load",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:wallet reloads"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "Rent payments will not earn Reward Points/CashPoints on all the cards.",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/money-back-credit-card/pdf/fees-and-charges.pdf",
+    "source_doc_type": "fee_schedule",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0,
+    "confidence": "medium",
+    "source_quote": "Government related transactions will not earn Reward Points/CashPoints on all the cards except BizBlack Metal Card, BizPower, BizGrow, BizFirst, GIGA Business, Business Regalia, Business Regalia first, Business Money back, CSC small business moneyback, Paytm Business, Flipkart Business, Retailio, Best Price Save Smart, Best Price Save Max and Pinelabs",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/money-back-credit-card/pdf/fees-and-charges.pdf",
+    "source_doc_type": "fee_schedule",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "milestone_rules": [
@@ -22343,7 +22503,7 @@
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 50000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.0066667,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.2,
    "rp_value_travel": null,
@@ -22371,17 +22531,21 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.05,
-    "reward_unit_spend": null,
-    "cap_amount": "250 FP/month first 6 months, 150 FP/month thereafter",
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": 150.0,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "2.2 5% Fuel Points on fuel transactions at IOCL petrol pumps & outlets … Max 250 Fuel Points per month in first 6 months, Max 150 Fuel Points post 6 months from card issuance per month*",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/indian-oil-hdfc-bank-credit-card/T-and-C-Indian-Oil-Credit-Card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% Fuel Points on grocery spending",
@@ -22390,17 +22554,22 @@
     "category_id": "grocery",
     "category_ref": "groceries",
     "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.05,
-    "reward_unit_spend": null,
-    "cap_amount": "100 FP per month",
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": 100.0,
     "cap_period": "month",
-    "min_txn_amount": null,
+    "min_txn_amount": 150.0,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "medium",
+    "source_quote": "2.3 5% Fuel Points on Grocery and Bill Payment … Max 100 Fuel Points per month on each category per month* … Min Transaction of INR 150 on each category … 2.1 Reward Points will not be accrued for the following transactions using IOCL HDFC Bank Credit Card 1. Wallet 2. Rent 3. Government related transactions 4. Supermarkets 5. TAX 6. EMI (all type) 7. Vending Machine – Miscellaneous foods 8. Package Stores, beer, wine, liquor 9. Bakeries 10. Cash advances, Purchase of travellers' cheques 11. Insurance 12. Any other categories as decided from Time to Time",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/indian-oil-hdfc-bank-credit-card/T-and-C-Indian-Oil-Credit-Card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20",
+    "source_conflict": true
    },
    {
     "rule_name": "5% Fuel Points on utility bill payments",
@@ -22409,17 +22578,44 @@
     "category_id": "utilities",
     "category_ref": "bill payments",
     "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.05,
-    "reward_unit_spend": null,
-    "cap_amount": "100 FP per month",
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": 100.0,
     "cap_period": "month",
-    "min_txn_amount": null,
+    "min_txn_amount": 150.0,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "2.3 5% Fuel Points on Grocery and Bill Payment … Max 100 Fuel Points per month on each category per month* … Min Transaction of INR 150 on each category",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/indian-oil-hdfc-bank-credit-card/T-and-C-Indian-Oil-Credit-Card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "rule_name": "0.13% back as Fuel Points on other categories. 1 Fuel Point for every ₹150 spent, including UPI transactions.",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": "other categories",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 150.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": 150.0,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_quote": "1 Fuel Point for every ₹150 spent (including UPI transactions) … Min Transaction of INR 150",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/indian-oil-hdfc-bank-credit-card/T-and-C-Indian-Oil-Credit-Card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
@@ -22447,11 +22643,15 @@
     "_retyped_from": "other:rental payments"
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "gold purchases",
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:gold purchases",
-    "_reverted_from": "category:jewellery"
+    "confidence": "high",
+    "source_quote": "Exclusion for 1 FP for every INR 150 – Fuel, Rent, Government related transactions, EMI, Wallet and Jewellery.",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/indian-oil-hdfc-bank-credit-card/T-and-C-Indian-Oil-Credit-Card.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "milestone_rules": [
@@ -25553,7 +25753,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Non-EMI Retail Spends on Non-Tata Brands | 1.5% back as NeuCoins",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on all TataNeu app/website purchases",
@@ -25572,26 +25776,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
-   },
-   {
-    "rule_name": "Additional 5% NeuCoins when activating Neu Pass on the mobile application, bringing total to 10%",
-    "rule_type": "merchant_specific",
-    "merchant_ref": "tata_neu",
-    "category_id": null,
-    "category_ref": null,
-    "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.05,
-    "reward_unit_spend": null,
-    "cap_amount": null,
-    "cap_period": null,
-    "min_txn_amount": null,
-    "priority": 90,
-    "effective_date": null,
-    "expiry_date": null,
-    "conditions_json": null,
-    "confidence": "low"
+    "confidence": "medium",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1.5% NeuCoins on UPI spends, maximum 500 NeuCoins per calendar month",
@@ -25601,7 +25790,7 @@
     "category_ref": "upi spends",
     "channel": "upi",
     "reward_type": "cashback_pct",
-    "reward_rate": 0.015,
+    "reward_rate": 0.005,
     "reward_unit_spend": null,
     "cap_amount": 500,
     "cap_period": "month",
@@ -25610,7 +25799,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "With effect from 01-Aug-24: - 0.50% back as NeuCoins for transactions done using any UPI ID (Google Pay, PhonePe, Cred, etc.) … The total NeuCoins earned on eligible UPI transactions are capped to 500 NeuCoins per month",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
@@ -25629,8 +25822,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Electronics | Croma | 6,00,000 | 18,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
@@ -25649,8 +25845,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Fashion | Tata CliQ Westside | 3,00,000 | 18,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
@@ -25669,8 +25868,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Fashion | Tata CliQ Westside | 3,00,000 | 18,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
@@ -25689,8 +25891,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Travel | IHCL Air India Express Air India* | 8,00,000 | 30,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
@@ -25709,8 +25914,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Travel | IHCL Air India Express Air India* | 8,00,000 | 30,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
@@ -25729,8 +25937,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Travel | IHCL Air India Express Air India* | 8,00,000 | 30,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
@@ -25749,8 +25960,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Others | 1Mg Cult Tata Play | 2,00,000 | 15,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at BigBasket, a partner Tata brand",
@@ -25769,8 +25983,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Grocery | Big Basket | 1,00,000 | 12,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
@@ -25789,8 +26006,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Grocery | Big Basket | 1,00,000 | 12,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
@@ -25809,8 +26029,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Fashion Accessories & Jewellery | Titan Tanishq | 6,00,000 | 18,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
@@ -25829,8 +26052,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "5% back as NeuCoins on Non-EMI Spends on Tata Neu and partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "5% back as NeuCoins (Non-EMI) will be calculated as 1.5% base NeuCoins + 3.5% additional NeuCoins on partner Tata Brands transactions … Fashion Accessories & Jewellery | Titan Tanishq | 6,00,000 | 18,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata_neu_infinity_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
@@ -25959,7 +26185,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Non-EMI Retail Spends on Non-Tata Brands | 1% back as NeuCoins",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "7% NeuCoins on Tata Neu app/website including 5% earned on activating NeuPass",
@@ -25969,7 +26199,7 @@
     "category_ref": null,
     "channel": null,
     "reward_type": "cashback_pct",
-    "reward_rate": 0.07,
+    "reward_rate": 0.02,
     "reward_unit_spend": null,
     "cap_amount": null,
     "cap_period": null,
@@ -25978,7 +26208,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Non-EMI Retail Spends on partner Tata Brands | 2% back as NeuCoins … Currently, Bill Payment (Tata Pay), Tanishq, Cult.fit, Air India, Tata Play spends are not eligible for additional 5% NeuCoins via NeuPass Membership",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% back as NeuCoins on UPI spends",
@@ -25988,16 +26222,20 @@
     "category_ref": "upi spends",
     "channel": "upi",
     "reward_type": "cashback_pct",
-    "reward_rate": 0.01,
+    "reward_rate": 0.0025,
     "reward_unit_spend": null,
-    "cap_amount": null,
-    "cap_period": null,
+    "cap_amount": 500.0,
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 45,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "0.25% back as NeuCoins for transactions done using any UPI ID (Google Pay, PhonePe, Cred, etc.) … The total NeuCoins earned on eligible UPI transactions are capped to 500 NeuCoins per month",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
@@ -26016,8 +26254,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Electronics | Croma | 3,00,000 | 9,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
@@ -26036,8 +26277,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Fashion | Tata CliQ / Westside | 2,00,000 | 12,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
@@ -26056,8 +26300,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Fashion | Tata CliQ / Westside | 2,00,000 | 12,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
@@ -26076,8 +26323,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Stay | IHCL / Air India Express / Air India* | 4,00,000 | 15,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
@@ -26096,8 +26346,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Stay | IHCL / Air India Express / Air India* | 4,00,000 | 15,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
@@ -26116,8 +26369,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Stay | IHCL / Air India Express / Air India* | 4,00,000 | 15,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
@@ -26136,8 +26392,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Others | 1Mg / Cult / Tata Play | 1,00,000 | 7,50,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
@@ -26156,8 +26415,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Fashion Accessories & Jewellery | Titan / Tanishq | 3,00,000 | 9,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
@@ -26176,8 +26438,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Fashion Accessories & Jewellery | Titan / Tanishq | 3,00,000 | 9,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at BigBasket, a partner Tata brand",
@@ -26196,8 +26461,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Grocery | Big Basket | 50,000 | 6,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
@@ -26216,8 +26484,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low",
-    "source_quote": "2% back as NeuCoins on Non-EMI Spends on partner Tata Brands"
+    "confidence": "high",
+    "source_quote": "2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner Tata Brands transactions … Grocery | Big Basket | 50,000 | 6,00,000",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card/pdfs/tata_neu_plus_card_tnc.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
@@ -34647,7 +34918,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Incremental Online spends (>₹10,000) | 5% … Maximum Cashback that can be earned in a Statement Cycle through spends in Online spends (Category 1) is ₹ 1,000",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "3% cashback on online spends up to ₹10,000 in a statement cycle",
@@ -34666,7 +34941,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Online spends <= ₹10,000 | 3% … Maximum Cashback that can be earned in a Statement Cycle through spends in Online spends (Category 1) is ₹ 1,000",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on UPI payments made through the IDFC FIRST Bank App",
@@ -34685,7 +34964,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "UPI spends on IDFC FIRST Bank Mobile App | 1%",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on in-store card swipes",
@@ -34704,7 +34987,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Offline spends | 1%",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [utilities]",
@@ -34723,7 +35010,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [rent]",
@@ -34742,7 +35033,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [jewellery]",
@@ -34761,7 +35056,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [wallet_load]",
@@ -34780,7 +35079,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [insurance]",
@@ -34799,7 +35102,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [education]",
@@ -34818,7 +35125,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [government]",
@@ -34837,26 +35148,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
-   },
-   {
-    "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [fuel]",
-    "rule_type": "category_bonus",
-    "merchant_ref": null,
-    "category_id": "fuel",
-    "category_ref": "essential spends (utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, fastag, railway bookings)",
-    "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.01,
-    "reward_unit_spend": null,
-    "cap_amount": null,
-    "cap_period": null,
-    "min_txn_amount": null,
-    "priority": 55,
-    "effective_date": null,
-    "expiry_date": null,
-    "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1% cashback on essential spends including utilities, rent, jewellery, wallet loads, insurance, education, gift cards, government services, FASTag, and railway bookings [railways]",
@@ -34875,7 +35171,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Essential spends (FASTag recharges, Railway spends, Utility spends, Rental spends, Jewellery spends, Wallet spends, Insurance spends, Education spends, Gift Card spends and spends on Government Services categories) | 1% … Maximum Cashback that can be earned across all Eligible spends in a Statement Cycle is ₹1,500",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "Extra 1% cashback on hotel and flight bookings made via the IDFC FIRST Bank App",
@@ -34894,10 +35194,25 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "Travel bookings made via IDFC FIRST Bank Mobile App | Bonus 1%",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
-  "exclusion_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "Spends on ATM Cash withdrawals, EMIs, fuel spends, and UPI spends done via other third-party application platforms will not earn Cashback … All spends qualify for Cashback except – fuel, ATM Cash withdrawals, EMI, UPI spends done through other UPI apps (GPay, PhonePe, Paytm etc.)",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   }
+  ],
   "milestone_rules": [],
   "fuel_surcharge_rules": [
    {
@@ -35336,7 +35651,7 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.015,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -35364,9 +35679,9 @@
     "category_id": "utilities",
     "category_ref": "utilities, insurance, fastag recharges, railway spends",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -35374,7 +35689,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "1x on Utility bill payments, Insurance premium payments, Railway spends and FASTag recharges … 1X = 1 Reward Point per Rs 200 | 1 Reward Point = Rs 0.25",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/IDFC-FIRST-Millennia-2024.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1X Reward Points per ₹200 spent on utilities, insurance, FASTag recharges, and railway spends [insurance]",
@@ -35383,9 +35702,9 @@
     "category_id": "insurance",
     "category_ref": "utilities, insurance, fastag recharges, railway spends",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -35393,26 +35712,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
-   },
-   {
-    "rule_name": "1X Reward Points per ₹200 spent on utilities, insurance, FASTag recharges, and railway spends [fuel]",
-    "rule_type": "category_bonus",
-    "merchant_ref": null,
-    "category_id": "fuel",
-    "category_ref": "utilities, insurance, fastag recharges, railway spends",
-    "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 1.0,
-    "reward_unit_spend": null,
-    "cap_amount": null,
-    "cap_period": null,
-    "min_txn_amount": null,
-    "priority": 55,
-    "effective_date": null,
-    "expiry_date": null,
-    "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "1x on Utility bill payments, Insurance premium payments, Railway spends and FASTag recharges … 1X = 1 Reward Point per Rs 200 | 1 Reward Point = Rs 0.25",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/IDFC-FIRST-Millennia-2024.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "1X Reward Points per ₹200 spent on utilities, insurance, FASTag recharges, and railway spends [railways]",
@@ -35421,9 +35725,9 @@
     "category_id": "railways",
     "category_ref": "utilities, insurance, fastag recharges, railway spends",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -35431,7 +35735,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "1x on Utility bill payments, Insurance premium payments, Railway spends and FASTag recharges … 1X = 1 Reward Point per Rs 200 | 1 Reward Point = Rs 0.25",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/IDFC-FIRST-Millennia-2024.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "33% Bonus Reward Points on hotel bookings via IDFC Travel & Shop portal. Max 8,000 accelerated RPs per month.",
@@ -35440,9 +35748,9 @@
     "category_id": null,
     "category_ref": "hotel bookings via idfc travel & shop portal",
     "channel": "portal",
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.33,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 25.0,
+    "reward_unit_spend": 100.0,
     "cap_amount": 8000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -35450,7 +35758,13 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "point_value": 0.25,
+    "point_currency": "Reward Points",
+    "source_quote": "Base Earn* (A) 5% Reward Points ... Total Reward Points Earn (A+B) On Bookings via Platform: Up to 25% Reward Points (On Hotel bookings) / Up to 15% Reward Points (On Flight bookings). *The Reward Points calculations are done considering 10 Reward Points per Rs 200 spent on travel bookings … Total Bonus Reward Points that can be earned in a calendar month in the credit card account — 8,000",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-millennia-tnc-travel-and-shop.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "13% Bonus Reward Points on flight bookings via IDFC Travel & Shop portal. Max 8,000 accelerated RPs per month.",
@@ -35459,9 +35773,9 @@
     "category_id": null,
     "category_ref": "flight bookings via idfc travel & shop portal",
     "channel": "portal",
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.13,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 15.0,
+    "reward_unit_spend": 100.0,
     "cap_amount": 8000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -35469,14 +35783,49 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "point_value": 0.25,
+    "point_currency": "Reward Points",
+    "source_quote": "Base Earn* (A) 5% Reward Points ... Total Reward Points Earn (A+B) On Bookings via Platform: Up to 25% Reward Points (On Hotel bookings) / Up to 15% Reward Points (On Flight bookings). *The Reward Points calculations are done considering 10 Reward Points per Rs 200 spent on travel bookings … Total Bonus Reward Points that can be earned in a calendar month in the credit card account — 8,000",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-millennia-tnc-travel-and-shop.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "rule_name": "0.375% back as Reward Points on all eligible spends. 3 Reward Points on every ₹200 spent.",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": "all eligible spends",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 3.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_quote": "3x on all eligible spends* … 1X = 1 Reward Point per Rs 200 | 1 Reward Point = Rs 0.25",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/IDFC-FIRST-Millennia-2024.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel purchases",
-    "also_excludes_from_threshold": 0
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0,
+    "_retyped_from": "other:fuel purchases",
+    "confidence": "high",
+    "source_quote": "Minimal reward redemption fee of Rs 99+ GST, Reward program not applicable on Fuel, Insurance, EMI transactions & Cash withdrawals.",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/IDFC-FIRST-Millennia-2024.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "exclusion_type": "other",
@@ -43557,8 +43906,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "On all other spends, save 0.5% back as Reward Points. Earn 3 Reward Points on every INR 150 spent",
-    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+    "source_quote": "0.5% back in Reward Points (3 points/₹150) on all other spends.",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "source_doc_type": "mitc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "4% back as reward points on fuel spends. 24 reward points on every Rs. 150 spent on fuel at IndianOil outlets, capped at 1200 reward points per month.",
@@ -43577,7 +43928,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "4% back in Reward Points (24 points/₹150), capped at 1200 Reward Points (₹300) per statement cycle on IndianOil Fuel pump spends. … capped at 1200 Reward Points (₹300) per statement cycle on IndianOil Fuel pump spends",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "source_doc_type": "mitc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% back as reward points on dining and grocery spends. 12 reward points on every Rs. 150 spent on dining and grocery, capped at 800 reward points per month.",
@@ -43596,7 +43951,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "2% back in Reward Points (12 points/₹150), capped at 800 Reward Points (₹200) per statement cycle on Grocery and Dining spends. (Valid on only on select MCC's - 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441) … capped at 800 Reward Points (₹200) per statement cycle on Grocery and Dining spends",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "source_doc_type": "mitc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% back as reward points on dining and grocery spends. 12 reward points on every Rs. 150 spent on dining and grocery, capped at 800 reward points per month.",
@@ -43615,7 +43974,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_quote": "2% back in Reward Points (12 points/₹150), capped at 800 Reward Points (₹200) per statement cycle on Grocery and Dining spends. (Valid on only on select MCC's - 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441) … capped at 800 Reward Points (₹200) per statement cycle on Grocery and Dining spends",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "source_doc_type": "mitc",
+    "source_fetched_on": "2026-08-20"
    },
    {
     "rule_name": "2% back as reward points at department stores. 12 reward points on every Rs. 150 spent (MCC 5311, within Kotak's eligible list).",
@@ -43635,8 +43998,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "Valid on only on select MCC's - 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441",
-    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+    "source_quote": "2% back in Reward Points (12 points/₹150), capped at 800 Reward Points (₹200) per statement cycle on Grocery and Dining spends. (Valid on only on select MCC's - 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441) … Grocery & dining | 5812, 5814, 5813, 5411, 5311, 5399, 5422, 5451, 5499 & 5441",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "source_doc_type": "mitc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "exclusion_rules": [
@@ -43663,6 +44028,36 @@
     "confidence": "high",
     "source_quote": "Education / Wallet Load / Rent — No Rewards/Cashback",
     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "2. MCC excluded from earning Reward Points, Air Miles, Cashback and Milestone spend calculations as per the defined spend thresholds ... Rewards/ Cashback restriction on fuel & online skill-based gaming purchases under above-mentioned MCC are not applicable for IndianOil Kotak, IndiGo & PVR Credit Cards",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/list-of-mccs-with-respect-to-revised-fees-and-rewards_june_01_2025.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "2. MCC excluded from earning Reward Points, Air Miles, Cashback and Milestone spend calculations as per the defined spend thresholds ... Rewards/ Cashback restriction on fuel & online skill-based gaming purchases under above-mentioned MCC are not applicable for IndianOil Kotak, IndiGo & PVR Credit Cards",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/list-of-mccs-with-respect-to-revised-fees-and-rewards_june_01_2025.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0,
+    "confidence": "high",
+    "source_quote": "2. MCC excluded from earning Reward Points, Air Miles, Cashback and Milestone spend calculations as per the defined spend thresholds ... Rewards/ Cashback restriction on fuel & online skill-based gaming purchases under above-mentioned MCC are not applicable for IndianOil Kotak, IndiGo & PVR Credit Cards",
+    "source_url": "https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/list-of-mccs-with-respect-to-revised-fees-and-rewards_june_01_2025.pdf",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-20"
    }
   ],
   "milestone_rules": [

@@ -63,8 +63,8 @@ LAYER = "L8 provenance & confidence"
 # --------------------------------------------------------------------------- #
 _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     "sbicard":                  ("sbicard.com", "sbi.co.in", "onlinesbi.sbi"),
-    "hdfcbank":                 ("hdfcbank.com", "hdfcbank.co.in"),
-    "axisbank":                 ("axisbank.com", "axisbank.co.in"),
+    "hdfcbank":                 ("hdfcbank.com", "hdfcbank.co.in", "hdfc.bank.in"),
+    "axisbank":                 ("axisbank.com", "axisbank.co.in", "axis.bank.in"),
     "icicibank":                ("icicibank.com", "icicibank.co.in"),
     "rblbank":                  ("rblbank.com",),
     "kotakmahindrabank":        ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
@@ -86,8 +86,8 @@ _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     "bobcardbankofbarodainpartnershipwithuniapp":
                                 ("bobcard.co.in", "bobfinancial.com",
                                  "bankofbaroda.in", "uni.cards"),
-    "idfcfirstbank":            ("idfcfirstbank.com",),
-    "idfcbank":                 ("idfcfirstbank.com",),
+    "idfcfirstbank":            ("idfcfirstbank.com", "idfcfirst.bank.in"),
+    "idfcbank":                 ("idfcfirstbank.com", "idfcfirst.bank.in"),
     "americanexpress":          ("americanexpress.com",),
     "hsbc":                     ("hsbc.co.in", "hsbc.com"),
     "hsbcbank":                 ("hsbc.co.in", "hsbc.com"),
