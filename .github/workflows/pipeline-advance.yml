@@ -138,6 +138,46 @@ jobs:
           git diff --cached --quiet || git commit -m 'Advance pipeline state'
           git push origin HEAD:dev || true
 
+      # The pipeline proposes card data. Until now the only thing standing between a
+      # model's proposal and a reviewer was tools/kredme.py, which on the same file
+      # found 1 defect where the nine-layer validator found 616. So every proposed
+      # change is now measured by the real validator before a human is asked to read
+      # it, and the numbers go in the PR body.
+      #
+      # Deliberately NOT blocking. The backlog is in the hundreds, so failing here
+      # would simply stop the pipeline opening PRs at all, and a lane that never
+      # opens a PR is a lane nobody fixes. The job of this step is to make sure no
+      # proposed change reaches a reviewer unmeasured.
+      - name: Measure the proposed change with the full validator
+        if: steps.advance.outputs.patch == 'true'
+        id: measure
+        continue-on-error: true
+        run: |
+          python3 tools/validate_cards.py --quiet --json /tmp/after.json || true
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, collections, pathlib
+          rep = json.load(open('/tmp/after.json'))
+          f = rep['findings']
+          by = collections.Counter(x['code'] for x in f if x['severity'] == 'ERROR')
+          base = {}
+          p = pathlib.Path('tools/validated_baseline.json')
+          if p.exists():
+              base = json.loads(p.read_text()).get('errors_by_code', {})
+          now = sum(by.values())
+          was = sum(base.values()) if base else None
+          print('### Validator on this proposed change\n')
+          print(f'**{now} errors**' + (f' (baseline {was})' if was is not None else '') + '\n')
+          worse = [(c, n, base.get(c, 0)) for c, n in by.items() if n > base.get(c, 0)]
+          if worse:
+              print('| code | now | baseline |\n|---|---:|---:|')
+              for c, n, b in sorted(worse, key=lambda x: -(x[1] - x[2])):
+                  print(f'| `{c}` | {n} | {b} |')
+              print('\n**This change makes the above worse. Read it carefully.**')
+          else:
+              print('No error code got worse than the recorded baseline.')
+          print('\n_Measured, not enforced — this step never blocks the pipeline._')
+          PY
+
       # Only reached at stage 3, when there is an actual proposed change to review.
       # Base is dev, never main: data flows dev -> validate -> promote -> main, and
       # promoting is a separate deliberate act.

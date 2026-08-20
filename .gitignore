@@ -9,3 +9,15 @@ staging/
 # Python bytecode — committed by accident once already
 __pycache__/
 *.pyc
+
+# Pipeline scratch — regenerated every run. pipeline/state/ IS tracked.
+.pipeline-work/
+
+# Pre-edit copies written by tools/fix_cards.py --apply before it touches a byte.
+# Local safety net, never committed: the reviewable record of a sweep is the diff
+# and the PR body, not a second copy of seed/ in the tree.
+.fix-backups/
+
+# The exclusive lock tools/fix_cards.py --apply holds while it reads, mutates and
+# writes seed/. Local, per-machine, never committed.
+.fix.lock

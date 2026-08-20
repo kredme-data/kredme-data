@@ -25,7 +25,12 @@ jobs:
     name: Self-tests + data validation
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth: 0 so the ratchet can `git show origin/<base>:...` — its pass
+      # mark has to come from the branch being merged INTO, and a shallow clone
+      # has no other branch to read it from.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -33,6 +38,15 @@ jobs:
       # Does the pipeline tool itself still work?
       - name: Pipeline self-tests
         run: python3 tools/test_pipeline.py
+
+      # The nine-layer validator and the fix runner carry their own suites. These
+      # are stdlib-only and take seconds; they are blocking because a broken
+      # CHECKER is worse than no checker — it reports green from a crash.
+      - name: Validator self-tests
+        run: python3 tools/test_validate_cards.py
+
+      - name: Fix-runner self-tests
+        run: python3 tools/test_fix_cards.py
 
       # Does the data ON THIS BRANCH pass? --target working checks the tree as
       # checked out, so a PR is judged on its own proposed content rather than
@@ -65,4 +79,289 @@ jobs:
               sys.exit(1)
           print(f'manifest consistent across {len(man["files"])} file(s)')
           PY
+
+      # ------------------------------------------------------------------ #
+      # The nine-layer validator — REPORT ONLY, for now
+      # ------------------------------------------------------------------ #
+      # `tools/kredme.py validate` above measures today's defects against
+      # tools/rate_baseline.json and concludes "0 errors" on a file that has 712.
+      # That is how 105 cards rendering a 0.00% base rate and 14 unreadable caps
+      # became invisible: they are all "at baseline", so the summary says green.
+      #
+      # tools/validate_cards.py grandfathers nothing, and therefore reports 712
+      # errors on the tree as it stands. It is NOT blocking, deliberately:
+      # switching it on as a gate would paint every branch permanently red, and a
+      # permanently red CI teaches everyone to ignore CI. That is the exact
+      # failure this repo already has — 12 consecutive scheduled runs failed
+      # while nobody looked.
+      #
+      # MAKE IT BLOCKING once the error count is down to something a branch can
+      # realistically be held to. The ratchet below is the bridge: it cannot make
+      # the existing backlog fail a build, but it does stop the backlog GROWING,
+      # so the number can only travel one way while the queue is worked down.
+      # When `errors` in tools/validated_baseline.json reaches ~0, delete the
+      # continue-on-error line here and drop the ratchet step entirely.
+      #
+      # `if: always()` is not decoration. Without it this step is SKIPPED
+      # whenever an earlier step fails — and "Validate the data in this branch"
+      # above exits 1 on dev today. So on every branch in the repo the validator
+      # never ran, `steps.full.outputs.errors` was empty, the ratchet's
+      # `steps.full.outputs.errors != ''` guard read false, and the ratchet was
+      # skipped too. The job was already red for the OLD reason, so nobody
+      # noticed the new gate had not run. That is fail-open on the one step
+      # whose entire job is to fail closed.
+      - name: Full data validation (report only)
+        id: full
+        if: always()
+        continue-on-error: true
+        run: |
+          set +e
+          python3 -u tools/validate_cards.py \
+            --json validate-report.json \
+            --html validate-report.html \
+            | tee validate-report.log
+          set -e
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          d = json.load(open('validate-report.json'))
+          f = d['findings']
+          print(f"errors={sum(1 for x in f if x['severity']=='ERROR')}")
+          print(f"warnings={sum(1 for x in f if x['severity']=='WARN')}")
+          print(f"degraded={str(d['meta']['degraded']).lower()}")
+          print(f"skipped={d['meta']['skipped_count']}")
+          PY
+
+      # Renders "the validator did not run" as those words, rather than as a
+      # formatted report with blank numbers in it. The old version interpolated
+      # empty strings into a template and then exited 1 on the missing log, so a
+      # reader got a filled-in-looking panel reading "**** errors" plus a second
+      # red step muddying which failure was the real one.
+      - name: Data validation summary
+        if: always()
+        run: |
+          if [ ! -f validate-report.json ]; then
+            {
+              echo '## Full data validation'
+              echo
+              echo '> [!CAUTION]'
+              echo '> **The validator did not run on this branch.** No report was produced,'
+              echo '> so there are no counts to show and the ratchet below has nothing to'
+              echo '> compare. Read the `Full data validation` step log for why.'
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          {
+            echo '## Full data validation (report only — not a gate yet)'
+            echo
+            echo "**${{ steps.full.outputs.errors }}** errors · **${{ steps.full.outputs.warnings }}** warnings"
+            echo
+            if [ "${{ steps.full.outputs.degraded }}" = "true" ]; then
+              echo "> [!WARNING]"
+              echo "> **DEGRADED — ${{ steps.full.outputs.skipped }} check(s) could not look.**"
+              echo "> This repo is public and the app repo is private, so CI can never check"
+              echo "> the app out; the app's category vocabulary came from the vendored"
+              echo "> \`tools/app_mirror/\`. The counts above are a FLOOR, not a total."
+              echo
+            fi
+            echo '```'
+            sed -n '/^Confidence scorecard/,$p' validate-report.log 2>/dev/null | head -60
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ------------------------------------------------------------------ #
+      # THE RATCHET — the one half of the above that IS blocking
+      # ------------------------------------------------------------------ #
+      # Fails only when this branch carries MORE errors than the committed count
+      # in tools/validated_baseline.json. The backlog may shrink; it may not grow.
+      #
+      # This deliberately is NOT continue-on-error. It cannot fail on the existing
+      # 712 — that is the baseline — so it can never be the "always red" gate the
+      # step above is being kept out of. It can only fail on a change that makes
+      # things worse, which is the one thing worth stopping.
+      #
+      # Lowering the number is a human act, in the same PR that earned it. The
+      # step prints the exact new file when the count improves; it does not commit
+      # it, because a CI job that quietly rewrites its own pass mark is not a gate.
+      - name: Ratchet — the error count may not increase
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, subprocess, sys
+
+          BASE = 'tools/validated_baseline.json'
+          REPORT = pathlib.Path('validate-report.json')
+
+          def summary(text):
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as fh:
+                  fh.write(text + "\n")
+
+          def fail(msg, detail=''):
+              print(f'::error::{msg}')
+              summary(f'### Ratchet: FAILED\n\n{msg}\n\n{detail}')
+              sys.exit(1)
+
+          # ---- FAIL CLOSED ------------------------------------------------ #
+          # The old guard was `steps.full.outputs.errors != ''`, so a validator
+          # that never ran skipped the ratchet silently and the job stayed green
+          # on that step. A gate that disappears when its input is missing is not
+          # a gate.
+          if not REPORT.exists():
+              fail('The validator produced no report, so the ratchet has nothing '
+                   'to judge. Refusing to pass by default.')
+
+          rep = json.load(open(REPORT))
+          meta = rep.get('meta') or {}
+
+          # The validator says this in every report it writes, verbatim:
+          #   "findings is empty because NOTHING WAS CHECKED, not because nothing
+          #    is wrong. Gate on meta.exit_code (3 = could not run), never on
+          #    len(findings)."
+          # Gating on the COUNT alone made losing checks read as progress. Both
+          # of these were measured: deleting tools/app_mirror/ takes 6 checks
+          # offline and the count falls 712 -> 710, and a SyntaxError in
+          # c6_reachability.py takes it to 671 — every L6 and L8 error silently
+          # gone — and the ratchet called both an improvement and told the human
+          # to commit the LOWER number, grandfathering the errors nobody looked
+          # for.
+          if meta.get('ran') is False:
+              fail('The validator reports meta.ran = false — it did not complete.')
+          if meta.get('exit_code') == 3:
+              fail('The validator exited 3 (could not run). Its findings list is '
+                   'empty because nothing was checked, not because nothing is wrong.')
+
+          crashed = [f for f in rep['findings'] if f['code'] == 'RUNNER.CHECK_CRASHED']
+          if crashed:
+              fail(f'{len(crashed)} check(s) CRASHED, so this run saw less than the '
+                   f'baseline saw and the two counts are not comparable.',
+                   "\n".join(f'- `{f["code"]}` {f.get("message", "")}' for f in crashed[:8]))
+
+          errs = [f for f in rep['findings'] if f['severity'] == 'ERROR']
+          now = len(errs)
+          by_code = {}
+          for f in errs:
+              by_code[f['code']] = by_code.get(f['code'], 0) + 1
+
+          skipped_now = sorted(s['code'] for s in rep['skipped_checks'])
+
+          fresh = {
+              "measured_at": meta['generated_at'],
+              "git_head": meta['git_head'],
+              "categories_origin": meta['categories_origin'],
+              "degraded": meta['degraded'],
+              "skipped_checks": skipped_now,
+              "errors": now,
+              "warnings": sum(1 for f in rep['findings'] if f['severity'] == 'WARN'),
+              "notes": sum(1 for f in rep['findings'] if f['severity'] == 'INFO'),
+              "errors_by_code": dict(sorted(by_code.items(),
+                                            key=lambda kv: (-kv[1], kv[0]))),
+          }
+
+          # ---- THE PASS MARK COMES FROM THE BASE BRANCH ------------------- #
+          # Reading it out of the checked-out tree made the gate self-scoring:
+          # a branch could add 300 errors and raise its own baseline in the same
+          # commit (measured: 1012 errors, baseline 1012, "the ratchet holds"),
+          # or simply delete the file and let the bootstrap path write a fresh
+          # baseline at whatever it measured and exit 0.
+          base_ref = os.environ.get('BASE_REF') or ''
+          origin = f'origin/{base_ref}' if base_ref else ''
+          raw = None
+          if origin:
+              try:
+                  raw = subprocess.run(['git', 'show', f'{origin}:{BASE}'],
+                                       capture_output=True, text=True,
+                                       check=True).stdout
+              except subprocess.CalledProcessError:
+                  raw = None
+          if raw is None:
+              # The base branch genuinely has no baseline. That is true exactly
+              # once — the pull request that introduces the file — and it is NOT
+              # the delete-the-file attack, which reading from the base already
+              # defeats: deleting it on the branch leaves the base's copy
+              # readable. So the one thing allowed here is a branch that ADDS a
+              # baseline at the number this run actually measured. A branch that
+              # adds a roomier one is choosing its own pass mark.
+              own = pathlib.Path(BASE)
+              if not own.exists():
+                  fail(f'Neither {origin or "the base branch"} nor this branch has '
+                       f'{BASE}. The ratchet has no pass mark and will not invent one.')
+              claimed = int(json.loads(own.read_text()).get('errors', -1))
+              if claimed != now:
+                  fail(f'This branch establishes {BASE} at {claimed} errors while the '
+                       f'run measured {now}. A first baseline must be the measured '
+                       f'number, not a chosen one.')
+              print(f'Baseline established at {now} errors (base branch has none).')
+              summary(f'### Ratchet: baseline established\n\nAt **{now}** errors, '
+                      f'measured by this run. Every later branch is held to it.')
+              sys.exit(0)
+
+          base = json.loads(raw)
+          allowed = int(base.get('errors', 0))
+          skipped_base = sorted(base.get('skipped_checks') or [])
+
+          # A run that could see LESS than the baseline could see is not
+          # comparable to it, whichever way the number went.
+          blind = sorted(set(skipped_now) - set(skipped_base))
+          if blind:
+              fail('This run skipped check(s) the baseline did not, so its lower '
+                   'count may simply be the checks that stopped looking: '
+                   + ', '.join(f'`{c}`' for c in blind))
+
+          if now > allowed:
+              worse = sorted(
+                  ((c, base.get('errors_by_code', {}).get(c, 0), k)
+                   for c, k in by_code.items()
+                   if k > base.get('errors_by_code', {}).get(c, 0)),
+                  key=lambda t: t[1] - t[2])
+              lines = [f'Errors **{allowed} → {now}** (+{now - allowed}). '
+                       f'The backlog may shrink, never grow.', '']
+              if worse:
+                  lines += ['| code | baseline | now |', '|---|---:|---:|']
+                  lines += [f'| `{c}` | {was} | {isnow} |' for c, was, isnow in worse]
+              lines += ['', 'Fix the new errors, or — if they are a defect becoming '
+                            'VISIBLE rather than a new defect — say so in the PR and '
+                            'update `tools/validated_baseline.json` deliberately.']
+              fail(f'Errors went UP: {allowed} -> {now} (+{now - allowed}). '
+                   f'This branch may not add data errors.', "\n".join(lines))
+
+          # A PR that moves its own pass mark is allowed, but never silently: the
+          # number it lands on has to be the number this run measured.
+          tree = json.loads(pathlib.Path(BASE).read_text()) if pathlib.Path(BASE).exists() else {}
+          claimed = int(tree.get('errors', allowed))
+          if claimed != allowed and claimed != now:
+              fail(f'This branch edits {BASE} to {claimed}, which is neither the '
+                   f'base branch\'s {allowed} nor the {now} this run measured. '
+                   f'A pass mark is earned, not chosen.')
+
+          if now < allowed:
+              pathlib.Path('validated_baseline.new.json').write_text(
+                  json.dumps(fresh, indent=1, ensure_ascii=False) + "\n",
+                  encoding='utf-8')
+              print(f'Errors went DOWN: {allowed} -> {now} (-{allowed - now}).')
+              summary(f'### Ratchet: improved\n\nErrors **{allowed} → {now}** '
+                      f'(−{allowed - now}). Tighten the ratchet in this PR:\n\n'
+                      f'```\npython3 tools/validate_cards.py --quiet --json /tmp/r.json\n'
+                      f'```\n\nThe new baseline is attached to this run as '
+                      f'`validated_baseline.new.json`.')
+              sys.exit(0)
+
+          print(f'Errors level at {now} — the ratchet holds.')
+          summary(f'### Ratchet: held\n\nErrors level at **{now}**.')
+          PY
+        env:
+          # push builds have no base_ref; they are judged against their own branch
+          # upstream, which for main and dev is the branch itself.
+          BASE_REF: ${{ github.base_ref || github.ref_name }}
+
+
+      - name: Upload the readable reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-validation-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            validate-report.html
+            validate-report.json
+            validated_baseline.new.json
 

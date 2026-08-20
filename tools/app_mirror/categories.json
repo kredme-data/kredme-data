@@ -1,0 +1,432 @@
+{
+  "_this_file_is": "A MIRROR. A hand-maintained copy of a file that lives in the KredMe Flutter app, not something authored here. Nothing in this repo is the source of truth for it. If it disagrees with the app, the app is right and this file is stale.",
+  "_why_it_exists": "kredme-data is a PUBLIC repo; KredMe-main is PRIVATE, so CI running here can never check the app out. Without this copy every CI run is blind to the app's category vocabulary — and a blind run does not merely check less, it invents. Measured 2026-08-18: with no app checkout the validator reported 1,021 errors against a file that has 712, the extra 309 being fabrications about categories it could not see (191 bonus rules called dead, 109 category tags called unrecognised, 7 category ids called unresolvable).",
+  "_mirrored_from_repo": "KredMe-main (PRIVATE)",
+  "_mirrored_from_path": "assets/data/categories/categories.json",
+  "_app_commit_at_copy": "db0f6de346bd30095c0e44851d8dede8fd9240dd",
+  "_app_branch_at_copy": "HEAD",
+  "_source_last_changed_in_commit": "f930707a586355f139b7ce5f9472855565a8edce",
+  "_source_last_changed_on": "2026-03-19",
+  "_source_sha256": "6a2c5cae54c2c18bb803ccd6fb5a463f27d33cbee059d074c5864b0ae1473e2b",
+  "_source_bytes": 6978,
+  "_copied_on": "2026-08-19",
+  "_update_by_hand_when": "ANY category is added, removed or renamed in the app. There is no automation behind this file and there cannot be — this repo has no read access to the app. The app ships categories.json inside the APK, so a new category needs an app RELEASE, which is exactly the moment to refresh this copy.",
+  "_how_to_update": "python3 tools/app_mirror/refresh.py --app-root ../KredMe-main",
+  "_drift_detection": "Any validator run that DOES have --app-root pointing at a real checkout compares this copy against the app's own file and raises L3.APP_CATEGORY_MIRROR_DRIFT when they differ. That alarm can only fire on a developer's machine, never in CI — which is the whole reason the drift check exists.",
+  "_do_not": "Do not move this file into seed/. seed/ is the publish surface: tools/kredme.py copies seed/cards.json and seed/merchants.json to users, and L3.MANIFEST_UNDECLARED_FILE advises whoever runs the validator that any other .json sitting in seed/ should be added to seed/manifest.json so it 'reaches users'. Following that advice would ship the app's internal category table to every device as card data.",
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "dining",
+      "display_name": "Dining & Restaurants",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "from": "5812",
+          "to": "5814"
+        },
+        {
+          "exact": "5811"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 2,
+      "category_name": "food_delivery",
+      "display_name": "Food Delivery",
+      "parent_id": 1,
+      "mcc_ranges": [
+        {
+          "exact": "5812"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 3,
+      "category_name": "grocery",
+      "display_name": "Grocery & Supermarkets",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5411"
+        },
+        {
+          "exact": "5451"
+        },
+        {
+          "exact": "5499"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 4,
+      "category_name": "fuel",
+      "display_name": "Fuel Stations",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5541"
+        },
+        {
+          "exact": "5542"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": 5,
+      "category_name": "travel",
+      "display_name": "Travel & Transport",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "from": "3000",
+          "to": "3350"
+        },
+        {
+          "exact": "4511"
+        },
+        {
+          "exact": "4722"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 6,
+      "category_name": "airlines",
+      "display_name": "Airlines",
+      "parent_id": 5,
+      "mcc_ranges": [
+        {
+          "from": "3000",
+          "to": "3350"
+        },
+        {
+          "exact": "4511"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 7,
+      "category_name": "railways",
+      "display_name": "Railways",
+      "parent_id": 5,
+      "mcc_ranges": [
+        {
+          "exact": "4112"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 8,
+      "category_name": "cabs",
+      "display_name": "Cab Services",
+      "parent_id": 5,
+      "mcc_ranges": [
+        {
+          "exact": "4121"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 9,
+      "category_name": "hotels",
+      "display_name": "Hotels & Lodging",
+      "parent_id": 5,
+      "mcc_ranges": [
+        {
+          "from": "3501",
+          "to": "3999"
+        },
+        {
+          "exact": "7011"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 10,
+      "category_name": "online_shopping",
+      "display_name": "Online Shopping",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5399"
+        },
+        {
+          "exact": "5964"
+        },
+        {
+          "exact": "5311"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 11,
+      "category_name": "electronics",
+      "display_name": "Electronics & Appliances",
+      "parent_id": 10,
+      "mcc_ranges": [
+        {
+          "exact": "5732"
+        },
+        {
+          "exact": "5734"
+        },
+        {
+          "exact": "5045"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 12,
+      "category_name": "apparel",
+      "display_name": "Apparel & Fashion",
+      "parent_id": 10,
+      "mcc_ranges": [
+        {
+          "from": "5611",
+          "to": "5699"
+        },
+        {
+          "exact": "5137"
+        },
+        {
+          "exact": "5139"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 13,
+      "category_name": "entertainment",
+      "display_name": "Entertainment & Movies",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "7832"
+        },
+        {
+          "exact": "7841"
+        },
+        {
+          "exact": "7922"
+        },
+        {
+          "exact": "7929"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 14,
+      "category_name": "utilities",
+      "display_name": "Utility Bill Payments",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "4900"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 15,
+      "category_name": "insurance",
+      "display_name": "Insurance",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "6300"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": 16,
+      "category_name": "education",
+      "display_name": "Education",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "8211"
+        },
+        {
+          "exact": "8220"
+        },
+        {
+          "exact": "8241"
+        },
+        {
+          "exact": "8244"
+        },
+        {
+          "exact": "8249"
+        },
+        {
+          "exact": "8299"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 17,
+      "category_name": "government",
+      "display_name": "Government Payments",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "9399"
+        },
+        {
+          "exact": "9311"
+        },
+        {
+          "exact": "9222"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": 18,
+      "category_name": "wallet_load",
+      "display_name": "Wallet Loads",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "6540"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": 19,
+      "category_name": "jewellery",
+      "display_name": "Jewellery & Precious Metals",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5944"
+        },
+        {
+          "exact": "5094"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": 20,
+      "category_name": "rent",
+      "display_name": "Rent Payments",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "6513"
+        }
+      ],
+      "is_excluded_default": 1
+    },
+    {
+      "id": 21,
+      "category_name": "pharmacy",
+      "display_name": "Pharmacy & Healthcare",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5912"
+        },
+        {
+          "exact": "5122"
+        },
+        {
+          "exact": "8011"
+        },
+        {
+          "exact": "8021"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 22,
+      "category_name": "departmental_store",
+      "display_name": "Departmental Stores",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5311"
+        },
+        {
+          "exact": "5331"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 23,
+      "category_name": "telecom",
+      "display_name": "Telecom & Recharges",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "4812"
+        },
+        {
+          "exact": "4813"
+        },
+        {
+          "exact": "4814"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 24,
+      "category_name": "personal_care",
+      "display_name": "Personal Care & Beauty",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "7230"
+        },
+        {
+          "exact": "7298"
+        },
+        {
+          "exact": "5977"
+        }
+      ],
+      "is_excluded_default": 0
+    },
+    {
+      "id": 25,
+      "category_name": "home_decor",
+      "display_name": "Home Décor & Furnishing",
+      "parent_id": null,
+      "mcc_ranges": [
+        {
+          "exact": "5200"
+        },
+        {
+          "exact": "5211"
+        },
+        {
+          "exact": "5712"
+        },
+        {
+          "exact": "5714"
+        }
+      ],
+      "is_excluded_default": 0
+    }
+  ]
+}

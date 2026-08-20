@@ -1,0 +1,569 @@
+name: Data quality (validate -> fix -> PR)
+
+# The FIX half of the pipeline. Refresh already exists; this is what happens after it.
+#
+#   weekly-refresh.yml    fetch issuer docs, hash, submit the extraction batch   (stage 1)
+#   pipeline-advance.yml  collect, adversarially verify, write a patch, open a PR (stages 2-3)
+#   THIS FILE             validate what landed, plan repairs, apply the provable
+#                         ones, re-validate, and open a SECOND PR with the result
+#
+# It deliberately does NOT duplicate either of those. It chains onto them: it runs
+# after they complete, and on its own weekly cron so that it still runs in the many
+# weeks when the refresh proposes nothing at all. The refresh answers "did the issuer
+# change the number?"; this answers "is the number we hold internally coherent, and
+# can the app even read it?" — 712 errors say frequently not, and until now nothing
+# in CI looked.
+#
+# WHY THE VALIDATOR RUNS BLIND HERE, AND WHY THAT IS SAFE
+# ------------------------------------------------------
+# kredme-data is PUBLIC. KredMe-main (the Flutter app) is PRIVATE. A job in this repo
+# can never check the app out, so two facts only the app can answer — its category
+# vocabulary, and which of our JSON keys its Dart actually reads — come from the
+# vendored mirror in tools/app_mirror/.
+#
+# That mirror is not a nicety. Run the validator with no app checkout and no mirror
+# and it reported 1,021 errors against a file that has 712: the category list was
+# unreadable, so 191 healthy bonus rules were declared dead and 109 category tags
+# declared invalid by a run that had no idea what categories exist. A check that
+# loses its authority must SKIP and say so, never invent errors. With the mirror the
+# count is the same 712 CI would see with a checkout, and the two checks that
+# genuinely cannot be mirrored (the bundled merchant list, the card image files)
+# report themselves SKIPPED and stamp the run DEGRADED. Every step below surfaces
+# that word. A degraded run must never be allowed to look clean.
+#
+# THIS WORKFLOW NEVER PUBLISHES
+# -----------------------------
+# It never pushes to main, never promotes, never touches the production data branch,
+# and nothing it does reaches a user's phone. Data flows dev -> validate -> promote
+# -> main, and promoting is a separate, deliberate, human act. The end of the road
+# here is a pull request against dev that a person reads and merges.
+#
+# THIS FILE MUST LAND ON `main`, NOT ON `dev`
+# -------------------------------------------
+# `schedule` and `workflow_run` fire ONLY from the repository's DEFAULT branch,
+# which here is main. Merged onto dev this file is inert: the Tuesday cron never
+# runs and the chain onto weekly-refresh never runs, and nothing anywhere reports
+# that. This repo has paid for that lesson twice already — see
+# "Put the pipeline workflows on main, where GitHub will actually schedule them",
+# and "Give pipeline-advance 60 minutes on main, where the cron actually reads it".
+# main already carries a workflow dev does not, so the split is the established
+# shape, not an exception.
+#
+# Ship it the way PR #27/#28 were shipped, as TWO pull requests:
+#   -> dev   tools/fix_cards.py, tools/fixers/, tools/validate_cards.py,
+#            tools/checks/, tools/app_mirror/, tools/validated_baseline.json
+#   -> main  this file, and the .github/workflows/validate.yml edit
+# The job below already does `checkout ref: dev`, so it reads the tools from dev
+# wherever the workflow file itself lives.
+
+on:
+  # Chain onto the WEEKLY refresh only. `Pipeline advance` used to be in this list
+  # and it runs every two hours, concluding 'success' on essentially all of them —
+  # 19 of the last 20 — so this workflow would have applied ~1,938 edits and opened
+  # a pull request about 84 times a week, every one of them a duplicate of the last
+  # because nothing on dev changes until a human merges one.
+  workflow_run:
+    workflows:
+      - "Weekly card-data refresh (kick off)"
+    types: [completed]
+
+  # Standalone, offset from the refresh's Monday 03:00 UTC, so the sweep still
+  # happens in the many weeks the refresh proposes nothing. Tuesday 04:20 UTC
+  # leaves a full day for an in-flight extraction batch to land through
+  # pipeline-advance before this reads the result.
+  schedule:
+    - cron: '20 4 * * 2'
+
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Plan only — do not write, do not open a PR'
+        type: boolean
+        default: true
+      confidence:
+        description: "Lowest confidence that may be APPLIED ('certain' is forced by the data; 'likely' includes documented heuristics a human owns)"
+        type: choice
+        options: [certain, likely]
+        default: certain
+      families:
+        description: "Fixer families, comma-separated (blank = all). e.g. caps,units"
+        type: string
+        default: ''
+
+defaults:
+  run:
+    # GitHub's default step shell is `bash -e {0}` — no pipefail. Steps here pipe the
+    # tools into `tee`, and without this the step's exit status is tee's, which is
+    # always 0. That is precisely how this repo's predecessor scanner reported green
+    # for 12 consecutive Mondays while failing every time.
+    shell: bash -euo pipefail {0}
+
+concurrency:
+  # Its OWN group. Sharing `kredme-pipeline` with the 2-hourly advance meant this
+  # job could sit PENDING behind an in-flight advance and then be cancelled by the
+  # next advance entering the group two hours later — GitHub cancels a pending run
+  # in a group as soon as another enters it. The one run that must happen even when
+  # the refresh proposes nothing was therefore most likely to be dropped in exactly
+  # the week a batch is in flight, which is the week it matters. (The comment this
+  # replaces claimed the crons "cannot collide" because one is at :17 and one at
+  # :20; scheduled runs do not land on the minute — measured starts were :38, :54,
+  # :46, :50, :05, :44.)
+  #
+  # Nothing is lost by splitting: this job only READS dev, never pushes to it, and
+  # it opens its PR from its own branch. The write-collision protection the shared
+  # group was providing is provided instead by tools/fix_cards.py's own exclusive
+  # lock on the seed directory.
+  group: data-quality-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  data-quality:
+    name: Validate, plan repairs, open a PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # A workflow_run trigger fires on failure too. A refresh that crashed has not
+    # produced data worth sweeping, and re-validating the same unchanged tree just
+    # to open an identical PR is noise. Manual and scheduled runs are unconditional.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      # dev, never main. This workflow reads and proposes changes to the data branch
+      # the app's dev builds consume; main is what users have and is written only by
+      # a deliberate promote.
+      # SHA-pinned, all four. The paragraph further down says a repointed tag
+      # would be arbitrary code with commit rights in a `contents: write` job;
+      # three of the four were on mutable major tags, which is worse than not
+      # stating the rule, because the comment tells the next reader the job is
+      # pinned. actions/checkout v4.2.2.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      # actions/setup-python v5.3.0
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
+        with:
+          python-version: '3.12'
+
+      # No pip install. Every tool below is stdlib-only by design, so this job cannot
+      # be broken by a dependency resolving differently on a Tuesday.
+      # Inputs arrive through `env:`, never interpolated into the script body.
+      # `${{ }}` is substituted by the Actions expression evaluator BEFORE bash
+      # sees the line, so a families value of `'; rm -rf ...; echo '` closed the
+      # quote and ran as code — in a job holding contents: write and
+      # pull-requests: write. Reproduced end to end.
+      - name: Resolve run settings
+        id: cfg
+        env:
+          IN_DRY: ${{ github.event.inputs.dry_run }}
+          IN_CONF: ${{ github.event.inputs.confidence }}
+          IN_FAM: ${{ github.event.inputs.families }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          DRY="$IN_DRY"
+          CONF="$IN_CONF"
+          FAM="$IN_FAM"
+          # Scheduled and chained runs are NOT dry: their whole purpose is to produce
+          # a reviewable PR. A manual run defaults to dry so that "let me just look"
+          # is the cheap path.
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            [ "$DRY" = "false" ] && DRY=false || DRY=true
+          else
+            DRY=false
+          fi
+          case "$CONF" in
+            certain|likely) ;;
+            *) CONF=certain ;;
+          esac
+          # Whitelisted, not merely quoted. famargs is re-interpolated into two
+          # command lines below, so the only safe contents are tokens this file
+          # chose.
+          FAMARGS=''
+          if [ -n "$FAM" ]; then
+            IFS=',' read -ra parts <<< "$FAM"
+            for part in "${parts[@]}"; do
+              part="$(echo "$part" | tr -cd 'a-z0-9_-')"
+              case "$part" in
+                units|caps|reach|integrity|schema) FAMARGS="$FAMARGS --family $part" ;;
+                '') ;;
+                *) echo "::warning::ignoring unknown fixer family '$part'" ;;
+              esac
+            done
+          fi
+          {
+            echo "dry=$DRY"
+            echo "confidence=$CONF"
+            echo "famargs=$FAMARGS"
+          } >> "$GITHUB_OUTPUT"
+          echo "dry_run=$DRY confidence=$CONF families='${FAM}'"
+
+      # ------------------------------------------------------------------ #
+      # 1. VALIDATE — the full nine-layer check, before anything is touched
+      # ------------------------------------------------------------------ #
+      # Exit 1 means "errors exist", which is the known state of this file today
+      # (712 of them). That must not stop the job — stopping here would mean the fix
+      # stage never runs on the only data that needs it. The count is captured and
+      # carried into the PR body instead.
+      - name: Validate (before)
+        id: before
+        run: |
+          set +e
+          python3 -u tools/validate_cards.py \
+            --json  validate-before.json \
+            --html  validate-before.html \
+            | tee validate-before.log
+          set -e
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          d = json.load(open('validate-before.json'))
+          f = d['findings']
+          print(f"errors={sum(1 for x in f if x['severity']=='ERROR')}")
+          print(f"warnings={sum(1 for x in f if x['severity']=='WARN')}")
+          print(f"degraded={str(d['meta']['degraded']).lower()}")
+          print(f"skipped={d['meta']['skipped_count']}")
+          print(f"catsrc={d['meta']['categories_source']}")
+          PY
+
+      # Never let a degraded run look clean. This is a banner, not a gate: the two
+      # checks that skip here (the merchant list baked into the APK, and whether each
+      # card's image file exists) live in the private app repo and can never be
+      # mirrored into this public one, so a skip is the permanent, honest answer.
+      - name: Report how much this run could actually see
+        run: |
+          {
+            echo '## Data quality sweep'
+            echo
+            echo "**Before:** ${{ steps.before.outputs.errors }} errors · ${{ steps.before.outputs.warnings }} warnings"
+            echo
+            if [ "${{ steps.before.outputs.degraded }}" = "true" ]; then
+              echo "> [!WARNING]"
+              echo "> **DEGRADED RUN — ${{ steps.before.outputs.skipped }} check(s) could not look.**"
+              echo "> The app repo is private and cannot be checked out here, so the app's"
+              echo "> category vocabulary came from \`${{ steps.before.outputs.catsrc }}\`."
+              echo "> The counts on this page are a FLOOR, not a total."
+            fi
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ------------------------------------------------------------------ #
+      # 2. PLAN — always dry first, and always shown, even when we then apply
+      # ------------------------------------------------------------------ #
+      # The plan is posted to the job summary whatever happens next, so there is a
+      # record of what was PROPOSED that is independent of what was applied. When a
+      # sweep later turns out to have been wrong, that distinction is the whole
+      # investigation.
+      - name: Plan the repairs (dry run)
+        id: plan
+        run: |
+          set +e
+          python3 -u tools/fix_cards.py \
+            --dry-run \
+            --confidence '${{ steps.cfg.outputs.confidence }}' \
+            ${{ steps.cfg.outputs.famargs }} \
+            --json fix-plan.json \
+            | tee fix-plan.log
+          set -e
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          d = json.load(open('fix-plan.json'))
+          print(f"planned={d['plan']['total']}")
+          print(f"would_apply={d['would_apply']['total']}")
+          PY
+
+      - name: Post the plan to the job summary
+        run: |
+          {
+            echo '### Planned repairs'
+            echo
+            echo '```'
+            sed -n '/^Planned edits/,/^Verdict/p' fix-plan.log
+            echo '```'
+            echo
+            echo "Planned: **${{ steps.plan.outputs.planned }}** · would apply at"
+            echo "\`--confidence ${{ steps.cfg.outputs.confidence }}\`: **${{ steps.plan.outputs.would_apply }}**"
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ------------------------------------------------------------------ #
+      # 3. APPLY — only when this run is not a dry run, and only at the gate
+      # ------------------------------------------------------------------ #
+      # fix_cards.py exits 1 when it wants a human to look — an edit refused because
+      # the data moved under it, or an error count that went UP. Both are outcomes to
+      # REPORT, not reasons to throw the work away: a refused edit is the safety
+      # mechanism working, and a regression is exactly what the PR body has to say
+      # out loud. So the exit code is captured and rendered, not allowed to kill the
+      # job before the PR that describes it can be opened.
+      #
+      # Exit 4 is NOT that. 4 means the files on disk may disagree with each other
+      # because a write failed part-way, and a PR opened out of that tree ships the
+      # damage. The Verdict step below fails hard on it and the PR step skips.
+      - name: Apply the provable repairs
+        id: apply
+        if: steps.cfg.outputs.dry == 'false' && steps.plan.outputs.would_apply != '0'
+        run: |
+          set +e
+          python3 -u tools/fix_cards.py \
+            --apply \
+            --confidence '${{ steps.cfg.outputs.confidence }}' \
+            ${{ steps.cfg.outputs.famargs }} \
+            --backup .fix-backups \
+            --json fix-applied.json \
+            | tee fix-applied.log
+          echo "fixexit=$?" >> "$GITHUB_OUTPUT"
+          set -e
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          d = json.load(open('fix-applied.json'))
+          a = d.get('applied') or {}
+          print(f"applied={a.get('count', 0)}")
+          print(f"refused={a.get('refused', 0)}")
+          print(f"regressions={len(d.get('regressions') or [])}")
+          print(f"idempotent={str(bool(d.get('idempotent'))).lower()}")
+          PY
+
+      # ------------------------------------------------------------------ #
+      # 4. RE-VALIDATE — measured, not assumed
+      # ------------------------------------------------------------------ #
+      # fix_cards.py already re-validates internally and prints the per-code delta.
+      # This runs the validator once more as a SEPARATE artifact, so the PR carries a
+      # standalone "after" report a non-engineer can open in a browser and read
+      # without trusting the fix tool's own account of itself.
+      - name: Validate (after)
+        id: after
+        if: steps.apply.outcome == 'success'
+        run: |
+          set +e
+          python3 -u tools/validate_cards.py \
+            --json validate-after.json \
+            --html validate-after.html \
+            | tee validate-after.log
+          set -e
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          d = json.load(open('validate-after.json'))
+          f = d['findings']
+          print(f"errors={sum(1 for x in f if x['severity']=='ERROR')}")
+          print(f"warnings={sum(1 for x in f if x['severity']=='WARN')}")
+          PY
+
+      # ------------------------------------------------------------------ #
+      # 5. THE PR BODY — the only place a human reads what a bot decided
+      # ------------------------------------------------------------------ #
+      - name: Compose the pull request body
+        id: body
+        if: steps.apply.outcome == 'success'
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+
+          before = json.load(open('validate-before.json'))
+          after  = json.load(open('validate-after.json'))
+          fix    = json.load(open('fix-applied.json'))
+
+          def by_code(doc):
+              out = {}
+              for f in doc['findings']:
+                  if f['severity'] == 'ERROR':
+                      out[f['code']] = out.get(f['code'], 0) + 1
+              return out
+
+          b, a = by_code(before), by_code(after)
+          eb = sum(b.values()); ea = sum(a.values())
+          applied = fix.get('applied') or {}
+          moved = sorted(set(b) | set(a), key=lambda c: (a.get(c,0)-b.get(c,0), c))
+          moved = [c for c in moved if a.get(c,0) != b.get(c,0)]
+          worse = [c for c in moved if a.get(c,0) > b.get(c,0)]
+          gate  = fix['meta']['confidence_gate']
+
+          L = []
+          if worse:
+              L += ["> [!CAUTION]",
+                    "> **An error count went UP.** " +
+                    ", ".join(f"`{c}` {b.get(c,0)} → {a.get(c,0)}" for c in worse) + ".",
+                    "> Read those before merging. In most cases this is a defect becoming",
+                    "> VISIBLE for the first time — a cap stored as the text \"5,000\" is",
+                    "> unreadable, so no check could judge its unit until it became a number",
+                    "> — but that is a claim to verify here, not to assume.", ""]
+
+          L += [f"## Errors: {eb} → {ea} ({ea-eb:+d})", "",
+                f"- **{applied.get('count', 0)}** edit(s) applied at `--confidence {gate}`",
+                f"- **{applied.get('refused', 0)}** refused because the data had moved under them (nothing was forced)",
+                f"- **{fix['plan']['total'] - fix['would_apply']['total']}** planned but held back below the gate",
+                f"- warnings {sum(1 for x in before['findings'] if x['severity']=='WARN')} → "
+                f"{sum(1 for x in after['findings'] if x['severity']=='WARN')}",
+                f"- second pass would change nothing: **{bool(fix.get('idempotent'))}**", ""]
+
+          if moved:
+              L += ["### Every code whose count changed", "",
+                    "| code | before | after | change |", "|---|---:|---:|---:|"]
+              L += [f"| `{c}` | {b.get(c,0)} | {a.get(c,0)} | {a.get(c,0)-b.get(c,0):+d} |"
+                    for c in moved]
+              L += [""]
+
+          bycode = applied.get('by_code') or {}
+          if bycode:
+              L += ["### What was edited", "", "| code | edits |", "|---|---:|"]
+              L += [f"| `{c}` | {k} |" for c, k in
+                    sorted(bycode.items(), key=lambda kv: -kv[1])]
+              L += [""]
+
+          L += ["### What this PR is NOT", "",
+                "> [!IMPORTANT]",
+                "> **No CI has read this diff** unless a `PIPELINE_PR_TOKEN` is set on",
+                "> this repository. A pull request opened with the default Actions token",
+                "> does not trigger `on: pull_request` workflows, so the validator and the",
+                "> ratchet named above ran on the RUNNER, before the PR existed — they did",
+                "> not run against this branch. Check the Checks tab before merging.",
+                "",
+                "> [!IMPORTANT]",
+                "> **Nothing here is issuer-verified.** Not one of these edits opened a",
+                "> bank's website. Every one was derived from something already inside",
+                "> `seed/cards.json` — a rule's own name, the card's own point value, the",
+                "> card's own redemption block — or from the app's own Dart. This PR makes",
+                "> the file internally coherent and readable by the app. It does not make",
+                "> it CORRECT: a rate can be perfectly coherent and still wrong because the",
+                "> issuer changed it and nobody told us.",
+                "",
+                f"Issuer-sourced share of reward rates is unchanged by this PR and remains "
+                f"the only number on the report that speaks to correctness.", ""]
+
+          if before['meta']['degraded']:
+              L += ["> [!WARNING]",
+                    f"> **This was a DEGRADED run** — {before['meta']['skipped_count']} check(s)",
+                    "> could not look. `kredme-data` is public and the app repo is private, so",
+                    f"> CI read the app's category vocabulary from `{before['meta']['categories_source']}`.",
+                    "> The counts above are a floor, not a total.", ""]
+
+          L += ["### Guardrails that held", "",
+                "- No `rule_name` was changed. The name is the only independent evidence in",
+                "  the file, and the app keys every user's saved cap progress on that exact",
+                "  string — renaming a rule silently resets real progress.",
+                "- No rate was raised on our own arithmetic. An unsourced correction may only",
+                "  go DOWN.",
+                "- Every edit is anchored to one row and was re-checked against the current",
+                "  value before writing; anything that had moved was refused.",
+                "- Backups of every pre-edit file are attached as an artifact.", "",
+                "---", "",
+                "Artifacts on this run: `validate-before.html` and `validate-after.html` open",
+                "in any browser. `fix-plan.json` lists every edit that was proposed, including",
+                "the ones held back, each with the evidence it was derived from.", "",
+                "Base is `dev`, never `main`. Nothing in this PR has reached a user.", ""]
+
+          pathlib.Path('pr_body.md').write_text("\n".join(L), encoding='utf-8')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as fh:
+              fh.write("\n".join(L) + "\n")
+          print("\n".join(L[:40]))
+          PY
+
+      # ------------------------------------------------------------------ #
+      # 6. THE PR
+      # ------------------------------------------------------------------ #
+      # Pinned to a commit, not the mutable `v6` tag — same SHA pipeline-advance.yml
+      # already uses. This repo is public and this job holds a write-scoped token, so
+      # a repointed tag would be arbitrary code with commit rights.
+      #
+      # add-paths is explicit: this job may only ever propose the three data files it
+      # actually edits, plus the ratchet baseline. It can never sweep a stray build
+      # artifact, a log or a backup into a data PR.
+      - name: Open a PR against dev with the repairs
+        if: >-
+          steps.apply.outcome == 'success' &&
+          steps.apply.outputs.applied != '0' &&
+          steps.apply.outputs.fixexit != '4'
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c
+        with:
+          # A PR opened with the default GITHUB_TOKEN does not trigger
+          # `on: pull_request` workflows, so nothing — including the ratchet this
+          # same change-set adds — ever looks at the diff. That is measured
+          # history here, not theory: PR #48 rewrote seed/cards.json and merged
+          # with "no checks reported", and #50 the same. This PR is a ~1,900-edit
+          # rewrite of the same file. PIPELINE_PR_TOKEN is a PAT or GitHub App
+          # installation token; where it is not set this falls back and the PR
+          # body says in plain words that no CI has read the diff.
+          token: ${{ secrets.PIPELINE_PR_TOKEN || secrets.GITHUB_TOKEN }}
+          base: dev
+          # A STABLE branch name, so create-pull-request updates the one open
+          # sweep PR instead of filing a new one per run. github.run_id made every
+          # branch unique, which is what turned repeated runs into a pile of
+          # identical PRs.
+          branch: bot/data-quality
+          delete-branch: true
+          # tools/validated_baseline.json is NOT here: nothing in the repo writes
+          # it — `grep -rn validated_baseline.json tools/*.py tools/fixers/*.py`
+          # finds no writer — so listing it only advertised a file this PR cannot
+          # produce. Lowering the ratchet stays a human act in a human PR.
+          add-paths: |
+            seed/cards.json
+            seed/manifest.json
+            news/feed.json
+          commit-message: |
+            Repair validated card-data defects (run ${{ github.run_id }})
+
+            ${{ steps.apply.outputs.applied }} edit(s) at confidence ${{ steps.cfg.outputs.confidence }}.
+            Errors ${{ steps.before.outputs.errors }} -> ${{ steps.after.outputs.errors }}.
+            Nothing in this change is issuer-verified.
+          title: >-
+            Data quality: ${{ steps.before.outputs.errors }} -> ${{ steps.after.outputs.errors }} errors
+            (${{ steps.apply.outputs.applied }} repairs, ${{ steps.cfg.outputs.confidence }})
+          body-path: pr_body.md
+          labels: data-quality, needs-human-review
+
+      # ------------------------------------------------------------------ #
+      # 7. ARTIFACTS — so a non-engineer can read the result without a terminal
+      # ------------------------------------------------------------------ #
+      - name: Upload the reports
+        if: always()
+        # actions/upload-artifact v4.4.3
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
+        with:
+          name: data-quality-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            validate-before.html
+            validate-before.json
+            validate-after.html
+            validate-after.json
+            fix-plan.json
+            fix-plan.log
+            fix-applied.json
+            fix-applied.log
+            .fix-backups/**
+
+      # The job's own colour. Everything above captured its exit code rather than
+      # failing, so that a PR describing a problem could still be opened; this is
+      # where the run finally goes red if it should. A refusal or a regression is a
+      # red run WITH a PR attached, which is the pair a human needs.
+      - name: Verdict
+        if: always()
+        run: |
+          bad=0
+          if [ "${{ steps.apply.outputs.regressions }}" != "" ] && \
+             [ "${{ steps.apply.outputs.regressions }}" != "0" ]; then
+            echo "::error::${{ steps.apply.outputs.regressions }} error code(s) went UP — read the PR body."
+            bad=1
+          fi
+          if [ "${{ steps.apply.outputs.refused }}" != "" ] && \
+             [ "${{ steps.apply.outputs.refused }}" != "0" ]; then
+            echo "::warning::${{ steps.apply.outputs.refused }} edit(s) were refused because the data moved under them."
+          fi
+          if [ "${{ steps.apply.outputs.idempotent }}" = "false" ]; then
+            echo "::error::A second --apply would still change the file. The sweep is not settled."
+            bad=1
+          fi
+          # Exit 4 is a damaged tree, not a reviewable result. It gets its own
+          # message and its own severity, and the PR step above has already
+          # skipped on it, because the failure mode this guards against is a bot
+          # opening a pull request out of a half-written seed/.
+          if [ "${{ steps.apply.outputs.fixexit }}" = "4" ]; then
+            echo "::error::fix_cards.py exited 4 — the data on disk may be INCONSISTENT."
+            echo "::error::No PR was opened. Restore seed/ and news/ from the backup artifact."
+            bad=1
+          fi
+          exit $bad
