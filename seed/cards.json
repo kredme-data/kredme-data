@@ -7880,7 +7880,7 @@
    "card_tier": "entry",
    "annual_fee": 200.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.2,
    "rp_value_travel": null,
@@ -7985,6 +7985,18 @@
      "cardinsider": "Club Vistara Conversion"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.03,
+    "source_url": "https://www.axis.bank.in/cards/credit-card/platinum-credit-card",
+    "source_quote": "Earn points for these transactions: 6 points on every ₹200 spent on the credit card domestically 12 points on every ₹200 spent on the credit card internationally",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -9221,7 +9233,7 @@
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 100000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -9249,9 +9261,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 20.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -9259,7 +9271,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-axis-bank-shoppers-stop-credit-card.pdf",
+    "source_quote": "Card member shall earn 20 FC reward points on every INR 200 spent on Shoppers Stop Exclusive Brands (in-store, website or mobile app) via their Credit Card.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Unlimited 12 First Citizen accelerated points for every ₹200 spent on beauty products and other brands at Shoppers Stop",
@@ -9268,9 +9284,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 12.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -9278,7 +9294,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-axis-bank-shoppers-stop-credit-card.pdf",
+    "source_quote": "Cardmember shall earn 12 FC reward points on every INR 200 spent at Shoppers Stop (in-store, website or mobile app) for other brands on the Credit Card.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -9367,6 +9387,18 @@
      "cardinsider": "Homestop"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-axis-bank-shoppers-stop-credit-card.pdf",
+    "source_quote": "Cardmember shall earn 2 FC Points on every INR 200 spent for all other spends apart from spends at Shoppers Stop (in-store, website or mobile app), Homestop, Arcelia, MAC, Clinique, Estee Lauder, Bobbi Brown, Jo Malone & Smashbox on the Credit Card.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -11332,7 +11364,7 @@
    "card_tier": "entry",
    "annual_fee": 799.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -11360,9 +11392,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -11370,7 +11402,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-base_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 3 IndiGo BluChips for every Rs.100 spent on all IndiGo Channels",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "2 IndiGo BluChips per ₹100 spent on grocery and dining categories [grocery]",
@@ -11379,9 +11415,9 @@
     "category_id": "grocery",
     "category_ref": "grocery & dining",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -11389,7 +11425,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-base_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 2 IndiGo BluChips for every Rs.100 spent on all Grocery & Dining categories",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "2 IndiGo BluChips per ₹100 spent on grocery and dining categories [dining]",
@@ -11398,9 +11438,9 @@
     "category_id": "dining",
     "category_ref": "grocery & dining",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -11408,7 +11448,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-base_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 2 IndiGo BluChips for every Rs.100 spent on all Grocery & Dining categories",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -11493,6 +11537,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-base_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 1 IndiGo BluChip for every Rs.100 spent on all eligible non-accelerated categories",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -11504,9 +11560,9 @@
    "card_tier": "premium",
    "annual_fee": 5000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
-   "rp_value_standard": 0.4,
+   "rp_value_standard": null,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 2.5,
@@ -11532,9 +11588,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 7.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -11542,7 +11598,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-premium_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 7 IndiGo BluChips for every Rs.100 spent on all IndiGo Channels",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3 IndiGo BluChips per ₹100 spent on grocery and hotel categories [grocery]",
@@ -11551,9 +11611,9 @@
     "category_id": "grocery",
     "category_ref": "grocery & hotel",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -11561,7 +11621,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-premium_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 3 IndiGo BluChips for every Rs.100 spent on all Grocery & Hotel categories",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3 IndiGo BluChips per ₹100 spent on grocery and hotel categories [hotels]",
@@ -11570,9 +11634,9 @@
     "category_id": "hotels",
     "category_ref": "grocery & hotel",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -11580,7 +11644,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-premium_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 3 IndiGo BluChips for every Rs.100 spent on all Grocery & Hotel categories",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -11700,6 +11768,28 @@
      "cardinsider": "IndiGo mobile app"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-premium_customer-tnc.pdf",
+    "source_quote": "Card Member will earn 2 IndiGo BluChips for every Rs.100 spent on all eligible non-accelerated categories",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   },
+   {
+    "field": "rp_value_standard",
+    "path": "card.rp_value_standard",
+    "old_value": 0.4,
+    "new_value": null,
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-premium_customer-tnc.pdf",
+    "source_quote": "IndiGo BluChips are loyalty points and do not hold any monetary value.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -12182,7 +12272,7 @@
    "card_tier": "mid_range",
    "annual_fee": 2000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.5,
    "rp_value_travel": null,
@@ -12210,9 +12300,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 28.0,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 12.0,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -12220,7 +12310,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "Voyage Black | 12 SC Points per Rs. 200 spend as card benefit",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "12 Spiceclub points per Rs. 200 spent on online entertainment, food orders, and online bill payments",
@@ -12229,9 +12323,9 @@
     "category_id": null,
     "category_ref": "online entertainment, food orders, online bill payments",
     "channel": "online",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 12.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -12239,7 +12333,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "Online utility bill payment, Online food ordering, Online entertainment* | 12 SC Points per Rs.200 spend",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -12354,6 +12452,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.03,
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "Voyage Black | Other Retail spends** | 6 SC Points per Rs. 200 spend",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -12365,7 +12475,7 @@
    "card_tier": "entry",
    "annual_fee": 750.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.015,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.5,
    "rp_value_travel": null,
@@ -12393,9 +12503,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 18.0,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 6.0,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -12403,7 +12513,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "Voyage | 6 SC Points per Rs. 200 spend as card benefit",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "6 Spiceclub points per Rs. 200 spent",
@@ -12412,9 +12526,9 @@
     "category_id": null,
     "category_ref": "online bill payments, food orders, entertainment",
     "channel": "online",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 6.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -12422,7 +12536,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "Online utility bill payment, Online food ordering, Online entertainment* | 6 SC Points per Rs.200 spend",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3 Spiceclub points per Rs. 200 spent",
@@ -12431,9 +12549,9 @@
     "category_id": null,
     "category_ref": "all other domestic and international transactions",
     "channel": "international",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -12441,7 +12559,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "For SpiceJet Axis Bank Voyage credit card, for e.g. Rs. 1460 of spend on SpiceJet would earn -> (6/200)*1400 = 42 SC Points. Similarly for Rs. 1590 spend on other retail category would earn -> (3/200)*1400 = 21 SC Points",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -12524,6 +12646,18 @@
      "cardinsider": "SpiceJet Mobile Application"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.015,
+    "source_url": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+    "source_quote": "For SpiceJet Axis Bank Voyage credit card, for e.g. Rs. 1460 of spend on SpiceJet would earn -> (6/200)*1400 = 42 SC Points. Similarly for Rs. 1590 spend on other retail category would earn -> (3/200)*1400 = 21 SC Points",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -23420,9 +23554,9 @@
    "card_tier": "mid_range",
    "annual_fee": 3000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.0133333,
    "reward_currency": "reward_points",
-   "rp_value_standard": 0.5,
+   "rp_value_standard": null,
    "rp_value_travel": 0.5,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -23448,9 +23582,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 8.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 53335.0,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -23458,7 +23592,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf",
+    "source_quote": "Cardmembers will earn 8 Marriott Bonvoy Points per ₹150 up to a monthly spend threshold of INR 10 Lakh.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "4 Marriott Bonvoy Points per 150 spent on travel, dining, and entertainment. After monthly limit of 5 Lakhs, earn 2 RPs per 150 spent. Max 13335 points per month in this category. [travel]",
@@ -23467,9 +23605,9 @@
     "category_id": "travel",
     "category_ref": "travel, dining, and entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 13335.0,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -23477,7 +23615,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf",
+    "source_quote": "Cardmembers will earn 4 Marriott Bonvoy Points per ₹150 up to a monthly spend threshold of INR 5 Lakh.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "4 Marriott Bonvoy Points per 150 spent on travel, dining, and entertainment. After monthly limit of 5 Lakhs, earn 2 RPs per 150 spent. Max 13335 points per month in this category. [dining]",
@@ -23486,9 +23628,9 @@
     "category_id": "dining",
     "category_ref": "travel, dining, and entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 13335.0,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -23496,7 +23638,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf",
+    "source_quote": "Cardmembers will earn 4 Marriott Bonvoy Points per ₹150 up to a monthly spend threshold of INR 5 Lakh.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "4 Marriott Bonvoy Points per 150 spent on travel, dining, and entertainment. After monthly limit of 5 Lakhs, earn 2 RPs per 150 spent. Max 13335 points per month in this category. [entertainment]",
@@ -23505,9 +23651,9 @@
     "category_id": "entertainment",
     "category_ref": "travel, dining, and entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 13335.0,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -23515,7 +23661,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf",
+    "source_quote": "Cardmembers will earn 4 Marriott Bonvoy Points per ₹150 up to a monthly spend threshold of INR 5 Lakh.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -23628,6 +23778,28 @@
      "cardinsider": "Marriott Website/App"
     },
     "confidence": "medium"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.0133333,
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf",
+    "source_quote": "Non EMI Spends on all other Eligible Spend categories | 2 Marriott Bonvoy Points per ₹150",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   },
+   {
+    "field": "rp_value_standard",
+    "path": "card.rp_value_standard",
+    "old_value": 0.5,
+    "new_value": null,
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf",
+    "source_quote": "Marriott Bonvoy Points and Award Redemptions (as defined in the Marriott Bonvoy Program Rules) may not be exchanged or redeemed by Marriott Bonvoy Members for cash, prizes, or credit.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -34217,7 +34389,7 @@
    "card_tier": "entry",
    "annual_fee": 999.0,
    "fee_waiver_spend": 300000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": 1.0,
    "rp_value_travel": 1.0,
@@ -34283,9 +34455,9 @@
     "category_id": "insurance",
     "category_ref": "spends on insurance",
     "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 100.0,
     "cap_amount": 1000,
     "cap_period": "year",
     "min_txn_amount": null,
@@ -34293,7 +34465,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/makemytrip-icici-credit-card-terms-and-conditions.pdf",
+    "source_quote": "Spends on Insurance | 1% myCash (capped at a maximum of 1,000 myCash per Anniversary Year)",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -34358,6 +34534,18 @@
      "cardinsider": "Partner vouchers via MMT"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/makemytrip-icici-credit-card-terms-and-conditions.pdf",
+    "source_quote": "Domestic spends outside MakeMyTrip | 1% myCash excluding rent and | EMI payments",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -35006,7 +35194,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1499.0,
    "fee_waiver_spend": 150000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": 0.25,
@@ -35034,9 +35222,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 6.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -35044,7 +35232,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idbi.bank.in/Euphoria-credit-card.aspx",
+    "source_quote": "You can earn 6 Delight Points for every 100 you spend on travel related expenses viz. Hotels, Airlines, IRCTC, Bus Bookings etc.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -35153,6 +35345,18 @@
      "cardinsider": "Cashback"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.03,
+    "source_url": "https://www.idbi.bank.in/Euphoria-credit-card.aspx",
+    "source_quote": "You can earn 6 Delight Points for every 100 you spend on travel related expenses viz. Hotels, Airlines, IRCTC, Bus Bookings etc. or earn 3 Delight Points on every other spent.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -35944,7 +36148,7 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.015,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -35972,9 +36176,9 @@
     "category_id": "insurance",
     "category_ref": "insurance and utility spends",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -35982,7 +36186,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/classic",
+    "source_quote": "1X Reward Points on Utility bill payments, Insurance premium payments, Railway spends and FASTag recharges 1X = 1 Reward Point per ₹200 spent",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "1X Reward Point per 200 for insurance and utility spends [utilities]",
@@ -35991,9 +36199,9 @@
     "category_id": "utilities",
     "category_ref": "insurance and utility spends",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -36001,7 +36209,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/classic",
+    "source_quote": "1X Reward Points on Utility bill payments, Insurance premium payments, Railway spends and FASTag recharges 1X = 1 Reward Point per ₹200 spent",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -36089,6 +36301,18 @@
      "cardinsider": "Vouchers"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.015,
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/classic",
+    "source_quote": "3X Reward Points on eligible spends 1X = 1 Reward Point per ₹200 spent | 1 Reward point = ₹0.25",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -36426,7 +36650,7 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.015,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -36454,9 +36678,9 @@
     "category_id": "utilities",
     "category_ref": "utilities and insurance",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -36464,7 +36688,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Wealth-CC-Rewards-Structure-TnC-28-05-25-copy.pdf",
+    "source_quote": "1 reward point on Insurance, Utilities, Railway, and Fastag ... Reward points are earned per ₹200 spent on eligible transactions.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "1 Reward Point per 200 spent on utilities and insurance [insurance]",
@@ -36473,9 +36701,9 @@
     "category_id": "insurance",
     "category_ref": "utilities and insurance",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -36483,7 +36711,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Wealth-CC-Rewards-Structure-TnC-28-05-25-copy.pdf",
+    "source_quote": "1 reward point on Insurance, Utilities, Railway, and Fastag ... Reward points are earned per ₹200 spent on eligible transactions.",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -36567,6 +36799,16 @@
     "source_quote": "🌍 Low 1.5% Forex Markup. (compared to industry-standard of 3–3.5%)",
     "confidence": "high",
     "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.015,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Wealth-CC-Rewards-Structure-TnC-28-05-25-copy.pdf",
+    "source_quote": "3 reward points on all offline and online eligible spends. ... Reward points are earned per ₹200 spent on eligible transactions.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -37203,7 +37445,7 @@
    "card_tier": "mid_range",
    "annual_fee": 4999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -37231,9 +37473,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 6.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37241,7 +37483,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips Up to 22 * On IndiGo flights booked via IndiGo website & mobile app *6 on Card + up to 16 from IndiGo (based on tier)",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "0.5 BluChips per ₹100 spent on UPI transactions",
@@ -37250,9 +37496,9 @@
     "category_id": null,
     "category_ref": "upi",
     "channel": "upi",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 0.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37260,7 +37506,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips 0.5 On UPI Spends ... earned per ₹100 spent in respective categories.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "0.5 IndiGo BluChips per ₹100 spent on Insurance, Rent, Utilities, and Wallet transactions [insurance]",
@@ -37269,9 +37519,9 @@
     "category_id": "insurance",
     "category_ref": "insurance, rent, utilities, and wallet transactions",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 0.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37279,7 +37529,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips 0.5 On insurance, fuel, utility, rent, wallet, FASTag, education, railway spends & govt. services",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "0.5 IndiGo BluChips per ₹100 spent on Insurance, Rent, Utilities, and Wallet transactions [rent]",
@@ -37288,9 +37542,9 @@
     "category_id": "rent",
     "category_ref": "insurance, rent, utilities, and wallet transactions",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 0.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37298,7 +37552,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips 0.5 On insurance, fuel, utility, rent, wallet, FASTag, education, railway spends & govt. services",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "0.5 IndiGo BluChips per ₹100 spent on Insurance, Rent, Utilities, and Wallet transactions [utilities]",
@@ -37307,9 +37565,9 @@
     "category_id": "utilities",
     "category_ref": "insurance, rent, utilities, and wallet transactions",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 0.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37317,7 +37575,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips 0.5 On insurance, fuel, utility, rent, wallet, FASTag, education, railway spends & govt. services",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "0.5 IndiGo BluChips per ₹100 spent on Insurance, Rent, Utilities, and Wallet transactions [wallet_load]",
@@ -37326,9 +37588,9 @@
     "category_id": "wallet_load",
     "category_ref": "insurance, rent, utilities, and wallet transactions",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 0.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37336,7 +37598,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips 0.5 On insurance, fuel, utility, rent, wallet, FASTag, education, railway spends & govt. services",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -37427,6 +37693,16 @@
     "source_quote": "🌍 Low Forex Markup of 1.49% (vs. typical 3–3.5% in the market)",
     "confidence": "high",
     "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.03,
+    "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "source_quote": "IndiGo BluChips 3 On other spends ... IndiGo BluChips shown above are earned per ₹100 spent in respective categories.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -37439,7 +37715,7 @@
    "card_tier": "mid_range",
    "annual_fee": 2999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.0333333,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": 0.4,
@@ -37467,9 +37743,9 @@
     "category_id": "rent",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37477,7 +37753,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per ₹150 on rent, government, wallet load, and education transactions [government]",
@@ -37486,9 +37766,9 @@
     "category_id": "government",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37496,7 +37776,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per ₹150 on rent, government, wallet load, and education transactions [wallet_load]",
@@ -37505,9 +37789,9 @@
     "category_id": "wallet_load",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37515,7 +37799,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per ₹150 on rent, government, wallet load, and education transactions [education]",
@@ -37524,9 +37812,9 @@
     "category_id": "education",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37534,7 +37822,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "1X Reward Points per ₹150 on insurance and utilities [insurance]",
@@ -37543,9 +37835,9 @@
     "category_id": "insurance",
     "category_ref": "insurance and utilities",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37553,7 +37845,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "1 reward point per ₹150 on Fastag, Railways, Insurance and Utilities",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "1X Reward Points per ₹150 on insurance and utilities [utilities]",
@@ -37562,9 +37858,9 @@
     "category_id": "utilities",
     "category_ref": "insurance and utilities",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -37572,7 +37868,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "1 reward point per ₹150 on Fastag, Railways, Insurance and Utilities",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "50 Bonus Reward Points per ₹150 on hotel bookings via IDFC Travel & Shop (16.66% reward rate), in addition to base reward rate. Max 15,000 Bonus Reward Points per month",
@@ -37581,9 +37881,9 @@
     "category_id": null,
     "category_ref": "hotels via idfc travel & shop",
     "channel": "portal",
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.1666,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 30.0,
+    "reward_unit_spend": 150.0,
     "cap_amount": 15000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -37591,7 +37891,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "Travel Bookings Bonus Reward Points per ₹150 Hotel 30 reward points Flights 15 reward points ... 1 Reward Point = ₹0.25 everywhere else",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "30 Bonus Reward Points per ₹150 on flight bookings via IDFC Travel & Shop (10% reward rate), in addition to base reward rate. Max 15,000 Bonus Reward Points per month",
@@ -37600,9 +37904,9 @@
     "category_id": null,
     "category_ref": "flights via idfc travel & shop",
     "channel": "portal",
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.1,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 15.0,
+    "reward_unit_spend": 150.0,
     "cap_amount": 15000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -37610,7 +37914,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "Travel Bookings Bonus Reward Points per ₹150 Hotel 30 reward points Flights 15 reward points ... 1 Reward Point = ₹0.25 everywhere else",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -37729,6 +38037,18 @@
      "cardinsider": "Pay With Points"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.0333333,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "5 reward points per ₹150 on eligible spends up to ₹20,000 in a statement cycle.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -38884,7 +39204,7 @@
    "card_tier": "entry",
    "annual_fee": 499.0,
    "fee_waiver_spend": 150000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -38912,9 +39232,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 30.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 2400,
     "cap_period": "cycle",
     "min_txn_amount": null,
@@ -38922,7 +39242,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/Savings-Maximiser-FIRST-Power-plus.pdf",
+    "source_quote": "30X = 30 Rewards per ₹150 spends on HPCL fuel (1 Reward point = ₹0.25)",
+    "source_doc_type": "product_guide",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Save up to 5% as rewards on grocery and utility expenses up to ₹2,000 per month [grocery]",
@@ -38988,9 +39312,9 @@
     "category_id": null,
     "category_ref": "upi transactions",
     "channel": "upi",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -38998,7 +39322,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/Savings-Maximiser-FIRST-Power-plus.pdf",
+    "source_quote": "UPI Rewards 3X Rewards ... Applicable structure: 3 Reward points per ₹150 (1 Reward point = ₹0.25)",
+    "source_doc_type": "product_guide",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -39049,6 +39377,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/Savings-Maximiser-FIRST-Power-plus.pdf",
+    "source_quote": "Other Retail Spends 3X Rewards ... Applicable structure: 3 Reward points per ₹150 (1 Reward point = ₹0.25)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -39060,7 +39400,7 @@
    "card_tier": "premium",
    "annual_fee": 5999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.0333333,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": 0.5,
@@ -39088,9 +39428,9 @@
     "category_id": null,
     "category_ref": "international transactions",
     "channel": "international",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39098,7 +39438,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "5 reward points per ₹150 on international transactions",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per 150 on rent, government, wallet load, and education transactions [rent]",
@@ -39107,9 +39451,9 @@
     "category_id": "rent",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39117,7 +39461,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per 150 on rent, government, wallet load, and education transactions [government]",
@@ -39126,9 +39474,9 @@
     "category_id": "government",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39136,7 +39484,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per 150 on rent, government, wallet load, and education transactions [wallet_load]",
@@ -39145,9 +39497,9 @@
     "category_id": "wallet_load",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39155,7 +39507,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Reward Points per 150 on rent, government, wallet load, and education transactions [education]",
@@ -39164,9 +39520,9 @@
     "category_id": "education",
     "category_ref": "rent, government, wallet load, education",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39174,7 +39530,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "3 reward points per ₹150 on Rent, Government, Wallet Load and Education",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "1X Reward Points per 150 on insurance and utilities [insurance]",
@@ -39183,9 +39543,9 @@
     "category_id": "insurance",
     "category_ref": "insurance and utilities",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39193,7 +39553,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "1 reward point per ₹150 on Fastag, Railways, Insurance and Utilities",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "1X Reward Points per 150 on insurance and utilities [utilities]",
@@ -39202,9 +39566,9 @@
     "category_id": "utilities",
     "category_ref": "insurance and utilities",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -39212,7 +39576,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "1 reward point per ₹150 on Fastag, Railways, Insurance and Utilities",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "50 Bonus Reward Points per 150 on hotel bookings via IDFC Travel & Shop portal, 16.66% reward rate, bonus over and above base rate",
@@ -39221,9 +39589,9 @@
     "category_id": null,
     "category_ref": "hotel bookings via idfc travel & shop",
     "channel": "portal",
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.1666,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 30.0,
+    "reward_unit_spend": 150.0,
     "cap_amount": 25000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -39231,7 +39599,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "Hotel 30 reward points | Flights 15 reward points | 1 Reward Point = ₹0.25 everywhere else",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "30 Bonus Reward Points per 150 on flight bookings via IDFC Travel & Shop portal, 10% reward rate, bonus over and above base rate",
@@ -39240,9 +39612,9 @@
     "category_id": null,
     "category_ref": "flight bookings via idfc travel & shop",
     "channel": "portal",
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.1,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 15.0,
+    "reward_unit_spend": 150.0,
     "cap_amount": 25000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -39250,7 +39622,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "Hotel 30 reward points | Flights 15 reward points | 1 Reward Point = ₹0.25 everywhere else",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -39359,6 +39735,16 @@
     "source_quote": "\\ud83c\\udf0d Zero Forex Markup. (compared to industry-standard of 3\\u20133.5%)",
     "confidence": "high",
     "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.0333333,
+    "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf",
+    "source_quote": "5 reward points per ₹150 on eligible spends up to ₹20,000 in a statement cycle.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -39490,7 +39876,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -39667,6 +40053,18 @@
      "cardinsider": "Customer care at +91 9289228888"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "is_active",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/club-vistara-indusInd-bank-explorer-credit-card.html",
+    "source_quote": "Club Vistara Explorer Credit Card (Discontinued) ... Kindly note the benefits on the Vistara Credit Card is only applicable till 31st March-25",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -40276,7 +40674,7 @@
    "card_tier": "premium",
    "annual_fee": 5000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.015,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -40303,10 +40701,10 @@
     "merchant_ref": null,
     "category_id": null,
     "category_ref": "pos transactions at preferred destinations",
-    "channel": "offline",
-    "reward_type": "multiplier",
+    "channel": "international",
+    "reward_type": "points_per_spend",
     "reward_rate": 6.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -40314,7 +40712,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html",
+    "source_quote": "Spends in selected preferred international destination for Point of Sale transactions | 6",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3X Avios/₹200 spent on other domestic and international spends",
@@ -40323,9 +40725,9 @@
     "category_id": null,
     "category_ref": "other domestic and international spends",
     "channel": "international",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -40333,7 +40735,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html",
+    "source_quote": "Spends in domestic and other international destinations | 3",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -40405,6 +40811,18 @@
      "cardinsider": "British Airways"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.015,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html",
+    "source_quote": "Spends Category | Avios per INR 200 Spent ... All other spends | 3",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -43223,7 +43641,7 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.005,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.4,
    "rp_value_travel": null,
@@ -43251,9 +43669,9 @@
     "category_id": "departmental_store",
     "category_ref": "shop plan - departmental stores",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43261,7 +43679,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Shop Plan ... Shopping in departmental stores | 4 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Mid tier under Shop Plan",
@@ -43270,9 +43692,9 @@
     "category_id": "electronics",
     "category_ref": "shop plan - consumer durables/electronic items",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43280,7 +43702,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Shop Plan ... Purchase of consumer durables or electronic items | 2 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Lower tier under Shop Plan",
@@ -43289,9 +43715,9 @@
     "category_id": "dining",
     "category_ref": "shop plan - restaurant bills/books",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43299,7 +43725,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Shop Plan ... Restaurant bills | 1.5 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Top tier under Home Plan",
@@ -43308,9 +43738,9 @@
     "category_id": "grocery",
     "category_ref": "home plan - groceries",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43318,7 +43748,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Home Plan ... Grocery | 4 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Second tier under Home Plan",
@@ -43327,9 +43761,9 @@
     "category_id": "utilities",
     "category_ref": "home plan - electricity/cellphone bills",
     "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 2.5,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.4,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43337,7 +43771,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Cellphone bills | 2.5 savings points (1.4 savings points w.e.f 1st August 2019) ... Electricity bills | 2.5 savings points (1.4 savings points w.e.f 1st August 2019)",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Lower tier under Home Plan",
@@ -43346,9 +43784,9 @@
     "category_id": "insurance",
     "category_ref": "home plan - insurance premium/medical bill",
     "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 1.5,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.4,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43356,7 +43794,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Insurance premium | 1.5 savings points (1.4 savings points w.e.f 1st August 2019)",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Top tier under Travel Plan",
@@ -43365,9 +43807,9 @@
     "category_id": "travel",
     "category_ref": "travel plan - hotel bookings or other hotel-related spends",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43375,7 +43817,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Travel Plan ... Hotel expenses | 4 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Second tier under Travel Plan",
@@ -43384,9 +43830,9 @@
     "category_id": "travel",
     "category_ref": "travel plan - flight bookings",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43394,7 +43840,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Travel Plan ... Airline tickets | 2.5 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Lower tier under Travel Plan",
@@ -43403,9 +43853,9 @@
     "category_id": "travel",
     "category_ref": "travel plan - car rentals/railway ticket bookings",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43413,7 +43863,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Travel Plan ... Car rental expenses | 1.5 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Top tier under Party Plan",
@@ -43422,9 +43876,9 @@
     "category_id": "dining",
     "category_ref": "party plan - dining bills",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43432,7 +43886,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Party Plan ... Restaurant bills | 4 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Mid tier under Party Plan",
@@ -43441,9 +43899,9 @@
     "category_id": "departmental_store",
     "category_ref": "party plan - bars, pubs, and departmental stores",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43451,7 +43909,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Party Plan ... Shopping in departmental stores | 2 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Lower tier under Party Plan",
@@ -43460,9 +43922,9 @@
     "category_id": "entertainment",
     "category_ref": "party plan - movie tickets",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 1.5,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43470,7 +43932,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Platinum Aura Party Plan ... Movie tickets | 1.5 savings points",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -43500,6 +43966,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.005,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+    "source_quote": "Spend Categories | Savings points on Rs 100 spent ... All other spends on your card | 0.5 savings points",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -43525,7 +44003,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
@@ -43636,6 +44114,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "is_active",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-visa-credit-card.html",
+    "source_quote": "Disclaimer: Dear Customer, we have discontinued this product for new sourcing as well as the existing credit cards and same is only displayed as a reference for existing IndusInd Bank InterMiles Credit Card holders.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -43647,7 +44137,7 @@
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": 10000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -43675,9 +44165,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 12.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": 1200,
     "cap_period": "cycle",
     "min_txn_amount": null,
@@ -43685,7 +44175,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
+    "source_quote": "All Jio-bp spends (Petrol, Diesel, Castrol lubes, wildbean cafe, Jio-bp Pulse (EV charging) and Jio-bp convenience store) | 12",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Dining, Supermarkets & Grocery spends earn 5 Smiles per ₹100 spent [dining]",
@@ -43694,9 +44188,9 @@
     "category_id": "dining",
     "category_ref": "dining, supermarkets & grocery",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43704,7 +44198,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
+    "source_quote": "All spends on Dining, Supermarket & Grocery | 5",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Dining, Supermarkets & Grocery spends earn 5 Smiles per ₹100 spent [grocery]",
@@ -43713,9 +44211,9 @@
     "category_id": "grocery",
     "category_ref": "dining, supermarkets & grocery",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -43723,7 +44221,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
+    "source_quote": "All spends on Dining, Supermarket & Grocery | 5",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -43812,6 +44314,18 @@
      "cardinsider": "Smiles redemption"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
+    "source_quote": "Spends Category | Smiles per INR 100 Spent ... All other spends * | 2",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -44815,7 +45329,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1500.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -44843,9 +45357,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -44853,7 +45367,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
+    "source_quote": "3 IndiGo BluChips per ₹100 spent on using IndiGo Kotak Credit Card",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Accelerated reward earning for dining and entertainment categories [dining]",
@@ -44862,9 +45380,9 @@
     "category_id": "dining",
     "category_ref": "dining and entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -44872,7 +45390,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
+    "source_quote": "Earn unlimited 2 IndiGo BluChips per ₹100 spent on all Dining & Entertainment spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Accelerated reward earning for dining and entertainment categories [entertainment]",
@@ -44881,9 +45403,9 @@
     "category_id": "entertainment",
     "category_ref": "dining and entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -44891,7 +45413,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
+    "source_quote": "Earn unlimited 2 IndiGo BluChips per ₹100 spent on all Dining & Entertainment spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -45048,6 +45574,16 @@
     "source_quote": "Indigo Kotak Credit Card\nJoining Fee: ₹ 1500 | Annual Fee: ₹ 1500",
     "confidence": "high",
     "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
+    "source_quote": "Earn unlimited 1 IndiGo BluChip per ₹100 spent on all other categories*",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -45060,7 +45596,7 @@
    "card_tier": "mid_range",
    "annual_fee": 3000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -45088,9 +45624,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
-    "reward_rate": 21.0,
-    "reward_unit_spend": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -45098,7 +45634,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html",
+    "source_quote": "5 IndiGo BluChips per ₹100 spent on using IndiGo Kotak Credit Card",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Accelerated rewards on dining and entertainment spends [dining]",
@@ -45107,9 +45647,9 @@
     "category_id": "dining",
     "category_ref": "dining & entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -45117,7 +45657,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html",
+    "source_quote": "Earn unlimited 3 IndiGo BluChips per ₹100 spent on all Dining & Entertainment spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "Accelerated rewards on dining and entertainment spends [entertainment]",
@@ -45126,9 +45670,9 @@
     "category_id": "entertainment",
     "category_ref": "dining & entertainment",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -45136,7 +45680,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html",
+    "source_quote": "Earn unlimited 3 IndiGo BluChips per ₹100 spent on all Dining & Entertainment spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -45242,6 +45790,18 @@
      "cardinsider": "IndiGo flight bookings via official website or app"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html",
+    "source_quote": "Earn unlimited 2 IndiGo BluChips per ₹100 spent on all other categories*",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -45499,7 +46059,7 @@
    "card_tier": "entry",
    "annual_fee": 999.0,
    "fee_waiver_spend": 250000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.5,
    "rp_value_travel": 1.0,
@@ -45527,9 +46087,9 @@
     "category_id": null,
     "category_ref": "flight & hotel bookings via kotak unbox",
     "channel": "portal",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -45537,7 +46097,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-credit-card.html",
+    "source_quote": "Earn 3 Air Miles per ₹100 spent on flight & hotel bookings via Kotak Unbox",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -45782,6 +46346,16 @@
     "source_quote": "Joining Fee ₹0 | Annual Fee ₹999",
     "confidence": "high",
     "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-credit-card.html",
+    "source_quote": "Earn unlimited 1 Air Mile per ₹100 on all other purchases",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -45880,7 +46454,7 @@
    "card_tier": "entry",
    "annual_fee": 749.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.004,
    "reward_currency": "reward_points",
    "rp_value_standard": 1.0,
    "rp_value_travel": null,
@@ -45908,17 +46482,21 @@
     "category_id": "grocery",
     "category_ref": "grocery and departmental stores",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": 500.0,
     "cap_period": "month",
-    "min_txn_amount": null,
+    "min_txn_amount": 1500.0,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/essentia-platinum-credit-card.html",
+    "source_quote": "Essentia gives you 10 Saving Points for every Rs. 100 you spend at Departmental & Grocery Stores. 1 Saving Point = Re. 1 Minimum transaction size: Rs. 1500 Maximum transaction size: Rs. 4000 Maximum Saving Points for a Billing Cycle - 500 valued at Rs. 500",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "10 Saving Points for every Rs. 100 spent at grocery and departmental stores. Applicable only for transactions between Rs. 1,500 and Rs. 4,000. [departmental_store]",
@@ -45927,17 +46505,21 @@
     "category_id": "departmental_store",
     "category_ref": "grocery and departmental stores",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": 500.0,
     "cap_period": "month",
-    "min_txn_amount": null,
+    "min_txn_amount": 1500.0,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/essentia-platinum-credit-card.html",
+    "source_quote": "Essentia gives you 10 Saving Points for every Rs. 100 you spend at Departmental & Grocery Stores. 1 Saving Point = Re. 1 Minimum transaction size: Rs. 1500 Maximum transaction size: Rs. 4000 Maximum Saving Points for a Billing Cycle - 500 valued at Rs. 500",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -45993,6 +46575,18 @@
      "cardinsider": "PayByPoints at partner merchants"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.004,
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/essentia-platinum-credit-card.html",
+    "source_quote": "What's more, you earn 1 Saving Point for every Rs. 250 you spend on other categories* without any restrictions.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -47989,7 +48583,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1500.0,
    "fee_waiver_spend": 150000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.0333333,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -48017,9 +48611,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 150.0,
     "cap_amount": 6500,
     "cap_period": "cycle",
     "min_txn_amount": null,
@@ -48027,7 +48621,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html",
+    "source_quote": "Earn 10 Zen Points for every ₹150 spent on Shopping (Apparels, Lifestyle goods, Departmental Stores & Jewellery)",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -48099,6 +48697,18 @@
      "cardinsider": "Cash conversion for shopping at partner merchant outlets"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.0333333,
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html",
+    "source_quote": "Earn 5 Zen Points for every ₹150 on all other spends.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -48950,7 +49560,7 @@
    "card_tier": "ultra_premium",
    "annual_fee": 25000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.5,
    "rp_value_travel": 1.0,
@@ -48978,9 +49588,9 @@
     "category_id": null,
     "category_ref": "travel bookings on kotak unbox (flights and hotels)",
     "channel": "portal",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": 100000,
     "cap_period": null,
     "min_txn_amount": null,
@@ -48988,7 +49598,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html",
+    "source_quote": "Earn 10 Air Miles for every ₹100 spent on travel bookings through Kotak Unbox",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -49136,6 +49750,16 @@
     "source_quote": "Annual fee is waived off for Kotak Solitaire customers. However, for any reason, if you have been downgraded or unable to maintain the required relationship value, an annual fee of ₹25,000 is applicable.",
     "confidence": "high",
     "source_fetched_on": "2026-08-17"
+   },
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.03,
+    "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html",
+    "source_quote": "Earn 3 Air Miles for every ₹100 spent on other purchases",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -49444,9 +50068,9 @@
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 175000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
-   "rp_value_standard": 0.5,
+   "rp_value_standard": 0.1,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -49472,9 +50096,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": 1000,
     "cap_period": "month",
     "min_txn_amount": null,
@@ -49482,7 +50106,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://webassets.rbl.bank.in/document/credit-cards/indianoil-rbl-bank-credit-card-faqs.pdf",
+    "source_quote": "10 Fuel Points per INR100 spent on IndianOil fuel stations (Up to 1000 fuel points per month)",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -49511,6 +50139,28 @@
      "cardinsider": "IndianOil Fuel Stations"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://webassets.rbl.bank.in/document/credit-cards/indianoil-rbl-bank-credit-card-faqs.pdf",
+    "source_quote": "1 Fuel Points per INR100 on all spends except the exclusion categories (No capping)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   },
+   {
+    "field": "rp_value_standard",
+    "path": "card.rp_value_standard",
+    "old_value": 0.5,
+    "new_value": 0.1,
+    "source_url": "https://webassets.rbl.bank.in/document/credit-cards/indianoil-rbl-bank-credit-card-faqs.pdf",
+    "source_quote": "The value of 1 Fuel point is INR 0.50 for IndianOil XTRA Reward conversion and INR 0.1 everywhere else.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -53188,7 +53838,7 @@
    "card_tier": "mid_range",
    "annual_fee": 3000.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -53216,9 +53866,9 @@
     "category_id": "travel",
     "category_ref": "travel",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -53226,7 +53876,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://webassets.rbl.bank.in/document/pdfs/terms-world-safari-card.pdf",
+    "source_quote": "The Cardmember shall earn 5 reward points for every eligible retail transaction worth INR 100 spent on travel purchases",
+    "source_doc_type": "tnc",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -53334,6 +53988,18 @@
      "cardinsider": "RBL Rewards portal"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://webassets.rbl.bank.in/document/pdfs/terms-world-safari-card.pdf",
+    "source_quote": "The Cardmember shall earn 5 reward points for every eligible retail transaction worth INR 100 spent on travel purchases and 2 reward points for every other eligible domestic retail transaction worth INR 100.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -54397,7 +55063,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1499.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -54425,9 +55091,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -54435,7 +55101,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/air-india-sbi-platinum-card.json",
+    "source_quote": "5 Reward Points per Rs. 100 spent on Air India tickets",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -54486,6 +55156,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/Air-india-tnc.pdf",
+    "source_quote": "The Cardholder shall earn 2 (Two) Point for every eligible Rs. 100 charged to his/her Air India SBI Platinum card for Domestic as well international transactions.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -54497,7 +55179,7 @@
    "card_tier": "mid_range",
    "annual_fee": 4999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.04,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -54525,9 +55207,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -54535,7 +55217,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/air-india-sbi-signature-card.json",
+    "source_quote": "10 Reward Points per Rs. 100 spent on Air India tickets",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -54595,6 +55281,18 @@
      "cardinsider": "Air India Air Miles conversion"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.04,
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/Air-india-tnc.pdf",
+    "source_quote": "The Cardholder shall earn 4 (Four) Point for every eligible Rs. 100 charged to his/her Air India SBI Signature Card.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -56425,7 +57123,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": 18,
    "min_redemption_points": null,
@@ -56554,6 +57252,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "is_active",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/etihad-guest-sbi-card.json",
+    "source_quote": "W.e.f. Dec’25, your Etihad Guest SBI Credit Cards will be phased out & an equally rewarding Miles SBI Credit Card will be issued. The Etihad Guest SBI Credit Cards will be deactivated for usage, either upon activation of the newly issued card or on 31 Mar’26, whichever occurs earlier.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -56579,7 +57289,7 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 1,
    "points_expiry_months": 18,
    "min_redemption_points": null,
@@ -56702,6 +57412,18 @@
      "cardinsider": "Pay for credit card purchases"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "is_active",
+    "path": "card.is_active",
+    "old_value": 1,
+    "new_value": 0,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/etihad-guest-sbi-premier-card.json",
+    "source_quote": "W.e.f. Dec’25, your Etihad Guest SBI Credit Cards will be phased out & an equally rewarding Miles SBI Credit Card will be issued. The Etihad Guest SBI Credit Cards will be deactivated for usage, either upon activation of the newly issued card or on 31 Mar’26, whichever occurs earlier.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -57278,7 +58000,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1499.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -57306,9 +58028,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57316,7 +58038,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card.json",
+    "source_quote": "3 IndiGo BluChips on Rs. 100 spent on IndiGo App and Web",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "2 IndiGo BluChips per 100 on Hotel/Lodging & Travel MCCs [hotels]",
@@ -57325,9 +58051,9 @@
     "category_id": "hotels",
     "category_ref": "hotel/lodging & travel mccs",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57335,7 +58061,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card.json",
+    "source_quote": "2 IndiGo BluChips on Rs. 100 spent on Hotel / Lodging and Travel MCCs.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "2 IndiGo BluChips per 100 on Hotel/Lodging & Travel MCCs [travel]",
@@ -57344,9 +58074,9 @@
     "category_id": "travel",
     "category_ref": "hotel/lodging & travel mccs",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57354,7 +58084,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card.json",
+    "source_quote": "2 IndiGo BluChips on Rs. 100 spent on Hotel / Lodging and Travel MCCs.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -57470,6 +58204,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card.json",
+    "source_quote": "1 IndiGo BluChips on Rs. 100 spent all other spends (excluding - Utility, Govt Transactions, Rental, Fuel, Gaming, Cross-Sell and Insurance MCCs)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -57481,7 +58227,7 @@
    "card_tier": "mid_range",
    "annual_fee": 4999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -57509,9 +58255,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 7.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57519,7 +58265,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card-elite.json",
+    "source_quote": "7 IndiGo BluChips on Rs. 100 spent on IndiGo App and Web",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3 IndiGo BluChips per ₹100 on Hotel/Lodging & Travel MCCs [hotels]",
@@ -57528,9 +58278,9 @@
     "category_id": "hotels",
     "category_ref": "hotel/lodging & travel mccs",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57538,7 +58288,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card-elite.json",
+    "source_quote": "3 IndiGo BluChips on Rs. 100 spent on Hotel / Lodging and Travel MCCs.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "3 IndiGo BluChips per ₹100 on Hotel/Lodging & Travel MCCs [travel]",
@@ -57547,9 +58301,9 @@
     "category_id": "travel",
     "category_ref": "hotel/lodging & travel mccs",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 3.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57557,7 +58311,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card-elite.json",
+    "source_quote": "3 IndiGo BluChips on Rs. 100 spent on Hotel / Lodging and Travel MCCs.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -57682,6 +58440,18 @@
      "cardinsider": "IndiGo flight bookings"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/indigo-sbi-card-elite.json",
+    "source_quote": "2 IndiGo BluChips on Rs. 100 spent all other spends (excluding - Utility, Govt Transactions, Rental, Fuel, Gaming, Cross-Sell and Insurance MCCs)",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -57945,7 +58715,7 @@
    "card_tier": "premium",
    "annual_fee": 9999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -57973,9 +58743,9 @@
     "category_id": "airlines",
     "category_ref": "singapore airlines group",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 10.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -57983,7 +58753,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/krisflyer-sbi-card-apex.json",
+    "source_quote": "10 KrisFlyer Miles per Rs. 200 spent on Singapore Airlines Group",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "8 KrisFlyer Miles per ₹200 on international spends",
@@ -57992,9 +58766,9 @@
     "category_id": null,
     "category_ref": "international spends",
     "channel": "international",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 8.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -58002,7 +58776,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/krisflyer-sbi-card-apex.json",
+    "source_quote": "8 KrisFlyer Miles per Rs. 200 on international spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -58091,6 +58869,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.03,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/krisflyer-sbi-card-apex.json",
+    "source_quote": "6 KrisFlyer Miles per Rs. 200 on other eligible spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -58102,7 +58892,7 @@
    "card_tier": "mid_range",
    "annual_fee": 2999.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": null,
    "rp_value_travel": null,
@@ -58130,9 +58920,9 @@
     "category_id": "airlines",
     "category_ref": "singapore airlines group",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -58140,7 +58930,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/krisflyer-sbi-card.json",
+    "source_quote": "5 KrisFlyer Miles per Rs. 200 spent on Singapore Airlines Group",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "5 KrisFlyer Miles/₹200 on international spends",
@@ -58149,9 +58943,9 @@
     "category_id": null,
     "category_ref": "international spends",
     "channel": "international",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -58159,7 +58953,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/krisflyer-sbi-card.json",
+    "source_quote": "5 KrisFlyer Miles per Rs. 200 on international spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -58239,6 +59037,18 @@
      "cardinsider": "KrisFlyer Miles"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/krisflyer-sbi-card.json",
+    "source_quote": "2 KrisFlyer Miles per Rs. 200 on other eligible spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -61491,7 +62301,7 @@
    "card_tier": "mid_range",
    "annual_fee": 4999.0,
    "fee_waiver_spend": 1500000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": 1.0,
@@ -61519,9 +62329,9 @@
     "category_id": "travel",
     "category_ref": "travel",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 6.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -61529,7 +62339,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/sbi-card-miles-elite.json",
+    "source_quote": "6 Travel Credits for every Rs. 200 spent on travel",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -61650,6 +62464,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/sbi-card-miles-elite.json",
+    "source_quote": "2 Travel Credits for every Rs. 200 on all other spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -61661,7 +62487,7 @@
    "card_tier": "mid_range",
    "annual_fee": 2999.0,
    "fee_waiver_spend": 1000000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": 1.0,
@@ -61689,9 +62515,9 @@
     "category_id": "travel",
     "category_ref": "travel",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 4.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -61699,7 +62525,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/sbi-card-miles-prime.json",
+    "source_quote": "4 Travel Credits for every Rs. 200 spent on travel",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -61835,6 +62665,18 @@
     },
     "confidence": "low"
    }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/sbi-card-miles-prime.json",
+    "source_quote": "2 Travel Credits for every Rs. 200 on all other spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   }
   ]
  },
  {
@@ -61846,7 +62688,7 @@
    "card_tier": "mid_range",
    "annual_fee": 1499.0,
    "fee_waiver_spend": 600000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.005,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": 1.0,
@@ -61874,9 +62716,9 @@
     "category_id": "travel",
     "category_ref": "travel",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 2.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 200.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -61884,7 +62726,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/sbi-card-miles.json",
+    "source_quote": "Earn 2 Travel Credits per Rs. 200 spent on travel",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [
@@ -62009,6 +62855,18 @@
      "cardinsider": "Shop and Smile Product Catalog"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.005,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/sbi-card-miles.json",
+    "source_quote": "Earn 1 Travel Credit for every Rs. 200 on other spends",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -63240,7 +64098,7 @@
    "card_tier": "entry",
    "annual_fee": 250.0,
    "fee_waiver_spend": 50000.0,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.01,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
@@ -63268,9 +64126,9 @@
     "category_id": "dining",
     "category_ref": "dining",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -63278,7 +64136,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/shaurya-sbi-card.json",
+    "source_quote": "Earn 5X Reward Points on CSD, Dining, Movies, Departmental Stores and Grocery spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "5 Reward Points on every spend of Rs. 100 on groceries",
@@ -63287,9 +64149,9 @@
     "category_id": "grocery",
     "category_ref": "groceries",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -63297,7 +64159,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/shaurya-sbi-card.json",
+    "source_quote": "Earn 5X Reward Points on CSD, Dining, Movies, Departmental Stores and Grocery spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "5 Reward Points on every spend of Rs. 100 on movies",
@@ -63306,9 +64172,9 @@
     "category_id": "entertainment",
     "category_ref": "movies",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -63316,7 +64182,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/shaurya-sbi-card.json",
+    "source_quote": "Earn 5X Reward Points on CSD, Dining, Movies, Departmental Stores and Grocery spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "5 Reward Points on every spend of Rs. 100 on departmental stores",
@@ -63325,9 +64195,9 @@
     "category_id": "departmental_store",
     "category_ref": "departmental stores",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -63335,7 +64205,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/shaurya-sbi-card.json",
+    "source_quote": "Earn 5X Reward Points on CSD, Dining, Movies, Departmental Stores and Grocery spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "5 Reward Points on every spend of Rs. 100 on CSD (Canteen Stores Department)",
@@ -63344,9 +64218,9 @@
     "category_id": null,
     "category_ref": null,
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -63354,7 +64228,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/shaurya-sbi-card.json",
+    "source_quote": "Earn 5X Reward Points on CSD, Dining, Movies, Departmental Stores and Grocery spends",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -63399,6 +64277,18 @@
      "cardinsider": "Outstanding balance payment"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.01,
+    "source_url": "https://www.sbicard.com/json/templatedata/product/card/data/en/personal/shaurya-sbi-card.json",
+    "source_quote": "Earn 1 Reward Point per Rs. 100 spent on all other categories",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
@@ -65515,9 +66405,9 @@
    "card_tier": "ultra_premium",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
-   "base_reward_rate": 0.0,
+   "base_reward_rate": 0.02,
    "reward_currency": "reward_points",
-   "rp_value_standard": 1.0,
+   "rp_value_standard": 0.2,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -65543,9 +66433,9 @@
     "category_id": null,
     "category_ref": "overseas spends",
     "channel": "international",
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -65553,7 +66443,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/",
+    "source_quote": "Earn 5 reward points for every INR 100 spent overseas or on retail fashion.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    },
    {
     "rule_name": "5X reward points for every Rs. 100 spent on retail fashion",
@@ -65562,9 +66456,9 @@
     "category_id": "apparel",
     "category_ref": "retail fashion",
     "channel": null,
-    "reward_type": "multiplier",
+    "reward_type": "points_per_spend",
     "reward_rate": 5.0,
-    "reward_unit_spend": null,
+    "reward_unit_spend": 100.0,
     "cap_amount": null,
     "cap_period": null,
     "min_txn_amount": null,
@@ -65572,7 +66466,11 @@
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
-    "confidence": "low"
+    "confidence": "high",
+    "source_url": "https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/",
+    "source_quote": "Earn 5 reward points for every INR 100 spent overseas or on retail fashion.",
+    "source_doc_type": "product_page",
+    "source_fetched_on": "2026-08-21"
    }
   ],
   "exclusion_rules": [],
@@ -65617,6 +66515,28 @@
      "cardinsider": "Charity spends"
     },
     "confidence": "low"
+   }
+  ],
+  "_provenance": [
+   {
+    "field": "base_reward_rate",
+    "path": "card.base_reward_rate",
+    "old_value": 0.0,
+    "new_value": 0.02,
+    "source_url": "https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/",
+    "source_quote": "Earn 5 reward points for every INR 100 spent overseas or on retail fashion. Earn 2 reward points for every INR 100 on all other spends.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-21"
+   },
+   {
+    "field": "rp_value_standard",
+    "path": "card.rp_value_standard",
+    "old_value": 1.0,
+    "new_value": 0.2,
+    "source_url": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+    "source_quote": "1 RP = INR 0.20 (for adjustment against Statement outstanding balance)",
+    "confidence": "medium",
+    "source_fetched_on": "2026-08-21"
    }
   ]
  },
