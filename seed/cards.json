@@ -30580,11 +30580,22 @@
     "invite_only": true,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://www.icicibank.com/managed-assets/docs/personal/cards/mitc_cc.pdf",
+     "source_quote": "NO ISSUER WITHDRAWAL NOTICE EXISTS for this card — ICICI published no discontinuation page, migration announcement or press release, so there is no issuer sentence to quote. Deactivated on a measured absence instead: in ICICI's current MITC, headed 'Most Important Terms and Conditions (MITC) / Last updated on Aug 2nd, 2026', `pdftotext -layout | grep -ic \"carbon\"` returns 0.",
+     "source_doc_type": "mitc",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "medium",
+     "_evidence_kind": "absence_from_fee_schedule",
+     "_note": "The absence is a real test, not a page we failed to check: that MITC's card-by-card fee table is NOT limited to cards open to new applicants — it still lists closed-to-new cards ICICI services (Diamant World, Instant Platinum, Unifare, Accelero, Signature, Platinum Identity, Manchester United Signature and Platinum). It is precisely the document that would carry Carbon if Carbon were merely closed to new applicants. Corroborating checks: every Carbon URL 301s to the generic hub, INCLUDING its own fee-and-charges page; the 13 stale Carbon URLs still listed in ICICI's own sitemaps all resolve to nothing; 0 Carbon entries in cards-sitemap.xml (260 URLs); no Carbon MITC or KFS in the 52-document per-card hub. Control: coral-credit-card returns 200 with 0 redirects, so the redirect is discriminating. Confidence is medium, not high, purely because no positive withdrawal notice exists — reverse this if ICICI reinstates the card."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -30853,7 +30864,16 @@
     "contactless": null,
     "material": null,
     "invite_only": null,
-    "no_preset_limit": false
+    "no_preset_limit": false,
+    "closed_to_new_applicants": {
+     "status": "closed_to_new_applicants",
+     "still_serviced": true,
+     "source_url": "https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/mitc_cc.pdf",
+     "issuer_quote": "ICICI Bank Diamant World Mastercard Credit Card    1,25,000    Nil    10,000    Nil    25,00,000***",
+     "source_doc_type": "mitc",
+     "source_fetched_on": "2026-08-20",
+     "_note": "NOT withdrawn — deliberately left active. The card is priced in ICICI's current fee schedule, 'Last updated on Aug 2nd, 2026', under the columns 'Joining Fee (1st year) / Annual Fee (1st year) / Annual Fee (2nd year onwards) / Supplementary Card Fee / Minimum Spends for Annual fee reversal'. It is also carved out by name from a 2026 lounge-policy change ('The updated criteria to avail complimentary domestic airport lounge access will be applicable for all eligible ICICI Bank Credit Cards except: ICICI Bank Diamant Credit Card ...') — an issuer does not write benefit exemptions for a product with no customers. And ICICI DOES declare discontinuation in this document when it happens ('Sourcing (Issuance) of ICICI Bank Emeralde Credit Card ... has been discontinued w.e.f. Jul 24, 2025') and wrote no such line for Diamant. Not open to new applicants: every Diamant URL 301s to the generic hub, and the card appears on the listing page only inside the nominee-update dropdown, a servicing control. Note ICICI's site does distinguish invite-only-but-live (Emeralde Private Metal is listed and flagged 'Invite Only') from removed-from-sale, and Diamant is the latter. FOLLOW-UP: the fee row above says joining 1,25,000 but annual 10,000, which is unusual — worth checking against what we currently ship."
+    }
    },
    "is_active": 1,
    "is_travel": 0,
@@ -31932,11 +31952,22 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": 1500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/mine-credit-card/millennial-credit-card",
+     "source_quote": "ICICI Bank Mine Credit Card is being discontinued as a part of our ongoing efforts to streamline product offerings. Hence, your ICICI Bank Mine Credit Card will be discontinued with effect from 30 Nov 2025. The card cannot be used for any transactions after this date. We would be happy to assist you with a seamless transition to one of our other feature-rich Credit Cards that suit your lifestyle and spending patterns.",
+     "source_doc_type": "notice",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "medium",
+     "_evidence_kind": "issuer_notice_reproduced_secondhand",
+     "_note": "READ THE CAVEATS BEFORE REVERSING THIS. (1) The quote is ICICI's own communication to Mine cardholders, but we do not have it on an ICICI-hosted URL — it was reproduced verbatim by a cardholder on TechnoFino on 30 Oct 2025 (https://technofino.in/community/threads/icici-mine-credit-card-is-being-discontinued-w-e-f-30th-november-2025.45291/) and corroborated independently. That is why confidence is medium. (2) COUNTER-SIGNAL, recorded honestly: Mine IS still in the current fee schedule. The Aug 2nd 2026 MITC carries a 'Mine Credit Card by ICICI Bank' heading with a full monthly-fee table (Starter Free / Pro 49 / Premium 149) and Mine Cash redemption fees. Our normal rule says a card in the current fee schedule is at most closed_to_new. That rule is overridden here because its premise fails: closed_to_new means 'still serviced', and the issuer told holders the card cannot be transacted on at all after a date now nine months past. The MITC section is uncleaned residue. (3) Supporting: the product URL and the entire /millennial-banking hub redirect away, and a browser render of the full portfolio listing gives 0 word-boundary hits for 'Mine' in innerText and innerHTML. (4) TRAP — do NOT cite MITC line 199 ('...with monthly membership plan has been discontinued w.e.f. Jul 24, 2025') as this card's withdrawal notice. Mine is the monthly-membership-plan card so it reads like one, but the full sentence refers to sourcing of the Emeralde and Emeralde Private cards, NOT Mine. Two web-search summaries got this wrong."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -41537,11 +41568,23 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/payback-credit-card.html",
+     "source_archive_url": "http://web.archive.org/web/20260308133353id_/https://www.indusind.bank.in/in/en/personal/cards/credit-card/payback-credit-card.html",
+     "source_quote": "Disclaimer: Dear Customer, we have discontinued this product for new sourcing, and same is only displayed as a reference for existing IndusInd Bank PAYBACK Credit Cardholders. You may choose to apply from our existing range of Credit Card products that match your lifestyle.",
+     "source_doc_type": "product_page",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "high",
+     "_evidence_kind": "issuer_notice",
+     "_note": "IndusInd's own product page, headed 'Payback Credit Card (Discontinued)'. The live URL has since been deleted outright: it 301s to https://www.indusind.bank.in/in/en/404.html, so the quote survives only in the 2026-03-08 archive snapshot recorded in source_archive_url. Absence test: the current all-cards fee schedule (MITC_Premium.pdf, 14pp) states it applies to 'all Credit Cards/cardholders/applicants of Credit Cards' and returns 0 hits for 'payback' — while that same document itemises 25+ live cards AND names its retired ones explicitly ('Discontinued cards - Platinum Aura, Platinum Select, Iconia, Intermiles ... Odyssey ... Voyage ... and Poonawalla Fincorp eLITE RuPay'). PAYBACK is in neither list, so the bank no longer tracks it as a product at all. Not on the live 13-card listing either. Existing holders may still hold serviceable plastic; is_active=0 stops it being offered to new applicants and nothing more."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -48298,7 +48341,16 @@
     "contactless": null,
     "material": null,
     "invite_only": false,
-    "no_preset_limit": false
+    "no_preset_limit": false,
+    "closed_to_new_applicants": {
+     "status": "closed_to_new_applicants",
+     "still_serviced": true,
+     "source_url": "https://www.kotak.bank.in/en/gsfc.html",
+     "issuer_quote": "Metro Kotak Credit Card",
+     "source_doc_type": "fee_schedule",
+     "source_fetched_on": "2026-08-20",
+     "_note": "NOT withdrawn — deliberately left active. The card is still listed in Kotak's live General Schedule of Fees and Charges, in the Credit Cards block between 'Corporate Gold Credit Card' and 'White Credit Card', alongside IndianOil, Biz, Mojo and White Reserve. Two caveats checked and cleared: it renders hidden, but so does every other credit card in that accordion block, so that is not a Metro-specific signal; and it is the ONLY credit card in the list whose hyperlink has been stripped (the markup is literally '<p>Metro Kotak Credit Card<br>\\n</p>' with a dangling '</a>' left behind) — the entry is being kept for servicing while its application page was pulled. Not open to new applicants: every acquisition surface is gone (product, eligibility, features, fees, rewards and the B2B apply page all 404; the Metro KFS PDF 404s on both Kotak domains and is absent from a KFS index listing 30+ live cards). The co-brand arrangement also ended recently: Kotak's co-brand disclosure page carried a 'Metro Cash and Carry' section as late as the 10 Jul 2026 archive capture and discloses only IndiGo, PVR Inox and IndianOil today — verified by diffing raw HTML, where IndiGo/PVR/IndianOil counts are identical across both versions while 'Metro Cash' goes 7 to 0. Unlike the Myntra Kotak card, there is no withdrawal notice and no migration announcement. RE-CHECK IN ~3 MONTHS: if the GSFC entry disappears too, it has fully wound down."
+    }
    },
    "is_active": 1,
    "is_travel": 0,
@@ -48376,11 +48428,22 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html",
+     "source_quote": "NO ISSUER WITHDRAWAL NOTICE EXISTS at this URL — it returns HTTP 404, and `pdftotext -layout english-rcas.pdf | grep -in \"myntra\"` returns 0 matches across all 74 pages of Kotak's current retail MITC and fee schedule. The load-bearing issuer text is the CONTRAST case, from Kotak's still-live Veer Platinum page, a card that IS merely closed to new applicants: 'Dear Customer, we have discontinued this product for new sourcing, and same is only displayed for existing Veer Platinum cardholders' (page titled 'Veer Platinum Credit card (Discontinued)').",
+     "source_doc_type": "fee_schedule",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "high",
+     "_evidence_kind": "absence_from_fee_schedule",
+     "_note": "The control case is what makes this a withdrawal rather than a closure. Kotak does NOT delete pages for cards that are merely closed to new applicants — it keeps them at HTTP 200 and labels them '(Discontinued)', as it does for Veer Platinum and for the Kotak IndiGo 6E Rewards card. Myntra gets a hard 404 instead, so it sits outside that servicing convention. Also absent from the issuer's rendered 31-card listing. Positive migration signal: Kotak emailed customers that the card was discontinued effective 10 July 2025, after which it was no longer valid for transactions, and auto-migrated every holder to the Kotak League Platinum Credit Card. So the correct user-facing story is 'replaced by League Platinum' — which IS live and already in our catalogue — not 'card vanished'. Residual artifact that does NOT change the call: a legacy cashback T&C PDF is still hosted on kotak.bank.in, but it carries no live fee terms and current Kotak promos explicitly exclude the Myntra co-brand."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -50686,11 +50749,22 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf",
+     "source_quote": "We wish to notify, that the partnership between RBL Bank and Zomato Limited, our co-brand partner for RBL Bank Edition Classic Credit Card and RBL Bank Edition Black Credit Card is getting discontinued. To provide you with a seamless experience, your RBL Bank Edition Classic/ Black Credit Card will be replaced with an equally exciting LIFETIME FREE RBL Bank Shoprite Credit Card.",
+     "source_doc_type": "notice",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "high",
+     "_evidence_kind": "issuer_notice",
+     "_note": "RBL's own hosted notice, 'Important update on Edition Card'. Holders were converted to a lifetime-free Shoprite card on 15 May 2023, with outstanding dues and running EMIs transferred and residual Edition Cash paid out by 10 Jun 2023 — a full migration, so no user holds an Edition card today. This entry covers a family, not one SKU: both Edition Classic and Edition Black are gone, so a generic 'Edition' row has no surviving variant to point at. Absence test: 0 hits for 'edition' and 'zomato' in the current Schedule of Charges and in the MITC, while that same schedule still carries closed-to-new legacy variants with explicit qualifiers ('Cookies (issued before May 10, 2021)', 'RBL Bank Paisabazaar Duet ... issued before Sep 10, 2021'). TRAP: the Edition T&C PDFs are still live on RBL's CDN and still rank in search — RBL does not delete documents from webassets, and a surviving T&C PDF is NOT evidence of an offer. Issuer-sanctioned successor is the RBL Bank Shoprite Credit Card."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -53894,11 +53968,22 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf",
+     "source_quote": "We wish to notify, that the partnership between RBL Bank and Zomato Limited, our co-brand partner for RBL Bank Edition Classic Credit Card and RBL Bank Edition Black Credit Card is getting discontinued. To provide you with a seamless experience, your RBL Bank Edition Classic/ Black Credit Card will be replaced with an equally exciting LIFETIME FREE RBL Bank Shoprite Credit Card.",
+     "source_doc_type": "notice",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "high",
+     "_evidence_kind": "issuer_notice",
+     "_note": "Same RBL notice as rbl_bank_edition, which names Edition Classic explicitly. Points 1 and 3 of that notice: 'You will be issued a RBL Bank Shoprite Credit Card by RBL Bank on May 15, 2023.' and 'All outstanding dues, running EMIs will be transferred onto your RBL Bank Shoprite Credit Card'. Absence test: `pdftotext -layout CardsScheduleCharges.pdf | grep -in -E \"edition|zomato\"` returns nothing, and the MITC matches only the replacement, 'Shoprite INR 500 INR 500 INR 200'. The old product URL 301s to the migrated domain and serves the generic credit-cards page, not an Edition product page. TRAP: the legacy T&C at webassets.rblbank.com/document/pdfs/terms-edition-classic-credit-card-jan-20.pdf is still HTTP 200 and still describes 5% Edition Cash on Zomato/Blinkit — an orphaned document, not a live offer."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -55913,7 +55998,16 @@
     "contactless": null,
     "material": null,
     "invite_only": false,
-    "no_preset_limit": false
+    "no_preset_limit": false,
+    "closed_to_new_applicants": {
+     "status": "closed_to_new_applicants",
+     "still_serviced": true,
+     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+     "issuer_quote": "Delhi Metro SBI Card 499 499 (Waived off on annual spends of Rs.1 Lakh or more in the preceding year)",
+     "source_doc_type": "fee_schedule",
+     "source_fetched_on": "2026-08-20",
+     "_note": "NOT withdrawn — deliberately left active. Priced in SBI Card's current Key Fact Statement (PDF title 'SBI Card_Key fact Statement for April 2026 Month', CreationDate 20 Apr 2026). STALENESS CONTROL, which is what makes the KFS trustworthy here: Chennai Metro SBI Card, definitively discontinued in 2021, has ZERO hits in the same document — so the KFS does drop withdrawn cards, and Delhi Metro present + Chennai Metro absent is a controlled positive signal, not a stale annexure. SBI also publishes withdrawal notices and published none for Delhi Metro; its only appearance on the notices page is a Jul-2023 reward-accrual change, which presumes the card is live. Not open to new applicants: the product page is genuinely gone — all plausible slugs 404, and this is not the site-wide maintenance banner, because control fetches of simplyclick-sbi-card.page and bpcl-sbi-card-octane.page returned 200 at the same moment. TRAP: the Reg-30 disclosure 'DisclosureunderRegulation30DelhiMetroSBICard.pdf' is NOT a withdrawal — it is the 23 Oct 2020 LAUNCH press release. Easy to misread from the filename alone. One contrary signal discounted: an e-apply URL for delhi-metro is still in the live sitemap, but that same list also carries Tata Platinum and Tata Titanium, which have 0 hits in the April 2026 KFS — the eapply list is stale. Text note: the KFS table is rotated; `pdftotext -layout` scrambles it, `-raw` reads it cleanly."
+    }
    },
    "is_active": 1,
    "is_travel": 0,
@@ -59149,11 +59243,22 @@
     "invite_only": false,
     "no_preset_limit": false
    },
-   "is_active": 1,
+   "is_active": 0,
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "is_active": {
+     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+     "source_quote": "NO ISSUER WITHDRAWAL NOTICE EXISTS for this card. Deactivated on a controlled absence from the current fee schedule: in SBI Card's Key Fact Statement the string 'Mumbai' appears 0 times, while its sibling is present and priced — 'Delhi Metro SBI Card 499 499 (Waived off on annual spends of Rs.1 Lakh or more in the preceding year)'.",
+     "source_doc_type": "fee_schedule",
+     "source_fetched_on": "2026-08-20",
+     "confidence": "medium",
+     "_evidence_kind": "absence_from_fee_schedule",
+     "_note": "Three independent signals, each with a control. (1) The sibling Delhi Metro card IS in the same KFS with fee rows, so the document is not stale and the absence is meaningful. (2) The product URL /en/personal/credit-cards/travel/mumbai-metro-card.page still resolves but 302-redirects to the generic listing, whereas a URL SBI never had returns a genuine 404 page — SBI distinguishes unknown URLs from retired products, and this one has a deliberate retirement redirect. (3) Absent from the fully expanded TRAVEL & FUEL listing (15 cards), which still carries Air India Signature/Platinum and Club Vistara — all closed to new issuance per SBI's own notices. A merely closed-to-new card tends to SURVIVE that listing. COUNTER-SIGNAL, recorded honestly: SBI publishes discontinuation notices meticulously, including one for Chennai Metro in 2021, and published none for Mumbai Metro. Its last issuer mention is a servicing notice, not a sales one ('W.e.f. 01 Jul 2023, accrual of Reward Points will be discontinued for Rent Payment transactions on ... Mumbai Metro SBI Card ...'). That is why confidence is medium. DISCARDED as non-evidence: the apply funnel returned 'SBI CARD Website under maintenance' for the known-live Delhi sibling too. DO NOT confuse this card with 'SBI MMRDA Mumbai1 Card' or 'Mumbai Metro 3 Card' on sbi.bank.in — those are State Bank of India prepaid NCMC transit cards, a different entity (SBI vs SBICPSL) and not credit cards."
+    }
+   }
   },
   "reward_rules": [
    {
@@ -59610,7 +59715,16 @@
     "contactless": null,
     "material": null,
     "invite_only": false,
-    "no_preset_limit": false
+    "no_preset_limit": false,
+    "closed_to_new_applicants": {
+     "status": "closed_to_new_applicants",
+     "still_serviced": true,
+     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+     "issuer_quote": "Nature's Basket SBI Card 1,499 1,499 (Waived off on annual spends of Rs.2 Lakh or more in the preceding year)",
+     "source_doc_type": "fee_schedule",
+     "source_fetched_on": "2026-08-20",
+     "_note": "NOT withdrawn — deliberately left active. Priced in the current SBI Card Key Fact Statement (footer code MTL20042026 = 20 Apr 2026, fee clauses dated 'W.e.f 1st Nov 2025'), page 4, under columns Annual Fee and Renewal Fee. The ELITE variant is on the same page: \"Nature's Basket SBI Card ELITE 4,999 4,999 (Waived off on annual spends of Rs.10 Lakh or more in the preceding year)\". A live RENEWAL fee is the signal the card is still serviced for existing holders. Worth knowing: an automated read of this PDF wrongly reported 'no mention of Nature's Basket' — the grep is what settled it, so do not trust a summarised read here. Not open to new applicants: both product pages return a hard HTTP 404, confirmed in a browser, and the 404 is discriminating because peer shopping cards (simplyclick, fab-india) return 200 at the same moment. TWO SIGNALS DELIBERATELY DISCARDED as non-evidence: the e-apply route returns a generic 'SBI CARD Website under maintenance' page for SimplyCLICK too; and the card explorer's DOM lacks 'basket', but it also lacks 'fabindia' despite Fabindia being live, so that is a lazy-loading artifact. No issuer withdrawal notice, no migration announcement. RESIDUAL UNCERTAINTY: the application channel could not be positively confirmed shut, because the apply route sits behind a generic maintenance wall."
+    }
    },
    "is_active": 1,
    "is_travel": 0,
