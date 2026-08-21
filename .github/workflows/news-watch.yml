@@ -94,13 +94,35 @@ jobs:
             sed -n '1,150p' news.log 2>/dev/null || echo 'no log'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # The watch hashes are now a real spend gate, not bookkeeping. cli.py records a
+      # watched page with status `done`, so has_changed() can finally suppress a
+      # re-analysis — it used to write status `ok`, and has_changed ends with
+      # `status != STATUS_DONE`, so every one of the 11 pages reported CHANGED every
+      # single day whether or not it had moved by a byte, and the daily run paid to
+      # re-analyse all of them. Losing this push means paying for that again tomorrow,
+      # so it does not get a `|| true`.
       - name: Commit watch hashes
         run: |
           git config user.name  'kredme-pipeline[bot]'
           git config user.email 'kredme-pipeline@users.noreply.github.com'
           git add pipeline/state
-          git diff --cached --quiet || git commit -m 'Update issuer notice-page hashes'
-          git push origin HEAD:dev || true
+          if git diff --cached --quiet; then
+            echo 'No hash change to commit.'
+            exit 0
+          fi
+          git commit -m 'Update issuer notice-page hashes'
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:dev; then
+              echo "Pushed watch hashes (attempt $attempt)."
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt — rebasing onto dev and retrying."
+            git fetch origin dev
+            git rebase origin/dev || { git rebase --abort || true; }
+            sleep 5
+          done
+          echo "::error title=Watch hashes could not be pushed::Tomorrow will re-analyse and re-pay for every page read today."
+          exit 1
 
       # A draft, never a publish. Six of eighteen changes that one pass called
       # "confirmed at the issuer" were refuted on a second look — a wrong effective

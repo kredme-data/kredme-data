@@ -35,6 +35,10 @@ on:
         type: boolean
         required: false
         default: false
+      max_usd:
+        description: 'Raise this CYCLE spend ceiling for this run only, in USD. Blank = the MAX_CYCLE_USD in pipeline/config.py. YOU MUST PASS THE SAME NUMBER to the Pipeline advance workflow, or the extraction is paid for and never verified.'
+        required: false
+        default: ''
 
 # Two overlapping refreshes would fight over the same state file and could submit
 # the same cards twice. Never cancel in progress — a killed submit can orphan a
@@ -104,20 +108,36 @@ jobs:
       # path gets it, scheduled or manual.
       #
       # That also means one edit is enough to change it: this workflow checks out
-      # `dev`, so MAX_BATCH_USD on dev is what Monday enforces, and no workflow file
+      # `dev`, so MAX_CYCLE_USD on dev is what Monday enforces, and no workflow file
       # has to be synced to main for a new number to take effect.
+      #
+      # `max_usd` above is the one-run override, and it exists because the PR that
+      # introduced this ceiling told the founder to "run the workflow by hand with
+      # --max-usd 50" when there was no input and no workflow anywhere appended the
+      # flag. Advice that cannot be followed is worse than no advice. It is a CYCLE
+      # number and it must be given to pipeline-advance too — that warning is on the
+      # input's own description and repeated here.
       - name: Show the spend ceiling this run will enforce
         run: |
-          CEILING=$(python3 -c 'from pipeline import config; print(f"{config.MAX_BATCH_USD:.2f}")')
-          echo "Spend ceiling: \$$CEILING (pipeline/config.py, MAX_BATCH_USD)"
+          OVERRIDE='${{ github.event.inputs.max_usd }}'
+          CEILING=$(python3 -c 'from pipeline import config; print(f"{config.MAX_CYCLE_USD:.2f}")')
+          SOURCE='pipeline/config.py, MAX_CYCLE_USD'
+          if [ -n "$OVERRIDE" ]; then CEILING="$OVERRIDE"; SOURCE='the max_usd input on this run'; fi
+          echo "Cycle spend ceiling: \$$CEILING ($SOURCE)"
           {
             echo "## Spend ceiling"
             echo
-            echo "This run may submit at most **\$$CEILING** of model work."
-            echo "Above that it refuses outright and spends nothing — it does not trim the batch to fit."
+            echo "This CYCLE may submit at most **\$$CEILING** of model work — the extraction batch"
+            echo "here AND the verification batch \`Pipeline advance\` submits about two hours later,"
+            echo "together. Above that it refuses outright and spends nothing; it does not trim the"
+            echo "batch to fit. Source: $SOURCE."
             echo
-            echo "To change it: edit \`MAX_BATCH_USD\` in \`pipeline/config.py\` and merge to \`dev\`."
+            echo "To change it permanently: edit \`MAX_CYCLE_USD\` in \`pipeline/config.py\` and merge to \`dev\`."
           } >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$OVERRIDE" ]; then
+            echo "::warning title=Cycle ceiling overridden::This run uses \$$OVERRIDE instead of the configured ceiling. Pass the SAME number to the 'Pipeline advance' workflow when it collects, or the extraction is paid for and the verification refuses."
+            echo "> :warning: Overridden for this run only. Pass \`max_usd = $OVERRIDE\` to **Pipeline advance** as well, or the extraction is paid for and never verified." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Fetch sources and submit
         env:
@@ -131,6 +151,7 @@ jobs:
           if [ -n "${{ github.event.inputs.limit }}" ]; then ARGS="$ARGS --limit ${{ github.event.inputs.limit }}"; fi
           if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          if [ -n "${{ github.event.inputs.max_usd }}" ]; then ARGS="$ARGS --max-usd ${{ github.event.inputs.max_usd }}"; fi
           echo "Running: pipeline/cli.py refresh $ARGS"
           # -u, not plain python3. Piping into `tee` makes stdout a pipe, and
           # Python block-buffers a pipe at ~8 KB. Run 31991962860 printed

@@ -80,10 +80,9 @@
     },
     "amex_centurion": {
       "content_sha256": "a7e2961eacdc16e3421208795f3f4fce4eec7904f723f241503db433e1475f68",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.americanexpress.com/in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.americanexpress.com/in/credit-cards/"
     },
     "amex_gold": {
@@ -351,10 +350,9 @@
     },
     "axis_bank_indianoil_axis_bank_rupay": {
       "content_sha256": "d8b126732a0a798142be509517b4726de019c50a45a02894150d4c7457135840",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.axis.bank.in/retail/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.axis.bank.in/retail/cards/credit-card"
     },
     "axis_bank_indigo_axis_bank": {
@@ -542,178 +540,156 @@
     },
     "bobcard_(bank_of_baroda)_card_credit_cards_reward_points": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_card_easy": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_card_eterna": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_card_etihad_guest": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_card_etihad_guest_premium": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_card_premier": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_card_tiara": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_cma_one_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_hpcl_energie_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_in_partnership_with_uni_app_card_uni_goldx": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_(bank_of_baroda)_snapdeal_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_card_cashback": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_card_select": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_icai_exclusive_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_indian_army_yoddha_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_limited_(bank_of_baroda)_card_sentinel": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_limited_(bank_of_baroda)_indian_navy_varunah_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_limited_card_icsi_diamond": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "bobcard_limited_irctc_rupay_bob": {
       "content_sha256": "c63730c49edcf738f25e2a50b963d4e7d51b807b7225cfbf14d3d7843f810517",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.bobcard.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.bobcard.co.in/credit-card"
     },
     "federal_bank_/_bobcard_(scapia)_scapia": {
       "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.federalbank.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.federalbank.co.in/credit-card"
     },
     "federal_bank_imperio": {
       "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.federalbank.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.federalbank.co.in/credit-card"
     },
     "federal_bank_rupay_signet": {
       "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.federalbank.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.federalbank.co.in/credit-card"
     },
     "federal_bank_rupay_wave": {
@@ -725,18 +701,16 @@
     },
     "federal_bank_visa_celesta": {
       "content_sha256": "49ff9f1fb5e2f48374875632f8aedfd193ca1b6b22a96e825bb703b5926e1be1",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.federalbank.co.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.federalbank.co.in/credit-card"
     },
     "hdfc_bank_6e_rewards_indigo_hdfc_bank": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hdfc_bank_6e_rewards_xl_indigo_hdfc_bank": {
@@ -854,10 +828,9 @@
     },
     "hdfc_bank_infinia_metal": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hdfc_bank_intermiles_hdfc_bank_diners_club": {
@@ -911,26 +884,23 @@
     },
     "hdfc_bank_paytm_hdfc_bank": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hdfc_bank_paytm_hdfc_bank_mobile": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hdfc_bank_paytm_hdfc_bank_select": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hdfc_bank_phonepe_hdfc_bank_ultimo": {
@@ -963,10 +933,9 @@
     },
     "hdfc_bank_platinum_times": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hdfc_bank_regalia": {
@@ -1069,18 +1038,16 @@
     },
     "hdfc_bank_titanium_times": {
       "content_sha256": "95e47a841669a2327251a4bfa9146470838be9a395334fdf41feb17e9c5ea8de",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hdfc.bank.in/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hdfc.bank.in/credit-cards"
     },
     "hsbc_bank_taj": {
       "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hsbc.co.in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "hsbc_bank_visa_platinum": {
@@ -1092,18 +1059,16 @@
     },
     "hsbc_live": {
       "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hsbc.co.in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "hsbc_premier_metal": {
       "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hsbc.co.in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "hsbc_rupay_cashback": {
@@ -1122,10 +1087,9 @@
     },
     "hsbc_smart_value": {
       "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.hsbc.co.in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "hsbc_travelone": {
@@ -1137,26 +1101,23 @@
     },
     "icici_bank_accelero_icici_bank": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_adani_one_icici_bank_platinum": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_adani_one_icici_bank_signature": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_amazon_pay_icici_bank": {
@@ -1168,34 +1129,30 @@
     },
     "icici_bank_british_airways_classic": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_british_airways_premium": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_carbon": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_chennai_super_kings_icici_bank": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_coral": {
@@ -1207,10 +1164,9 @@
     },
     "icici_bank_diamant": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_emeralde": {
@@ -1222,34 +1178,30 @@
     },
     "icici_bank_emeralde_private_metal": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_emirates_skywards_icici_bank_emeralde": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_emirates_skywards_icici_bank_rubyx": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_emirates_skywards_icici_bank_sapphiro": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_expressions": {
@@ -1261,10 +1213,9 @@
     },
     "icici_bank_ferrari_signature": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_hpcl_coral": {
@@ -1276,10 +1227,9 @@
     },
     "icici_bank_hpcl_platinum": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_hpcl_super_saver": {
@@ -1291,26 +1241,23 @@
     },
     "icici_bank_intermiles_icici_bank_coral": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_intermiles_icici_bank_rubyx": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_intermiles_icici_bank_sapphiro": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_makemytrip_icici_bank": {
@@ -1322,26 +1269,23 @@
     },
     "icici_bank_manchester_united_platinum": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_manchester_united_signature": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_mine": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "icici_bank_parakram": {
@@ -1388,10 +1332,9 @@
     },
     "icici_bank_visa_signature": {
       "content_sha256": "30dfbc16c6b107eaf7d4a077b1d319c2df88c9b3d41069e6845bc181f9012a9d",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.icicibank.com/personal-banking/cards/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.icicibank.com/personal-banking/cards/credit-card"
     },
     "idbi_bank_aspire_platinum": {
@@ -1403,10 +1346,9 @@
     },
     "idbi_bank_bank_addon": {
       "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idbibank.in/credit-card.aspx is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idbibank.in/credit-card.aspx"
     },
     "idbi_bank_bank_imperium_platinum": {
@@ -1432,18 +1374,16 @@
     },
     "idbi_bank_winnings_rupay_select": {
       "content_sha256": "afa0c16598477ffce5ca0830bf54e1d241fc34a99453daa40ec03871a108345a",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idbibank.in/credit-card.aspx is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idbibank.in/credit-card.aspx"
     },
     "idfc_bank_bank_first_swyp": {
       "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idfcfirst.bank.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idfcfirst.bank.in/credit-card"
     },
     "idfc_first_bank_ashva_metal": {
@@ -1462,10 +1402,9 @@
     },
     "idfc_first_bank_club_vistara_idfc_first": {
       "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idfcfirst.bank.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idfcfirst.bank.in/credit-card"
     },
     "idfc_first_bank_diamond_reserve": {
@@ -1477,18 +1416,16 @@
     },
     "idfc_first_bank_earn": {
       "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idfcfirst.bank.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idfcfirst.bank.in/credit-card"
     },
     "idfc_first_bank_gaj": {
       "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idfcfirst.bank.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idfcfirst.bank.in/credit-card"
     },
     "idfc_first_bank_hello_cashback": {
@@ -1500,18 +1437,16 @@
     },
     "idfc_first_bank_hpcl_first_power": {
       "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idfcfirst.bank.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idfcfirst.bank.in/credit-card"
     },
     "idfc_first_bank_hpcl_first_power_plus": {
       "content_sha256": "f617a48f456056e9051a5bf9cac8e7dc5b131738e85baf8534e2b28f6a10f259",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.idfcfirst.bank.in/credit-card is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.idfcfirst.bank.in/credit-card"
     },
     "idfc_first_bank_indigo_idfc_first": {
@@ -1595,18 +1530,16 @@
     },
     "indusind_bank_crest": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.indusind.bank.in/in/personal/cards/credit-card.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_duo_plus": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.indusind.bank.in/in/personal/cards/credit-card.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_eazydiner_indusind_bank": {
@@ -1654,10 +1587,9 @@
     },
     "indusind_bank_indus_solitaire": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.indusind.bank.in/in/personal/cards/credit-card.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_intermiles_voyage_visa": {
@@ -1669,10 +1601,9 @@
     },
     "indusind_bank_jiobp_mobility": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.indusind.bank.in/in/personal/cards/credit-card.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_legend": {
@@ -1691,10 +1622,9 @@
     },
     "indusind_bank_payback": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_pinnacle_world": {
@@ -1727,18 +1657,16 @@
     },
     "indusind_bank_platinum": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.indusind.bank.in/in/personal/cards/credit-card.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_platinum_aura_edge": {
       "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.indusind.bank.in/in/personal/cards/credit-card.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "indusind_bank_platinum_select": {
@@ -1764,18 +1692,16 @@
     },
     "kotak_mahindra_bank_6e_rewards_indigo_kotak_bank": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_6e_rewards_xl_indigo_kotak_bank": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_811": {
@@ -1794,10 +1720,9 @@
     },
     "kotak_mahindra_bank_811_super_money": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_air": {
@@ -1809,18 +1734,16 @@
     },
     "kotak_mahindra_bank_bank_fortune_gold": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_essentia_platinum": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_indianoil_kotak": {
@@ -1853,10 +1776,9 @@
     },
     "kotak_mahindra_bank_metro_kotak": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_mojo_platinum": {
@@ -1868,10 +1790,9 @@
     },
     "kotak_mahindra_bank_myntra_kotak": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_privy_league_signature": {
@@ -1925,18 +1846,16 @@
     },
     "kotak_mahindra_bank_veer_platinum": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_veer_select": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "kotak_mahindra_bank_white": {
@@ -1997,10 +1916,9 @@
     },
     "rbl_bank_edition": {
       "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.rblbank.com/category/credit-cards"
     },
     "rbl_bank_icon": {
@@ -2061,10 +1979,9 @@
     },
     "rbl_bank_novio": {
       "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.rblbank.com/category/credit-cards is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.rblbank.com/category/credit-cards"
     },
     "rbl_bank_patanjali_rbl_bank_swarn": {
@@ -2174,26 +2091,23 @@
     },
     "rbl_bank_zomato_edition_classic": {
       "content_sha256": "fb13ac733cdc7d8608103f5151185686e8294e5758f80eb3b6986abdcc6aa306",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.rblbank.com/category/credit-cards"
     },
     "sbi_card_aditya_birla_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_aditya_birla_sbi_card_select": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_air_india_sbi_platinum": {
@@ -2275,10 +2189,9 @@
     },
     "sbi_card_delhi_metro_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_doctors_ima_sbi": {
@@ -2297,34 +2210,30 @@
     },
     "sbi_card_etihad_guest_sbi": {
       "content_sha256": "c8d3dcf63618e606f1e9c6b0b89153dc040aa07a7f4bcc9a04a5f0545182bb9f",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.sbicard.com/en/personal/credit-cards/etihad-guest-sbi-card.html"
     },
     "sbi_card_etihad_guest_sbi_premier": {
       "content_sha256": "26ed83800facca97037cd7d63b68a2297ac42c8d8320f3362d3db4d32953cbb0",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.sbicard.com/en/personal/credit-cards/etihad-guest-sbi-premier-card.html"
     },
     "sbi_card_fabindia_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_fabindia_sbi_card_select": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_flipkart_sbi": {
@@ -2350,10 +2259,9 @@
     },
     "sbi_card_irctc_rupay_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_irctc_sbi_card_premier": {
@@ -2380,50 +2288,44 @@
     },
     "sbi_card_landmark_rewards_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_landmark_rewards_sbi_prime": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_landmark_rewards_sbi_select": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_lifestyle_home_centre_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_lifestyle_home_centre_sbi_card_prime": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_max_sbi_card_select": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_miles": {
@@ -2450,26 +2352,23 @@
     },
     "sbi_card_mumbai_metro_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_natures_basket_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_natures_basket_sbi_card_elite": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_ola_money_sbi": {
@@ -2565,10 +2464,9 @@
     },
     "sbi_card_simplysave_upi_rupay": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_tata_neu_infinity_sbi": {
@@ -2587,10 +2485,9 @@
     },
     "sbi_card_tata_star_select": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sbi_card_titan_sbi": {
@@ -2611,26 +2508,23 @@
     },
     "sbi_card_yatra_sbi": {
       "content_sha256": "bb996fc4dd5aa71b84ce46e0e69f3bb2d8bb554b2bf9cb7d95de76b78d9c7586",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sbicard.com/en/personal/credit-cards.page is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sbicard.com/en/personal/credit-cards.page"
     },
     "sc_beyond": {
       "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sc.com/in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sc.com/in/credit-cards/"
     },
     "sc_digismart": {
       "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sc.com/in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sc.com/in/credit-cards/"
     },
     "sc_manhattan": {
@@ -2642,10 +2536,9 @@
     },
     "sc_priority_visa_infinite": {
       "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
       "note": "",
-      "status": "done",
+      "status": "fetched",
       "url": "https://www.sc.com/in/credit-cards/"
     },
     "sc_super_value_titanium": {
@@ -2664,10 +2557,9 @@
     },
     "slice_bank_slice_upi": {
       "content_sha256": "ae36855a35b45a6862401f56a0ae08bdd591c79b533e2d6ff7982693532493f5",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sliceit.com/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sliceit.com/"
     },
     "standard_chartered_bank_easemytrip": {
@@ -2679,10 +2571,9 @@
     },
     "standard_chartered_bank_emirates_world": {
       "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sc.com/in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sc.com/in/credit-cards/"
     },
     "standard_chartered_bank_platinum_rewards": {
@@ -2694,10 +2585,9 @@
     },
     "standard_chartered_bank_rewards": {
       "content_sha256": "b44e3fe7e5eea7ddf812678db74656909eaaa96eee6fc7fe870715d92d13b9d5",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.sc.com/in/credit-cards/ is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.sc.com/in/credit-cards/"
     },
     "standard_chartered_bank_smart": {
@@ -2779,10 +2669,9 @@
     },
     "yes_bank_yes_ace": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
     },
     "yes_bank_yes_elite": {
@@ -2815,10 +2704,9 @@
     },
     "yes_bank_yes_prosperity_rewards": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "done_reason": "no_observations",
       "fetched_at": "2026-08-17T16:04:49Z",
-      "note": "",
-      "status": "done",
+      "note": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf is an issuer listing page shared with other cards, not this card's own terms — 'nothing found' says nothing about it",
+      "status": "unresolved_source",
       "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
     },
     "yes_bank_zagg": {

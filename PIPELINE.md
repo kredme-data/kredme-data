@@ -253,21 +253,48 @@ deciding whether to approve a sweep: `est_usd` assumes a typical response size a
 low the first time it met reality, whereas `est_usd_ceiling` bills every request's full
 `max_tokens` and is the number the bill cannot exceed.
 
-### The spend ceiling — one number, one place
+### The spend ceiling — one number, one place, one CYCLE
 
-**A batch estimated above `config.MAX_BATCH_USD` is refused outright, not trimmed to
+**A cycle estimated above `config.MAX_CYCLE_USD` is refused outright, not trimmed to
 fit.** It refuses rather than prompting, because this runs on a cron with nobody there to
 answer, and it refuses rather than shortening the batch, because a silently shortened
 sweep reads exactly like a cheap week and the cards it dropped are invisible.
 
 The ceiling is **$15** (about Rs 1,300), set 2026-08-21.
 
-**To change it: edit the `MAX_BATCH_USD = ` line in `pipeline/config.py` and merge to
+**It caps a CYCLE, not a batch.** One Monday cycle is two paid submissions: the
+extraction batch from `weekly-refresh.yml` and the verification batch
+`pipeline-advance.yml` submits about two hours later. Verification costs slightly *more*
+per card than extraction (same model and same typical output, but its input is the
+document **plus** the observations), so checking each half independently against the same
+constant authorised roughly twice what the constant said. Stage 1 now reserves room for
+the verification it is about to make inevitable, records what it committed in
+`pipeline/state/batch.json`, and stage 2 counts that against the same ceiling.
+
+**It is applied to a MARGINED estimate, not the raw one.** `est_usd` is a single-point
+fit against one observed bill, and it missed that bill by 38% in the expensive direction
+($68.63 estimated, $94.55 billed). So the gate compares
+`est_usd x config.ESTIMATE_SAFETY_FACTOR` (1.4). `est_usd_ceiling` is not used as the
+gate because it bills every request at its full `max_tokens` and overshoots ~1.76x on a
+real mix, which would refuse ordinary weeks. All three numbers appear in every refusal.
+
+At $15 that is about **32 cards a week**.
+
+**It does NOT cover the daily news watch.** That path calls `messages.create` directly
+through `batch.run_sync`, pays standard rates with no batch discount, and has its own
+ceiling: `config.MAX_NEWS_USD` ($3.00 a day).
+
+**To change it: edit the `MAX_CYCLE_USD = ` line in `pipeline/config.py` and merge to
 `dev`. That is the whole change.** No workflow file needs editing — both scheduled
 workflows check out `dev`, so the constant on `dev` is what Monday enforces. It is
-deliberately NOT passed as a flag in the workflow: `limit` and `dry_run` there are
+deliberately NOT hard-coded as a flag in the workflow: `limit` and `dry_run` there are
 `workflow_dispatch` inputs, which are empty on a scheduled run, so anything expressed
 as a flag would silently not apply to the run nobody is watching.
+
+For a **one-off** run, both workflows carry a `max_usd` manual-run input. Give BOTH the
+same number. Raising it on `weekly-refresh` alone pays for extraction and then leaves
+`pipeline-advance` refusing to pay for the verification that turns it into an answer —
+money spent, no result.
 
 A refusal is loud in three places at once: a `FAIL SPEND CEILING REFUSED` block in the
 log, a red annotation at the top of the run, and its own section in the job summary. The

@@ -22,6 +22,11 @@ on:
   schedule:
     - cron: '17 */2 * * *'   # every 2 hours, offset so it never collides with the kick-off
   workflow_dispatch:
+    inputs:
+      max_usd:
+        description: 'Raise this CYCLE spend ceiling for this run only, in USD. Blank = the MAX_CYCLE_USD in pipeline/config.py. Must be the SAME number the weekly refresh was given, or the extraction it already paid for is never verified.'
+        required: false
+        default: ''
 
 defaults:
   run:
@@ -117,7 +122,9 @@ jobs:
           # -u: see weekly-refresh.yml. Piping into `tee` block-buffers stdout,
           # so a run that stalls or is killed shows an empty log and an empty
           # step summary regardless of how much it printed.
-          python3 -u pipeline/cli.py advance | tee advance.log
+          ARGS=""
+          if [ -n "${{ github.event.inputs.max_usd }}" ]; then ARGS="--max-usd ${{ github.event.inputs.max_usd }}"; fi
+          python3 -u pipeline/cli.py advance $ARGS | tee advance.log
           # cli.py writes 'stage=<name>' to GITHUB_OUTPUT itself when it produces a patch.
           # grep exiting 1 means "not found", not "failed" — spell that out so it reads
           # correctly under `set -o pipefail`.
@@ -136,14 +143,52 @@ jobs:
             sed -n '1,150p' advance.log 2>/dev/null || echo 'no log'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # always(), not the implicit success(). This step used to carry a bare
+      # `if: steps.gate.outputs.pending == 'true'`, which GitHub ANDs with success() —
+      # so any failure in Advance SKIPPED it. That is the exact mechanism that has
+      # already destroyed paid work here: the run at 17:12 on 2026-08-17 collected 371
+      # extractions we had paid ~$45 for, was killed at the 30-minute timeout, and
+      # `Commit state` never ran.
+      #
+      # It matters most on the ceiling-refusal path. `_advance_extract` marks the
+      # extraction batch `collected` and returns 2. If that mark is never pushed, the
+      # batch stays `submitted` on dev, the next 2-hourly cron re-enters the identical
+      # path and refuses again — a red run every two hours, forever, until a human edits
+      # config.py — and the `--recollect` recovery the CLI prints points at state that
+      # was never persisted.
       - name: Commit state
-        if: steps.gate.outputs.pending == 'true'
+        if: always() && steps.gate.outputs.pending == 'true'
         run: |
           git config user.name  'kredme-pipeline[bot]'
           git config user.email 'kredme-pipeline@users.noreply.github.com'
           git add pipeline/state
-          git diff --cached --quiet || git commit -m 'Advance pipeline state'
-          git push origin HEAD:dev || true
+          if git diff --cached --quiet; then
+            echo 'No state change to commit.'
+            exit 0
+          fi
+          git commit -m 'Advance pipeline state'
+
+          # NOT `|| true`. What this pushes is the handle to money already spent: a
+          # batch marked collected, or a verification batch id. Losing it means the next
+          # cron re-collects the extraction and submits a SECOND paid verification batch,
+          # each independently under the ceiling so nothing refuses — and the run that
+          # lost it was green, so nobody looks.
+          #
+          # A lost race with dev is now routine, because auto-merge below squash-merges
+          # this pipeline own PR into dev on the same cadence. So: rebase and retry, and
+          # if it still will not land, go RED.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:dev; then
+              echo "Pushed pipeline state (attempt $attempt)."
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt — rebasing onto dev and retrying."
+            git fetch origin dev
+            git rebase origin/dev || { git rebase --abort || true; }
+            sleep 5
+          done
+          echo "::error title=Pipeline state could not be pushed::The batch handle for work that has ALREADY BEEN PAID FOR is only on this runner. Do not re-run the weekly refresh; run 'pipeline/cli.py advance' once dev is writable."
+          exit 1
 
       # The pipeline proposes card data. Until now the only thing standing between a
       # model's proposal and a reviewer was tools/kredme.py, which on the same file
@@ -203,9 +248,25 @@ jobs:
       # continue-on-error, because a failing gate must still leave a PR for a person
       # to read. It just must not merge itself.
       # ------------------------------------------------------------------ #
+      #
+      # `id: change_gate`, NOT `id: gate`. The "Is anything pending?" step above already
+      # owns `gate`, and two steps in one job carrying the same id is a workflow-PARSE
+      # error: "The identifier 'gate' may not be used more than once within the same
+      # scope". Every scheduled run — 84 a week — would have failed at startup, stages 2
+      # and 3 would never execute, Monday would submit and pay for the extraction batch
+      # and nothing would ever collect it, and because cmd_refresh leaves changed cards
+      # at status `fetched` they would all be re-billed the following Monday. And if
+      # GitHub had tolerated the duplicate instead, `steps.gate.outcome` below would have
+      # resolved against the "Is anything pending?" step, which always succeeds — so the
+      # `pipeline gate` status would publish green even when validation failed and
+      # auto-merge would be armed on an ungated PR.
+      #
+      # tests/test_workflows.py now parses every workflow and asserts step ids are
+      # unique per job. The rest of the workflow tests read these files as raw text and
+      # structurally cannot catch this class of defect.
       - name: Gate the proposed change
         if: steps.advance.outputs.patch == 'true'
-        id: gate
+        id: change_gate
         continue-on-error: true
         run: |
           python3 tools/test_pipeline.py
@@ -213,6 +274,31 @@ jobs:
           python3 tools/test_fix_cards.py
           python3 tests/run_all.py
           python3 tools/kredme.py validate --target working
+
+          # THE RATCHET, in the gate rather than only in the measure step.
+          #
+          # `tools/kredme.py validate` above returns 0 on a tree the nine-layer
+          # validator scores 554 errors — this same file's comment says so. Gating
+          # auto-merge on the weak tool and relegating the real one to a
+          # continue-on-error "measured, not enforced" step means auto-merge is
+          # effectively ungated. The full backlog cannot be made blocking (a permanently
+          # red CI is how this repo learned to ignore CI), so the gate asserts the thing
+          # that actually matters: this change did not make it WORSE.
+          python3 tools/validate_cards.py --quiet --json /tmp/gate.json || true
+          python3 - <<'RATCHET'
+          import json, sys, collections, pathlib
+          rep = json.load(open('/tmp/gate.json'))
+          now = sum(collections.Counter(
+              x['code'] for x in rep['findings'] if x['severity'] == 'ERROR').values())
+          base = json.loads(pathlib.Path('tools/validated_baseline.json').read_text())
+          allowed = base.get('errors', sum(base.get('errors_by_code', {}).values()))
+          print(f'validator errors: {now}  baseline: {allowed}')
+          if now > allowed:
+              print(f'FAIL this change adds {now - allowed} validator error(s). '
+                    f'Not arming auto-merge.')
+              sys.exit(1)
+          print('OK   the ratchet holds — no new validator errors.')
+          RATCHET
 
       # Only reached at stage 3, when there is an actual proposed change to review.
       # Base is dev, never main: data flows dev -> validate -> promote -> main, and
@@ -253,13 +339,13 @@ jobs:
       # than by this job's goodwill.
       # ------------------------------------------------------------------ #
       - name: Publish the gate result on the PR
-        if: steps.cpr.outputs.pull-request-number != ''
+        if: always() && steps.cpr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHA: ${{ steps.cpr.outputs.pull-request-head-sha }}
-          RESULT: ${{ steps.gate.outcome }}
+          RESULT: ${{ steps.change_gate.outcome }}
         run: |
-          if [ "$RESULT" = 'success' ]; then STATE=success; DESC='self-tests + data validation passed'; else STATE=failure; DESC='self-tests or data validation FAILED — not merging'; fi
+          if [ "$RESULT" = 'success' ]; then STATE=success; DESC='self-tests, data validation and the validator ratchet passed'; else STATE=failure; DESC='self-tests, data validation or the validator ratchet FAILED — not merging'; fi
           gh api "repos/${{ github.repository }}/statuses/$SHA" \
             -f state="$STATE" \
             -f context='pipeline gate' \
@@ -282,11 +368,11 @@ jobs:
       # arm it, and the PR simply stays open for a human.
       # ------------------------------------------------------------------ #
       - name: Let GitHub merge it into dev
-        if: steps.cpr.outputs.pull-request-number != ''
+        if: always() && steps.cpr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ steps.cpr.outputs.pull-request-number }}
-          GATE: ${{ steps.gate.outcome }}
+          GATE: ${{ steps.change_gate.outcome }}
         run: |
           URL="${{ steps.cpr.outputs.pull-request-url }}"
 
