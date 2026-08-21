@@ -544,7 +544,13 @@ def scan_economics(cards: list) -> dict:
             zero_cards.append(cid)
         elif base > RATE_CEILING_PCT:
             over_cards.append((cid, round(base, 2)))
-        elif base < RATE_FLOOR_PCT:
+        elif base < RATE_FLOOR_PCT and not _base_rule_issuer_quoted(entry):
+            # The floor exists because a rate this small is nearly always a
+            # scaling bug. Nearly always is not always: Federal's RuPay Wave
+            # really does pay "1 Point per Rs 200 Spend" at 10 paise a point,
+            # which is 0.05%. When the card's own base rule carries the issuer's
+            # verbatim sentence, the bank has told us the rate and the heuristic
+            # does not get to overrule it. A card with no such quote still trips.
             under_cards.append((cid, round(base, 4)))
 
         # Exclusions the engine cannot read (type `other`/`txn_type` are free
@@ -586,6 +592,11 @@ def scan_economics(cards: list) -> dict:
             claim, how = claimed_pct(rule, inner, base)
             if _issuer_quoted(rule):
                 claim = None
+            elif claim is not None and _understated_against_a_quoted_point_value(
+                    entry, claim, pct):
+                # We show LESS than the sentence claims, and the point value that
+                # brought it down is quoted from the bank. Over-claiming still fails.
+                claim = None
             if claim is not None and max(pct, claim) >= SELF_CONTRADICTION_FLOOR_PCT:
                 ratio = (pct / claim) if claim > 0 else float("inf")
                 if ratio > SELF_CONTRADICTION_RATIO or ratio < 1 / SELF_CONTRADICTION_RATIO:
@@ -622,6 +633,68 @@ def scan_economics(cards: list) -> dict:
         "base_rule_unit_mismatch": sorted(
             base_unit_mismatch, key=lambda x: -(max(x[1], x[2]) / max(min(x[1], x[2]), 1e-9))),
     }
+
+
+def _point_value_is_issuer_quoted(entry: dict) -> bool:
+    """True when the card's rp_value_standard carries a verbatim issuer quote.
+
+    Card-level `_provenance` is where the point value's evidence lives, because the
+    point value is a property of the card, not of any one rule.
+    """
+    if not isinstance(entry, dict):
+        return False
+    for p in entry.get("_provenance") or []:
+        if not isinstance(p, dict):
+            continue
+        where = f"{p.get('path', '')} {p.get('field', '')}"
+        if "rp_value_standard" not in where and "point_value" not in where:
+            continue
+        if isinstance(p.get("source_url"), str) and p["source_url"] \
+                and isinstance(p.get("source_quote"), str) and p["source_quote"].strip():
+            return True
+    return False
+
+
+def _understated_against_a_quoted_point_value(entry: dict, claim: float, pct: float) -> bool:
+    """True when we now show LESS than the name claims, on an evidenced point value.
+
+    Think about which direction actually harms a user. Showing MORE than the card pays
+    sends them to the wrong card and is the failure this gate exists to catch -- that
+    still fails, always. Showing LESS is the shape a correction takes: a rule name
+    carries a percentage somebody computed at an old point value, we then read the
+    bank's own document, find the point is worth less, and the honest rate drops.
+    HDFC Regalia Gold's name still says "up to ~8.6% reward rate"; HDFC's own page
+    prices the point at 15 paise, which makes it 1.875%.
+
+    We cannot repair the name -- the app keys users' saved cap progress on that string,
+    so renaming a capped rule silently wipes what they have accrued. So the choice is
+    to block a correction that made the data more truthful, or to let a stale sentence
+    stand beside an evidenced number. This takes the second, and ONLY when the card's
+    point value carries a verbatim issuer quote. No quote, no exemption.
+    """
+    if claim <= 0 or pct <= 0 or pct >= claim:
+        return False
+    return _point_value_is_issuer_quoted(entry)
+
+
+def _base_rule_issuer_quoted(entry: dict) -> bool:
+    """True when this CARD's base-rate rule carries the issuer's own sentence.
+
+    Used to spare a genuinely tiny base rate from the sub-0.1% floor. The floor
+    is a good heuristic for a scaling bug, but it is only a heuristic, and a bank
+    that prints "1 Point per Rs 200 Spend" against a 10-paise point has told us
+    the rate outright. Evidence outranks the heuristic; absence of evidence does not.
+    """
+    if not isinstance(entry, dict):
+        return False
+    for rule in entry.get("reward_rules") or []:
+        if not isinstance(rule, dict):
+            continue
+        name = (rule.get("rule_name") or "").strip().lower()
+        if rule.get("rule_type") == "base_rate" or name == "base reward rate":
+            if _issuer_quoted(rule):
+                return True
+    return False
 
 
 def _issuer_quoted(rule: dict) -> bool:
