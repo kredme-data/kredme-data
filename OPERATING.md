@@ -86,9 +86,16 @@ this affordable is not working — say so, because that is a ~$60 week every wee
 
 ### 4. The spend cap
 
-A batch estimated over **$25** is refused outright rather than submitted. That is set in
-`pipeline/config.py` as `MAX_BATCH_USD`. It sits above a normal week (~$3–8) and below a
-full 371-card sweep (~$60), so a sweep can only happen because somebody decided it should.
+A **cycle** estimated over **$15** is refused outright rather than submitted. That is set
+in `pipeline/config.py` as `MAX_CYCLE_USD`. A cycle is both paid submissions together —
+the extraction batch on Monday and the verification batch about two hours later — and the
+gate is applied to the estimate times a 1.4x margin, because the estimator has been 38%
+low against the one real bill on record. At $15 that clears about 32 cards a week and
+refuses a full 371-card sweep, so a sweep can only happen because somebody decided it
+should.
+
+The daily news watch is a separate bill with a separate ceiling, `MAX_NEWS_USD` ($3.00 a
+day): it runs synchronously at standard rates and the card ceiling never applied to it.
 
 ---
 

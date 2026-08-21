@@ -35,6 +35,10 @@ on:
         type: boolean
         required: false
         default: false
+      max_usd:
+        description: 'Raise this CYCLE spend ceiling for this run only, in USD. Blank = the MAX_CYCLE_USD in pipeline/config.py. YOU MUST PASS THE SAME NUMBER to the Pipeline advance workflow, or the extraction is paid for and never verified.'
+        required: false
+        default: ''
 
 # Two overlapping refreshes would fight over the same state file and could submit
 # the same cards twice. Never cancel in progress — a killed submit can orphan a
@@ -94,6 +98,47 @@ jobs:
       - name: Self-tests (never submit a batch from broken code)
         run: python3 tools/test_pipeline.py && python3 tests/run_all.py
 
+      # WHAT THIS RUN MAY SPEND, printed before it can spend it.
+      #
+      # The ceiling is NOT passed as a flag here, and that is the point. `limit` and
+      # `dry_run` above are workflow_dispatch inputs, so on the scheduled Monday run
+      # they are empty and any ceiling expressed as a flag would silently not apply —
+      # which is how this job came to be unattended and uncapped. The ceiling lives in
+      # pipeline/config.py instead, where batch.submit() reads it by default and every
+      # path gets it, scheduled or manual.
+      #
+      # That also means one edit is enough to change it: this workflow checks out
+      # `dev`, so MAX_CYCLE_USD on dev is what Monday enforces, and no workflow file
+      # has to be synced to main for a new number to take effect.
+      #
+      # `max_usd` above is the one-run override, and it exists because the PR that
+      # introduced this ceiling told the founder to "run the workflow by hand with
+      # --max-usd 50" when there was no input and no workflow anywhere appended the
+      # flag. Advice that cannot be followed is worse than no advice. It is a CYCLE
+      # number and it must be given to pipeline-advance too — that warning is on the
+      # input's own description and repeated here.
+      - name: Show the spend ceiling this run will enforce
+        run: |
+          OVERRIDE='${{ github.event.inputs.max_usd }}'
+          CEILING=$(python3 -c 'from pipeline import config; print(f"{config.MAX_CYCLE_USD:.2f}")')
+          SOURCE='pipeline/config.py, MAX_CYCLE_USD'
+          if [ -n "$OVERRIDE" ]; then CEILING="$OVERRIDE"; SOURCE='the max_usd input on this run'; fi
+          echo "Cycle spend ceiling: \$$CEILING ($SOURCE)"
+          {
+            echo "## Spend ceiling"
+            echo
+            echo "This CYCLE may submit at most **\$$CEILING** of model work — the extraction batch"
+            echo "here AND the verification batch \`Pipeline advance\` submits about two hours later,"
+            echo "together. Above that it refuses outright and spends nothing; it does not trim the"
+            echo "batch to fit. Source: $SOURCE."
+            echo
+            echo "To change it permanently: edit \`MAX_CYCLE_USD\` in \`pipeline/config.py\` and merge to \`dev\`."
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$OVERRIDE" ]; then
+            echo "::warning title=Cycle ceiling overridden::This run uses \$$OVERRIDE instead of the configured ceiling. Pass the SAME number to the 'Pipeline advance' workflow when it collects, or the extraction is paid for and the verification refuses."
+            echo "> :warning: Overridden for this run only. Pass \`max_usd = $OVERRIDE\` to **Pipeline advance** as well, or the extraction is paid for and never verified." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Fetch sources and submit
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -106,6 +151,7 @@ jobs:
           if [ -n "${{ github.event.inputs.limit }}" ]; then ARGS="$ARGS --limit ${{ github.event.inputs.limit }}"; fi
           if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          if [ -n "${{ github.event.inputs.max_usd }}" ]; then ARGS="$ARGS --max-usd ${{ github.event.inputs.max_usd }}"; fi
           echo "Running: pipeline/cli.py refresh $ARGS"
           # -u, not plain python3. Piping into `tee` makes stdout a pipe, and
           # Python block-buffers a pipe at ~8 KB. Run 31991962860 printed
@@ -116,13 +162,26 @@ jobs:
           # reason. Unbuffered, a stall is visible at the card it stalled on.
           python3 -u pipeline/cli.py refresh $ARGS | tee refresh.log
 
+      # Head AND tail. `sed -n '1,120p'` alone shows the first 120 lines, and on a
+      # 350-card week the unresolved-source warnings and the per-host fetch failures
+      # can fill those on their own — so the verdict at the END of the run (the cost,
+      # and any spend refusal) was exactly the part that could be cut off. The CLI
+      # also writes its own block straight into this summary when it refuses, so a
+      # refusal now has two independent routes to the reader.
       - name: Job summary
         if: always()
         run: |
           {
             echo '## Weekly refresh — stage 1 of 3'
             echo
+            echo '### First 120 lines'
+            echo '```'
             sed -n '1,120p' refresh.log 2>/dev/null || echo 'no log produced'
+            echo '```'
+            echo '### Last 40 lines — the verdict and the cost'
+            echo '```'
+            tail -n 40 refresh.log 2>/dev/null || echo 'no log produced'
+            echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
       # The content hashes and the batch handle are committed so stage 2 can find

@@ -358,6 +358,39 @@ def resolve_sources(cards: list[dict], overrides: dict[str, str] | None = None) 
     return out
 
 
+# The set of URLs that are an issuer's card-LISTING page rather than any one card's
+# terms. Computed once, from the same dict resolve_sources falls back to.
+_LANDING_URLS = frozenset(ISSUER_LANDING.values())
+
+
+def is_card_specific(state_sources: dict, card_id: str) -> bool:
+    """Is the URL we hashed for this card that card's OWN page?
+
+    False for an issuer landing page, and false for any URL shared with another card —
+    which is the same thing seen from the other side, because the only reason two cards
+    share a URL is that neither was resolved to its own terms page.
+
+    This is what decides whether a `done` verdict is allowed to suppress a re-read
+    indefinitely. 108 of 139 retired cards were pinned to a page shared with up to 20
+    others; for those, "the bytes have not moved" is a statement about the issuer's
+    navigation, not about the card.
+    """
+    entry = state_sources.get(card_id)
+    if not isinstance(entry, dict):
+        return False
+    url = entry.get("url") or ""
+    if not url or url in _LANDING_URLS:
+        return False
+    users = sum(
+        1
+        for cid, v in state_sources.items()
+        if not cid.startswith("__watch__")
+        and isinstance(v, dict)
+        and v.get("url") == url
+    )
+    return users <= 1
+
+
 def coverage_report(sources: list[Source]) -> dict:
     """How much of the catalogue we can actually reach, and what blocks the rest."""
     by_reason: dict[str, int] = {}
