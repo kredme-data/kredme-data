@@ -118,7 +118,7 @@ def _summary(markdown: str) -> None:
 
 
 def _ceiling_verdict(est: dict, limit: "float | None", *, stage: str) -> str:
-    """"" when this batch is affordable, otherwise a human-readable refusal.
+    """Return "" when this batch is affordable, otherwise a human-readable refusal.
 
     Returns the message rather than printing it so the caller decides whether this is a
     refusal (a real run) or a forecast (a dry run). The wording says REFUSING, never
