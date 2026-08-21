@@ -39,6 +39,13 @@ concurrency:
 permissions:
   contents: write
   pull-requests: write
+  # statuses: write is for the gate below. The PR this job opens is created with the
+  # default GITHUB_TOKEN, and GitHub deliberately does not fire `on: pull_request`
+  # workflows for those — measured, not assumed: PR #62 shows "no checks reported",
+  # while the human-opened #61 next to it shows "Self-tests + data validation".
+  # So this job runs the gate itself and PUBLISHES the result as a commit status,
+  # which is a real, visible check that branch protection on `dev` can require.
+  statuses: write
 
 jobs:
   advance:
@@ -148,6 +155,9 @@ jobs:
       # would simply stop the pipeline opening PRs at all, and a lane that never
       # opens a PR is a lane nobody fixes. The job of this step is to make sure no
       # proposed change reaches a reviewer unmeasured.
+      #
+      # (Carried over from main. This file had drifted: main gained this step in PR
+      # #59 and dev never did, so a dev -> main workflow sync would have deleted it.)
       - name: Measure the proposed change with the full validator
         if: steps.advance.outputs.patch == 'true'
         id: measure
@@ -178,16 +188,49 @@ jobs:
           print('\n_Measured, not enforced — this step never blocks the pipeline._')
           PY
 
+      # ------------------------------------------------------------------ #
+      # THE GATE. This runs BEFORE the PR is opened, on the working tree that is
+      # about to become the PR, because that tree is the change.
+      #
+      # These are the exact commands validate.yml runs on a human's PR. They are
+      # duplicated here rather than relied upon, for a measured reason: a PR opened
+      # with the default GITHUB_TOKEN does not fire `on: pull_request` workflows, so
+      # validate.yml never sees this PR at all. `gh pr checks 62` reports "no checks
+      # reported on the branch"; the human-opened #61 beside it reports
+      # "Self-tests + data validation SUCCESS". Arming auto-merge on a PR with zero
+      # checks is not "CI gates it", it is merging blind.
+      #
+      # continue-on-error, because a failing gate must still leave a PR for a person
+      # to read. It just must not merge itself.
+      # ------------------------------------------------------------------ #
+      - name: Gate the proposed change
+        if: steps.advance.outputs.patch == 'true'
+        id: gate
+        continue-on-error: true
+        run: |
+          python3 tools/test_pipeline.py
+          python3 tools/test_validate_cards.py
+          python3 tools/test_fix_cards.py
+          python3 tests/run_all.py
+          python3 tools/kredme.py validate --target working
+
       # Only reached at stage 3, when there is an actual proposed change to review.
       # Base is dev, never main: data flows dev -> validate -> promote -> main, and
       # promoting is a separate deliberate act.
       - name: Open PR with the proposed data changes
         if: steps.advance.outputs.patch == 'true'
+        id: cpr
         # Pinned to a commit, not the mutable `v6` tag. This repo is public and this
         # action runs in a job that holds a write-scoped GITHUB_TOKEN, so a repointed
         # tag would be arbitrary code with commit rights. SHA = v6.
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c
         with:
+          # Same fallback data-quality.yml already uses. With PIPELINE_PR_TOKEN set
+          # (a PAT or GitHub App installation token) the PR is opened by a real
+          # identity and validate.yml runs on it for real; without it, the gate step
+          # above and the commit status below are the only checks this PR gets.
+          # The secret is NOT set today.
+          token: ${{ secrets.PIPELINE_PR_TOKEN || secrets.GITHUB_TOKEN }}
           base: dev
           branch: bot/card-refresh-${{ github.run_id }}
           delete-branch: true
@@ -198,3 +241,84 @@ jobs:
           commit-message: 'Refresh card data from issuer documents (run ${{ github.run_id }})'
           title: 'Weekly refresh: issuer-sourced card data changes'
           body-path: .pipeline-work/pr_body.md
+          labels: card-refresh, auto-merge-to-dev
+
+      # ------------------------------------------------------------------ #
+      # PUBLISH THE GATE RESULT AS A COMMIT STATUS.
+      #
+      # This is what turns the in-job gate into something GitHub itself can enforce.
+      # Once it exists on the head commit it shows on the PR like any other check,
+      # and branch protection on `dev` can be set to REQUIRE the context
+      # "pipeline gate" — at which point auto-merge below is gated by GitHub rather
+      # than by this job's goodwill.
+      # ------------------------------------------------------------------ #
+      - name: Publish the gate result on the PR
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ steps.cpr.outputs.pull-request-head-sha }}
+          RESULT: ${{ steps.gate.outcome }}
+        run: |
+          if [ "$RESULT" = 'success' ]; then STATE=success; DESC='self-tests + data validation passed'; else STATE=failure; DESC='self-tests or data validation FAILED — not merging'; fi
+          gh api "repos/${{ github.repository }}/statuses/$SHA" \
+            -f state="$STATE" \
+            -f context='pipeline gate' \
+            -f description="$DESC" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      # ------------------------------------------------------------------ #
+      # AUTO-MERGE INTO dev — and only ever into dev.
+      #
+      # The founder's rule: the pipeline's PR may land on `dev` by itself; reaching
+      # users stays a deliberate human act. Nothing here publishes. `dev` is not the
+      # default branch, the app does not read it, and promoting dev -> main is a
+      # separate command a person runs.
+      #
+      # This uses GitHub's OWN auto-merge (`gh pr merge --auto`), which queues the
+      # merge and lets branch protection and required checks decide when — or
+      # whether — it happens. It is deliberately NOT `gh pr merge` on its own, and
+      # never `--admin`: both of those merge immediately and step over exactly the
+      # gates this is supposed to respect. If the gate above failed, we do not even
+      # arm it, and the PR simply stays open for a human.
+      # ------------------------------------------------------------------ #
+      - name: Let GitHub merge it into dev
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ steps.cpr.outputs.pull-request-number }}
+          GATE: ${{ steps.gate.outcome }}
+        run: |
+          URL="${{ steps.cpr.outputs.pull-request-url }}"
+
+          if [ "$GATE" != 'success' ]; then
+            echo "::warning title=Gate failed — PR left open::PR #$PR did not pass the gate, so auto-merge was NOT armed. A human must read it."
+            echo "- :warning: **PR [#$PR]($URL) left open** — the gate failed, so it was not armed for auto-merge." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # Belt and braces on the base branch. `base: dev` is already hard-coded in
+          # the step above, but this is the last point before something merges, and
+          # the cost of being wrong here is card data landing on main — the branch the
+          # app actually reads. Read it back from the API and refuse anything else.
+          BASE=$(gh pr view "$PR" --json baseRefName --jq .baseRefName)
+          if [ "$BASE" != 'dev' ]; then
+            echo "::error title=Refusing to auto-merge::PR #$PR targets '$BASE', not dev. Nothing was merged."
+            exit 1
+          fi
+
+          if gh pr merge "$PR" --auto --squash; then
+            echo "Auto-merge armed on PR #$PR (base $BASE)."
+            echo "- :white_check_mark: **PR [#$PR]($URL)** armed for auto-merge into \`dev\`." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # The usual cause is repository setting "Allow auto-merge" being off, which
+          # it is today (`gh api repos/:owner/:repo --jq .allow_auto_merge` -> false).
+          # There is no fallback here on purpose: merging directly instead would be
+          # the force-merge this step exists to avoid.
+          echo "::warning title=Auto-merge unavailable::Could not arm auto-merge on PR #$PR. It is open and waiting for a human. Enable Settings -> General -> Pull Requests -> Allow auto-merge."
+          {
+            echo "- :warning: **PR [#$PR]($URL)** could not be armed for auto-merge and is waiting for a human."
+            echo "  Turn on **Settings → General → Pull Requests → Allow auto-merge**, and add branch protection on \`dev\` requiring the **\`pipeline gate\`** check."
+          } >> "$GITHUB_STEP_SUMMARY"
+          gh pr comment "$PR" --body "Auto-merge could not be armed on this PR, so it is waiting for a human. Repository setting **Allow auto-merge** is off. Nothing was merged and nothing was published." || true
