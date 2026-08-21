@@ -193,10 +193,14 @@ def cmd_refresh(args: argparse.Namespace) -> int:
         if not args.force and not ST.has_changed(st, s.card_id, res.text_sha256):
             unchanged += 1
             # Keep STATUS_DONE — rewriting it to "unchanged" would make has_changed
-            # true again next week and undo the whole point of the hash gate.
+            # true again next week and undo the whole point of the hash gate. Carry the
+            # reason across too: record_source replaces the entry wholesale, so without
+            # this every skipped week erases why the card finished and the "which banks
+            # publish nothing usable" answer decays back to nothing.
             ST.record_source(
                 st, s.card_id, url=s.url, content_sha256=res.text_sha256,
                 fetched_at=_now(), status=ST.STATUS_DONE,
+                done_reason=ST.done_reason(st, s.card_id),
             )
             continue
 
@@ -547,9 +551,14 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
 
     proposals: list[D.Proposal] = []
     survived = killed = unmapped = 0
+    finished: dict[str, int] = {}
+    unjudged = 0
 
     for cid, ex in extractions.items():
         if not ex.get("ok"):
+            # The extraction request itself failed, so no document was ever turned into
+            # observations. Nothing has been judged and the work is still owed: leave the
+            # card unfinished so next Monday pays for it, which is the correct bill.
             continue
         card_id = by_custom_id.get(cid)
         if card_id is None:
@@ -576,16 +585,65 @@ def _advance_verify(pending: dict, bst: dict, args: argparse.Namespace) -> int:
             kept.append(o)
             survived += 1
 
+        # ------------------------------------------------------------------
+        # Did this card FINISH, and if so with what?
+        #
+        # This used to be one `if entry is None or not kept: continue`, which skipped
+        # mark_done and so wrote the same state for two facts that are not the same:
+        #
+        #   "we read the bank's page, extracted, verified, and nothing survived"
+        #   "we have never processed this card"
+        #
+        # has_changed() needs both unchanged bytes AND status=done to skip a card, so
+        # the first fact was stored as the second and the card was re-fetched and
+        # re-extracted every Monday, forever. Measured on the 2026-08-17 state: 304 of
+        # 373 cards were stuck there, about $13 a week of re-billing for answers we
+        # already had.
+        #
+        # The fix is not "move mark_done past the continue". It is to say which of the
+        # four finished outcomes happened, and to keep the ONE genuinely unfinished
+        # case — the adversary never saw this card — out of all of them.
+        # ------------------------------------------------------------------
         entry = by_id.get(card_id)
-        if entry is None or not kept:
-            continue
-        src = ST.get_source(sources_state, card_id) or {}
-        proposals.extend(D.observations_to_proposals(entry, kept, src.get("url", "")))
 
-        ST.mark_done(sources_state, card_id)
+        if obs and not vmap:
+            # Observations exist but no verdict came back for any of them: verification
+            # was deferred because the page moved between stage 1 and stage 2, or the
+            # verdict body was unusable. The adversary never judged this card, so it is
+            # NOT finished. Paying to re-read it is the cheap error; retiring a card
+            # nobody checked is the expensive one.
+            unjudged += 1
+            continue
+
+        if entry is None:
+            # Extracted, then the card left seed/cards.json before the verdict landed.
+            # There is nothing left to propose against, and re-reading a card that is no
+            # longer in the catalogue buys nothing.
+            reason = ST.DONE_CARD_GONE
+        elif not obs:
+            reason = ST.DONE_NO_OBSERVATIONS
+        elif not kept:
+            reason = ST.DONE_ALL_REFUTED
+        else:
+            reason = ST.DONE_VERIFIED
+            src = ST.get_source(sources_state, card_id) or {}
+            proposals.extend(D.observations_to_proposals(entry, kept, src.get("url", "")))
+
+        ST.mark_done(sources_state, card_id, reason)
+        finished[reason] = finished.get(reason, 0) + 1
 
     ST.save_state(sources_state)
     ok(f"{survived} observations survived verification, {killed} refuted or unverified")
+    if finished:
+        ok("cards finished this cycle: " + ", ".join(
+            f"{n} {r}" for r, n in sorted(finished.items(), key=lambda kv: -kv[1])))
+    nothing = sum(n for r, n in finished.items() if r in ST.DONE_REASONS_NOTHING_KEPT)
+    if nothing:
+        ok(f"{nothing} cards finished with nothing to propose — that is an answer, not a "
+           f"failure, and they will not be re-billed until their source bytes move")
+    if unjudged:
+        warn(f"{unjudged} card(s) had observations the adversary never judged — left "
+             f"unfinished on purpose, they will be re-read next run")
     if unmapped:
         warn(f"{unmapped} extraction(s) could not be mapped back to a card — investigate")
     if not proposals:
