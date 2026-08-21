@@ -291,7 +291,28 @@ def build_news_request(issuer: str, url: str, document_text: str) -> dict[str, A
     }
 
 
-def run_sync(requests: list[dict[str, Any]], *, client: Any = None) -> list[dict[str, Any]]:
+def estimate_sync_cost(requests: list[dict[str, Any]]) -> dict[str, Any]:
+    """Price a run_sync call. Same estimator, at STANDARD rates.
+
+    estimate_cost applies BATCH_DISCOUNT because everything else in this module goes
+    through the Batch API. run_sync does not — it calls messages.create directly and
+    pays list price — so its figures are exactly twice the batch ones. Getting this
+    wrong halves the number a ceiling is compared against, which is the direction that
+    costs money.
+    """
+    est = dict(estimate_cost(requests, model_of(requests)))
+    for key in ("est_usd", "est_usd_ceiling"):
+        est[key] = est[key] / C.BATCH_DISCOUNT
+    est["est_usd_uncached"] = est["est_usd"]
+    return est
+
+
+def run_sync(
+    requests: list[dict[str, Any]],
+    *,
+    client: Any = None,
+    max_usd: float | None = -1.0,
+) -> list[dict[str, Any]]:
     """Run requests synchronously and return their parsed bodies, in input order.
 
     The news path uses this rather than the Batch API on purpose. A batch can take up
@@ -302,11 +323,32 @@ def run_sync(requests: list[dict[str, Any]], *, client: Any = None) -> list[dict
 
     A request that fails returns {} in its slot rather than raising: one unreachable
     issuer must not lose the other eleven.
+
+    SPEND CEILING. This path had none. It is a PAID path — messages.create, at standard
+    rates — fired daily by cron, and config.py claimed the card ceiling "applies to
+    EVERY submission, scheduled or manual, because batch.submit() defaults to it",
+    which run_sync never touches. 7 uncapped model runs a week, priced at ~$2.34 a day
+    on 11 pages. `max_usd` defaults to the sentinel -1.0 meaning config.MAX_NEWS_USD;
+    None disables the check.
     """
     if not isinstance(requests, list):
         raise ValueError(f"requests must be a list, got {type(requests).__name__}")
     if not requests:
         return []
+
+    if max_usd == -1.0:
+        max_usd = C.MAX_NEWS_USD
+    if max_usd is not None:
+        est = estimate_sync_cost(requests)
+        budgeted = est["est_usd"] * C.ESTIMATE_SAFETY_FACTOR
+        if budgeted > max_usd:
+            raise ValueError(
+                f"{len(requests)} synchronous requests are estimated at "
+                f"${est['est_usd']:.2f} at standard rates — ${budgeted:.2f} with the "
+                f"{C.ESTIMATE_SAFETY_FACTOR}x under-estimate margin, ceiling "
+                f"${est['est_usd_ceiling']:.2f} — above the ${max_usd:.2f} news spend "
+                f"limit, refusing to run. Raise MAX_NEWS_USD in pipeline/config.py."
+            )
 
     if client is None:
         client = _client()
@@ -396,6 +438,21 @@ def _volatile_text(params: dict[str, Any]) -> str:
         elif isinstance(content, list):
             out.extend(b.get("text", "") for b in content if isinstance(b, dict))
     return "".join(out)
+
+
+def model_of(requests: list[dict[str, Any]]) -> str:
+    """The model a request list will actually be billed at.
+
+    _validate_requests guarantees every request carries params.model, and a batch is
+    built by one builder so they agree. Reading it here rather than assuming
+    C.EXTRACT_MODEL is what keeps a cost check honest when the two model constants are
+    overridden apart.
+    """
+    for request in requests:
+        model = _params_of(request).get("model")
+        if isinstance(model, str) and model in C.PRICING:
+            return model
+    return C.EXTRACT_MODEL
 
 
 def estimate_cost(requests: list[dict[str, Any]], model: str) -> dict[str, Any]:
@@ -554,28 +611,39 @@ def submit(
     future full-catalogue sweep fails loudly here instead of at the API.
 
     SPEND CEILING. `max_usd` defaults to the sentinel -1.0 meaning "use
-    config.MAX_BATCH_USD"; pass None to disable the check or a float to override
+    config.MAX_CYCLE_USD"; pass None to disable the check or a float to override
     it. A batch estimated above the ceiling raises rather than prompting — this
     runs unattended on a cron, so there is nobody to answer a prompt, and the
     failure being prevented is a scheduled job quietly billing a full sweep. It
     has happened: the 17-Aug cycle cost $94.55 against a $68.63 estimate, and
     nothing in the pipeline would have stopped it repeating every Monday.
 
-    The check reads est_usd, which is an estimate — so the ceiling is a
-    tripwire, not a guarantee. est_usd_ceiling is the bound the bill cannot
-    exceed, and it is included in the error so the reader can judge both.
+    This is the LAST line of defence, not the accounting. The caller in cli.py
+    knows what the rest of the cycle has already committed and checks that; this
+    only knows about the requests in its hand. It applies the same
+    ESTIMATE_SAFETY_FACTOR, so it can never be the looser of the two.
+
+    The model is read off the requests, not assumed. It used to price every batch
+    with C.EXTRACT_MODEL even when handed verification requests built with
+    C.VERIFY_MODEL. Both resolve to claude-opus-5 today, but each is separately
+    overridable through the environment (KREDME_EXTRACT_MODEL /
+    KREDME_VERIFY_MODEL), and setting only one of them would have priced the last
+    guard before a paid submission against a model the batch does not use.
     """
     _validate_requests(requests)
 
     if max_usd == -1.0:
-        max_usd = C.MAX_BATCH_USD
+        max_usd = C.MAX_CYCLE_USD
     if max_usd is not None and requests:
-        est = estimate_cost(requests, C.EXTRACT_MODEL)
-        if est["est_usd"] > max_usd:
+        est = estimate_cost(requests, model_of(requests))
+        budgeted = est["est_usd"] * C.ESTIMATE_SAFETY_FACTOR
+        if budgeted > max_usd:
             raise ValueError(
                 f"batch of {len(requests)} requests is estimated at "
-                f"${est['est_usd']:.2f} (ceiling ${est['est_usd_ceiling']:.2f}), "
-                f"above the ${max_usd:.2f} spend limit — refusing to submit. "
+                f"${est['est_usd']:.2f} — ${budgeted:.2f} with the "
+                f"{C.ESTIMATE_SAFETY_FACTOR}x under-estimate margin, "
+                f"ceiling ${est['est_usd_ceiling']:.2f} — "
+                f"above the ${max_usd:.2f} spend limit, refusing to submit. "
                 f"Raise it deliberately with --max-usd if this sweep is intended."
             )
 

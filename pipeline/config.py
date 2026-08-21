@@ -85,26 +85,110 @@ VERIFY_MAX_TOKENS = 16000
 # cache costs $1.10 across the whole batch. The gap is output, nothing else.
 #
 # These figures make est_usd land near the real bill. They remain an estimate; the
-# guarantee is still est_usd_ceiling, and MAX_BATCH_USD below is the hard stop.
+# guarantee is still est_usd_ceiling, and MAX_CYCLE_USD below is the hard stop.
 TYPICAL_OUTPUT_TOKENS = {"extract": 5500, "verify": 5500, "news": 3000}
 DEFAULT_TYPICAL_OUTPUT_TOKENS = 5000
 
-# Hard spend ceiling per batch. submit() refuses above this and exits rather than
-# asking; a run that silently bills $95 twice is the failure being prevented, and it
-# has already happened once. Raise it deliberately with --max-usd, never by editing
-# this in passing. None disables the check.
+# ===========================================================================
+# THE WEEKLY SPEND CEILING — this is the one number to change.
+# ===========================================================================
 #
-# 25, priced off the real 17-Aug batch rather than guessed. Extraction of the full
-# 371-card catalogue estimates $59.74 (input $34.23 + output $25.51), and the two
-# passes together billed $94.55. Per-card that is ~$0.16 to extract:
+# TO CHANGE WHAT MONDAY MAY SPEND, EDIT THE NUMBER ON THE `MAX_CYCLE_USD =` LINE
+# BELOW AND MERGE IT TO `dev`. Nothing else needs touching, and no workflow file
+# needs editing: weekly-refresh.yml and pipeline-advance.yml both check out `dev`,
+# so this constant is what the Monday 03:00 UTC cron actually enforces.
 #
-#      20 cards  ~$3.22        150 cards  ~$24.15
-#      50 cards  ~$8.05        371 cards  ~$59.74   <- a full sweep
+# WHAT IT CAPS, EXACTLY. One Monday CYCLE — both paid submissions together, the
+# extraction batch from weekly-refresh.yml and the verification batch that
+# pipeline-advance.yml submits two hours later. It used to be a per-BATCH tripwire
+# checked twice against the same number, which authorised roughly twice what it
+# said: verification costs 1.017x extraction on the same card set, so "$15" bought
+# a ~$30 cycle. Stage 1 now reserves room for the verification it knows is coming,
+# and stage 2 checks what stage 1 already spent, so the number below is the number.
 #
-# So 25 clears an ordinary incremental week by roughly 3x and stops a full sweep
-# dead. 60 was the first value here and it was wrong in the way thresholds usually
-# are — it sat ON the number it was meant to catch, and would not have fired.
-MAX_BATCH_USD = 25.0
+# It does NOT cover the daily news-watch path, which runs synchronously at standard
+# rates and has its own ceiling — MAX_NEWS_USD, below. Card refresh and news watch
+# are two different bills and one constant cannot honestly describe both.
+#
+# A manual run may override it for one invocation with `--max-usd N` (and
+# `--max-usd 0` turns the check off); the scheduled run passes no flag at all,
+# which is deliberate — the unattended path gets the safe default and cannot be
+# talked out of it by a forgotten input. Both workflows also accept a `max_usd`
+# workflow_dispatch input, and BOTH must be given the same value: raising it on
+# stage 1 alone pays for extraction and then refuses to pay for the verification
+# that turns it into an answer, which strands the money.
+#
+# Above the ceiling the run REFUSES and exits non-zero. It does not trim the batch
+# to fit. A silently shortened sweep looks identical to a cheap week in the job
+# summary, and the cards it dropped would be invisible.
+#
+# WHAT $15 BUYS. Extraction runs ~$0.16 a card as an estimate. The gate is applied
+# to the estimate multiplied by ESTIMATE_SAFETY_FACTOR (below) and then doubled for
+# the verification half, so:
+#
+#      cards   est. extract   est. cycle   gated-on figure
+#         20        $3.22        $6.60        $9.24
+#         32        $5.15       $10.56       $14.79   <- this ceiling
+#         50        $8.05       $16.50       $23.11
+#        371       $59.74      $122.47      $171.45   <- a full sweep
+#
+# So 15 lets an ordinary incremental week through and stops both a full sweep and a
+# whole-issuer template churn. About 32 cards a week, not the 94 a per-batch reading
+# of the same number implied.
+#
+# The previous value was 25.0, chosen on 2026-08-18. None disables the check
+# entirely — do not.
+MAX_CYCLE_USD = 15.0
+
+# The estimator has been wrong once, in the expensive direction: est_usd said $68.63
+# for the 17-Aug cycle and the console billed $94.55, 38% more. TYPICAL_OUTPUT_TOKENS
+# above was then re-solved to make that one observation land exactly, which means it
+# is a single-point fit with no margin — a 5,500-token mean means roughly half of all
+# future batches exceed it.
+#
+# So the ceiling is applied to est_usd * this factor, not to est_usd. An
+# under-estimate is the direction that costs money, and this repo has already been
+# burned by it once. 1.4 covers the one miss on record with a little room.
+#
+# It is NOT applied to est_usd_ceiling — that figure bills every request at its full
+# max_tokens and overstates by ~1.76x on a real mix, so gating on it would refuse
+# ordinary weeks. Both numbers are printed in every refusal.
+ESTIMATE_SAFETY_FACTOR = 1.4
+
+# Verification's input is the document PLUS the extractor's observations, so it costs
+# slightly more per card than extraction did. Measured with this repo's own estimator
+# across 60-120 cards: 1.017x, flat. Stage 1 reserves this much again on top of its
+# own estimate, so a batch that only just fits cannot leave its verification half
+# unaffordable and the paid extraction stranded.
+VERIFY_COST_RATIO = 1.05
+
+# The daily news-watch path (cron 02:30 UTC) is a SEPARATE bill: it runs synchronously
+# through batch.run_sync, so it pays STANDARD rates with no batch discount, and until
+# now it had no ceiling of any kind. 11 watched pages price at ~$2.34 typical /
+# ~$5.91 worst case on a day when every page has moved; a normal day is a fraction of
+# that because most pages do not move. 3.00 clears a day on which every page moved
+# and refuses anything larger.
+MAX_NEWS_USD = 3.0
+
+# ---------------------------------------------------------------------------
+# Two floors that decide whether we are allowed to call a card FINISHED.
+# ---------------------------------------------------------------------------
+# A document shorter than this is not a document. 19 live BOBCARD cards were retired
+# for good against 188 characters — the whole of bobcard.co.in/credit-card's
+# extractable text is its navigation menu ("FAQ / Careers / Get In Touch / ...").
+# "The extractor found nothing in it" is true of that page and says nothing about any
+# card. fetch.py's only content guard requires the text to be COMPLETELY empty, so
+# 188 characters of nav passes as a healthy read; this is the floor that catches it.
+MIN_SOURCE_CHARS = 2000
+
+# How long a `done` verdict may suppress a re-read when the bytes it was made against
+# are NOT that card's own page — an issuer card-listing page shared with 20 other
+# cards. Indefinitely is wrong: the bank can reprice the card without touching the
+# listing, and we would never look again. 30 days bounds the re-billing (one re-read a
+# month per affected card, not one a week) while guaranteeing the card is eventually
+# read. The real fix for these cards is a card-specific URL in
+# pipeline/sources_overrides.json; this is the floor under that backlog.
+SHARED_SOURCE_MAX_AGE_DAYS = 30
 
 # Published list prices, $/1M tokens. Batch halves both.
 PRICING = {

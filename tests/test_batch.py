@@ -178,7 +178,7 @@ class TestImportsWithoutSDK(unittest.TestCase):
 
 # ---------------------------------------------------------------------------
 class TestSpendCeiling(unittest.TestCase):
-    """submit() refuses a batch estimated above config.MAX_BATCH_USD.
+    """submit() refuses a batch estimated above config.MAX_CYCLE_USD.
 
     This runs unattended on a Monday cron, so there is nobody to answer a
     prompt — it raises instead. The failure being prevented is real: the 17-Aug
@@ -214,10 +214,33 @@ class TestSpendCeiling(unittest.TestCase):
     def test_the_default_ceiling_sits_below_a_full_sweep(self):
         # The calibration itself, pinned. 60 was the first value and it sat ON
         # the number it was meant to catch, so it would never have fired.
-        sweep = batch.estimate_cost(self._reqs(371), C.EXTRACT_MODEL)["est_usd"]
-        week = batch.estimate_cost(self._reqs(30), C.EXTRACT_MODEL)["est_usd"]
-        self.assertLess(C.MAX_BATCH_USD, sweep, "ceiling would not stop a full sweep")
-        self.assertGreater(C.MAX_BATCH_USD, week * 2, "ceiling too tight for a normal week")
+        #
+        # Both sides are compared in BUDGETED dollars — est_usd x the margin the
+        # estimator has historically needed — because that is what the ceiling is
+        # actually applied to. Comparing the raw estimate here would pin a looser
+        # number than the code enforces.
+        f = C.ESTIMATE_SAFETY_FACTOR
+        sweep = batch.estimate_cost(self._reqs(371), C.EXTRACT_MODEL)["est_usd"] * f
+        week = batch.estimate_cost(self._reqs(30), C.EXTRACT_MODEL)["est_usd"] * f
+        self.assertLess(C.MAX_CYCLE_USD, sweep, "ceiling would not stop a full sweep")
+        self.assertGreater(C.MAX_CYCLE_USD, week * 2,
+                           "ceiling too tight for a normal week")
+
+    def test_the_ceiling_is_priced_against_the_model_the_batch_will_use(self):
+        """submit() used to price EVERY batch with C.EXTRACT_MODEL.
+
+        Both model constants resolve to claude-opus-5 today, but each is separately
+        overridable through the environment, and setting only one would have priced the
+        last guard before a paid submission against a model the batch does not use.
+        """
+        vreqs = [batch.build_verify_request("c1", "y" * 40_000, [])]
+        self.assertEqual(batch.model_of(vreqs), C.VERIFY_MODEL)
+        ereqs = self._reqs(1)
+        self.assertEqual(batch.model_of(ereqs), C.EXTRACT_MODEL)
+        with mock.patch.object(C, "VERIFY_MODEL", "claude-haiku-4-5"):
+            vreqs = [batch.build_verify_request("c1", "y" * 40_000, [])]
+            self.assertEqual(batch.model_of(vreqs), "claude-haiku-4-5",
+                             "the model must be read off the request, not assumed")
 
 
 class TestCustomId(unittest.TestCase):
