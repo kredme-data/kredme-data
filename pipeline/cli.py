@@ -30,6 +30,7 @@ from __future__ import annotations
 import argparse
 import datetime as _dt
 import json
+import os
 import pathlib
 import sys
 
@@ -76,6 +77,86 @@ def head(msg: str) -> None:
 def _work_dir() -> pathlib.Path:
     C.WORK_DIR.mkdir(parents=True, exist_ok=True)
     return C.WORK_DIR
+
+
+# ---------------------------------------------------------------------------
+# Spend ceiling — the loud half
+#
+# batch.submit() already refuses above config.MAX_BATCH_USD by raising, and that
+# refusal is what actually protects the card. What it could not do was be SEEN: the
+# exception surfaced as one `FAIL batch submission failed: ...` line, indistinguishable
+# from an expired API key, in a log whose job summary prints only the first 120 lines —
+# and on a 350-card week the fetch warnings alone can push that line past 120.
+#
+# So the ceiling is checked here too, before submitting, and reports itself through the
+# three channels a person actually reads: the log, a red ::error:: annotation at the top
+# of the run, and its own block in the job summary.
+# ---------------------------------------------------------------------------
+def _in_actions() -> bool:
+    return os.environ.get("GITHUB_ACTIONS", "").lower() == "true"
+
+
+def _annotate(title: str, message: str) -> None:
+    """Raise a red annotation on the run itself. A no-op outside Actions."""
+    if not _in_actions():
+        return
+    # Annotations are one line; newlines terminate the command and lose the rest.
+    flat = " ".join(message.split())
+    print(f"::error title={title}::{flat}")
+
+
+def _summary(markdown: str) -> None:
+    """Append a block to the GitHub job summary. A no-op outside Actions."""
+    path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not path:
+        return
+    try:
+        with open(path, "a", encoding="utf-8") as fh:
+            fh.write(markdown.rstrip() + "\n\n")
+    except OSError:  # pragma: no cover - a summary we cannot write must not kill the run
+        pass
+
+
+def _ceiling_verdict(est: dict, limit: "float | None", *, stage: str) -> str:
+    """"" when this batch is affordable, otherwise a human-readable refusal.
+
+    Returns the message rather than printing it so the caller decides whether this is a
+    refusal (a real run) or a forecast (a dry run). The wording says REFUSING, never
+    "trimming": the batch is not shortened to fit, because a silently shortened sweep
+    reads exactly like a cheap week and the cards it dropped would be invisible.
+    """
+    if limit is None:
+        return ""
+    if est["est_usd"] <= limit:
+        return ""
+    return (
+        f"{stage} would cost an estimated ${est['est_usd']:.2f} "
+        f"(ceiling ${est['est_usd_ceiling']:.2f}) for {est['requests']} cards, "
+        f"above the ${limit:.2f} weekly spend limit. REFUSING to submit. "
+        f"Nothing has been spent. To allow it, either raise MAX_BATCH_USD in "
+        f"pipeline/config.py (one line, merged to dev) or re-run this workflow by hand "
+        f"with --max-usd set above ${est['est_usd']:.2f}."
+    )
+
+
+def _report_ceiling_refusal(message: str, *, forecast: bool) -> None:
+    """Print the refusal everywhere a person might be looking."""
+    verb = "WOULD REFUSE (dry run — nothing was going to be submitted anyway)" \
+        if forecast else "REFUSED"
+    fail(f"SPEND CEILING {verb}")
+    fail(message)
+    if forecast:
+        _summary(f"## Spend ceiling — a real run would refuse\n\n{message}")
+        return
+    _annotate("Spend ceiling exceeded — nothing submitted, nothing spent", message)
+    _summary(
+        "## :octagonal_sign: Spend ceiling exceeded — nothing was submitted\n\n"
+        f"{message}\n\n"
+        "The ceiling lives in **`pipeline/config.py`**, on the `MAX_BATCH_USD = ` line. "
+        "That single constant is what the Monday cron enforces — both scheduled "
+        "workflows check out `dev`, so changing it there is enough and no workflow file "
+        "needs editing."
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -230,19 +311,36 @@ def cmd_refresh(args: argparse.Namespace) -> int:
         for s, text in changed
     ]
     est = B.estimate_cost(reqs, C.EXTRACT_MODEL)
+    limit = _max_usd(args)
     ok(f"{est['requests']} requests, ~{est['est_input_tokens']:,} input tokens")
     ok(f"estimated ${est['est_usd']:.2f} (ceiling ${est['est_usd_ceiling']:.2f}) "
        f"— ${est['est_usd_uncached']:.2f} without the batch discount")
+    ok(f"spend limit ${limit:.2f}" if limit is not None else "spend limit DISABLED")
+
+    over = _ceiling_verdict(est, limit, stage="extraction")
 
     if args.dry_run:
+        # A dry run is how a person finds out what Monday will do, so it has to answer
+        # the money question too — silently reporting an estimate the scheduled run will
+        # then refuse is the surprise this whole exercise exists to remove.
+        if over:
+            _report_ceiling_refusal(over, forecast=True)
+        else:
+            ok("this is within the spend limit — the scheduled run would submit it")
         ok("dry run — nothing submitted, nothing spent")
         (_work_dir() / "extract_requests.json").write_text(
             json.dumps(reqs, indent=2)[:2_000_000], encoding="utf-8"
         )
         return 0
 
+    if over:
+        _report_ceiling_refusal(over, forecast=False)
+        # Exit non-zero so the step, the job and the run all go red. A ceiling breach
+        # that returned 0 would sit in a green run and be found by the invoice.
+        return 2
+
     try:
-        batch_id = B.submit(reqs, max_usd=_max_usd(args))
+        batch_id = B.submit(reqs, max_usd=limit)
     except Exception as exc:  # noqa: BLE001 - surface any SDK/transport failure as exit 2
         fail(f"batch submission failed: {exc}")
         return 2
@@ -472,14 +570,38 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
         return 0
 
     est = B.estimate_cost(vreqs, C.VERIFY_MODEL)
+    limit = _max_usd(args)
     ok(f"{est['requests']} verification requests, estimated ${est['est_usd']:.2f} "
        f"(ceiling ${est['est_usd_ceiling']:.2f})")
+    ok(f"spend limit ${limit:.2f}" if limit is not None else "spend limit DISABLED")
+
+    # Verification is the SECOND half of the week's bill and it runs from a different
+    # cron, so a ceiling applied only at stage 1 would let the expensive half through
+    # unattended. Same constant, same refusal, same loudness.
+    over = _ceiling_verdict(est, limit, stage="verification")
+
     if args.dry_run:
+        if over:
+            _report_ceiling_refusal(over, forecast=True)
         ok("dry run — not submitting verification")
         ST.save_batch_state(bst)
         return 0
 
-    vid = B.submit(vreqs, max_usd=_max_usd(args))
+    if over:
+        _report_ceiling_refusal(over, forecast=False)
+        # The extractions are already collected and committed, and `advance` only looks
+        # at batches still marked 'submitted' — so it will not come back here on its own.
+        # Spell out the free way back in; re-collecting an ended batch is a read.
+        recover = (f"The {len(good)} extractions are already paid for and committed. After "
+                   f"raising the ceiling, recover them for free with: "
+                   f"python3 pipeline/cli.py advance --recollect {bid}")
+        fail(recover)
+        _summary(f"**Recovering the paid-for work:** `python3 pipeline/cli.py advance "
+                 f"--recollect {bid}`")
+        ST.save_batch_state(bst)
+        return 2
+
+    vid = B.submit(vreqs, max_usd=limit)
     ST.add_batch(bst, batch_id=vid, kind="verify", submitted_at=_now(), count=len(vreqs))
     ST.save_batch_state(bst)
     ok(f"submitted verification batch {vid}")
@@ -842,7 +964,16 @@ def cmd_discover(args: argparse.Namespace) -> int:
 
 
 # ---------------------------------------------------------------------------
-def main() -> int:
+def build_parser() -> argparse.ArgumentParser:
+    """The CLI surface, separated from main() so tests can parse real argv.
+
+    That separation is load-bearing rather than tidy: the scheduled Monday run gets
+    its flags from a bash string that weekly-refresh.yml assembles out of
+    workflow_dispatch inputs, and on a cron every one of those inputs is empty. The
+    only honest way to test "what does the unattended run actually do" is to hand
+    THIS parser the same empty argv the workflow produces, rather than hand-building
+    a Namespace whose defaults the test author chose.
+    """
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
 
@@ -886,7 +1017,11 @@ def main() -> int:
                    help="merge verified matches into pipeline/sources_overrides.json")
     d.set_defaults(fn=cmd_discover)
 
-    args = p.parse_args()
+    return p
+
+
+def main() -> int:
+    args = build_parser().parse_args()
     return args.fn(args)
 
 

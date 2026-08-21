@@ -89,22 +89,40 @@ VERIFY_MAX_TOKENS = 16000
 TYPICAL_OUTPUT_TOKENS = {"extract": 5500, "verify": 5500, "news": 3000}
 DEFAULT_TYPICAL_OUTPUT_TOKENS = 5000
 
-# Hard spend ceiling per batch. submit() refuses above this and exits rather than
-# asking; a run that silently bills $95 twice is the failure being prevented, and it
-# has already happened once. Raise it deliberately with --max-usd, never by editing
-# this in passing. None disables the check.
+# ===========================================================================
+# THE WEEKLY SPEND CEILING — this is the one number to change.
+# ===========================================================================
 #
-# 25, priced off the real 17-Aug batch rather than guessed. Extraction of the full
-# 371-card catalogue estimates $59.74 (input $34.23 + output $25.51), and the two
-# passes together billed $94.55. Per-card that is ~$0.16 to extract:
+# TO CHANGE WHAT MONDAY MAY SPEND, EDIT THE NUMBER ON THE `MAX_BATCH_USD =` LINE
+# BELOW AND MERGE IT TO `dev`. Nothing else needs touching, and no workflow file
+# needs editing: weekly-refresh.yml and pipeline-advance.yml both check out `dev`,
+# so this constant is what the Monday 03:00 UTC cron actually enforces.
 #
-#      20 cards  ~$3.22        150 cards  ~$24.15
-#      50 cards  ~$8.05        371 cards  ~$59.74   <- a full sweep
+# It applies to EVERY submission, scheduled or manual, because batch.submit()
+# defaults to it. A manual run may override it for one invocation with
+# `--max-usd N` (and `--max-usd 0` turns the check off); the scheduled run passes
+# no flag at all, which is deliberate — the unattended path gets the safe default
+# and cannot be talked out of it by a forgotten input.
 #
-# So 25 clears an ordinary incremental week by roughly 3x and stops a full sweep
-# dead. 60 was the first value here and it was wrong in the way thresholds usually
-# are — it sat ON the number it was meant to catch, and would not have fired.
-MAX_BATCH_USD = 25.0
+# Above the ceiling the run REFUSES and exits non-zero. It does not trim the batch
+# to fit. A silently shortened sweep looks identical to a cheap week in the job
+# summary, and the cards it dropped would be invisible.
+#
+# 15 (about Rs 1,300), set 2026-08-21 by the founder. Priced off the real 17-Aug
+# batch: extraction runs ~$0.16 a card, so
+#
+#      20 cards  ~$3.22         94 cards  ~$15.00   <- this ceiling
+#      50 cards  ~$8.05        233 cards  ~$37.95
+#      90 cards  ~$14.49       371 cards  ~$59.74   <- a full sweep
+#
+# So 15 lets an ordinary incremental week (a few dozen cards) through and stops
+# both a full sweep and a whole-issuer template churn. It is a tripwire on an
+# ESTIMATE, not a guarantee: est_usd_ceiling is the bound the bill cannot exceed,
+# and both numbers appear in the refusal so a human can judge them.
+#
+# The previous value was 25.0, chosen on 2026-08-18 to clear a typical week 3x.
+# None disables the check entirely — do not.
+MAX_BATCH_USD = 15.0
 
 # Published list prices, $/1M tokens. Batch halves both.
 PRICING = {
