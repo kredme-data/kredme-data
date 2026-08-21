@@ -119,6 +119,13 @@ concurrency:
 permissions:
   contents: write
   pull-requests: write
+  # statuses: write publishes the gate result below as a real commit status on this
+  # job's PR. PIPELINE_PR_TOKEN is not set, so this PR is opened with GITHUB_TOKEN and
+  # GitHub deliberately does not fire `on: pull_request` workflows for those — PR #48
+  # rewrote seed/cards.json and merged showing "no checks reported". pipeline-advance.yml
+  # solved that with a self-published `pipeline gate` status; this is the same pattern,
+  # here, so BOTH bot lanes arrive with evidence instead of only one.
+  statuses: write
 
 jobs:
   data-quality:
@@ -471,11 +478,43 @@ jobs:
       # add-paths is explicit: this job may only ever propose the three data files it
       # actually edits, plus the ratchet baseline. It can never sweep a stray build
       # artifact, a log or a backup into a data PR.
+      # The same commands validate.yml runs on a human PR, run here on the tree that is
+      # about to become the PR — because nothing else will ever run them on it.
+      # continue-on-error so a failing gate still leaves a PR for a person to read; the
+      # commit status below is what says whether it passed.
+      - name: Gate the repaired tree
+        if: >-
+          steps.apply.outcome == 'success' &&
+          steps.apply.outputs.applied != '0' &&
+          steps.apply.outputs.fixexit != '4'
+        id: dq_gate
+        continue-on-error: true
+        run: |
+          python3 tools/test_pipeline.py
+          python3 tools/test_validate_cards.py
+          python3 tools/test_fix_cards.py
+          python3 tests/run_all.py
+          python3 tools/kredme.py validate --target working
+          python3 - <<'RATCHET'
+          import json, sys, collections, pathlib
+          rep = json.load(open('validate-after.json'))
+          now = sum(collections.Counter(
+              x['code'] for x in rep['findings'] if x['severity'] == 'ERROR').values())
+          base = json.loads(pathlib.Path('tools/validated_baseline.json').read_text())
+          allowed = base.get('errors', sum(base.get('errors_by_code', {}).values()))
+          print(f'validator errors after the sweep: {now}  baseline: {allowed}')
+          if now > allowed:
+              print(f'FAIL the sweep adds {now - allowed} validator error(s).')
+              sys.exit(1)
+          print('OK   the ratchet holds.')
+          RATCHET
+
       - name: Open a PR against dev with the repairs
         if: >-
           steps.apply.outcome == 'success' &&
           steps.apply.outputs.applied != '0' &&
           steps.apply.outputs.fixexit != '4'
+        id: dq_pr
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c
         with:
           # A PR opened with the default GITHUB_TOKEN does not trigger
@@ -513,6 +552,28 @@ jobs:
             (${{ steps.apply.outputs.applied }} repairs, ${{ steps.cfg.outputs.confidence }})
           body-path: pr_body.md
           labels: data-quality, needs-human-review
+
+      # Turn the in-job gate into something GitHub can show and branch protection can
+      # require, exactly as pipeline-advance.yml does. Without it this PR carries the
+      # literal words "no checks reported" while rewriting the file the app ships.
+      - name: Publish the gate result on the PR
+        if: always() && steps.dq_pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ steps.dq_pr.outputs.pull-request-head-sha }}
+          RESULT: ${{ steps.dq_gate.outcome }}
+        run: |
+          if [ "$RESULT" = 'success' ]; then
+            STATE=success; DESC='self-tests, data validation and the validator ratchet passed'
+          else
+            STATE=failure; DESC='self-tests, data validation or the validator ratchet FAILED — do not merge'
+          fi
+          gh api "repos/${{ github.repository }}/statuses/$SHA" \
+            -f state="$STATE" \
+            -f context='pipeline gate' \
+            -f description="$DESC" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          echo "- \`pipeline gate\` published as **$STATE** on the PR head." >> "$GITHUB_STEP_SUMMARY"
 
       # ------------------------------------------------------------------ #
       # 7. ARTIFACTS — so a non-engineer can read the result without a terminal

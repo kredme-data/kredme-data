@@ -134,6 +134,49 @@ inside the functions that call it, and CI fails if someone moves that to module 
 
 Promoting `dev → main` stays a separate, deliberate act: `tools/kredme.py promote`.
 
+### When is a card finished?
+
+`has_changed()` will skip a card only when BOTH its source bytes are unchanged AND it is
+marked `done`. So "finished" is the flag that stops us paying for a card again, and it
+has to mean exactly one thing: **stage 3 judged this card.** `pipeline/state/sources.json`
+now records which of four things happened:
+
+| `done_reason` | What it means |
+|---|---|
+| `verified` | At least one observation survived the adversary and became a proposal. |
+| `all_refuted` | We proposed things and the adversary killed every one. A completed cycle. |
+| `no_observations` | We read the document and the extractor found nothing worth proposing. Also a completed cycle — and the answer to "which banks publish nothing we can use?", which used to be invisible. |
+| `card_gone` | The card left `seed/cards.json` between fetch and verdict. |
+
+Two cases are deliberately NOT finished, and are re-read (and re-billed) next Monday:
+
+- the extraction request itself failed — no document was ever turned into observations;
+- observations exist but **no verdict came back for any of them**. That happens when the
+  page moved between stage 1 and stage 2, so verification was deferred. Nobody judged the
+  card. Paying to re-read it is the cheap error; retiring a card nobody checked is not.
+
+None of this can strand a card. A `done` card whose source bytes later move is re-read
+like any other — the reason is evidence for a human, never a suppression rule.
+
+### Auto-merge into `dev`
+
+Stage 3's PR arms **GitHub's own auto-merge** (`gh pr merge --auto`) against `dev`, never
+`main`, and only after the job has run the same gate `validate.yml` runs. Never `--admin`,
+never a direct merge. A PR that fails the gate stays open for a person.
+
+Two one-time repository settings make GitHub — rather than this job — the thing enforcing
+that gate, and neither is on today:
+
+1. **Settings → General → Pull Requests → Allow auto-merge.** Without it the job leaves
+   the PR open and says so; it never falls back to merging directly.
+2. **Branch protection on `dev` requiring the `pipeline gate` status.** The job publishes
+   its gate result as a commit status under that name, so protection can require it.
+
+A third, optional: set a `PIPELINE_PR_TOKEN` secret (a PAT or GitHub App installation
+token). A PR opened with the default `GITHUB_TOKEN` does not fire `on: pull_request`
+workflows at all — measured, not assumed: bot PR #62 shows "no checks reported", the
+human-opened #61 beside it shows "Self-tests + data validation SUCCESS".
+
 ---
 
 ## The guards, and what each one is for
@@ -210,9 +253,55 @@ deciding whether to approve a sweep: `est_usd` assumes a typical response size a
 low the first time it met reality, whereas `est_usd_ceiling` bills every request's full
 `max_tokens` and is the number the bill cannot exceed.
 
-**A batch estimated above `config.MAX_BATCH_USD` ($25) is refused, not submitted.** It
-raises rather than prompting, because this runs on a cron with nobody to answer. Override
-deliberately with `--max-usd N`; `--max-usd 0` disables it.
+### The spend ceiling — one number, one place, one CYCLE
+
+**A cycle estimated above `config.MAX_CYCLE_USD` is refused outright, not trimmed to
+fit.** It refuses rather than prompting, because this runs on a cron with nobody there to
+answer, and it refuses rather than shortening the batch, because a silently shortened
+sweep reads exactly like a cheap week and the cards it dropped are invisible.
+
+The ceiling is **$15** (about Rs 1,300), set 2026-08-21.
+
+**It caps a CYCLE, not a batch.** One Monday cycle is two paid submissions: the
+extraction batch from `weekly-refresh.yml` and the verification batch
+`pipeline-advance.yml` submits about two hours later. Verification costs slightly *more*
+per card than extraction (same model and same typical output, but its input is the
+document **plus** the observations), so checking each half independently against the same
+constant authorised roughly twice what the constant said. Stage 1 now reserves room for
+the verification it is about to make inevitable, records what it committed in
+`pipeline/state/batch.json`, and stage 2 counts that against the same ceiling.
+
+**It is applied to a MARGINED estimate, not the raw one.** `est_usd` is a single-point
+fit against one observed bill, and it missed that bill by 38% in the expensive direction
+($68.63 estimated, $94.55 billed). So the gate compares
+`est_usd x config.ESTIMATE_SAFETY_FACTOR` (1.4). `est_usd_ceiling` is not used as the
+gate because it bills every request at its full `max_tokens` and overshoots ~1.76x on a
+real mix, which would refuse ordinary weeks. All three numbers appear in every refusal.
+
+At $15 that is about **32 cards a week**.
+
+**It does NOT cover the daily news watch.** That path calls `messages.create` directly
+through `batch.run_sync`, pays standard rates with no batch discount, and has its own
+ceiling: `config.MAX_NEWS_USD` ($3.00 a day).
+
+**To change it: edit the `MAX_CYCLE_USD = ` line in `pipeline/config.py` and merge to
+`dev`. That is the whole change.** No workflow file needs editing — both scheduled
+workflows check out `dev`, so the constant on `dev` is what Monday enforces. It is
+deliberately NOT hard-coded as a flag in the workflow: `limit` and `dry_run` there are
+`workflow_dispatch` inputs, which are empty on a scheduled run, so anything expressed
+as a flag would silently not apply to the run nobody is watching.
+
+For a **one-off** run, both workflows carry a `max_usd` manual-run input. Give BOTH the
+same number. Raising it on `weekly-refresh` alone pays for extraction and then leaves
+`pipeline-advance` refusing to pay for the verification that turns it into an answer —
+money spent, no result.
+
+A refusal is loud in three places at once: a `FAIL SPEND CEILING REFUSED` block in the
+log, a red annotation at the top of the run, and its own section in the job summary. The
+step exits non-zero, so the run goes red. Nothing is submitted and nothing is spent.
+
+For one deliberate sweep, run the workflow by hand and pass `--max-usd N`; `--max-usd 0`
+disables the check entirely.
 
 Two things hold the cost down, and one that does not:
 
@@ -220,6 +309,12 @@ Two things hold the cost down, and one that does not:
 - The content-hash gate means most cards never reach the model. Real, **but only once a
   card is marked `done`** — and `mark_done` runs solely in stage 3. If stage 3 never
   completes, every card re-extracts at full price the following Monday.
+  **Fixed 2026-08-21:** stage 3 used to skip `mark_done` whenever a card produced no
+  surviving observation, so "we read the bank's page and nothing survived verification"
+  was stored identically to "we have never processed this card". 304 of 373 cards were
+  stuck there and were being re-billed every Monday for answers already in hand. A card
+  is now finished when it has been JUDGED, and the state records which of four things
+  happened — see below.
 - The shared system prefix is cached at ~10% of input price. **Real but negligible here** —
   the prefix is ~1,327 tokens, so caching the whole batch saves about $1.10. It is not
   what makes this affordable, and a missing cache is never the explanation for a surprise.

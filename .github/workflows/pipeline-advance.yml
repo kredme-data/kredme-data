@@ -22,6 +22,11 @@ on:
   schedule:
     - cron: '17 */2 * * *'   # every 2 hours, offset so it never collides with the kick-off
   workflow_dispatch:
+    inputs:
+      max_usd:
+        description: 'Raise this CYCLE spend ceiling for this run only, in USD. Blank = the MAX_CYCLE_USD in pipeline/config.py. Must be the SAME number the weekly refresh was given, or the extraction it already paid for is never verified.'
+        required: false
+        default: ''
 
 defaults:
   run:
@@ -39,6 +44,13 @@ concurrency:
 permissions:
   contents: write
   pull-requests: write
+  # statuses: write is for the gate below. The PR this job opens is created with the
+  # default GITHUB_TOKEN, and GitHub deliberately does not fire `on: pull_request`
+  # workflows for those — measured, not assumed: PR #62 shows "no checks reported",
+  # while the human-opened #61 next to it shows "Self-tests + data validation".
+  # So this job runs the gate itself and PUBLISHES the result as a commit status,
+  # which is a real, visible check that branch protection on `dev` can require.
+  statuses: write
 
 jobs:
   advance:
@@ -110,7 +122,9 @@ jobs:
           # -u: see weekly-refresh.yml. Piping into `tee` block-buffers stdout,
           # so a run that stalls or is killed shows an empty log and an empty
           # step summary regardless of how much it printed.
-          python3 -u pipeline/cli.py advance | tee advance.log
+          ARGS=""
+          if [ -n "${{ github.event.inputs.max_usd }}" ]; then ARGS="--max-usd ${{ github.event.inputs.max_usd }}"; fi
+          python3 -u pipeline/cli.py advance $ARGS | tee advance.log
           # cli.py writes 'stage=<name>' to GITHUB_OUTPUT itself when it produces a patch.
           # grep exiting 1 means "not found", not "failed" — spell that out so it reads
           # correctly under `set -o pipefail`.
@@ -129,14 +143,52 @@ jobs:
             sed -n '1,150p' advance.log 2>/dev/null || echo 'no log'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # always(), not the implicit success(). This step used to carry a bare
+      # `if: steps.gate.outputs.pending == 'true'`, which GitHub ANDs with success() —
+      # so any failure in Advance SKIPPED it. That is the exact mechanism that has
+      # already destroyed paid work here: the run at 17:12 on 2026-08-17 collected 371
+      # extractions we had paid ~$45 for, was killed at the 30-minute timeout, and
+      # `Commit state` never ran.
+      #
+      # It matters most on the ceiling-refusal path. `_advance_extract` marks the
+      # extraction batch `collected` and returns 2. If that mark is never pushed, the
+      # batch stays `submitted` on dev, the next 2-hourly cron re-enters the identical
+      # path and refuses again — a red run every two hours, forever, until a human edits
+      # config.py — and the `--recollect` recovery the CLI prints points at state that
+      # was never persisted.
       - name: Commit state
-        if: steps.gate.outputs.pending == 'true'
+        if: always() && steps.gate.outputs.pending == 'true'
         run: |
           git config user.name  'kredme-pipeline[bot]'
           git config user.email 'kredme-pipeline@users.noreply.github.com'
           git add pipeline/state
-          git diff --cached --quiet || git commit -m 'Advance pipeline state'
-          git push origin HEAD:dev || true
+          if git diff --cached --quiet; then
+            echo 'No state change to commit.'
+            exit 0
+          fi
+          git commit -m 'Advance pipeline state'
+
+          # NOT `|| true`. What this pushes is the handle to money already spent: a
+          # batch marked collected, or a verification batch id. Losing it means the next
+          # cron re-collects the extraction and submits a SECOND paid verification batch,
+          # each independently under the ceiling so nothing refuses — and the run that
+          # lost it was green, so nobody looks.
+          #
+          # A lost race with dev is now routine, because auto-merge below squash-merges
+          # this pipeline own PR into dev on the same cadence. So: rebase and retry, and
+          # if it still will not land, go RED.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:dev; then
+              echo "Pushed pipeline state (attempt $attempt)."
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt — rebasing onto dev and retrying."
+            git fetch origin dev
+            git rebase origin/dev || { git rebase --abort || true; }
+            sleep 5
+          done
+          echo "::error title=Pipeline state could not be pushed::The batch handle for work that has ALREADY BEEN PAID FOR is only on this runner. Do not re-run the weekly refresh; run 'pipeline/cli.py advance' once dev is writable."
+          exit 1
 
       # The pipeline proposes card data. Until now the only thing standing between a
       # model's proposal and a reviewer was tools/kredme.py, which on the same file
@@ -148,6 +200,9 @@ jobs:
       # would simply stop the pipeline opening PRs at all, and a lane that never
       # opens a PR is a lane nobody fixes. The job of this step is to make sure no
       # proposed change reaches a reviewer unmeasured.
+      #
+      # (Carried over from main. This file had drifted: main gained this step in PR
+      # #59 and dev never did, so a dev -> main workflow sync would have deleted it.)
       - name: Measure the proposed change with the full validator
         if: steps.advance.outputs.patch == 'true'
         id: measure
@@ -178,16 +233,90 @@ jobs:
           print('\n_Measured, not enforced — this step never blocks the pipeline._')
           PY
 
+      # ------------------------------------------------------------------ #
+      # THE GATE. This runs BEFORE the PR is opened, on the working tree that is
+      # about to become the PR, because that tree is the change.
+      #
+      # These are the exact commands validate.yml runs on a human's PR. They are
+      # duplicated here rather than relied upon, for a measured reason: a PR opened
+      # with the default GITHUB_TOKEN does not fire `on: pull_request` workflows, so
+      # validate.yml never sees this PR at all. `gh pr checks 62` reports "no checks
+      # reported on the branch"; the human-opened #61 beside it reports
+      # "Self-tests + data validation SUCCESS". Arming auto-merge on a PR with zero
+      # checks is not "CI gates it", it is merging blind.
+      #
+      # continue-on-error, because a failing gate must still leave a PR for a person
+      # to read. It just must not merge itself.
+      # ------------------------------------------------------------------ #
+      #
+      # `id: change_gate`, NOT `id: gate`. The "Is anything pending?" step above already
+      # owns `gate`, and two steps in one job carrying the same id is a workflow-PARSE
+      # error: "The identifier 'gate' may not be used more than once within the same
+      # scope". Every scheduled run — 84 a week — would have failed at startup, stages 2
+      # and 3 would never execute, Monday would submit and pay for the extraction batch
+      # and nothing would ever collect it, and because cmd_refresh leaves changed cards
+      # at status `fetched` they would all be re-billed the following Monday. And if
+      # GitHub had tolerated the duplicate instead, `steps.gate.outcome` below would have
+      # resolved against the "Is anything pending?" step, which always succeeds — so the
+      # `pipeline gate` status would publish green even when validation failed and
+      # auto-merge would be armed on an ungated PR.
+      #
+      # tests/test_workflows.py now parses every workflow and asserts step ids are
+      # unique per job. The rest of the workflow tests read these files as raw text and
+      # structurally cannot catch this class of defect.
+      - name: Gate the proposed change
+        if: steps.advance.outputs.patch == 'true'
+        id: change_gate
+        continue-on-error: true
+        run: |
+          python3 tools/test_pipeline.py
+          python3 tools/test_validate_cards.py
+          python3 tools/test_fix_cards.py
+          python3 tests/run_all.py
+          python3 tools/kredme.py validate --target working
+
+          # THE RATCHET, in the gate rather than only in the measure step.
+          #
+          # `tools/kredme.py validate` above returns 0 on a tree the nine-layer
+          # validator scores 554 errors — this same file's comment says so. Gating
+          # auto-merge on the weak tool and relegating the real one to a
+          # continue-on-error "measured, not enforced" step means auto-merge is
+          # effectively ungated. The full backlog cannot be made blocking (a permanently
+          # red CI is how this repo learned to ignore CI), so the gate asserts the thing
+          # that actually matters: this change did not make it WORSE.
+          python3 tools/validate_cards.py --quiet --json /tmp/gate.json || true
+          python3 - <<'RATCHET'
+          import json, sys, collections, pathlib
+          rep = json.load(open('/tmp/gate.json'))
+          now = sum(collections.Counter(
+              x['code'] for x in rep['findings'] if x['severity'] == 'ERROR').values())
+          base = json.loads(pathlib.Path('tools/validated_baseline.json').read_text())
+          allowed = base.get('errors', sum(base.get('errors_by_code', {}).values()))
+          print(f'validator errors: {now}  baseline: {allowed}')
+          if now > allowed:
+              print(f'FAIL this change adds {now - allowed} validator error(s). '
+                    f'Not arming auto-merge.')
+              sys.exit(1)
+          print('OK   the ratchet holds — no new validator errors.')
+          RATCHET
+
       # Only reached at stage 3, when there is an actual proposed change to review.
       # Base is dev, never main: data flows dev -> validate -> promote -> main, and
       # promoting is a separate deliberate act.
       - name: Open PR with the proposed data changes
         if: steps.advance.outputs.patch == 'true'
+        id: cpr
         # Pinned to a commit, not the mutable `v6` tag. This repo is public and this
         # action runs in a job that holds a write-scoped GITHUB_TOKEN, so a repointed
         # tag would be arbitrary code with commit rights. SHA = v6.
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c
         with:
+          # Same fallback data-quality.yml already uses. With PIPELINE_PR_TOKEN set
+          # (a PAT or GitHub App installation token) the PR is opened by a real
+          # identity and validate.yml runs on it for real; without it, the gate step
+          # above and the commit status below are the only checks this PR gets.
+          # The secret is NOT set today.
+          token: ${{ secrets.PIPELINE_PR_TOKEN || secrets.GITHUB_TOKEN }}
           base: dev
           branch: bot/card-refresh-${{ github.run_id }}
           delete-branch: true
@@ -198,3 +327,84 @@ jobs:
           commit-message: 'Refresh card data from issuer documents (run ${{ github.run_id }})'
           title: 'Weekly refresh: issuer-sourced card data changes'
           body-path: .pipeline-work/pr_body.md
+          labels: card-refresh, auto-merge-to-dev
+
+      # ------------------------------------------------------------------ #
+      # PUBLISH THE GATE RESULT AS A COMMIT STATUS.
+      #
+      # This is what turns the in-job gate into something GitHub itself can enforce.
+      # Once it exists on the head commit it shows on the PR like any other check,
+      # and branch protection on `dev` can be set to REQUIRE the context
+      # "pipeline gate" — at which point auto-merge below is gated by GitHub rather
+      # than by this job's goodwill.
+      # ------------------------------------------------------------------ #
+      - name: Publish the gate result on the PR
+        if: always() && steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ steps.cpr.outputs.pull-request-head-sha }}
+          RESULT: ${{ steps.change_gate.outcome }}
+        run: |
+          if [ "$RESULT" = 'success' ]; then STATE=success; DESC='self-tests, data validation and the validator ratchet passed'; else STATE=failure; DESC='self-tests, data validation or the validator ratchet FAILED — not merging'; fi
+          gh api "repos/${{ github.repository }}/statuses/$SHA" \
+            -f state="$STATE" \
+            -f context='pipeline gate' \
+            -f description="$DESC" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      # ------------------------------------------------------------------ #
+      # AUTO-MERGE INTO dev — and only ever into dev.
+      #
+      # The founder's rule: the pipeline's PR may land on `dev` by itself; reaching
+      # users stays a deliberate human act. Nothing here publishes. `dev` is not the
+      # default branch, the app does not read it, and promoting dev -> main is a
+      # separate command a person runs.
+      #
+      # This uses GitHub's OWN auto-merge (`gh pr merge --auto`), which queues the
+      # merge and lets branch protection and required checks decide when — or
+      # whether — it happens. It is deliberately NOT `gh pr merge` on its own, and
+      # never `--admin`: both of those merge immediately and step over exactly the
+      # gates this is supposed to respect. If the gate above failed, we do not even
+      # arm it, and the PR simply stays open for a human.
+      # ------------------------------------------------------------------ #
+      - name: Let GitHub merge it into dev
+        if: always() && steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ steps.cpr.outputs.pull-request-number }}
+          GATE: ${{ steps.change_gate.outcome }}
+        run: |
+          URL="${{ steps.cpr.outputs.pull-request-url }}"
+
+          if [ "$GATE" != 'success' ]; then
+            echo "::warning title=Gate failed — PR left open::PR #$PR did not pass the gate, so auto-merge was NOT armed. A human must read it."
+            echo "- :warning: **PR [#$PR]($URL) left open** — the gate failed, so it was not armed for auto-merge." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # Belt and braces on the base branch. `base: dev` is already hard-coded in
+          # the step above, but this is the last point before something merges, and
+          # the cost of being wrong here is card data landing on main — the branch the
+          # app actually reads. Read it back from the API and refuse anything else.
+          BASE=$(gh pr view "$PR" --json baseRefName --jq .baseRefName)
+          if [ "$BASE" != 'dev' ]; then
+            echo "::error title=Refusing to auto-merge::PR #$PR targets '$BASE', not dev. Nothing was merged."
+            exit 1
+          fi
+
+          if gh pr merge "$PR" --auto --squash; then
+            echo "Auto-merge armed on PR #$PR (base $BASE)."
+            echo "- :white_check_mark: **PR [#$PR]($URL)** armed for auto-merge into \`dev\`." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # The usual cause is repository setting "Allow auto-merge" being off, which
+          # it is today (`gh api repos/:owner/:repo --jq .allow_auto_merge` -> false).
+          # There is no fallback here on purpose: merging directly instead would be
+          # the force-merge this step exists to avoid.
+          echo "::warning title=Auto-merge unavailable::Could not arm auto-merge on PR #$PR. It is open and waiting for a human. Enable Settings -> General -> Pull Requests -> Allow auto-merge."
+          {
+            echo "- :warning: **PR [#$PR]($URL)** could not be armed for auto-merge and is waiting for a human."
+            echo "  Turn on **Settings → General → Pull Requests → Allow auto-merge**, and add branch protection on \`dev\` requiring the **\`pipeline gate\`** check."
+          } >> "$GITHUB_STEP_SUMMARY"
+          gh pr comment "$PR" --body "Auto-merge could not be armed on this PR, so it is waiting for a human. Repository setting **Allow auto-merge** is off. Nothing was merged and nothing was published." || true
