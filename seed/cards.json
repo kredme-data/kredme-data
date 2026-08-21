@@ -38590,6 +38590,18 @@
     "confidence": "high",
     "source_fetched_on": "2026-08-21",
     "_note": "Held at card level, not on the rule, because this sentence proves the rule's scope and NOT its rate. On the rule it counted as provenance for a number it never mentions. Rule: 5% cashback as ICICI Reward Points on utility, grocery, and departmental store purchases. Maximum 400 Reward Points per payment cycle (equivalent to ₹100 cashback per month) [departmental_store]"
+   },
+   {
+    "field": "point_value_inr",
+    "path": "card.rp_value_standard",
+    "old_value": 0.25,
+    "new_value": 0.25,
+    "source_url": "https://www.icici.bank.in/managed-assets/docs/terms-condition/hpcl-super-saver-credit-card-tnc.pdf",
+    "source_quote": "The Cardholder(s) are entitled to 5% back benefit as ICICI Bank Reward Points on utility and departmental stores, subject to the cap specified hereunder ... the Cardholder(s) shall earn 20 points on every INR 100 spent.",
+    "source_doc_type": "terms_and_conditions",
+    "source_fetched_on": "2026-08-21",
+    "confidence": "medium",
+    "_note": "ICICI does not print a rupee value for a Reward Point anywhere. It does call this benefit \"5% back ... as ICICI Bank Reward Points\" and, in the same clause, says 20 points are earned on every INR 100. 20 points = 5% of INR 100 = INR 5, so 1 point = INR 0.25. Both inputs are the issuer's own words; the division is ours, which is why this is medium and not high. It replaces a value that was previously sourced only to CardInsider, an aggregator."
    }
   ]
  },
