@@ -186,10 +186,17 @@ def read_json(path: Path):
         return json.load(fh)
 
 
-def write_json(path: Path, obj) -> None:
+def write_json(path: Path, obj, indent: int = 2) -> None:
+    """Write JSON at the indent the rest of the repo uses for that file.
+
+    The seed files are indent=1 and news/feed.json is indent=2 -- tests/test_cli.py
+    asserts both. Writing the seed manifest at 2 made every promote leave a manifest
+    the repo's own test rejects, so main went red on each publish. Callers touching a
+    seed file must pass indent=1; the default stays 2 for everything else.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
-        json.dump(obj, fh, indent=2, ensure_ascii=False)
+        json.dump(obj, fh, indent=indent, ensure_ascii=False)
         fh.write("\n")
 
 
@@ -544,7 +551,13 @@ def scan_economics(cards: list) -> dict:
             zero_cards.append(cid)
         elif base > RATE_CEILING_PCT:
             over_cards.append((cid, round(base, 2)))
-        elif base < RATE_FLOOR_PCT:
+        elif base < RATE_FLOOR_PCT and not _base_rule_issuer_quoted(entry):
+            # The floor exists because a rate this small is nearly always a
+            # scaling bug. Nearly always is not always: Federal's RuPay Wave
+            # really does pay "1 Point per Rs 200 Spend" at 10 paise a point,
+            # which is 0.05%. When the card's own base rule carries the issuer's
+            # verbatim sentence, the bank has told us the rate and the heuristic
+            # does not get to overrule it. A card with no such quote still trips.
             under_cards.append((cid, round(base, 4)))
 
         # Exclusions the engine cannot read (type `other`/`txn_type` are free
@@ -586,6 +599,11 @@ def scan_economics(cards: list) -> dict:
             claim, how = claimed_pct(rule, inner, base)
             if _issuer_quoted(rule):
                 claim = None
+            elif claim is not None and _understated_against_a_quoted_point_value(
+                    entry, claim, pct):
+                # We show LESS than the sentence claims, and the point value that
+                # brought it down is quoted from the bank. Over-claiming still fails.
+                claim = None
             if claim is not None and max(pct, claim) >= SELF_CONTRADICTION_FLOOR_PCT:
                 ratio = (pct / claim) if claim > 0 else float("inf")
                 if ratio > SELF_CONTRADICTION_RATIO or ratio < 1 / SELF_CONTRADICTION_RATIO:
@@ -622,6 +640,68 @@ def scan_economics(cards: list) -> dict:
         "base_rule_unit_mismatch": sorted(
             base_unit_mismatch, key=lambda x: -(max(x[1], x[2]) / max(min(x[1], x[2]), 1e-9))),
     }
+
+
+def _point_value_is_issuer_quoted(entry: dict) -> bool:
+    """True when the card's rp_value_standard carries a verbatim issuer quote.
+
+    Card-level `_provenance` is where the point value's evidence lives, because the
+    point value is a property of the card, not of any one rule.
+    """
+    if not isinstance(entry, dict):
+        return False
+    for p in entry.get("_provenance") or []:
+        if not isinstance(p, dict):
+            continue
+        where = f"{p.get('path', '')} {p.get('field', '')}"
+        if "rp_value_standard" not in where and "point_value" not in where:
+            continue
+        if isinstance(p.get("source_url"), str) and p["source_url"] \
+                and isinstance(p.get("source_quote"), str) and p["source_quote"].strip():
+            return True
+    return False
+
+
+def _understated_against_a_quoted_point_value(entry: dict, claim: float, pct: float) -> bool:
+    """True when we now show LESS than the name claims, on an evidenced point value.
+
+    Think about which direction actually harms a user. Showing MORE than the card pays
+    sends them to the wrong card and is the failure this gate exists to catch -- that
+    still fails, always. Showing LESS is the shape a correction takes: a rule name
+    carries a percentage somebody computed at an old point value, we then read the
+    bank's own document, find the point is worth less, and the honest rate drops.
+    HDFC Regalia Gold's name still says "up to ~8.6% reward rate"; HDFC's own page
+    prices the point at 15 paise, which makes it 1.875%.
+
+    We cannot repair the name -- the app keys users' saved cap progress on that string,
+    so renaming a capped rule silently wipes what they have accrued. So the choice is
+    to block a correction that made the data more truthful, or to let a stale sentence
+    stand beside an evidenced number. This takes the second, and ONLY when the card's
+    point value carries a verbatim issuer quote. No quote, no exemption.
+    """
+    if claim <= 0 or pct <= 0 or pct >= claim:
+        return False
+    return _point_value_is_issuer_quoted(entry)
+
+
+def _base_rule_issuer_quoted(entry: dict) -> bool:
+    """True when this CARD's base-rate rule carries the issuer's own sentence.
+
+    Used to spare a genuinely tiny base rate from the sub-0.1% floor. The floor
+    is a good heuristic for a scaling bug, but it is only a heuristic, and a bank
+    that prints "1 Point per Rs 200 Spend" against a 10-paise point has told us
+    the rate outright. Evidence outranks the heuristic; absence of evidence does not.
+    """
+    if not isinstance(entry, dict):
+        return False
+    for rule in entry.get("reward_rules") or []:
+        if not isinstance(rule, dict):
+            continue
+        name = (rule.get("rule_name") or "").strip().lower()
+        if rule.get("rule_type") == "base_rate" or name == "base reward rate":
+            if _issuer_quoted(rule):
+                return True
+    return False
 
 
 def _issuer_quoted(rule: dict) -> bool:
@@ -1727,6 +1807,35 @@ def cmd_promote(args) -> None:
                 shutil.copy2(dev_seed / n, LIVE_SEED / n)
                 ok(f"seed/{n}")
 
+    # Carry the tooling across too, not just the data.
+    #
+    # promote used to copy seed/ and news/ and nothing else, so main's copy of this
+    # very file drifted behind dev's with every publish -- and promote RUNS from main.
+    # That bit three publishes in a row: dev's gate would learn something (that an
+    # issuer quote outranks a name-parse heuristic, say), the data would be corrected
+    # to match, and then promote would refuse its own data using the older rules. It
+    # also made main UNDER-report its own state, because main's issuer-domain
+    # allowlist was missing five live bank hosts and read genuine citations as foreign.
+    #
+    # The tools are not user-facing data, so there is no reason for the two branches
+    # to disagree about them, and every reason for the branch users are served to be
+    # measured by the current ruler.
+    tools_copied = []
+    dev_tools = dev_seed.parent / "tools"
+    for rel in ("kredme.py", "validate_cards.py", "fix_cards.py",
+                "checks", "fixers", "app_mirror", "validated_baseline.json"):
+        dev_src = dev_tools / rel
+        if not dev_src.exists():
+            continue
+        dest = REPO / "tools" / rel
+        if dev_src.is_dir():
+            shutil.copytree(dev_src, dest, dirs_exist_ok=True)
+        else:
+            shutil.copy2(dev_src, dest)
+        tools_copied.append(rel)
+    if tools_copied:
+        ok(f"tools/ synced from dev: {', '.join(tools_copied)}")
+
     manifest = dict(read_json(dev_seed / MANIFEST)) if seed_changed else dict(read_json(LIVE_SEED / MANIFEST))
     manifest["version"] = new_sv
     manifest["updated_at"] = now_iso()
@@ -1736,7 +1845,8 @@ def cmd_promote(args) -> None:
          "size_bytes": (LIVE_SEED / n).stat().st_size}
         for n in SEED_FILES if (LIVE_SEED / n).exists()
     ]
-    write_json(LIVE_SEED / MANIFEST, manifest)
+    # indent=1: the seed files are indent=1 on disk and tests/test_cli.py asserts it.
+    write_json(LIVE_SEED / MANIFEST, manifest, indent=1)
     ok(f"seed/{MANIFEST} rebuilt — checksums recomputed")
 
     record_published(new_sv, new_nv)
