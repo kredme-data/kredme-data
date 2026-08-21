@@ -67,8 +67,10 @@ _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     "axisbank":                 ("axisbank.com", "axisbank.co.in", "axis.bank.in"),
     "icicibank":                ("icicibank.com", "icicibank.co.in", "icici.bank.in"),
     "rblbank":                  ("rblbank.com", "rbl.bank.in"),
-    "kotakmahindrabank":        ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
-    "kotakmahindra":            ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com"),
+    "kotakmahindrabank":        ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com",
+                                "kotak811.bank.in"),
+    "kotakmahindra":            ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com",
+                                "kotak811.bank.in"),
     "indusindbank":             ("indusind.com", "indusindbank.com", "indusind.bank.in"),
     "yesbank":                  ("yesbank.in", "yes.bank.in"),
     "ausmallfinancebank":       ("aubank.in", "au.bank.in"),
@@ -94,15 +96,22 @@ _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     "idbibank":                 ("idbibank.in", "idbi.com", "idbi.bank.in"),
     "standardchartered":        ("sc.com", "standardchartered.co.in", "sc.bank.in"),
     "standardcharteredbank":    ("sc.com", "standardchartered.co.in", "sc.bank.in"),
-    "federalbank":              ("federalbank.co.in",),
-    "federalbankbobcardscapia": ("federalbank.co.in", "bobcard.co.in", "scapia.cards"),
+    # federal.bank.in is Federal Bank's own .bank.in domain, where the current
+    # credit-card MITC lives; federalbank.co.in alone left every MITC citation
+    # reading as "no link", which then turned its confidence grade into an error.
+    "federalbank":              ("federalbank.co.in", "federal.bank.in"),
+    "federalbankbobcardscapia": ("federalbank.co.in", "federal.bank.in",
+                                 "bobcard.co.in", "scapia.cards"),
     "equitassmallfinancebank":  ("equitasbank.com", "equitas.bank.in"),
     "cityunionbank":            ("cityunionbank.com", "cubdigital.in"),
     "csbbank":                  ("csb.co.in",),
     "sbmbank":                  ("sbmbank.co.in",),
-    "slicebank":                ("sliceit.com", "slice.bank.in"),
+    "slicebank":                ("sliceit.com", "slice.bank.in", "slicebank.com"),
     "unitysmallfinancebank":    ("theunitybank.com", "unitybank.co.in"),
-    "fpltechnologiespvtltd":    ("onecard.app", "getonecard.app", "fplabs.tech"),
+    # OneCard is issued by partner banks, and the earn rate is published by the
+    # ISSUING bank, not by FPL — SBM's notice board carries the reward-point terms.
+    "fpltechnologiespvtltd":    ("onecard.app", "getonecard.app", "fplabs.tech",
+                                 "sbmbank.co.in", "sbm.bank.in"),
 }
 
 # --------------------------------------------------------------------------- #
