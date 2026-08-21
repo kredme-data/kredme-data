@@ -3,77 +3,77 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "5567fb60a8d403c297ecf393bc3a7f6e7877c7d0483a16465eea57d96ffab35c",
-      "fetched_at": "2026-08-20T03:25:14Z",
+      "fetched_at": "2026-08-21T03:29:57Z",
       "note": "",
       "status": "ok",
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "bcae4831e2f34c8753c81ec78516e0c8a666dfed52493e0b2364524a03e5281d",
-      "fetched_at": "2026-08-20T03:23:41Z",
+      "content_sha256": "7993a33ac5e5d9eadde0a46f483dd8304c7006499cc4417411163fa25a61ac3f",
+      "fetched_at": "2026-08-21T03:28:33Z",
       "note": "",
       "status": "ok",
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
       "content_sha256": "1ab8f1ee685076fcf6448f9d5f1217b94b3c6fd0bf50a8e73678ce6a9f9aaa13",
-      "fetched_at": "2026-08-20T03:23:41Z",
+      "fetched_at": "2026-08-21T03:28:34Z",
       "note": "",
       "status": "ok",
       "url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"
     },
     "__watch__hsbc": {
       "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
-      "fetched_at": "2026-08-20T03:25:29Z",
+      "fetched_at": "2026-08-21T03:30:13Z",
       "note": "",
       "status": "ok",
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-08-20T03:24:24Z",
+      "fetched_at": "2026-08-21T03:29:09Z",
       "note": "",
       "status": "ok",
       "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"
     },
     "__watch__idfc": {
       "content_sha256": "208d382d5f2ad973737ce7502eb269924fb74b7fc27ffb9eb44f1530d1a64b27",
-      "fetched_at": "2026-08-20T03:24:43Z",
+      "fetched_at": "2026-08-21T03:29:27Z",
       "note": "",
       "status": "ok",
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
-      "content_sha256": "29ccc0fdfbde3f6cfecb2a37a0bdd779cd7dc9d092351bb5a459d9b07d6abfc7",
-      "fetched_at": "2026-08-20T03:25:03Z",
+      "content_sha256": "32b6daa8875a481ff47d4988a0524d873ea7d62a80fcc1dd2755a22c37e40fd7",
+      "fetched_at": "2026-08-21T03:29:43Z",
       "note": "",
       "status": "ok",
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
       "content_sha256": "7488c0ae1ba53ac0cd3716ebcb780c71a6854728d4a5c4b42b35f98caad1fdb6",
-      "fetched_at": "2026-08-20T03:25:20Z",
+      "fetched_at": "2026-08-21T03:30:02Z",
       "note": "",
       "status": "ok",
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
       "content_sha256": "317a55c4cd1501501805455dd8a919a43885a16c4d54fe84d5ce5f0015857c09",
-      "fetched_at": "2026-08-20T03:25:28Z",
+      "fetched_at": "2026-08-21T03:30:11Z",
       "note": "",
       "status": "ok",
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
       "content_sha256": "4ad4b751bd4805e54ec281cafdea66cfb684634650e8fc7b7e3244711bc2cf9b",
-      "fetched_at": "2026-08-20T03:24:19Z",
+      "fetched_at": "2026-08-21T03:29:04Z",
       "note": "",
       "status": "ok",
       "url": "https://www.sbicard.com/en/customer-notices.page"
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-08-20T03:25:05Z",
+      "fetched_at": "2026-08-21T03:29:44Z",
       "note": "",
       "status": "ok",
       "url": "https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf"
