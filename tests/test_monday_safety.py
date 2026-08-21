@@ -509,6 +509,38 @@ class TestTheSpendCeiling(unittest.TestCase):
             B.run_sync(reqs, max_usd=0.01)
         self.assertIn("refusing to run", str(ctx.exception))
 
+    def test_the_news_ceiling_clears_the_worst_legitimate_day(self):
+        """All 11 watched pages moving on one day is busy, not runaway.
+
+        Sized against a live fetch on 2026-08-21: 11 pages price at $2.34 at standard
+        rates, $3.27 once the margin the gate actually applies is included. A ceiling
+        that refuses that is not a safety feature, it is an outage on the day the alert
+        exists for. The first draft of MAX_NEWS_USD was 3.00 — set by comparing against
+        the unmargined figure — and would have done exactly that.
+        """
+        # The real page sizes, measured with pipeline.fetch on 2026-08-21. Hard-coded
+        # rather than fetched, because a unit test that needs the network is a test
+        # that goes red when a bank is slow.
+        SIZES = [4_490, 47_548, 51_147, 90_000, 90_000, 97_065,
+                 99_455, 106_610, 128_743, 164_403, 200_761]
+        reqs = [B.build_news_request(f"issuer{i}", f"https://www.hdfc.bank.in/{i}",
+                                     "y" * n)
+                for i, n in enumerate(SIZES)]
+        est = B.estimate_sync_cost(reqs)
+        budgeted = est["est_usd"] * C.ESTIMATE_SAFETY_FACTOR
+        self.assertLess(budgeted, C.MAX_NEWS_USD,
+                        f"a day on which every watched page moved prices at "
+                        f"${budgeted:.2f} and would be REFUSED by the ${C.MAX_NEWS_USD} "
+                        f"news ceiling")
+        self.assertLess(est["est_usd_ceiling"], C.MAX_NEWS_USD,
+                        "the ceiling should clear that day's BOUND, so anything it "
+                        "refuses is anomalous rather than merely busy")
+        # ...and it must still stop a runaway.
+        runaway = [B.build_news_request(f"issuer{i}", f"https://www.hdfc.bank.in/{i}",
+                                        "y" * 200_761) for i in range(40)]
+        with self.assertRaises(ValueError):
+            B.run_sync(runaway)
+
     def test_the_news_path_is_priced_at_standard_rates(self):
         """run_sync calls messages.create directly — there is no batch discount."""
         reqs = [B.build_news_request("hdfc", "https://www.hdfc.bank.in/x", "y" * 100_000)]

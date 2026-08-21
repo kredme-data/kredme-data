@@ -164,11 +164,27 @@ VERIFY_COST_RATIO = 1.05
 
 # The daily news-watch path (cron 02:30 UTC) is a SEPARATE bill: it runs synchronously
 # through batch.run_sync, so it pays STANDARD rates with no batch discount, and until
-# now it had no ceiling of any kind. 11 watched pages price at ~$2.34 typical /
-# ~$5.91 worst case on a day when every page has moved; a normal day is a fraction of
-# that because most pages do not move. 3.00 clears a day on which every page moved
-# and refuses anything larger.
-MAX_NEWS_USD = 3.0
+# now it had no ceiling of any kind.
+#
+# Sized against a live fetch of all 11 watched pages on 2026-08-21, which is the worst
+# LEGITIMATE day — every page moved at once:
+#
+#     est_usd at standard rates          $2.34
+#     x ESTIMATE_SAFETY_FACTOR           $3.27   <- what the gate compares
+#     est_usd_ceiling                    $5.91   <- what that day cannot exceed
+#
+# 6.00 clears the BOUND of that day, not merely its estimate — so anything this ceiling
+# refuses costs more than an all-11-pages-moved day can possibly cost today, which is
+# the definition of anomalous rather than busy. It still refuses roughly 20 pages. The
+# first draft of this constant was 3.00, chosen by comparing $2.34 against it and
+# forgetting that the gate is applied to the MARGINED figure — which would have
+# refused the busy day the alert exists for. A ceiling that blocks the legitimate
+# worst case is not a safety feature, it is an outage.
+#
+# A normal day costs a fraction of this, because once the hash gate on __watch__ rows
+# works (it did not: they were written status="ok", which has_changed always reports as
+# changed) only pages that actually moved are analysed at all.
+MAX_NEWS_USD = 6.0
 
 # ---------------------------------------------------------------------------
 # Two floors that decide whether we are allowed to call a card FINISHED.
