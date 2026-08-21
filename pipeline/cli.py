@@ -136,6 +136,8 @@ def _ceiling_verdict(
     stage: str,
     already_committed: float = 0.0,
     reserve: float = 0.0,
+    knob: str = "MAX_CYCLE_USD",
+    budget_name: str = "cycle",
 ) -> str:
     """Return "" when this cycle is affordable, otherwise a human-readable refusal.
 
@@ -169,19 +171,23 @@ def _ceiling_verdict(
     if reserve:
         parts.append(f"verification still to come ${reserve:.2f}")
 
-    return (
+    msg = (
         f"{stage} would cost an estimated ${est['est_usd']:.2f} for "
-        f"{est['requests']} cards — ${budgeted:.2f} with the "
+        f"{est['requests']} requests — ${budgeted:.2f} with the "
         f"{C.ESTIMATE_SAFETY_FACTOR}x margin the estimator has historically needed, "
         f"and ${est['est_usd_ceiling']:.2f} at the absolute bound. "
-        f"The CYCLE totals ${total:.2f} ({'; '.join(parts)}), "
-        f"above the ${limit:.2f} cycle spend limit. REFUSING to submit. "
-        f"Nothing has been spent. To allow it, raise MAX_CYCLE_USD in "
-        f"pipeline/config.py (one line, merged to dev) to at least ${total:.2f} — that "
-        f"is the whole cycle, not one batch. A manual run may instead pass "
-        f"--max-usd {total:.2f}, but it must be passed to BOTH weekly-refresh and "
-        f"pipeline-advance or the extraction is paid for and never verified."
+        f"The {budget_name.upper()} totals ${total:.2f} ({'; '.join(parts)}), "
+        f"above the ${limit:.2f} {budget_name} spend limit. REFUSING to submit. "
+        f"Nothing has been spent. To allow it, raise {knob} in "
+        f"pipeline/config.py (one line, merged to dev) to at least ${total:.2f}."
     )
+    if budget_name == "cycle":
+        msg += (
+            f" That is the WHOLE cycle, not one batch. A manual run may instead pass "
+            f"--max-usd {total:.2f}, but it must be given to BOTH weekly-refresh and "
+            f"pipeline-advance or the extraction is paid for and never verified."
+        )
+    return msg
 
 
 def _report_ceiling_refusal(message: str, *, forecast: bool) -> None:
@@ -256,7 +262,7 @@ def _reason_of(err: str) -> str:
     return (err or "unknown").split(":")[0].strip() or "unknown"
 
 
-def _refuse_if_batch_in_flight(args: argparse.Namespace) -> int:
+def _refuse_if_batch_in_flight(args: argparse.Namespace, *, loud: bool = True) -> int:
     """Refuse to start a second cycle while one is still in flight. 0 = go ahead.
 
     Nothing used to stop this. cmd_refresh records changed cards as status 'fetched',
@@ -287,6 +293,8 @@ def _refuse_if_batch_in_flight(args: argparse.Namespace) -> int:
     fail("Collect them with: python3 pipeline/cli.py advance")
     fail("If you are certain the in-flight batches are dead and you want to pay again, "
          "re-run with --force-resubmit.")
+    if not loud:
+        return 2
     _annotate(
         "Refusing to submit — a batch is already in flight",
         f"{len(pending)} batch(es) from an earlier run are still marked submitted. "
@@ -307,7 +315,7 @@ def _refuse_if_batch_in_flight(args: argparse.Namespace) -> int:
 
 def cmd_refresh(args: argparse.Namespace) -> int:
     # Before the network, before anything: is last cycle still running?
-    rc = _refuse_if_batch_in_flight(args)
+    rc = _refuse_if_batch_in_flight(args, loud=not args.dry_run)
     if rc and not args.dry_run:
         return rc
 
@@ -533,6 +541,9 @@ def _recollect(bst: dict, batch_id: str, *, force: bool = False) -> int:
         return 2
 
     ST.mark_batch(bst, batch_id, "submitted")
+    if downstream is not None and force:
+        # Authorise the next advance to get past the duplicate-verification guard, once.
+        match["force_recollect"] = True
     ST.save_batch_state(bst)
     ok(f"reopened {kind} batch {batch_id} "
        f"({match.get('request_count')} requests) — the next advance will re-collect it")
@@ -664,6 +675,13 @@ def _advance_extract(pending: dict, bst: dict, args: argparse.Namespace) -> int:
     # built from this extraction, collecting it again would submit and pay for a second
     # one — each independently under the ceiling, so nothing else refuses.
     already = _verify_batch_for(bst, bid)
+    if already is not None and pending.pop("force_recollect", None):
+        # `advance --recollect <extract-id> --force` was used deliberately, in full
+        # knowledge that a second verification batch will be submitted and billed. The
+        # marker is consumed here so it authorises exactly one pass and no more.
+        warn(f"--force was used to reopen {bid}: a SECOND verification batch will be "
+             f"submitted for these cards and it WILL be billed.")
+        already = None
     if already is not None:
         fail(f"{bid} has already produced verification batch "
              f"{already.get('batch_id')} ({already.get('request_count')} requests, "
@@ -1182,13 +1200,10 @@ def cmd_news_watch(args: argparse.Namespace) -> int:
        f"{C.ESTIMATE_SAFETY_FACTOR}x margin, ${est['est_usd_ceiling']:.2f} at the bound")
     ok(f"news spend limit ${news_limit:.2f}" if news_limit is not None
        else "news spend limit DISABLED")
-    over = _ceiling_verdict(est, news_limit, stage="news analysis")
+    over = _ceiling_verdict(est, news_limit, stage="news analysis",
+                            knob="MAX_NEWS_USD", budget_name="news")
     if over:
-        _report_ceiling_refusal(
-            over.replace("MAX_CYCLE_USD", "MAX_NEWS_USD")
-                .replace("cycle spend limit", "news spend limit"),
-            forecast=False,
-        )
+        _report_ceiling_refusal(over, forecast=False)
         return 2
 
     try:
