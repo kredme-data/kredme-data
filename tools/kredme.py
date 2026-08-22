@@ -1820,21 +1820,39 @@ def cmd_promote(args) -> None:
     # The tools are not user-facing data, so there is no reason for the two branches
     # to disagree about them, and every reason for the branch users are served to be
     # measured by the current ruler.
+    # tests/ comes too. main's own weekly-refresh.yml runs `python3 tests/run_all.py`,
+    # so leaving the suite behind means the branch users are served is guarded by an
+    # older set of assertions than the one we develop against -- and main was for a
+    # while missing tests/ entirely while still invoking it.
     tools_copied = []
-    dev_tools = dev_seed.parent / "tools"
-    for rel in ("kredme.py", "validate_cards.py", "fix_cards.py",
-                "checks", "fixers", "app_mirror", "validated_baseline.json"):
-        dev_src = dev_tools / rel
+    dev_root = dev_seed.parent
+    for rel in ("tools/kredme.py", "tools/validate_cards.py", "tools/fix_cards.py",
+                "tools/checks", "tools/fixers", "tools/app_mirror",
+                "tools/validated_baseline.json", "tests"):
+        dev_src = dev_root / rel
         if not dev_src.exists():
             continue
-        dest = REPO / "tools" / rel
+        dest = REPO / rel
         if dev_src.is_dir():
             shutil.copytree(dev_src, dest, dirs_exist_ok=True)
         else:
             shutil.copy2(dev_src, dest)
         tools_copied.append(rel)
+
+    # pipeline/ too, because main's OWN weekly-refresh.yml and pipeline-advance.yml
+    # execute it. Modules only: pipeline/state/ is the batch and source bookkeeping,
+    # it is written by whichever branch ran last, and the workflows push it back to
+    # dev on purpose. Copying dev's state onto main would overwrite live bookkeeping
+    # with a snapshot and could re-bill cards already marked done.
+    dev_pipeline = dev_root / "pipeline"
+    if dev_pipeline.is_dir():
+        for src in sorted(dev_pipeline.glob("*.py")) + sorted(dev_pipeline.glob("*.json")):
+            shutil.copy2(src, REPO / "pipeline" / src.name)
+            tools_copied.append(f"pipeline/{src.name}")
+
     if tools_copied:
-        ok(f"tools/ synced from dev: {', '.join(tools_copied)}")
+        ok(f"synced from dev: {len(tools_copied)} path(s) — "
+           f"{', '.join(tools_copied[:6])}{' …' if len(tools_copied) > 6 else ''}")
 
     manifest = dict(read_json(dev_seed / MANIFEST)) if seed_changed else dict(read_json(LIVE_SEED / MANIFEST))
     manifest["version"] = new_sv
