@@ -619,14 +619,20 @@ class TestMergeFeed(unittest.TestCase):
         self.assertEqual(merged["items"][0]["title"], "new title")
 
     def test_preserves_a_non_expired_existing_item(self):
+        # Distinct titles on purpose: these two must stay two. With the same
+        # title they would be one event under two ids, which merge_feed now
+        # collapses -- correctly, but that is not what this test is about.
         existing = {"version": "2.0.0",
-                    "items": [item(id="keep", expiry_date="2026-12-01T00:00:00Z")]}
+                    "items": [item(id="keep", title="Axis raises the rent fee",
+                                   expiry_date="2026-12-01T00:00:00Z")]}
         merged = newsgen.merge_feed(existing, [item(id="fresh")], updated_at=NOW)
         self.assertEqual({i["id"] for i in merged["items"]}, {"keep", "fresh"})
 
     def test_drops_an_expired_existing_item(self):
+        # Distinct titles: see the note above.
         existing = {"version": "2.0.0",
-                    "items": [item(id="stale", expiry_date="2026-02-01T00:00:00Z")]}
+                    "items": [item(id="stale", title="Axis raises the rent fee",
+                                   expiry_date="2026-02-01T00:00:00Z")]}
         merged = newsgen.merge_feed(existing, [item(id="fresh")], updated_at=NOW)
         self.assertEqual([i["id"] for i in merged["items"]], ["fresh"])
 
@@ -694,7 +700,10 @@ class TestCli(unittest.TestCase):
         self.cards.write_text(json.dumps(CARDS), encoding="utf-8")
         self.feed.write_text(
             json.dumps({"version": "3.0.0", "updated_at": "2026-08-01T00:00:00Z",
-                        "items": [item(id="news_001", expiry_date=None)]}),
+                        # A different event from the incoming change, so this
+                        # test measures the merge and not the event dedupe.
+                        "items": [item(id="news_001", expiry_date=None,
+                                       title="HDFC trims the lounge quota")]}),
             encoding="utf-8",
         )
         self.changes.write_text(json.dumps({"changes": [change()]}), encoding="utf-8")
@@ -806,3 +815,74 @@ class TestCli(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2 if "-v" in sys.argv else 1)
+
+
+class TestEventDedupe(unittest.TestCase):
+    """One issuer change must enter the feed once, however the model words it.
+
+    The id embeds a slug of the headline, and the headline is regenerated every
+    run, so keying on id alone let the same change back in each time. The YES Bank
+    2026-06-15 fee revision reached 46 copies across four days of runs.
+    """
+
+    def test_a_rewording_does_not_become_a_second_item(self):
+        first = item(id="news_yes_a", source="YES Bank", effective_date="2026-06-15",
+                     title="Failed auto-debit fee jumps, cap rises to INR 5,000")
+        again = item(id="news_yes_b", source="YES Bank", effective_date="2026-06-15",
+                     title="Failed auto-debit fee rises, cap now Rs 5,000")
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [first]}, [again],
+                                    updated_at=NOW)
+        self.assertEqual(len(merged["items"]), 1)
+
+    def test_the_first_seen_id_survives_so_nobody_is_notified_twice(self):
+        first = item(id="news_yes_a", source="YES Bank", effective_date="2026-06-15",
+                     title="Replacing a lost card now costs INR 199")
+        again = item(id="news_yes_b", source="YES Bank", effective_date="2026-06-15",
+                     title="Replacing a lost card now costs Rs 199, not Rs 100")
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [first]}, [again],
+                                    updated_at=NOW)
+        self.assertEqual(merged["items"][0]["id"], "news_yes_a")
+
+    def test_the_newer_wording_still_wins(self):
+        first = item(id="news_yes_a", source="YES Bank", effective_date="2026-06-15",
+                     title="Cash withdrawal fee jumps to min INR 650")
+        again = item(id="news_yes_b", source="YES Bank", effective_date="2026-06-15",
+                     title="Cash withdrawal fee jumps to min Rs 650",
+                     affected_cards=["yes_bank_marquee", "yes_bank_reserve"])
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [first]}, [again],
+                                    updated_at=NOW)
+        self.assertEqual(merged["items"][0]["affected_cards"],
+                         ["yes_bank_marquee", "yes_bank_reserve"])
+
+    def test_two_different_changes_on_one_day_stay_two(self):
+        a = item(id="news_yes_a", source="YES Bank", effective_date="2026-06-15",
+                 title="New INR 250 fee for paying by cheque")
+        b = item(id="news_yes_b", source="YES Bank", effective_date="2026-06-15",
+                 title="Forex markup rises on most YES BANK cards")
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [a]}, [b], updated_at=NOW)
+        self.assertEqual(len(merged["items"]), 2)
+
+    def test_the_same_words_from_two_issuers_stay_two(self):
+        a = item(id="news_a", source="YES Bank", effective_date="2026-06-15",
+                 title="Forex markup rises to 3.5%")
+        b = item(id="news_b", source="Axis Bank", effective_date="2026-06-15",
+                 title="Forex markup rises to 3.5%")
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [a]}, [b], updated_at=NOW)
+        self.assertEqual(len(merged["items"]), 2)
+
+    def test_published_at_cannot_fork_the_key(self):
+        a = item(id="news_a", source="YES Bank", effective_date="2026-06-15",
+                 title="Cheque bill payment now costs INR 250",
+                 published_at="2026-08-18T02:30:00Z")
+        b = item(id="news_b", source="YES Bank", effective_date="2026-06-15",
+                 title="Cheque bill payment now costs Rs 250",
+                 published_at="2026-08-21T02:30:00Z")
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [a]}, [b], updated_at=NOW)
+        self.assertEqual(len(merged["items"]), 1)
+
+    def test_an_item_with_no_id_is_never_folded_away(self):
+        a = item(source="YES Bank", effective_date="2026-06-15", title="Same words")
+        b = item(source="YES Bank", effective_date="2026-06-15", title="Same words")
+        a.pop("id"), b.pop("id")
+        merged = newsgen.merge_feed({"version": "2.0.0", "items": [a]}, [b], updated_at=NOW)
+        self.assertEqual(len(merged["items"]), 2)

@@ -133,6 +133,60 @@ def _now_iso() -> str:
 # ---------------------------------------------------------------------------
 _NON_ALNUM = re.compile(r"[^a-z0-9]+")
 
+# Words that carry no identity for an event. Two groups, and the second is the
+# one that matters: the model re-words the MOVEMENT verb freely between runs, so
+# "cap rises to", "cap jumps to" and "cap now" all describe one change.
+_EVENT_STOPWORDS = frozenset("""
+a an and are as at be by for from get gets in is it its new no not now of on or
+the to up was will with you your more less than per card cards credit bank
+rise rises rising risen jump jumps jumped cut cuts halve halved drop drops
+costs cost costlier change changes changed become becomes goes go made make
+makes raise raised limited
+""".split())
+
+_CURRENCY = re.compile(r"[₹$]|(?<![a-z])(?:inr|rs)\.?(?![a-z])")
+_NUMBERS = re.compile(r"[0-9][0-9,.]*")
+_NON_LETTERS = re.compile(r"[^a-z ]+")
+
+
+def _normalised_subject(title: object) -> str:
+    """Reduce a headline to the words that say WHAT changed.
+
+    The feed's ids embed a slug of the headline, and the headline is written by a
+    model that re-words it on every run. So one issuer change lands again and
+    again under fresh ids: the YES Bank 2026-06-15 fee revision reached 46 copies
+    across four days of runs, worded as "Failed auto-debit fee jumps, cap rises to
+    INR 5,000", "... fee rises, cap now Rs 5,000" and "... now costs more, cap
+    raised to 5,000".
+
+    Currency marks and digits go entirely -- "INR 500", "Rs 500" and "Rs 500" are
+    one fee -- as do the movement verbs. What is left is sorted so word order
+    cannot fork the key either.
+    """
+    text = str(title or "").lower()
+    text = _CURRENCY.sub(" ", text)
+    text = _NUMBERS.sub(" ", text)
+    text = _NON_LETTERS.sub(" ", text)
+    words = {w for w in text.split() if len(w) > 2 and w not in _EVENT_STOPWORDS}
+    return " ".join(sorted(words))
+
+
+def event_key(item: dict) -> tuple:
+    """Identity of the CHANGE an item reports, independent of how it is worded.
+
+    Deliberately does NOT use published_at: that is when we generated the item,
+    so it moves every run and would fork the key for one unchanged event -- the
+    precise bug this exists to stop.
+    """
+    if not isinstance(item, dict):
+        return ("", "", "", "")
+    return (
+        str(item.get("source") or item.get("issuer") or ""),
+        str(item.get("effective_date") or "")[:10],
+        str(item.get("category") or ""),
+        _normalised_subject(item.get("title") or item.get("headline")),
+    )
+
 
 def _slug(value: object) -> str:
     return _NON_ALNUM.sub("_", str(value).lower()).strip("_")
@@ -497,7 +551,23 @@ def merge_feed(existing: dict, new_items: list[dict], *, updated_at: str) -> dic
     if not isinstance(old, list):
         raise ValueError(f"existing feed 'items' must be a list, got {type(old).__name__}")
 
-    merged: dict[str, dict] = {}
+    # Dedupe on the EVENT, not on the id.
+    #
+    # Keying on id alone let one issuer change into the feed once per run, because
+    # the id embeds a slug of a headline the model rewrites every time. The YES Bank
+    # 2026-06-15 fee revision reached 46 copies across four days of runs.
+    #
+    # Two rules, and they pull in opposite directions on purpose:
+    #   - the NEWER item's content wins, so a re-detection can correct wording or
+    #     add a card that was missed;
+    #   - the FIRST-SEEN id and published_at are kept, so an item a user has already
+    #     been notified about cannot notify them again under a new identity.
+    #
+    # An item with no usable event key falls back to its id, then to its position,
+    # so a malformed item is never silently folded into another.
+    # PASS 1 — by id, unchanged. A shared id means the same item however it is
+    # worded, and the newer copy wins so a correction can land.
+    merged: dict[Any, dict] = {}
     for i, item in enumerate(list(old) + list(new_items)):
         if not isinstance(item, dict):
             raise ValueError(f"feed item {i} is not an object (got {type(item).__name__})")
@@ -505,7 +575,38 @@ def merge_feed(existing: dict, new_items: list[dict], *, updated_at: str) -> dic
         key = item_id if isinstance(item_id, str) and item_id.strip() else f"\x00no-id-{i}"
         merged[key] = item
 
-    return build_feed(list(merged.values()), existing.get("version"), updated_at=updated_at)
+    # PASS 2 — by event. Pass 1 cannot see a duplicate whose id moved, and the id
+    # embeds a slug of a headline the model rewrites every run, so one issuer
+    # change entered the feed once per run: the YES Bank 2026-06-15 fee revision
+    # reached 46 copies across four days.
+    #
+    # Newer content still wins, but the FIRST-SEEN id and published_at are carried
+    # over, so an item a user has already been notified about cannot notify them
+    # again under a new identity. An item with no usable event key is left alone
+    # rather than folded into another.
+    by_event: dict[Any, dict] = {}
+    for item in merged.values():
+        item_id = item.get("id")
+        has_id = isinstance(item_id, str) and bool(item_id.strip())
+        key = event_key(item)
+        # An item with no id, or no usable event key, is left exactly as it is.
+        # Without an id there is nothing to say two items are the same PUBLISHED
+        # thing rather than two similar ones, and dropping a real change is worse
+        # than carrying a duplicate.
+        if not has_id or not any(part for part in key):
+            by_event[id(item)] = item
+            continue
+        seen = by_event.get(key)
+        if seen is None:
+            by_event[key] = item
+        else:
+            carried = dict(item)
+            for sticky in ("id", "published_at"):
+                if sticky in seen:
+                    carried[sticky] = seen[sticky]
+            by_event[key] = carried
+
+    return build_feed(list(by_event.values()), existing.get("version"), updated_at=updated_at)
 
 
 # ---------------------------------------------------------------------------
