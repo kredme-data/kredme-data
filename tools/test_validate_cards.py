@@ -2205,6 +2205,89 @@ def tearDownModule():
     _TMPDIRS.clear()
 
 
+
+class TestScopeGateTheEngineCannotHold(unittest.TestCase):
+    """L6.RULE_FIRES_WIDER_THAN_ITS_EVIDENCE — the defect a real user reported.
+
+    On 22 Aug 2026 a user wrote in to say PhonePe SBI SELECT BLACK was showing
+    10% on every merchant in the travel section, and 5% on Uber. He was right.
+    SBI gates that rate to spends routed through PhonePe ("identified basis
+    PhonePe's Merchant Identification Number (MID) / Terminal Identification
+    Number (TID)/ Virtual Payment Address (VPA)"), and we had written the gate
+    into `category_ref` — a field no Dart code parses. Every other layer passed
+    the row: the schema was right, the words were in vocabulary, the number was
+    plausible, the English agreed with the fields. The English just said less
+    than the fields did. Nothing measured that gap until this code.
+    """
+
+    CODE = "L6.RULE_FIRES_WIDER_THAN_ITS_EVIDENCE"
+
+    @staticmethod
+    def _gated(**kw):
+        """A live category bonus whose prose names a platform, nothing else."""
+        row = dict(
+            rule_name="10 Reward Points per 100 on eligible PhonePe spends",
+            rule_type="category_bonus", category_id="dining",
+            category_ref="phonepe spends (recharges, utilities, dining)",
+            reward_type="cashback_pct", reward_rate=0.10, priority=55,
+            source_quote="PhonePe Spends 10 RP/100",
+        )
+        row.update(kw)
+        return _rule(**row)
+
+    def _codes(self, **kw):
+        e = _clean_entry()
+        e["reward_rules"].append(self._gated(**kw))
+        return codes(run_layers(make_ctx([e]), ["c6_reachability"]))
+
+    def test_a_platform_gate_the_engine_cannot_hold_is_reported(self):
+        self.assertIn(self.CODE, self._codes())
+
+    def test_a_clean_card_stays_clean(self):
+        """The false-positive guard. A checker that cries wolf gets muted."""
+        self.assertNotIn(self.CODE,
+                         codes(run_layers(make_ctx(), ["c6_reachability"])))
+
+    def test_merchant_ref_narrows_the_row_so_it_is_not_reported(self):
+        """merchant_ref IS read by the engine (recommendation_engine.dart:378),
+        so a row carrying one fires exactly where its prose says."""
+        self.assertNotIn(self.CODE,
+                         self._codes(category_id=None, rule_type="merchant_specific",
+                                     merchant_ref="swiggy"))
+
+    def test_channel_narrows_the_row_so_it_is_not_reported(self):
+        self.assertNotIn(self.CODE,
+                         self._codes(category_id=None, rule_type="channel_specific",
+                                     channel="online"))
+
+    def test_the_complement_row_is_not_reported(self):
+        """FP-2, and the sharpest one: the check must not flag the very shape
+        that fixing this defect produces. "Utility spends made OUTSIDE PhonePe
+        earn 1 RP/100" names PhonePe and is CORRECTLY broad — the platform is
+        what the row excludes, not what it requires."""
+        self.assertNotIn(self.CODE, self._codes(
+            rule_name="Utility spends made outside PhonePe earn 1 Reward Point per 100",
+            category_ref="utility spends made outside phonepe",
+            source_quote="Spends outside PhonePe earn the base rate.",
+            reward_rate=0.01))
+
+    def test_an_enumerated_category_list_is_not_reported(self):
+        """FP-1, 40 of the first 128 raw hits: one issuer sentence covering
+        several categories, split into one row per category, each carrying the
+        whole sentence. The other category names in the quote are things the
+        sentence COVERS, not restrictions on this row."""
+        self.assertNotIn(self.CODE, self._codes(
+            rule_name="5% cashback on dining, entertainment and PhonePe",
+            category_ref="dining, entertainment and phonepe",
+            source_quote="Earn 5% on dining, entertainment and PhonePe.",
+            reward_rate=0.05))
+
+    def test_a_row_the_engine_never_reaches_is_not_reported(self):
+        """A rule that never fires cannot fire wider than its evidence. This is
+        also what stops double-reporting against the six existing L6 codes."""
+        self.assertNotIn(self.CODE,
+                         self._codes(category_id="not_a_real_category"))
+
 # Codes a clean card produces anyway. Subtracted before asserting an injected
 # defect, so a test failure names the missing code rather than the whole set.
 _BASELINE_CODES = codes(run_layers(make_ctx()))

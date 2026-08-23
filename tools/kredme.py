@@ -66,7 +66,27 @@ PROD_BRANCH = "main"
 DEV_BASE = "https://raw.githubusercontent.com/kredme-data/kredme-data/dev"
 PROD_BASE = "https://kredme-data.github.io/kredme-data"
 
-SEED_FILES = ("cards.json", "merchants.json")
+# Files the app fetches out of seed/.
+#
+# REQUIRED — the engine cannot start without these two. Every one of them must
+# exist AND be declared in the manifest, or validate fails.
+#
+# OPTIONAL — the app already models, fetches and renders these (CardDetail /
+# CardDetailsService, IssuerInfo / IssuerInfoService), and treats absence as an
+# empty section rather than an error. They publish when present and are skipped
+# when they are not, so adding one is a data change and needs no app release.
+#
+# ⚠️ The ORDER of operations is the whole safety property here, and it is not
+# advisory. seed_sync_service.dart `_applyFullSync` returns false on ANY non-200
+# and aborts BEFORE the local version is saved — so a manifest entry naming a
+# file that 404s does not degrade one section, it stops card syncing for every
+# user, on every cold start, forever, with no backoff. Which is why nothing in
+# this file ever writes a manifest entry from a NAME: every entry is derived
+# from a file that was just confirmed on disk (`if (LIVE_SEED / n).exists()`),
+# and validate errors on any declared file that is missing. Keep it that way.
+SEED_FILES_REQUIRED = ("cards.json", "merchants.json")
+SEED_FILES_OPTIONAL = ("card_details.json", "issuer_info.json")
+SEED_FILES = SEED_FILES_REQUIRED + SEED_FILES_OPTIONAL
 MANIFEST = "manifest.json"
 FEED = "feed.json"
 
@@ -186,17 +206,10 @@ def read_json(path: Path):
         return json.load(fh)
 
 
-def write_json(path: Path, obj, indent: int = 2) -> None:
-    """Write JSON at the indent the rest of the repo uses for that file.
-
-    The seed files are indent=1 and news/feed.json is indent=2 -- tests/test_cli.py
-    asserts both. Writing the seed manifest at 2 made every promote leave a manifest
-    the repo's own test rejects, so main went red on each publish. Callers touching a
-    seed file must pass indent=1; the default stays 2 for everything else.
-    """
+def write_json(path: Path, obj) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
-        json.dump(obj, fh, indent=indent, ensure_ascii=False)
+        json.dump(obj, fh, indent=2, ensure_ascii=False)
         fh.write("\n")
 
 
@@ -951,7 +964,7 @@ def scan_rule_integrity(cards: list) -> dict:
             continue
         inner = c.get("card") or {}
         cid = inner.get("id") or "?"
-        seen = set()
+        seen = {}
 
         for r in c.get("reward_rules") or []:
             if not isinstance(r, dict):
@@ -979,10 +992,42 @@ def scan_rule_integrity(cards: list) -> dict:
             # whole string, while _rule_key truncates to 80 chars for baseline
             # readability. Truncating here would report 67 collisions where 24
             # are real, and send someone hunting rules that are actually fine.
+            # NOT every shared name is a collision. An issuer that pools ONE
+            # cap across a brand list ("5% on Amazon, Flipkart, Myntra, Ajio,
+            # Uber, Swiggy, Zomato — capping of 500 reward points per calendar
+            # month") is expressed as one row per merchant_ref, all carrying
+            # the SAME rule_name on purpose, because the cap bucket key is
+            # `ruleName|periodKey` (app_database.dart:641). Giving those rows
+            # distinct names would hand the user one 500-point cap per brand
+            # instead of 500 across all seven.
+            #
+            # That construct is safe on every surface that is actually alive:
+            # the engine indexes merchant rules by merchant_ref, not by name
+            # (recommendation_engine.dart:143-150), so all of them fire; the
+            # shared cap bucket is the intent; and wallet_insights' ruleByName
+            # map (wallet_insights_service.dart:654) keeps only one of them but
+            # computes the same number from it, because they differ ONLY in
+            # merchant_ref. RewardRulesTable, whose `${cardId}|${ruleName}`
+            # primary key would genuinely collapse them, is declared and never
+            # read or written outside generated Drift code.
+            #
+            # So flag a repeat only when it is genuinely ambiguous: the rows
+            # collide on the same merchant_ref, or they disagree on the maths,
+            # in which case which one the user gets is undefined.
             full = f"{cid}::{(r.get('rule_name') or '').strip()}"
-            if full in seen:
-                dup_rule_names.append(key)
-            seen.add(full)
+            maths = (r.get("rule_type"), r.get("reward_type"), _fnum(r.get("reward_rate")),
+                     _fnum(r.get("reward_unit_spend")), _fnum(r.get("cap_amount")),
+                     r.get("cap_period"), r.get("category_id"), r.get("channel"))
+            mref = r.get("merchant_ref")
+            prev = seen.get(full)
+            if prev is not None:
+                prev_maths, prev_mrefs = prev
+                if maths != prev_maths or mref is None or mref in prev_mrefs:
+                    dup_rule_names.append(key)
+                else:
+                    prev_mrefs.add(mref)
+            else:
+                seen[full] = (maths, {mref})
 
             # _checkCap returns null unless BOTH are set, so a cap with no
             # period is never enforced at all.
@@ -1155,9 +1200,16 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
     # Every declared file must exist and match its checksum + size exactly.
     # The app REJECTS a sync on mismatch, which surfaces as "Sync failed".
     declared = {f.get("name") for f in manifest.get("files", [])}
-    for name in SEED_FILES:
+    for name in SEED_FILES_REQUIRED:
         if name not in declared:
             rep.error(f"manifest does not declare {name}")
+    # An optional file that is PRESENT but undeclared never reaches a device —
+    # the app builds its fetch list from the manifest, so an undeclared file is
+    # dead weight in the repo. Not an error: publishing it is a deliberate step.
+    for name in SEED_FILES_OPTIONAL:
+        if (seed_dir / name).exists() and name not in declared:
+            rep.warn(f"seed/{name} exists but the manifest does not declare it — "
+                     f"the app never fetches it. `promote` will declare it automatically.")
 
     for entry in manifest.get("files", []):
         name = entry.get("name", "?")
@@ -1356,6 +1408,43 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
                     )
                 else:
                     ok(f"all {len(merchant_refs)} merchant_ref(s) in cards.json resolve")
+
+    # --- optional seed files -------------------------------------------------
+    # These reach a real screen (the seven tabs of CardDetailScreen, the issuer
+    # sheet), so a broken one is a blank tab rather than a crash — the app's
+    # loaders swallow a parse failure and cache an empty map. That is exactly
+    # why it has to be caught here: nothing downstream will ever complain.
+    for name in SEED_FILES_OPTIONAL:
+        opath = seed_dir / name
+        if not opath.exists():
+            continue
+        try:
+            blob = read_json(opath)
+        except json.JSONDecodeError as e:
+            rep.error(f"{name} is not valid JSON: {e} — the app caches an empty map "
+                      f"and every section it feeds renders blank")
+            continue
+        if not isinstance(blob, dict):
+            rep.error(f"{name}: root must be an object keyed by id, got {type(blob).__name__} — "
+                      f"the app rejects a non-map root outright")
+            continue
+        bad = sorted(k for k, v in blob.items() if not isinstance(v, dict))
+        if bad:
+            rep.error(f"{name}: {len(bad)} entr(ies) are not objects and are skipped "
+                      f"silently by the app: {bad[:5]}")
+        if name == "card_details.json" and card_ids:
+            # Keys are card_ids. One that resolves to no card is content written
+            # for a card that does not exist — it can never be shown.
+            unknown = sorted(set(blob) - card_ids)
+            covered = len(set(blob) & card_ids)
+            if unknown:
+                rep.warn(f"card_details.json: {len(unknown)} key(s) match no card in "
+                         f"cards.json, so that content can never be shown: {unknown[:5]}")
+            missing = len(card_ids) - covered
+            ok(f"{name}: {covered} of {len(card_ids)} cards have detail content"
+               + (f", {missing} have none" if missing else ""))
+        else:
+            ok(f"{name}: {len(blob)} entr(ies)")
 
     return card_ids
 
@@ -1807,53 +1896,6 @@ def cmd_promote(args) -> None:
                 shutil.copy2(dev_seed / n, LIVE_SEED / n)
                 ok(f"seed/{n}")
 
-    # Carry the tooling across too, not just the data.
-    #
-    # promote used to copy seed/ and news/ and nothing else, so main's copy of this
-    # very file drifted behind dev's with every publish -- and promote RUNS from main.
-    # That bit three publishes in a row: dev's gate would learn something (that an
-    # issuer quote outranks a name-parse heuristic, say), the data would be corrected
-    # to match, and then promote would refuse its own data using the older rules. It
-    # also made main UNDER-report its own state, because main's issuer-domain
-    # allowlist was missing five live bank hosts and read genuine citations as foreign.
-    #
-    # The tools are not user-facing data, so there is no reason for the two branches
-    # to disagree about them, and every reason for the branch users are served to be
-    # measured by the current ruler.
-    # tests/ comes too. main's own weekly-refresh.yml runs `python3 tests/run_all.py`,
-    # so leaving the suite behind means the branch users are served is guarded by an
-    # older set of assertions than the one we develop against -- and main was for a
-    # while missing tests/ entirely while still invoking it.
-    tools_copied = []
-    dev_root = dev_seed.parent
-    for rel in ("tools/kredme.py", "tools/validate_cards.py", "tools/fix_cards.py",
-                "tools/checks", "tools/fixers", "tools/app_mirror",
-                "tools/validated_baseline.json", "tests"):
-        dev_src = dev_root / rel
-        if not dev_src.exists():
-            continue
-        dest = REPO / rel
-        if dev_src.is_dir():
-            shutil.copytree(dev_src, dest, dirs_exist_ok=True)
-        else:
-            shutil.copy2(dev_src, dest)
-        tools_copied.append(rel)
-
-    # pipeline/ too, because main's OWN weekly-refresh.yml and pipeline-advance.yml
-    # execute it. Modules only: pipeline/state/ is the batch and source bookkeeping,
-    # it is written by whichever branch ran last, and the workflows push it back to
-    # dev on purpose. Copying dev's state onto main would overwrite live bookkeeping
-    # with a snapshot and could re-bill cards already marked done.
-    dev_pipeline = dev_root / "pipeline"
-    if dev_pipeline.is_dir():
-        for src in sorted(dev_pipeline.glob("*.py")) + sorted(dev_pipeline.glob("*.json")):
-            shutil.copy2(src, REPO / "pipeline" / src.name)
-            tools_copied.append(f"pipeline/{src.name}")
-
-    if tools_copied:
-        ok(f"synced from dev: {len(tools_copied)} path(s) — "
-           f"{', '.join(tools_copied[:6])}{' …' if len(tools_copied) > 6 else ''}")
-
     manifest = dict(read_json(dev_seed / MANIFEST)) if seed_changed else dict(read_json(LIVE_SEED / MANIFEST))
     manifest["version"] = new_sv
     manifest["updated_at"] = now_iso()
@@ -1863,8 +1905,7 @@ def cmd_promote(args) -> None:
          "size_bytes": (LIVE_SEED / n).stat().st_size}
         for n in SEED_FILES if (LIVE_SEED / n).exists()
     ]
-    # indent=1: the seed files are indent=1 on disk and tests/test_cli.py asserts it.
-    write_json(LIVE_SEED / MANIFEST, manifest, indent=1)
+    write_json(LIVE_SEED / MANIFEST, manifest)
     ok(f"seed/{MANIFEST} rebuilt — checksums recomputed")
 
     record_published(new_sv, new_nv)

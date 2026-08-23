@@ -139,8 +139,22 @@ while the app repo is private, CI *cannot* detect drift. **Mirror any app-side c
 **Three files the app is coded to fetch don't exist here** (all HTTP 404): `offers/feed.json`,
 `seed/card_details.json`, `seed/issuer_info.json`. The two code paths even disagree on the offers path
 (`_patchExtendedKeys` uses `offers/offers.json`, `bank_offers_service` uses `offers/feed.json`). The real OTA
-surface is 4 files, not 6. Adding one means editing `seed/manifest.json` **and** teaching `kredme.py` — it
-hardcodes `SEED_FILES = ('cards.json','merchants.json')` at line 69.
+surface is 4 files, not 6.
+
+**`kredme.py` can now publish the two `seed/` ones** (23-Aug). It splits `SEED_FILES_REQUIRED`
+(`cards.json`, `merchants.json` — must exist and must be declared) from `SEED_FILES_OPTIONAL`
+(`card_details.json`, `issuer_info.json` — published when present, skipped when absent). **Drop the file in
+`seed/` on `dev`, commit, `validate`, `promote`.** That is the whole procedure: promote copies it and rebuilds
+the manifest entry from the file on disk. The app already models, fetches and renders both, so **no app
+release is involved** — `CardDetailsService` and `IssuerInfoService` are live on `master` today and treat a
+missing file as an empty section. `offers/` is still not wired; it needs a path decision first.
+
+⚠️ **Never hand-write a manifest entry.** `seed_sync_service.dart:_applyFullSync` returns false on ANY
+non-200 and aborts *before* saving the local version, so an entry naming a file that 404s does not degrade
+one tab — it stops card syncing for every user, on every cold start, forever, with no backoff, re-downloading
+2.7 MB each time and discarding it. `kredme.py` is safe by construction (every entry is derived from a file
+just confirmed on disk) and `validate` errors on any declared-but-missing file. Both are covered by tests in
+`tools/test_pipeline.py`. A hand-edited or Firestore-edited manifest has neither protection.
 
 **The card-count shrink guard compares against your local working tree, not live** (`kredme.py:285-299`).
 A stale checkout measures the floor against the wrong baseline. Another reason to sync and be on `main`.
