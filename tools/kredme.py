@@ -964,7 +964,7 @@ def scan_rule_integrity(cards: list) -> dict:
             continue
         inner = c.get("card") or {}
         cid = inner.get("id") or "?"
-        seen = set()
+        seen = {}
 
         for r in c.get("reward_rules") or []:
             if not isinstance(r, dict):
@@ -992,10 +992,42 @@ def scan_rule_integrity(cards: list) -> dict:
             # whole string, while _rule_key truncates to 80 chars for baseline
             # readability. Truncating here would report 67 collisions where 24
             # are real, and send someone hunting rules that are actually fine.
+            # NOT every shared name is a collision. An issuer that pools ONE
+            # cap across a brand list ("5% on Amazon, Flipkart, Myntra, Ajio,
+            # Uber, Swiggy, Zomato — capping of 500 reward points per calendar
+            # month") is expressed as one row per merchant_ref, all carrying
+            # the SAME rule_name on purpose, because the cap bucket key is
+            # `ruleName|periodKey` (app_database.dart:641). Giving those rows
+            # distinct names would hand the user one 500-point cap per brand
+            # instead of 500 across all seven.
+            #
+            # That construct is safe on every surface that is actually alive:
+            # the engine indexes merchant rules by merchant_ref, not by name
+            # (recommendation_engine.dart:143-150), so all of them fire; the
+            # shared cap bucket is the intent; and wallet_insights' ruleByName
+            # map (wallet_insights_service.dart:654) keeps only one of them but
+            # computes the same number from it, because they differ ONLY in
+            # merchant_ref. RewardRulesTable, whose `${cardId}|${ruleName}`
+            # primary key would genuinely collapse them, is declared and never
+            # read or written outside generated Drift code.
+            #
+            # So flag a repeat only when it is genuinely ambiguous: the rows
+            # collide on the same merchant_ref, or they disagree on the maths,
+            # in which case which one the user gets is undefined.
             full = f"{cid}::{(r.get('rule_name') or '').strip()}"
-            if full in seen:
-                dup_rule_names.append(key)
-            seen.add(full)
+            maths = (r.get("rule_type"), r.get("reward_type"), _fnum(r.get("reward_rate")),
+                     _fnum(r.get("reward_unit_spend")), _fnum(r.get("cap_amount")),
+                     r.get("cap_period"), r.get("category_id"), r.get("channel"))
+            mref = r.get("merchant_ref")
+            prev = seen.get(full)
+            if prev is not None:
+                prev_maths, prev_mrefs = prev
+                if maths != prev_maths or mref is None or mref in prev_mrefs:
+                    dup_rule_names.append(key)
+                else:
+                    prev_mrefs.add(mref)
+            else:
+                seen[full] = (maths, {mref})
 
             # _checkCap returns null unless BOTH are set, so a cap with no
             # period is never enforced at all.
