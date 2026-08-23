@@ -20866,7 +20866,14 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "10% back in Reward Points applies only to recharges, bill payments and travel bookings (flights, buses, trains and hotels) made inside the PhonePe app — capped at 1,000 Reward Points a month. HDFC's terms limit it to transactions initiated on the PhonePe app, so the same booking made on the airline's or hotel's own site does not qualify.",
+    "5% back applies at Amazon, Flipkart, Myntra, Ajio, Uber, Swiggy and Zomato, wherever you pay them — capped at 500 Reward Points a month across all seven together, not 500 each.",
+    "1% back applies to any QR Scan & Pay transaction, on any UPI app, capped at 500 Reward Points a month.",
+    "Outside those three, this card has no general earn rate — an ordinary purchase earns nothing.",
+    "Source: HDFC Bank's reward-points terms for this card — https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/phonepe-hdfc-bank-ultimo-credit-card/phonepe-hdfc-bank-ultimo-cc-reward-points-tncs.pdf"
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -20945,7 +20952,7 @@
   "highlights": [
    "First-ever credit cards launched in collaboration with PhonePe",
    "UPI RuPay-powered credit card",
-   "10% Reward Points on PhonePe spends (recharges, bills, travel, Pincode)",
+   "10% back on recharges, bill payments and travel bookings — only when made inside the PhonePe app",
    "5% Reward Points on Amazon, Flipkart, Myntra, Ajio, Uber, Swiggy, Zomato",
    "1% Reward Points on Scan and Pay UPI spends",
    "1 Reward Point = ₹1 cashback against statement with zero redemption fee",
@@ -20985,7 +20992,14 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "2% back in Reward Points applies only to recharges, bill payments, travel and stays booked inside the PhonePe app — capped at 500 Reward Points a month. HDFC's terms limit it to transactions initiated on the PhonePe app.",
+    "1% back applies at Amazon, Flipkart, Myntra, Ajio, Uber, Swiggy and Zomato, wherever you pay them — capped at 500 Reward Points a month across all seven together.",
+    "1% back applies to any QR Scan & Pay transaction, on any UPI app, capped at 500 Reward Points a month.",
+    "Outside those three, this card has no general earn rate — an ordinary purchase earns nothing.",
+    "Source: HDFC Bank's reward-points terms for this card — https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/phonepe-hdfc-bank-uno-credit-card-/phonepe-hdfc-bank-uno-cc-reward-points-tncs.pdf"
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -21055,7 +21069,7 @@
    "not_for": "Seasoned users seeking premium perks, lifestyle benefits, or lounge access"
   },
   "highlights": [
-   "Up to 2% rewards on PhonePe spends like recharges, bill payments, movies, hotels, utilities",
+   "2% back on recharges, bill payments, travel and stays — only when booked inside the PhonePe app",
    "1% rewards on Amazon, Flipkart, Myntra, Ajio, Uber, Swiggy, Zomato",
    "1% rewards on Scan & Pay UPI transactions",
    "1 Reward Point = ₹1 for statement cashback",
@@ -48698,7 +48712,13 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "3 Reward Points per ₹100 applies only to recharges, utility and bill payments, insurance and travel paid inside the PhonePe app — capped at 750 Reward Points a month, or 250 for insurance. The same purchase made anywhere else does not qualify.",
+    "Paid outside the PhonePe app, an online spend earns 2 Reward Points per ₹100 (up to 750 a month) and everything else earns 1 per ₹100 (up to 1,000 a month).",
+    "Utility and insurance bills paid outside the PhonePe app earn nothing at all on this card.",
+    "Source: SBI Card's terms for this card — https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-base-ekit-tnc.pdf"
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -48747,7 +48767,7 @@
    "not_for": "Those looking for premium benefits and higher reward rates"
   },
   "highlights": [
-   "Up to 3% Reward Points on eligible PhonePe and Pincode spends",
+   "3 Reward Points per ₹100 on recharges, utilities, bill payments, insurance and travel — only when paid inside the PhonePe app",
    "1 Reward Point = ₹1",
    "Potential savings of up to ₹12,000 per year on utility bills, insurance, travel, and recharges via PhonePe",
    "RuPay JCB network enables Scan and Pay UPI payments and worldwide acceptance",
@@ -48810,6 +48830,14 @@
      "program": "Priority Pass",
      "description": "Complimentary Priority Pass membership for the first two years of card membership"
     }
+   ],
+   "summary": [
+    "10 Reward Points per ₹100 applies only to recharges, utility and bill payments, insurance and travel paid inside the PhonePe app — capped at 1,500 Reward Points a month, or 500 for insurance. SBI identifies these from PhonePe's own merchant IDs, so the same purchase made anywhere else does not qualify.",
+    "Paid outside the PhonePe app, an online spend earns 5 Reward Points per ₹100 (up to 1,000 a month) and everything else earns 1 per ₹100 (up to 2,000 a month).",
+    "Utility and insurance bills paid outside the PhonePe app earn nothing at all on this card.",
+    "Since 1 July 2026, Scan & Pay or UPI transactions made outside PhonePe earn no Reward Points.",
+    "No Reward Points are earned on any transaction below ₹100.",
+    "Source: SBI Card's terms for this card — https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-select-ekit.pdf"
    ]
   },
   "eligibility": {
@@ -48875,7 +48903,7 @@
    "not_for": "International travelers needing international lounge access"
   },
   "highlights": [
-   "Up to 10% rewards on PhonePe spends (recharges, utilities, bill payments, insurance, travel)",
+   "10 Reward Points per ₹100 on recharges, utilities, bill payments, insurance and travel — only when paid inside the PhonePe app",
    "5% rewards on online spends",
    "1% rewards on all other spends including UPI Scan and Pay",
    "Potential savings of up to 24000 per year from accelerated rewards",
