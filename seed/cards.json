@@ -63889,7 +63889,7 @@
    "id": "sbi_card_cashback_sbi",
    "card_name": "Cashback SBI Credit Card",
    "issuer": "SBI Card",
-   "network": "unknown",
+   "network": "visa",
    "card_tier": "entry",
    "annual_fee": 999.0,
    "fee_waiver_spend": 200000.0,
@@ -63948,13 +63948,17 @@
     "reward_unit_spend": null,
     "cap_amount": 2000,
     "cap_period": "cycle",
-    "min_txn_amount": null,
+    "min_txn_amount": 100.0,
     "priority": 50,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
     "source_doc_type": "tnc",
-    "_note": "TRUE rupee cashback, not points. Rate from the product page: '5% Cashback on online* spends without any merchant restriction'. Aggregate ceiling across both tiers is Rs.4,000 per statement cycle."
+    "_note": "TRUE rupee cashback, not points. Rate from the product page: '5% Cashback on online* spends without any merchant restriction'. Aggregate ceiling across both tiers is Rs.4,000 per statement cycle.",
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/cashback-tnc-ekit.pdf",
+    "source_quote": "all eligible online transactions during this period will accrue 5% Cashback and all eligible offline transactions will accrue 1% Cashback. The maximum card cashback that can be earned cumulative of online and offline spends is ₹4,000. Within the same statement period, all transactions posted after reaching the respective cashback limit of Online (₹2,000) and Offline (₹2,000) will not accrue any cashback till 11th July.",
+    "source_fetched_on": "2026-08-23",
+    "confidence": "high"
    },
    {
     "rule_name": "1% cashback on every offline transaction, capped at 2000 per statement cycle",
@@ -63968,13 +63972,17 @@
     "reward_unit_spend": null,
     "cap_amount": 2000,
     "cap_period": "cycle",
-    "min_txn_amount": null,
+    "min_txn_amount": 100.0,
     "priority": 45,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
     "source_doc_type": "tnc",
-    "_note": "TRUE rupee cashback. Rate from the product page: '1% Cashback on offline* spends'."
+    "_note": "TRUE rupee cashback. Rate from the product page: '1% Cashback on offline* spends'.",
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/cashback-tnc-ekit.pdf",
+    "source_quote": "all eligible online transactions during this period will accrue 5% Cashback and all eligible offline transactions will accrue 1% Cashback. The maximum card cashback that can be earned cumulative of online and offline spends is ₹4,000. Within the same statement period, all transactions posted after reaching the respective cashback limit of Online (₹2,000) and Offline (₹2,000) will not accrue any cashback till 11th July.",
+    "source_fetched_on": "2026-08-23",
+    "confidence": "high"
    }
   ],
   "exclusion_rules": [
@@ -64025,30 +64033,225 @@
     "_retyped_from": "other:railways"
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "card, gift, novelty & souvenir shops",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "quasi cash/member financial institution",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "digital gaming platforms/merchants",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "tolls",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "category",
     "exclusion_value": "government",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:government related transactions"
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7349",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7631",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5111",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5192",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5942",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5943",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8351",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6381",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5947",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4112",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7993",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7994",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -64120,6 +64323,39 @@
     "confidence": "high",
     "source_fetched_on": "2026-08-21",
     "_note": "Held at card level, not on the rule, because this sentence proves the rule's cap_amount and NOT its rate. On the rule it counted as provenance for a number it never mentions. Rule: 1% cashback on every offline transaction, capped at 2000 per statement cycle"
+   },
+   {
+    "field": "network",
+    "path": "card.network",
+    "old_value": "unknown",
+    "new_value": "visa",
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/cashback-tnc-ekit.pdf",
+    "source_quote": "CASHBACK SBI Card powered by Visa contactless technology is a fast and convenient way to pay.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-23",
+    "_note": "Visa is the only network named in any card-specific sentence of this card's T&C — also 'Just look for the Visa sign of acceptance', 'over 1 million Visa ATMs', '24-Hour Visa Global Customer Assistance Services'. The words 'Platinum' and 'World' do not appear in the document at all, and the only Mastercard mention is the generic welcome-kit diagram legend shared across every SBI e-kit. A Mastercard variant of this card is UNVERIFIED — forum-sourced only — so it is deliberately not recorded here."
+   },
+   {
+    "field": "min_txn_amount",
+    "path": "reward_rules[1..2].min_txn_amount",
+    "old_value": null,
+    "new_value": 100.0,
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/cashback-tnc-ekit.pdf",
+    "source_quote": "Card Cashback is not applicable on transactions less than ₹100.",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-23",
+    "_note": "T&C clause 11.1(s). Held at card level because the rate quote on each rule proves the RATE and the cap, not this floor. WARNING: recommendation_engine.dart does not read min_txn_amount today, so this is true data the app cannot yet act on — a sub-₹100 tap is still shown as earning 5%. Needs an app change to land."
+   },
+   {
+    "field": "exclusion_rules",
+    "path": "exclusion_rules",
+    "old_value": 13,
+    "new_value": 52,
+    "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/cashback-tnc-ekit.pdf",
+    "source_quote": "Below categories will not be eligible for Cashback benefit: Fuel 5172, 5541, 5542, 5983 | Wallet 6540, 6541 | Rental 6513, 7349 | Jewelry 5051, 5094, 7631, 5944 | School & Educational Services 5111, 5192, 5942, 5943, 8211, 8220, 8241, 8244, 8249, 8299, 8351 | Utility 4900, 4814, 4816, 4899, 9399 | Insurance 5960, 6300, 6381 | Card, Gift, Novelty & Souvenir Shops 5947 | Railways 4011, 4112 | Member Financial Institution/Quasi Cash 6011, 6012, 6051 | Digital Gaming Platforms/Merchants 7993, 7994, 5816 | Tolls 4784 | Government related Transactions 9222, 9311, 9402",
+    "confidence": "high",
+    "source_fetched_on": "2026-08-23",
+    "_note": "SBI's own table, printed page 33 of the T&C e-kit, transcribed complete and in the issuer's order and groupings. The four rows previously typed 'other' (gift shops, quasi cash, digital gaming, tolls) were INERT — recommendation_engine.dart's _isExcluded() handles only 'mcc' and 'category' — and are now carried by their published MCCs. The 8 'category' rows are kept ALONGSIDE the codes, never replaced: category matching still catches merchants whose MCC we do not hold. SBI's groupings include choices that look wrong and are not: 5111/5192/5942/5943 (stationery and book stores) sit under School & Educational Services, and 7349 (cleaning services) under Rental. Do not 'correct' them."
    }
   ]
  },
