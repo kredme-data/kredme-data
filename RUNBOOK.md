@@ -236,6 +236,34 @@ cd .. && git add -A && git commit -m "seed: refresh rates" && git push origin ma
 (Seed sync uses **string equality** on `version`, so any change triggers a sync —
 no major-bump gotcha here, unlike news.)
 
+### B2b. Publishing `card_details.json` or `issuer_info.json` (no app release)
+These two are **optional** seed files. The app already models, fetches and renders
+both — `CardDetailsService` feeds all seven tabs of the card detail screen,
+`IssuerInfoService` feeds the issuer sheet — and treats a missing file as an empty
+section. So shipping one is a data change only. Nobody needs to build an APK.
+
+```bash
+# on the dev branch, in the repo root
+cp /path/to/card_details.json seed/card_details.json
+python3 tools/kredme.py validate --target working   # shape + card-id coverage
+git add seed/card_details.json && git commit -m "seed: add card_details.json"
+git push origin dev
+# check it on a dev APK, then:
+git checkout main && python3 tools/kredme.py promote --dry-run
+python3 tools/kredme.py promote --yes && git push origin main
+```
+
+`promote` copies the file **and then** writes its manifest entry from the bytes on
+disk. Do not reverse that, and **do not hand-write the manifest entry**: the app's
+`_applyFullSync` returns false on any non-200 and aborts before saving the version,
+so an entry pointing at a file that 404s stops card syncing for *every* user on
+every cold start, forever, with no backoff. `validate` errors on any declared file
+that is missing, which is the guard — use it.
+
+The shape is a JSON **object keyed by `card_id`**, values are objects. `validate`
+reports how many of the catalogue's cards have content and warns on any key that
+matches no card.
+
 ### B3. Open question — the scraper bridge
 `kredme-card-data` (the 394-card weekly scraper, the intended "source of truth")
 is **not connected** to this repo — its Firestore output is never read by the app,

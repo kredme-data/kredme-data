@@ -258,6 +258,48 @@ def test_promote_dry_run_writes_nothing(td: Path):
 
 
 @test
+def test_optional_seed_file_is_copied_and_declared(td: Path):
+    """card_details.json publishes without an app release — but ONLY if promote
+    both copies it AND declares it. Either half alone is a broken sync."""
+    repo = build_repo(td, seed_version="5.1.0")
+    commit_to_dev(repo, lambda r: write_json(
+        r / "seed" / "card_details.json", {"card_a": {"highlights": ["5% back"]}}))
+    run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+
+    live = repo / "seed" / "card_details.json"
+    assert live.exists(), "promote did not copy the optional file to prod"
+    m = json.loads((repo / "seed" / "manifest.json").read_text())
+    entry = next((f for f in m["files"] if f["name"] == "card_details.json"), None)
+    assert entry is not None, "promote copied the file but never declared it"
+    assert entry["path"] == "seed/card_details.json", entry
+    # A declared checksum that does not match the served bytes is exactly what
+    # makes the app reject the whole sync.
+    assert entry["checksum"] == hashlib.sha256(live.read_bytes()).hexdigest()
+    assert entry["size_bytes"] == len(live.read_bytes())
+
+
+@test
+def test_optional_file_alone_counts_as_a_seed_change(td: Path):
+    """Before this, seed_changed only looked at cards/merchants, so a release
+    that touched ONLY card_details.json reported 'nothing to promote'."""
+    repo = build_repo(td)
+    commit_to_dev(repo, lambda r: write_json(
+        r / "seed" / "card_details.json", {"card_a": {"highlights": ["x"]}}))
+    r = run(repo, "promote", "--yes", "--allow-warnings", expect=0)
+    assert "nothing to promote" not in r.stdout.lower(), r.stdout
+
+
+@test
+def test_absent_optional_file_is_not_an_error(td: Path):
+    """383 cards shipped for months with no card_details.json at all. Absence
+    is the normal state, not a defect."""
+    repo = build_repo(td)
+    assert not (repo / "seed" / "card_details.json").exists()
+    r = run(repo, "validate", "--target", "dev", expect=0)
+    assert "card_details" not in r.stdout, r.stdout
+
+
+@test
 def test_promote_must_run_from_prod_branch(td: Path):
     repo = build_repo(td)
     g(repo, "checkout", "-q", "dev")
@@ -345,6 +387,47 @@ def _dev_validate(td: Path, mutate, expect=1):
     repo = build_repo(td)
     commit_to_dev(repo, mutate)
     return run(repo, "validate", "--target", "dev", expect=expect)
+
+
+@test
+def test_manifest_declaring_a_missing_optional_file_is_fatal(td: Path):
+    """The one that stops card syncing for EVERY user: _applyFullSync returns
+    false on any non-200 and aborts before saving the version, so the app
+    retries the same failing sync on every cold start, forever."""
+    def mutate(r):
+        m = json.loads((r / "seed" / "manifest.json").read_text())
+        m["files"].append({"name": "card_details.json", "path": "seed/card_details.json",
+                           "checksum": "0" * 64, "size_bytes": 1})
+        write_json(r / "seed" / "manifest.json", m)   # file itself never written
+    out = _dev_validate(td, mutate).stdout
+    assert "declared in manifest but file is missing" in out, out
+
+
+@test
+def test_present_but_undeclared_optional_file_warns(td: Path):
+    """Not an error — publishing is a deliberate step — but it reaches nobody,
+    so it must not pass silently."""
+    # A warning, not an error — publishing is a deliberate step, so validate
+    # still exits 0. The point is that it does not pass SILENTLY.
+    out = _dev_validate(td, lambda r: write_json(
+        r / "seed" / "card_details.json", {"card_a": {}}), expect=0).stdout
+    assert "does not declare it" in out, out
+
+
+@test
+def test_optional_file_shape_is_checked(td: Path):
+    """The app's loader swallows a parse failure and caches an empty map, so a
+    broken file is a silently blank tab. Nothing downstream ever complains."""
+    out = _dev_validate(td, lambda r: (r / "seed" / "card_details.json")
+                        .write_text("[]", encoding="utf-8")).stdout
+    assert "root must be an object" in out, out
+
+    # An unresolvable key is only a warning: the content is dead, but nothing
+    # a user sees is wrong, so it must not block a publish.
+    out2 = _dev_validate(td, lambda r: write_json(
+        r / "seed" / "card_details.json", {"card_a": {}, "no_such_card": {}}),
+        expect=0).stdout
+    assert "match no card" in out2, out2
 
 
 @test

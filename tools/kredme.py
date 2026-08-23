@@ -66,7 +66,27 @@ PROD_BRANCH = "main"
 DEV_BASE = "https://raw.githubusercontent.com/kredme-data/kredme-data/dev"
 PROD_BASE = "https://kredme-data.github.io/kredme-data"
 
-SEED_FILES = ("cards.json", "merchants.json")
+# Files the app fetches out of seed/.
+#
+# REQUIRED — the engine cannot start without these two. Every one of them must
+# exist AND be declared in the manifest, or validate fails.
+#
+# OPTIONAL — the app already models, fetches and renders these (CardDetail /
+# CardDetailsService, IssuerInfo / IssuerInfoService), and treats absence as an
+# empty section rather than an error. They publish when present and are skipped
+# when they are not, so adding one is a data change and needs no app release.
+#
+# ⚠️ The ORDER of operations is the whole safety property here, and it is not
+# advisory. seed_sync_service.dart `_applyFullSync` returns false on ANY non-200
+# and aborts BEFORE the local version is saved — so a manifest entry naming a
+# file that 404s does not degrade one section, it stops card syncing for every
+# user, on every cold start, forever, with no backoff. Which is why nothing in
+# this file ever writes a manifest entry from a NAME: every entry is derived
+# from a file that was just confirmed on disk (`if (LIVE_SEED / n).exists()`),
+# and validate errors on any declared file that is missing. Keep it that way.
+SEED_FILES_REQUIRED = ("cards.json", "merchants.json")
+SEED_FILES_OPTIONAL = ("card_details.json", "issuer_info.json")
+SEED_FILES = SEED_FILES_REQUIRED + SEED_FILES_OPTIONAL
 MANIFEST = "manifest.json"
 FEED = "feed.json"
 
@@ -1148,9 +1168,16 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
     # Every declared file must exist and match its checksum + size exactly.
     # The app REJECTS a sync on mismatch, which surfaces as "Sync failed".
     declared = {f.get("name") for f in manifest.get("files", [])}
-    for name in SEED_FILES:
+    for name in SEED_FILES_REQUIRED:
         if name not in declared:
             rep.error(f"manifest does not declare {name}")
+    # An optional file that is PRESENT but undeclared never reaches a device —
+    # the app builds its fetch list from the manifest, so an undeclared file is
+    # dead weight in the repo. Not an error: publishing it is a deliberate step.
+    for name in SEED_FILES_OPTIONAL:
+        if (seed_dir / name).exists() and name not in declared:
+            rep.warn(f"seed/{name} exists but the manifest does not declare it — "
+                     f"the app never fetches it. `promote` will declare it automatically.")
 
     for entry in manifest.get("files", []):
         name = entry.get("name", "?")
@@ -1349,6 +1376,43 @@ def validate_seed(seed_dir: Path, rep: Report, strict_checksums: bool = True,
                     )
                 else:
                     ok(f"all {len(merchant_refs)} merchant_ref(s) in cards.json resolve")
+
+    # --- optional seed files -------------------------------------------------
+    # These reach a real screen (the seven tabs of CardDetailScreen, the issuer
+    # sheet), so a broken one is a blank tab rather than a crash — the app's
+    # loaders swallow a parse failure and cache an empty map. That is exactly
+    # why it has to be caught here: nothing downstream will ever complain.
+    for name in SEED_FILES_OPTIONAL:
+        opath = seed_dir / name
+        if not opath.exists():
+            continue
+        try:
+            blob = read_json(opath)
+        except json.JSONDecodeError as e:
+            rep.error(f"{name} is not valid JSON: {e} — the app caches an empty map "
+                      f"and every section it feeds renders blank")
+            continue
+        if not isinstance(blob, dict):
+            rep.error(f"{name}: root must be an object keyed by id, got {type(blob).__name__} — "
+                      f"the app rejects a non-map root outright")
+            continue
+        bad = sorted(k for k, v in blob.items() if not isinstance(v, dict))
+        if bad:
+            rep.error(f"{name}: {len(bad)} entr(ies) are not objects and are skipped "
+                      f"silently by the app: {bad[:5]}")
+        if name == "card_details.json" and card_ids:
+            # Keys are card_ids. One that resolves to no card is content written
+            # for a card that does not exist — it can never be shown.
+            unknown = sorted(set(blob) - card_ids)
+            covered = len(set(blob) & card_ids)
+            if unknown:
+                rep.warn(f"card_details.json: {len(unknown)} key(s) match no card in "
+                         f"cards.json, so that content can never be shown: {unknown[:5]}")
+            missing = len(card_ids) - covered
+            ok(f"{name}: {covered} of {len(card_ids)} cards have detail content"
+               + (f", {missing} have none" if missing else ""))
+        else:
+            ok(f"{name}: {len(blob)} entr(ies)")
 
     return card_ids
 
