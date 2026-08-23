@@ -925,6 +925,57 @@ def test_baseline_writer_never_blanks_integrity_by_omission():
         assert key not in payload, f"{key} must be absent, not empty, when unmeasured"
 
 
+
+@unit
+def test_a_pooled_brand_cap_may_share_one_rule_name():
+    """An issuer that pools ONE cap across a brand list ("5% on Amazon,
+    Flipkart, Myntra, Ajio, Uber, Swiggy, Zomato — capping of 500 reward
+    points per calendar month") is expressed as one row per merchant_ref, all
+    carrying the SAME rule_name deliberately: the cap bucket key is
+    `ruleName|periodKey`. Distinct names would give one 500-point cap PER
+    BRAND. The engine indexes merchant rules by merchant_ref, so all of them
+    still fire."""
+    cards = [_c("x", 0.01, 1.0, rules=[
+        _r("5% on select online brands", rule_type="merchant_specific", merchant_ref="amazon"),
+        _r("5% on select online brands", rule_type="merchant_specific", merchant_ref="uber"),
+        _r("5% on select online brands", rule_type="merchant_specific", merchant_ref="swiggy"),
+    ])]
+    assert K.scan_rule_integrity(cards)["duplicate_rule_names"] == [], \
+        "a pooled brand cap is the intended construct, not a collision"
+
+
+@unit
+def test_the_same_name_on_the_same_merchant_is_still_a_collision():
+    """Two rows on one merchant_ref genuinely are ambiguous — nothing decides
+    which the user gets."""
+    cards = [_c("x", 0.01, 1.0, rules=[
+        _r("5% on select online brands", rule_type="merchant_specific", merchant_ref="amazon"),
+        _r("5% on select online brands", rule_type="merchant_specific", merchant_ref="amazon"),
+    ])]
+    assert K.scan_rule_integrity(cards)["duplicate_rule_names"], "same merchant twice must fail"
+
+
+@unit
+def test_the_same_name_with_different_maths_is_still_a_collision():
+    """Sharing a cap bucket is fine; disagreeing about the RATE inside it is
+    not — the number the user is shown becomes undefined."""
+    cards = [_c("x", 0.01, 1.0, rules=[
+        _r("5% on select online brands", rule_type="merchant_specific",
+           merchant_ref="amazon", reward_rate=0.05),
+        _r("5% on select online brands", rule_type="merchant_specific",
+           merchant_ref="uber", reward_rate=0.02),
+    ])]
+    assert K.scan_rule_integrity(cards)["duplicate_rule_names"], "differing rates must fail"
+
+
+@unit
+def test_a_repeated_name_with_no_merchant_is_still_a_collision():
+    """The narrowing is only for merchant-scoped rows. Two category rules
+    sharing a name still collide, which is the case the check was written for."""
+    cards = [_c("x", 0.01, 1.0, rules=[_r("Base reward rate"), _r("Base reward rate")])]
+    assert K.scan_rule_integrity(cards)["duplicate_rule_names"], "category dupes must still fail"
+
+
 # --- REGRESSION (branch model) ----------------------------------------------
 
 @test
