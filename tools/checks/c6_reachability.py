@@ -28,6 +28,7 @@ import datetime
 
 from .base import (Ctx, Finding, Skipped, ERROR, WARN, INFO, num, trunc, iso_ok,
                    card_base_pct)
+from .scope_vocab import EVIDENCE_FIELDS, AUTHORED_FIELDS, scope_hits
 
 LAYER = "L6 engine reachability"
 
@@ -89,6 +90,24 @@ PARSED_BUT_UNREAD = {
         "also_excludes_from_threshold": "an also-excludes-from-threshold flag",
     },
 }
+
+# Rule types that land in a lane the engine fires BROADLY: category_bonus and
+# threshold_tier go to the category lane, which _candidateCategoryRules walks
+# down the whole parent chain; channel_specific and portal_bonus go to the base
+# lane, which meets every merchant there is. These are the lanes where a
+# restriction that was never written into a field costs a user money.
+# On origin/main today only category_bonus ever reaches the check: all 161
+# channel_specific rows set `channel` by construction and all 50 portal_bonus
+# rows set channel='portal' (and are never indexed anyway). The other two are
+# here for the day a row loses its channel, not for a count.
+SCOPE_TRIGGER_RULE_TYPES = ("category_bonus", "channel_specific", "portal_bonus")
+
+# Fields on a reward_rules row that the ENGINE reads and that make a rule fire
+# on less than its whole lane. min_txn_amount is deliberately NOT here: it is
+# parsed at credit_card.dart:456 and referenced nowhere, so setting it narrows
+# nothing. 7 of the rows this check flags today do set it.
+ENGINE_NARROWING_FIELDS = ("merchant_ref", "channel", "conditions_json",
+                           "spend_threshold_min", "spend_threshold_max")
 
 # conditions_json fields _passesConditions understands (engine:592-681).
 KNOWN_CONDITION_FIELDS = (
@@ -426,6 +445,26 @@ def run(ctx: Ctx) -> list[Finding]:
             cur = parent_of.get(cur)
         return chain
 
+    # How many merchants a category rule can be fired against, counted the way
+    # _candidateCategoryRules reaches them (engine:734-744): a rule indexed at
+    # category K is a candidate for a transaction in K and in every category
+    # whose parent chain passes through K. So walk each merchant UP and credit
+    # every ancestor it meets. seed/merchants.json carries `category_id` as a
+    # slug in the app's own vocabulary — all 25 slugs match, 269 of 273 rows
+    # resolve — which is why no second mapping table is needed here.
+    merchant_reach = {}
+    merchants_placed = 0
+    for _m in (_mrows or []):
+        if not isinstance(_m, dict):
+            continue
+        _cid = slug_to_id.get(_m.get("category_id")) if isinstance(
+            _m.get("category_id"), str) else None
+        if _cid is None:
+            continue
+        merchants_placed += 1
+        for _k in [_cid] + ancestors(_cid):
+            merchant_reach[_k] = merchant_reach.get(_k, 0) + 1
+
     # ---- portfolio tallies for the headline ------------------------------- #
     rows_total = 0
     rows_dead = 0
@@ -445,7 +484,8 @@ def run(ctx: Ctx) -> list[Finding]:
         cid = cid if isinstance(cid, str) and cid else f"(entry #{pos}, no card id)"
         try:
             _one_card(ctx, entry, inner, cid, today, slug_to_id, parent_of,
-                      ancestors, have_categories, add, merchant_index)
+                      ancestors, have_categories, add, merchant_index,
+                      merchant_reach, merchants_placed)
         except Exception as exc:      # a bad card must never kill the check
             add(Finding(
                 severity=WARN,
@@ -565,7 +605,8 @@ def run(ctx: Ctx) -> list[Finding]:
                    "so a blind run both misses real clashes and invents ones the engine "
                    "would never have.",
             codes=("L6.CATEGORY_BONUS_DROPPED", "L6.CATEGORY_ID_UNRESOLVABLE",
-                   "L6.RULE_SHADOWED", "L6.RULE_SHADOWED_EQUAL"),
+                   "L6.RULE_SHADOWED", "L6.RULE_SHADOWED_EQUAL",
+                   "L6.RULE_FIRES_WIDER_THAN_ITS_EVIDENCE"),
             restore="Restore tools/app_mirror/categories.json (python3 "
                     "tools/app_mirror/refresh.py --app-root ../KredMe-main), or pass "
                     "--app-root pointing at a KredMe-main checkout.",
@@ -897,7 +938,8 @@ def _classify_reward_rules(entry, inner, slug_to_id, ancestors):
 
 
 def _one_card(ctx, entry, inner, cid, today, slug_to_id, parent_of, ancestors,
-              have_categories, add, merchant_index=None):
+              have_categories, add, merchant_index=None, merchant_reach=None,
+              merchants_placed=0):
     merchant_index = merchant_index or {}
     # ------------------------------------------------------------------ #
     # 0. Does the card load at all? Everything else is moot if it doesn't.
@@ -1453,6 +1495,95 @@ def _one_card(ctx, entry, inner, cid, today, slug_to_id, parent_of, ancestors,
                     "value. It looks like we simply do not know."),
             fix=("Rename to the spelling the rest of the file uses: " +
                  ", ".join(sorted({rk[0] for rk, _al in pairs})) + "."),
+        ))
+
+    # ------------------------------------------------------------------ #
+    # 8. Rules that fire WIDER than their own evidence describes.
+    #
+    #    Every code above asks whether a row under-fires. This one asks the
+    #    opposite: the row's own wording names a scope — a platform, a payment
+    #    rail, a transaction size, a cardholder segment, a day of the week —
+    #    and not one field on the row records it, so the engine files it as a
+    #    plain category bonus and fires it on everything in that category and
+    #    every category beneath it.
+    #
+    #    A rule that never fires cannot fire wider, so this reads the same
+    #    verdicts the shadowing pass does and only considers live rows. That
+    #    also means it needs the category vocabulary; without it every
+    #    category_bonus classifies dead, this section falls silent, and the
+    #    L6.CATEGORY_REACHABILITY skip above names this code as one it lost.
+    # ------------------------------------------------------------------ #
+    wider = []
+    if have_categories:
+        currency_words = {w for w in ((_s(inner.get("reward_currency")) or "").lower(),
+                                      (_s(inner.get("point_currency")) or "").lower()) if w}
+        for v in verdicts:
+            row = v["row"]
+            if v["dead"] or not isinstance(row, dict):
+                continue
+            if v["rule_type"] not in SCOPE_TRIGGER_RULE_TYPES:
+                continue
+            # Anything the engine CAN read that narrows this row means the
+            # restriction was recorded, and the row is not this defect. A gate
+            # synthesised from the rule's name counts too — that row belongs to
+            # L6.GATE_INFERRED_FROM_RULE_NAME and is reported there.
+            if any(_has(row, k) for k in ENGINE_NARROWING_FIELDS):
+                continue
+            if _synth_gate(_s(row.get("rule_name"))):
+                continue
+            for field in EVIDENCE_FIELDS:
+                hits = scope_hits(row.get(field),
+                                  authored=(field in AUTHORED_FIELDS),
+                                  currency_words=currency_words)
+                if hits:
+                    wider.append((v, field, hits))
+                    break
+
+    if wider:
+        def _reach(v):
+            """Merchants this row can be fired at. None = not countable here."""
+            if merchant_reach is None:
+                return None
+            if v["lane"] == "category":
+                return merchant_reach.get(v["key"], 0)
+            if v["lane"] == "base":
+                return merchants_placed        # the base lane meets every merchant
+            return None
+
+        worst = max(wider, key=lambda w: (_reach(w[0]) or 0, -w[0]["i"]))
+        wv, wfield, whits = worst
+        wbucket, wgap, wtok = whits[0]
+        wn = _reach(wv)
+        reach_clause = (
+            f"across all {wn} merchant(s) we ship in that category and every "
+            f"category below it" if wn is not None else
+            "across its whole category and every category below it (merchant "
+            "reach not counted on this run — seed/merchants.json placed none)")
+        add(Finding(
+            severity=ERROR,
+            code="L6.RULE_FIRES_WIDER_THAN_ITS_EVIDENCE",
+            message=(
+                f"{cid} has {len(wider)} rule(s) whose own wording restricts the rate "
+                f"to something no field on the row can hold, so the app fires them on "
+                f"every purchase in the category instead. The widest says "
+                f"'{trunc(wtok, 40)}' in its {wfield} — a {wbucket} — and fires "
+                f"{reach_clause}."),
+            card_id=cid, block="reward_rules", index=wv["i"], field=wfield,
+            evidence=trunc("; ".join(
+                f"[{v['i']}] {_s(v['row'].get('rule_name')) or '(unnamed)'} "
+                f"-> {b} '{t}' in {f}, reaches {_reach(v) if _reach(v) is not None else '?'} merchant(s)"
+                for v, f, hs in wider[:3] for b, _g, t in hs[:1]) +
+                ("" if len(wider) <= 3 else f" (+{len(wider) - 3} more)"), 400),
+            impact=(
+                "The user is quoted this rate, and the card is RANKED on it, for "
+                "purchases the issuer would pay the base rate on. It is the loudest "
+                "kind of wrong number we can print: the card wins the pick, the user "
+                "swipes it, and the statement disagrees with us."),
+            fix=(f"Record the restriction in the field that holds it — here that is "
+                 f"{wgap}. Where no such field exists, this is an app ticket, not a "
+                 f"data edit: until then either delete the row or widen its wording "
+                 f"to what the row actually enforces, so the prose and the fields "
+                 f"agree. Do NOT leave the sentence in and hope."),
         ))
 
     # fuel rows past the first are never opened
