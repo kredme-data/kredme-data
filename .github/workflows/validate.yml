@@ -306,6 +306,26 @@ jobs:
                    'count may simply be the checks that stopped looking: '
                    + ', '.join(f'`{c}`' for c in blind))
 
+          # A PR that moves its own pass mark is allowed, but never silently: the
+          # number it lands on has to be the number this run measured.
+          #
+          # This MUST be decided before the "errors went up" bail-out below.
+          # It used to sit after it, which made it unreachable for an upward
+          # move: any PR adding a CHECK fails on the bail-out and never gets
+          # here, however honestly it raises the baseline. A new check makes
+          # EXISTING defects visible — refusing that is refusing to look.
+          tree = json.loads(pathlib.Path(BASE).read_text()) if pathlib.Path(BASE).exists() else {}
+          claimed = int(tree.get('errors', allowed))
+          if claimed != allowed and claimed != now:
+              fail(f'This branch edits {BASE} to {claimed}, which is neither the '
+                   f'base branch\'s {allowed} nor the {now} this run measured. '
+                   f'A pass mark is earned, not chosen.')
+
+          # Deliberate = the branch edited the baseline to EXACTLY what this run
+          # measured. A raise left at the base branch's number is not deliberate,
+          # it is a regression, and still fails below.
+          deliberate_raise = claimed == now and claimed != allowed
+
           if now > allowed:
               worse = sorted(
                   ((c, base.get('errors_by_code', {}).get(c, 0), k)
@@ -320,17 +340,19 @@ jobs:
               lines += ['', 'Fix the new errors, or — if they are a defect becoming '
                             'VISIBLE rather than a new defect — say so in the PR and '
                             'update `tools/validated_baseline.json` deliberately.']
-              fail(f'Errors went UP: {allowed} -> {now} (+{now - allowed}). '
-                   f'This branch may not add data errors.', "\n".join(lines))
-
-          # A PR that moves its own pass mark is allowed, but never silently: the
-          # number it lands on has to be the number this run measured.
-          tree = json.loads(pathlib.Path(BASE).read_text()) if pathlib.Path(BASE).exists() else {}
-          claimed = int(tree.get('errors', allowed))
-          if claimed != allowed and claimed != now:
-              fail(f'This branch edits {BASE} to {claimed}, which is neither the '
-                   f'base branch\'s {allowed} nor the {now} this run measured. '
-                   f'A pass mark is earned, not chosen.')
+              if not deliberate_raise:
+                  fail(f'Errors went UP: {allowed} -> {now} (+{now - allowed}). '
+                       f'This branch may not add data errors.', "\n".join(lines))
+              print(f'Errors went UP: {allowed} -> {now} (+{now - allowed}), and '
+                    f'{BASE} was deliberately moved to {now} in this branch.')
+              summary(f'### Ratchet: pass mark deliberately raised\n\n'
+                      f'Errors **{allowed} → {now}** (+{now - allowed}), and this '
+                      f'branch sets `{BASE}` to exactly the {now} this run '
+                      f'measured.\n\nThis is only ever right when a NEW CHECK '
+                      f'made existing defects visible. If these are new defects, '
+                      f'this PR is wrong.\n\n'
+                      + "\n".join(lines[2:]))
+              sys.exit(0)
 
           if now < allowed:
               pathlib.Path('validated_baseline.new.json').write_text(
