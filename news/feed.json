@@ -1,7 +1,46 @@
 {
-  "version": "9.0.0",
-  "updated_at": "2026-08-22T05:06:39Z",
+  "version": "10.0.0",
+  "updated_at": "2026-08-25T03:27:19Z",
   "items": [
+    {
+      "id": "news_axis_bank_2026_05_30_no_interest_pile_up_on_over_limit_l_e65187e71d",
+      "title": "No interest pile-up on over-limit loan EMIs",
+      "summary": "From 30 May 2026, if you carry a balance, Axis will not charge interest on EMIs of an Over-the-Limit Instant Loan on your card, unlike other EMIs. That saves you interest if you ever revolve your balance.",
+      "category": "enhancement",
+      "severity": "positive",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-08-25T03:27:19Z",
+      "expiry_date": null,
+      "affected_cards": []
+    },
+    {
+      "id": "news_axis_bank_2026_07_01_magnus_and_horizon_fee_free_for_som_fc128d131c",
+      "title": "Magnus and Horizon fee free for some Burgundy folks",
+      "summary": "If you open a Burgundy Salary Account on or after 1 July 2026, the ₹12,500 Magnus joining and annual fee is waived; the same applies to the ₹3,000 Horizon fee with a Burgundy Savings Account. Axis can pull this back any time and you must keep the Burgundy relationship.",
+      "category": "enhancement",
+      "severity": "positive",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-08-25T03:27:19Z",
+      "expiry_date": null,
+      "affected_cards": [
+        "axis_bank_magnus",
+        "axis_bank_horizon"
+      ]
+    },
+    {
+      "id": "news_axis_bank_undated_1_500_cap_on_rent_payment_fee_is_gone_78cf81efb4",
+      "title": "₹1,500 cap on rent payment fee is gone",
+      "summary": "The 1% fee on rent payments no longer stops at ₹1,500 per transaction, so a ₹3 lakh rent payment now costs ₹3,000 plus tax instead of ₹1,500 plus tax. Big rent transactions get much more expensive.",
+      "category": "devaluation",
+      "severity": "negative",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-08-25T03:27:19Z",
+      "expiry_date": null,
+      "affected_cards": []
+    },
     {
       "id": "news_axis_2023_09_01_rent_and_wallet_spends_don_t_earn_you_a_dc43d07efa",
       "title": "Rent and wallet spends don't earn you a fee waiver",
@@ -1723,8 +1762,8 @@
     },
     {
       "id": "news_axis_bank_undated_paying_abroad_in_rupees_now_costs_1_5_f0420fe416",
-      "title": "Paying abroad in rupees now costs 1.5%, not 1%",
-      "summary": "If you let an overseas machine or website bill you in Indian rupees, Axis now charges 1.5% plus tax on that amount instead of 1%. Burgundy Private, Olympus and Primus cardholders pay nothing.",
+      "title": "Paying in rupees abroad now costs 1.5%, not 1%",
+      "summary": "If you let an overseas shop or website bill you in Indian rupees, Axis now charges 1.5% plus tax on the amount instead of 1%. On a ₹50,000 spend that's ₹750 plus GST instead of ₹500 plus GST.",
       "category": "devaluation",
       "severity": "negative",
       "source": "Axis Bank",
