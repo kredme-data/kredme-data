@@ -4,7 +4,7 @@
  "_measured_without_the_app_checkout": true,
  "_why": "kredme-data is PUBLIC and KredMe-main is PRIVATE, so CI here can never check the app out. This baseline is therefore measured the way CI measures it: against the vendored tools/app_mirror/ category list. With a real app checkout the count is the same 610 — the mirror is current — but the run is DEGRADED either way and says so.",
  "measured_at": "2026-08-27T00:00:00Z",
- "git_head": "a7cf2e1b4bf0",
+ "git_head": "8739f7776e25",
  "categories_origin": "mirror",
  "degraded": true,
  "skipped_checks": [
