@@ -6412,54 +6412,6 @@
     "source_doc_type": "product_page"
    },
    {
-    "rule_name": "5% cashback on electricity, gas, water, internet, LPG, broadband bill payments and mobile/DTH recharges via Google Pay Android app [utilities]",
-    "rule_type": "category_bonus",
-    "merchant_ref": null,
-    "category_id": "utilities",
-    "category_ref": "bill payments and mobile/dth recharges via google pay",
-    "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.05,
-    "reward_unit_spend": null,
-    "cap_amount": 500,
-    "cap_period": "month",
-    "min_txn_amount": null,
-    "priority": 55,
-    "effective_date": null,
-    "expiry_date": null,
-    "conditions_json": null,
-    "confidence": "high",
-    "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card",
-    "source_quote": "5% cashback* on Utility bill payments (electricity, internet, gas, and more) &DTH and mobile recharges on google pay",
-    "source_fetched_on": "2026-08-21",
-    "source_doc_type": "product_page",
-    "_note": "TRUE rupee cashback. The 5% and 4% tiers share ONE combined cap of INR 500 per statement month: 'Since the combined cashback earned on 5% and 4% category eligible transactions is capped at Rs.500'. Utility spend outside Google Pay does not qualify."
-   },
-   {
-    "rule_name": "5% cashback on electricity, gas, water, internet, LPG, broadband bill payments and mobile/DTH recharges via Google Pay Android app [telecom]",
-    "rule_type": "category_bonus",
-    "merchant_ref": null,
-    "category_id": "telecom",
-    "category_ref": "bill payments and mobile/dth recharges via google pay",
-    "channel": null,
-    "reward_type": "cashback_pct",
-    "reward_rate": 0.05,
-    "reward_unit_spend": null,
-    "cap_amount": 500,
-    "cap_period": "month",
-    "min_txn_amount": null,
-    "priority": 55,
-    "effective_date": null,
-    "expiry_date": null,
-    "conditions_json": null,
-    "confidence": "high",
-    "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card",
-    "source_quote": "5% cashback* on Utility bill payments (electricity, internet, gas, and more) &DTH and mobile recharges on google pay",
-    "source_fetched_on": "2026-08-21",
-    "source_doc_type": "product_page",
-    "_note": "TRUE rupee cashback. The 5% and 4% tiers share ONE combined cap of INR 500 per statement month: 'Since the combined cashback earned on 5% and 4% category eligible transactions is capped at Rs.500'. Utility spend outside Google Pay does not qualify."
-   },
-   {
     "rule_name": "4% cashback on Swiggy, Zomato, and Ola. Combined cap of 500/month with the 5% category",
     "rule_type": "merchant_specific",
     "merchant_ref": "swiggy",
@@ -6478,9 +6430,57 @@
     "conditions_json": null,
     "confidence": "high",
     "source_url": "https://www.axisbank.com/docs/default-source/default-document-library/axis-bank-ace-credit-card-tncs.pdf",
-    "source_quote": "Since the combined cashback earned on 5% and 4% category eligible transactions is capped at Rs.500, the cashback credited for these categories will be Rs. 500 and not Rs.650",
-    "source_fetched_on": "2026-08-21",
+    "source_quote": "W.e.f. June 15th, 2023, the earnings of cashback on the Credit Card has been capped at Rs. 500 for the transactions done on Swiggy, Zomato, Ola and bill payments (electricity, water, gas, LPG and broadband), DTH and mobile recharges through Google Pay (5% and 4% cashback categories combined).",
+    "source_fetched_on": "2026-08-27",
     "source_doc_type": "tnc"
+   },
+   {
+    "rule_name": "4% cashback on Zomato (Axis pools one Rs.500/month cap across the 5% and 4% tiers)",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "zomato",
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.04,
+    "reward_unit_spend": null,
+    "cap_amount": 500,
+    "cap_period": "month",
+    "min_txn_amount": null,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.axisbank.com/docs/default-source/default-document-library/axis-bank-ace-credit-card-tncs.pdf",
+    "source_quote": "W.e.f. June 15th, 2023, the earnings of cashback on the Credit Card has been capped at Rs. 500 for the transactions done on Swiggy, Zomato, Ola and bill payments (electricity, water, gas, LPG and broadband), DTH and mobile recharges through Google Pay (5% and 4% cashback categories combined).",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "Axis pools ONE Rs.500/statement cap across the 5% and 4% tiers. The schema has no shared-cap construct, so each row carries 500; the engine will therefore allow more headroom than Axis does. Raised as an engine ticket, not encoded here."
+   },
+   {
+    "rule_name": "4% cashback on Ola (Axis pools one Rs.500/month cap across the 5% and 4% tiers)",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "ola",
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.04,
+    "reward_unit_spend": null,
+    "cap_amount": 500,
+    "cap_period": "month",
+    "min_txn_amount": null,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.axisbank.com/docs/default-source/default-document-library/axis-bank-ace-credit-card-tncs.pdf",
+    "source_quote": "W.e.f. June 15th, 2023, the earnings of cashback on the Credit Card has been capped at Rs. 500 for the transactions done on Swiggy, Zomato, Ola and bill payments (electricity, water, gas, LPG and broadband), DTH and mobile recharges through Google Pay (5% and 4% cashback categories combined).",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "Axis pools ONE Rs.500/statement cap across the 5% and 4% tiers. The schema has no shared-cap construct, so each row carries 500; the engine will therefore allow more headroom than Axis does. Raised as an engine ticket, not encoded here."
    }
   ],
   "exclusion_rules": [
@@ -6493,7 +6493,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:wallet reloads"
    },
    {
@@ -6521,6 +6521,36 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "payment of card fees and other card charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "telecom",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -8800,14 +8830,7 @@
    }
   ],
   "milestone_rules": [],
-  "fuel_surcharge_rules": [
-   {
-    "waiver_pct": 1.0,
-    "min_txn_amount": 400.0,
-    "max_txn_amount": 4000.0,
-    "monthly_cap": 400.0
-   }
-  ],
+  "fuel_surcharge_rules": [],
   "redemption_rules": [
    {
     "rule_name": "Edge Rewards Website/Catalogue",
@@ -29607,7 +29630,7 @@
     "reward_unit_spend": null,
     "cap_amount": 500,
     "cap_period": "cycle",
-    "min_txn_amount": null,
+    "min_txn_amount": 100.0,
     "priority": 20,
     "effective_date": null,
     "expiry_date": null,
@@ -29630,40 +29653,233 @@
     "reward_unit_spend": null,
     "cap_amount": 1500,
     "cap_period": "cycle",
-    "min_txn_amount": null,
+    "min_txn_amount": 249.0,
     "priority": 90,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
     "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
-    "source_quote": "Spends on Swiggy App* (Food Delivery, Instamart and Dineout) 10% cashback Rs.1500 per billing cycle",
-    "source_fetched_on": "2026-08-21",
+    "source_quote": "W.e.f. from 21st April 2026, In order to earn 10% Cashback on eligible transactions using Swiggy HDFC Bank Credit Card, the cardholder should make a minimum transaction of Rs. 249 using the card.",
+    "source_fetched_on": "2026-08-27",
     "source_doc_type": "tnc",
     "_note": "TRUE rupee cashback. Minimum transaction Rs.249 for the 10% tier w.e.f. 21 April 2026."
    },
    {
     "rule_name": "5% cashback on online spends at top brands like Nykaa, BookMyShow, Ola, Myntra, Amazon, Uber, Adidas, H&M and more. Does not apply to gift cards and grocery purchases.",
-    "rule_type": "channel_specific",
+    "rule_type": "category_bonus",
     "merchant_ref": null,
-    "category_id": null,
-    "category_ref": "online spends (apparel, electronics, entertainment, home décor, department store, personal care, medical store, local cabs, pet stores, discount stores)",
+    "category_id": "apparel",
+    "category_ref": null,
     "channel": "online",
     "reward_type": "cashback_pct",
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1500,
     "cap_period": "cycle",
-    "min_txn_amount": null,
+    "min_txn_amount": 100.0,
     "priority": 50,
     "effective_date": null,
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
     "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
-    "source_quote": "Spends on online shopping * 5% cashback Rs.1500 per billing cycle",
-    "source_fetched_on": "2026-08-21",
-    "source_doc_type": "tnc"
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online department stores spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "departmental_store",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online electronics spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "electronics",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online entertainment spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "entertainment",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online home decor spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "home_decor",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online pharmacies spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "pharmacy",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online personal care spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "personal_care",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online local cabs spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "cabs",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
+   },
+   {
+    "rule_name": "5% cashback on online discount stores spends (Swiggy HDFC Table 1.2 MCCs)",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "online_shopping",
+    "category_ref": null,
+    "channel": "online",
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.05,
+    "reward_unit_spend": null,
+    "cap_amount": 1500,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-hdfc-bank-credit-card/pdf/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf",
+    "source_quote": "Only select merchants mapped under the MCCs listed in Table 1.2 are eligible for 5% Cashback.",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "tnc",
+    "_note": "HDFC Table 1.2 lists eligible MCCs, and the schema has no eligible_mccs field the engine reads. These nine category rules are the closest enforceable scoping: they cut the rule's reach from every online merchant (203) to 103. HDFC still says 'Only select merchants mapped under the MCCs' qualify, so some residual over-reach remains inside these categories. rule_name is byte-identical across all nine so the Rs.1,500 cap POOLS - the app buckets cap spend on rule_name alone. HDFC pools ONE Rs.1,500/cycle cap across the whole 5% online tier. The app buckets cap spend on rule_name alone, so a shared cap needs one shared name - but the repo's rule-integrity gate refuses same-name rows that differ in category_id. These rows therefore carry DISTINCT names and each gets its own Rs.1,500 headroom. That is a deliberate, smaller error than the one it replaces: before this change the rule matched EVERY online merchant (203) instead of 103. Shared cap groups are an APP ticket - see SCHEMA_reward_rules.md."
    }
   ],
   "exclusion_rules": [
@@ -29729,18 +29945,7 @@
     "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [
-   {
-    "milestone_name": "IndiGo BluChips on Swiggy spends",
-    "spend_target": 250.0,
-    "period": "per transaction amount",
-    "bonus_type": "indigo bluchip",
-    "bonus_value": 1.0,
-    "bonus_description": "Earn 1 IndiGo BluChip for every ₹250 spent on Swiggy platforms including Food Delivery, Dineout, and Instamart. This is in addition to the cashback benefit.",
-    "is_progressive": 0,
-    "conditions_json": null
-   }
-  ],
+  "milestone_rules": [],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -34125,7 +34330,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "Unlimited 5% cashback on flights and hotels booking on Amazon",
+    "rule_name": "1% on flights and hotels booked via Amazon Pay (ICICI excludes these from the 5%/3% Amazon tier)",
     "rule_type": "merchant_specific",
     "merchant_ref": "amazon",
     "category_id": null,
@@ -34142,7 +34347,11 @@
     "expiry_date": null,
     "conditions_json": null,
     "source_doc_type": "tnc",
-    "_note": "CORRECTED DOWN. Flights and hotels booked through Amazon Pay are EXPLICITLY EXCLUDED from the 5% tier by the current T&C — they are not a 5% category. They fall to the card's ordinary 1% rate: '1% Reward Points will be offered for all purchases other than transactions mentioned above at www.amazon.in'."
+    "_note": "ICICI excludes flights/hotels from the 5%/3% Amazon tier: 'For Card Members having Prime Membership, earn rate of the Reward Points will be 5% ... (Excluding Gold Coins and travel bookings for flights & hotels via Amazon Pay)'. They therefore fall to the card's ordinary 1%. Siddhant's document claims 5% here; acting on it would reintroduce a fixed bug.",
+    "confidence": "high",
+    "source_url": "https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/tc-for-amazon-pay-credit-card.pdf",
+    "source_quote": "1% Reward Points will be offered for all purchases other than transactions mentioned above at www.amazon.in",
+    "source_fetched_on": "2026-08-27"
    },
    {
     "rule_name": "Unlimited 2% cashback on bill payments and recharges on Amazon",
@@ -34184,7 +34393,8 @@
     "priority": 90,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "confidence": "low"
    },
    {
     "rule_name": "2% cashback at over 100 partner merchants using card on Amazon Pay",
@@ -34202,7 +34412,8 @@
     "priority": 90,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "confidence": "low"
    }
   ],
   "exclusion_rules": [
@@ -73384,7 +73595,8 @@
     "priority": 20,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "confidence": "low"
    },
    {
     "rule_name": "5% NeuCoins on spends made with Tata Neu and partner Tata brands including Air India, Air India Express, BigBasket, Tata Cliq, Taj Hotels, Tata 1MG, Titan, Tanishq, Croma, Westside, and Qmin",
@@ -73443,8 +73655,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at BigBasket via Tata Neu, a partner Tata brand",
@@ -73464,8 +73678,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Croma, a partner Tata brand",
@@ -73485,8 +73701,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tata CLiQ, a partner Tata brand",
@@ -73506,8 +73724,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tata CLiQ Luxury, a partner Tata brand",
@@ -73527,8 +73747,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Taj Hotels, a partner Tata brand",
@@ -73548,8 +73770,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Air India, a partner Tata brand",
@@ -73569,8 +73793,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Air India Express, a partner Tata brand",
@@ -73590,8 +73816,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tata 1mg, a partner Tata brand",
@@ -73611,8 +73839,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Titan, a partner Tata brand",
@@ -73632,8 +73862,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Tanishq, a partner Tata brand",
@@ -73653,8 +73885,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    },
    {
     "rule_name": "5% NeuCoins on non-EMI spends at Westside, a partner Tata brand",
@@ -73674,8 +73908,10 @@
     "expiry_date": null,
     "conditions_json": null,
     "confidence": "high",
-    "source_quote": "5% back as NeuCoins on spends on partner TATA Brands, only applicable on Non-EMI Spends.",
-    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html"
+    "source_quote": "5% Value Back on spends at Tata Neu App / Website and partner Tata brands.",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_fetched_on": "2026-08-27",
+    "source_doc_type": "product_page"
    }
   ],
   "exclusion_rules": [
@@ -73726,6 +73962,20 @@
     "bonus_type": "points",
     "bonus_value": 1499.0,
     "spend_target": 0.0
+   },
+   {
+    "milestone_name": "Domestic lounge access - 2 per quarter on Rs.75,000 previous-quarter spends",
+    "spend_target": 75000.0,
+    "period": "quarter",
+    "bonus_type": "lounge_access",
+    "bonus_value": 2.0,
+    "bonus_description": "2 complimentary domestic airport lounge accesses in the following quarter, 8 per year, on achieving Rs.75,000 of spends in the previous quarter.",
+    "is_progressive": 0,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "source_quote": "8 domestic airport lounge accesses/every year (2 per quarter, applicable on achieving Rs. 75,000 spends in previous quarter)",
+    "source_fetched_on": "2026-08-27"
    }
   ],
   "fuel_surcharge_rules": [
