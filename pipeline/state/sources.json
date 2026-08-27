@@ -2,16 +2,16 @@
   "schema_version": 1,
   "sources": {
     "__watch__au": {
-      "content_sha256": "2adb944f2f69023c4993d4bc017e7e6aa2d559d1440eecbd06fb2c55b8c63ad3",
-      "fetched_at": "2026-08-26T03:33:00Z",
+      "content_sha256": "383a0dd2f35d2c8f7d4fc0c00fecc53c74b5aafea725477367a68c04e8c6e7d0",
+      "fetched_at": "2026-08-27T12:58:29Z",
       "note": "",
       "status": "done",
-      "text_chars": 103793,
+      "text_chars": 103799,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
       "content_sha256": "ecca0b24ea8ad08c17c048cf25f5dfd627dea045fe3643fc90367412b30e5cf2",
-      "fetched_at": "2026-08-26T03:31:26Z",
+      "fetched_at": "2026-08-27T12:57:07Z",
       "note": "",
       "status": "done",
       "text_chars": 164242,
@@ -19,23 +19,23 @@
     },
     "__watch__hdfc": {
       "content_sha256": "1ab8f1ee685076fcf6448f9d5f1217b94b3c6fd0bf50a8e73678ce6a9f9aaa13",
-      "fetched_at": "2026-08-26T03:31:27Z",
+      "fetched_at": "2026-08-27T12:57:07Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
       "url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"
     },
     "__watch__hsbc": {
-      "content_sha256": "9d96062b4e781cdf4590e299484545ce157290b45182eb079d91bbeb956eba7f",
-      "fetched_at": "2026-08-26T03:33:15Z",
+      "content_sha256": "a7731cafb9704378805245c72a82c67a541cbbd40c9d3f64e212804dcc3341cc",
+      "fetched_at": "2026-08-27T12:58:47Z",
       "note": "",
       "status": "done",
-      "text_chars": 4516,
+      "text_chars": 4676,
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-08-26T03:32:14Z",
+      "fetched_at": "2026-08-27T12:57:36Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "208d382d5f2ad973737ce7502eb269924fb74b7fc27ffb9eb44f1530d1a64b27",
-      "fetched_at": "2026-08-26T03:32:33Z",
+      "fetched_at": "2026-08-27T12:57:56Z",
       "note": "",
       "status": "done",
       "text_chars": 200761,
@@ -51,7 +51,7 @@
     },
     "__watch__indusind": {
       "content_sha256": "8ad469ec226d5a946c73ff722fd9dfdd089c65fdac47f2619f9a73708e70836e",
-      "fetched_at": "2026-08-26T03:32:50Z",
+      "fetched_at": "2026-08-27T12:58:13Z",
       "note": "",
       "status": "done",
       "text_chars": 51158,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "f54c2e9aef646b294baad24b6ac0f6541189fdfcd29e1bdc9c9dbd78f3e7c272",
-      "fetched_at": "2026-08-26T03:33:06Z",
+      "fetched_at": "2026-08-27T12:58:35Z",
       "note": "",
       "status": "done",
       "text_chars": 47746,
@@ -67,15 +67,15 @@
     },
     "__watch__rbl": {
       "content_sha256": "317a55c4cd1501501805455dd8a919a43885a16c4d54fe84d5ce5f0015857c09",
-      "fetched_at": "2026-08-26T03:33:14Z",
+      "fetched_at": "2026-08-27T12:58:44Z",
       "note": "",
       "status": "done",
       "text_chars": 106608,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
-      "content_sha256": "5068a274819193590fe551440cb15b54f4d3269cd3a044472c8cc02686d4f740",
-      "fetched_at": "2026-08-26T03:32:05Z",
+      "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
+      "fetched_at": "2026-08-27T12:57:28Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-08-26T03:32:52Z",
+      "fetched_at": "2026-08-27T12:58:16Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
