@@ -3,15 +3,15 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "383a0dd2f35d2c8f7d4fc0c00fecc53c74b5aafea725477367a68c04e8c6e7d0",
-      "fetched_at": "2026-08-27T12:58:29Z",
+      "fetched_at": "2026-08-28T14:28:52Z",
       "note": "",
       "status": "done",
       "text_chars": 103799,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "ecca0b24ea8ad08c17c048cf25f5dfd627dea045fe3643fc90367412b30e5cf2",
-      "fetched_at": "2026-08-27T12:57:07Z",
+      "content_sha256": "5af1562722cc7070d5651d587b5ced57267c1e08aed595790457c99a58443020",
+      "fetched_at": "2026-08-28T14:27:27Z",
       "note": "",
       "status": "done",
       "text_chars": 164242,
@@ -19,23 +19,23 @@
     },
     "__watch__hdfc": {
       "content_sha256": "1ab8f1ee685076fcf6448f9d5f1217b94b3c6fd0bf50a8e73678ce6a9f9aaa13",
-      "fetched_at": "2026-08-27T12:57:07Z",
+      "fetched_at": "2026-08-28T14:27:28Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
       "url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"
     },
     "__watch__hsbc": {
-      "content_sha256": "a7731cafb9704378805245c72a82c67a541cbbd40c9d3f64e212804dcc3341cc",
-      "fetched_at": "2026-08-27T12:58:47Z",
+      "content_sha256": "c1b4242a5494d6b6f7ef4ed9de9f596745b5b65a2f1d806bdbcdfd7c951ddfbd",
+      "fetched_at": "2026-08-28T14:29:10Z",
       "note": "",
       "status": "done",
-      "text_chars": 4676,
+      "text_chars": 4516,
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-08-27T12:57:36Z",
+      "fetched_at": "2026-08-28T14:28:05Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "208d382d5f2ad973737ce7502eb269924fb74b7fc27ffb9eb44f1530d1a64b27",
-      "fetched_at": "2026-08-27T12:57:56Z",
+      "fetched_at": "2026-08-28T14:28:25Z",
       "note": "",
       "status": "done",
       "text_chars": 200761,
@@ -51,7 +51,7 @@
     },
     "__watch__indusind": {
       "content_sha256": "8ad469ec226d5a946c73ff722fd9dfdd089c65fdac47f2619f9a73708e70836e",
-      "fetched_at": "2026-08-27T12:58:13Z",
+      "fetched_at": "2026-08-28T14:28:39Z",
       "note": "",
       "status": "done",
       "text_chars": 51158,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "f54c2e9aef646b294baad24b6ac0f6541189fdfcd29e1bdc9c9dbd78f3e7c272",
-      "fetched_at": "2026-08-27T12:58:35Z",
+      "fetched_at": "2026-08-28T14:28:57Z",
       "note": "",
       "status": "done",
       "text_chars": 47746,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "317a55c4cd1501501805455dd8a919a43885a16c4d54fe84d5ce5f0015857c09",
-      "fetched_at": "2026-08-27T12:58:44Z",
+      "fetched_at": "2026-08-28T14:29:08Z",
       "note": "",
       "status": "done",
       "text_chars": 106608,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-08-27T12:57:28Z",
+      "fetched_at": "2026-08-28T14:27:59Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-08-27T12:58:16Z",
+      "fetched_at": "2026-08-28T14:28:42Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
