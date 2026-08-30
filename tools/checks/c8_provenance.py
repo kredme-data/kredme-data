@@ -72,7 +72,9 @@ _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     "kotakmahindra":            ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com",
                                 "kotak811.bank.in"),
     "indusindbank":             ("indusind.com", "indusindbank.com", "indusind.bank.in"),
-    "yesbank":                  ("yesbank.in", "yes.bank.in"),
+    # gokiwi.in is the co-brand partner that publishes the Kiwi RuPay card's terms,
+    # the same relationship scapia.cards and uni.cards already have below.
+    "yesbank":                  ("yesbank.in", "yes.bank.in", "gokiwi.in"),
     "ausmallfinancebank":       ("aubank.in", "au.bank.in"),
     "aubank":                   ("aubank.in", "au.bank.in"),
     "aubankcobrandedwithadityabirlafinancelimited":

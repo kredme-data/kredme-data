@@ -82040,5 +82040,1125 @@
     "source_fetched_on": "2026-08-14"
    }
   ]
+ },
+ {
+  "card": {
+   "id": "au_small_finance_bank_cheq_au",
+   "card_name": "CheQ AU Credit Card",
+   "issuer": "AU Small Finance Bank",
+   "network": "rupay",
+   "card_tier": "entry",
+   "annual_fee": 0.0,
+   "fee_waiver_spend": null,
+   "base_reward_rate": 0.01,
+   "reward_currency": "reward_points",
+   "rp_value_standard": 0.5,
+   "rp_value_travel": 0.5,
+   "rp_value_transfer": null,
+   "forex_markup_pct": 3.49,
+   "has_rupay_upi": 1,
+   "image_asset": "assets/cards/au_small_finance_bank_cheq_au.png",
+   "metadata": {
+    "contactless": null,
+    "material": null,
+    "invite_only": false,
+    "no_preset_limit": false
+   },
+   "is_active": 1,
+   "is_travel": 0,
+   "points_expiry_months": 24,
+   "min_redemption_points": null,
+   "points_clawback_on_default": null
+  },
+  "reward_rules": [
+   {
+    "rule_name": "2 CheQ Points per Rs.200 on other eligible spends — 0.5% at Rs.0.50 a point. Uncapped. Transactions under Rs.200 earn nothing.",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 2.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": 200.0,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "1% Rewards — 2 CheQ Points per Rs.200. No monthly or annual cap on base rewards.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change. The 2.5% CheQ-UPI tier is deliberately NOT stored. The engine's UPI phase is switched on by the card being RuPay, not by the payment actually being UPI, so a UPI rule is reached before the base rate on EVERY purchase and would show this rate at a supermarket till. The rate is also conditional on paying inside the CheQ app — third-party UPI apps earn nothing — and there is no payment-mode field to express that. Same reason the 12% utility-bill tier is not stored: it only applies when the bill is paid inside the CheQ app."
+   },
+   {
+    "rule_name": "24 CheQ Points per Rs.200 at CheQ partner brands — 6% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "amazon",
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 24.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "12% Rewards — 24 CheQ Points per Rs.200 on partnered brands including Amazon, Flipkart, Zomato, BigBasket. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "24 CheQ Points per Rs.200 at CheQ partner brands — 6% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "flipkart",
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 24.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "12% Rewards — 24 CheQ Points per Rs.200 on partnered brands including Amazon, Flipkart, Zomato, BigBasket. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "24 CheQ Points per Rs.200 at CheQ partner brands — 6% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "zomato",
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 24.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "12% Rewards — 24 CheQ Points per Rs.200 on partnered brands including Amazon, Flipkart, Zomato, BigBasket. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "24 CheQ Points per Rs.200 at CheQ partner brands — 6% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "bigbasket",
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 24.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "12% Rewards — 24 CheQ Points per Rs.200 on partnered brands including Amazon, Flipkart, Zomato, BigBasket. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "dining",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "online_shopping",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "apparel",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "electronics",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "departmental_store",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "grocery",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "airlines",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "hotels",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   },
+   {
+    "rule_name": "10 CheQ Points per Rs.200 across CheQ's accelerated categories — 2.5% at Rs.0.50 a point, the best rate CheQ publishes. 12,000-point statement cap.",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "travel",
+    "category_ref": "fast food, restaurants, online marketplaces, clothing, electronics, books, department stores, specialty retail, grocery, airlines, bus lines, travel agencies, hotels",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 10.0,
+    "reward_unit_spend": 200.0,
+    "cap_amount": 12000,
+    "cap_period": "cycle",
+    "min_txn_amount": 200.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.au.bank.in/credit-cards/cheq-au-credit-card",
+    "source_quote": "5% Rewards — 10 CheQ Points per Rs.200 across selected categories. Reward Cap 12,000 CheQ Points per statement cycle, applied collectively to the 12% and 5% accelerated categories.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "cap_kind": "reward",
+    "_note": "POINT VALUE. CheQ markets these tiers as 12% / 5% / 2.5% / 1%. Those percentages count a CheQ Point at Rs.1, while the SAME validation document's redemption table values a point at Rs.0.50 (CheQ Travel, gift cards) and Rs.0.25 (bill payments). Both statements are Siddhant's, and they cannot both be stored. What is stored is his point mechanics (24 / 10 / 2 CheQ Points per Rs.200) valued at his own best documented rate, Rs.0.50 — so partner brands read 6%, not the marketed 12%. This is the same trap already settled on Jupiter Edge+, where the marketed '10% back' is stored as the 7% the Jewel value actually produces. To publish 12% instead, set rp_value_standard to 1.0 on this card; nothing else needs to change."
+   }
+  ],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6381",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9400",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 1
+   }
+  ],
+  "milestone_rules": [],
+  "fuel_surcharge_rules": [
+   {
+    "waiver_pct": 1.0,
+    "min_txn_amount": null,
+    "max_txn_amount": null,
+    "monthly_cap": 150.0
+   }
+  ],
+  "redemption_rules": [
+   {
+    "rule_name": "CheQ Travel — flights and hotels",
+    "channel_type": "travel",
+    "point_value_inr": 0.5,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": 0.0,
+    "channel_description": "Booked through CheQ Travel.",
+    "confidence": "high"
+   },
+   {
+    "rule_name": "Top brand gift cards",
+    "channel_type": "gift_card",
+    "point_value_inr": 0.5,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": 0.0,
+    "channel_description": "Gift cards in the CheQ app.",
+    "confidence": "high"
+   },
+   {
+    "rule_name": "Bill payments",
+    "channel_type": "bill_payment",
+    "point_value_inr": 0.25,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": 0.0,
+    "channel_description": "The unconditional channel. Points cannot be converted to cash, transferred to a bank account or moved to another user, and expire two years from issue.",
+    "confidence": "high"
+   }
+  ],
+  "_note": "Every number here is from Siddhant Bhoite's manual validation document, read against the issuer's terms and conditions on 2026-08-30, and accepted as final by the founder. This repo did not re-fetch the pages: au.bank.in returns HTTP 403 to us and yesbank.in does not resolve, which is why both cards were missing until now. source_url is the issuer page the validation was performed against."
+ },
+ {
+  "card": {
+   "id": "yes_bank_kiwi_rupay",
+   "card_name": "Kiwi YES Bank RuPay Credit Card",
+   "issuer": "YES Bank",
+   "network": "rupay",
+   "card_tier": "entry",
+   "annual_fee": 0.0,
+   "fee_waiver_spend": null,
+   "base_reward_rate": 0.005,
+   "reward_currency": "cashback_inr",
+   "rp_value_standard": 1.0,
+   "rp_value_travel": null,
+   "rp_value_transfer": null,
+   "forex_markup_pct": 3.5,
+   "has_rupay_upi": 1,
+   "image_asset": "assets/cards/yes_bank_kiwi_rupay.png",
+   "metadata": {
+    "contactless": null,
+    "material": "Virtual",
+    "invite_only": false,
+    "no_preset_limit": false
+   },
+   "is_active": 1,
+   "is_travel": 0,
+   "points_expiry_months": null,
+   "min_redemption_points": 125,
+   "points_clawback_on_default": null
+  },
+  "reward_rules": [
+   {
+    "rule_name": "0.5% cashback on online transactions, which is the rate this virtual card earns outside UPI Scan & Pay.",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.005,
+    "reward_unit_spend": null,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "high",
+    "source_url": "https://www.gokiwi.in/",
+    "source_quote": "0.5% cashback on online transactions.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-08-30",
+    "_note": "Kiwi Neon is an optional Rs.999 + GST annual membership lifting eligible UPI spend to 3 / 4 / 5% at Rs.50,000 / Rs.1,00,000 / Rs.1,50,000 of annual spend, each tier carrying one complimentary lounge visit. NOT modelled: it is a paid membership gated on an ANNUAL spend total, and the engine has neither an annual accumulator nor a paid-membership flag, so showing 5% would overstate the card for every holder without Neon. The document's own arithmetic is that net of the Rs.999 fee the top tier is 4.33%, not 5%. The 1.5% UPI Scan & Pay rate is also not stored: the engine's UPI phase is switched on by the card being RuPay, not by the payment being UPI, so it would be reached before the base rate on every purchase and show 1.5% at a supermarket till."
+   }
+  ],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0763",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0820",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0821",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0822",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0823",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0824",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0825",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0742",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0743",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0744",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0780",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7512",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7523",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7531",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7535",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7538",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7631",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9400",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9950",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5962",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5964",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5965",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5966",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5967",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5968",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5969",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8111",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8931",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8675",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5451",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5511",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5521",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5531",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5532",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5533",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5599",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4789",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4812",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4813",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4816",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4821",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4829",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6381",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6529",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5947",
+    "also_excludes_from_threshold": 1
+   }
+  ],
+  "milestone_rules": [],
+  "fuel_surcharge_rules": [
+   {
+    "waiver_pct": 1.0,
+    "min_txn_amount": null,
+    "max_txn_amount": null,
+    "monthly_cap": null
+   }
+  ],
+  "redemption_rules": [
+   {
+    "rule_name": "Cashback to the linked bank account",
+    "channel_type": "cashback",
+    "point_value_inr": 1.0,
+    "min_points": 125,
+    "max_points": null,
+    "redemption_fee_inr": 0.0,
+    "channel_description": "Cashback is credited to the linked bank account. The issuer denominates it in Kiwis at 4 Kiwis = Rs.1, and redeems in multiples of 500 Kiwis, so the smallest redemption is 500 Kiwis = Rs.125.",
+    "confidence": "high"
+   }
+  ],
+  "_note": "Every number here is from Siddhant Bhoite's manual validation document, read against the issuer's terms and conditions on 2026-08-30, and accepted as final by the founder. This repo did not re-fetch the pages: au.bank.in returns HTTP 403 to us and yesbank.in does not resolve, which is why both cards were missing until now. source_url is the issuer page the validation was performed against."
  }
 ]
