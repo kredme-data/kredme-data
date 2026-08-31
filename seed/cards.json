@@ -30139,18 +30139,7 @@
     "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [
-   {
-    "milestone_name": "IndiGo BluChips on Swiggy spends",
-    "spend_target": 250.0,
-    "period": "per transaction amount",
-    "bonus_type": "indigo bluchip",
-    "bonus_value": 1.0,
-    "bonus_description": "Earn 1 IndiGo BluChip for every ₹250 spent on Swiggy platforms including Food Delivery, Dineout, and Instamart. This is in addition to the cashback benefit.",
-    "is_progressive": 0,
-    "conditions_json": null
-   }
-  ],
+  "milestone_rules": [],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -33679,18 +33668,7 @@
     "_retyped_from": "other:government-related transactions"
    }
   ],
-  "milestone_rules": [
-   {
-    "milestone_name": "Accelerated Rewards",
-    "spend_target": 400000.0,
-    "period": "year",
-    "bonus_type": "reward_points",
-    "bonus_value": 0.0,
-    "bonus_description": "Accelerated reward points once you reach a total spend of ₹4 lakhs",
-    "is_progressive": 0,
-    "conditions_json": null
-   }
-  ],
+  "milestone_rules": [],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
