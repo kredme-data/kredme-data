@@ -129,6 +129,11 @@ CARD_SPEC = {
     "has_rupay_upi": _f("flag01", required=True, nullable=False,
                         why="it decides whether the card's UPI rules can ever fire"),
     "image_asset": _f("str", required=True, nullable=False, empty_ok=False),
+    # The issuer's own page for this card, where the user can apply. Optional:
+    # 164 active cards do not carry one yet. Never an aggregator — the app
+    # opens this URL in an external browser under a referral disclosure, so a
+    # comparison site here would put our disclosure over someone else's page.
+    "apply_url": _f("str", required=False, nullable=True, empty_ok=False),
     "metadata": _f("object", required=True, nullable=False),
     "is_active": _f("flag01", required=True, nullable=False),
     "is_travel": _f("flag01", required=True, nullable=False),
