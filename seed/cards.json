@@ -2171,7 +2171,7 @@
    "id": "au_small_finance_bank_ixigo_au",
    "card_name": "ixigo AU Credit Card",
    "issuer": "AU Small Finance Bank",
-   "network": "visa",
+   "network": "visa; rupay",
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
@@ -2300,27 +2300,6 @@
     "_sources": [
      "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf"
     ]
-   },
-   {
-    "rule_name": "1 Reward Point on every ₹100 spent on insurance; capped at 100 Reward Points per transaction [insurance]",
-    "rule_type": "category_bonus",
-    "merchant_ref": null,
-    "category_id": "insurance",
-    "category_ref": "utility, telecom and insurance spends",
-    "channel": null,
-    "reward_type": "points_per_spend",
-    "reward_rate": 1.0,
-    "reward_unit_spend": 100.0,
-    "cap_amount": 100,
-    "cap_period": "transaction",
-    "min_txn_amount": null,
-    "priority": 55,
-    "effective_date": "2024-12-22",
-    "expiry_date": null,
-    "conditions_json": null,
-    "_sources": [
-     "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf"
-    ]
    }
   ],
   "exclusion_rules": [
@@ -2366,6 +2345,111 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "international payments",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9950",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5552",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -6522,6 +6606,31 @@
     "exclusion_type": "other",
     "exclusion_value": "payment of card fees and other card charges",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -8705,7 +8814,7 @@
    "id": "axis_bank_neo",
    "card_name": "Axis Bank Neo Credit Card",
    "issuer": "Axis Bank",
-   "network": "rupay",
+   "network": "rupay; visa; mastercard",
    "card_tier": "entry",
    "annual_fee": 250.0,
    "fee_waiver_spend": null,
@@ -8797,6 +8906,16 @@
     "exclusion_value": "education",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:education transactions"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "telecom",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -11692,7 +11811,7 @@
    "id": "axis_bank_flipkart_axis_bank",
    "card_name": "Flipkart Axis Bank Credit Card",
    "issuer": "Axis Bank",
-   "network": "unknown",
+   "network": "visa; mastercard",
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 350000.0,
@@ -11977,6 +12096,16 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "flipkart smart store (bills and recharges) earns only 1% cashback",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "telecom",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -15603,10 +15732,10 @@
    "id": "bobcard_(bank_of_baroda)_card_eterna",
    "card_name": "BOBCARD ETERNA Credit Card",
    "issuer": "BOBCARD",
-   "network": "rupay (also available on mastercard based on dining benefits mentioned)",
+   "network": "visa; mastercard; rupay",
    "card_tier": "mid_range",
-   "annual_fee": 2499.0,
-   "fee_waiver_spend": 250000.0,
+   "annual_fee": 0.0,
+   "fee_waiver_spend": null,
    "base_reward_rate": 0.03,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.25,
@@ -15743,6 +15872,11 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "fast food restaurants",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -17113,7 +17247,7 @@
    "id": "bobcard_(bank_of_baroda)_in_partnership_with_uni_app_card_uni_goldx",
    "card_name": "BOBCARD Uni GoldX Credit Card",
    "issuer": "Uni",
-   "network": "unknown",
+   "network": "visa; mastercard; rupay",
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
@@ -17186,6 +17320,11 @@
     "exclusion_value": "government",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:government services"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -21815,7 +21954,7 @@
    "id": "hdfc_bank_millennia",
    "card_name": "HDFC Bank Millennia Credit Card",
    "issuer": "HDFC Bank",
-   "network": "unknown",
+   "network": "visa; mastercard; rupay; diners",
    "card_tier": "mid_range",
    "annual_fee": 1000.0,
    "fee_waiver_spend": 100000.0,
@@ -22139,6 +22278,16 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "smart emi/dial an emi transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -30137,6 +30286,26 @@
     "exclusion_type": "other",
     "exclusion_value": "transactions less than ₹100 on swiggy",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -31834,6 +32003,381 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "payment of card fees and other card charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8351",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9950",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "2741",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "2791",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "2842",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5013",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5021",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5039",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5044",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5045",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5046",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5047",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5051",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5065",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5072",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5074",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5085",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5099",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5111",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5122",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5131",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5137",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5139",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5169",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5192",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5193",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5198",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5199",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7333",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7361",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7369",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7372",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7375",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7379",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7395",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8734",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5552",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5932",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5937",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8398",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8641",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7995",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8062",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4829",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7322",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4111",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -33555,7 +34099,7 @@
    "fee_waiver_spend": null,
    "base_reward_rate": 0.013333333333333334,
    "reward_currency": "reward_points",
-   "rp_value_standard": null,
+   "rp_value_standard": 0.25,
    "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.5,
@@ -33666,6 +34210,156 @@
     "exclusion_value": "government",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:government-related transactions"
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4829",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5552",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 1
    }
   ],
   "milestone_rules": [],
@@ -34841,6 +35535,206 @@
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:wallet loads (e.g. paytm)",
     "_reverted_from": "category:wallet_load"
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1361",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "3851",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9752",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5555",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7014",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7407",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5271",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8493",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8494",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7911",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9313",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4901",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "3887",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4897",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5416",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5417",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4812",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4813",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4815",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4821",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4896",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4902",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "3886",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -35874,7 +36768,7 @@
    "id": "icici_bank_coral",
    "card_name": "ICICI Bank Coral Credit Card",
    "issuer": "ICICI Bank",
-   "network": "visa; rupay; mastercard; amex",
+   "network": "amex; visa; mastercard; rupay",
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 150000.0,
@@ -35973,6 +36867,21 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "fuel spends excluded from 2x reward points earning",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -46222,7 +47131,7 @@
    "id": "indusind_bank_tiger",
    "card_name": "IndusInd Bank Tiger Credit Card",
    "issuer": "IndusInd Bank",
-   "network": "unknown",
+   "network": "visa",
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
@@ -46280,6 +47189,31 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -70536,7 +71470,7 @@
    "id": "sbi_card_phonepe_sbi_select_black",
    "card_name": "PhonePe SBI SELECT BLACK Credit Card",
    "issuer": "SBI Card",
-   "network": "unknown",
+   "network": "visa; rupay",
    "card_tier": "mid_range",
    "annual_fee": 1499.0,
    "fee_waiver_spend": 300000.0,
@@ -70662,6 +71596,156 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "flexipay transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7993",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7994",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5947",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6380",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -80577,6 +81661,221 @@
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5933",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5935",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7995",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7800",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7801",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7802",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8651",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8661",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4829",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4816",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6381",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7276",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7322",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8111",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8351",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8398",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8641",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5817",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7273",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7994",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8931",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 1
    }
   ],
   "milestone_rules": [],
