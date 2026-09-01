@@ -1,7 +1,71 @@
 {
-  "version": "9.0.0",
-  "updated_at": "2026-08-22T05:06:39Z",
+  "version": "10.0.0",
+  "updated_at": "2026-09-01T07:58:05Z",
   "items": [
+    {
+      "id": "news_axis_bank_2026_05_30_no_interest_on_over_limit_loan_emis_747d8e7351",
+      "title": "No interest on over-limit loan EMIs from May 2026",
+      "summary": "If you carry a balance on your Axis card, interest is charged on your unpaid dues and on billed EMIs — but from 30 May 2026, EMIs for the Over-the-Limit Instant Loan are carved out and won't attract that interest. That's a small saving for anyone revolving a balance while repaying an OTL loan.",
+      "category": "enhancement",
+      "severity": "positive",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-09-01T07:58:05Z",
+      "expiry_date": null,
+      "affected_cards": []
+    },
+    {
+      "id": "news_axis_bank_2026_07_01_horizon_card_fee_waived_for_new_bur_9abf3fc728",
+      "title": "Horizon card fee waived for new Burgundy savers",
+      "summary": "The ₹3,000 joining and annual fee on the Axis Bank Horizon Credit Card becomes nil if you hold a Burgundy Savings Account opened on or after 1 July 2026. Axis says this waiver is at its discretion and can be pulled back anytime.",
+      "category": "enhancement",
+      "severity": "positive",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-09-01T07:58:05Z",
+      "expiry_date": null,
+      "affected_cards": [
+        "axis_bank_horizon"
+      ]
+    },
+    {
+      "id": "news_axis_bank_2026_07_01_magnus_card_free_for_new_burgundy_s_d5f695e089",
+      "title": "Magnus card free for new Burgundy Salary customers",
+      "summary": "The ₹12,500 joining and annual fee on the Magnus Credit Card is dropped to nil if you have a Burgundy Salary Account opened on or after 1 July 2026. Everyone else keeps paying ₹12,500 plus GST unless they hit the spend waiver.",
+      "category": "enhancement",
+      "severity": "positive",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-09-01T07:58:05Z",
+      "expiry_date": null,
+      "affected_cards": [
+        "axis_bank_magnus"
+      ]
+    },
+    {
+      "id": "news_axis_bank_undated_final_billed_amount_can_differ_from_wh_1379376a8c",
+      "title": "Final billed amount can differ from what you approved",
+      "summary": "On fuel, international spends, rent, wallet loads and some merchant payments, the amount finally charged to your card may be higher than the amount you approved, because taxes, surcharges and exchange rates get added at settlement. Check your statement rather than the payment screen for the real cost.",
+      "category": "devaluation",
+      "severity": "warning",
+      "source": "Axis Bank",
+      "source_url": null,
+      "published_at": "2026-09-01T07:58:05Z",
+      "expiry_date": null,
+      "affected_cards": []
+    },
+    {
+      "id": "news_rbl_bank_2026_02_21_cardless_cash_withdrawal_ends_21_feb_602419176a",
+      "title": "Cardless cash withdrawal ends 21 Feb 2026",
+      "summary": "You will no longer be able to pull cash from RBL or non-RBL ATMs without your card once this service stops on 21 February 2026. Until then it still costs Rs. 20 per transaction, and that fee is not refunded if the transaction expires or is cancelled.",
+      "category": "devaluation",
+      "severity": "negative",
+      "source": "RBL Bank",
+      "source_url": null,
+      "published_at": "2026-09-01T07:58:05Z",
+      "expiry_date": null,
+      "affected_cards": []
+    },
     {
       "id": "news_axis_2023_09_01_rent_and_wallet_spends_don_t_earn_you_a_dc43d07efa",
       "title": "Rent and wallet spends don't earn you a fee waiver",
@@ -840,18 +904,6 @@
       "summary": "You still pay a 1% fee plus tax on every rent payment made with an Axis credit card, but the old ₹1,500 per-transaction ceiling no longer appears — a ₹3 lakh rent payment now costs ₹3,000 plus GST instead of ₹1,500. Olympus and Primus cards pay nothing on rent.",
       "category": "devaluation",
       "severity": "negative",
-      "source": "Axis Bank",
-      "source_url": null,
-      "published_at": "2026-08-21T03:35:05Z",
-      "expiry_date": null,
-      "affected_cards": []
-    },
-    {
-      "id": "news_axis_bank_2026_05_30_no_interest_on_over_limit_loan_emis_747d8e7351",
-      "title": "No interest on over-limit loan EMIs from May 2026",
-      "summary": "From 30 May 2026, EMIs for an Over-the-Limit Instant Loan on your credit card stop attracting the revolving interest charge, so carrying a balance costs slightly less. All other EMIs still attract interest.",
-      "category": "enhancement",
-      "severity": "positive",
       "source": "Axis Bank",
       "source_url": null,
       "published_at": "2026-08-21T03:35:05Z",
