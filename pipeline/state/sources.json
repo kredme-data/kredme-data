@@ -3,39 +3,39 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "2a9f87d8c6153e3b3ed42f6c4e989afb4036a368bcb24ec9ccc6dbdad2e94342",
-      "fetched_at": "2026-09-02T07:13:48Z",
+      "fetched_at": "2026-09-03T07:19:22Z",
       "note": "",
       "status": "done",
       "text_chars": 103811,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "09c84c288cea2922064a63c1f6eb5150f66d65a375051b23ab6ae59c2856114e",
-      "fetched_at": "2026-09-02T07:12:13Z",
+      "content_sha256": "9a712af203b1d2350527e2047380de85bc8a3616f8c11187a6f523c747e468a1",
+      "fetched_at": "2026-09-03T07:17:57Z",
       "note": "",
       "status": "done",
       "text_chars": 164295,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
-      "content_sha256": "2cb0b1fe139e1177d4511de111c1027fe11079ee1e97b63000f40e35efd34f14",
-      "fetched_at": "2026-09-02T07:12:14Z",
+      "content_sha256": "f351df0f83b5887d06a3b2763df795d3877016c65f249d47eccbd1b171f90cd2",
+      "fetched_at": "2026-09-03T07:17:57Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
       "url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"
     },
     "__watch__hsbc": {
-      "content_sha256": "70731a47084da90e8b33ebabc01969c6c73834ea1d41b6c7631e932e4b9bf750",
-      "fetched_at": "2026-09-02T07:14:05Z",
+      "content_sha256": "a4bd7376d582b054485ddf644f8d6b2cc8fdde1fab6135886bb7e25ddb0cd448",
+      "fetched_at": "2026-09-03T07:19:36Z",
       "note": "",
       "status": "done",
-      "text_chars": 4562,
+      "text_chars": 4511,
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-09-02T07:12:54Z",
+      "fetched_at": "2026-09-03T07:18:38Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "01ff3d488a2d2aebd3dda4b2924c8b9438e3f14f3ec966ddab5a653369aa4647",
-      "fetched_at": "2026-09-02T07:13:13Z",
+      "fetched_at": "2026-09-03T07:18:57Z",
       "note": "",
       "status": "done",
       "text_chars": 200758,
@@ -51,31 +51,31 @@
     },
     "__watch__indusind": {
       "content_sha256": "7340e9e6f2a5849e271002c87755d9b6340f3d330df943f261707c8f727d40c2",
-      "fetched_at": "2026-09-02T07:13:31Z",
+      "fetched_at": "2026-09-03T07:19:12Z",
       "note": "",
       "status": "done",
       "text_chars": 51250,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "f54c2e9aef646b294baad24b6ac0f6541189fdfcd29e1bdc9c9dbd78f3e7c272",
-      "fetched_at": "2026-09-02T07:13:54Z",
+      "content_sha256": "6ef325d1dc99b584531ee5de1aed0d10a6057501b9cfe8a88d2983ff70846b9f",
+      "fetched_at": "2026-09-03T07:19:27Z",
       "note": "",
       "status": "done",
-      "text_chars": 47746,
+      "text_chars": 47687,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
-      "content_sha256": "fef5aaa4b8bc5e9373f63f38a5ff9f718d69bc6a4f688296f713da2df60f5b76",
-      "fetched_at": "2026-09-02T07:14:01Z",
+      "content_sha256": "450726df5e99b99379bcda390c3a006ba701fe260ebd3a33bb3b8fb56baeab20",
+      "fetched_at": "2026-09-03T07:19:33Z",
       "note": "",
       "status": "done",
-      "text_chars": 106608,
+      "text_chars": 106602,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-09-02T07:12:48Z",
+      "fetched_at": "2026-09-03T07:18:33Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-09-02T07:13:35Z",
+      "fetched_at": "2026-09-03T07:19:13Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
