@@ -72,7 +72,9 @@ _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     "kotakmahindra":            ("kotak.com", "kotak.bank.in", "kotakmahindrabank.com",
                                 "kotak811.bank.in"),
     "indusindbank":             ("indusind.com", "indusindbank.com", "indusind.bank.in"),
-    "yesbank":                  ("yesbank.in", "yes.bank.in"),
+    # gokiwi.in is the co-brand partner that publishes the Kiwi RuPay card's terms,
+    # the same relationship scapia.cards and uni.cards already have below.
+    "yesbank":                  ("yesbank.in", "yes.bank.in", "gokiwi.in"),
     "ausmallfinancebank":       ("aubank.in", "au.bank.in"),
     "aubank":                   ("aubank.in", "au.bank.in"),
     "aubankcobrandedwithadityabirlafinancelimited":
@@ -112,6 +114,20 @@ _ISSUER_DOMAINS: dict[str, tuple[str, ...]] = {
     # ISSUING bank, not by FPL — SBM's notice board carries the reward-point terms.
     "fpltechnologiespvtltd":    ("onecard.app", "getonecard.app", "fplabs.tech",
                                  "sbmbank.co.in", "sbm.bank.in"),
+
+    # seed/cards.json now files three co-brands under the name the CARDHOLDER
+    # knows instead of the holding company, so the bank picker stops hiding them
+    # (a user could not find OneCard on 11-Aug, or Uni GoldX on 14-Jul). These
+    # keys carry exactly the domains their holding-company keys carried, which
+    # are kept above so an older seed still resolves. "uni" and "scapia" are
+    # short enough that the containment fallback (>= 6 chars) cannot reach them,
+    # so they need the exact entries.
+    "onecard":                  ("onecard.app", "getonecard.app", "fplabs.tech",
+                                 "sbmbank.co.in", "sbm.bank.in"),
+    "uni":                      ("bobcard.co.in", "bobfinancial.com",
+                                 "bankofbaroda.in", "uni.cards"),
+    "scapia":                   ("federalbank.co.in", "federal.bank.in",
+                                 "bobcard.co.in", "scapia.cards"),
 }
 
 # --------------------------------------------------------------------------- #

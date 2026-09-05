@@ -2,80 +2,80 @@
   "schema_version": 1,
   "sources": {
     "__watch__au": {
-      "content_sha256": "5567fb60a8d403c297ecf393bc3a7f6e7877c7d0483a16465eea57d96ffab35c",
-      "fetched_at": "2026-08-23T03:29:24Z",
+      "content_sha256": "2a9f87d8c6153e3b3ed42f6c4e989afb4036a368bcb24ec9ccc6dbdad2e94342",
+      "fetched_at": "2026-09-05T07:02:22Z",
       "note": "",
       "status": "done",
-      "text_chars": 103643,
+      "text_chars": 103811,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "7993a33ac5e5d9eadde0a46f483dd8304c7006499cc4417411163fa25a61ac3f",
-      "fetched_at": "2026-08-23T03:28:00Z",
+      "content_sha256": "ca7dee73bcc7ce9834a8eb042be0a14243340b51c99cb5b365f5147d7c22a5ec",
+      "fetched_at": "2026-09-05T07:00:55Z",
       "note": "",
       "status": "done",
-      "text_chars": 164403,
+      "text_chars": 164295,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
-      "content_sha256": "1ab8f1ee685076fcf6448f9d5f1217b94b3c6fd0bf50a8e73678ce6a9f9aaa13",
-      "fetched_at": "2026-08-23T03:28:00Z",
+      "content_sha256": "f351df0f83b5887d06a3b2763df795d3877016c65f249d47eccbd1b171f90cd2",
+      "fetched_at": "2026-09-05T07:00:55Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
       "url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"
     },
     "__watch__hsbc": {
-      "content_sha256": "1d6d626eb91730bd1dfd557d7e2d7bb8363b55803dd185446702dc1a192354d6",
-      "fetched_at": "2026-08-23T03:29:39Z",
+      "content_sha256": "a4bd7376d582b054485ddf644f8d6b2cc8fdde1fab6135886bb7e25ddb0cd448",
+      "fetched_at": "2026-09-05T07:02:39Z",
       "note": "",
       "status": "done",
-      "text_chars": 4490,
+      "text_chars": 4511,
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-08-23T03:28:42Z",
+      "fetched_at": "2026-09-05T07:01:32Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
       "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"
     },
     "__watch__idfc": {
-      "content_sha256": "208d382d5f2ad973737ce7502eb269924fb74b7fc27ffb9eb44f1530d1a64b27",
-      "fetched_at": "2026-08-23T03:28:59Z",
+      "content_sha256": "01ff3d488a2d2aebd3dda4b2924c8b9438e3f14f3ec966ddab5a653369aa4647",
+      "fetched_at": "2026-09-05T07:01:51Z",
       "note": "",
       "status": "done",
-      "text_chars": 200761,
+      "text_chars": 200758,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
-      "content_sha256": "28de64e43a4b6bab62d1b500c602b016cf31110f7fc69d7be3b161a8cdd8a58d",
-      "fetched_at": "2026-08-23T03:29:15Z",
+      "content_sha256": "7340e9e6f2a5849e271002c87755d9b6340f3d330df943f261707c8f727d40c2",
+      "fetched_at": "2026-09-05T07:02:09Z",
       "note": "",
       "status": "done",
-      "text_chars": 63386,
+      "text_chars": 51250,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "f54c2e9aef646b294baad24b6ac0f6541189fdfcd29e1bdc9c9dbd78f3e7c272",
-      "fetched_at": "2026-08-23T03:29:29Z",
+      "content_sha256": "6ef325d1dc99b584531ee5de1aed0d10a6057501b9cfe8a88d2983ff70846b9f",
+      "fetched_at": "2026-09-05T07:02:28Z",
       "note": "",
       "status": "done",
-      "text_chars": 47746,
+      "text_chars": 47687,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
-      "content_sha256": "317a55c4cd1501501805455dd8a919a43885a16c4d54fe84d5ce5f0015857c09",
-      "fetched_at": "2026-08-23T03:29:37Z",
+      "content_sha256": "450726df5e99b99379bcda390c3a006ba701fe260ebd3a33bb3b8fb56baeab20",
+      "fetched_at": "2026-09-05T07:02:35Z",
       "note": "",
       "status": "done",
-      "text_chars": 106608,
+      "text_chars": 106602,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
-      "content_sha256": "5068a274819193590fe551440cb15b54f4d3269cd3a044472c8cc02686d4f740",
-      "fetched_at": "2026-08-23T03:28:35Z",
+      "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
+      "fetched_at": "2026-09-05T07:01:27Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-08-23T03:29:17Z",
+      "fetched_at": "2026-09-05T07:02:10Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,

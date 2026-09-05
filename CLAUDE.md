@@ -1,7 +1,8 @@
 # kredme-data — the data real users are served
 
 The OTA backend the shipped KredMe app fetches at runtime: `seed/{manifest,cards,merchants}.json` +
-`news/feed.json`, served from `main` via GitHub Pages. Data plus one Python publish gate. No application code.
+`news/feed.json`, served from `main` via GitHub Pages. Data, the Python tooling that validates and publishes
+it, and the automated refresh pipeline. No application code.
 
 Remote: `github.com/kredme-data/kredme-data` (**public** — the whole repo is web-reachable, including
 `RUNBOOK.md` and `tools/`). Live base: `https://kredme-data.github.io/kredme-data`
@@ -15,8 +16,9 @@ Merging the feat branch would have deleted the CI workflow and re-added committe
 `MERGEABLE/CLEAN` but replaced `cards.json` wholesale with a May snapshot, which would have reverted every
 rate fix — its one salvageable idea (`cashback_inr` point values) was harvested into #12 first.
 
-**2. `kredme.py` reads LOCAL branch refs, never `origin`** (`tools/kredme.py:664-673`). Local `main` and `dev`
-are both stale here, so `status` reports "dev and prod data are the same" when they are not, and
+**2. `kredme.py` reads LOCAL branch refs, never `origin`** (`data_dirs`, `tools/kredme.py:1575-1584`).
+Local `main` and `dev` are both stale here, so `status` reports "dev and prod data are the same" when they
+are not, and
 `validate --target dev` returns errors against a branch that is clean on origin. **Sync first, every time:**
 
 ```bash
@@ -41,16 +43,30 @@ Settings -> Developer Options -> data source, gated by the compile-time `DEV_MOD
 cannot be pointed at dev by any means. **In dev the app skips Firestore entirely**, so the
 Firestore-override trap below applies to prod only.
 
-> **The data users are served fails this repo's own validator, and has since 2026-08-01.**
-> `main` = seed 5.1.0 / news 1.0.0, **3 errors + 3 warnings**, CI red.
-> `dev` = seed **5.1.4** / news 2.0.0, **0 errors + 0 warnings**, CI green, never promoted.
-> dev now also carries the numeric gate (#9), 4 verified base rates (#10), and the self-consistency
-> gate + 136 rate corrections + 29 `cashback_inr` point values (#12).
-> The fix already exists. Don't re-diagnose those three errors — promote and push.
-> ⚠️ `dev` also re-categorises 35 merchants, which changes which reward rules fire. Read that diff first.
+> **That backlog is cleared. Both branches validate clean and both are green in CI.** (Re-measured 25-Aug.)
+> `main` = seed **5.1.38** / news **9.0.0**, **0 errors + 0 warnings**. The last three `validate.yml` runs on
+> `main` all succeeded: 32664992255, 32553730626, 32471577455.
+> `dev` = seed **5.1.41** / news 9.0.0, **0 errors + 0 warnings**, green.
+> The numeric gate (#9), the four verified base rates (#10) and the self-consistency gate plus its 136 rate
+> corrections (#12) have all reached `main`; they are no longer dev-only. #10 and #12 merged into `dev` and
+> travelled on from there by promote, so do not read their base branch as "still unshipped" - the nine check
+> modules under `tools/checks/` are present on `main`, and `main` is at 5.1.38, far past the 5.1.4 they landed on.
+> ⚠️ The old warning that `dev` re-categorises 35 merchants is dead - `merchants.json` and `news/feed.json`
+> are now byte-identical on the two branches. What `dev` still holds back is a `cards.json` diff plus
+> `seed/card_details.json`, which `main` does not carry yet. Read that diff before promoting.
 
-The three errors: `csd_canteen` → `departmental_store` (category doesn't exist); `news_001` uses `expires_at`
-where the app reads `expiry_date`; `news_001` uses `url` where the app reads `source_url`.
+```bash
+git show origin/main:seed/manifest.json          # version 5.1.38, news_version 9.0.0
+gh run list --repo kredme-data/kredme-data --workflow validate.yml --branch main --limit 5
+git diff --stat origin/main origin/dev -- seed news
+python3 tools/kredme.py validate --target prod   # "✓ prod passed — 0 errors, 0 warning(s)", exit 0
+```
+
+**The three errors this file used to open with are gone from `main`.** Do not go hunting for them.
+`departmental_store` is a real entry in the `categories` block of `merchants.json` and `csd_canteen`
+resolves to it; `news_001` carries `expiry_date` and `source_url`, the names the app reads, and no item in
+the 134-item feed uses `expires_at` or a bare `url`. Read them yourself with
+`git show origin/main:seed/merchants.json` and `git show origin/main:news/feed.json`.
 
 ## The weekly pipeline (`pipeline/`)
 
@@ -64,7 +80,7 @@ python3 pipeline/cli.py refresh --dry-run     # costs nothing, submits nothing
 python3 pipeline/cli.py advance               # idempotent; collects whatever is in flight
 python3 pipeline/cli.py news-watch --dry-run
 python3 pipeline/cli.py metrics
-python3 tests/run_all.py                      # 584 tests, stdlib unittest, no pip, no network
+python3 tests/run_all.py                      # 774 tests, stdlib unittest, no pip, no network
 ```
 
 **Five things about it that are not obvious:**
@@ -91,9 +107,9 @@ python3 tests/run_all.py                      # 584 tests, stdlib unittest, no p
 
 ```bash
 python3 tools/kredme.py status                  # dev vs prod + restore points (sync refs first!)
-python3 tools/kredme.py validate --target prod  # what users get right now — currently exit 1
+python3 tools/kredme.py validate --target prod  # what users get right now - currently exit 0
 python3 tools/kredme.py validate --target dev   # currently exit 0
-python3 tools/test_pipeline.py                  # 29 self-tests, ~1s, stdlib only
+python3 tools/test_pipeline.py                  # 66 self-tests, ~1s, stdlib only
 python3 tools/kredme.py promote --dry-run       # shows what prod would receive, writes nothing
 python3 tools/kredme.py promote --yes           # dev → prod, LOCAL ONLY. Never pushes.
 python3 tools/kredme.py undo --list
@@ -122,10 +138,14 @@ issuer truth is 1.875%. **Still never cite "validate passed" as evidence that ca
 base URL entirely. The "Pages/main is prod" rule holds only when Firestore is empty. Confirm before claiming
 a promote shipped.
 
-**`undo` is unusable today.** Restoring current prod produces data that fails validation, and the tool then
-refuses to print the push commands: *"The restored data does NOT validate. Do not push it."* `.published/`
-doesn't exist here — no promote has ever run in this clone, so there is only ever one snapshot. Fix main's
-three errors before relying on undo.
+**`undo` has restore points now, but nobody has proved a restore.** Both halves of the old warning here were
+out of date: promotes have run in the working clone, so `.published/` holds **6 snapshots**, the newest
+`20260817-074643__seed-5.1.20__news-3.0.0` (`python3 tools/kredme.py undo --list`); and the "fix main's three
+errors first" advice is moot, because prod validates clean. **What is still untested is the restore itself.**
+Every snapshot predates the numeric, self-consistency and reachability gates, so a restored 5.1.20 may well
+trip checks that did not exist when it was taken, and the tool refuses to print push commands when that
+happens: *"The restored data does NOT validate. Do not push it."* There is no `--dry-run` on `undo`, so the
+only way to find out is to run it in a throwaway checkout. Do that before you need it in an incident.
 
 **News refetches only on a whole-number version bump.** The app parses `"2.0.0".split('.')[0]`, so minor and
 patch bumps are invisible. `dev` went 1.0.0 → 2.0.0 for exactly this reason. Seed sync differs — any string
@@ -156,7 +176,8 @@ one tab — it stops card syncing for every user, on every cold start, forever, 
 just confirmed on disk) and `validate` errors on any declared-but-missing file. Both are covered by tests in
 `tools/test_pipeline.py`. A hand-edited or Firestore-edited manifest has neither protection.
 
-**The card-count shrink guard compares against your local working tree, not live** (`kredme.py:285-299`).
+**The card-count shrink guard compares against your local working tree, not live** (`kredme.py:1294-1302`,
+baseline from `live_card_count` at `kredme.py:363-377`).
 A stale checkout measures the floor against the wrong baseline. Another reason to sync and be on `main`.
 
 **Nothing generates `seed/cards.json`.** `kredme-card-data` (the 394-card scraper) is not wired to this repo;
@@ -170,11 +191,17 @@ the hand-edit workflow that `promote` replaced.
 
 ## CI
 
-One workflow, `validate.yml`, on `main` and `dev`: `test_pipeline.py` → `validate --target working` →
+**Six workflows now, not one** (`git ls-tree -r --name-only origin/main -- .github/workflows`). The gate is
+still `validate.yml`, on push and PR to `main` and `dev`: `test_pipeline.py` → `validate --target working` →
 an inline strict checksum script (needed because `--target working` runs with `strict_checksums=False`).
+The other five are the automation: `weekly-refresh.yml` (Mondays 03:00 UTC, stage 1), `pipeline-advance.yml`
+(every 2h at :17, stages 2-3), `news-watch.yml` (daily 02:30 UTC), `data-quality.yml` (validate → fix → PR),
+and `news-push.yml` (fires an FCM topic message on a push to `main` that touches `news/feed.json`).
+⚠️ `news-push.yml` and `tools/setup_news_push_auth.sh` exist on `main` only, not on `dev`.
 
-**Currently red on `main`, green on `dev`** — the branch users are served fails; the branch nobody reads passes.
-A permanently red default branch teaches everyone to ignore CI; fix it by promoting.
+**Green on both branches.** The last three `validate.yml` runs on `main` succeeded (32664992255,
+32553730626, 32471577455), and so did the last four on `dev`. Verify with
+`gh run list --repo kredme-data/kredme-data --workflow validate.yml --branch main --limit 5`.
 
 GitHub's built-in `pages-build-deployment` runs on every `main` push (~50s) — that is the actual deploy.
 Actions minutes are free here (public repo), unlike the app repo.
@@ -193,25 +220,41 @@ file, the manifest checksum **must** be regenerated or the app rejects the sync 
 
 ## Layout
 
+All of the below is measured on `origin/main`, 25-Aug. Sizes:
+`git show origin/main:<path> | wc -c`. Counts: `git show origin/main:seed/cards.json` piped into a Python
+`len()` over the array and over each entry's `reward_rules`. File tallies: `git ls-tree -r --name-only
+origin/main -- <dir> | wc -l`. Test counts: run the suite.
+
 ```
-tools/kredme.py         ~1,260 lines — the whole pipeline (status/validate/promote/undo) + numeric gate
-tools/test_pipeline.py  44 tests
-seed/manifest.json      1,205 b
-seed/cards.json         1,948,662 b — 376 cards / 1,202 reward rules
-seed/merchants.json     53,282 b — 116 merchants, 29 categories
-news/feed.json          445 b — ONE placeholder item from 2026-03-29, never updated
+tools/kredme.py         2,045 lines — status/validate/promote/undo + the numeric gate
+tools/                  32 files, ~29,200 lines of Python — kredme.py is no longer the whole story:
+                        validate_cards.py (1,909), fix_cards.py (1,654), checks/c1..c9,
+                        fixers/f1..f5, app_mirror/ (the vendored copy of the app's category list)
+tools/test_pipeline.py  66 tests
+pipeline/               18 files — the weekly refresh and the news watch. See PIPELINE.md.
+tests/                  15 files, 774 tests — the pipeline's own suite (`python3 tests/run_all.py`)
+seed/manifest.json      2,879 b
+seed/cards.json         2,680,453 b — 383 cards / 1,284 reward rules
+                        (plus 1,555 exclusion, 884 redemption, 417 milestone, 359 fuel-surcharge rules)
+seed/merchants.json     104,333 b — 273 merchants, 25 categories
+news/feed.json          130,654 b — 134 items. Oldest is still the 2026-03-29 "Welcome to KredMe"
+                        placeholder; newest is 2026-08-22. The feed is now written by the news watch.
 delta/                  README only. Zero delta files ever produced; manifest delta_file is null.
 ```
 
-19 tracked files total, two of which are committed `.pyc`.
+**89 tracked files on `main`, 94 on `dev`** (`git ls-tree -r --name-only origin/main | wc -l`). **No `.pyc`
+is tracked on either branch any more.** The seven files `dev` carries that `main` does not:
+`CARD_TABLES.md`, `a.md`, `b.md`, `ten_facts.json`, `seed/card_details.json`,
+`seed/SCHEMA_card_details.md`, `seed/SCHEMA_reward_rules.md`.
 
 ## Don't touch
 
 - `.published/`, `staging/` — gitignored, tool-managed. Never commit or serve.
-- `tools/__pycache__/*.pyc` — genuinely tracked on the current checkout. `main` deletes them; don't re-add.
+- `tools/__pycache__/*.pyc` — no longer tracked on either branch (0 hits from
+  `git ls-tree -r --name-only origin/main | grep '\.pyc$'`). Keep it that way; don't re-add.
 - `a.md`, `b.md` (dev only) — PR-description drafts committed by mistake. Not documentation.
 - `feat/safe-publish-pipeline` — dead branch. Merging it deletes CI and re-adds the `.pyc` files.
-- `seed/cards.json` — 1.86 MB machine-produced blob. Never hand-edit without regenerating manifest checksums.
+- `seed/cards.json` — 2.68 MB machine-produced blob. Never hand-edit without regenerating manifest checksums.
 - `test/` — fixtures with deliberate versions like `0.0.1-test`. Don't "fix" them.
 - `delta/` — dormant. `manifest.delta_file` must stay `null` unless a delta file is actually generated.
 

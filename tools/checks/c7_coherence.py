@@ -320,6 +320,21 @@ def _index(ctx, add):
                         "enforceable": _cap_enforceable(row),
                         "pct": _rule_pct(inner, row),
                         "eff": row.get("effective_date"),
+                        # Scope vs maths. A rule may set merchant_ref OR
+                        # category_id, never both, so the pair identifies WHERE
+                        # a rule applies while "maths" is WHAT it pays. Rules
+                        # that share a name, agree on the maths and differ only
+                        # in scope are one pooled cap, not a collision — see
+                        # _rule_name_checks.
+                        "scope": (_txt(row.get("merchant_ref")) or None,
+                                  _txt(row.get("category_id")) or None),
+                        "maths": (_txt(row.get("rule_type")).lower(),
+                                  _txt(row.get("reward_type")).lower(),
+                                  _num(row.get("reward_rate")),
+                                  _num(row.get("reward_unit_spend")),
+                                  _num(row.get("cap_amount")),
+                                  _txt(row.get("cap_period")).lower(),
+                                  _txt(row.get("channel")).lower() or None),
                     })
                 except Exception:
                     continue
@@ -548,6 +563,31 @@ def _rule_name_checks(recs, ctx, add):
         names = collections.Counter(x["name"] for x in r["rules"])
         dups = {n: c for n, c in names.items() if c > 1 and n}
         blank = names.get("", 0)
+        # An issuer that pools ONE cap across a list of brands or categories
+        # ("5% on Amazon, Flipkart, Myntra ... capped at 1,000 a cycle") is
+        # written as one row per merchant_ref or per category_id, all carrying
+        # the SAME rule_name deliberately, because the app's cap bucket key is
+        # `ruleName|periodKey`. Giving those rows distinct names would hand the
+        # user one full cap per brand instead of one across all of them, which
+        # overstates the card — so the shared name is the correct encoding, not
+        # a defect. Every instance of this finding on the current file is that
+        # construct: Millennia's ten merchants, SmartEarn's 10X brand list, both
+        # PhonePe HDFC cards, Regalia Gold, and IndianOil Kotak's dining+grocery
+        # pair whose own rule_name says they share one 800-point cap.
+        #
+        # It is only a real collision when the rows disagree on what they pay,
+        # or when two of them cover the SAME scope — then which one the user
+        # gets is undefined. Those still fire at full severity.
+        pooled = set()
+        for n in dups:
+            rows = [x for x in r["rules"] if x["name"] == n]
+            scopes = [x["scope"] for x in rows]
+            if (len({x["maths"] for x in rows}) == 1
+                    and all(sc != (None, None) for sc in scopes)
+                    and len(set(scopes)) == len(scopes)):
+                pooled.add(n)
+        dups = {n: c for n, c in dups.items() if n not in pooled}
+
         if dups:
             capped = [x for x in r["rules"] if x["name"] in dups and x["enforceable"]]
             caps = {(x["cap"], x["period"]) for x in capped}
