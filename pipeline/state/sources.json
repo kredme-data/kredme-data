@@ -3,7 +3,7 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "2a9f87d8c6153e3b3ed42f6c4e989afb4036a368bcb24ec9ccc6dbdad2e94342",
-      "fetched_at": "2026-09-04T07:21:45Z",
+      "fetched_at": "2026-09-05T07:02:22Z",
       "note": "",
       "status": "done",
       "text_chars": 103811,
@@ -11,7 +11,7 @@
     },
     "__watch__axis": {
       "content_sha256": "ca7dee73bcc7ce9834a8eb042be0a14243340b51c99cb5b365f5147d7c22a5ec",
-      "fetched_at": "2026-09-04T07:20:17Z",
+      "fetched_at": "2026-09-05T07:00:55Z",
       "note": "",
       "status": "done",
       "text_chars": 164295,
@@ -19,7 +19,7 @@
     },
     "__watch__hdfc": {
       "content_sha256": "f351df0f83b5887d06a3b2763df795d3877016c65f249d47eccbd1b171f90cd2",
-      "fetched_at": "2026-09-04T07:20:18Z",
+      "fetched_at": "2026-09-05T07:00:55Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "a4bd7376d582b054485ddf644f8d6b2cc8fdde1fab6135886bb7e25ddb0cd448",
-      "fetched_at": "2026-09-04T07:22:06Z",
+      "fetched_at": "2026-09-05T07:02:39Z",
       "note": "",
       "status": "done",
       "text_chars": 4511,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-09-04T07:20:57Z",
+      "fetched_at": "2026-09-05T07:01:32Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "01ff3d488a2d2aebd3dda4b2924c8b9438e3f14f3ec966ddab5a653369aa4647",
-      "fetched_at": "2026-09-04T07:21:18Z",
+      "fetched_at": "2026-09-05T07:01:51Z",
       "note": "",
       "status": "done",
       "text_chars": 200758,
@@ -51,7 +51,7 @@
     },
     "__watch__indusind": {
       "content_sha256": "7340e9e6f2a5849e271002c87755d9b6340f3d330df943f261707c8f727d40c2",
-      "fetched_at": "2026-09-04T07:21:34Z",
+      "fetched_at": "2026-09-05T07:02:09Z",
       "note": "",
       "status": "done",
       "text_chars": 51250,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "6ef325d1dc99b584531ee5de1aed0d10a6057501b9cfe8a88d2983ff70846b9f",
-      "fetched_at": "2026-09-04T07:21:53Z",
+      "fetched_at": "2026-09-05T07:02:28Z",
       "note": "",
       "status": "done",
       "text_chars": 47687,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "450726df5e99b99379bcda390c3a006ba701fe260ebd3a33bb3b8fb56baeab20",
-      "fetched_at": "2026-09-04T07:22:03Z",
+      "fetched_at": "2026-09-05T07:02:35Z",
       "note": "",
       "status": "done",
       "text_chars": 106602,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-09-04T07:20:53Z",
+      "fetched_at": "2026-09-05T07:01:27Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-09-04T07:21:35Z",
+      "fetched_at": "2026-09-05T07:02:10Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
