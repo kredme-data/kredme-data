@@ -1,12 +1,12 @@
 {
- "version": "5.1.45",
- "updated_at": "2026-08-31T05:02:11Z",
+ "version": "5.1.46",
+ "updated_at": "2026-09-05T07:54:30Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
  "_note": "Seven cards switched off (is_active 1 -> 0) because the issuer no longer offers them: IndusInd PAYBACK, RBL Edition, RBL Zomato Edition Classic, ICICI Carbon, ICICI Mine, Myntra Kotak and Mumbai Metro SBI. Each carries a card-level _provenance['is_active'] stamp with the issuer URL, the verbatim sentence where one exists, the fetch date (2026-08-20), an honest confidence and the controls run. Three of the seven rest on a MEASURED ABSENCE from the issuer's current fee schedule rather than a withdrawal notice (Carbon, Myntra, Mumbai Metro); in each case the same schedule still carries other closed-to-new cards, which is what makes the absence a test rather than a gap. Four cards were DELIBERATELY LEFT ACTIVE because they are in the issuer's current fee schedule and are therefore closed to new applicants, not withdrawn: ICICI Diamant, Metro Kotak, Delhi Metro SBI and Nature's Basket SBI. Existing holders still earn on them and still need correct rates, so switching them off would delete a live option. Each records the issuer's own fee-schedule line under metadata['closed_to_new_applicants']. KredMe has no way to SHOW 'closed to new applicants' in the app today — that is an app feature request, and until it lands this metadata is a data marker only. Lifestyle Home Centre SBI was left completely alone: it was REBRANDED to Landmark Rewards SBI Card, not withdrawn, and needs a rename plus a rate re-verification rather than a deactivation. Nothing was deleted: no card, no rule, no row. All 383 cards are still present and all 2,168 rule_name strings are byte-identical, because the app keys users' saved cap progress on that string. is_active on a catalogue card is still not read by the app (credit_card.dart parses neither is_active nor card metadata; the only isActive in the database is on UserWallet, the user's own 'I removed this card' flag), so this commit hides nothing yet and empties no one's wallet. Every deactivation is reversible by flipping the flag back.",
  "stats": {
   "total_cards": 385,
-  "total_reward_rules": 1315,
+  "total_reward_rules": 1305,
   "total_redemption_rules": 888,
   "total_exclusion_rules": 1981,
   "total_milestone_rules": 415,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "c875e96780f5cdee034f7693bb86444e2637d9a2d0c31b1a800063719299180e",
-   "size_bytes": 2802087
+   "checksum": "555b452f7812a8f23d09fef864b02c05f4a9318bdc437cb754da06241878814d",
+   "size_bytes": 2793031
   },
   {
    "name": "merchants.json",
