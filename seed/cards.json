@@ -6149,7 +6149,7 @@
    "id": "axis_bank_airtel_axis_bank",
    "card_name": "Airtel Axis Bank Credit Card",
    "issuer": "Axis Bank",
-   "network": "unknown",
+   "network": "rupay; mastercard; visa",
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 200000.0,
@@ -6307,7 +6307,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:rent payments"
    },
    {
@@ -6336,7 +6336,7 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:wallet loading transactions"
    },
    {
@@ -8541,8 +8541,8 @@
    },
    "is_active": 1,
    "is_travel": 0,
-   "points_expiry_months": null,
-   "min_redemption_points": null,
+   "points_expiry_months": 36,
+   "min_redemption_points": 300,
    "points_clawback_on_default": null
   },
   "reward_rules": [
@@ -8568,11 +8568,6 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "movies",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "mcc",
     "exclusion_value": "5541",
     "also_excludes_from_threshold": 1
@@ -8580,23 +8575,23 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:wallet reloads"
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "insurance",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "education",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "government",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:government-related transactions"
    },
    {
@@ -8607,17 +8602,52 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "utilities",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "jewellery",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7832",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7922",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "telecom",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
    }
   ],
   "milestone_rules": [
@@ -10069,7 +10099,7 @@
    "id": "axis_bank_rewards",
    "card_name": "Axis Bank Rewards Credit Card",
    "issuer": "Axis Bank",
-   "network": "unknown",
+   "network": "visa; mastercard",
    "card_tier": "mid_range",
    "annual_fee": 1000.0,
    "fee_waiver_spend": 200000.0,
@@ -10089,9 +10119,9 @@
    },
    "is_active": 1,
    "is_travel": 0,
-   "points_expiry_months": null,
+   "points_expiry_months": 36,
    "min_redemption_points": 300,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": true
   },
   "reward_rules": [
    {
@@ -10147,18 +10177,18 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "insurance",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
+    "also_excludes_from_threshold": 1,
     "_retyped_from": "other:wallet reloads"
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0
+    "also_excludes_from_threshold": 1
    },
    {
     "exclusion_type": "mcc",
@@ -10186,6 +10216,26 @@
     "exclusion_value": "education",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:educational institutions"
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [
@@ -14540,7 +14590,7 @@
    "id": "bobcard_card_cashback",
    "card_name": "BOBCARD Cashback Credit Card",
    "issuer": "BOBCARD",
-   "network": "unknown",
+   "network": "mastercard",
    "card_tier": "entry",
    "annual_fee": 499.0,
    "fee_waiver_spend": null,
@@ -14637,8 +14687,303 @@
     "_retyped_from": "other:insurance transactions"
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "transactions below 100",
+    "exclusion_type": "mcc",
+    "exclusion_value": "0763",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0780",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0820",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0821",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0822",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0823",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0824",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0825",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1520",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1711",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1731",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1740",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1750",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1761",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1771",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1799",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4111",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4112",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4131",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4789",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5261",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5331",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5411",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5499",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5814",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6539",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6543",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7230",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7276",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7349",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8111",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8641",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8062",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8398",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8661",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -18045,7 +18390,7 @@
    "id": "city_union_bank_cub_salaryse_level_up",
    "card_name": "CUB SalarySe Level Up Credit Card",
    "issuer": "City Union Bank",
-   "network": "unknown",
+   "network": "rupay",
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 200000.0,
@@ -18117,8 +18462,110 @@
     "_note": "SalaryDay Bonus, payable only on the 1st and last day of the month via SalarySe UPI, unlocked by INR 5,000 of non-SalaryDay spend and capped at INR 15,000 of eligible spend per billing cycle. The physical card earns 37.5 SCoins on the same days. CUB's Base Categories — rent, railways, insurance, education, telecom, government, BillPay — still EARN 1 SCoin per INR 100 and must never be switched on as exclusions."
    }
   ],
-  "exclusion_rules": [],
-  "milestone_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6050",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4829",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7801",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7995",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9754",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 0
+   }
+  ],
+  "milestone_rules": [
+   {
+    "milestone_name": "Salary Day Unlock",
+    "spend_target": 5000.0,
+    "period": "cycle",
+    "bonus_type": "accelerated_earn_rate",
+    "bonus_value": 37.5,
+    "bonus_description": "Spend ₹5,000 on non-Salary-Day dates in a billing cycle to unlock the Salary Day Bonus. Once unlocked, spends routed through SalarySe UPI on the 1st day and the last day of the month earn 37.5 SCoins per ₹100 on the Physical (Select) + Virtual variant and 25 SCoins per ₹100 on the Virtual-Only variant, on up to ₹15,000 of eligible Salary Day spending per billing cycle.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "₹20,000 Monthly Spend",
+    "spend_target": 20000.0,
+    "period": "cycle",
+    "bonus_type": "accelerated_earn_rate",
+    "bonus_value": 10.0,
+    "bonus_description": "Eligible spending above ₹20,000 in a billing cycle earns 10 SCoins per ₹100, an effective value of 2%. The first ₹20,000 continues to earn 5 SCoins per ₹100.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Domestic Airport Lounge",
+    "spend_target": 10000.0,
+    "period": "cycle",
+    "bonus_type": "domestic lounge visit",
+    "bonus_value": 1.0,
+    "bonus_description": "Spend ₹10,000 in a billing cycle to earn 1 complimentary domestic airport lounge access in the following cycle, under the RuPay Card Airport Lounge Program.",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -18137,12 +18584,14 @@
     "redemption_fee_inr": null,
     "channel_description": "SalarySe App",
     "_sources": [
-     "cardinsider"
+     "cardinsider",
+     "validator"
     ],
     "_source_quotes": {
-     "cardinsider": "SalarySe App"
+     "cardinsider": "SalarySe App",
+     "validator": "SCoins can be redeemed only through the SalarySe App; 5 SCoins = Rs.1 (Siddhant Bhoite, KredMe data validation, 2026-09-05)"
     },
-    "confidence": "low"
+    "confidence": "high"
    }
   ],
   "_provenance": [
@@ -22183,11 +22632,6 @@
     "_retyped_from": "other:government related transactions"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "education",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "other",
     "exclusion_value": "emi transactions",
     "also_excludes_from_threshold": 0
@@ -24850,7 +25294,7 @@
    "id": "hdfc_bank_freedom",
    "card_name": "HDFC Bank Freedom Credit Card",
    "issuer": "HDFC Bank",
-   "network": "unknown",
+   "network": "visa; mastercard; rupay",
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 50000.0,
@@ -24860,7 +25304,7 @@
    "rp_value_travel": 0.15,
    "rp_value_transfer": 0.15,
    "forex_markup_pct": 3.5,
-   "has_rupay_upi": 0,
+   "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_freedom.png",
    "metadata": {
     "contactless": null,
@@ -25027,6 +25471,11 @@
     "exclusion_value": "government",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:government transactions"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -29345,7 +29794,7 @@
    "network": "mastercard",
    "card_tier": "mid_range",
    "annual_fee": 1000.0,
-   "fee_waiver_spend": null,
+   "fee_waiver_spend": 200000,
    "base_reward_rate": 0.01,
    "reward_currency": "cashback_inr",
    "rp_value_standard": 1.0,
@@ -29631,11 +30080,6 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "prepaid card, gift card, and wallet loads",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "category",
     "exclusion_value": "rent",
     "also_excludes_from_threshold": 0,
@@ -29646,11 +30090,6 @@
     "exclusion_value": "government",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:government-related transactions"
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "gaming transactions",
-    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "category",
@@ -29693,6 +30132,21 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "purchase of foreign currency and related fees",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5947",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -30510,11 +30964,6 @@
     "_retyped_from": "other:government-related transactions"
    },
    {
-    "exclusion_type": "other",
-    "exclusion_value": "gaming transactions",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "category",
     "exclusion_value": "education",
     "also_excludes_from_threshold": 0,
@@ -30555,6 +31004,21 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "purchase of foreign currency and related fees",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5947",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -31739,24 +32203,6 @@
     "_retyped_from": "other:e-wallets"
    },
    {
-    "exclusion_type": "category",
-    "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:property management fees"
-   },
-   {
-    "exclusion_type": "category",
-    "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:rental commissions"
-   },
-   {
-    "exclusion_type": "category",
-    "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:rental payments"
-   },
-   {
     "exclusion_type": "mcc",
     "exclusion_value": "6513",
     "also_excludes_from_threshold": 0,
@@ -31795,41 +32241,6 @@
     "exclusion_value": "jewellery",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:jewelry & antique items"
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "gambling",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "tolls and bridge fees",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "collection agencies",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "charity",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "money transfers",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "wholesale clubs",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "b2b goods and services",
-    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "txn_type",
@@ -32656,7 +33067,7 @@
    "rp_value_standard": 1.0,
    "rp_value_travel": null,
    "rp_value_transfer": null,
-   "forex_markup_pct": 0.0,
+   "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hsbc_rupay_cashback.png",
    "metadata": {
@@ -32828,6 +33239,391 @@
    {
     "exclusion_type": "other",
     "exclusion_value": "purchases at wholesale clubs",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5552",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7012",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7349",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8351",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9223",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9402",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9950",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5932",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5937",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7995",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7322",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8398",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8641",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4829",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "2741",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "2791",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "2842",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5013",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5021",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5039",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5044",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5045",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5046",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5047",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5065",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5072",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5074",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5085",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5099",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5111",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5122",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5131",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5137",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5139",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5169",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5192",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5193",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5198",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5199",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7333",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7361",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7372",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7375",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7379",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7395",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7829",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8734",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -36631,7 +37427,7 @@
    },
    "is_active": 1,
    "is_travel": 0,
-   "points_expiry_months": null,
+   "points_expiry_months": 36,
    "min_redemption_points": null,
    "points_clawback_on_default": null
   },
@@ -36708,11 +37504,6 @@
   ],
   "exclusion_rules": [
    {
-    "exclusion_type": "other",
-    "exclusion_value": "fuel spends excluded from 2x reward points earning",
-    "also_excludes_from_threshold": 0
-   },
-   {
     "exclusion_type": "category",
     "exclusion_value": "rent",
     "also_excludes_from_threshold": 0
@@ -36746,6 +37537,26 @@
     "bonus_type": "reward_points",
     "bonus_value": 1000.0,
     "bonus_description": "1,000 bonus Reward Points on each incremental spend of Rs. 1,00,000 after Rs. 2 lakh, max 10,000 bonus points per year",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Quarterly Movie Benefit",
+    "spend_target": 25000.0,
+    "period": "quarter",
+    "bonus_type": "movie ticket discounts",
+    "bonus_value": 2.0,
+    "bonus_description": "Spend Rs. 25,000 in a calendar quarter to unlock the BookMyShow movie benefit twice in the following quarter. Each use gives 25% off, capped at Rs. 100 per booking.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Quarterly Domestic Lounge Access",
+    "spend_target": 75000.0,
+    "period": "quarter",
+    "bonus_type": "domestic lounge visit",
+    "bonus_value": 1.0,
+    "bonus_description": "Spend Rs. 75,000 in a calendar quarter to unlock 1 complimentary domestic airport lounge visit in the following quarter",
     "is_progressive": 0,
     "conditions_json": null
    }
@@ -39777,7 +40588,7 @@
    "id": "icici_bank_hpcl_super_saver",
    "card_name": "ICICI Bank HPCL Super Saver Credit Card",
    "issuer": "ICICI Bank",
-   "network": "visa",
+   "network": "visa; rupay",
    "card_tier": "entry",
    "annual_fee": 500.0,
    "fee_waiver_spend": 150000.0,
@@ -39797,7 +40608,7 @@
    },
    "is_active": 1,
    "is_travel": 0,
-   "points_expiry_months": null,
+   "points_expiry_months": 36,
    "min_redemption_points": null,
    "points_clawback_on_default": null
   },
@@ -39927,8 +40738,150 @@
     "_note": "UNIT TRAP, CORRECTED DOWN. The issuer's own arithmetic prices this: 'the Cardholder(s) shall earn 20 points on every ₹ (INR) 100 spent on the above categories' and calls that same benefit 5%. 20 points per INR 100 is 5% only if a point is worth INR 0.25, so the 5% is expressed in POINTS and is 1.25% of value. The cap of 400 is in POINTS per statement cycle, which binds at only INR 2,000 of category spend."
    }
   ],
-  "exclusion_rules": [],
-  "milestone_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7014",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7407",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5271",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6050",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6529",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6530",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6538",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6666",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7777",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9999",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "3882",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "1361",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "3851",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9752",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5555",
+    "also_excludes_from_threshold": 0
+   }
+  ],
+  "milestone_rules": [
+   {
+    "milestone_name": "Quarterly Domestic Lounge Access",
+    "spend_target": 75000.0,
+    "period": "quarter",
+    "bonus_type": "domestic lounge access",
+    "bonus_value": 1.0,
+    "bonus_description": "Spend ₹75,000 in the preceding calendar quarter to unlock one complimentary domestic airport lounge visit in the following calendar quarter. Maximum four domestic lounge visits per year. Available to the primary cardholder only.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Quarterly BookMyShow and INOX Movie Benefit",
+    "spend_target": 25000.0,
+    "period": "quarter",
+    "bonus_type": "movie discount",
+    "bonus_value": 100.0,
+    "bonus_description": "Spend ₹25,000 in the preceding ICICI-defined spend quarter to unlock the BookMyShow and INOX movie offer in the following calendar quarter. Minimum booking of two tickets. Maximum discount ₹100.",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -40949,16 +41902,6 @@
    },
    {
     "exclusion_type": "other",
-    "exclusion_value": "cash",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "mcc",
-    "exclusion_value": "5541",
-    "also_excludes_from_threshold": 1
-   },
-   {
-    "exclusion_type": "other",
     "exclusion_value": "gambling",
     "also_excludes_from_threshold": 0
    },
@@ -40966,9 +41909,120 @@
     "exclusion_type": "other",
     "exclusion_value": "any transactions carried out for commercial purposes",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7014",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7407",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5271",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6050",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6529",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6530",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6538",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6666",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7777",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9999",
+    "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [],
+  "milestone_rules": [
+   {
+    "milestone_name": "Quarterly Spend for Domestic Lounge Access",
+    "spend_target": 75000.0,
+    "period": "quarter",
+    "bonus_type": "domestic lounge visit",
+    "bonus_value": 2.0,
+    "bonus_description": "Spend ₹75,000 in the preceding ICICI-defined spend quarter to unlock two domestic lounge visits in the following calendar quarter, to a maximum of eight visits per year. Applicable from 1 July 2026. Available only to the primary cardholder.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Quarterly Spend for BookMyShow Movie Benefit",
+    "spend_target": 25000.0,
+    "period": "quarter",
+    "bonus_type": "movie ticket discount",
+    "bonus_value": 150.0,
+    "bonus_description": "Spend ₹25,000 in the preceding ICICI-defined spend quarter to unlock the movie offer in the following calendar quarter: 25% off the second ticket, capped at ₹150 per use. Usable once a month on the Mastercard and once a month on the RuPay card, so up to ₹300 a month combined and up to ₹900 across a quarter. Applicable from 1 April 2026. Add-on cardholders must independently meet the spending requirement.",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
   "fuel_surcharge_rules": [],
   "redemption_rules": [
    {
@@ -43492,7 +44546,7 @@
    "id": "idfc_first_bank_wealth",
    "card_name": "IDFC FIRST Wealth Credit Card",
    "issuer": "IDFC FIRST Bank",
-   "network": "unknown",
+   "network": "visa",
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
@@ -43512,7 +44566,7 @@
    },
    "is_active": 1,
    "is_travel": 1,
-   "points_expiry_months": null,
+   "points_expiry_months": 24,
    "min_redemption_points": null,
    "points_clawback_on_default": null
   },
@@ -43598,7 +44652,38 @@
     "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [],
+  "milestone_rules": [
+   {
+    "milestone_name": "Monthly Spend Milestone - Lounge Access",
+    "spend_target": 20000.0,
+    "period": "month",
+    "bonus_type": "lounge visits",
+    "bonus_value": 2.0,
+    "bonus_description": "₹20,000 of eligible spending unlocks 1 complimentary domestic and 1 complimentary international airport lounge visit. Capped at 1 domestic and 1 international visit per quarter.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Billing Cycle Spend Milestone - Golf",
+    "spend_target": 20000.0,
+    "period": "cycle",
+    "bonus_type": "golf rounds",
+    "bonus_value": 1.0,
+    "bonus_description": "₹20,000 of eligible spending in a billing cycle unlocks 1 complimentary golf round or lesson at a participating course. Capped at 1 session per quarter.",
+    "is_progressive": 0,
+    "conditions_json": null
+   },
+   {
+    "milestone_name": "Monthly Spend Milestone - Movie Benefit",
+    "spend_target": 20000.0,
+    "period": "month",
+    "bonus_type": "movie tickets",
+    "bonus_value": 2.0,
+    "bonus_description": "₹20,000 spent in a calendar month unlocks the Buy 1 Get 1 movie benefit for the following month, up to 2 bookings per calendar month with the discount on the second ticket capped at ₹250.",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -47574,7 +48659,7 @@
    "id": "indusind_bank_eazydiner_indusind_platinum",
    "card_name": "EazyDiner IndusInd Platinum Credit Card",
    "issuer": "IndusInd Bank",
-   "network": "unknown",
+   "network": "visa; rupay",
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
@@ -47745,22 +48830,7 @@
    },
    {
     "exclusion_type": "category",
-    "exclusion_value": "insurance",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "category",
-    "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "category",
-    "exclusion_value": "utilities",
-    "also_excludes_from_threshold": 0
-   },
-   {
-    "exclusion_type": "other",
-    "exclusion_value": "government payments",
+    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -71583,7 +72653,7 @@
     "waiver_pct": 1.0,
     "min_txn_amount": 500.0,
     "max_txn_amount": 4000.0,
-    "monthly_cap": 400.0
+    "monthly_cap": 250.0
    }
   ],
   "redemption_rules": [
@@ -73803,7 +74873,7 @@
    "id": "sbi_card_simplyclick",
    "card_name": "SBI SimplyCLICK Credit Card",
    "issuer": "SBI Card",
-   "network": "unknown",
+   "network": "visa; mastercard",
    "card_tier": "entry",
    "annual_fee": 499.0,
    "fee_waiver_spend": 100000.0,
@@ -73929,6 +74999,21 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -74146,6 +75231,26 @@
     "exclusion_type": "mcc",
     "exclusion_value": "5541",
     "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [],
@@ -75604,15 +76709,36 @@
     "exclusion_value": "education",
     "also_excludes_from_threshold": 0,
     "_retyped_from": "other:education payments"
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [],
+  "milestone_rules": [
+   {
+    "milestone_name": "Quarterly Domestic Lounge Access",
+    "spend_target": 50000.0,
+    "period": "quarter",
+    "bonus_type": "domestic lounge visit",
+    "bonus_value": 1.0,
+    "bonus_description": "One domestic airport lounge visit in the following quarter on eligible spends of ₹50,000 in the previous calendar quarter. Maximum four domestic lounge visits a year, one per quarter.",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
     "min_txn_amount": 500.0,
     "max_txn_amount": 4000.0,
-    "monthly_cap": 400.0
+    "monthly_cap": 250.0
    }
   ],
   "redemption_rules": [
@@ -76507,7 +77633,7 @@
    "id": "slice_bank_slice_upi",
    "card_name": "slice UPI Credit Card",
    "issuer": "Slice Bank",
-   "network": "unknown",
+   "network": "rupay",
    "card_tier": "entry",
    "annual_fee": 0.0,
    "fee_waiver_spend": null,
@@ -76556,7 +77682,183 @@
     "_note": "CORRECTED DOWN from 3%. The 3% slab is not the standing rate — it requires BOTH an average quarterly balance of INR 5,00,000 in a slice savings account AND a monies balance of INR 5,00,000. The unconditional rate is 1%, redeemed as cash into the slice savings account."
    }
   ],
-  "exclusion_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6539",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5960",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6381",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "3429",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6012",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6051",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "0763",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7995",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7801",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7800",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7802",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   }
+  ],
   "milestone_rules": [],
   "fuel_surcharge_rules": [
    {
@@ -78405,9 +79707,9 @@
    "fee_waiver_spend": 150000.0,
    "base_reward_rate": 0.0,
    "reward_currency": "reward_points",
-   "rp_value_standard": 1.0,
-   "rp_value_travel": null,
-   "rp_value_transfer": 1.0,
+   "rp_value_standard": 0.1,
+   "rp_value_travel": 0.1,
+   "rp_value_transfer": null,
    "forex_markup_pct": 3.4,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/yes_bank_pop_club.png",
@@ -78479,7 +79781,43 @@
     "conditions_json": null
    }
   ],
-  "exclusion_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "utilities",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   }
+  ],
   "milestone_rules": [
    {
     "milestone_name": "Quarterly spending milestone",
@@ -81902,7 +83240,7 @@
    "is_active": 1,
    "is_travel": 0,
    "points_expiry_months": null,
-   "min_redemption_points": null,
+   "min_redemption_points": 250,
    "points_clawback_on_default": null
   },
   "reward_rules": [
@@ -81988,7 +83326,23 @@
     "source_fetched_on": "2026-08-12"
    }
   ],
-  "exclusion_rules": [],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   }
+  ],
   "milestone_rules": [],
   "fuel_surcharge_rules": [],
   "redemption_rules": [
