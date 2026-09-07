@@ -11575,7 +11575,16 @@
    },
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "Accelerated rewards apply only to dining (MCC 5812), travel agencies (MCC 4722) and transactions carrying the international-transaction flag.",
+    "The accelerated rate is capped at 2,000 Reward Points per statement cycle across all accelerated categories combined; spending after the cap is reached earns the base rate.",
+    "A transaction must be at least ₹100 to earn any Reward Points.",
+    "On the RuPay variant, eligible merchant UPI transactions earn the base rate of 2 Reward Points per ₹100 and never the accelerated rate, capped at 500 Reward Points per statement cycle.",
+    "Railway, bus, toll and other passenger-transport transactions (MCCs 4111, 4112, 4131, 4784, 4789) earn no Reward Points.",
+    "Cash withdrawals, quasi-cash transactions, EMI transactions and cancelled, reversed or refunded transactions earn no Reward Points.",
+    "Purchases above ₹2,500 can be converted to Smart EMI over a tenure of 6 to 48 months, with the applicable interest and processing charges disclosed at the time of conversion."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -11610,9 +11619,10 @@
      "point_value": 0.25
     }
    ],
-   "expiry_months": null,
-   "min_points": null,
-   "fee": 0
+   "expiry_months": 24,
+   "min_points": 1000,
+   "fee": 0,
+   "notes": "Statement cashback is the best option and the one the card's headline value is built on: 1 Reward Point is worth ₹0.25, redemption must be initiated through the BOBCARD app or portal, and the cashback is credited to the credit-card account and adjusted against the subsequent statement. The minimum redemption is 1,000 Reward Points, which is ₹250, so no value is reachable below that. Reward Points may also be redeemed for products and vouchers through BOBCARD's rewards catalogue; a fee of ₹99 plus GST applies to eligible physical products and physically delivered vouchers, and that fee does not apply to statement cashback. Reward Points expire 24 months after they are earned."
   },
   "faqs": [
    {
@@ -11626,30 +11636,83 @@
   ],
   "pros_cons": {
    "pros": [
-    "Lifetime free credit card with decent reward rate and free airport lounge access across the country",
-    "Great card for taking advantage of various BOBCARD Credit Card offers"
+    "2.5% reward value on eligible dining, travel-agency and international spending",
+    "Low ₹20,000 quarterly requirement for lounge access",
+    "₹1,000 annual fee waived on spending ₹1.2 lakh in the preceding anniversary year",
+    "Up to three lifetime-free add-on cards"
    ],
    "cons": [
-    "Although this card offers accelerated reward points on international purchases, a 3.5% Forex markup fee applies to these transactions",
-    "5X Reward Points earnings are capped at 2,000 in a month"
+    "Travel acceleration is largely restricted to travel-agency MCC 4722.",
+    "The 2,000-point accelerated cap is reached after only ₹20,000 of qualifying spending.",
+    "Low 0.5% base reward rate",
+    "3.5% forex markup.",
+    "Air and non-air accidental-death insurance has been discontinued for existing Premier cardholders from 25 August 2026, and was unavailable on cards issued after 15 July 2026."
    ],
    "best_for": "Travel, Dining",
    "not_for": null
   },
   "highlights": [
-   "Currently available as Lifetime Free (limited-time offer)",
-   "10 reward points (5X) per ₹100 on dining, travel, and international transactions",
-   "2 reward points per ₹100 on all other eligible spends",
-   "Complimentary domestic lounge access every quarter",
-   "1% fuel surcharge waiver at all fuel stations across India",
-   "Personal accident death cover up to ₹10 lakh",
+   "10 Reward Points per ₹100 on eligible travel, dining and international spending",
+   "2 Reward Points per ₹100 on other eligible spending",
+   "Four domestic lounge visits per year, subject to spending",
+   "1% fuel-surcharge waiver",
+   "3.5% forex markup",
    "Zero liability coverage on card loss/theft",
    "RuPay variant can be linked to UPI apps like Google Pay, PhonePe",
    "Up to 3 free add-on cards",
    "Card-to-card application option available"
   ],
   "similar_cards": null,
-  "customer_service": null
+  "customer_service": null,
+  "fees": {
+   "annual_fee": 1000,
+   "annual_fee_waiver_spend": 120000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹400 to ₹5,000, capped at ₹250 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn or ₹500, whichever is higher; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% of the transaction amount"
+    },
+    {
+     "label": "Wallet loads (MCCs 6539, 6540, 6541, 6542)",
+     "value": "1% of the transaction amount"
+    },
+    {
+     "label": "Utilities (MCC 4900)",
+     "value": "1% when an individual transaction is ₹50,000 or higher, capped at ₹3,000 per transaction"
+    },
+    {
+     "label": "Fuel (MCCs 5172, 5541, 5542, 5983)",
+     "value": "1% when an individual transaction is ₹10,000 or higher"
+    },
+    {
+     "label": "Third-party education payments",
+     "value": "1% of the transaction amount, capped at ₹5,000 per transaction"
+    },
+    {
+     "label": "Toll and bus transactions (MCC 4784)",
+     "value": "1% when an individual transaction is ₹5,000 or higher"
+    },
+    {
+     "label": "Railway bookings (MCC 4112)",
+     "value": "1% when an individual transaction is ₹30,000 or higher, capped at ₹5,000 per transaction"
+    },
+    {
+     "label": "Post-purchase EMI processing",
+     "value": "2% of the converted amount, subject to a minimum of ₹100"
+    },
+    {
+     "label": "EMI foreclosure",
+     "value": "3% of the outstanding principal or ₹299, whichever is higher, plus applicable interest. Partial EMI prepayment is not permitted"
+    },
+    {
+     "label": "Rewards catalogue delivery",
+     "value": "₹99 plus GST on eligible physical products and physically delivered vouchers. Not charged on statement cashback"
+    }
+   ]
+  }
  },
  "bobcard_limited_(bank_of_baroda)_card_sentinel": {
   "benefits": {
@@ -40329,7 +40392,16 @@
    "concierge": null,
    "partner_offers": null,
    "travel_memberships": null,
-   "priority_attend_services": true
+   "priority_attend_services": true,
+   "summary": [
+    "Zen Points accrue only on complete multiples of ₹150; the remainder of a transaction earns nothing.",
+    "The 6,500 Zen Points per billing cycle limit is an overall cap - accelerated shopping spending and all other eligible spending draw on the same pool.",
+    "Zen Points stop accruing once utility spending passes ₹50,000, education ₹70,000, insurance ₹70,000 or government payments ₹40,000 in a statement cycle. Spending inside those limits still earns 5 Zen Points per ₹150, so these are ceilings and not blanket exclusions.",
+    "International lounge access is for the primary cardholder only and is granted on the credit card itself - a separate Priority Pass is no longer issued.",
+    "International lounge entry carries a refundable USD 1 validation charge, and guest visits or visits beyond the free allowance cost USD 35 per person per visit.",
+    "The 1% fuel-surcharge waiver applies to fuel transactions of ₹500 to ₹5,000 and is capped at ₹3,500 per card-anniversary year.",
+    "Railway surcharge is waived at 1.8% on eligible IRCTC online bookings and 2.5% at Indian Railways booking counters, capped at ₹500 per card-anniversary year."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 480000,
@@ -40373,18 +40445,16 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Kotak Reward Program - Exclusive vouchers and partner deals",
-     "point_value": 0.25
-    },
-    {
-     "channel": "Cash conversion for shopping at partner merchant outlets",
-     "point_value": 0.25
-    }
+    "Kotak Rewards catalogue - mobile recharge, shopping, e-vouchers and movies: ₹0.25 per Zen Point",
+    "Merchandise at the published catalogue rate: ₹0.25 per Zen Point",
+    "Statement credit: ₹0.20 per Zen Point",
+    "Flights and hotels on Kotak Rewards: value shown at booking",
+    "Air Miles transfer: conversion varies"
    ],
-   "expiry_months": null,
+   "expiry_months": 24,
    "min_points": null,
-   "fee": 0
+   "fee": 0,
+   "notes": "Best fixed value is ₹0.25 per Zen Point on e-vouchers, mobile recharge and catalogue shopping. Statement credit settles at the lower ₹0.20 per Zen Point. Flight, hotel and Air Miles values vary and are shown on Kotak Rewards. Zen Points expire two years from the date earned. A redemption request cannot be cancelled or reversed once placed, and no separate redemption fee is specified."
   },
   "faqs": [
    {
@@ -40406,36 +40476,32 @@
   ],
   "pros_cons": {
    "pros": [
-    "Welcome benefit of 1500 Zen Points worth 375 on joining fee payment",
-    "Accelerated rewards of 10 Zen Points per 150 on Apparel, Lifestyle Goods & Jewellery",
-    "3 complimentary international lounge accesses per year",
-    "8 complimentary domestic lounge accesses per year",
-    "Milestone rewards up to 15000 Zen Points on 6,00,000 annual spend",
-    "Annual fee waiver on spending 1,50,000",
-    "1% fuel surcharge waiver"
+    "Accelerated rewards across broad shopping categories",
+    "Three international lounge visits without a spending requirement",
+    "Up to eight spend-based domestic lounge visits",
+    "Annual milestone provides up to 15,000 additional Zen Points",
+    "₹1,500 annual fee waived on ₹1.5 lakh annual retail spending",
+    "Both fuel and railway surcharge waivers"
    ],
    "cons": [
-    "No reward points on fuel transactions",
-    "Reward points capped at 6500 per billing cycle",
-    "Domestic lounge access is spend-based (75000 per quarter for 2 accesses)",
-    "International lounge requires 4 purchase transactions to unlock",
-    "Limited city availability for application",
-    "No insurance benefits",
-    "No golf or dining privileges"
+    "Best fixed redemption value is only ₹0.25 per point",
+    "Effective shopping return is approximately 1.67% at the best fixed value",
+    "Statement-credit redemption reduces the shopping return to approximately 1.33%",
+    "The 6,500-point cap applies across all reward-earning transactions",
+    "Domestic lounge access requires ₹75,000 quarterly spending",
+    "Department-store eligibility conflicts across current official sources",
+    "3.5% forex and DCC charges"
    ],
    "best_for": "Travel and Shopping",
    "not_for": null
   },
   "highlights": [
-   "1500 Zen Points as welcome benefit on joining fee payment",
-   "10 Zen Points per 150 spent on Apparel, Lifestyle Goods & Jewellery",
-   "8 complimentary domestic lounge accesses per year (spend-based)",
-   "3 complimentary international lounge accesses per year",
-   "Milestone rewards: 7500 Zen Points at 3L spend, 15000 at 6L spend",
-   "Annual fee waiver on spending 1,50,000",
-   "1% fuel surcharge waiver on transactions between 500 and 3000",
-   "Reward points capped at 6500 per billing cycle",
-   "Priority attend services"
+   "10 Zen Points per ₹150 on eligible shopping spending",
+   "5 Zen Points per ₹150 on other eligible spending",
+   "Three complimentary international lounge visits per year",
+   "Up to eight domestic lounge visits per year",
+   "Fuel and railway surcharge waivers",
+   "3.5% forex markup"
   ],
   "similar_cards": [
    {
@@ -40449,6 +40515,43 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "annual_fee": 1500,
+   "annual_fee_waiver_spend": 150000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹500 to ₹5,000, capped at ₹3,500 per card-anniversary year",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5% on INR transactions done at an international location or with a merchant registered overseas"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% of the transaction amount plus GST"
+    },
+    {
+     "label": "Utilities (MCCs 4814, 4899, 4900)",
+     "value": "1% on cumulative utility spending above ₹50,000 in a statement cycle"
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1%"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% on cumulative wallet loads above ₹10,000 in a statement cycle"
+    },
+    {
+     "label": "Online skill-based gaming (MCC 5816)",
+     "value": "1% on cumulative spending above ₹10,000 in a statement cycle"
+    },
+    {
+     "label": "Fuel (MCCs 5172, 5541, 5542, 5983)",
+     "value": "1% on cumulative fuel spending above ₹35,000 in a statement cycle"
+    }
+   ]
   }
  },
  "kotak_mahindra_bank_811_super_money": {
@@ -45834,6 +45937,13 @@
      "duration": "2 years",
      "description": "Complimentary Priority Pass membership for the first two years"
     }
+   ],
+   "summary": [
+    "Complimentary 12-month FITPASS PRO membership in the first year, subject to payment of the joining fee and at least one card transaction. Capped at 12 fitness sessions per month, a maximum of three sessions per week and one session per day, covering participating gyms and fitness studios, AI-led FITCOACH workouts and FITFEAST nutrition guidance. The voucher must be activated within 90 days.",
+    "Apollo rewards apply to eligible transactions through the Apollo 24|7 app and eligible Apollo Pharmacy stores, and eligibility depends on the merchant ID list Apollo supplies to SBI Card. Apollo Hospitals, Apollo Cradle, Apollo Spectra, airport pharmacies and certain corporate-hospital outlets may be excluded.",
+    "Apollo rewards are capped at 5,000 Reward Points per statement cycle, which is roughly ₹50,000 of eligible Apollo spending. The dining, movies, entertainment and travel tier carries its own separate 5,000 Reward Point cap, roughly ₹2,50,000 of eligible spending. Spending beyond either cap earns the base rate of 1 Reward Point per ₹200.",
+    "Reward Points must be converted into Apollo Health Credits to be used in the Apollo ecosystem. Health Credit value back generally requires an eligible purchase exceeding ₹100 and is calculated on the amount remaining after redeemed Health Credits are applied. Benefits can vary by product, category and customer.",
+    "No Reward Points are earned on balance transfers, cash advances and ATM withdrawals, Flexipay transactions, merchant EMI transactions, financial charges and transaction fees, transactions made before enrolment in the reward programme, or disputed, cancelled, reversed and refunded transactions."
    ]
   },
   "eligibility": {
@@ -45852,9 +45962,10 @@
      "point_value": 1
     }
    ],
-   "expiry_months": null,
+   "expiry_months": 24,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "notes": "1 Reward Point = 1 Apollo Health Credit = ₹1. Reward Points can be converted only into Apollo Health Credits and cannot be redeemed for statement credit, cash or the regular SBI Card rewards catalogue. Health Credits can be used for eligible medicine purchases, diagnostic tests, doctor consultations and Apollo Pharmacy purchases. Reward Points expire 24 months after they are earned, and Health Credits expire one year from the date they are earned."
   },
   "faqs": [
    {
@@ -45876,27 +45987,25 @@
   ],
   "pros_cons": {
    "pros": [
-    "With plenty of spend-based and milestone benefits, this credit card is extremely useful for those with high medical expenses."
+    "Up to 30% combined benefit on eligible diagnostic tests",
+    "Up to 25% combined benefit on eligible medicine purchases",
+    "Clear 1 Reward Point = ₹1 value inside the Apollo ecosystem",
+    "Separate 5,000-point caps for Apollo and lifestyle spending",
+    "Recurring annual comprehensive health check-up milestone",
+    "Four domestic lounge visits without a spending requirement",
+    "₹1,499 annual fee waived on spending ₹3 lakh in the preceding membership year"
    ],
    "cons": [
-    "Although Priority Pass membership is included, no free international lounge visits are offered with the card.",
-    "Reward Points earned with the card can only be converted to Apollo Health Credits. There is no option for cash redemption."
+    "The FITPASS membership is established only for the first year, not as a recurring renewal benefit.",
+    "Low base earning of 1 Reward Point per ₹200",
+    "High ₹6 lakh spending requirement for the smartwatch milestone",
+    "3.5% forex and DCC charges"
    ],
    "best_for": "Travel, Shopping, Health",
    "not_for": "Those seeking cash redemption or international lounge visits"
   },
   "highlights": [
-   "Up to 25% valueback on Apollo medicine purchases (10% reward rate + 15% Apollo Circle benefit)",
-   "10 Reward Points per ₹100 on Apollo 24|7 App and Stores",
-   "2 Reward Points per ₹100 on dining, movies & entertainment, and travel",
-   "Complimentary Apollo Circle Membership with benefits on medicines, diagnostics, consultations, and health tests",
-   "₹1,500 Apollo Pharmacy welcome gift voucher",
-   "4 free domestic airport lounge visits per year",
-   "Complimentary 2-year Priority Pass membership",
-   "Complimentary Noise Smartwatch worth ₹7,999 on ₹6 lakh annual spend",
-   "Complimentary health check-up package worth ₹1,999 on milestone spend",
-   "Available on both RuPay and Mastercard networks",
-   "Annual fee waiver on ₹3 lakh spend"
+   "Up to 30% combined value back on eligible Apollo diagnostic tests"
   ],
   "similar_cards": [
    {
@@ -45914,6 +46023,40 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": 300000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹500 to ₹4,000, on fuel MCCs 5172, 5541, 5542 and 5983",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500; finance charges apply from the date of withdrawal",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5% on INR transactions of ₹1,000 or more done at an international location or with a merchant registered overseas; not reversed on refunds"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "₹199 plus applicable taxes per transaction"
+    },
+    {
+     "label": "Utilities (MCC 4900)",
+     "value": "1% of the entire utility-payment amount once cumulative utility spending exceeds ₹50,000 in a billing cycle"
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1% per transaction; direct payments through a school or college website or POS machine are exempt"
+    },
+    {
+     "label": "Wallet loads (MCCs 6540, 6541)",
+     "value": "1% on every wallet-load transaction exceeding ₹1,000"
+    },
+    {
+     "label": "Railway ticket purchase or cancellation",
+     "value": "As prescribed by IRCTC"
+    }
+   ]
   }
  },
  "sbi_card_bpcl_sbi_octane": {
@@ -47992,6 +48135,16 @@
    "travel_memberships": [
     "Accommodation at more than 5,000 hotels in India across 350 cities",
     "Exclusive benefits across over 900 hotels globally"
+   ],
+   "summary": [
+    "Reward Points on IRCTC train bookings are earned only on the eligible base fare of First AC, AC 2 Tier, AC 3 Tier, Executive Chair Car and AC Chair Car tickets booked on the IRCTC website or app; reservation, superfast, convenience and other charges do not earn.",
+    "The cardholder must be one of the passengers and must supply the linked 11-digit loyalty number, and the reward covers the primary cardholder and the co-travellers on the same booking. Points are credited five days after the journey, provided the ticket is not cancelled or modified. Cancelled, unused, forfeited and free tickets, tickets booked on military warrants, and bookings made without the loyalty number earn nothing.",
+    "IRCTC air-ticket and e-catering rewards are earned only through air.irctc.co.in and ecatering.irctc.co.in, and are capped at 750 Reward Points per monthly statement cycle.",
+    "Utility payments earn the accelerated rate only when they are registered as a standing instruction; a one-off utility bill paid on the card earns the ordinary base rate.",
+    "A 1% fee applies to the entire utility payment once cumulative utility spending crosses ₹50,000 in a billing cycle (MCC 4900); utility spends still earn Reward Points.",
+    "The 1% and 1.8% waivers on IRCTC train and air booking charges apply to the booking charge itself; GST and other charges are not covered.",
+    "Railway-lounge access is for the primary cardholder only, and a valid eligible card together with a train ticket must be presented at the lounge.",
+    "No Reward Points are earned on balance transfers, Encash, cash advances and ATM withdrawals, Flexipay and Merchant EMI transactions, finance charges, transaction fees and other card charges, or on disputed, reversed, cancelled and refunded transactions."
    ]
   },
   "eligibility": {
@@ -48006,6 +48159,10 @@
   "redemption": {
    "channels": [
     {
+     "channel": "IRCTC train tickets",
+     "point_value": 1
+    },
+    {
      "channel": "SBI Rewardz website",
      "point_value": 1
     }
@@ -48017,7 +48174,8 @@
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 99
+   "fee": 99,
+   "notes": "1 Travel Reward Point = ₹1 toward eligible IRCTC train tickets. Points are transferred from SBI Card to the linked IRCTC loyalty account each month. Partial payment using points is not permitted, so the full ticket must be paid for in points; any shortfall can be purchased for ₹1.50 plus taxes per point. There is no separate redemption fee on the IRCTC train-ticket channel; the ₹99 per-request redemption fee applies to the SBI Rewardz catalogue. If a reward ticket is cancelled before travel, 50% of the redeemed points are forfeited, in addition to applicable railway cancellation charges. Points earned during a membership year expire according to the programme's two-year membership-cycle rule."
   },
   "faqs": [
    {
@@ -48043,36 +48201,46 @@
   ],
   "pros_cons": {
    "pros": [
-    "1 Reward Point = Re. 1, making reward valuation simple and strong",
+    "10% reward value on eligible IRCTC AC train fares",
+    "Reward Points retain a clear ₹1 value for train-ticket redemption.",
+    "Annual travel milestones can provide up to ₹7,500 in additional points.",
     "Welcome bonus of 1,500 Reward Points effectively covers the joining fee",
-    "Up to 5,000 bonus Reward Points annually through milestone spends",
-    "8 complimentary railway lounge accesses per year",
-    "Savings on IRCTC railway and airline ticket bookings",
-    "Spend-based renewal fee waiver at Rs. 2 Lakhs",
-    "1% fuel surcharge waiver",
-    "Insurance coverage for air and railway accidents"
+    "Eight railway-lounge visits without a spending requirement",
+    "Savings on IRCTC railway and airline ticket booking charges",
+    "₹1,499 renewal fee waived on annual spending of ₹2 lakh",
+    "1% fuel surcharge waiver"
    ],
    "cons": [
+    "Rewards are primarily useful within the IRCTC train-booking ecosystem.",
+    "Air-ticket rewards are capped at only 750 points per statement cycle.",
+    "Full-ticket redemption is mandatory; ordinary part-payment is not available.",
+    "Cancelling a reward ticket forfeits 50% of the points used.",
+    "Low 0.8% base reward rate",
     "No reward points on fuel transactions",
-    "Rs. 99 reward redemption fee per request",
-    "3.5% forex markup on international transactions",
+    "Complimentary air- and rail-accident insurance was discontinued from 26 July 2025.",
+    "3.5% forex and DCC charges",
     "High interest rate of 3.5% per month (42% annually)",
-    "No domestic or international airport lounge access"
+    "No domestic or international airport lounge access",
+    "Rs. 99 redemption fee per request on the SBI Rewardz catalogue; there is no separate fee on IRCTC train-ticket redemption"
    ],
    "best_for": "Frequent railway travellers and IRCTC users who want to earn and redeem rewards on travel",
    "not_for": "International travellers or those seeking airport lounge access"
   },
   "highlights": [
+   "10 Reward Points per ₹100 on eligible IRCTC AC train bookings",
+   "5 Reward Points per ₹125 on eligible IRCTC air-ticket and e-catering spending",
+   "3 Reward Points per ₹125 on dining and standing-instruction utility payments",
    "1 Reward Point = Re. 1 value",
-   "Up to 3 Reward Points per Rs. 125 spent on dining and utility",
    "Welcome bonus of 1,500 Reward Points covers joining fee",
-   "Up to 5,000 bonus Reward Points annually via milestone spends",
+   "Up to 7,500 bonus Reward Points a year from travel-spend milestones (2,500 at Rs. 50,000 and a further 5,000 at Rs. 1 Lakh)",
    "8 complimentary railway lounge accesses per year (2 per quarter)",
-   "Savings on IRCTC railway (1%) and airline (1.8%) ticket bookings",
+   "Savings on IRCTC railway (1%) and airline (1.8%) ticket booking charges",
+   "1% fuel-surcharge waiver",
    "Exclusive benefits at 900+ hotels globally and 5,000+ hotels in India",
    "Up to 10,000 miles per night on hotel stays via Kaligo.com",
    "Spend-based renewal fee waiver at Rs. 2 Lakhs annual spend",
-   "Insurance coverage: Rs. 50 Lakhs air accident, Rs. 10 Lakhs railway accident, Rs. 1 Lakh fraud liability"
+   "Rs. 1 Lakh fraud liability cover",
+   "3.5% forex markup"
   ],
   "similar_cards": [
    {
@@ -48086,6 +48254,43 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% waiver on transactions of ₹500 to ₹4,000, capped at ₹250 per statement cycle",
+   "cash_advance": "2.5% of the amount or ₹500, whichever is higher; finance charges apply from the date of withdrawal",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5% on eligible INR transactions of ₹1,000 or more at an international location or an overseas-registered merchant"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "₹199 plus applicable taxes per transaction"
+    },
+    {
+     "label": "Utilities (MCC 4900)",
+     "value": "1% of the entire payment once cumulative utility spending exceeds ₹50,000 in a billing cycle"
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1% per transaction; payments made directly through a school or college website or POS machine are exempt"
+    },
+    {
+     "label": "Wallet loads (MCCs 6540, 6541)",
+     "value": "1% on every wallet-load transaction exceeding ₹1,000"
+    },
+    {
+     "label": "IRCTC train-ticket cancellation",
+     "value": "1% of the total refund value"
+    },
+    {
+     "label": "IRCTC air-ticket cancellation",
+     "value": "1.8% of the total refund value"
+    }
+   ]
   }
  },
  "sbi_card_krisflyer_sbi_card_apex": {
@@ -51293,6 +51498,11 @@
      "duration": "First two years complimentary",
      "details": "Access to 1,000+ airport lounges worldwide; international lounge access at $27 plus taxes per visit"
     }
+   ],
+   "summary": [
+    "Domestic lounge access is capped at one visit per calendar quarter.",
+    "Combined with the four fixed visits, the card can provide up to 12 domestic lounge visits per year.",
+    "Travel Credits are not earned on balance transfers, cash advances and ATM withdrawals, Encash transactions, Flexipay transactions, merchant EMI transactions, financial charges, or disputed, reversed or refunded transactions."
    ]
   },
   "eligibility": {
@@ -51306,22 +51516,41 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Air Miles / Hotel Points",
-     "point_value": 1
-    },
-    {
-     "channel": "Travel Bookings",
-     "point_value": 0.5
-    },
-    {
-     "channel": "Shop and Smile Product Catalog",
-     "point_value": 0.25
-    }
+    "Airline & hotel partner transfers",
+    "SBI Card travel bookings",
+    "Shop & Smile catalogue"
    ],
    "expiry_months": 24,
-   "min_points": null,
-   "fee": 99
+   "min_points": 2000,
+   "fee": 99,
+   "miles_partners": [
+    "Air Arabia - AirRewards - 2:1",
+    "AirAsia - airasia rewards - 1:1",
+    "Air Canada - Aeroplan - 1:1",
+    "Air France–KLM - Flying Blue - 1:1",
+    "Air India - Maharaja Club - 1:1",
+    "British Airways - The British Airways Club - 1:1",
+    "Cathay Pacific - Cathay - 1:1",
+    "Emirates - Emirates Skywards - 2:1",
+    "Ethiopian Airlines - ShebaMiles - 2:1",
+    "Japan Airlines - JAL Mileage Bank - 2:1",
+    "Saudia - AlFursan - 2:1",
+    "SpiceJet - SpiceClub - 1:1",
+    "Thai Airways - Royal Orchid Plus - 1:1",
+    "Turkish Airlines - Miles&Smiles - 2:1",
+    "United Airlines - MileagePlus - 2:1",
+    "Qantas - Qantas Frequent Flyer - 1:1",
+    "Vietnam Airlines - Lotusmiles - 1:1",
+    "Accor - ALL - 2:1",
+    "IHG Hotels & Resorts - IHG One Rewards - 1:1",
+    "ITC Hotels - Club ITC - 2:1",
+    "Jumeirah Hotels & Resorts - Jumeirah One - 2:1",
+    "Orchid Hotels - Orchid Rewards - 1:1",
+    "Wyndham Hotels & Resorts - Wyndham Rewards - 1:1",
+    "Shangri-La - Shangri-La Circle - 6:1",
+    "Radisson Hotels - Radisson Rewards - 1:1"
+   ],
+   "notes": "Travel Credits transfer to the cardholder's own participating loyalty account; the ratios listed are Travel Credits : partner points. SBI Card travel bookings value a Travel Credit at ₹0.50; the Shop & Smile catalogue values it at ₹0.25. Minimum redemption 2,000 Travel Credits, and redemptions must be in multiples of 2,000. Partner transfers are final and may take up to 21 days. Travel Credits expire after 24 months. ₹99 plus taxes applies to eligible physical products, statement-fee credit and physically delivered vouchers."
   },
   "faqs": [
    {
@@ -51343,28 +51572,34 @@
   ],
   "pros_cons": {
    "pros": [
-    "2 complimentary domestic airport lounge access per quarter all over India",
-    "3% foreign currency mark-up charge on international transactions",
-    "Spend-based reversal on annual spends of ₹6 lakhs"
+    "Large selection of airline and hotel transfer partners",
+    "Several partners offer a 1:1 transfer ratio.",
+    "Four fixed domestic lounge visits plus up to eight spend-based visits",
+    "Annual milestone provides 5,000 additional Travel Credits.",
+    "₹1,499 annual fee is waived on spending ₹6 lakh in the preceding year."
    ],
    "cons": [
-    "This card does not provide any offers on movies or dining",
-    "Insurance benefits are also not provided by this card"
+    "Direct travel-booking value produces only a 0.5% return on travel spending and 0.25% on other eligible spending.",
+    "Redemption requires at least 2,000 Travel Credits and must be in 2,000-point blocks.",
+    "High 3% Forex Markup",
+    "No complimentary international lounge visits",
+    "Annual-fee waiver requires a high ₹6 lakh spend."
    ],
    "best_for": "Frequent travelers who want to earn travel rewards on their spending",
    "not_for": "Those seeking movie, dining, or insurance benefits"
   },
   "highlights": [
+   "2 Travel Credits per ₹200 on eligible travel spending",
+   "1 Travel Credit per ₹200 on other eligible spending",
    "1,500 Travel Credits as welcome gift on spending ₹30,000 within 60 days",
-   "2 Travel Credits per ₹200 on travel, 1 Travel Credit per ₹200 on other spends",
-   "Complimentary Priority Pass Membership worth $99/year for first two years with 1,000+ lounge access worldwide",
-   "4 complimentary domestic airport lounge visits per year (2 per quarter)",
-   "Extra domestic lounge visit for every ₹1 Lakh spent (capped at 8/year)",
+   "Four complimentary domestic lounge visits per year",
+   "Extra domestic lounge visit for every ₹1 Lakh spent (capped at 8 per year)",
    "5,000 bonus Travel Credits on ₹5 Lakh annual spend",
    "Annual fee waiver on ₹6 Lakh spend",
-   "1% fuel surcharge waiver on transactions between ₹500–₹4,000",
-   "Lower forex markup of 3% compared to typical 3.5%",
-   "Travel Credits redeemable for air miles, hotel points, travel bookings, or catalog products"
+   "1% fuel-surcharge waiver on transactions of ₹500–₹3,000",
+   "3% forex markup",
+   "Complimentary Priority Pass membership for the first two years; international lounge visits cost $27 plus taxes each",
+   "Travel Credits redeemable for air miles, hotel points, SBI Card travel bookings, or catalogue products"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -51373,6 +51608,44 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": 600000,
+   "forex_markup_pct": 3.0,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹500–₹3,000; maximum waiver ₹250 per billing statement",
+   "cash_advance": "2.5% of the amount, minimum ₹500; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Forex markup",
+     "value": "3% of the INR-converted foreign-currency transaction amount; not reversed on refunds"
+    },
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3% on eligible INR transactions of ₹1,000 or more at an international location or an overseas-registered merchant; not reversed on refunds"
+    },
+    {
+     "label": "Rent payments",
+     "value": "₹199 plus applicable taxes per transaction (MCC 6513)"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% of the entire utility-payment amount when cumulative utility spending exceeds ₹50,000 in a billing cycle (MCC 4900)"
+    },
+    {
+     "label": "Third-party education payments",
+     "value": "1% per transaction (MCCs 8211, 8220, 8241, 8244, 8249, 8299). Direct payments through a school or college website or POS machine are exempt."
+    },
+    {
+     "label": "Wallet loads",
+     "value": "1% on every transaction exceeding ₹1,000 (MCCs 6540, 6541)"
+    },
+    {
+     "label": "Railway tickets",
+     "value": "Charges applicable as prescribed by IRCTC"
+    }
+   ]
   }
  },
  "sbi_card_pulse": {
@@ -51436,6 +51709,17 @@
    ],
    "travel_memberships": [
     "Complimentary Priority Pass membership for the first two years of card membership"
+   ],
+   "summary": [
+    "The 10 Reward Points per ₹100 rate applies only to these merchant category codes: dining 5812, drinking places 5813, fast-food restaurants 5814, movie theatres 7832, pharmacy and chemists 5912 and 8099, sports and riding apparel 5655, sporting goods 5941, professional sports clubs and athletic facilities 7941, and sports, recreation, athletic and country clubs 7997. Whether a purchase qualifies depends on the code the merchant's acquiring bank assigns.",
+    "Accelerated Reward Points are capped at 7,500 per calendar month across all of these categories together, which is roughly ₹75,000 of eligible spending. Spending beyond the cap earns the base 2 Reward Points per ₹100.",
+    "The complimentary FITPASS PRO membership runs for 12 months and allows a maximum of 12 fitness sessions a month, no more than three in a week and one in a day, across participating gyms, fitness centres and classes, with AI-led coaching through FITCOACH and personalised nutrition guidance through FITFEAST. The voucher is issued within 21 working days and must be activated within 90 days. Renewal needs both the renewal fee and one transaction within 12 months of card renewal.",
+    "The Netmeds First membership adds 2% NMS Cash capped at ₹100 on each eligible prepaid medicine order, free delivery on eligible orders of ₹99 or more, an additional 10% discount on pathology tests capped at ₹100, six complimentary online doctor consultations and priority order processing. NMS Cash stays valid for 90 days.",
+    "The ₹1,500 Netmeds e-gift voucher earned on spending ₹4 lakh in a card-membership year is valid for up to 12 months, can be used only once, forfeits any unused balance, and cannot be combined with another offer or discount.",
+    "The complimentary Priority Pass membership is for the primary cardholder and carries no complimentary lounge visits. Every visit, cardholder or guest, costs USD 27 plus applicable taxes per person, and the charge may be posted 60 to 120 days after the visit.",
+    "Insurance cover: fraud liability up to ₹1 lakh, loss of checked-in baggage up to ₹72,000, delayed checked-in baggage up to ₹7,500, loss of travel documents up to ₹12,500 and flight delay up to ₹7,500, each subject to the insurer's conditions and reporting requirements.",
+    "Fuel spending earns no Reward Points on this card, but the 1% fuel-surcharge waiver still applies on transactions of ₹500 to ₹4,000 at MCCs 5172, 5541, 5542 and 5983, capped at ₹250 per statement cycle.",
+    "No Reward Points are earned on cash advances and ATM withdrawals, balance transfers including Balance Transfer on EMI, Easy Money, Encash and Dial-a-Draft transactions, Flexipay and merchant EMI transactions, financial charges and transaction fees, Card Protection Plan charges, the amount paid through Points + Pay, transactions made before enrolment in the reward programme, and disputed, cancelled, reversed or refunded transactions."
    ]
   },
   "eligibility": {
@@ -51481,7 +51765,8 @@
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 100
+   "fee": 99,
+   "notes": "4 Reward Points = ₹1 as statement credit. Statement-credit redemption must be made in multiples of 4,000 Reward Points, and no more than 60,000 Reward Points can be redeemed as statement credit in a calendar month. Reward Points can also be redeemed for products and vouchers through the SBI Card rewards catalogue; SBI Card publishes a rupee rate only for statement credit, so the value actually realised on catalogue products and vouchers depends on the item chosen. A redemption fee of ₹99 plus applicable taxes applies to statement-credit and physical-product redemptions."
   },
   "faqs": [
    {
@@ -51511,39 +51796,30 @@
   ],
   "pros_cons": {
    "pros": [
-    "Noise ColorFit Pulse 4 Pro Smart Watch worth Rs. 7,999 as welcome gift",
-    "Complimentary FitPass Pro and Netmeds First memberships renewed annually",
-    "2.5% reward rate on movies, dining, pharmacy, chemist and health-related spends",
-    "8 complimentary domestic airport lounge visits per year",
-    "Complimentary Priority Pass membership for first two years",
-    "Renewal fee waiver on spending Rs. 2 lakhs or more",
-    "Netmeds e-gift voucher worth Rs. 1,500 on Rs. 4 lakh annual spend",
-    "Insurance benefits including zero liability, lost/delayed/damaged baggage coverage",
-    "FlexiPay EMI conversion facility",
-    "Fuel surcharge waiver"
+    "2.5% reward value across useful lifestyle and healthcare categories",
+    "High ₹75,000 monthly accelerated-spending ceiling",
+    "Recurring fitness and healthcare memberships",
+    "Four domestic lounge visits without a spending requirement",
+    "Travel and fraud-liability insurance",
+    "₹1,499 annual fee waived on spending ₹2 lakh in the preceding year"
    ],
    "cons": [
-    "Joining fee of Rs. 1,499 + GST is non-waivable",
-    "Priority Pass membership is complimentary only for first two years and usage fee still applies",
-    "No international lounge access included",
-    "High interest rate of 45% per annum",
-    "3.5% forex markup fee",
-    "Rs. 100 fee on each reward redemption request",
-    "Accelerated reward points capped at 7,500 per month",
-    "No reward points on fuel purchases"
+    "Low 0.5% base reward rate",
+    "FITPASS and Netmeds membership renewal requires payment of the renewal fee.",
+    "Priority Pass provides membership but no complimentary visits.",
+    "Statement-credit redemption requires 4,000-point blocks and attracts a fee.",
+    "Air-accident insurance has been discontinued.",
+    "3.5% forex and DCC charges"
    ],
    "best_for": "Health-conscious individuals, movie and dining enthusiasts, domestic travelers seeking lounge access and affordable card with decent rewards",
    "not_for": "Frequent international travelers, users seeking high base reward rates or no-fee cards"
   },
   "highlights": [
-   "Noise ColorFit Pulse 4 Pro Smart Watch worth Rs. 7,999 as welcome gift",
-   "Complimentary FitPass Pro and Netmeds First memberships renewed annually with fee payment",
-   "5x accelerated Reward Points (10 RP per Rs. 100) on movies, dining, pharmacy, chemist, and health spends",
-   "8 complimentary domestic airport lounge visits per year (max 2 per quarter)",
-   "Complimentary Priority Pass membership for first two years",
-   "Netmeds e-gift voucher worth Rs. 1,500 on Rs. 4 lakh spend milestone",
-   "Renewal fee waiver on Rs. 2 lakh annual spend",
-   "Insurance coverage including zero liability, lost/delayed/damaged baggage, and travel document loss"
+   "10 Reward Points per ₹100 on eligible dining, movies, pharmacy and sports spending",
+   "Annual FITPASS PRO and Netmeds First memberships, subject to renewal-fee payment",
+   "Four domestic lounge visits per year",
+   "Travel and fraud-liability insurance",
+   "3.5% forex markup"
   ],
   "similar_cards": [
    {
@@ -51557,6 +51833,44 @@
    "email": null,
    "app_name": "SBI Card app",
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹500 to ₹4,000, capped at ₹250 per statement cycle (MCCs 5172, 5541, 5542, 5983)",
+   "cash_advance": "2.5% of the amount or ₹500, whichever is higher; finance charges apply from the date of withdrawal",
+   "other_lines": [
+    {
+     "label": "Foreign currency markup",
+     "value": "3.5% of the INR-converted foreign-currency transaction amount; the markup is not reversed when the transaction is refunded"
+    },
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5% on INR transactions of ₹1,000 or more done at an international location or with a merchant registered overseas; not reversed when the transaction is refunded"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "₹199 plus applicable taxes per transaction"
+    },
+    {
+     "label": "Utilities (MCC 4900)",
+     "value": "1% of the entire utility-payment amount once cumulative utility spending exceeds ₹50,000 in a billing cycle"
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1% per transaction; payments made directly through a school or college website or POS machine are exempt"
+    },
+    {
+     "label": "Wallet loads (MCCs 6540, 6541)",
+     "value": "1% on every wallet-load transaction above ₹1,000"
+    },
+    {
+     "label": "Railway ticket transactions",
+     "value": "As prescribed by IRCTC or Indian Railways"
+    }
+   ]
   }
  },
  "sbi_card_elite": {
@@ -55549,7 +55863,8 @@
     "count": 8,
     "period": "annually (2 per quarter)",
     "program": null,
-    "spend_to_unlock": null
+    "spend_to_unlock": 50000,
+    "spend_to_unlock_period": "calendar quarter"
    },
    "lounge_international": null,
    "railway_lounge": null,
@@ -55572,6 +55887,14 @@
     "Complimentary dental and eye checkups every year",
     "Complimentary preventive health checkups every year",
     "Unlimited consultation with specialists, nutritionists, and practitioners"
+   ],
+   "summary": [
+    "Utility spends earn YES Rewardz Points, but the points earned on utility transactions are capped at 450 points per statement cycle.",
+    "Rent, wallet loads, fuel, government services, marketing and advertising, insurance, education, passenger railways, tolls, ferries and jewellery spends do not earn YES Rewardz Points.",
+    "Cash withdrawals and cash-advance fees, EMI on Call transactions and Instant EMI transactions do not earn YES Rewardz Points.",
+    "The health and wellness benefits are delivered through the Aditya Birla Multiply app, and the fitness sessions are subject to availability in that app.",
+    "The complimentary annual preventive health check-up covers up to 31 parameters, and kickboxing is available alongside the gym, yoga and Zumba fitness options.",
+    "YES Rewardz Points are worth up to ₹0.25 each when redeemed for flights or hotels through the YES Rewardz portal; the value of statement credit, gift vouchers and merchandise is shown at the time of redemption."
    ]
   },
   "eligibility": {
@@ -55600,25 +55923,38 @@
   "redemption": {
    "channels": [
     {
-     "channel": "Yes Rewardz - Hotel and Flight Bookings",
+     "channel": "YES Rewardz hotel bookings",
      "point_value": 0.25
     },
     {
-     "channel": "Yes Rewardz - Product Catalogue and Gift Vouchers",
+     "channel": "YES Rewardz flight bookings",
+     "point_value": 0.25
+    },
+    {
+     "channel": "Air India Maharaja Club",
+     "point_value": "10 YES Rewardz Points = 1 Maharaja Point"
+    },
+    {
+     "channel": "Statement credit",
+     "point_value": "conversion value shown during redemption"
+    },
+    {
+     "channel": "Gift vouchers",
      "point_value": 0.1
     },
     {
-     "channel": "InterMiles",
-     "point_value": "10 RP = 1 InterMile"
-    },
-    {
-     "channel": "Club Vistara Points",
-     "point_value": "10 RP = 1 Club Vistara Point"
+     "channel": "Merchandise",
+     "point_value": "value varies by product"
     }
    ],
-   "expiry_months": null,
+   "expiry_months": 36,
    "min_points": null,
-   "fee": 100
+   "fee": 100,
+   "portal_name": "YES Rewardz",
+   "miles_partners": [
+    "Air India Maharaja Club"
+   ],
+   "notes": "Redemption fee ₹100 plus GST per request. Flight bookings carry an additional ₹99 plus GST convenience fee; hotel bookings do not, which makes hotels the better of the two portal options. Statement credit, gift voucher and merchandise redemptions can each use a maximum of 50% of the available point balance, and gift vouchers are capped at ₹25,000 per calendar month. Air India Maharaja Club transfers need a minimum balance of 2,000 points, can take seven working days and cannot be reversed. Points expire three years from the date they are earned."
   },
   "faqs": [
    {
@@ -55644,33 +55980,19 @@
   ],
   "pros_cons": {
    "pros": [
-    "Unique health and wellness benefits including fitness sessions, dental, eye, and preventive health checkups",
-    "5X reward points on pharmaceutical/chemist store spends",
-    "Life insurance cover of 1 Crore",
-    "Medical insurance cover of 25 lakhs",
-    "8 complimentary domestic lounge accesses per year",
-    "1% fuel surcharge waiver",
-    "Unlimited consultation with specialists and nutritionists"
+    "Up to 3.75% indicative reward value at eligible pharmacies when points are redeemed for flights or hotels through YES Rewardz",
+    "Utility payments remain reward-eligible, subject to the 450-point cap"
    ],
    "cons": [
-    "No annual fee waiver available",
-    "No international lounge access",
-    "Limited city availability for card issuance",
-    "High interest rate of 3.80% per month (45.60% annually)",
-    "Reward redemption fee of 100",
-    "No welcome benefits mentioned"
+    "Lounge access requires ₹50,000 spending in the preceding quarter.",
+    "3.5% forex markup."
    ],
    "best_for": "Health-conscious individuals who want wellness benefits along with standard credit card rewards",
    "not_for": "Frequent international travelers or those seeking fee waiver options"
   },
   "highlights": [
-   "5X Reward Points (30 RPs per 200) on pharmaceutical/chemist store spends",
-   "12 complimentary fitness sessions per month (Yoga, Zumba, Gym)",
-   "Complimentary dental, eye, and preventive health checkups annually",
-   "Unlimited consultation with specialists, nutritionists, and practitioners",
-   "Life insurance cover of 1 Crore and medical insurance of 25 lakhs",
-   "8 complimentary domestic lounge accesses annually (2 per quarter)",
-   "1000 Reward Points on YES PayNow registration"
+   "6 YES Rewardz Points per ₹200 on other eligible spending",
+   "Up to eight domestic lounge visits per year, subject to spending"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -55679,6 +56001,48 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹500 to ₹3,000, capped at ₹250 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn or ₹650, whichever is higher; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "1% plus GST on international transactions billed in INR"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% or ₹1, whichever is higher, on transactions up to ₹1,000; 1% or ₹199, whichever is higher, above ₹1,000. Maximum five rent transactions in 30 days"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% on transactions exceeding ₹2,000, capped at ₹5,000 per transaction; applies to third-party wallets irrespective of MCC"
+    },
+    {
+     "label": "Utilities and services",
+     "value": "1% once cumulative spending exceeds ₹25,000, capped at ₹5,000 per transaction"
+    },
+    {
+     "label": "Third-party education payments",
+     "value": "1%, capped at ₹5,000 per calendar month; payments made directly on a school or college website or POS machine, and international education transactions, are exempt"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% if a single transaction exceeds ₹10,000 or cumulative calendar-month fuel spending exceeds ₹25,000, capped at ₹5,000 per transaction"
+    },
+    {
+     "label": "Tolls and bridges",
+     "value": "1% if a single transaction exceeds ₹10,000 or cumulative calendar-month spending exceeds ₹50,000, capped at ₹5,000 per transaction"
+    },
+    {
+     "label": "Railways",
+     "value": "1% if a single transaction exceeds ₹30,000 or cumulative calendar-month spending exceeds ₹80,000, capped at ₹5,000 per transaction"
+    }
+   ]
   }
  },
  "yes_bank_yes_first_preferred": {
@@ -56237,7 +56601,13 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 5% rate on utility bills applies only when the bill is registered as an AutoPay standing instruction through YES PayNow. An ad-hoc payment, or a register-and-pay transaction, earns 0.75% instead.",
+    "Cashback on utility spending under MCC 4900 is capped at Rs. 100 per statement cycle on the 5% AutoPay rate and at Rs. 750 per statement cycle across all utility spending. Utility spending above Rs. 15,000 in a statement cycle earns no cashback at all.",
+    "The 5% rate on movie and grocery spending needs a single transaction above Rs. 500, and the Rs. 100 per statement cycle cap is shared across movie and grocery together, not one cap each. A transaction of Rs. 500 or less earns 0.75% instead.",
+    "Fuel, rent, wallet loads, government services and marketing or advertising spending earn no cashback on this card. On fuel the 1% surcharge waiver still applies."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 35000,
@@ -56255,13 +56625,14 @@
   "redemption": {
    "channels": [
     {
-     "channel": "Auto-credit to card account",
-     "point_value": null
+     "channel": "Cashback credited directly to the credit-card account",
+     "point_value": 1
     }
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 100
+   "fee": 0,
+   "notes": "Cashback is credited directly to the credit-card account as a statement credit, at Rs. 1 of cashback for Rs. 1 of credit. There is no reward-point conversion, no manual redemption step and no redemption fee."
   },
   "faqs": [
    {
@@ -56283,32 +56654,36 @@
   ],
   "pros_cons": {
    "pros": [
-    "0.75% cashback on all retail spends",
-    "5% cashback on groceries and movie ticket bookings",
-    "5% cashback on utility bill payments via YES PayNow",
+    "Simple direct cashback without reward-point conversion",
+    "5% cashback on common movie and grocery spending",
+    "5% cashback on qualifying utility AutoPay transactions",
+    "0.75% cashback on other eligible retail spending",
+    "No manual redemption or redemption fee",
     "Welcome cashback of Rs. 250",
-    "1% fuel surcharge waiver on transactions between Rs. 400 and Rs. 5,000",
+    "1% fuel surcharge waiver on transactions between Rs. 500 and Rs. 3,000",
     "Credit shield cover for primary cardholder",
     "Zero liability protection against lost/stolen card",
     "Exclusive offers through YES Privileges"
    ],
    "cons": [
-    "Joining and annual fee of Rs. 1,499 + GST with no spend-based waiver",
+    "Movie and grocery cashback is capped at only Rs. 100 per statement cycle.",
+    "Utility AutoPay cashback is separately capped at Rs. 100 per statement cycle.",
+    "The Rs. 1,499 joining and annual fee has no spend-based waiver.",
+    "3.5% forex and DCC charges.",
     "No lounge access (domestic or international)",
     "No travel benefits",
-    "No dining or entertainment-specific benefits",
-    "Rs. 100 fee on every reward redemption request",
-    "3.4% forex markup fee",
-    "Cashback caps of Rs. 100 per statement cycle on groceries and movies"
+    "No cashback on fuel, rent, wallet loads, government services or marketing spending"
    ],
    "best_for": "Shopping and everyday retail spends with cashback savings",
    "not_for": "Travelers or those seeking lounge access and travel benefits"
   },
   "highlights": [
-   "0.75% cashback on all retail spends",
-   "5% cashback on groceries, movie ticket bookings, and utility bills via YES PayNow",
+   "5% cashback on eligible movie and grocery spending",
+   "5% cashback on eligible utility bills registered through YES PayNow AutoPay",
+   "0.75% cashback on other eligible retail spending",
    "Welcome cashback of Rs. 250 on Rs. 2,500 spend in first 30 days",
-   "1% fuel surcharge waiver (Rs. 400 to Rs. 5,000 transactions, capped at Rs. 125/month)",
+   "1% fuel surcharge waiver on transactions of Rs. 500 to Rs. 3,000, capped at Rs. 100 per statement cycle",
+   "3.5% forex markup",
    "Credit shield cover and zero liability protection",
    "Exclusive offers via YES Privileges on travel, shopping, dining, wellness"
   ],
@@ -56324,6 +56699,48 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of Rs. 500 to Rs. 3,000, capped at Rs. 100 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn or Rs. 650, whichever is higher; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5% plus GST on eligible international transactions billed in INR"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% or Rs. 1, whichever is higher, up to Rs. 1,000; 1% or Rs. 199, whichever is higher, above Rs. 1,000; maximum five rent transactions within 30 days"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% on transactions exceeding Rs. 2,000, capped at Rs. 5,000 per transaction; applies to specified third-party wallets irrespective of MCC"
+    },
+    {
+     "label": "Utilities and services",
+     "value": "1% once cumulative spending exceeds Rs. 25,000, capped at Rs. 5,000 per transaction"
+    },
+    {
+     "label": "Third-party education payments",
+     "value": "1%, capped at Rs. 5,000 per calendar month; direct school or college website and POS payments, and international education transactions, are exempt"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% if an individual transaction exceeds Rs. 10,000 or cumulative calendar-month spending exceeds Rs. 25,000, capped at Rs. 5,000 per transaction"
+    },
+    {
+     "label": "Tolls and bridges",
+     "value": "1% if an individual transaction exceeds Rs. 10,000 or cumulative calendar-month spending exceeds Rs. 50,000, capped at Rs. 5,000 per transaction"
+    },
+    {
+     "label": "Passenger railways",
+     "value": "1% if an individual transaction exceeds Rs. 30,000 or cumulative calendar-month spending exceeds Rs. 80,000, capped at Rs. 5,000 per transaction"
+    }
+   ]
   }
  },
  "yes_bank_select": {
