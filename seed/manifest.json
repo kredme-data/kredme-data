@@ -1,9 +1,9 @@
 {
- "version": "5.1.39",
- "updated_at": "2026-08-22T05:06:39Z",
+ "version": "5.1.40",
+ "updated_at": "2026-09-07T09:45:26Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Adds card.apply_url to 219 active cards. Every URL is on the issuer's own domain, returned HTTP 200 on 2026-08-31, did not redirect off that domain, is not a PDF, and carries an apply action on the page. No aggregator URL anywhere. NOTHING else changed: all 1,284 rule_name strings are byte-identical, so no user's cap progress is touched.",
+ "_note": "Adds apply_url to 219 of 383 cards, and carries PR #83's card_details.json declaration with it. Every link is https and none sits on an inactive card. VERSION: 5.1.40, not 5.1.39. This PR and #83 both said 5.1.39, and seed_sync_service.dart:110 returns SyncResult.upToDate when the server version equals the stored one - so whichever published second would never have reached a device that already took the first. WHY THIS BRANCH NOW CONTAINS #83: publishing #83 at 5.1.39 and then this at 5.1.40 with a manifest declaring only cards.json and merchants.json would have un-declared card_details.json again and silently switched off everything #83 turned on. This branch is merged on top of #83, so 5.1.40 is a superset: apply links AND the benefits file. Publish #83 first, then this; or publish this alone and get both. Either order is now safe. The manifest was REGENERATED from the bytes on disk rather than hand-resolved from the merge conflict - a declared file whose checksum is wrong aborts _applyFullSync and stops card syncing for every user on every cold start, forever. NO rule_name string moved and no reward rate changed, so no user's cap progress is touched.",
  "stats": {
   "total_cards": 383,
   "total_reward_rules": 1284,
@@ -27,6 +27,12 @@
    "path": "seed/merchants.json",
    "checksum": "ac09dc38116f622a4f41094497b4fdb8fa9e1eb19f61a5c930b5c996fa5a8ecb",
    "size_bytes": 104333
+  },
+  {
+   "name": "card_details.json",
+   "path": "seed/card_details.json",
+   "checksum": "233cc433f705ebc6862ea01fbee2ae7966ee0fca252b4c353798a5fbd6a1f250",
+   "size_bytes": 1987203
   }
  ],
  "delta_file": null,
