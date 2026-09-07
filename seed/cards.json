@@ -14993,7 +14993,7 @@
     "waiver_pct": 1.0,
     "min_txn_amount": 400.0,
     "max_txn_amount": 5000.0,
-    "monthly_cap": 400.0
+    "monthly_cap": 250.0
    }
   ],
   "redemption_rules": [
@@ -18540,7 +18540,7 @@
     "spend_target": 5000.0,
     "period": "cycle",
     "bonus_type": "accelerated_earn_rate",
-    "bonus_value": 37.5,
+    "bonus_value": null,
     "bonus_description": "Spend ₹5,000 on non-Salary-Day dates in a billing cycle to unlock the Salary Day Bonus. Once unlocked, spends routed through SalarySe UPI on the 1st day and the last day of the month earn 37.5 SCoins per ₹100 on the Physical (Select) + Virtual variant and 25 SCoins per ₹100 on the Virtual-Only variant, on up to ₹15,000 of eligible Salary Day spending per billing cycle.",
     "is_progressive": 0,
     "conditions_json": null
@@ -18550,7 +18550,7 @@
     "spend_target": 20000.0,
     "period": "cycle",
     "bonus_type": "accelerated_earn_rate",
-    "bonus_value": 10.0,
+    "bonus_value": null,
     "bonus_description": "Eligible spending above ₹20,000 in a billing cycle earns 10 SCoins per ₹100, an effective value of 2%. The first ₹20,000 continues to earn 5 SCoins per ₹100.",
     "is_progressive": 0,
     "conditions_json": null
@@ -18560,7 +18560,7 @@
     "spend_target": 10000.0,
     "period": "cycle",
     "bonus_type": "domestic lounge visit",
-    "bonus_value": 1.0,
+    "bonus_value": null,
     "bonus_description": "Spend ₹10,000 in a billing cycle to earn 1 complimentary domestic airport lounge access in the following cycle, under the RuPay Card Airport Lounge Program.",
     "is_progressive": 0,
     "conditions_json": null
@@ -22665,6 +22665,11 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -37545,7 +37550,7 @@
     "spend_target": 25000.0,
     "period": "quarter",
     "bonus_type": "movie ticket discounts",
-    "bonus_value": 2.0,
+    "bonus_value": null,
     "bonus_description": "Spend Rs. 25,000 in a calendar quarter to unlock the BookMyShow movie benefit twice in the following quarter. Each use gives 25% off, capped at Rs. 100 per booking.",
     "is_progressive": 0,
     "conditions_json": null
@@ -37555,7 +37560,7 @@
     "spend_target": 75000.0,
     "period": "quarter",
     "bonus_type": "domestic lounge visit",
-    "bonus_value": 1.0,
+    "bonus_value": null,
     "bonus_description": "Spend Rs. 75,000 in a calendar quarter to unlock 1 complimentary domestic airport lounge visit in the following quarter",
     "is_progressive": 0,
     "conditions_json": null
@@ -40866,7 +40871,7 @@
     "spend_target": 75000.0,
     "period": "quarter",
     "bonus_type": "domestic lounge access",
-    "bonus_value": 1.0,
+    "bonus_value": null,
     "bonus_description": "Spend ₹75,000 in the preceding calendar quarter to unlock one complimentary domestic airport lounge visit in the following calendar quarter. Maximum four domestic lounge visits per year. Available to the primary cardholder only.",
     "is_progressive": 0,
     "conditions_json": null
@@ -42007,7 +42012,7 @@
     "spend_target": 75000.0,
     "period": "quarter",
     "bonus_type": "domestic lounge visit",
-    "bonus_value": 2.0,
+    "bonus_value": null,
     "bonus_description": "Spend ₹75,000 in the preceding ICICI-defined spend quarter to unlock two domestic lounge visits in the following calendar quarter, to a maximum of eight visits per year. Applicable from 1 July 2026. Available only to the primary cardholder.",
     "is_progressive": 0,
     "conditions_json": null
@@ -44658,7 +44663,7 @@
     "spend_target": 20000.0,
     "period": "month",
     "bonus_type": "lounge visits",
-    "bonus_value": 2.0,
+    "bonus_value": null,
     "bonus_description": "₹20,000 of eligible spending unlocks 1 complimentary domestic and 1 complimentary international airport lounge visit. Capped at 1 domestic and 1 international visit per quarter.",
     "is_progressive": 0,
     "conditions_json": null
@@ -44668,7 +44673,7 @@
     "spend_target": 20000.0,
     "period": "cycle",
     "bonus_type": "golf rounds",
-    "bonus_value": 1.0,
+    "bonus_value": null,
     "bonus_description": "₹20,000 of eligible spending in a billing cycle unlocks 1 complimentary golf round or lesson at a participating course. Capped at 1 session per quarter.",
     "is_progressive": 0,
     "conditions_json": null
@@ -44678,7 +44683,7 @@
     "spend_target": 20000.0,
     "period": "month",
     "bonus_type": "movie tickets",
-    "bonus_value": 2.0,
+    "bonus_value": null,
     "bonus_description": "₹20,000 spent in a calendar month unlocks the Buy 1 Get 1 movie benefit for the following month, up to 2 bookings per calendar month with the discount on the second ticket capped at ₹250.",
     "is_progressive": 0,
     "conditions_json": null
@@ -76727,7 +76732,7 @@
     "spend_target": 50000.0,
     "period": "quarter",
     "bonus_type": "domestic lounge visit",
-    "bonus_value": 1.0,
+    "bonus_value": null,
     "bonus_description": "One domestic airport lounge visit in the following quarter on eligible spends of ₹50,000 in the previous calendar quarter. Maximum four domestic lounge visits a year, one per quarter.",
     "is_progressive": 0,
     "conditions_json": null
@@ -79708,7 +79713,7 @@
    "base_reward_rate": 0.0,
    "reward_currency": "reward_points",
    "rp_value_standard": 0.1,
-   "rp_value_travel": 0.1,
+   "rp_value_travel": null,
    "rp_value_transfer": null,
    "forex_markup_pct": 3.4,
    "has_rupay_upi": 1,
@@ -79870,6 +79875,22 @@
      "cardinsider": "POPshop voucher redemption"
     },
     "confidence": "low"
+   },
+   {
+    "rule_name": "Cashback conversion",
+    "channel_type": "cashback",
+    "point_value_inr": 0.1,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Cashback conversion",
+    "_sources": [
+     "validator"
+    ],
+    "_source_quotes": {
+     "validator": "Cashback conversion: Rs.0.10 per POPcoin. POPshop redemption value can be up to Rs.1 per POPcoin, while cashback conversion provides Rs.0.10 per POPcoin. (Siddhant Bhoite, KredMe data validation, 2026-09-05) | This is the channel card.rp_value_standard is priced from. The two POPshop rows are Rs.1.00 and remain correct for that channel, but POPshop is the voucher/merchant channel the point-value policy excludes from the standard rate, and the issuer wording is 'up to Rs.1', a ceiling rather than a rate."
+    },
+    "confidence": "high"
    }
   ],
   "_provenance": [
