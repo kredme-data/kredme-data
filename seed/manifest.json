@@ -1,15 +1,15 @@
 {
- "version": "5.1.48",
- "updated_at": "2026-09-07T08:08:47Z",
+ "version": "5.1.49",
+ "updated_at": "2026-09-07T10:35:25Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Siddhant Bhoite's 5-Sep validation batch, 26 cards. 266 exclusion rows added and 23 removed (net 1,981 -> 2,224), 13 milestones added, 24 card fields corrected, and his highlights and pros/cons written on 19 cards. NOT ONE reward_rule was added, deleted, renamed or re-rated: total_reward_rules is unchanged at 1,305 and every rule_name string is byte-identical, because the app keys each user's saved cap progress on that string. Every reward-rule problem his documents surfaced is written up in the pull request for a human to action, not applied here. Only 'mcc' and 'category' exclusion rows were written - the two the shipped engine reads; an 'other' or 'txn_type' row is inert and would look like coverage without being any. Conditional exclusions ('utilities except through the Airtel Thanks app') were REFUSED rather than filed flat, because the engine tests exclusions before any reward rule and a flat row would delete the card's own headline benefit. Four exclusions were REMOVED from EazyDiner IndusInd Platinum that were silencing three of that card's own reward rules (L6.RULE_EXCLUDED_BY_OWN_CARD 2 -> 1). ADVERSARIAL REVIEW FIXES (7-Sep): 11 of the 13 new milestones had a visit count or a points-per-100 rate sitting in bonus_value, which credit_card.dart maps to rewardValue and wallet_insights_service.dart prints as 'unlocks Rs.<n>' in a push notification - so 'unlocks Rs.2 domestic lounge visit'. Those 11 are now null, which takes the existing no-rupee branch; the 2 that really are rupee amounts (Rs.100 and Rs.150 movie discounts) are kept. HDFC Millennia's category=education exclusion is RESTORED: his Reward Exclusions say 'education payments through third-party apps' and all ten education merchants in merchants.json are third-party apps, so removing it promised rewards HDFC does not pay. YES POP-CLUB rp_value_travel reverted to null (no travel channel) and a Rs.0.10 cashback redemption row added, so cards.json and the card's own redemption list finally tell one story: POPshop is 'up to Rs.1' and is the voucher channel the point-value policy excludes, cashback conversion is the unconditional Rs.0.10 the standard rate is priced from. BOBCARD fuel monthly_cap 400 -> 250 to agree with the fee text in the same commit. DELIBERATELY KEPT: the mcc 5816 rows on both Swiggy cards, which do silence Steam, PlayStation and Xbox - his Reward Exclusions read 'Cashback is not earned on: ... Gaming: MCC 5816', so paying there was the defect. ALSO REMOVED, and not previously disclosed: hdfc_bank_millennia lost nothing in the end, but icici_bank_makemytrip_icici_bank loses its mcc 5541 row because his Benefits section says the card pays '1% myCash on eligible UPI, fuel and international transactions'.",
+ "_note": "Siddhant Bhoite's 7-Sep batch, 8 cards: Apollo SBI SELECT, BOBCARD Premier, IRCTC SBI Premier, Kotak Zen Signature, SBI MILES, SBI PULSE, YES Wellness Plus and YES Prosperity Cashback Plus. 176 exclusion rows added and 1 removed, 3 milestones, 24 field corrections, and his highlights and pros/cons on all 8. NOT ONE reward_rule was added, deleted, renamed or re-rated - total_reward_rules is unchanged and every rule_name is byte-identical, because the app keys each user's cap progress on that string. Two of the eight (Apollo, YES Wellness Plus) had ZERO exclusion rows before this. All 3 milestones carry bonus_value null, because each pays a lounge VISIT and wallet_insights_service.dart:118 renders bonus_value as 'unlocks Rs.<n>' in a push notification. Every proposed exclusion was walked against its own card's reward rules and against merchants.json before being written; the ones that would have silenced a card's own benefit were refused, including MCC 4900/utilities on YES Prosperity (the card pays 0.75% on six utility merchants) and MCCs 5964/5969 on the same card, which sit in Amazon's and Flipkart's own mcc_codes. Also corrected: SBI PULSE redemption fee Rs.100 -> Rs.99 on two channels, and YES Wellness Plus loses its 'Club Vistara Points' transfer row and renames 'InterMiles' to 'Air India Maharaja Club' - Vistara merged into Air India and the programme no longer exists. redemption_rules IS read by the app (credit_card.dart:952) and feeds the Redemption tab, so both of those are user-visible; tools/app_mirror/app_json_keys.json is stale in saying otherwise.",
  "stats": {
   "total_cards": 385,
   "total_reward_rules": 1305,
-  "total_redemption_rules": 889,
-  "total_exclusion_rules": 2225,
-  "total_milestone_rules": 428,
+  "total_redemption_rules": 888,
+  "total_exclusion_rules": 2400,
+  "total_milestone_rules": 431,
   "total_fuel_surcharge_rules": 361,
   "total_travel_cards": 82,
   "issuers": 25,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "d4bc39a451ee1dc15edc5779d89aadc937a266d6165dc93c5a6839cfd9079372",
-   "size_bytes": 2826801
+   "checksum": "fd348bb95ed780b7982181ef4e3b94f088bd4e5f71d4f5119558745ded131ca7",
+   "size_bytes": 2846785
   },
   {
    "name": "merchants.json",
@@ -31,8 +31,8 @@
   {
    "name": "card_details.json",
    "path": "seed/card_details.json",
-   "checksum": "cf1cd2a96c521c8c80868a00f9f5627d5e5f10ed42c1d05ab963b6ca4bad96e0",
-   "size_bytes": 1989997
+   "checksum": "2d1cfa3257244b158b73a8f137efc26f5a32ce4e9c412d79a1e0d7ecc1aaa4d5",
+   "size_bytes": 2019511
   }
  ],
  "delta_file": null,
