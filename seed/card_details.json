@@ -2782,36 +2782,41 @@
   ],
   "pros_cons": {
    "pros": [
-    "Access to railway lounges as well as domestic and international airport lounges",
-    "Lifetime free credit card",
-    "Zero forex markup",
-    "10% discount on flight, bus and hotel bookings via ixigo",
-    "Complimentary 8 railway lounge accesses per year",
-    "Good reward earning rate on online spends"
+    "₹0 joining & annual fee",
+    "10% instant discount on ixigo flight bookings",
+    "10% instant discount on ixigo hotel bookings",
+    "10% instant discount on ixigo bus bookings",
+    "Zero payment gateway fee on eligible train bookings",
+    "5 Reward Points per ₹200 on all eligible online, offline, and UPI spends",
+    "5,000 bonus Reward Points on ₹75,000 quarterly eligible spends",
+    "2 domestic airport lounge visits per quarter after meeting the spend milestone",
+    "2 railway lounge visits per quarter",
+    "1 complimentary international lounge visit per year",
+    "0% forex markup",
+    "1% fuel surcharge waiver"
    ],
    "cons": [
-    "No dining benefits",
-    "No golf benefits",
-    "Only 1 international lounge access per year",
-    "Existing AU cardholders cannot apply",
-    "No reward points on international payments",
-    "Reward redemption fee of 99 + GST applies"
-   ],
-   "best_for": "Frequent domestic travelers who book through ixigo",
-   "not_for": "Users seeking dining, golf, or extensive international travel benefits"
+    "₹20,000 quarterly spending required for domestic airport lounge access",
+    "₹75,000 quarterly spending required for the 5,000 bonus Reward Points",
+    "Reward Points capped at 10,000 per month",
+    "International transactions earn no Reward Points",
+    "₹99 + GST Reward Point redemption fee",
+    "Reward Points expire after 2 years",
+    "International lounge access beyond the complimentary visit costs US$35 + applicable taxes",
+    "10% ixigo discounts are restricted to once per month and have transaction-level caps"
+   ]
   },
   "highlights": [
-   "First co-branded credit card of AU Small Finance Bank with ixigo",
-   "Lifetime free - zero joining and annual fees",
-   "Zero forex markup on international transactions",
-   "8 complimentary domestic airport lounge accesses per year",
-   "1 complimentary international lounge access via Priority Pass",
-   "8 complimentary railway lounge accesses per year",
-   "10% discount on flights, buses, and hotels on ixigo",
-   "Available in both Visa and RuPay variants",
-   "UPI payments supported with RuPay variant",
-   "Up to 10000 reward points can be earned per month",
-   "1 RP = 0.50 when redeemed as ixigo Money"
+   "Up to 10% instant discount on selected ixigo bookings",
+   "5 Reward Points per ₹200 spent",
+   "5,000 bonus Reward Points on ₹75,000 eligible quarterly spends",
+   "2 complimentary domestic airport lounge visits per quarter",
+   "2 complimentary railway lounge visits per quarter",
+   "1 complimentary international lounge visit per year",
+   "0% forex markup",
+   "1% fuel surcharge waiver",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -4234,7 +4239,14 @@
      "frequency": "per month"
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 25% rate applies only to recharges and bill payments for an ACTIVE Airtel Mobile, Airtel Broadband, Airtel WiFi or Airtel DTH connection, paid inside the Airtel Thanks app. Hardware cost, installation charges, an advance recharge or payment, and any payment for a new or inactive Airtel connection are all excluded and earn the ordinary 1% instead.",
+    "Utility and telecom bills earn the 10% rate only when they are paid inside the Airtel Thanks app. The same bill paid on any other platform earns no cashback at all.",
+    "The 25% Airtel rate and the 10% utility rate are not capped in rupees. In each statement cycle the Airtel cashback is limited to twice the 1% base cashback earned in that same cycle, and the utility cashback to one times it, so a cycle with no eligible base spending pays nothing on either. In practice that means roughly 12.5 times your Airtel spend, and roughly 10 times your utility spend, has to be eligible base spending before you collect the full rate.",
+    "The 10% value back at Zomato, Blinkit and District Movies applies only on the partner's own app or website, paid online with the card, with the \"Get 10% back using Airtel Axis Credit Card\" coupon applied; UPI does not qualify, and Zomato and Blinkit need a minimum order of ₹499. It is capped at ₹200 per partner per month, which is 10% of a ₹2,000 qualifying spend ceiling per partner per month. It is credited to that partner's own wallet after delivery, cannot be moved to your card statement, and those orders do not also earn the card's 1% base cashback.",
+    "Base cashback is rounded down on each transaction separately, so ₹1,560 of spending at 1% credits ₹15 rather than ₹15.60."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -4248,13 +4260,18 @@
   "redemption": {
    "channels": [
     {
-     "channel": "Direct cashback against statement",
+     "channel": "Axis Bank cashback, credited automatically to the credit-card account",
+     "point_value": 1
+    },
+    {
+     "channel": "Preferred-partner value back, credited to the Zomato, Blinkit or District Movies wallet",
      "point_value": null
     }
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 0
+   "fee": 0,
+   "notes": "No manual redemption is required, there is no minimum redemption and the redemption fee is nil. Cashback earned in one statement cycle is credited in the following billing cycle, three days before the statement is generated, and the existing credit process can take up to 60 days. Cashback is calculated after adjusting for refunds and reversals, and cashback tied to a later cancellation, refund or EMI conversion is reversed. Uncredited or unused cashback is forfeited if the card is cancelled, converted or becomes delinquent. Preferred-partner value back is credited to that partner's wallet after delivery, can only be spent on the same platform, cannot be converted into Axis Bank cashback or statement credit, and carries no stated validity period."
   },
   "faqs": [
    {
@@ -4288,18 +4305,28 @@
   ],
   "pros_cons": {
    "pros": [
-    "10% value back on Zomato, Blinkit, and District Movies (up to ₹200 per partner per month)"
+    "Strong potential cashback on Airtel bills and supported utilities",
+    "Separate ₹200 monthly limits for each preferred partner",
+    "Direct statement cashback without reward-point conversion",
+    "No cashback redemption fee or minimum redemption",
+    "Annual fee waived on spending greater than ₹2 lakh in the preceding year; rent and wallet loads are excluded from the calculation"
    ],
    "cons": [
-    "The card doesn't make much sense anymore due to its complicated reward structure. Cashback on utility bill payments now depends entirely on how much you spend in the 1% category.",
-    "Your spending in the 1% category decides the cashback limit for higher categories, which makes the card confusing and less rewarding for users."
+    "The 25% and 10% cashback caps depend entirely on base cashback earned during the same statement cycle.",
+    "No eligible base spending means no Airtel or utility cashback.",
+    "Approximately 12.5× base spending is required to unlock the full Airtel rate and 10× base spending to unlock the full utility rate.",
+    "Utility and telecom payments outside Airtel Thanks earn no cashback.",
+    "Preferred-partner value back requires a coupon and an online card payment; UPI is excluded.",
+    "Preferred-partner rewards are credited to closed-loop partner wallets rather than the card account.",
+    "Complimentary domestic lounge access has been discontinued.",
+    "3.5% forex and DCC charges"
    ],
    "best_for": "Utility Bills",
    "not_for": "Users who only use it for bills and recharges without significant other spending"
   },
   "highlights": [
    "Co-branded card by Axis Bank and Bharti Airtel",
-   "Up to 25% cashback on Airtel recharges (subject to base category spend)",
+   "Up to 25% cashback on Airtel bills via the Airtel Thanks app (subject to base category spend)",
    "10% cashback on utility bill payments via Airtel Thanks app",
    "10% value back on Zomato, Blinkit, and District Movies",
    "1% unlimited cashback on all other retail spends",
@@ -4316,6 +4343,42 @@
    "email": null,
    "app_name": "Airtel Thanks App",
    "chat": null
+  },
+  "fees": {
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹400 to ₹4,000, capped at ₹500 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5%"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% per transaction plus taxes"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% once cumulative wallet-load spending reaches ₹10,000 or more in a statement cycle"
+    },
+    {
+     "label": "Fuel (MCCs 5172, 5541, 5542, 5983)",
+     "value": "1% once cumulative fuel spending reaches ₹50,000 or more in a statement cycle"
+    },
+    {
+     "label": "Utilities (MCCs 4814, 4899, 4900)",
+     "value": "1% once cumulative utility spending reaches ₹25,000 or more in a statement cycle"
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1% per transaction; direct payments through an educational institution's website or POS machine are exempt"
+    },
+    {
+     "label": "Online skill-based gaming (MCC 5816)",
+     "value": "1% once cumulative spending reaches ₹10,000 or more in a statement cycle"
+    }
+   ]
   }
  },
  "axis_bank_ace": {
@@ -4436,28 +4499,26 @@
   ],
   "pros_cons": {
    "pros": [
-    "Amazing reward rate of 5% on mobile/DTH recharges and bill payments via Google Pay and 4% on Swiggy, Zomato, and Ola",
-    "4 complimentary domestic airport lounge access - a benefit not available with most entry-level credit cards",
-    "No max capping on the regular 1.5% cashback earned in a given payment cycle",
-    "Annual fee of only 499 which can be easily waived off on minimum expenditure of 2 lakh in the preceding year"
+    "5% cashback on eligible utility bills & DTH/mobile recharges via Google Pay",
+    "4% cashback on Swiggy, Zomato & Ola",
+    "1.5% cashback on other eligible spends",
+    "4 complimentary domestic lounge visits per calendar year",
+    "1% fuel surcharge waiver",
+    "Cashback credited against the card statement"
    ],
    "cons": [
-    "No cashback on fuel spends, wallet reloads, purchases converted into EMIs, gold items, and cash advances",
-    "Cashback earned at non-partner merchants is just 1.5%",
-    "5% cashback only available on Google Pay Android app, not iOS"
-   ],
-   "best_for": "Young professionals looking for a cashback-based entry-level credit card who use Google Pay frequently for bill payments and mobile/DTH recharges, frequently order food online via Swiggy/Zomato, and want free airport lounge access",
-   "not_for": "Users who do not prefer Google Pay, iPhone users (5% cashback only on Android), and users who make a lot of EMI purchases"
+    "Card is currently not accepting new applications",
+    "5% cashback on utilities/recharges requires payment through Google Pay",
+    "5% + 4% cashback categories together capped at ₹500 per month"
+   ]
   },
   "highlights": [
-   "5% cashback on bill payments and mobile recharges via Google Pay",
-   "4% cashback on Swiggy, Zomato, and Ola",
-   "Unlimited 1.5% cashback on all other purchases",
-   "4 complimentary domestic airport lounge visits per year",
-   "1% fuel surcharge waiver up to Rs. 500 per statement cycle",
-   "Up to 15% off on dining at 4000+ restaurants",
-   "Spend-based joining and annual fee waiver",
-   "Launched in partnership with Google Pay and Visa"
+   "5% cashback on utility bills & DTH/mobile recharges via Google Pay",
+   "4% cashback on Swiggy, Zomato & Ola",
+   "₹499 Joining Fee",
+   "₹499 Annual Fee",
+   "1% Fuel Surcharge Waiver",
+   "4 complimentary domestic lounge visits per calendar year"
   ],
   "similar_cards": [
    {
@@ -6362,7 +6423,12 @@
      "note": "Only available on select styles of T-shirts, jackets, sweaters, sweatshirts, party wear, etc."
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The Cleartrip discounts need coupon CTAXISMYZONE and are capped at ₹4,000 on hotels and ₹2,000 on flights.",
+    "Wednesday Delight offers rotate. The current portfolio includes up to 15% off flights and hotels through MakeMyTrip, 10% off Swiggy orders, and 10% off up to ₹1,000 at Tira.",
+    "EMI conversions, cash advances, credit-card repayments, and the bank's own fees and charges do not earn EDGE REWARD Points."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 15000,
@@ -6398,10 +6464,12 @@
      "point_value": 0.2
     }
    ],
-   "expiry_months": null,
-   "min_points": null,
+   "expiry_months": 36,
+   "min_points": 300,
    "fee": 99,
-   "fee_gst_extra": true
+   "fee_gst_extra": true,
+   "portal_name": "Axis Bank EDGE REWARDS",
+   "notes": "EDGE REWARD Points can be redeemed through Axis Mobile, internet banking, the EDGE REWARDS portal or the customer-contact centre, against products, vouchers and travel bookings. A fee of ₹99 plus GST applies per order on products, vouchers, POS and Travel EDGE redemptions, and ₹199 plus GST per transfer to a partner loyalty programme, so the value actually realised on a small redemption is below ₹0.20 per point. Axis Bank's My Zone value illustration uses an indicative ₹0.20 per point; the value actually realised varies with the catalogue, travel or transfer option chosen. Points expire three years from the date they are earned."
   },
   "faqs": [
    {
@@ -6419,12 +6487,18 @@
   ],
   "pros_cons": {
    "pros": [
-    "Incredibly beneficial for moviegoers, offering excellent buy-one-get-one deals on bookings with District by Zomato",
-    "Great discounts on Swiggy orders using coupon code AXIS120"
+    "Recurring discounts on movies and Swiggy",
+    "Cleartrip flight and hotel offers",
+    "1% fuel-surcharge-waiver cap",
+    "Low ₹500 annual fee"
    ],
    "cons": [
-    "Free airport lounge access can only be availed on making spends of ₹50,000 or more in the previous quarter",
-    "No Reward Points for spends on movie ticket booking"
+    "Low indicative base reward rate of approximately 0.40%",
+    "No Reward Points for spends on movie ticket booking",
+    "₹99 plus GST redemption fee can substantially reduce the value of small point redemptions.",
+    "Lounge access requires ₹50,000 spending in the preceding three months.",
+    "3.5% forex and DCC charges",
+    "No spend-based annual-fee waiver is available."
    ],
    "best_for": "New-to-credit millennials/Gen Z or first-time cardholders for whom movie and dining spending account for a substantial portion of total monthly spending",
    "not_for": null
@@ -6433,13 +6507,13 @@
    "Complimentary SonyLiv Premium annual subscription worth ₹1,499 as welcome benefit",
    "Buy One Get One on movie tickets via District by Zomato (up to ₹200/month)",
    "₹120 off on Swiggy orders twice a month",
+   "18% off hotels and 7% off flights on Cleartrip",
    "15% off up to ₹500 on dining via EazyDiner monthly",
    "4 complimentary domestic airport lounge accesses per year (1 per quarter, subject to ₹50,000 spend in previous quarter)",
    "₹1,000 off on AJIO on minimum spend of ₹2,999",
    "1,000 EDGE Reward Points milestone on spending ₹1.5 lakh in anniversary year",
-   "Available on RuPay network with UPI linking support",
-   "Available as Lifetime Free through limited time offer",
-   "Total annual benefits estimated at ₹9,299"
+   "1% fuel-surcharge waiver",
+   "Available on RuPay network with UPI linking support"
   ],
   "similar_cards": [
    {
@@ -6457,6 +6531,48 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": null,
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% surcharge waiver on transactions of ₹400 to ₹4,000, capped at ₹400 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion",
+     "value": "3.5% plus taxes on INR transactions done at an international location or with a merchant registered overseas"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% per transaction plus taxes"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% of cumulative wallet-load spending once it reaches ₹10,000 or more in a statement cycle"
+    },
+    {
+     "label": "Fuel (MCC 5172, 5541, 5542, 5983)",
+     "value": "1% of cumulative fuel spending once it reaches ₹50,000 or more in a statement cycle"
+    },
+    {
+     "label": "Utilities (MCC 4814, 4899, 4900)",
+     "value": "1% of cumulative utility spending once it reaches ₹25,000 or more in a statement cycle"
+    },
+    {
+     "label": "Third-party education payments (MCC 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1% per transaction plus taxes. Payments made directly through an educational institution's website or POS machine do not attract this fee"
+    },
+    {
+     "label": "Online skill-based gaming (MCC 5816)",
+     "value": "1% of cumulative spending once it reaches ₹10,000 or more in a statement cycle"
+    },
+    {
+     "label": "Railway ticket purchase or cancellation",
+     "value": "As prescribed by IRCTC or Indian Railways"
+    }
+   ]
   }
  },
  "axis_bank_neo": {
@@ -6535,7 +6651,13 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 5% discount on utility bills and recharges needs a minimum transaction of ₹299 and the coupon code AXISNEO, and covers mobile recharges, broadband payments and DTH recharges.",
+    "Cleartrip bookings get 7% off flights, up to ₹2,000, and 18% off hotels, up to ₹4,000, with the coupon code CTAXISNEO.",
+    "Wednesday offers: up to 15% off on flights and hotels through MakeMyTrip, 10% off on Swiggy, and 10% off on Tira up to ₹1,000.",
+    "EDGE REWARD Points are not earned on utility and telecom bills, education, insurance, government payments, wallet loads, rent, fuel, cash advances or repayments. The utility and recharge benefit on this card is the 5% coupon discount, not points."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -6582,31 +6704,29 @@
   ],
   "pros_cons": {
    "pros": [
-    "10% off while booking movies with BookMyShow",
-    "Discounts on Zomato and at partner restaurants via Axis Dining Delights program",
-    "Lifetime free card with no joining or annual fee",
-    "1% fuel surcharge waiver at all fuel stations",
-    "Discounts on Blinkit, Myntra, and Paytm",
-    "RuPay variant available with UPI linkage",
-    "500+ reward redemption options"
+    "₹120 off on Zomato twice per month",
+    "5% off on eligible utility bills/recharges via Paytm",
+    "10% off on Blinkit",
+    "10% off on BookMyShow movie tickets",
+    "7% off on Cleartrip flights and 18% off on hotels",
+    "Wednesday offers on MakeMyTrip, Swiggy & Tira",
+    "Up to ₹300 activation cashback on the first utility bill payment",
+    "EDGE REWARD Points on other eligible spends"
    ],
    "cons": [
-    "No insurance benefits provided",
-    "No international or domestic airport lounge access",
-    "Very poor reward rate of just 0.10%"
-   ],
-   "best_for": "Shopping, Food — young individuals and millennials",
-   "not_for": "Frequent travelers, those seeking lounge access or insurance benefits"
+    "Most benefits are discounts/offers rather than direct cashback",
+    "Utility benefit is restricted to Paytm",
+    "Zomato benefit requires a minimum ₹499 transaction",
+    "3.5% forex markup"
+   ]
   },
   "highlights": [
-   "Lifetime free credit card",
-   "40% off on Zomato food delivery (twice a month)",
-   "10% off on BookMyShow, Blinkit, and Myntra",
-   "5% off on Paytm utility recharges",
-   "15% off on dining at partner restaurants",
-   "1% fuel surcharge waiver at all fuel stations",
-   "RuPay variant with UPI support",
-   "500+ reward redemption options via Edge Rewards Catalogue"
+   "Lifestyle & Brand Offers",
+   "Travel Offers",
+   "Utility & Recharge Offers",
+   "₹250 Joining Fee*",
+   "₹250 Annual Fee*",
+   "*Available LTF till 31st August"
   ],
   "similar_cards": [
    {
@@ -6620,6 +6740,42 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 250,
+   "annual_fee": 250,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 3.5,
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion markup on international transactions billed in INR",
+     "value": "1.5% + applicable taxes"
+    },
+    {
+     "label": "Rent payments",
+     "value": "1% per transaction + applicable taxes"
+    },
+    {
+     "label": "Education payments made through third-party apps",
+     "value": "1% per transaction"
+    },
+    {
+     "label": "Wallet loads",
+     "value": "1% once cumulative wallet loads reach ₹10,000 or more in a statement cycle"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% once cumulative fuel spends reach ₹50,000 or more in a statement cycle"
+    },
+    {
+     "label": "Utilities",
+     "value": "1% once cumulative utility spends reach ₹25,000 or more in a statement cycle"
+    },
+    {
+     "label": "Online skill-based gaming",
+     "value": "1% once cumulative spends reach ₹10,000 or more in a statement cycle"
+    }
+   ]
   }
  },
  "axis_bank_olympus": {
@@ -7976,7 +8132,12 @@
      "frequency": "Twice per month"
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "Axis lists \"certain telecom payments\" as not earning EDGE REWARD Points but does not say in this document which ones, so telecom spend is left earning at the normal rate rather than zeroed.",
+    "EDGE REWARD Points are also not earned on transportation and toll payments, gift cards, cash advances, wire transfers, fees and charges, or reversed and disputed transactions.",
+    "The 10X rate applies only at the apparel and departmental-store codes Axis lists (MCC 5311, 5399, 5621, 5631, 5641, 5651, 5655, 5681, 5691 and 5699), and only the first Rs. 7,000 of that spend in a statement cycle earns the incremental 9X."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -7994,25 +8155,57 @@
   "redemption": {
    "channels": [
     {
+     "channel": "Pay by Rewards (points adjusted against the credit-card outstanding)",
+     "point_value": "1 EDGE REWARD Point = Rs. 0.20. Minimum 2,500 points = Rs. 500; maximum 1,00,000 points = Rs. 20,000. No reward-redemption fee."
+    },
+    {
+     "channel": "Online Pay with Point Redemption",
+     "point_value": "1 RP = Rs. 0.20 (20 paise)"
+    },
+    {
+     "channel": "Pay with Points via SMS",
+     "point_value": "1 RP = Rs. 0.20 (20 paise)"
+    },
+    {
      "channel": "EDGE Catalogue (via mobile or net banking)",
      "point_value": "As per EDGE catalog structure for different products and vouchers"
     },
     {
-     "channel": "Partner Airmiles/Points",
-     "point_value": "10 RP = 1 Partner Mile"
-    },
-    {
-     "channel": "Pay with Points via SMS",
-     "point_value": "1 RP = 0.20 (20 paise)"
-    },
-    {
-     "channel": "Online Pay with Point Redemption",
-     "point_value": "1 RP = 0.20 (20 paise)"
+     "channel": "Partner transfers (airline and hotel programmes)",
+     "point_value": "10 EDGE REWARD Points = 1 partner point or mile on most programmes; 5 EDGE REWARD Points = 1 unit on airasia rewards, Club ITC and SpiceClub"
     }
    ],
-   "expiry_months": null,
+   "expiry_months": 36,
    "min_points": 300,
-   "fee": 0
+   "fee": 0,
+   "portal_name": "EDGE REWARDS",
+   "miles_partners": [
+    "Air Canada Aeroplan (Group A, 10:1)",
+    "The British Airways Club (Group A, 10:1)",
+    "Ethiopian Airlines ShebaMiles (Group A, 10:1)",
+    "Etihad Guest (Group A, 10:1)",
+    "Finnair Plus (Group A, 10:1)",
+    "JAL Mileage Bank (Group A, 10:1)",
+    "Qatar Airways Privilege Club (Group A, 10:1)",
+    "Singapore Airlines KrisFlyer (Group A, 10:1)",
+    "Thai Airways Royal Orchid Plus (Group A, 10:1)",
+    "Turkish Airlines Miles&Smiles (Group A, 10:1)",
+    "United MileagePlus (Group A, 10:1)",
+    "Vietnam Airlines Lotusmiles (Group A, 10:1)",
+    "Wyndham Rewards (Group A, 10:1)",
+    "airasia rewards (Group B, 5:1)",
+    "Air France-KLM Flying Blue (Group B, 10:1)",
+    "Air India Maharaja Club (Group B, 10:1)",
+    "IHG One Rewards (Group B, 10:1)",
+    "IndiGo BluChip (Group B, 10:1*)",
+    "Club ITC (Group B, 5:1)",
+    "Orchid Rewards (Group B, 10:1)",
+    "The Postcard Hotel Sunshine Club (Group B, 10:1)",
+    "Qantas Frequent Flyer (Group B, 10:1)",
+    "Radisson Rewards (Group B, 10:1)",
+    "SpiceJet SpiceClub (Group B, 5:1)"
+   ],
+   "notes": "Points can be adjusted against the credit-card outstanding at Rs. 0.20 per point, from a minimum of 2,500 points (Rs. 500) to a maximum of 1,00,000 points (Rs. 20,000), with no reward-redemption fee. Partner transfers are capped at 5,00,000 EDGE REWARD Points per customer ID per calendar year, of which at most 1,00,000 points may go to Group A programmes and 4,00,000 points to Group B. Transfers are final: they cannot be reversed or refunded, and transferred points cannot be returned to the EDGE REWARDS account. EDGE REWARD Points expire three years from the date they are earned. Axis Bank may forfeit unredeemed points 30 days after card closure, or if the Minimum Amount Due remains unpaid for more than 90 days. Axis marks the IndiGo BluChip ratio with an asterisk; the footnote is not given in the source document."
   },
   "faqs": [
    {
@@ -8038,41 +8231,28 @@
   ],
   "pros_cons": {
    "pros": [
-    "Best suited for avid shoppers as it provides 2 EDGE Reward Points for every spend of Rs. 125",
-    "5,000 EDGE Reward Points as a welcome benefit within 30 days of card issuance",
-    "10X accelerated reward points on departmental and apparel stores",
-    "30% off on Swiggy orders and 15% off at partner restaurants",
-    "2 complimentary domestic airport lounge access per quarter",
-    "1% fuel surcharge waiver with max benefit of Rs. 400 per statement cycle",
-    "Insurance coverage including Rs. 1 Lakh purchase protection",
-    "Renewal fee waivable on Rs. 2 Lakh annual spend",
-    "Monthly milestone bonus of 1,500 points on Rs. 30,000 spend",
-    "Annual membership benefits worth Rs. 1,000"
+    "3.20% effective return on qualifying apparel and departmental-store spending",
+    "Recurring Rs. 300 monthly Swiggy discount",
+    "Up to eight domestic lounge visits annually",
+    "No reward-redemption fee",
+    "Annual membership benefit worth up to Rs. 1,000",
+    "Rs. 1,000 annual fee waived on eligible annual spending of Rs. 2 lakh"
    ],
    "cons": [
-    "No international lounge access",
-    "No golf benefits",
-    "Accelerated rewards capped at 1,008 points per month (Rs. 7,000 spend)",
-    "High interest rate of 3.75% per month / 55.55% per annum",
-    "3.5% forex markup fee"
+    "Accelerated rewards are restricted to only Rs. 7,000 spending per statement cycle.",
+    "Low 0.32% base reward rate",
+    "Lounge access requires Rs. 50,000 spending in the preceding three calendar months.",
+    "3.5% forex and DCC charges"
    ],
    "best_for": "Dining and shopping enthusiasts who want to earn reward points on everyday spends, especially at departmental and apparel stores",
    "not_for": "Frequent international travelers or those seeking international lounge access and golf benefits"
   },
   "highlights": [
-   "5,000 EDGE Reward Points as welcome benefit (worth Rs. 1,000)",
-   "10X EDGE Reward Points on departmental and apparel stores",
-   "2 EDGE Reward Points per Rs. 125 on all eligible spends",
-   "1,500 bonus EDGE Reward Points on monthly spend of Rs. 30,000+",
-   "Membership benefits worth Rs. 1,000 every anniversary year",
-   "30% off on Swiggy (max Rs. 150, twice per month)",
-   "15% off at partner restaurants via Dining Delights Program",
-   "2 complimentary domestic lounge visits per quarter",
-   "1% fuel surcharge waiver (Rs. 400-Rs. 5,000 transactions, max Rs. 400/month)",
-   "Rs. 1 Lakh purchase protection and credit shield",
-   "$300 cover for loss of travel documents and baggage delay",
-   "$500 cover for check-in baggage loss",
-   "Renewal fee waiver on Rs. 2 Lakh annual spend"
+   "Rs. 150 instant discount on Swiggy",
+   "10X EDGE REWARD Points",
+   "Two domestic lounge visits per quarter, subject to spending",
+   "1% fuel-surcharge waiver",
+   "Rs. 1,000 joining and annual fee"
   ],
   "similar_cards": [
    {
@@ -8086,6 +8266,48 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1000,
+   "annual_fee": 1000,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of Rs. 400 to Rs. 5,000, capped at Rs. 400 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of Rs. 500; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "3.5% plus taxes on INR transactions done at an international location or with a merchant registered overseas"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% of the transaction value plus taxes, per transaction"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% of cumulative wallet-load spending once it reaches Rs. 10,000 or more in a statement cycle"
+    },
+    {
+     "label": "Fuel (MCC 5172, 5541, 5542, 5983)",
+     "value": "1% of cumulative fuel spending once it reaches Rs. 50,000 or more in a statement cycle"
+    },
+    {
+     "label": "Utilities (MCC 4814, 4899, 4900)",
+     "value": "1% of cumulative utility spending once it reaches Rs. 25,000 or more in a statement cycle"
+    },
+    {
+     "label": "Third-party education payments (MCC 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1% of the transaction value plus taxes. Payments made directly through an educational institution's website or POS machine do not attract this fee"
+    },
+    {
+     "label": "Online skill-based gaming (MCC 5816)",
+     "value": "1% of cumulative spending once it reaches Rs. 10,000 or more in a statement cycle"
+    },
+    {
+     "label": "Railway ticket purchase or cancellation",
+     "value": "As prescribed by IRCTC or Indian Railways"
+    }
+   ]
   }
  },
  "axis_bank_select": {
@@ -9291,7 +9513,13 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "No cashback is earned on spends at financial institutions, on cash advances, or on repayment of the card outstanding balance.",
+    "Rent payments carry a 1% transaction fee, as do education payments made through third-party apps.",
+    "A 1% fee also applies once cumulative spends in a statement cycle cross ₹10,000 on wallet loads, ₹10,000 on online skill-based gaming, ₹25,000 on utilities or ₹50,000 on fuel.",
+    "International transactions carry a 3.5% foreign currency markup, and international transactions billed in rupees through dynamic currency conversion carry a 1.5% markup plus applicable taxes."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 15000,
@@ -9336,28 +9564,24 @@
   ],
   "pros_cons": {
    "pros": [
-    "Very good reward rate of 5% on Flipkart, 7.5% on Myntra, and 4% on partner merchants including Swiggy, Uber, PVR, and cult.fit",
-    "Cashback is directly adjusted against the card's statement balance every month with no upper limit on the amount of cashback that can be earned in a given month",
-    "Fuel surcharge waiver making it a well-rounded option"
+    "7.5% cashback on Myntra",
+    "5% cashback on Flipkart & Cleartrip",
+    "4% cashback on FITPASS, Stepa by FITPASS, PVR, Swiggy & Uber",
+    "1% fuel surcharge waiver"
    ],
    "cons": [
-    "Only 1% cashback on offline spends — not ideal for those who prefer shopping at malls or retail stores",
-    "No insurance benefits like air accident cover or cover against loss/delay of luggage",
-    "No complimentary airport lounge access (removed as of June 2025)"
-   ],
-   "best_for": "Online shoppers who primarily use Flipkart, Myntra, and ClearTrip, and frequently use Swiggy, Uber, PVR, and cult.fit",
-   "not_for": "Those who prefer offline shopping at malls or retail stores"
+    "Myntra, Flipkart & Cleartrip cashback capped at ₹4,000 per statement quarter per category",
+    "4% preferred-merchant cashback depends on the applicable merchant list",
+    "High ₹3.5 lakh annual spend requirement for annual fee waiver",
+    "3.5% forex markup"
+   ]
   },
   "highlights": [
-   "5% cashback on Flipkart and ClearTrip",
-   "7.5% cashback on Myntra",
-   "4% cashback on preferred partners (Swiggy, Uber, PVR, cult.fit)",
-   "1% unlimited cashback on all other retail spends",
-   "Cashback directly adjusted against statement balance monthly",
-   "No upper limit on monthly cashback",
-   "15% off at 10,000+ partner restaurants via Dining Delights program",
-   "Zero joining fee (limited time offer)",
-   "Annual fee waiver on spending 3.5 lakhs"
+   "7.5% Cashback on Myntra",
+   "5% Cashback on Flipkart & Cleartrip",
+   "4% Cashback on Preferred Merchants",
+   "₹500 Joining Fee",
+   "₹500 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -9379,6 +9603,46 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 500,
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": 350000,
+   "forex_markup_pct": 3.5,
+   "other_lines": [
+    {
+     "label": "Foreign currency transactions",
+     "value": "3.5% markup"
+    },
+    {
+     "label": "International transactions billed in INR (DCC)",
+     "value": "1.5% markup + applicable taxes"
+    },
+    {
+     "label": "Rent",
+     "value": "1% fee per transaction"
+    },
+    {
+     "label": "Wallet loads",
+     "value": "1% fee on cumulative spends of ₹10,000 or more per statement cycle"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% fee on cumulative spends of ₹50,000 or more per statement cycle"
+    },
+    {
+     "label": "Education via third-party apps",
+     "value": "1% fee per transaction"
+    },
+    {
+     "label": "Utilities",
+     "value": "1% fee on cumulative spends of ₹25,000 or more per statement cycle"
+    },
+    {
+     "label": "Online skill-based gaming",
+     "value": "1% fee on cumulative spends of ₹10,000 or more per statement cycle"
+    }
+   ]
   }
  },
  "axis_bank_flipkart_axis_bank_super_elite": {
@@ -11098,36 +11362,31 @@
   ],
   "pros_cons": {
    "pros": [
-    "Card offers both joining and annual fee spend-based waiver",
-    "Air Accident Death Cover of Rs. 1 crore providing peace of mind",
-    "Very good reward rate of 3.75% for select spends",
-    "Accelerated reward points for international spends with low 2% forex charge",
-    "Annual fee of Rs. 2,499 is lower compared to other premium credit cards",
-    "Eligibility criteria less strict than competitors",
-    "Complimentary FitPass Pro membership worth Rs. 15,000",
+    "₹0 joining & annual fee as an LTF card",
+    "15 RP/₹100 on travel, dining, online & international spends",
     "Unlimited domestic airport lounge access",
-    "Available on RuPay network enabling UPI linkage"
+    "BOGO movie tickets up to ₹250 per month",
+    "Forex-positive card — eligible international spends generate ~3.75% reward value against a 2% forex markup, giving ~1.75% net return",
+    "Complimentary 12-month FITPASS PRO",
+    "Reward Points do not expire"
    ],
    "cons": [
-    "Unlimited domestic lounge access requires spending Rs. 40,000 or more in previous quarter",
-    "Golf games and lessons previously offered have been removed",
-    "Maximum reward points at accelerated rate capped at 5,000 per statement cycle",
-    "No international lounge access"
-   ],
-   "best_for": "Travel, Shopping",
-   "not_for": "Users seeking low spend-based lounge access requirements or international lounge access"
+    "₹75,000 quarterly net spending is required for unlimited domestic lounge access",
+    "5X rewards are capped at 5,000 Reward Points per statement cycle",
+    "2% forex markup",
+    "Pay with Rewards provides only ₹0.15 per Reward Point versus ₹0.25 through statement cashback",
+    "Other eligible spends give equivalent to 0.75% at ₹0.25 per Reward Point"
+   ]
   },
   "highlights": [
-   "3.75% reward rate on online, travel, dining, movie and international spends",
-   "FitPass Pro membership worth Rs. 15,000 as welcome gift",
-   "10,000 bonus reward points on spending Rs. 50,000 in first 60 days",
-   "20,000 bonus reward points on Rs. 5 lakh annual spend",
-   "Unlimited domestic airport lounge access",
-   "Air accident insurance cover worth Rs. 1 crore",
-   "Low forex markup of 2%",
-   "Available on RuPay network with UPI support",
-   "Joining and annual fee waiver available on meeting spend targets",
-   "Buy One Get One on movie tickets via District app"
+   "15 Reward Points per ₹100 on travel, dining, online & international spends",
+   "3 Reward Points per ₹100 on other eligible spends",
+   "Unlimited domestic lounge access",
+   "BOGO movie tickets up to ₹250 per month",
+   "Forex-positive card — eligible international spends can generate a net ~1.75% return after the 2% forex markup",
+   "₹0 Joining Fee*",
+   "₹0 Annual Fee*",
+   "*Limited Period offer"
   ],
   "similar_cards": [
    {
@@ -11869,7 +12128,17 @@
    "concierge": null,
    "partner_offers": null,
    "travel_memberships": null,
-   "google_pay_integration": true
+   "google_pay_integration": true,
+   "summary": [
+    "The additional 4% is capped at ₹1,500 per statement cycle. Spending past that ceiling continues to earn the 1% base cashback.",
+    "Whether a purchase counts as an online spend depends on the online-transaction flag and the MCC supplied by the merchant's acquiring bank.",
+    "Transactions below ₹100 earn no cashback.",
+    "ATM cash withdrawals and quasi-cash transactions earn no cashback.",
+    "The 1% base cashback also applies to eligible international transactions, which carry a 3.5% forex markup.",
+    "The 1% fuel-surcharge waiver applies to transactions of ₹400 to ₹5,000 and is capped at ₹250 per statement cycle.",
+    "Unbilled purchases of ₹2,500 or more can be converted to Smart EMI over 6, 12, 18, 24, 36 or 48 months. Gold, jewellery, fuel and cash transactions cannot be converted, and the interest rate is disclosed before conversion.",
+    "Source: BOBCARD Cashback Credit Card features and rewards terms and conditions."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -11884,12 +12153,13 @@
    "channels": [
     {
      "channel": "Automatic statement credit",
-     "point_value": null
+     "point_value": 1.0
     }
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": null
+   "fee": 0,
+   "notes": "Cashback is credited automatically to the credit-card account in the subsequent statement. ₹1 of cashback equals ₹1 of statement credit, with no redemption fee and no minimum redemption amount."
   },
   "faqs": [
    {
@@ -11903,33 +12173,90 @@
   ],
   "pros_cons": {
    "pros": [
-    "Simple-to-understand reward structure, great for those starting out on their credit journey",
-    "5% cashback on online purchases up to 1500 per month",
+    "5% return on eligible domestic online spending",
+    "Unlimited 1% base cashback on other eligible transactions",
+    "Direct statement cashback without reward-point conversion",
+    "No redemption fee or minimum-redemption requirement",
+    "Up to three lifetime-free add-on cards",
     "Low joining fee making it accessible for a wide range of users including those new to credit cards",
-    "Unlimited 1% cashback on all other eligible spends",
     "Easy linking to Google Pay for contactless payments"
    ],
    "cons": [
+    "Accelerated cashback requires at least four transactions every statement cycle.",
+    "Supermarkets, fast-food restaurants, hospitals, insurance, education, rent and several transport payments earn no cashback.",
+    "No conventional RuPay credit-card UPI facility",
+    "3.5% forex markup",
     "No complimentary airport lounge access",
     "No welcome benefit upon joining",
     "No spend-based fee waiver",
-    "No insurance benefits",
-    "Mastercard variant cannot be linked to UPI"
+    "No insurance benefits"
    ],
    "best_for": "Frequent online shoppers and first-time credit card holders",
    "not_for": "Users seeking lounge access, travel benefits, or premium perks"
   },
   "highlights": [
-   "5% cashback on all online purchases capped at 1500 per month",
-   "Unlimited 1% cashback on all other eligible spends",
-   "Flexible fee structure with monthly 49 or annual 499 option",
-   "1% fuel surcharge waiver on transactions between 400 and 5000 across India",
+   "5% cashback on eligible domestic online spends",
+   "Unlimited 1% cashback on other eligible spends",
    "Minimum 4 transactions per statement cycle required for accelerated cashback",
+   "Fee options: ₹49 per month or ₹499 per year",
+   "1% fuel-surcharge waiver",
    "Cashback automatically credited to next month's statement",
    "Google Pay integration for contactless payments"
   ],
   "similar_cards": null,
-  "customer_service": null
+  "customer_service": null,
+  "fees": {
+   "annual_fee": 499,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% surcharge waiver on transactions of ₹400 to ₹5,000, capped at ₹250 per statement cycle",
+   "cash_advance": "2.5% of the amount or ₹500, whichever is higher; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Fee options",
+     "value": "₹49 per month or ₹499 per year"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "Transaction fee of 1% of the amount"
+    },
+    {
+     "label": "Wallet loads (MCCs 6539, 6540, 6541, 6542)",
+     "value": "Transaction fee of 1% of the amount"
+    },
+    {
+     "label": "Utilities (MCC 4900)",
+     "value": "Transaction fee of 1% when a single transaction is ₹50,000 or higher; maximum ₹3,000 per transaction"
+    },
+    {
+     "label": "Fuel (MCCs 5172, 5541, 5542, 5983)",
+     "value": "Transaction fee of 1% when a single transaction is ₹10,000 or higher"
+    },
+    {
+     "label": "Third-party education payments",
+     "value": "Transaction fee of 1%, maximum ₹5,000 per transaction, on online education-fee payments made through CheQ, CRED, EaseMyDeal, MobiKwik, NoBroker, Paytm, PhonePe or SuperPe"
+    },
+    {
+     "label": "Toll and bus transactions (MCC 4784)",
+     "value": "Transaction fee of 1% when a single transaction is ₹5,000 or higher"
+    },
+    {
+     "label": "Railway bookings (MCC 4112)",
+     "value": "Transaction fee of 1% when a single transaction is ₹30,000 or higher; maximum ₹5,000 per transaction"
+    },
+    {
+     "label": "Post-purchase EMI processing",
+     "value": "2% of the converted amount, minimum ₹100"
+    },
+    {
+     "label": "EMI foreclosure",
+     "value": "3% of the outstanding principal or ₹299, whichever is higher, plus applicable pro-rata interest"
+    },
+    {
+     "label": "Partial EMI prepayment",
+     "value": "Not permitted"
+    }
+   ]
+  }
  },
  "bobcard_limited_irctc_rupay_bob": {
   "benefits": {
@@ -13701,33 +14028,33 @@
   ],
   "pros_cons": {
    "pros": [
-    "No joining fee or renewal fee applicable",
-    "No Forex markup charges",
-    "Rewards with appreciating value (24K Digital Gold)",
-    "Gold rewards don't expire and can increase in value over time",
-    "1% fuel surcharge waiver at gas stations throughout India",
-    "Simple eligibility criteria with minimal documentation"
+    "₹0 joining & annual fee",
+    "1% value back on eligible everyday spends",
+    "Up to 8% value back on selected Uni Store vouchers",
+    "7% value back on flights through Uni Store",
+    "Up to 7% value back on eligible hotel bookings",
+    "50% back on PVR & INOX movie tickets once per month",
+    "0% forex markup",
+    "1% fuel surcharge waiver up to ₹500",
+    "Rewards do not expire"
    ],
    "cons": [
-    "No other lifestyle perks offered",
-    "No airport lounge access offered (domestic or international)",
-    "No milestone perks available",
-    "No dining discounts",
-    "No golf benefits",
-    "No insurance benefits"
-   ],
-   "best_for": "Users who prefer tangible, appreciating rewards (real gold) over traditional points; those looking for a no-cost card that turns everyday spends into real wealth; shoppers who use brand vouchers",
-   "not_for": "Users seeking lifestyle perks like lounge access, dining discounts, golf, or insurance benefits"
+    "Higher reward rates are heavily dependent on the Uni Store ecosystem",
+    "Base reward rate is only 1%",
+    "International transactions earn no Uni Coins despite 0% forex markup",
+    "Gold rewards are tied to the Uni ecosystem rather than a conventional transferable reward-point system",
+    "YES Bank and BOBCARD versions can have issuer-specific terms and charges"
+   ]
   },
   "highlights": [
-   "Lifetime free - no joining or annual fees",
-   "1 Uni Coin per ₹1 spent convertible to 24K Digital Gold",
-   "Up to 5% digital gold on brand vouchers via Uni Store (Amazon, Zomato, Myntra, MakeMyTrip)",
-   "Zero forex markup on international transactions",
-   "Gold rewards never expire and can appreciate in value over time",
-   "1% fuel surcharge waiver up to ₹7,500",
-   "Co-branded card with Uni App",
-   "Available for limited time only"
+   "Up to 7% value back on flights through Uni Store",
+   "Up to 8% value back on selected shopping, grocery & food brands",
+   "1% value back on eligible UPI and offline spends",
+   "50% back on PVR & INOX movie tickets",
+   "0% forex markup",
+   "1% fuel surcharge waiver",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -13753,8 +14080,9 @@
    "lounge_domestic": {
     "count": 1,
     "period": "monthly",
-    "program": null,
-    "spend_to_unlock": 10000
+    "program": "RuPay Card Airport Lounge Program",
+    "spend_to_unlock": 10000,
+    "spend_to_unlock_period": "previous billing cycle"
    },
    "lounge_international": null,
    "railway_lounge": null,
@@ -13764,7 +14092,18 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The Salary Day Bonus is paid only on spends routed through SalarySe UPI on the 1st day and the last day of each month, and only after ₹5,000 of eligible spending on non-Salary-Day dates has been completed.",
+    "Salary Day rewards are capped at ₹15,000 of eligible spending per billing cycle, which works out to a maximum of 5,625 SCoins on the Physical (Select) + Virtual variant and 3,750 SCoins on the Virtual-Only variant.",
+    "Eligible spending through SalarySe UPI, online card spends and in-store physical-card spends earns 5 SCoins per ₹100 on the first ₹20,000 of a billing cycle.",
+    "Base Categories earn 1 SCoin per ₹100: UPI transactions through other UPI apps, rent, railways, insurance, education, telecom and government services.",
+    "Base, Accelerated and Super Accelerated rewards are capped together at 10% of the card's credit limit per month. The Salary Day Bonus is earned over and above that cap.",
+    "Rent payments and wallet loading carry a fee of 1% plus GST per transaction. Utility payments carry 1% plus GST once cumulative utility spending reaches ₹25,000 in a statement cycle, and fuel carries 1% plus GST once cumulative fuel spending reaches ₹50,000 in a statement cycle.",
+    "No SCoins are earned on cash and quasi-cash transactions, wallet loads, fuel, gambling or jewellery purchases.",
+    "Each transaction qualifies for only one reward category, and SCoins are credited only after the relevant monthly statement or bill is generated.",
+    "Source: CUB SalarySe Level UP Credit Card — validated card document supplied by Siddhant, September 2026. No public URL was supplied with the document."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -13784,7 +14123,14 @@
    ],
    "expiry_months": 18,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "options": [
+    "Gift vouchers from 200+ brands",
+    "Cash conversion",
+    "Merchant offers",
+    "Other redemption options available through SalarySe"
+   ],
+   "notes": "5 SCoins = ₹1. SCoins can be redeemed only through the SalarySe App. SalarySe reserves the right to change the available redemption offers. SCoins accrue after the relevant monthly statement or bill is generated."
   },
   "faqs": [
    {
@@ -13798,23 +14144,40 @@
   ],
   "pros_cons": {
    "pros": [
-    "Low Forex charge of 1%, significantly lower than the industry average of 3.5%"
+    "Up to 7.5% effective value on Salary Day spends with Physical + Virtual",
+    "5% effective value on Salary Day spends with Virtual-Only",
+    "2% effective value on eligible spending above ₹20,000",
+    "Salary Day Bonus is over and above the normal 10%-of-credit-limit reward cap",
+    "Up to ₹1,125 Salary Day value per billing cycle on Physical + Virtual and ₹750 on Virtual-Only",
+    "1 complimentary domestic airport lounge access after ₹10,000 previous-cycle spend",
+    "Base rewards available on rent, insurance, education, government and other Base Categories",
+    "Cash conversion available through SalarySe",
+    "Lifetime Free Virtual-Only variant",
+    "Each transaction is assigned to only one reward category"
    ],
    "cons": [
-    "Salary day bonus is only applicable on the first and last day of the month",
-    "All Reward Points expire upon completion of eighteen months from the date earned, so user must use them within eighteen months"
+    "₹5,000 non-Salary-Day spending is required to unlock the Salary Day Bonus",
+    "Salary Day Bonus is restricted to the 1st and last day of each month",
+    "Virtual-Only earns 25 SCoins/₹100 rather than 37.5 SCoins/₹100",
+    "Salary Day Bonus is capped at ₹15,000 eligible spending per billing cycle",
+    "Maximum Salary Day value is ₹1,125 on Physical + Virtual and ₹750 on Virtual-Only",
+    "Normal rewards are capped at 10% of the credit limit per month",
+    "Base reward rate is only 0.20%",
+    "SCoins expire after 18 months",
+    "Each transaction can qualify for only one reward category",
+    "The strongest reward rate is heavily dependent on using SalarySe UPI on only two days each month",
+    "The Physical + Virtual variant carries a ₹500 + GST joining fee and ₹500 + GST annual fee unless the ₹2 lakh waiver threshold is met"
    ],
    "best_for": "Salaried professionals who prefer UPI and want easy, consistent rewards matching their spending patterns",
    "not_for": null
   },
   "highlights": [
-   "25 Reward Points per ₹100 on SalarySe UPI transactions",
-   "Salary Day Bonus of 37.5 RP per ₹100 on 1st and last day of month",
-   "1% forex markup — significantly lower than industry average of 3.5%",
-   "Physical + Virtual card with option to switch to virtual-only",
-   "1 Domestic Lounge Access per month on spending ₹10,000 in previous billing cycle",
-   "Renewal fee waived on annual spending of ₹2,00,000 or more",
-   "SCoins redeemable on SalarySe App for gift vouchers from 200+ brands, cash conversion, and merchant offers"
+   "Up to 37.5 SCoins per ₹100 on Salary Day spends",
+   "25 SCoins per ₹100 on Salary Day spends on the Virtual-Only variant",
+   "10 SCoins per ₹100 on eligible spends above ₹20,000 per billing cycle",
+   "Domestic airport lounge access after ₹10,000 previous-billing-cycle spend",
+   "2% forex markup on Virtual-Only / lower applicable rate on Physical + Virtual",
+   "Renewal fee waived on annual spending of ₹2,00,000 or more"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -13823,6 +14186,38 @@
    "email": null,
    "app_name": "SalarySe App",
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 500,
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 1.0,
+   "other_lines": [
+    {
+     "label": "Variants",
+     "value": "RuPay Virtual-Only is Lifetime Free with nil joining and nil annual fee. RuPay Physical (Select) + Virtual carries ₹500 + GST joining fee and ₹500 + GST annual fee. The fees shown here are the Physical + Virtual variant's."
+    },
+    {
+     "label": "Foreign currency transactions",
+     "value": "2% on Virtual-Only; the lower applicable rate on Physical + Virtual"
+    },
+    {
+     "label": "Rent payments",
+     "value": "1% + GST per transaction"
+    },
+    {
+     "label": "Wallet loading",
+     "value": "1% + GST per transaction"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% + GST on cumulative spends of ₹25,000 or more per statement cycle"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% + GST on cumulative spends of ₹50,000 or more per statement cycle"
+    }
+   ]
   }
  },
  "indusind_bank_tiger": {
@@ -13938,27 +14333,30 @@
   ],
   "pros_cons": {
    "pros": [
-    "Lifetime Free credit card with no annual charges",
-    "Access to domestic and international lounges"
+    "₹0 joining & annual fee",
+    "Up to 6X Reward Points",
+    "8 complimentary domestic lounge visits per year",
+    "2 complimentary international lounge visits per year",
+    "1 complimentary golf game/lesson per quarter",
+    "1.5% forex markup",
+    "Movie benefit",
+    "1:1 transfer to Air India Maharaja Club",
+    "₹0.40 value per Reward Point through cash/voucher redemptions"
    ],
    "cons": [
-    "This card does not provide any dining benefits"
-   ],
-   "best_for": "Movies, Travel, Shopping, Golf",
-   "not_for": null
+    "Base reward rate is only 1X",
+    "6X rewards apply only to spending above ₹5 lakh in the anniversary year",
+    "₹149 cash redemption fee"
+   ]
   },
   "highlights": [
-   "Lifetime Free card with zero joining and annual fee",
-   "Up to 6 Reward Points per ₹100 spent on eligible transactions",
-   "Priority Pass membership with access to 600+ lounges worldwide",
-   "8 domestic + 2 international complimentary lounge visits per year",
-   "BOGO movie tickets on BookMyShow every 6 months",
-   "4 complimentary golf games or lessons per year",
-   "Low forex markup of 1.5% + GST",
-   "1% fuel surcharge waiver on transactions between ₹400 and ₹4,000",
-   "24x7 concierge services",
-   "Air accident coverage worth ₹25 lakhs",
-   "KrisFlyer Miles redemption option"
+   "Up to 6X Reward Points",
+   "8 complimentary domestic lounge visits per year",
+   "2 complimentary international lounge visits per year",
+   "1 complimentary golf game/lesson per quarter",
+   "1.5% forex markup",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -14060,38 +14458,36 @@
   ],
   "pros_cons": {
    "pros": [
-    "Lifetime free credit card with no joining or annual fee",
-    "Metal card form factor — only entry-level metal credit card",
-    "Fractional Reward Points earning",
-    "Low forex markup of 1% compared to typical 2.5%",
-    "Available as both secured (against FD) and unsecured credit card",
-    "5x Reward Points on top two spend categories each month",
-    "Digital card activated immediately upon approval",
-    "Fuel surcharge waiver up to ₹400 per month"
+    "₹0 joining & annual fee",
+    "5X rewards on top 2 spending categories",
+    "Up to 10% instant discount on offline shopping at selected partner brands",
+    "1% forex markup",
+    "100% fuel surcharge waiver up to ₹400/month",
+    "Fractional Reward Points with no rounding-off loss",
+    "Reward Points do not expire",
+    "No Reward Point redemption fee",
+    "Metal card",
+    "Strong app-based card controls",
+    "Monthly reward categories adapt to your actual spending pattern"
    ],
    "cons": [
-    "No airport lounge access (domestic or international)",
-    "No welcome benefits",
-    "No insurance benefits",
-    "No dining or entertainment offers",
-    "No golf benefits",
-    "No travel benefits",
-    "Low base reward rate of 0.2% (1 RP per ₹50 = ₹0.10 per ₹50)",
-    "High interest rate of 3.75% per month (45% annually)",
-    "KYC process reported as problematic by some users",
-    "Customer care response reported as poor by some users"
-   ],
-   "best_for": "Entry-level metal credit card seekers, people with bad/no credit score wanting a secured card, users wanting low forex markup, shoppers and food spenders",
-   "not_for": "Users seeking lounge access, premium travel benefits, high reward rates, or comprehensive insurance coverage"
+    "5X rewards require ₹750 spending in each of 3 categories every month",
+    "5X is only 1% effective value at ₹0.10 per Reward Point",
+    "Base reward rate is only 0.2%",
+    "No complimentary airport lounge benefit",
+    "Offline shopping discounts are restricted to selected partner brands and subject to brand-specific limits",
+    "Metal-card replacement can be expensive",
+    "Issuer-specific charges and terms can differ"
+   ]
   },
   "highlights": [
-   "Only entry-level metal credit card in India",
-   "Fractional Reward Points — earn on every rupee even if transaction is not a multiple of 50",
-   "5x Reward Points on top two spend categories (recalculated monthly)",
-   "Very low forex markup of just 1%",
-   "Available as secured credit card against fixed deposit with SBM Bank for those with low/no credit score",
-   "Lifetime free — no joining or annual fee",
-   "Issued in partnership with Federal Bank, BOBCARD, CSB Bank, Indian Bank, SBM Bank, and South Indian Bank"
+   "Up to 5X Reward Points on top 2 spending categories",
+   "1 Reward Point per ₹50 spent",
+   "Up to 10% instant discount on offline shopping at selected brands",
+   "1% forex markup",
+   "100% fuel surcharge waiver up to ₹400 per month",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -14371,16 +14767,13 @@
    "not_for": "Non-travellers, those wanting cashback redemption or wide redemption options"
   },
   "highlights": [
-   "Lifetime free — zero joining and annual fees",
-   "Zero forex markup on all international transactions",
-   "20% Scapia Coins on travel bookings via Scapia App (~4% return)",
-   "10% Scapia Coins on all other eligible spends (~2% return)",
-   "Unlimited domestic airport lounge access with 20000 monthly spend",
-   "Available on both Visa and RuPay networks",
-   "100% coin redemption with no cap on travel bookings",
-   "No Cost EMI on flights and hotels via Scapia App (3-month tenure)",
-   "5 Scapia Coins = 1 INR; coins valid for 36 months",
-   "Issued in partnership with Federal Bank and BOBCARD"
+   "20% rewards on travel bookings through the Scapia App",
+   "10% rewards on eligible Visa spends",
+   "5% rewards on eligible RuPay spends",
+   "Unlimited domestic lounge access",
+   "0% forex markup",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -14426,7 +14819,16 @@
    },
    "zero_forex": {
     "description": "Zero foreign exchange charges on international spending"
-   }
+   },
+   "summary": [
+    "You earn 1 monie for every ₹1 you spend, on the card directly or through UPI, and 1% is what those monies are worth to a new cardholder. The value rises only as your monies balance grows: 1% up to a ₹3,00,000 balance, 1.5% from ₹3,00,001 to ₹5,00,000, and 2% above ₹5,00,000. The 3% figure needs two things at once, a monies balance above ₹5,00,000 and an average quarterly balance of at least ₹5,00,000 in your slice savings account measured over the previous 90 days. The app ranks this card at 1% because that is what almost everyone actually gets.",
+    "Only a transaction of ₹2,000 or more can be converted to slice in 3, you must have no unpaid dues from your latest statement to convert at all, and a transaction you do convert earns no monies. Closing one early costs 3.5% of the outstanding principal plus GST.",
+    "International transactions earn no monies, even though the card charges no forex markup and no bank DCC markup.",
+    "Cash withdrawals earn no monies, and transferring money from your credit limit to a bank account costs 2.5% of the amount, minimum ₹25 plus GST.",
+    "Some categories cost extra once you cross a threshold in the billing cycle: 2% on fuel and 1% on utilities once cumulative applicable spending passes ₹25,000, and 1% on rent above ₹10,000. Education and wallet loading are charged 1% from the first rupee. Each of these is a minimum of ₹10 plus GST.",
+    "The app cannot rank this card on its Spark offers: you have to activate each one yourself, they are personalised and they change, and many of them only pay if you pay through slice UPI rather than by an ordinary card transaction.",
+    "Source: slice UPI Credit Card — validated card document supplied by Siddhant, September 2026. No issuer URL is given in that document."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -14438,10 +14840,16 @@
    "invite_only": null
   },
   "redemption": {
-   "channels": null,
+   "channels": [
+    {
+     "channel": "Cash credited to the slice savings account",
+     "point_value": null
+    }
+   ],
    "expiry_months": null,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "notes": "monies are redeemed for cash, credited to the slice savings account. The rate depends on the monies balance: up to ₹3,00,000 is 1%; ₹3,00,001 to ₹5,00,000 is 1.5%; above ₹5,00,000 is 2%; and above ₹5,00,000 together with a qualifying ₹5,00,000 average quarterly balance in the slice savings account is 3%."
   },
   "faqs": [
    {
@@ -14471,24 +14879,36 @@
   ],
   "pros_cons": {
    "pros": [
-    "Lifetime free credit card with up to 3% cashback on every purchase",
-    "Make purchases abroad without paying extra conversion fees, saving money on international transactions"
+    "Lifetime-zero joining and annual fee.",
+    "Potential reward rate scales to 1.5%, 2% and ultimately 3%",
+    "Zero forex markup",
+    "Zero bank DCC markup",
+    "₹0 card replacement fee",
+    "slice in 3 allows qualifying ₹2,000+ transactions to be split over 2 or 3 months with zero processing fee",
+    "Spark provides potentially strong additional merchant cashback",
+    "monies can ultimately be redeemed as cash into the slice savings account, rather than being restricted to vouchers"
    ],
    "cons": [
-    "Not best suited for high-end customers as the card does not offer any extra benefits like travel insurance or lounge access"
+    "“Up to 3% cashback” is highly conditional, not the normal base earning rate",
+    "Reaching 3% requires both ₹5 lakh+ monies balance and ₹5 lakh average quarterly savings balance",
+    "Fuel/railway, utility and rent can attract category-specific surcharges after thresholds",
+    "2.5% fee on bank transfers from the credit limit",
+    "Sliced transactions do not earn rewards",
+    "Early foreclosure of sliced transactions costs 3.5% + GST",
+    "Spark offers generally require manual activation and are dynamic/personalized",
+    "Spark offers often require payment specifically via slice UPI, rather than a normal direct card transaction"
    ],
    "best_for": "People new to credit cards, young generation, UPI users, beginners looking to build credit",
    "not_for": "High-end customers seeking travel insurance, lounge access, or premium benefits"
   },
   "highlights": [
-   "No joining or annual fee - lifetime free",
-   "Up to 3% instant cashback on every transaction",
-   "Zero forex charges on international spending",
-   "Split purchases into 3 interest-free monthly installments (slice-in-3)",
-   "Works with most major UPI apps via QR code scanning",
-   "Weekly brand deals and offers through slice Spark",
-   "Beginner-friendly card for building credit",
-   "Digital banking platform designed for young users"
+   "Up to 3% cashback on eligible spends",
+   "Zero joining fee",
+   "Zero annual fee",
+   "Zero forex markup",
+   "Zero bank DCC markup",
+   "slice in 3 — eligible spends can be split into up to 3-month EMIs at no processing cost",
+   "Spark — additional activated cashback offers on selected merchants"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -14497,6 +14917,51 @@
    "email": null,
    "app_name": "slice app",
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 0,
+   "annual_fee": 0,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 0,
+   "fuel_surcharge": null,
+   "other_lines": [
+    {
+     "label": "Fuel surcharge (charged, not waived)",
+     "value": "2% per transaction, minimum ₹10 + GST, once cumulative applicable spending exceeds ₹25,000 in the statement cycle"
+    },
+    {
+     "label": "Education",
+     "value": "1% of transaction amount, minimum ₹10 + GST"
+    },
+    {
+     "label": "Wallet loading",
+     "value": "1% of transaction amount, minimum ₹10 + GST"
+    },
+    {
+     "label": "Utility",
+     "value": "1% per transaction, minimum ₹10 + GST, once cumulative applicable spending exceeds ₹25,000 in the statement cycle"
+    },
+    {
+     "label": "Rent",
+     "value": "1% per transaction, minimum ₹10 + GST, on cumulative rent spends above ₹10,000 in the billing cycle"
+    },
+    {
+     "label": "Bank transfer from credit limit",
+     "value": "2.5% of transferred amount, minimum ₹25 + GST"
+    },
+    {
+     "label": "Card replacement",
+     "value": "₹0"
+    },
+    {
+     "label": "slice in 3 processing fee",
+     "value": "₹0"
+    },
+    {
+     "label": "slice in 3 foreclosure",
+     "value": "3.5% of outstanding principal + GST"
+    }
+   ]
   }
  },
  "yes_bank_pop_club": {
@@ -14586,7 +15051,14 @@
      "frequency": "welcome benefit"
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "POPclub's accelerated rates are not published brand by brand, so the app ranks this card on its standard online and offline rates only and adds no POPclub uplift.",
+    "Transactions converted to EMI, cash withdrawals and cash advances, marketing or advertising transactions and POI funding transactions earn no POPcoins.",
+    "A renewal benefit of 400 POPcoins is credited when the annual renewal fee is charged, on the standard paid version of the card.",
+    "Beyond the categories that earn nothing, some spends carry an extra charge of 1% plus GST: rent, where rental transactions are also capped at 3 per 30 days; wallet loads; utility bills once cumulative utility spending passes Rs 15,000 in a calendar month; education paid through third-party websites or apps, subject to the applicable monthly cap; and fuel above Rs 10,000 in a single transaction or once cumulative fuel spending passes Rs 25,000 in a calendar month.",
+    "Dynamic currency conversion abroad costs a further 1% on top of the foreign-currency markup."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 25000,
@@ -14599,18 +15071,18 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Partner website or mobile app",
-     "point_value": 1
-    },
-    {
-     "channel": "POPshop voucher redemption",
-     "point_value": 1
-    }
+    "POPshop",
+    "Brand vouchers",
+    "Selected brand offers",
+    "POP ecosystem purchases",
+    "Cashback conversion"
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "portal_name": "POPshop",
+   "miles_partners": [],
+   "notes": "POPcoins redeem at up to Rs 1 each inside POPshop and the wider POP ecosystem, across 500+ brands including Zomato, Amazon, Swiggy, Myntra, Uber, Ola and Zepto. Converting POPcoins to cashback instead pays Rs 0.10 per POPcoin. POP-CLUB charges no reward redemption fee."
   },
   "faqs": [
    {
@@ -14628,25 +15100,40 @@
   ],
   "pros_cons": {
    "pros": [
-    "No joining or annual fees, making it an excellent choice for everyone",
-    "Available on the RuPay network, which allows it to connect to UPI and make payments",
-    "Cardholders earn 5% instant POPcoins when making spends via POP UPI"
+    "Rs 0 joining fee, and Rs 0 annual fee under the current Lifetime Free offer (the standard renewal fee is Rs 399)",
+    "10 POPcoins/Rs 100 on online spends",
+    "2 POPcoins/Rs 100 on other eligible spends",
+    "Accelerated rewards on 500+ POPclub brands",
+    "1,500 bonus POPcoins on Rs 1.5 lakh annual spends",
+    "1% fuel surcharge waiver",
+    "POPshop redemption can provide significantly higher value than cashback conversion",
+    "No reward redemption fee for POP-CLUB",
+    "Available on the RuPay network, so it can be linked to UPI"
    ],
    "cons": [
+    "Cashback conversion is only Rs 0.10 per POPcoin, making the effective cash-equivalent value much lower",
+    "The highest value depends on actually using the POP ecosystem",
+    "Rewards are heavily tied to POPclub/POPshop",
+    "A large number of common categories earn no POPcoins",
+    "3.40% forex markup",
     "Does not offer airport lounge access",
-    "Current Yes Bank Credit Cardholders cannot apply for the Yes POP CLUB Credit Card"
+    "Current YES Bank credit cardholders cannot apply for the POP CLUB Credit Card"
    ],
    "best_for": "Shopping, UPI",
    "not_for": "Those seeking premium features like airport lounge access or golf privileges"
   },
   "highlights": [
-   "Lifetime free card (zero joining and annual fees till 31st March 2027)",
-   "Welcome benefits worth 5000",
-   "10 POPcoins per 100 on online spends",
-   "5% instant POPcoins via POP UPI",
+   "10 POPcoins per Rs 100 on online spends",
+   "2 POPcoins per Rs 100 on other eligible spends",
+   "Additional POPcoins on eligible UPI spends through POP UPI",
    "RuPay network with UPI linkage",
-   "1500 bonus POPcoins on spending 1.5 lakh in a year",
-   "Eligible for all RuPay and Yes Bank Credit Card offers"
+   "Accelerated POPcoins on 500+ selected brands through POPclub",
+   "1,500 bonus POPcoins on Rs 1.5 lakh of anniversary-year spend",
+   "1% fuel surcharge waiver",
+   "Rs 0 joining fee",
+   "Rs 0 annual fee under the current Lifetime Free offer (standard renewal fee Rs 399, waived on Rs 1.5 lakh of anniversary-year spend)",
+   "Welcome benefits worth Rs 5,000",
+   "Eligible for all RuPay and YES Bank credit card offers"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -14655,6 +15142,42 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 0,
+   "annual_fee": 399,
+   "annual_fee_waiver_spend": 150000,
+   "other_lines": [
+    {
+     "label": "Lifetime Free offer",
+     "value": "Rs 0 joining and annual fee under the current Lifetime Free offer"
+    },
+    {
+     "label": "Dynamic currency conversion",
+     "value": "1%"
+    },
+    {
+     "label": "Rent payments",
+     "value": "1% + GST per transaction; rental transactions capped at 3 per 30 days"
+    },
+    {
+     "label": "Wallet loading",
+     "value": "1% + GST per transaction"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% + GST once cumulative utility spending exceeds Rs 15,000 in a calendar month"
+    },
+    {
+     "label": "Education via third-party websites or apps",
+     "value": "1% + GST, subject to the applicable monthly cap"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% + GST on fuel transactions above Rs 10,000, or once cumulative fuel spending exceeds Rs 25,000 in a calendar month"
+    }
+   ],
+   "cash_advance": "2.5% of the amount withdrawn or Rs 500, whichever is higher"
   }
  },
  "yes_bank_zagg": {
@@ -16780,7 +17303,15 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 1,000 CashPoint monthly cap on the 5% rate is a single pool shared across all ten bonus merchants, not 1,000 CashPoints at each of them.",
+    "A transaction at one of the ten bonus merchants that is billed under MCC 6540 is treated under the 1% category instead of the 5% category, so gift card, voucher and wallet load purchases at those merchants do not pay 5%.",
+    "Uber spends qualify for 5% only when the transaction is billed under MCC 4121; Uber charges billed under any other code fall to the 1% rate.",
+    "The quarterly milestone voucher can be taken from Amazon Pay, Flipkart, PVR, Pizza Hut, Pantaloons, BookMyShow, Uber, BigBasket or Lifestyle.",
+    "No CashPoints are earned on cash advances, EMI, Smart EMI or Dial-an-EMI conversions, card fees and other charges, or the payment of outstanding balances.",
+    "Education paid directly to a college or school website or at a POS machine earns the 1% rate, while education routed through a third-party app such as CRED, Paytm, CheQ or MobiKwik earns nothing."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 35000,
@@ -16812,7 +17343,8 @@
    ],
    "expiry_months": 24,
    "min_points": 500,
-   "fee": "50 + GST per cash redemption request"
+   "fee": "50 + GST per cash redemption request",
+   "notes": "A minimum of 500 CashPoints is required for redemption against the statement balance. Cashback redemption is capped at 3,000 CashPoints per calendar month. Flight and hotel bookings on SmartBuy can be paid up to 50% with CashPoints, with the remaining amount charged to the credit limit, and CashPoint redemption for flights and hotels is capped at 50,000 CashPoints per calendar month. On select vouchers and products, up to 70% of the value can be paid with CashPoints and the balance must be paid with the card. The rewards catalogue rate of ₹0.30 per CashPoint is an upper bound, not a fixed value. Unredeemed CashPoints expire after 2 years."
   },
   "faqs": [
    {
@@ -16838,31 +17370,26 @@
   ],
   "pros_cons": {
    "pros": [
-    "Get high 5% cashback on partner merchants like Myntra, Amazon, Zomato, Swiggy, Uber, etc.",
-    "Renewal fee waiver on spending Rs. 1 Lakh in the card anniversary year",
-    "5% cashback on both Amazon and Flipkart in a single card",
-    "Gift vouchers worth ₹1,000 on quarterly spends of ₹1 lakh",
-    "Interest-free credit period of up to 50 days"
+    "5% cashback on Amazon, Flipkart, Myntra, Tata CLiQ, Swiggy, Zomato, Uber, BookMyShow, Sony LIV & Cult.fit",
+    "₹1 lakh quarterly spend → ₹1,000 voucher OR 1 domestic lounge access",
+    "1% fuel surcharge waiver",
+    "10% additional discount on Swiggy Dineout using coupon code HDFCCARDS",
+    "CashPoints can be redeemed against the card statement at 1 CashPoint = ₹1 (₹50 Redemption Fee)"
    ],
    "cons": [
-    "Low 1% cashback on offline/online spends at non-partner merchants",
-    "Accelerated CashPoints capped at 1,000 per statement cycle and 1,000 CashPoints at normal 1x rate",
-    "Minimum 500 CashPoints needed to redeem against card statement balance",
-    "CashPoints do not get adjusted automatically in statement; redemption process is cumbersome",
-    "No airport lounge access",
-    "No insurance benefits"
-   ],
-   "best_for": "Young professionals and millennials who shop frequently on Amazon, Flipkart, Swiggy, Zomato, Myntra, and other partner merchants",
-   "not_for": "Users who spend primarily offline at non-partner merchants or need lounge access and travel benefits"
+    "5% cashback capped at 1,000 CashPoints per calendar month",
+    "1% cashback also capped at 1,000 CashPoints per calendar month",
+    "₹1,000 annual fee if the annual spend waiver isn't achieved",
+    "₹1 lakh quarterly spend is required to unlock the milestone benefit",
+    "CashPoints expire after 2 years"
+   ]
   },
   "highlights": [
-   "5% cashback on 10 top online merchants including Amazon and Flipkart",
-   "Combines benefits of Amazon Pay ICICI and Flipkart Axis cards in one card",
-   "₹1,000 gift vouchers every quarter on ₹1 lakh spend",
-   "1% cashback on all other eligible spends",
-   "Annual fee waiver on ₹1 lakh annual spend",
-   "1,000 CashPoints as welcome benefit",
-   "1 CashPoint = ₹1 when redeemed as statement credit"
+   "5% cashback on 10 selected online merchants",
+   "₹1,000 Joining Fee",
+   "₹1,000 Annual Fee",
+   "1% Fuel Surcharge Waiver",
+   "Quarterly milestone benefit — ₹1,000 voucher OR 1 domestic lounge access"
   ],
   "similar_cards": [
    {
@@ -16884,6 +17411,36 @@
    "email": "care@hdfcbank.com",
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1000,
+   "annual_fee": 1000,
+   "annual_fee_waiver_spend": 100000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel surcharge waiver, on transactions of ₹400 to ₹5,000, capped at ₹250 per month",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500",
+   "other_lines": [
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% fee on rent transactions made through third-party apps such as CRED, Paytm, CheQ, MobiKwik and Freecharge, capped at ₹3,000 per transaction"
+    },
+    {
+     "label": "Fuel",
+     "value": "No additional fee for transactions below ₹15,000. Transactions of ₹15,000 or more attract a 1% fee on the entire amount, capped at ₹3,000 per transaction"
+    },
+    {
+     "label": "Utilities",
+     "value": "No additional fee for transactions below ₹50,000. Transactions of ₹50,000 or more attract a 1% fee on the entire amount, capped at ₹3,000 per transaction"
+    },
+    {
+     "label": "Insurance",
+     "value": "Insurance transactions are not treated as utility transactions, so the utility fee does not apply"
+    },
+    {
+     "label": "Education",
+     "value": "No fee for payments made directly through college or school websites or POS machines, and international education payments are excluded from this charge. Payments through third-party apps such as CRED, Paytm, CheQ and MobiKwik attract a 1% fee, capped at ₹3,000 per transaction"
+    }
+   ]
   }
  },
  "hdfc_bank_moneyback_plus": {
@@ -18670,7 +19227,16 @@
    },
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 10X rate applies only to non-EMI spends, and the 2,500 CashPoint monthly ceiling is shared across all five accelerated merchants together, which is ₹50,000 of eligible spend per calendar month.",
+    "CashPoints on this card are capped at 15,000 per statement cycle across every earning rule combined.",
+    "CashPoints accrue only on transactions of at least ₹200 and in whole multiples of ₹200, so the part of a spend below a full ₹200 step earns nothing.",
+    "Utility spends earn up to 2,000 CashPoints per calendar month (MCC 4900), telecom and cable up to 2,000 CashPoints per calendar month (MCC 4812, 4814 and 4899), and grocery up to 1,000 CashPoints per calendar month.",
+    "On the RuPay variant, eligible UPI spends earn 1 CashPoint per ₹200 up to 500 CashPoints per calendar month; fuel, wallet and prepaid card loads and voucher purchases do not earn on UPI.",
+    "Education paid directly on a college or school website or at a POS machine still earns CashPoints and is not charged the education fee; education paid through a third-party app earns nothing and attracts a 1% fee.",
+    "Fuel, rent, government payments, wallet and gift or prepaid card loads, voucher purchases, cash advances, card fees, EMI conversions and SmartEMI or Dial-an-EMI transactions earn no CashPoints; the 1% fuel surcharge waiver is a separate benefit and still applies to those fuel spends."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 12000,
@@ -18687,27 +19253,27 @@
   "redemption": {
    "channels": [
     {
-     "channel": "Product Catalogue",
-     "point_value": 0.15
+     "channel": "Statement CashBack",
+     "point_value": 0.15,
+     "note": "Minimum 3,334 CashPoints, worth about ₹500. ₹50 fee per redemption. Up to 50,000 CashPoints per calendar month"
     },
     {
-     "channel": "SmartBuy",
-     "point_value": 0.15
+     "channel": "SmartBuy Flights / Hotels",
+     "point_value": 0.15,
+     "note": "CashPoints can pay up to 50% of the booking value; the balance is charged to the HDFC Bank credit card. Up to 50,000 CashPoints per calendar month"
     },
     {
-     "channel": "Cashback",
-     "point_value": 0.15
-    },
-    {
-     "channel": "Airmiles",
-     "point_value": 0.15
+     "channel": "Rewards Catalogue",
+     "point_value": 0.15,
+     "note": "CashPoints can pay up to 70% of the value of selected products and vouchers. ₹99 plus applicable taxes per redemption"
     }
    ],
    "expiry_months": 24,
-   "min_points": 500,
-   "fee": 99,
+   "min_points": 3334,
+   "fee": 50,
    "max_monthly_redemption": 50000,
-   "smartbuy_max_points_pct": 50
+   "smartbuy_max_points_pct": 50,
+   "notes": "One CashPoint is worth ₹0.15 on every published channel. Statement cashback needs a minimum of 3,334 CashPoints, worth about ₹500, and costs ₹50 per redemption. Redeeming from the rewards catalogue costs ₹99 plus applicable taxes, and CashPoints can cover at most 70% of a catalogue product or voucher. On SmartBuy flights and hotels CashPoints can cover at most 50% of the booking, with the balance charged to the card. Statement cashback and SmartBuy flight or hotel redemption each carry their own separate 50,000 CashPoint per calendar month ceiling. CashPoints expire 2 years after they are earned."
   },
   "faqs": [
    {
@@ -18733,23 +19299,38 @@
   ],
   "pros_cons": {
    "pros": [
-    "Easy redemption of CashPoints against an array of categories",
-    "Up to 20% off on partner restaurants via Swiggy Dineout"
+    "10X CashPoints across five useful merchants — BigBasket, BookMyShow, OYO, Swiggy and Uber",
+    "Accelerated rewards cover up to ₹50,000 of eligible 10X spending per calendar month",
+    "1% fuel surcharge waiver",
+    "Statement cashback redemption available",
+    "SmartBuy flight/hotel redemption available",
+    "RuPay variant can earn CashPoints on eligible UPI spends",
+    "Utility and telecom transactions continue earning rewards subject to their respective monthly caps"
    ],
    "cons": [
-    "CashPoints expire after 2 years and are not valid for life",
-    "This card does not offer benefits for entertainment or golf, nor does it provide access to domestic or international lounges"
+    "10X translates to only 0.75% effective value at the ₹0.15/CashPoint redemption rate",
+    "Base reward rate is extremely low at 0.075%",
+    "10X restricted to only five merchants",
+    "Rewards earned only in ₹200 multiples",
+    "2,500 CashPoint monthly 10X cap",
+    "₹50 cashback redemption fee",
+    "High minimum cashback redemption requirement of 3,334 CashPoints / approximately ₹500",
+    "₹99 + taxes catalogue redemption fee",
+    "Grocery rewards capped at 1,000 RP/month",
+    "10X eligibility depends on correct TID/MID mapping",
+    "Former 5X EMI benefit has been discontinued",
+    "3.5% foreign-currency markup"
    ],
    "best_for": "First-time cardholders, those beginning their credit journey with low incomes, and users who spend most on accelerated reward category brands (BigBasket, OYO, Swiggy, Uber, BookMyShow)",
    "not_for": "Users seeking lounge access, entertainment benefits, golf privileges, or long-term non-expiring rewards"
   },
   "highlights": [
-   "Entry-level card targeted at first-time cardholders",
-   "10X CashPoints on BigBasket, OYO, Swiggy, Uber, and BookMyShow",
-   "Low introductory interest rate of 0.99% for first 90 days",
-   "500 bonus CashPoints as welcome and annual renewal benefit",
-   "Annual fee waiver on spending ₹50,000 in anniversary year",
-   "1% fuel surcharge waiver across all filling stations in India"
+   "10X CashPoints on BigBasket, BookMyShow, OYO, Swiggy & Uber",
+   "1 CashPoint per ₹200 on other eligible spends",
+   "0.75% effective cashback value on eligible 10X spends",
+   "1% fuel surcharge waiver",
+   "500 CashPoints welcome benefit on payment of joining membership fee",
+   "500 CashPoints renewal benefit on payment of renewal membership fee"
   ],
   "similar_cards": [
    {
@@ -18763,6 +19344,49 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 500,
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": 50000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel surcharge waiver on fuel transactions between ₹400 and ₹5,000, capped at ₹250 per statement cycle",
+   "cash_advance": null,
+   "late_payment_slabs": [],
+   "other_lines": [
+    {
+     "label": "Rent payment fee",
+     "value": "1% of the transaction, capped at ₹3,000 per transaction (MCC 6513)"
+    },
+    {
+     "label": "Fuel transaction fee",
+     "value": "On a consumer-card fuel transaction above ₹15,000, 1% of the entire transaction, capped at ₹3,000 per transaction (MCC 1361, 5172, 5541, 5542, 5983, 9752)"
+    },
+    {
+     "label": "Utility transaction fee",
+     "value": "On a utility transaction above ₹50,000, 1% of the entire transaction, capped at ₹3,000 per transaction (MCC 4900). Insurance is not treated as a utility and is not charged this fee"
+    },
+    {
+     "label": "Education transaction fee",
+     "value": "1% on education paid through a third-party app, capped at ₹3,000 per transaction (MCC 8211, 8220, 8241, 8244, 8249, 8299). Payments made directly on a college or school website or at a POS machine, and international education payments, are not charged"
+    },
+    {
+     "label": "EasyEMI processing fee",
+     "value": "Up to ₹299"
+    },
+    {
+     "label": "Cashback redemption fee",
+     "value": "₹50 per redemption"
+    },
+    {
+     "label": "Reward catalogue redemption fee",
+     "value": "₹99 plus applicable taxes"
+    },
+    {
+     "label": "GST",
+     "value": "All fees and charges are subject to GST"
+    }
+   ]
   }
  },
  "hdfc_bank_moneyback": {
@@ -21415,7 +22039,19 @@
     "min_transaction": 3000,
     "validity_window": "7 days (3 days before and 3 days after birthday)",
     "description": "Additional 10% discount on Swiggy Dineout, over and above regular 10% cashback. Birthday date as recorded with bank at time of card application."
-   }
+   },
+   "summary": [
+    "The 10% cashback on Swiggy Food Delivery, Instamart and Dineout needs a minimum transaction of ₹249 and is capped at ₹1,500 per billing cycle, which is reached at ₹15,000 of eligible Swiggy spending.",
+    "The 5% cashback applies only to eligible online card transactions, needs a minimum transaction of ₹100, and has its own separate cap of ₹1,500 per billing cycle.",
+    "All other eligible spending earns 1% with a minimum transaction of ₹100, capped at ₹1,000 per billing cycle, which is an eligible spending ceiling of ₹1,00,000 per billing cycle.",
+    "Cleartrip: 5% cashback plus a 6.35% instant discount on flight bookings and a 20% instant discount on hotel bookings, with coupon CTSWHDFC applied.",
+    "Nykaa: 5% cashback plus a 5% instant discount on a minimum transaction of ₹1,000, capped at ₹100 per transaction and two discounted transactions per month.",
+    "Birthday benefit: an extra 10% off on Swiggy Dineout with coupon SWIGGYCARDBDAY, on a minimum transaction of ₹3,000, capped at ₹500. It runs for seven days - the three days before your birthday, the birthday itself and the three days after - and the payment must be made through Swiggy Dineout on this card. It is available only after 30 days from card activation and can be used once per cardholder.",
+    "Golf: access to participating golf courses worldwide, 12 complimentary lessons per year, four complimentary green-fee rounds per calendar year, and 50% off green fees once that quota is used.",
+    "The fuel-surcharge waiver applies to fuel transactions of ₹400 to ₹5,000 and is capped at ₹250 per statement cycle.",
+    "No cashback is earned on prepaid card and stored-value loads, SmartPay transactions, SmartBuy portal transactions, EMI of any kind including transactions later converted to EMI, cash advances, travellers' cheques, foreign-currency purchases, or commercial and business spending.",
+    "A 1% fee applies on rent, on any single fuel transaction above ₹15,000, and on third-party education payments, each capped at ₹4,999 per transaction. A 1% fee also applies on monthly utility spending above ₹50,000, on monthly wallet loads above ₹10,000 and on monthly online skill-based gaming above ₹10,000, each capped at ₹4,999 a month. Railway ticket purchases carry 1% plus GST."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -21428,14 +22064,12 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Cashback against credit card statement",
-     "point_value": null
-    }
+    "Statement credit"
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "notes": "Cashback is credited automatically against the outstanding balance on the credit card account, at ₹1 of cashback to ₹1 of statement credit. There is no minimum redemption amount and no redemption fee."
   },
   "faqs": [
    {
@@ -21465,23 +22099,30 @@
   ],
   "pros_cons": {
    "pros": [
-    "Joining fee can be waived by spending ₹75,000 within the first 90 days of card issuance, effectively making it lifetime free for those who meet the spending requirement",
-    "Although primarily focused on food and dining spends, it also offers complimentary golf games and lessons through Mastercard benefits"
+    "10% cashback on eligible Swiggy transactions",
+    "Swiggy and select-online spending have separate ₹1,500 cashback caps.",
+    "Direct statement cashback without reward-point conversion",
+    "No minimum redemption or cashback-redemption fee",
+    "Mastercard golf benefits",
+    "The ₹1,000 renewal fee is waived on spending ₹2 lakh in the preceding year.",
+    "The ₹1,000 joining fee is waived on spending ₹75,000 within the first 90 days of card issuance."
    ],
    "cons": [
-    "10% cashback on Swiggy spends is capped at ₹1,500 per billing cycle, and orders below ₹249 are not eligible for cashback, which may be restrictive for smaller food orders"
+    "The ₹1,500 Swiggy cap is reached after ₹15,000 of eligible Swiggy spending.",
+    "Transactions below ₹249 cannot earn 10% cashback.",
+    "The birthday offer can be used only once per cardholder.",
+    "3.5% forex markup and 1.75% DCC fee"
    ],
    "best_for": "Dining, Food — users who frequently order food, groceries, or dine out using the Swiggy app and make regular online purchases",
    "not_for": null
   },
   "highlights": [
-   "Up to 10% cashback on Swiggy app spends (Food Delivery, Instamart, Dineout)",
-   "5% cashback on select online categories including apparel, pharmacies, electronics, entertainment, travel, and local cabs",
+   "10% cashback on eligible Swiggy Food, Instamart and Dineout transactions",
+   "5% cashback at select online merchants and categories",
+   "Mastercard golf benefits",
+   "1% fuel-surcharge waiver",
    "Complimentary 3-month Swiggy BLCK membership upon card activation",
-   "Joining fee waivable with ₹75,000 spend in 90 days",
-   "Birthday offer: additional 10% discount on Swiggy Dineout (cap ₹500)",
-   "Golf benefits: 12 free lessons, 4 free rounds, 50% off golf services via Mastercard",
-   "Partner offers on Cleartrip and Nykaa"
+   "Joining fee waivable with ₹75,000 spend in 90 days"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -21490,6 +22131,59 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "annual_fee": 1000,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% surcharge waived on fuel transactions of ₹400 to ₹5,000, up to ₹250 per statement cycle.",
+   "cash_advance": "2.5% of the amount withdrawn or ₹500, whichever is higher. Finance charges apply from the withdrawal date.",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion",
+     "value": "1.75% on INR transactions at an international location or at an India-based merchant registered overseas"
+    },
+    {
+     "label": "Rent payments (MCC 6513)",
+     "value": "1% of the transaction, capped at ₹4,999 per transaction"
+    },
+    {
+     "label": "Fuel transactions above ₹15,000",
+     "value": "1% of the entire transaction, capped at ₹4,999 per transaction"
+    },
+    {
+     "label": "Utility spending above ₹50,000 a month (MCC 4900)",
+     "value": "1% of the calendar-month total, capped at ₹4,999 a month. Insurance transactions are excluded from this charge."
+    },
+    {
+     "label": "Third-party education payments",
+     "value": "1% of the transaction, capped at ₹4,999 per transaction. Payments made directly on a school or college website or POS, and international education transactions, do not attract this fee."
+    },
+    {
+     "label": "Wallet loads above ₹10,000 a month (MCC 6540)",
+     "value": "1% of the calendar-month total, capped at ₹4,999 a month"
+    },
+    {
+     "label": "Online skill-based gaming above ₹10,000 a month (MCC 5816)",
+     "value": "1% of the calendar-month total, capped at ₹4,999 a month"
+    },
+    {
+     "label": "Railway ticket purchases",
+     "value": "1% plus GST"
+    },
+    {
+     "label": "SmartEMI processing",
+     "value": "Up to ₹849 plus GST"
+    },
+    {
+     "label": "Merchant EasyEMI processing",
+     "value": "Up to ₹299 plus GST"
+    },
+    {
+     "label": "EMI pre-closure",
+     "value": "3% of the outstanding principal"
+    }
+   ]
   }
  },
  "hdfc_bank_swiggy_hdfc_bank": {
@@ -21585,25 +22279,29 @@
   ],
   "pros_cons": {
    "pros": [
-    "Get 10% cashback on all your Swiggy food delivery orders, including Genie and Instamart",
-    "Up to ₹1,500 cashback per month across major online shopping platforms",
-    "For food enthusiasts, a complimentary Swiggy One membership for three months is extremely beneficial"
+    "10% cashback on eligible Swiggy Food Delivery, Instamart, Genie & Dineout",
+    "5% cashback on eligible online shopping categories",
+    "Cashback automatically credited to statement",
+    "₹2 lakh annual spend → ₹500 annual fee waiver",
+    "12 complimentary golf lessons/year (Mastercard World Benefit)",
+    "1% fuel surcharge waiver",
+    "Birthday Week: Additional 10% discount on Swiggy Dineout, up to ₹500 on a minimum ₹3,000 order, over and above the regular 10% cashback",
+    "Limited-period offer: 20% instant discount on Cleartrip hotels and 6.35% on Cleartrip flights"
    ],
    "cons": [
-    "Although this card offers great benefits on food, it could have included additional perks such as free airport lounge access"
-   ],
-   "best_for": "Dining, Food",
-   "not_for": null
+    "Card is currently not being issued",
+    "5% online cashback is restricted to selected merchants/MCCs",
+    "₹500 annual fee if ₹2 lakh annual spend milestone isn't achieved",
+    "Cashback eligibility depends on MCC classification",
+    "3.5% forex markup makes the card unsuitable for international spends"
+   ]
   },
   "highlights": [
-   "Up to 10% cashback on Swiggy platform (food orders, Instamart, Dineout, Genie)",
-   "5% cashback on online spends across top brands",
-   "Low annual fee of ₹500 + GST with waiver at ₹2 lakh spend",
-   "Complimentary 3-month Swiggy One membership worth ₹1199 on activation",
-   "Earn IndiGo BluChips (1 per ₹250 spent) on Swiggy spends in addition to cashback",
-   "Mastercard World Tier privileges including golf benefits",
-   "Maximum annual savings potential of ₹42,000",
-   "Only co-branded credit card from an online food ordering platform in India"
+   "10% cashback on Swiggy",
+   "5% cashback online",
+   "₹500 Joining Fee",
+   "₹500 Annual Fee",
+   "1% Fuel Surcharge Waiver"
   ],
   "similar_cards": [
    {
@@ -21664,7 +22362,18 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 5% rate needs a transaction of at least ₹249 and the 1% rate a transaction of at least ₹100, so smaller purchases earn nothing.",
+    "One shared cap of ₹1,500 a billing cycle covers Swiggy and every select online merchant together, which is about ₹30,000 of eligible 5% spending. The 1% categories carry a separate ₹1,000 cap, so the card pays at most ₹2,500 a statement cycle.",
+    "Swiggy Money Wallet loads and Swiggy Liquor orders do not earn the 5% Swiggy rate, even though the rest of the Swiggy app does.",
+    "The 5% select-online rate applies only to online card transactions, and only at the eligible merchants and merchant categories the issuer lists.",
+    "Cleartrip pays 5% cashback plus a 6.35% instant discount on flights and a 20% instant discount on hotels when coupon CTSWHDFC is applied. Nykaa pays 5% cashback plus a 5% instant discount on orders of ₹1,000 or more, capped at ₹100 a transaction and two discounted transactions a month. Both instant discounts are limited-period offers.",
+    "A birthday benefit gives an extra 10% off on Swiggy Dineout with coupon SWIGGYCARDBDAY on a bill of ₹3,000 or more, capped at ₹500. It is usable in the seven days around the birthday, three days before, the birthday itself and three days after, only after 30 days from card activation, and only once per cardholder.",
+    "Mastercard golf benefits cover participating courses worldwide, 12 complimentary lessons a year, four complimentary green-fee rounds a calendar year and 50% off green fees once that quota is used.",
+    "Cashback is not paid on fuel, rent, wallet loads, jewellery, government payments, gift cards, gaming, education, prepaid and stored-value instruments, SmartPay, SmartBuy portal transactions, EMI transactions of every type, transactions later converted into EMI, cash advances, travellers' cheques, foreign currency purchases, or commercial and business spending.",
+    "Utility bills are not excluded from cashback, but calendar-month utility spending above ₹50,000 attracts a 1% fee capped at ₹4,999 a month. Insurance transactions are exempt from that fee."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -21677,14 +22386,15 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Cashback against credit card statement",
-     "point_value": null
-    }
+    "statement_credit"
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "portal_url": null,
+   "portal_name": null,
+   "miles_partners": [],
+   "notes": "Cashback is credited automatically against the credit card account outstanding balance at ₹1 cashback = ₹1 statement credit. No manual redemption is required, no minimum redemption applies and the cashback-redemption fee is nil. Cashback is not adjusted against finance charges and is calculated after refunds, cancellations and reversals. Cashback on a transaction that is later converted into EMI is reversed, and pending cashback is forfeited if the card is cancelled or the Minimum Amount Due is not paid by the due date."
   },
   "faqs": [
    {
@@ -21702,23 +22412,33 @@
   ],
   "pros_cons": {
    "pros": [
-    "Complimentary 12-month Swiggy One membership with benefits like free delivery and extra discounts"
+    "5% cashback covers both Swiggy and a broad selection of online spending.",
+    "Direct statement cashback without reward-point conversion",
+    "No minimum redemption or cashback-redemption fee",
+    "Mastercard golf benefits",
+    "Lifetime-free offer for applications made through the Swiggy portal from 1 July 2026",
+    "₹500 renewal fee is waived on spending ₹1.5 lakh in the preceding year."
    ],
    "cons": [
-    "Combined cashback cap of 1500 per billing cycle on 5% categories limits overall rewards",
-    "No travel benefits such as airport lounge access, making it less attractive for frequent travelers"
+    "Swiggy and select-online spending share the same ₹1,500 cashback cap.",
+    "Transactions below ₹249 cannot earn 5% cashback.",
+    "Cashback depends on correct merchant, MCC, MID and TID mapping.",
+    "The Cleartrip and Nykaa discounts are limited-period offers.",
+    "The birthday offer can be used only once per cardholder.",
+    "3.5% forex markup and 1.75% DCC fee",
+    "No airport lounge access, domestic or international."
    ],
    "best_for": "Users who frequently order food, groceries, or dine using the Swiggy platform; individuals starting their credit card journey",
    "not_for": "Users who spend heavily on Swiggy seeking higher cashback and premium benefits (Swiggy BLCK HDFC Bank Credit Card recommended instead); frequent travelers needing lounge access"
   },
   "highlights": [
-   "5% cashback on Swiggy app spends and select online shopping categories",
-   "1% cashback on all other eligible spends credited directly to card statement",
-   "Complimentary 12-month Swiggy One membership as welcome benefit",
-   "Golf benefits via Mastercard (12 free lessons, 4 free rounds, 50% off services)",
-   "Annual fee waiver on spending 1.5 lakh",
-   "Birthday week offer with additional 10% discount on Swiggy Dineout",
-   "Partner offers with Cleartrip and Nykaa"
+   "5% cashback on eligible Swiggy Food, Instamart and Dineout transactions",
+   "5% cashback at select online merchants and categories",
+   "1% cashback on all other eligible spends, credited directly to the card statement",
+   "Complimentary 12-month Swiggy One membership on card activation",
+   "Mastercard golf benefits",
+   "1% fuel-surcharge waiver",
+   "Lifetime-free offer for applications through the Swiggy portal from 1 July 2026"
   ],
   "similar_cards": [
    {
@@ -21732,6 +22452,61 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 500,
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": 150000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel-surcharge waiver on transactions of ₹400 to ₹5,000, capped at ₹250 per statement cycle. Fuel spends earn no cashback, and a single fuel transaction above ₹15,000 attracts a 1% fee capped at ₹4,999.",
+   "cash_advance": "2.5% of the amount withdrawn or ₹500, whichever is higher. Finance charges apply from the withdrawal date.",
+   "late_payment_slabs": [],
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion",
+     "value": "1.75% on INR transactions at an international location or at an India-based merchant registered overseas"
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% of the transaction, capped at ₹4,999 per transaction"
+    },
+    {
+     "label": "Fuel above ₹15,000 (MCCs 5172, 5541, 5542, 5983)",
+     "value": "1% on the entire transaction when a single fuel transaction exceeds ₹15,000, capped at ₹4,999 per transaction"
+    },
+    {
+     "label": "Utilities above ₹50,000 a month (MCC 4900)",
+     "value": "1% on total calendar-month utility spending above ₹50,000, capped at ₹4,999 per month. Insurance transactions are excluded from this charge."
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299)",
+     "value": "1%, capped at ₹4,999 per transaction. Payments made directly on a school or college website or at its POS, and international education transactions, do not attract this fee."
+    },
+    {
+     "label": "Wallet loads above ₹10,000 a month (MCC 6540)",
+     "value": "1% on total calendar-month wallet loads above ₹10,000, capped at ₹4,999 per month"
+    },
+    {
+     "label": "Online skill-based gaming above ₹10,000 a month (MCC 5816)",
+     "value": "1% on total calendar-month spending above ₹10,000, capped at ₹4,999 per month"
+    },
+    {
+     "label": "Railway ticket purchases",
+     "value": "1% plus GST"
+    },
+    {
+     "label": "SmartEMI processing",
+     "value": "Up to ₹849 plus GST"
+    },
+    {
+     "label": "Merchant EasyEMI processing",
+     "value": "Up to ₹299 plus GST"
+    },
+    {
+     "label": "EMI pre-closure",
+     "value": "3% of the outstanding principal"
+    }
+   ]
   }
  },
  "hdfc_bank_tata_neu_infinity_hdfc_bank": {
@@ -22062,7 +22837,15 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 1,200 rupee monthly cashback ceiling on the 10 percent rate is one shared pot across dining, food delivery, grocery, shopping and utilities combined. It is not 1,200 rupees for each of those five categories.",
+    "KredMe does not rank this card at 10 percent at Amazon, Flipkart or Myntra. HSBC carves those three out of the shopping category and pays the standard 1.5 percent there instead.",
+    "Airport lounge access is 2 complimentary domestic visits a year, limited to 1 visit in any 6 calendar months, plus 1 complimentary international visit a year effective 1 September 2026.",
+    "Fuel spends earn no ordinary cashback on this card. Instead, 250 rupees of cashback is paid on contactless fuel purchases once 10,000 rupees of fuel spend is reached within a quarter.",
+    "Live+ Reserve adds curated dining, including chef-curated menus and complimentary beverages and desserts, alongside Buy 1 Get 1 movie tickets through District, and Buy 1 Get 1 movie tickets plus 10 percent off live events through BookMyShow.",
+    "Source: HSBC Live+ Credit Card validated document supplied by Siddhant, 5 September 2026. The document carries no issuer URL, so none is cited."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 400000,
@@ -22131,37 +22914,27 @@
   ],
   "pros_cons": {
    "pros": [
-    "10% cashback on dining, grocery, and food delivery spends",
-    "1.5% unlimited cashback on all other eligible spends",
-    "Automatic cashback credit — no manual redemption needed",
-    "4 complimentary domestic lounge visits per year",
-    "₹1,000 welcome cashback",
-    "Buy 2 Get 1 Free movie tickets on BookMyShow",
-    "Add-on cards at no extra fee",
-    "Cashback on EMI transactions",
-    "Contactless payment support via Visa Paywave"
+    "10% cashback on dining, food delivery, grocery, shopping & utilities",
+    "Visa Infinite variant provides access to premium travel, lifestyle and dining privileges.",
+    "2 domestic + 1 international complimentary lounge visits annually",
+    "₹250 fuel cashback on ₹10,000 quarterly contactless fuel spends",
+    "Live+ Reserve dining & lifestyle benefits",
+    "Buy 1 Get 1 movie benefits through District & BookMyShow"
    ],
    "cons": [
-    "Long list of excluded categories for 1.5% cashback",
-    "No fuel surcharge waiver (1% surcharge applicable)",
-    "No international lounge access",
-    "Limited to residents of select cities only",
-    "Annual fee of ₹999 + GST (waiver requires ₹2,00,000 annual spend)",
-    "No reward points — only cashback",
-    "3.5% forex markup"
-   ],
-   "best_for": "Individuals who frequently spend on dining, grocery, and food delivery; online shoppers who prefer automatic cashback over reward points",
-   "not_for": "Frequent travelers needing international lounge access or fuel surcharge waiver; people outside tier-1 cities"
+    "Amazon, Flipkart & Myntra shopping only earn 1.5% despite shopping being a 10% category",
+    "Cashback eligibility depends strictly on MCC classification",
+    "10% cashback capped at ₹1,200 per month",
+    "No cashback on international spends despite the 1.99% forex markup",
+    "Cashback may take up to 45 days to be credited after the statement date."
+   ]
   },
   "highlights": [
-   "10% cashback on grocery, food delivery, and dining spends",
-   "1.5% unlimited cashback on all other eligible transactions",
-   "₹1,000 cashback as welcome benefit on ₹20,000 spend in first 30 days",
-   "Buy 2 Get 1 Free on BookMyShow movie tickets on Saturdays",
-   "4 complimentary domestic lounge visits per annum (1 per quarter)",
-   "Contactless payment via Visa Paywave",
-   "Cashback auto-credited within 45 days of statement date",
-   "Formerly known as HSBC Cashback Credit Card"
+   "10% Cashback on Dining, Food Delivery, Grocery, Shopping & Utilities",
+   "1.5% Unlimited Cashback on Other Eligible Spends",
+   "Travel & Lifestyle Benefits",
+   "₹999 Joining Fee",
+   "₹999 Annual Fee"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -22174,6 +22947,30 @@
    "app_name": null,
    "chat": null,
    "hours": "6:30 AM to 8:40 PM for general inquiries; 24x7 for card loss reporting"
+  },
+  "fees": {
+   "joining_fee": 999,
+   "annual_fee": 999,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 1.99,
+   "cash_advance": "2.5% per transaction, minimum ₹500",
+   "late_payment_slabs": [
+    "100% of minimum payment due, minimum ₹250 and maximum ₹1,200"
+   ],
+   "other_lines": [
+    {
+     "label": "Rent and related payments",
+     "value": "1% processing fee plus applicable taxes"
+    },
+    {
+     "label": "Overlimit",
+     "value": "2.5% of the overlimit amount or ₹500, whichever is higher"
+    },
+    {
+     "label": "Balance transfer",
+     "value": "1.5% processing fee, minimum ₹200"
+    }
+   ]
   }
  },
  "hsbc_premier_metal": {
@@ -22470,7 +23267,12 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The ₹400 monthly cashback cap is shared across the 10% and the 1% categories combined. It is reached after ₹4,000 of accelerated spending, after ₹40,000 of other eligible spending, or any mix of the two - for example ₹2,000 of accelerated spending plus ₹20,000 of other eligible spending earns ₹200 plus ₹200.",
+    "Eligible merchant UPI transactions earn the normal category rate - 10% on dining, food delivery and grocery, 1% on other eligible spends - and count towards the same shared ₹400 monthly cap. No separate UPI cap applies.",
+    "Instant EMI transactions earn no cashback, and no cashback is paid on reversed, cancelled or nullified transactions."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 600000,
@@ -22499,15 +23301,13 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Monthly Statement",
-     "point_value": null
-    }
+    "statement_credit"
    ],
    "expiry_months": null,
    "min_points": null,
    "fee": null,
-   "description": "Cashback is reflected in the monthly statement"
+   "description": "Cashback is reflected in the monthly statement",
+   "notes": "Cashback is credited automatically to the credit-card account at ₹1 cashback = ₹1 statement credit. There is no manual redemption step and no redemption fee. Eligible cashback is credited within 45 days of the statement date, and the Minimum Payment Due must be paid by the applicable due date."
   },
   "faqs": [
    {
@@ -22521,16 +23321,22 @@
   ],
   "pros_cons": {
    "pros": [
-    "For only ₹499 + GST, this card provides access to both domestic and international airport lounges without any spending requirements",
-    "10% cashback on dining, food delivery, and grocery purchases",
-    "1% cashback on UPI transactions",
-    "0% forex markup for a limited time",
+    "10% cashback on common dining and grocery categories",
+    "Eligible UPI transactions can earn the same category-based cashback",
+    "Direct statement cashback without reward-point conversion",
+    "No manual redemption or redemption fee",
+    "Low ₹499 annual fee",
+    "Annual fee, including applicable GST, is reversed when eligible anniversary-year spending exceeds ₹2 lakh.",
+    "Up to 10 airport-lounge visits under the proposition currently advertised by HSBC",
     "Accepted in over 160 countries via JCB partnership",
     "Complimentary EazyDiner membership on activation"
    ],
    "cons": [
-    "The ₹400 cashback cap per statement cycle is quite low",
-    "No fuel surcharge waiver",
+    "The ₹400 cap is shared between both the 10% and 1% categories.",
+    "Maximum regular cashback is only ₹4,800 per year if the monthly cap is reached every month.",
+    "Cashback depends entirely on the MCC assigned by the merchant or acquiring bank.",
+    "No fuel-surcharge waiver",
+    "Standard 3.5% forex markup",
     "Limited city availability for application"
    ],
    "best_for": "Shopping, Food; beginners in credit journey or those seeking an HSBC card with lounge access at low fees",
@@ -22541,7 +23347,7 @@
    "1% cashback on all other eligible spends including UPI",
    "2 free domestic lounge visits per quarter without any spending criteria",
    "2 international airport lounge visits per year",
-   "0% forex markup charges till 30th June 2026",
+   "3.5% forex markup",
    "Accepted in over 160 countries via JCB partnership",
    "Low annual fee of ₹499 + GST with waiver on ₹2 Lakh annual spend",
    "₹500 welcome cashback on ₹10,000 spend within 30 days",
@@ -22560,6 +23366,32 @@
    "email": null,
    "app_name": "HSBC India Mobile Banking",
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 499,
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% of the fuel-transaction value; no waiver applies",
+   "cash_advance": "2.5% of the amount, subject to a minimum ₹500; finance charges apply from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Rent and related payments",
+     "value": "1% processing fee plus applicable taxes"
+    },
+    {
+     "label": "Instant EMI processing",
+     "value": "Depends on the selected tenure and merchant and is disclosed when the facility is availed"
+    },
+    {
+     "label": "Instant EMI foreclosure",
+     "value": "3% of the outstanding principal, minimum ₹250"
+    },
+    {
+     "label": "Cancellation after Instant EMI conversion",
+     "value": "1% of the transaction amount, minimum ₹150"
+    }
+   ]
   }
  },
  "hsbc_rupay_platinum": {
@@ -23575,38 +24407,31 @@
   ],
   "pros_cons": {
    "pros": [
-    "No joining or annual fee - lifetime free",
-    "2 Reward Points on every ₹150 spent",
-    "Buy 1 Get 1 Free on BookMyShow on Saturdays",
-    "1% fuel surcharge waiver at all fuel stations",
-    "Zero liability protection against lost card",
-    "Reward points convertible to airline miles and hotel points",
-    "Up to 15% dining discounts via EazyDiner",
-    "Accelerated rewards on spending ₹4 lakhs"
+    "₹0 joining & annual fee",
+    "6X rewards on hotels through Travel with Points",
+    "4X rewards on flights through Travel with Points",
+    "2X rewards on car rentals through Travel with Points",
+    "Multiple airline & hotel transfer partners",
+    "Accor ALL transfer at 2:1 with a fixed €40 value per 2,000 ALL points",
+    "₹0.50 per Reward Point through the Rewards Marketplace",
+    "1% fuel surcharge waiver across India, up to ₹250 per calendar month",
+    "₹250 fuel benefit on ₹10,000 quarterly contactless fuel spends",
+    "Visa Signature travel & lifestyle benefits"
    ],
    "cons": [
-    "No lounge access - domestic or international",
-    "No travel benefits",
-    "No insurance benefits",
-    "No golf benefits",
-    "Long list of reward point exclusion categories",
-    "Limited to select cities only",
-    "Salaried individuals only (self-employed need HSBC account)",
-    "Basic entry-level card with limited premium features"
-   ],
-   "best_for": "People looking for an affordable lifetime free credit card with shopping and entertainment benefits",
-   "not_for": "Travelers seeking lounge access or premium travel benefits"
+    "Low base reward rate — only 0.33% at ₹0.25 per Reward Point",
+    "Large number of MCC-based reward exclusions",
+    "Fuel transactions under excluded fuel MCCs do not earn Reward Points",
+    "Travel with Points accelerated rewards capped at 18,000 points per calendar month",
+    "3.5% forex markup",
+    "Reward Points expire after 3 years"
+   ]
   },
   "highlights": [
-   "Lifetime free - no joining or annual fee",
-   "2 Reward Points per ₹150 spent",
-   "Buy 1 Get 1 Free on BookMyShow on Saturdays (max discount ₹250)",
-   "Up to 15% dining discounts via EazyDiner",
-   "1% fuel surcharge waiver at all fuel stations in India",
-   "Reward points convertible to AirMiles across multiple airlines and hotel loyalty programs",
-   "Zero liability protection against lost card",
-   "Accelerated reward points on reaching ₹4 lakh total spend",
-   "Now available on Visa Signature variant with even more benefits"
+   "Travel & Rewards Benefits",
+   "Accelerated Rewards",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -24232,28 +25057,26 @@
   ],
   "pros_cons": {
    "pros": [
-    "Most useful for Amazon loyalists who fulfil their online shopping via Amazon",
-    "Enjoy 15% off at over 2,500 restaurants in India with the Culinary Treats Program of ICICI Bank",
-    "No max capping on the Amazon Pay balance that can be earned as cashback on the card"
+    "Unlimited 5% cashback on Amazon.in for Prime Members",
+    "Unlimited 2% cashback on Amazon Pay partner merchants",
+    "Unlimited 2% cashback on Amazon bills, recharges and eligible digital purchases",
+    "Unlimited 1% cashback on other eligible spends",
+    "Life Time Free Card",
+    "1% fuel surcharge waiver",
+    "Cashback automatically credited as Amazon Pay balance which can be used across Amazon purchases, bill payments and partner merchants",
+    "Cashback does not expire"
    ],
    "cons": [
-    "Mainly for shopping with Amazon, does not provide other benefits like lounge access or entertainment benefits",
-    "Not useful if you shop on platforms other than Amazon; Flipkart users should consider Flipkart Axis Bank Credit Card",
-    "5% reward rate on Amazon is only for Prime members; non-Prime members get just 3%"
-   ],
-   "best_for": "Frequent Amazon shoppers, especially Amazon Prime members",
-   "not_for": "Frequent flyers or those who shop primarily on platforms other than Amazon"
+    "5% Amazon cashback requires a qualifying Prime membership (Prime Shopping Edition starts at ₹399/year)",
+    "Non-Prime members receive only 3% on Amazon purchases",
+    "Limited value outside the Amazon ecosystem"
+   ]
   },
   "highlights": [
-   "Lifetime free credit card",
-   "Up to 5% unlimited cashback on Amazon for Prime members",
-   "Over 5 million users",
-   "Cashback credited directly as Amazon Pay balance with no expiry",
-   "2% cashback at 100+ partner merchants via Amazon Pay",
-   "1% cashback on all other retail transactions",
-   "Welcome benefits worth ₹2,500",
-   "15% discount at 2,500+ restaurants via Culinary Treats program",
-   "1% fuel surcharge waiver at all petrol stations"
+   "5% cashback on Amazon.in for Prime Members",
+   "LTF Card",
+   "1% Fuel Surcharge Waiver",
+   "No upper limit on cashback earnings"
   ],
   "similar_cards": [
    {
@@ -25372,7 +26195,13 @@
    },
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "iShop bonus rates apply only to bookings routed through ICICI Bank's iShop portal: up to 6X Reward Points on flight bookings (about 3% back), up to 12X on hotel bookings (about 6% back) and up to 6X on shopping vouchers (about 3% back). They are capped at 8,000 Reward Points a day and 15,000 Reward Points a month. The rate depends on the iShop offer running at the time, so the same booking made outside iShop earns only the ordinary 2 Reward Points per ₹100.",
+    "Reward Points stop accruing once eligible spend in a statement cycle passes ₹40,000 on utilities, ₹40,000 on insurance, ₹20,000 on grocery and departmental stores, or ₹10,000 on transportation. Spend above those limits earns no Reward Points.",
+    "Cash transactions earn no Reward Points on this card.",
+    "Source: validated card document for the ICICI Bank Coral Credit Card."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 500000,
@@ -25439,27 +26268,31 @@
   ],
   "pros_cons": {
    "pros": [
-    "Even though Coral is a basic credit card, it still offers free railway lounge access without having to meet any spend-based criteria.",
-    "One can easily link this card (RuPay variant) to UPI and make payments."
+    "iShop accelerated rewards — up to 6X on flights, 12X on hotels & 6X on shopping vouchers",
+    "25% off on BookMyShow & INOX movie tickets",
+    "1 complimentary domestic airport lounge visit per quarter",
+    "1 complimentary domestic railway lounge visit per quarter",
+    "Milestone rewards up to 10,000 additional Reward Points per year",
+    "1% HPCL fuel surcharge waiver",
+    "₹2 lakh personal accident cover on RuPay variant"
    ],
    "cons": [
-    "Those who get the paid Coral variant are not offered any joining benefits along with the card."
-   ],
-   "best_for": "Movies, Dining",
-   "not_for": null
+    "Low base reward rate — only 0.5% effective return on regular retail spends",
+    "Only 0.25% effective return on utility & insurance spends",
+    "₹25,000 previous-quarter spend required for movie benefits",
+    "₹75,000 previous-quarter spend required for domestic airport lounge access",
+    "₹99 + GST reward redemption fee",
+    "3.5% forex markup",
+    "Reward Points expire after 36 months",
+    "Milestone rewards only start at ₹2 lakh annual spending"
+   ]
   },
   "highlights": [
-   "Up to 2 Reward Points per Rs. 100 spent",
-   "Up to 10,000 bonus Reward Points annually under Milestone Program",
-   "1 complimentary domestic airport lounge access every quarter on spending Rs. 75,000 in previous quarter",
-   "1 complimentary railway lounge access every quarter with no spend criteria",
-   "25% discount on movie tickets on BookMyShow and INOX",
-   "Up to 15% discount on dining at 2,500+ restaurants via Culinary Treats Programme",
-   "1% fuel surcharge waiver at all HPCL petrol stations",
-   "Available in 4 network variants: Visa, RuPay, Mastercard, AmEx",
-   "RuPay variant linkable to UPI",
-   "Annual fee waiver on spending Rs. 1.5 lakh",
-   "Save up to Rs. 2,400 annually on movie tickets"
+   "Lifestyle & Entertainment",
+   "Travel & Lounge Benefits",
+   "Milestone Rewards",
+   "₹500 Joining Fee",
+   "₹500 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -25485,6 +26318,48 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 500,
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": 150000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% surcharge waiver, but only on HPCL fuel spends of ₹400 to ₹4,000 made on an ICICI Bank POS machine. Fuel transactions above ₹10,000 also carry a 1% fee.",
+   "cash_advance": "2.5% of the amount withdrawn, minimum ₹500",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion",
+     "value": "3.5%"
+    },
+    {
+     "label": "Rent payments",
+     "value": "1%"
+    },
+    {
+     "label": "Utility transactions above ₹50,000",
+     "value": "1%"
+    },
+    {
+     "label": "Transportation transactions above ₹50,000",
+     "value": "1%"
+    },
+    {
+     "label": "Education paid through third-party apps",
+     "value": "1%"
+    },
+    {
+     "label": "Skill-based gaming",
+     "value": "2%"
+    },
+    {
+     "label": "Wallet loads of ₹5,000 or more",
+     "value": "1%"
+    },
+    {
+     "label": "Reward redemption",
+     "value": "₹99 + GST"
+    }
+   ]
   }
  },
  "icici_bank_diamant": {
@@ -27983,7 +28858,21 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The ₹200 monthly ceiling on the 4% HPCL fuel cashback is reached at roughly ₹5,000 of HPCL fuel spending in that month.",
+    "The 400 Reward Point ceiling on daily essentials is reached at roughly ₹2,000 of eligible spending in a statement cycle, earned at 20 points per ₹100.",
+    "The 1% fuel-surcharge waiver applies only to HPCL transactions between ₹400 and ₹4,000.",
+    "Fuel bought anywhere other than HPCL earns no Reward Points. HPCL fuel is rewarded as cashback rather than as Reward Points.",
+    "Reward Points on insurance are earned only on the first ₹40,000 of spending per statement cycle, and on transportation only on the first ₹10,000.",
+    "EMI transactions, balance transfers, personal loans taken on the credit card, joining and annual fees, interest and late-payment charges, and reversed or cancelled transactions all earn no rewards.",
+    "ICICI Bank charges 1% on rent, on any single fuel transaction above ₹10,000, on any single utility or transportation transaction above ₹50,000, on third-party education payments, and on wallet loads of ₹5,000 or more, and 2% on online skill-based gaming.",
+    "Railway bookings carry a fee of 1.8% for internet transactions and 2.5% for other bookings.",
+    "Dynamic currency conversion costs 3.5% on rupee transactions made at an international location or with an overseas-registered merchant, and refunds attract the same fee.",
+    "EMI charges are 2.99% capped at ₹299 plus GST for Instant EMI, up to 2% for EMI on Call, and up to 3% of the outstanding principal plus unbilled interest for pre-closure.",
+    "Roadside assistance covers one registered vehicle for the primary cardholder and includes telephone assistance, minor on-site repair, flat-tyre help, battery jump-start and replacement assistance, delivery of up to five litres of fuel with the fuel cost payable, towing after breakdown, accident or incorrect fuelling, spare-key delivery within the same city up to 50 km, and taxi base fare for up to 50 km after the vehicle is immobilised.",
+    "Source: ICICI Bank's card terms and current Most Important Terms and Conditions, as recorded in KredMe's validated card document for this card (September 2026). The document supplied no issuer URL, so none is cited here."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -27999,18 +28888,18 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Cashback",
-     "point_value": 0.25
-    },
-    {
-     "channel": "Gifts",
-     "point_value": 0.25
-    }
+    "Products",
+    "Vouchers",
+    "Travel",
+    "Electronics",
+    "Home appliances",
+    "Lifestyle rewards"
    ],
-   "expiry_months": null,
+   "expiry_months": 36,
    "min_points": null,
-   "fee": 99
+   "fee": 99,
+   "portal_name": "ICICI Bank Rewards",
+   "notes": "Redeem through iMobile, Internet Banking or the ICICI Bank Rewards platform. Redemption fee ₹99 plus GST per request. Points expire three years from the date of issuance. No card-specific minimum redemption is stated. The 4% HPCL fuel benefit is paid as cashback rather than as Reward Points and needs no redemption request; eligibility follows the transaction posting date. HP Pay Happy Coins are credited to the HP Pay wallet and their redemption and expiry follow HP Pay's own terms."
   },
   "faqs": [
    {
@@ -28032,39 +28921,39 @@
   ],
   "pros_cons": {
    "pros": [
-    "5% total benefit on fuel purchases at HPCL (4% cashback + 1% surcharge waiver)",
-    "5% cashback as Reward Points on utilities, groceries, and departmental store purchases",
-    "Low annual fee of ₹500 with spend-based waiver",
-    "Complimentary domestic lounge access",
-    "Movie discounts on BookMyShow and Inox",
-    "Dining benefits under Culinary Treats Programme",
-    "Complimentary 24×7 Road Assistance Service",
-    "Rewards on all categories of spends, not just fuel"
+    "Up to 6.5% combined value on eligible HP Pay fuel purchases",
+    "4% fuel cashback is available at HPCL outlets even when another bank’s POS terminal is used.",
+    "5% reward rate on selected daily-essential categories",
+    "Roadside-assistance package",
+    "Low ₹500 annual fee",
+    "Annual fee waived on spending ₹1.5 lakh in the preceding anniversary year",
+    "Complimentary domestic lounge access on ₹75,000 of spending in the preceding quarter",
+    "Dining discounts under the ICICI Bank Culinary Treats Programme"
    ],
    "cons": [
+    "The 4% fuel cashback is capped at only ₹200 per month.",
+    "The 5% daily-essential benefit is capped at only ₹100 value per statement cycle.",
+    "Roadside assistance is lost when the annual fee is waived.",
+    "The additional 1.5% fuel benefit is issued as HP Pay Happy Coins rather than card cashback.",
+    "Lounge and movie benefits require separate quarterly spending.",
+    "₹99 plus GST redemption fee reduces the value of small Reward Point redemptions.",
+    "3.5% forex and DCC charges",
     "No international lounge access",
     "No golf benefits",
     "No insurance benefits",
-    "Fuel cashback capped at ₹200 per month",
-    "Utility/departmental store reward points capped at 400 RPs per cycle",
-    "₹99 + GST reward redemption fee per request",
-    "3.5% forex markup",
     "High interest rate of 3.75% per month (45% per year)"
    ],
    "best_for": "Fuel and shopping spenders, especially those who frequently refuel at HPCL stations",
    "not_for": "International travelers, frequent flyers seeking lounge access or travel insurance"
   },
   "highlights": [
-   "5% total savings on HPCL fuel purchases (4% cashback + 1% surcharge waiver)",
-   "Additional 1.5% cashback on HPCL fuel via HP Pay app",
-   "5% cashback as Reward Points on utilities, groceries, and departmental stores",
-   "2 Reward Points per ₹100 on all other spends",
-   "Complimentary domestic lounge access (1 per quarter on ₹75,000 quarterly spend)",
-   "25% off on BookMyShow and Inox movie tickets",
-   "Complimentary 24×7 Road Assistance Service",
-   "Annual fee waiver on ₹1.5 lakh annual spend",
-   "Co-branded with Hindustan Petroleum Corporation Limited (HPCL)",
-   "Entry-level card with ₹500 annual fee earning rewards across all spend categories"
+   "Up to 6.5% value back on eligible HPCL fuel purchases through HP Pay",
+   "Up to 5% savings on eligible HPCL fuel purchases made directly at HPCL outlets",
+   "5% reward value on eligible utilities, grocery, telecom, government, tax and departmental-store spending",
+   "Complimentary roadside assistance, subject to annual-fee payment",
+   "One domestic airport lounge visit each quarter, unlocked by ₹75,000 of spending in the previous quarter",
+   "Annual fee waived on ₹1.5 lakh of spending in the previous anniversary year",
+   "3.5% forex markup"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -28073,6 +28962,13 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "annual_fee": 500,
+   "annual_fee_waiver_spend": 150000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% of the transaction amount on any single fuel transaction above ₹10,000 (MCC 1361, 3851, 5172, 5541, 5542, 5983, 9752, 5555).",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500. Finance charges apply from the withdrawal date."
   }
  },
  "icici_bank_manchester_united_signature": {
@@ -28755,6 +29651,16 @@
    "partner_offers": null,
    "travel_memberships": [
     "MMTBLACK Gold Membership"
+   ],
+   "summary": [
+    "Flat 25 myCash is earned on each eligible MakeMyTrip train booking, whatever the booking is worth.",
+    "Insurance spends earn 1% myCash, capped at 1,000 myCash per card-anniversary year, which corresponds to about ₹1,00,000 of eligible insurance spend a year.",
+    "The international lounge visit is delivered through the Priority Pass issued to the primary cardholder. Add-on cardholders are not eligible, and the card-specific terms set no separate spending requirement for international access.",
+    "From 1 July 2026 domestic lounge access is spend-gated: ₹75,000 of spend in the preceding ICICI-defined spend quarter unlocks two visits in the following calendar quarter, up to eight visits a year, for the primary cardholder only.",
+    "From 1 April 2026 the BookMyShow movie benefit is spend-gated: ₹25,000 in the preceding ICICI-defined spend quarter unlocks 25% off the second ticket capped at ₹150, once a month on the Mastercard and once a month on the RuPay card, for a maximum combined discount of ₹300 a month. Add-on cardholders must independently meet the spending requirement.",
+    "A ₹1,000 MakeMyTrip hotel voucher is issued within 45 business days of the annual fee being paid and is valid for three months. Spending ₹3 lakh to have the fee waived therefore also gives up the voucher.",
+    "Three-month no-cost EMI is available on eligible MakeMyTrip flight, hotel and holiday-package bookings, but EMI transactions themselves earn no myCash.",
+    "No myCash is earned on EMI transactions, balance transfers, Personal Loan on Credit Card, reversed transactions, joining and annual fees, late-payment and other card fees, or commercial, business and other non-personal spending."
    ]
   },
   "eligibility": {
@@ -28769,7 +29675,31 @@
   "redemption": {
    "channels": [
     {
-     "channel": "MakeMyTrip bookings (hotel, flight, holiday, and other travel bookings)",
+     "channel": "MakeMyTrip flight bookings",
+     "point_value": 1
+    },
+    {
+     "channel": "MakeMyTrip hotel and homestay bookings",
+     "point_value": 1
+    },
+    {
+     "channel": "MakeMyTrip holiday packages",
+     "point_value": 1
+    },
+    {
+     "channel": "MakeMyTrip train bookings",
+     "point_value": 1
+    },
+    {
+     "channel": "MakeMyTrip bus bookings",
+     "point_value": 1
+    },
+    {
+     "channel": "MakeMyTrip cab bookings",
+     "point_value": 1
+    },
+    {
+     "channel": "MakeMyTrip visa services",
      "point_value": 1
     },
     {
@@ -28779,7 +29709,9 @@
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 0
+   "fee": 0,
+   "portal_name": "MakeMyTrip",
+   "notes": "1 myCash = ₹1. myCash is credited to the primary cardholder's linked MakeMyTrip account and is redeemed on the MakeMyTrip website, mobile site or app. Up to 100% of a booking's value can be paid using card-earned myCash. Card-earned myCash does not expire while the card remains active. Siddhant's redemption list is introduced with the word \"include\", so it is not an exhaustive list; the existing partner-voucher channel is retained rather than deleted on the strength of an omission."
   },
   "faqs": [
    {
@@ -28809,42 +29741,43 @@
   ],
   "pros_cons": {
    "pros": [
-    "Associated with the popular platform MakeMyTrip and is affordable at ₹999 per year, suitable even for those without a dedicated travel credit card",
-    "Low Forex markup charge of 0.99% beneficial for international purchases",
-    "Plenty of domestic airport lounge visits (8 per year)",
-    "Dual network cards issued (RuPay and Mastercard)",
-    "RuPay variant can be linked to UPI",
-    "myCash does not expire",
-    "myCash on MakeMyTrip bookings is capped at 1,000 myCash",
-    "BOGO movie tickets twice per month",
-    "Annual fee waiver possible with ₹3 lakh spend",
-    "₹1,000 MMT voucher on joining and also on annual fee realization if spend target not met"
+    "Unlimited 6% myCash on eligible MakeMyTrip hotel bookings",
+    "Unlimited 3% myCash on major MakeMyTrip travel categories",
+    "1% myCash on eligible UPI, fuel and international transactions",
+    "Low 0.99% forex markup",
+    "Up to 100% of a MakeMyTrip booking can be paid using myCash.",
+    "Card-earned myCash does not expire while the card remains active.",
+    "Mastercard and RuPay cards are issued together.",
+    "The RuPay variant can be linked to UPI, and eligible merchant UPI transactions earn 1% myCash.",
+    "Up to eight domestic and one international lounge visit annually",
+    "₹1,000 renewal hotel voucher offsets the ₹999 annual fee when the fee is paid."
    ],
    "cons": [
-    "Limited to the ecosystem of MakeMyTrip; those who do not book through this platform shall find no use for the card",
-    "International lounge visits limited to just one per year",
-    "Lounge access only valid for primary cardholder, not add-on cardholders",
-    "No fuel surcharge waiver",
-    "No insurance benefits",
-    "Low reward rate of 1% on non-MMT spends",
-    "Co-branded cards may be exempt from ICICI Bank platform offers on Amazon/Flipkart"
+    "Rewards are restricted to the MakeMyTrip ecosystem and cannot be converted into cash or statement credit.",
+    "Domestic lounge access requires ₹75,000 spending in the preceding spend quarter.",
+    "Movie benefits require a separate ₹25,000 quarterly-spending qualification.",
+    "The ₹999 annual fee requires ₹3 lakh annual spending for waiver.",
+    "Waiving the annual fee also means losing the ₹1,000 renewal hotel voucher.",
+    "International lounge visits are limited to one per year.",
+    "Lounge access is for the primary cardholder only; add-on cardholders are not eligible.",
+    "No card-specific fuel-surcharge waiver, and a single fuel transaction above ₹10,000 attracts a 1% fee.",
+    "Only 1% myCash on spending outside MakeMyTrip.",
+    "No insurance cover is bundled with the card.",
+    "Co-branded cards may be excluded from ICICI Bank platform offers on Amazon and Flipkart."
    ],
    "best_for": "Frequent travelers who book through MakeMyTrip for flights, hotels, cabs, buses, and holidays",
    "not_for": "Those who do not use MakeMyTrip for travel bookings"
   },
   "highlights": [
+   "6% myCash on eligible MakeMyTrip hotel bookings",
+   "3% myCash on eligible MakeMyTrip flights, holiday packages, buses and cabs",
+   "1% myCash on other eligible domestic, international and UPI spending",
+   "0.99% forex markup",
+   "Up to eight domestic and one international lounge visit per year",
    "Dual card issuance: one RuPay and one Mastercard",
-   "6% reward rate on MMT hotel bookings (12 myCash per ₹200)",
-   "3% reward rate on MMT flight, cab, bus, and holiday bookings",
-   "Low Forex markup of 0.99% vs industry standard 3-3.5%",
-   "8 complimentary domestic lounge visits per year",
-   "1 complimentary international lounge visit per year",
-   "BOGO movie tickets on BookMyShow/Inox twice per month",
-   "₹1,000 MakeMyTrip welcome voucher",
-   "Complimentary MMTBLACK Gold Membership",
-   "myCash never expires",
-   "RuPay card can be linked to UPI",
-   "Annual fee waiver on ₹3 lakh spend"
+   "myCash never expires while the card remains active",
+   "Annual fee waiver on ₹3 lakh of annual spend",
+   "Complimentary MMTBLACK Gold Membership"
   ],
   "similar_cards": [
    {
@@ -28862,6 +29795,64 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": null,
+   "annual_fee": 999,
+   "annual_fee_waiver_spend": 300000,
+   "forex_markup_pct": 0.99,
+   "fuel_surcharge": "No card-specific fuel-surcharge waiver is established. A fuel transaction over ₹10,000 attracts a 1% fee.",
+   "cash_advance": "2.5% of the amount withdrawn, subject to a minimum of ₹500. Finance charges apply from the withdrawal date.",
+   "other_lines": [
+    {
+     "label": "Dynamic currency conversion (DCC)",
+     "value": "0.99% on INR transactions at an international location or with an overseas-registered merchant. Refunds also attract the applicable DCC fee."
+    },
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% of the transaction amount"
+    },
+    {
+     "label": "Fuel (MCCs 1361, 5172, 5541, 5542, 5983, 9752, 5555, 3851)",
+     "value": "1% when an individual fuel transaction exceeds ₹10,000"
+    },
+    {
+     "label": "Utilities (MCCs 4899, 4900, 4901, 4814, 4821)",
+     "value": "1% when an individual transaction exceeds ₹50,000"
+    },
+    {
+     "label": "Transportation (MCCs 4111, 4112, 4131, 4784)",
+     "value": "1% when an individual transaction exceeds ₹50,000"
+    },
+    {
+     "label": "Third-party education payments (MCCs 8211, 8220, 8241, 8244, 8249, 8299, 8493, 8494, 7911)",
+     "value": "1% of the transaction amount"
+    },
+    {
+     "label": "Online skill-based gaming (MCC 5816)",
+     "value": "2% of the transaction amount"
+    },
+    {
+     "label": "Wallet loads (MCC 6540)",
+     "value": "1% on transactions of ₹5,000 or more"
+    },
+    {
+     "label": "Railway bookings",
+     "value": "1.8% for internet transactions and 2.5% for other bookings"
+    },
+    {
+     "label": "Instant EMI processing",
+     "value": "2.99% of the transaction value, capped at ₹299 plus GST. Campaign-specific charges may differ."
+    },
+    {
+     "label": "EMI on Call processing",
+     "value": "Up to 2% of the transaction value"
+    },
+    {
+     "label": "EMI pre-closure",
+     "value": "Up to 3% of the outstanding principal, along with applicable unbilled interest"
+    }
+   ]
   }
  },
  "icici_bank_times_black_icici_bank": {
@@ -31628,6 +32619,18 @@
    "partner_offers": null,
    "travel_memberships": [
     "Access to more than 900 hotels worldwide with luxury benefits like room upgrades, in-room WiFi, VIP status, continental breakfast, 3 PM check out"
+   ],
+   "summary": [
+    "The 10 Reward Points per ₹200 rate also covers spends made abroad, from the first eligible transaction. The app cannot tell where in the world a card is being used, so it shows this card at its standard rate on an international purchase.",
+    "Eligible birthday spends earn the same 10 Reward Points per ₹200. The app does not know your birthday, so it shows the standard rate on that day.",
+    "Hotels booked through the IDFC FIRST ecosystem earn 20% bonus Reward Points and flights earn 10% bonus, on top of the rate above. The same stay or ticket booked anywhere else earns no bonus.",
+    "Insurance, utility, railway and FASTag spends earn 1 Reward Point per ₹200 - the lowest rate on this card.",
+    "Both the complimentary domestic and the complimentary international lounge visit are unlocked by ₹20,000 of eligible spending, and each is capped at one visit per quarter.",
+    "The complimentary golf round or lesson needs ₹20,000 of eligible spending in a billing cycle and is capped at one session per quarter.",
+    "₹20,000 spent in a calendar month unlocks the Buy 1 Get 1 movie benefit for the following month, up to 2 bookings a month with the discount on the second ticket capped at ₹250.",
+    "Reward Points are earned only on eligible spending up to your credit limit during the billing cycle.",
+    "Reward Points are valid for 24 months from the date they are credited.",
+    "Source: IDFC FIRST Bank's published terms for the FIRST Wealth Credit Card."
    ]
   },
   "eligibility": {
@@ -31642,13 +32645,18 @@
   "redemption": {
    "channels": [
     {
-     "channel": "Poshvine reward portal",
+     "channel": "IDFC FIRST Rewards - online purchases, in-store purchases, gift vouchers and other eligible options",
+     "point_value": 0.25
+    },
+    {
+     "channel": "IDFC FIRST Rewards - flight and hotel bookings",
      "point_value": 0.25
     }
    ],
-   "expiry_months": null,
+   "expiry_months": 24,
    "min_points": null,
-   "fee": 99
+   "fee": 99,
+   "notes": "1 Reward Point is worth ₹0.25 however you redeem it, including flights and hotels booked on the IDFC FIRST Rewards platform. A fee of ₹99 plus GST applies to each redemption transaction. Points are valid for 24 months from the date they are credited."
   },
   "faqs": [
    {
@@ -31674,35 +32682,55 @@
   ],
   "pros_cons": {
    "pros": [
-    "Lifetime-free card without any annual charges or fees",
-    "Complimentary welcome voucher worth 500",
-    "Low interest rate (0.75% to 3.5%) and low foreign currency markup (1.5%)",
-    "Complimentary domestic and international airport lounge access",
-    "Complimentary golf rounds",
-    "Up to 2 free movie tickets every month via District app",
-    "Air accident coverage worth 1 crore",
-    "Reward points never expire"
+    "₹0 joining & annual fee",
+    "Lifetime Free Visa Infinite card",
+    "10X rewards on Dining, Travel & International spends",
+    "10X rewards on birthday spends",
+    "1.25% effective value on 10X categories",
+    "20% bonus Reward Points on eligible hotel bookings",
+    "10% bonus Reward Points on eligible flight bookings",
+    "1 domestic + 1 international complimentary airport lounge visit per quarter",
+    "1 complimentary golf session per quarter",
+    "Buy 1 Get 1 movie tickets twice per month",
+    "1.5% forex markup",
+    "₹1 crore air accident cover",
+    "Travel insurance benefits",
+    "Complimentary roadside assistance up to ₹1,399",
+    "Up to 20% dining discounts across participating restaurants",
+    "Up to 15% health & wellness discounts",
+    "50+ in-app online offers",
+    "Visa Infinite airport, concierge and hotel benefits",
+    "₹500 welcome vouchers on ₹5,000 spending within 30 days — subject to applicable offer",
+    "5% cashback up to ₹1,000 on first eligible EMI conversion — subject to applicable offer"
    ],
    "cons": [
-    "The reward rate is mediocre with one reward point equaling 0.25",
-    "Lounge access requires 20000 monthly spend to unlock"
+    "10X rewards are worth 1.25% at the standard ₹0.25/point redemption value",
+    "Regular spends earn only 0.375% effective value",
+    "Insurance, utilities, railway and FASTag earn only 0.125% effective value",
+    "₹20,000 qualifying spend is required for lounge access",
+    "₹20,000 spending is required to unlock the movie benefit",
+    "₹20,000 spending is required for the golf benefit",
+    "₹99 + GST reward redemption fee",
+    "Reward Points expire after 24 months",
+    "Reward earning is restricted by the applicable credit-limit/billing-cycle cap"
    ],
    "best_for": "Movies, Travel, Shopping",
    "not_for": null
   },
   "highlights": [
-   "Lifetime free card with zero annual and joining fees",
-   "10X Reward Points on spends above 20000 and on birthday",
-   "Buy One Get One on movie tickets via District app (2 free tickets/month)",
-   "1 complimentary domestic and international airport lounge access per quarter",
-   "4 complimentary railway lounge access per quarter",
-   "1 complimentary golf round per month on spending 20000",
-   "Air accident insurance cover worth 1 crore",
-   "Low forex markup of 1.5%",
-   "Low interest rate of 0.75% to 3.5% per month",
-   "Reward points never expire",
-   "Access to 900+ hotels worldwide with luxury benefits",
-   "Concierge service"
+   "10X Reward Points on Dining, Travel & International spends",
+   "10X Reward Points on birthday spends",
+   "3X Reward Points on other eligible spends",
+   "1 complimentary domestic airport lounge visit per quarter",
+   "1 complimentary international airport lounge visit per quarter",
+   "1 complimentary golf round / lesson per quarter",
+   "Buy 1 Get 1 movie ticket",
+   "1.5% forex markup",
+   "Travel insurance benefits",
+   "₹1 crore air accident cover",
+   "Complimentary roadside assistance up to ₹1,399",
+   "Visa Infinite airport meet & greet, concierge and Luxury Hotel Collection access",
+   "Lifetime Free card"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -31711,6 +32739,41 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 0,
+   "annual_fee": 0,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 1.5,
+   "fuel_surcharge": null,
+   "cash_advance": "₹199 + GST per transaction",
+   "late_payment_slabs": [],
+   "other_lines": [
+    {
+     "label": "Rent payments",
+     "value": "1% + GST per transaction"
+    },
+    {
+     "label": "Education through third-party websites or apps",
+     "value": "1% + GST per transaction"
+    },
+    {
+     "label": "FASTag",
+     "value": "1% + GST once cumulative spending crosses the applicable threshold"
+    },
+    {
+     "label": "Railway",
+     "value": "1% + GST once cumulative spending crosses the applicable threshold"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% + GST once cumulative spending crosses the applicable threshold"
+    },
+    {
+     "label": "Reward redemption",
+     "value": "₹99 + GST per redemption transaction"
+    }
+   ]
   }
  },
  "idfc_first_bank_wow_black": {
@@ -32952,7 +34015,16 @@
      "frequency": null
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The extra 20% off, capped at Rs. 500, applies only when the booking is made in the EazyDiner app, the restaurant is enrolled in the offer, and the bill is paid with this card through PayEazy.",
+    "Insurance, rent, utility and government spends earn a reduced 0.7 Reward Points per Rs. 100 instead of 2 Reward Points per Rs. 100, which is 0.14% in value.",
+    "Cardholders earn 2X EazyPoints on eligible EazyDiner table bookings made through the Prime ecosystem. EazyPoints are a separate currency from the IndusInd Reward Points earned on card spends, they are spent inside EazyDiner on eligible dining, hotel and experience redemptions, and no rupee value is published for one, so they are not counted in this card's reward rate.",
+    "The Buy 1 Get 1 movie offer runs through BookMyShow, is limited to one booking a month, caps the free second ticket at Rs. 200, and adds Rs. 50 off when the food and beverage option is selected.",
+    "IndusInd charges 1% plus GST on rent paid through third-party merchants, and on cumulative spends in a statement cycle above Rs. 25,000 on utilities, Rs. 20,000 on wallet loads, Rs. 45,000 on education paid through third-party websites or apps, and Rs. 50,000 on fuel.",
+    "Dynamic Currency Conversion adds 1% plus GST on top of the 3.5% foreign currency markup.",
+    "Source: EazyDiner IndusInd Platinum Credit Card, validated document supplied by Siddhant, September 2026. The document carries no issuer URL, so none is cited."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -32966,13 +34038,26 @@
   "redemption": {
    "channels": [
     {
-     "channel": "EazyDiner App",
-     "point_value": null
+     "channel": "Instant redemption on restaurant bills via PayEazy",
+     "point_value": 0.2
+    },
+    {
+     "channel": "EazyDiner catalogue - dining",
+     "point_value": 0.2
+    },
+    {
+     "channel": "EazyDiner catalogue - hotel stays",
+     "point_value": 0.2
+    },
+    {
+     "channel": "EazyDiner catalogue - restaurant experiences",
+     "point_value": 0.2
     }
    ],
    "expiry_months": 12,
    "min_points": null,
-   "fee": 100
+   "fee": 0,
+   "notes": "1 Reward Point is worth Rs. 0.20. The primary use is instant redemption against eligible restaurant bills through PayEazy; Reward Points can also be spent in the EazyDiner catalogue on dining, hotel stays and restaurant experiences. There is no reward redemption fee on the EazyDiner Platinum. Reward Points expire at the end of each card anniversary year. EazyPoints earned inside EazyDiner are a separate currency from IndusInd Reward Points and can only be redeemed within EazyDiner."
   },
   "faqs": [
    {
@@ -32986,25 +34071,39 @@
   ],
   "pros_cons": {
    "pros": [
-    "Being a lifetime free credit card, this card would be most suited for youngsters and people who are looking for a card with a zero joining fee.",
-    "Cardholders would enjoy several dining benefits with this card, which will further boost their savings."
+    "₹0 joining & annual fee",
+    "Extra 20% off up to ₹500, 3 times per month on EazyDiner",
+    "25%–50% guaranteed Prime discounts at 2,000+ restaurants",
+    "2,000 bonus Reward Points every 90 days on ₹30,000 eligible spends",
+    "Prime membership renews for another 3 months on the same milestone",
+    "BOGO movie ticket every month",
+    "1% fuel surcharge waiver",
+    "₹0 reward redemption fee for EazyDiner Platinum"
    ],
    "cons": [
-    "Apart from dining benefits, there are no other benefits associated with this card, such as travel benefits."
+    "The card's real value is heavily dependent on using EazyDiner",
+    "₹30,000 every 90 days is required to keep Prime membership renewed",
+    "Dining spends do not count toward the ₹30,000 milestone",
+    "Reward Points expire at the end of each card anniversary year",
+    "3.5% forex markup",
+    "The extra 20% dining discount requires payment through PayEazy",
+    "20% discount is capped at ₹500 and limited to 3 uses per month",
+    "Prime discounts and card discounts are ecosystem-dependent"
    ],
    "best_for": "Youngsters and people who prefer to dine out frequently using EazyDiner",
    "not_for": "Users looking for travel benefits, lounge access, or insurance coverage"
   },
   "highlights": [
-   "Lifetime free credit card with zero joining and renewal fees",
-   "25% discount on dining at EazyDiner PRIME + PayEazy-enabled restaurants",
-   "Additional 20% instant discount up to Rs. 500 via PayEazy on EazyDiner app",
-   "3-month EazyDiner Prime Membership worth Rs. 1,095 as welcome benefit",
-   "500 bonus EazyPoints on joining",
-   "2 Reward Points per Rs. 100 spent",
-   "2X EazyPoints on dining spends",
-   "Milestone benefit: 2000 Reward Points and Prime membership renewal on spending Rs. 30,000 every 90 days",
-   "Contactless payments up to Rs. 5,000"
+   "Up to 2 Reward Points per ₹100 on eligible spends",
+   "Extra 20% off up to ₹500, 3 times per calendar month, on EazyDiner",
+   "25%–50% guaranteed discounts through EazyDiner Prime",
+   "3 months complimentary EazyDiner Prime membership",
+   "2,000 bonus Reward Points on ₹30,000 eligible spends every 90 days",
+   "Buy 1 Get 1 movie ticket every month",
+   "1% fuel surcharge waiver",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee",
+   "Lifetime Free card"
   ],
   "similar_cards": [
    {
@@ -33018,6 +34117,43 @@
    "email": null,
    "app_name": "EazyDiner",
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 0,
+   "annual_fee": 0,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel surcharge waiver. IndusInd separately charges 1% + GST on cumulative fuel spends above Rs. 50,000 per statement cycle.",
+   "other_lines": [
+    {
+     "label": "Foreign currency markup",
+     "value": "3.5%"
+    },
+    {
+     "label": "Dynamic Currency Conversion",
+     "value": "1% + GST"
+    },
+    {
+     "label": "Rent via third-party merchants",
+     "value": "1% + GST per transaction"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% + GST on cumulative spends above Rs. 25,000 per statement cycle"
+    },
+    {
+     "label": "Wallet loading",
+     "value": "1% + GST on cumulative spends above Rs. 20,000 per statement cycle"
+    },
+    {
+     "label": "Education via third-party websites or apps",
+     "value": "1% + GST on cumulative spends above Rs. 45,000 per statement cycle"
+    },
+    {
+     "label": "Fuel",
+     "value": "1% + GST on cumulative fuel spends above Rs. 50,000 per statement cycle"
+    }
+   ]
   }
  },
  "indusind_bank_indus_solitaire": {
@@ -48837,7 +49973,8 @@
     "Utility and insurance bills paid outside the PhonePe app earn nothing at all on this card.",
     "Since 1 July 2026, Scan & Pay or UPI transactions made outside PhonePe earn no Reward Points.",
     "No Reward Points are earned on any transaction below ₹100.",
-    "Source: SBI Card's terms for this card — https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-select-ekit.pdf"
+    "Source: SBI Card's terms for this card — https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-select-ekit.pdf",
+    "Reward Points are counted in whole Rs 100 blocks, so anything above the last full Rs 100 of a bill earns nothing: a Rs 199 spend earns exactly the same points as a Rs 100 spend."
    ]
   },
   "eligibility": {
@@ -48862,7 +49999,8 @@
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 0
+   "fee": 99,
+   "notes": "1 Reward Point = Rs 1. A Rs 99 fee applies on every reward redemption."
   },
   "faqs": [
    {
@@ -48892,27 +50030,29 @@
   ],
   "pros_cons": {
    "pros": [
-    "The annual fee waiver is set at a spend of 3 lakh, which is quite reasonable considering all the benefits and features this card offers.",
-    "This card is extremely useful for everyday bills and insurance payments, which can be made via PhonePe. Such categories are not usually rewarded by credit cards."
+    "10% rewards on eligible PhonePe spends",
+    "5% rewards on eligible online spends",
+    "1 Reward Point = ₹1",
+    "₹5,000 Yatra voucher on ₹5 lakh annual spends",
+    "4 complimentary domestic lounge visits per year without any spend criteria",
+    "1% fuel surcharge waiver"
    ],
    "cons": [
-    "Instead of the complimentary Priority Pass membership, it would have been more useful if the card offered access to international airport lounges.",
-    "There are no renewal fee benefits offered with this card."
-   ],
-   "best_for": "Shopping, Utility Bills, PhonePe users for bill payments and UPI transactions",
-   "not_for": "International travelers needing international lounge access"
+    "10% PhonePe reward rate is subject to monthly Reward Point caps",
+    "5% online reward rate is also subject to the revised monthly caps",
+    "3.5% forex markup",
+    "₹1,499 annual fee",
+    "Priority Pass membership is complimentary, but individual international lounge visits still carry applicable charges",
+    "A 2.55% convenience fee reduces the effective 10% PhonePe reward to 7.45%.",
+    "Pincode B2C shopping app has been wound down, so Pincode-linked accelerated rewards may no longer be usable"
+   ]
   },
   "highlights": [
-   "10 Reward Points per ₹100 on recharges, utilities, bill payments, insurance and travel — only when paid inside the PhonePe app",
-   "5% rewards on online spends",
-   "1% rewards on all other spends including UPI Scan and Pay",
-   "Potential savings of up to 24000 per year from accelerated rewards",
-   "Free domestic airport lounge access (4 per year, no minimum spend)",
-   "Complimentary Priority Pass membership for first two years",
-   "1500 PhonePe Gift Card as welcome benefit offsets joining fee",
-   "Annual fee waiver on 3 lakh spend",
-   "Yatra voucher worth 5000 on 5 lakh spend",
-   "Rewards everyday categories like utility bills and insurance not usually rewarded by credit cards"
+   "10% Rewards on PhonePe",
+   "5% Rewards on Online Spends",
+   "Travel & Lounge Benefits",
+   "₹1,499 Joining Fee",
+   "₹1,499 Annual Fee"
   ],
   "similar_cards": [
    {
@@ -48930,6 +50070,44 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": 300000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% waiver on fuel transactions of Rs 500 to Rs 4,000, up to Rs 250 per statement cycle",
+   "cash_advance": "2.5% of the amount, minimum Rs 500",
+   "other_lines": [
+    {
+     "label": "International transactions billed in INR (dynamic currency conversion)",
+     "value": "3.5% on transactions of Rs 1,000 or more"
+    },
+    {
+     "label": "Rent payments",
+     "value": "Rs 199 per transaction"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% if total utility payments exceed Rs 50,000 in a billing cycle"
+    },
+    {
+     "label": "Education payments through third-party apps",
+     "value": "1% per transaction"
+    },
+    {
+     "label": "Wallet loads",
+     "value": "1% on every transaction above Rs 1,000"
+    },
+    {
+     "label": "Reward redemption",
+     "value": "Rs 99"
+    },
+    {
+     "label": "Priority Pass lounge visits",
+     "value": "Up to US$27 per visit plus applicable taxes, where complimentary access does not apply"
+    }
+   ]
   }
  },
  "sbi_card_reliance_sbi_card_prime": {
@@ -50756,7 +51934,12 @@
    "concierge": null,
    "partner_offers": null,
    "travel_memberships": null,
-   "zero_liability_protection": "Cardholder not liable for unauthorized/fraudulent transactions if card reported lost/stolen to issuer in timely manner"
+   "zero_liability_protection": "Cardholder not liable for unauthorized/fraudulent transactions if card reported lost/stolen to issuer in timely manner",
+   "summary": [
+    "10X Reward Points are earned only when the transaction is routed through the partner brand's own website or app and settles on SBI Card's registered merchant identifier; Cleartrip and Yatra bookings made through affiliate channels are not eligible.",
+    "Fuel transactions earn no Reward Points on this card. The 1% fuel surcharge waiver is a separate benefit and still applies on transactions between ₹500 and ₹3,000, up to ₹100 per statement cycle.",
+    "Cash advances, balance transfers, Encash transactions and Flexipay or EMI conversions earn no Reward Points, and SBI Card's Reward Point terms exclude further transaction types beyond the ones listed on this card."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 20000,
@@ -50773,15 +51956,13 @@
     {
      "channel": "SBI Card Rewards Catalog (Products & Gift Vouchers)",
      "point_value": 0.25
-    },
-    {
-     "channel": "Statement Credit",
-     "point_value": 0.25
     }
    ],
    "expiry_months": 24,
    "min_points": null,
-   "fee": 99
+   "fee": 99,
+   "portal_name": "SBI Card Rewards Catalogue",
+   "notes": "Reward Points are redeemed through the SBI Card Rewards Catalogue for gift vouchers, merchandise and other available rewards. The effective value depends on the particular redemption option selected from the catalogue; the published rate is 1 Reward Point = ₹0.25. A fee of ₹99 plus applicable taxes applies to redemption requests for applicable physical products, physical vouchers and statement-fee-credit redemptions. Accelerated online earning is subject to a 10,000 Reward Point monthly cap; after the cap, eligible spending continues to earn the standard 1 Reward Point per ₹100. Points are valid for 24 months."
   },
   "faqs": [
    {
@@ -50807,17 +51988,24 @@
   ],
   "pros_cons": {
    "pros": [
-    "Welcome voucher worth ₹500 from Amazon",
-    "Vouchers worth ₹4,000 on achieving milestone spends",
-    "Excellent reward rate on several online shopping brands, great for frequent online shoppers",
-    "Affordable annual fee of ₹499",
-    "Annual fee can be waived easily by spending ₹1 lakh in the previous year"
+    "Annual fee waived at ₹1 lakh annual spends",
+    "10X Reward Points on selected online partner brands",
+    "5X Reward Points on other eligible online spends",
+    "Up to ₹4,000 total annual milestone vouchers",
+    "1% fuel surcharge waiver",
+    "Strong fit for online-heavy spending",
+    "Welcome voucher worth ₹500 from Amazon"
    ],
    "cons": [
+    "10X eligibility depends on the correct merchant identifier/MID",
+    "Base reward rate is only 1 Reward Point per ₹100",
+    "Reward redemption value varies by catalogue item",
+    "3.5% forex markup",
+    "Reward redemption carries a ₹99 + applicable taxes fee for applicable redemption requests",
+    "₹2 lakh annual online spending is required to unlock the second ₹2,000 voucher",
     "No domestic or international complimentary lounge access, not suitable for frequent travellers",
     "No travel benefits",
-    "No insurance benefits",
-    "Limited options for reward redemption"
+    "No insurance benefits"
    ],
    "best_for": "Average-income individuals who want to save on spending with a low annual fee card; frequent online shoppers who want accelerated reward points on online shopping",
    "not_for": "Frequent travellers who need lounge access, travel benefits, or insurance benefits"
@@ -50825,6 +52013,7 @@
   "highlights": [
    "10X Reward Points on popular partner brands including Apollo 24×7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, and Tata Cliq",
    "5X Reward Points on all other online spends including Amazon",
+   "1% fuel surcharge waiver on fuel transactions between ₹500 and ₹3,000, capped at ₹100 per statement cycle",
    "Amazon welcome gift voucher worth ₹500",
    "Up to ₹4,000 in ClearTrip/Yatra e-vouchers annually on meeting milestone spends",
    "Low annual fee of ₹499 with easy waiver on ₹1 lakh annual spend",
@@ -50851,6 +52040,51 @@
    "email": "customercare@sbicard.com",
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": 100000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% fuel surcharge waiver on eligible fuel transactions between ₹500 and ₹3,000. Maximum waiver ₹100 per statement cycle per card account.",
+   "cash_advance": "Applicable transaction fee; SBI states the fee is subject to change.",
+   "other_lines": [
+    {
+     "label": "Dynamic Currency Conversion",
+     "value": "3.5% markup on eligible DCC transactions of ₹1,000 or more"
+    },
+    {
+     "label": "Rent payments",
+     "value": "₹199 processing fee per transaction"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% of total utility payments if cumulative utility payments exceed ₹50,000 in a billing cycle"
+    },
+    {
+     "label": "Cash payment at SBI branches",
+     "value": "₹250 + applicable taxes"
+    },
+    {
+     "label": "Overlimit",
+     "value": "2.5% of the overlimit amount or ₹600, whichever is higher, charged once per billing cycle"
+    },
+    {
+     "label": "Payment dishonour",
+     "value": "2% of payment amount, minimum ₹500"
+    },
+    {
+     "label": "Reward redemption",
+     "value": "₹99 + applicable taxes for applicable physical products, physical vouchers and statement-fee-credit redemptions"
+    },
+    {
+     "label": "Card replacement",
+     "value": "₹100–₹250"
+    },
+    {
+     "label": "Cheque payment",
+     "value": "₹200 + applicable taxes"
+    }
+   ]
   }
  },
  "sbi_card_simplysave_upi_rupay": {
@@ -50871,7 +52105,13 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 10X accelerated Reward Points are capped at 5,000 Reward Points per month across Dining, Movies, Departmental Stores and Grocery combined, not 5,000 per category.",
+    "Whether a departmental store or grocery purchase earns the accelerated rate depends on the MCC the merchant is identified under, so some stores in those categories will earn only the base rate.",
+    "Cash advances and ATM withdrawals, balance transfers, Flexipay and EMI transactions, Encash and EasyMoney transactions, and Points + Pay redemption transactions do not earn Reward Points.",
+    "Fuel transactions earn no Reward Points, but the 1% fuel surcharge waiver still applies on fuel transactions between Rs. 500 and Rs. 3,000, up to a maximum of Rs. 100 per statement cycle per card account."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 20000,
@@ -50885,26 +52125,16 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "Gift Vouchers via SBI Card website or mobile app",
-     "point_value": 0.25
-    },
-    {
-     "channel": "Against card outstanding amount via Internet Banking",
-     "point_value": 0.25
-    },
-    {
-     "channel": "Products from catalog",
-     "point_value": 0.25
-    },
-    {
-     "channel": "Cashback against statement",
-     "point_value": 0.25
-    }
+    "Cashback against statement",
+    "Against card outstanding amount via Internet Banking",
+    "Gift Vouchers via SBI Card website or mobile app",
+    "Products from catalog"
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 99
+   "fee": 99,
+   "portal_name": "SBI Rewards Catalogue",
+   "notes": "4 Reward Points = Rs. 1 on every channel. Further redemption options are available through the SBI Rewards Catalogue. Redemption requests attract a fee of Rs. 99 plus applicable taxes."
   },
   "faqs": [
    {
@@ -50950,25 +52180,38 @@
   ],
   "pros_cons": {
    "pros": [
-    "Low joining fee of 499",
-    "Great reward points on spends with this card"
+    "Rs. 499 + GST annual fee",
+    "Annual fee waived at Rs. 1 lakh annual spends",
+    "10X rewards on Dining, Movies, Departmental Stores & Grocery",
+    "1.67% effective value on 10X categories",
+    "2,000 bonus Reward Points on Rs. 2,000 spending within first 60 days",
+    "Rs. 500 effective value from the first-60-day bonus",
+    "1% fuel surcharge waiver",
+    "4 Reward Points = Rs. 1",
+    "Simple reward structure focused on everyday categories"
    ],
    "cons": [
-    "No international or domestic lounge access",
-    "No insurance benefits",
-    "Reward redemptions chargeable at Rs. 99"
+    "10X rewards are capped at 5,000 accelerated Reward Points per month",
+    "10X accelerated rewards are restricted to four categories",
+    "Base reward rate is only 0.17% effective value",
+    "Fuel transactions do not earn Reward Points",
+    "Certain departmental-store and grocery merchants can be excluded from accelerated rewards based on MCC identification",
+    "Rs. 1 lakh annual spending is required for fee waiver",
+    "3.5% forex markup",
+    "Reward redemption carries a Rs. 99 + applicable taxes fee for applicable redemption requests",
+    "No domestic or international lounge access",
+    "No insurance benefits"
    ],
    "best_for": "First-time cardholders, beginners seeking entry-level credit card, individuals who spend on grocery, movies, dining, and departmental stores",
    "not_for": "Those who prefer online shopping over offline purchases, those seeking lounge access or insurance benefits"
   },
   "highlights": [
-   "Entry-level credit card ideal for first-time cardholders",
-   "10X Reward Points on grocery, movies, dining, and departmental store spends",
-   "UPI enabled - can be linked to Google Pay, PhonePe, Paytm",
-   "Annual fee waiver on spending Rs. 1 lakh",
-   "Welcome benefit of 2000 bonus reward points worth Rs. 500",
+   "10X Reward Points on Dining, Movies, Departmental Stores & Grocery",
+   "1 Reward Point per Rs. 150 on other eligible spends",
+   "2,000 bonus Reward Points on Rs. 2,000 spends within the first 60 days",
    "1% fuel surcharge waiver",
-   "Free add-on cards for family members"
+   "Rs. 499 + GST annual fee",
+   "UPI enabled - can be linked to Google Pay, PhonePe, Paytm"
   ],
   "similar_cards": [
    {
@@ -50987,6 +52230,51 @@
    "app_name": "YONO by SBI",
    "chat": null,
    "sms_service": "SMS INCR XXXX to 5676791"
+  },
+  "fees": {
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": 100000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% surcharge waiver on fuel transactions between Rs. 500 and Rs. 3,000; maximum waiver Rs. 100 per statement cycle per card account",
+   "cash_advance": "Applicable transaction fee under SBI Card terms",
+   "other_lines": [
+    {
+     "label": "Dynamic Currency Conversion",
+     "value": "3.5% markup on eligible DCC transactions"
+    },
+    {
+     "label": "Rent payments",
+     "value": "Rs. 199 processing fee per transaction"
+    },
+    {
+     "label": "Utility payments",
+     "value": "1% of total utility payments if cumulative utility payments exceed Rs. 50,000 per billing cycle"
+    },
+    {
+     "label": "Cash payment at SBI branches",
+     "value": "Rs. 250 + applicable taxes"
+    },
+    {
+     "label": "Overlimit",
+     "value": "2.5% of the overlimit amount or Rs. 600, whichever is higher, once per billing cycle"
+    },
+    {
+     "label": "Payment dishonour",
+     "value": "2% of payment amount, minimum Rs. 500"
+    },
+    {
+     "label": "Reward redemption",
+     "value": "Rs. 99 + applicable taxes for applicable redemption requests"
+    },
+    {
+     "label": "Card replacement",
+     "value": "Rs. 100 - Rs. 250"
+    },
+    {
+     "label": "Cheque payment",
+     "value": "Rs. 200 + applicable taxes"
+    }
+   ]
   }
  },
  "sbi_card_unnati": {
@@ -51497,7 +52785,17 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The extra up to 5% back is a NeuPass benefit rather than a card benefit. It applies only to eligible category purchases made through the Tata Neu app or website, and the rate you actually get depends on your NeuPass tier and, for some brands, a separate brand badge or membership tier. Only the 2% is a guaranteed card benefit.",
+    "Monthly NeuCoin caps apply on the accelerated categories: 1,000 NeuCoins on grocery, and 2,000 NeuCoins each on insurance, on utility, and on telecom and cable. At 2% that is roughly ₹50,000 of grocery and ₹1,00,000 each of insurance, utility and telecom spend in a month.",
+    "On the RuPay variant, UPI spends earn 1% back capped at 500 NeuCoins per statement cycle, which is roughly ₹50,000 of UPI spend a cycle.",
+    "Card-earned NeuCoins are transferred to the linked NeuPass account within seven working days after the statement cycle, and fractional NeuCoins are rounded down to the nearest whole NeuCoin.",
+    "Extra charges apply on some spends: ₹199 plus applicable taxes per rent transaction; 1% of the entire utility payment once utility spends cross ₹50,000 in a billing cycle; 1% on third-party education payments, though direct payments through a school or college website or POS machine are exempt; and 1% on every wallet-load transaction above ₹1,000.",
+    "Dynamic currency conversion costs 3.5% on any transaction of ₹1,000 or more billed in rupees at an international merchant or at an India-based merchant registered overseas, and neither that fee nor the forex markup is reversed when a transaction is refunded.",
+    "No NeuCoins are earned on gift-card, prepaid-card or voucher purchases, on transactions made before you enrol in the reward programme, on Flexipay transactions, on cash advances, or on payments of card fees, other charges and outstanding balances.",
+    "Source: Tata Neu Plus SBI Card terms and conditions, as summarised in the validator's review. The review supplies no URL, so none is stamped here."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -51510,14 +52808,14 @@
   },
   "redemption": {
    "channels": [
-    {
-     "channel": "NeuPass Account",
-     "point_value": 1
-    }
+    "Tata Pay",
+    "Use my NeuCoins",
+    "Partner stores"
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": null
+   "fee": null,
+   "notes": "1 NeuCoin = ₹1 in savings. Tata Pay covers Tata Neu, Air India Express, BigBasket, Croma and IHCL Hotels. 'Use my NeuCoins' covers Tata CLiQ and Tata 1mg, and through Tata Neu also Titan and Tanishq. Partner stores are Croma, IHCL Hotels and Westside. NeuCoins cannot be converted into cash, statement credit or cash advances. The card-specific terms state no minimum redemption and no redemption fee, and do not state an expiry period; expiry is governed by the applicable NeuPass terms."
   },
   "faqs": [
    {
@@ -51531,23 +52829,33 @@
   ],
   "pros_cons": {
    "pros": [
-    "Ideal card for beginners and Tata loyalists as it comes at a reasonable joining fee and offers great rewards on everyday purchases via Tata Neu"
+    "Up to 7% NeuCoin value back on eligible Tata Neu transactions",
+    "2% card reward at eligible partner Tata brands",
+    "Transparent 1 NeuCoin = ₹1 savings value",
+    "Low ₹499 joining and annual fee",
+    "Annual fee reversal on spending ₹1 lakh in the preceding year",
+    "Domestic lounge and fuel-surcharge benefits",
+    "Card-earned NeuCoins are automatically transferred to NeuPass"
    ],
    "cons": [
-    "Users will only be able to access domestic airport lounges on spends of ₹50,000 in the previous quarter"
+    "The additional NeuPass reward is only up to 5% and depends on the eligible category, Tata Neu route and current NeuPass rules.",
+    "Rewards are restricted to the Tata Neu ecosystem and cannot be converted into cash or statement credit.",
+    "Accelerated rewards depend on correct partner MID mapping.",
+    "A 3.5% forex and DCC fee makes the card unattractive for international spending.",
+    "Lounge access is spend-gated rather than unconditional."
    ],
    "best_for": "Travel, Shopping",
    "not_for": null
   },
   "highlights": [
-   "Up to 7% NeuCoins on select spends via Tata Neu",
-   "1% NeuCoins on UPI transactions (RuPay variant)",
+   "Up to 7% back as NeuCoins on select Tata Neu transactions",
+   "2% back on eligible non-EMI spends at Tata Neu and partner Tata brands",
    "499 NeuCoins as welcome benefit offsetting the joining fee",
-   "Low joining fee of ₹499 + GST",
-   "Complimentary domestic airport lounge access on quarterly spend of ₹50,000",
-   "Available on both Visa and RuPay networks",
-   "Annual fee waiver on spending ₹1 Lakh",
-   "1 NeuCoin = ₹1"
+   "₹499 joining fee",
+   "₹499 annual renewal fee",
+   "3.5% forex markup",
+   "4 domestic lounge visits per year, subject to quarterly spending",
+   "1% fuel-surcharge waiver"
   ],
   "similar_cards": [
    {
@@ -51561,6 +52869,40 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 499,
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": 100000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% waived on transactions of ₹500 to ₹4,000, capped at ₹250 per statement cycle",
+   "cash_advance": "2.5% of the amount withdrawn, minimum ₹500, with finance charges from the withdrawal date",
+   "other_lines": [
+    {
+     "label": "Rent payment",
+     "value": "₹199 plus applicable taxes per transaction (MCC 6513)"
+    },
+    {
+     "label": "Utility payment",
+     "value": "1% of the entire utility payment once cumulative utility spending crosses ₹50,000 in a billing cycle (MCC 4900)"
+    },
+    {
+     "label": "Third-party education payment",
+     "value": "1% of the transaction amount (MCCs 8211, 8220, 8241, 8244, 8249, 8299). Direct payments through a school or college website or POS machine do not attract this fee."
+    },
+    {
+     "label": "Wallet load",
+     "value": "1% on every wallet-load transaction exceeding ₹1,000 (MCCs 6540, 6541)"
+    },
+    {
+     "label": "Dynamic currency conversion",
+     "value": "3.5% on INR transactions of ₹1,000 or more at an international location or at an India-based merchant registered overseas. Not reversed on a refund."
+    },
+    {
+     "label": "Forex markup",
+     "value": "3.5% on the INR-converted transaction amount. Not reversed on a refund."
+    }
+   ]
   }
  },
  "sbi_card_tata_star_select": {
@@ -55341,6 +56683,134 @@
    "email": null,
    "app_name": null,
    "chat": null
+  }
+ },
+ "csb_bank_edge_plus": {
+  "benefits": null,
+  "eligibility": null,
+  "redemption": null,
+  "faqs": [],
+  "pros_cons": {
+   "pros": [
+    "₹0 joining & annual fee",
+    "10% cashback on specified shopping merchants",
+    "5% cashback on eligible travel merchants",
+    "1% cashback on other eligible spends",
+    "1% fuel surcharge waiver",
+    "₹0.20 per Jewel through Jupiter Flights, Jupiter Store, Brand Vouchers and Digital Gold"
+   ],
+   "cons": [
+    "₹500 merchant-level cap limits the 10% shopping cashback at individual merchants",
+    "Shopping cashback capped at ₹1,500 per statement cycle",
+    "Travel cashback capped at ₹1,000 per statement cycle",
+    "Cash / statement-credit redemption provides only ₹0.14 per Jewel",
+    "Jewels are locked and further earning is paused when the Minimum Amount Due remains unpaid"
+   ]
+  },
+  "highlights": [
+   "Up to 10% cashback on selected shopping merchants",
+   "5% cashback on eligible travel spends",
+   "1% cashback on other eligible spends",
+   "1% fuel surcharge waiver",
+   "₹0 Joining Fee",
+   "₹0 Annual Fee"
+  ],
+  "similar_cards": [],
+  "customer_service": null
+ },
+ "unity_small_finance_bank_roarbank": {
+  "highlights": [
+   "Up to 20% cashback in two user-selected categories every calendar month",
+   "2-in-1 card combining a credit card and Roarbank savings account",
+   "Up to 62 days’ interest-free credit",
+   "No joining, annual or renewal fee"
+  ],
+  "pros_cons": {
+   "pros": [
+    "Potentially exceptional 20% cashback rate on selected categories",
+    "Cashback applies to both savings-funded and credit-funded eligible transactions",
+    "Real cashback without reward-point conversion",
+    "No cashback redemption fee",
+    "No joining, annual or renewal fee",
+    "Eligible international transactions can earn category cashback",
+    "RuPay merchant-UPI support"
+   ],
+   "cons": [
+    "The advertised 20% is only a maximum; categories and actual rates change monthly",
+    "No guaranteed base cashback outside the selected categories",
+    "Categories must be manually selected again every month",
+    "₹2,500 is a shared calendar-month cap across all cashback categories",
+    "Broad and subjective anti-abuse provisions allow the bank to reject transactions it considers commercially implausible",
+    "No fuel-surcharge waiver",
+    "International cashback must be weighed against the 3.5% forex fee",
+    "Fuel, wallet and utility spends can attract an additional 1% fee after relatively low monthly spending",
+    "The bundled savings-account auto-debit structure is more complicated than a conventional standalone credit card"
+   ]
+  },
+  "benefits": {
+   "summary": [
+    "You must pick two cashback categories inside the Roarbank app every calendar month. The picks reset on the 1st, and any spend made before you have chosen earns nothing.",
+    "The bank decides which categories are on offer and what each one pays, and both can change from month to month. The options it has listed include grocery, fuel, restaurants, conveyance and entertainment, and 20% is the ceiling, not a standing rate.",
+    "Cashback is paid only when the transaction's own MCC matches a category you selected, so a shop that looks like a selected category but is coded differently pays nothing.",
+    "Once you have picked, the categories normally cannot be changed until the following month. Customer support may change one only if you have not yet transacted in it.",
+    "Total cashback is capped at ₹2,500 per calendar month across both selected categories, and anything earned above the cap is neither credited nor carried forward.",
+    "An international purchase earns cashback only if its own MCC matches a category you selected, and there is no separate rate for it, so weigh any cashback against the 3.5% foreign-currency fee.",
+    "Gift cards, prepaid cards and other stored-value instruments never earn cashback, and the bank applies that regardless of the merchant's MCC. Wallet and prepaid-instrument loads, credit and debit card top-ups, and any intermediary used to make them are excluded as well.",
+    "The bank can refuse cashback on any transaction it judges inconsistent with genuine retail use. Its own examples are a fuel bill larger than a standard vehicle tank could hold, a grocery or restaurant bill too large to be a single retail purchase, and a payment routed through a merchant without a genuine purchase behind it. The bank says this list is illustrative and not exhaustive.",
+    "Rent (MCC 6513) carries a 1% fee, with no minimum spend stated. Fuel, wallet-load and utility spends carry a 1% fee once your cumulative monthly spend inside each of those MCC groups passes ₹5,000, and the bank's own terms do not say whether that 1% applies only above ₹5,000, only to the transaction that crosses ₹5,000, or to the whole month's spend in that group.",
+    "If a purchase is refunded or reversed the cashback is taken back, and if you have already withdrawn it and your remaining cashback balance is short, the bank may debit the difference from your credit limit.",
+    "Merchant UPI transactions follow the same selected-category and MCC rules as card transactions, with no separate UPI rate and no UPI-specific cap. Non-merchant UPI transfers are funded only from the linked savings balance and cannot draw on the credit limit.",
+    "When the linked savings balance covers a purchase it is auto-debited immediately and only the shortfall draws on the credit limit, and the cashback rate is identical either way.",
+    "Source: Roarbank Credit Card Most Important Terms and Conditions - https://theunitybank.com/docs/roarbank/roarbank-credit-card-most-important-terms-and-conditions.pdf"
+   ]
+  },
+  "fees": {
+   "joining_fee": 0,
+   "annual_fee": 0,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "No fuel-surcharge waiver",
+   "cash_advance": "International ATM withdrawal from the savings balance: 2.5%. Domestic or international ATM withdrawal using the credit limit: 3.5%, with finance charges applying from the withdrawal date.",
+   "other_lines": [
+    {
+     "label": "Rent (MCC 6513)",
+     "value": "1% of the transaction amount"
+    },
+    {
+     "label": "Fuel (MCC 1361, 5172, 5541, 5542, 5983, 9752, 5555, 3851)",
+     "value": "1% on transactions exceeding cumulative monthly spending of ₹5,000 within the MCC group"
+    },
+    {
+     "label": "Wallet loads (MCC 6540, 6541)",
+     "value": "1% on transactions exceeding cumulative monthly spending of ₹5,000 within the MCC group"
+    },
+    {
+     "label": "Utilities (MCC 4899, 4900, 4901, 4814, 4821, 3887, 4897, 5416, 5417, 4812, 4813, 4815, 4896, 4902, 3886)",
+     "value": "1% on transactions exceeding cumulative monthly spending of ₹5,000 within the MCC group"
+    },
+    {
+     "label": "Standard EMI",
+     "value": "Minimum ₹2,000, transaction not older than 90 days, tenure 2 to 24 months. Processing fee nil. Interest 1% flat per month on the original principal. Foreclosure 2% of outstanding principal plus GST. Partial prepayment not permitted. Gold, jewellery, gambling, cash withdrawals and money transfers are ineligible."
+    },
+    {
+     "label": "Partner EMI",
+     "value": "Available on eligible purchases at participating merchants. Processing fee ₹300 plus GST, non-refundable. Interest 0.7397% to 0.8928% flat per month depending on tenure. Stated APR 16%. Foreclosure 2% of outstanding principal plus GST, and merchant-funded discounts or cashback may be recovered on voluntary foreclosure."
+    },
+    {
+     "label": "Credit-limit enhancement",
+     "value": "₹499, charged after a successful limit increase made with the cardholder's explicit consent"
+    },
+    {
+     "label": "Note on the 1% fees",
+     "value": "The MITC does not clarify whether the 1% fuel, wallet and utility fees apply only after the ₹5,000 threshold, to the transaction that crosses the threshold, or to the entire monthly category spend."
+    }
+   ]
+  },
+  "redemption": {
+   "channels": [
+    "Withdraw Cashback in the Roarbank app"
+   ],
+   "portal_name": "Roarbank app",
+   "notes": "Cashback is real money rather than points: ₹1 of cashback is worth ₹1. Withdraw it with Withdraw Cashback in the Roarbank app and it is credited to your Roarbank card balance. The minimum withdrawal is ₹250 and there is no redemption fee. Earning is capped at ₹2,500 per calendar month, and anything above that is neither credited nor carried forward. No fixed validity period is specified, but any unredeemed cashback is forfeited when the card is closed."
   }
  }
 }

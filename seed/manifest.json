@@ -1,9 +1,9 @@
 {
  "version": "5.1.39",
- "updated_at": "2026-08-22T05:06:39Z",
+ "updated_at": "2026-09-07T09:43:22Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Declares seed/card_details.json in the manifest so the app downloads it. The file has existed on dev since 2026-08-27 and was never reachable in production: the manifest listed only cards.json and merchants.json, so SeedSyncService never fetched it and every benefits, eligibility, redemption, FAQ and similar-cards block in the app resolved to nothing. NO card, rule or rate changes in this commit - cards.json and merchants.json are byte-identical to 5.1.38, so no rule_name moves and no user's cap progress is touched.",
+ "_note": "Declares seed/card_details.json in the production manifest so the app downloads it. The file has existed on dev since 2026-08-27 and was never reachable in production: the manifest listed only cards.json and merchants.json, so SeedSyncService never fetched it and every benefits, eligibility, redemption, FAQ and similar-cards block resolved to nothing. NO card, rule or rate changes: cards.json and merchants.json are byte-identical to 5.1.38, so no rule_name moves and no user's cap progress is touched. REFRESHED 2026-09-07: the copy on this branch was an August snapshot cut before PRs #84, #86 and #91 landed on dev. It carried the pre-validation CardInsider text on 36 cards and was missing two entirely. It now matches dev, minus the two entries (CheQ AU, Kiwi) whose cards do not exist in main's cards.json - kredme.py:1441 warns on an orphan key and promote exits 2 on any warning. VERSION ORDERING: this is 5.1.39 and PR #85 is 5.1.40. They previously both said 5.1.39, and seed_sync_service.dart:110 returns SyncResult.upToDate when the server version equals the stored one - so whichever published second would never have reached any device that already had the first. PUBLISH THIS ONE FIRST: a wrong cards.json checksum stops card syncing for every user forever, whereas an undeclared card_details.json is inert. KNOWN, AND A DELIBERATE DECISION BEFORE THIS SHIPS: on the app build currently on the stores (2.36.3), card_detail.dart reads benefits.lounge / has_concierge / fuel, which this file does not use, so 243 of 378 cards would render 'No detailed benefits data for this card' where today that section does not appear at all, and 13 insurance lines would read Rs.0L. The app-side fix that reads the field names the data actually carries is on master (PR #55) but is not in any store build. Publishing before that reaches the stores is a trade, not a footnote.",
  "stats": {
   "total_cards": 383,
   "total_reward_rules": 1284,
@@ -31,8 +31,8 @@
   {
    "name": "card_details.json",
    "path": "seed/card_details.json",
-   "checksum": "f8f4219d46fa44759939ff5f7fa661c2468e5e13afc41f0c5e808bc01176f1d0",
-   "size_bytes": 1900643
+   "checksum": "233cc433f705ebc6862ea01fbee2ae7966ee0fca252b4c353798a5fbd6a1f250",
+   "size_bytes": 1987203
   }
  ],
  "delta_file": null,
