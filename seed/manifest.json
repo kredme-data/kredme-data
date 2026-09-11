@@ -1,9 +1,9 @@
 {
- "version": "5.2.0",
- "updated_at": "2026-09-07T19:51:35Z",
+ "version": "5.2.1",
+ "updated_at": "2026-09-11T15:30:33Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "COMPLETE LOAD of all 48 Siddhant Bhoite validation documents, on the founder's 7-Sep instruction: 'I WANT ALL SIDDHANT'S data in dev kredme-data. NO MISS. i will manually check.' Earlier batches deliberately withheld reward rules, conditional exclusions and anything the engine could not model; this loads all of it. reward_rules 1,305 -> 1,446, exclusions 2,400 -> 2,790, milestones 431 -> 457, redemption 888 -> 952. HDFC MoneyBack+ was previously mapped to the wrong card (hdfc_bank_moneyback, the plain MoneyBack) and is now on hdfc_bank_moneyback_plus, which is the card carrying the 10X Amazon/Flipkart/BigBasket/Reliance/Swiggy rules his document describes. NOT ONE existing rule_name was renamed or deleted - verified zero lost against origin/dev - because the app keys every user's cap progress on that string. 297 of these changes alter which card the app recommends; they are listed per card in the pull request for manual checking. Errors rise 559 -> 604 and the ratchet is deliberately moved to match: the largest single class is 17 more L6.EXCLUSION_TYPE_INERT, which is the direct cost of 'no miss' - an exclusion the engine cannot read is now written as an inert 'other'/'txn_type' row rather than dropped. This data is NOT verified against issuers by this change; the founder is checking it manually.",
+ "_note": "Apply links for 219 cards, moved here from PR #85 (which targeted main and is being closed). Each card gains apply_url, the issuer's own product page for that card, plus a per-field _provenance entry recording the source URL, fetch date and the controls it passed (HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF). Nothing else changes: verified card by card that removing apply_url and its provenance entry gives back dev 5.2.0 byte for byte, so no reward rule, cap or rule_name moves. The schema gains the optional apply_url field (same 5 lines as #85). Why dev and not main: promote copies dev's cards.json over main's whole, so links that exist only on main would be deleted by the next publish. App v2.36.5 reads apply_url; 2.36.3 does not.",
  "stats": {
   "total_cards": 385,
   "total_reward_rules": 1446,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "1868ed6c647379dffa77057432e42ff14fef03cdda6e14f4fa1e9bae7b2b0463",
-   "size_bytes": 3146625
+   "checksum": "73c15e2e6d573f9ff1ddd1321ba447a30e97f72d5ab3d066663eddeaaaf84068",
+   "size_bytes": 3247577
   },
   {
    "name": "merchants.json",
