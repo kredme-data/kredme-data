@@ -1428,6 +1428,24 @@ class TestFalsePositivesNarrowed(unittest.TestCase):
         self.assertIn("L5.CAP_IN_TEXT_NOT_ENFORCED",
                       codes(run_layers(make_ctx([e]), ["c5_consistency"])))
 
+    # --- a bonus withheld from the engine may still say where it is paid --- #
+    def test_a_withheld_portal_bonus_may_name_the_channel_its_issuer_pays_on(self):
+        """CUB SalarySe's Salary Day Bonus is paid only via SalarySe UPI on the
+        1st and last day of the month. Filed as channel_specific/upi it fired on
+        every UPI payment, every day. Filed as portal_bonus/portal it is kept
+        and never offered, and L5.CHANNEL_TEXT_VS_FIELD must not push it back
+        to 'upi'. The exemption is that exact pair and nothing wider."""
+        def row(rule_type, channel):
+            return mutate(lambda e: e["reward_rules"].append(_rule(
+                rule_name="Salary Day Bonus: 37.5 SCoins per ₹100 via SalarySe UPI",
+                rule_type=rule_type, channel=channel, portal_name="SalarySe app",
+                reward_type="points_per_spend", reward_rate=37.5,
+                reward_unit_spend=100.0, priority=65)))
+        got = lambda e: codes(run_layers(make_ctx([e]), ["c5_consistency"]))
+        self.assertNotIn("L5.CHANNEL_TEXT_VS_FIELD", got(row("portal_bonus", "portal")))
+        self.assertIn("L5.CHANNEL_TEXT_VS_FIELD", got(row("channel_specific", "portal")))
+        self.assertIn("L5.CHANNEL_TEXT_VS_FIELD", got(row("portal_bonus", "online")))
+
 
 class TestFalseNegativesClosed(unittest.TestCase):
     """Defect classes no layer covered. Injected, then asserted."""

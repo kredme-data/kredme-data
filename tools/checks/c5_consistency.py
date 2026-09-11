@@ -1007,8 +1007,19 @@ def _check_reward_rule(bag, stats, cid, inner, idx, rule, app_cats, merch):
     if len(chans) == 1:
         want = chans[0]
         have = _txt(rule.get("channel")).strip().lower() or None
+        # A portal_bonus row filed under channel 'portal' is withheld from the
+        # app on purpose: the engine never indexes portal_bonus
+        # (recommendation_engine.dart:145), and neither the engine nor the SMS
+        # tracker ever matches channel 'portal'. That is how a bonus the issuer
+        # pays only inside its own app, on a condition a phone cannot observe,
+        # stays in the file without being offered on every payment (CUB
+        # SalarySe's Salary Day Bonus, 11-Sep-2026). Its name still says where
+        # the issuer pays it ("via SalarySe UPI"), and this check's own fix,
+        # "set channel to the one the name states", would put the bonus back on
+        # every UPI payment. L6.RULE_TYPE_NEVER_INDEXED already reports the row.
         skip = (want == "online" and cat_id == "online_shopping") or \
-               (want == "portal" and rtype == "portal_bonus")
+               (want == "portal" and rtype == "portal_bonus") or \
+               (rtype == "portal_bonus" and have == "portal")
         if not skip:
             stats["parsed_channel"] += 1
             if have and have != want:

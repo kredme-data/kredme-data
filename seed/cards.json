@@ -20558,11 +20558,11 @@
    },
    {
     "rule_name": "25 Reward Points per ₹100 on transactions made via SalarySe UPI",
-    "rule_type": "channel_specific",
+    "rule_type": "portal_bonus",
     "merchant_ref": null,
     "category_id": null,
     "category_ref": "salaryse upi transactions",
-    "channel": "upi",
+    "channel": "portal",
     "reward_type": "points_per_spend",
     "reward_rate": 25.0,
     "reward_unit_spend": 100.0,
@@ -20578,15 +20578,16 @@
     "source_quote": "Salary Day Bonus. Virtual-Only: 25 SCoins per ₹100. Maximum eligible Salary Day spending: ₹15,000 per billing cycle. Maximum Salary Day rewards: Virtual-Only: 3,750 SCoins",
     "source_fetched_on": "2026-08-21",
     "source_doc_type": "tnc",
-    "_note": "SalaryDay Bonus, payable only on the 1st and last day of the month via SalarySe UPI, unlocked by INR 5,000 of non-SalaryDay spend and capped at INR 15,000 of eligible spend per billing cycle. The physical card earns 37.5 SCoins on the same days. CUB's Base Categories — rent, railways, insurance, education, telecom, government, BillPay — still EARN 1 SCoin per INR 100 and must never be switched on as exclusions. Condition stated by the issuer: variant: Virtual-Only; days: 1st day and last day of every month only; unlock_spend: 5000; unlock_note: Requires ₹5,000 of spending on non-Salary-Day dates to unlock.; max_eligible_spend_per_cycle: 15000; over_and_above: Earned over and above the normal 10%-of-credit-limit monthly reward cap.. Held as prose because the engine's conditions_json is a match_all DSL over fields a phone can observe, and this condition is not one of them."
+    "_note": "SalaryDay Bonus, payable only on the 1st and last day of the month via SalarySe UPI, unlocked by INR 5,000 of non-SalaryDay spend and capped at INR 15,000 of eligible spend per billing cycle. The physical card earns 37.5 SCoins on the same days. CUB's Base Categories — rent, railways, insurance, education, telecom, government, BillPay — still EARN 1 SCoin per INR 100 and must never be switched on as exclusions. Condition stated by the issuer: variant: Virtual-Only; days: 1st day and last day of every month only; unlock_spend: 5000; unlock_note: Requires ₹5,000 of spending on non-Salary-Day dates to unlock.; max_eligible_spend_per_cycle: 15000; over_and_above: Earned over and above the normal 10%-of-credit-limit monthly reward cap.. Held as prose because the engine's conditions_json is a match_all DSL over fields a phone can observe, and this condition is not one of them. This row is the Virtual-Only variant's Salary Day Bonus (see source_quote); its name predates the validation pack. Stored as rule_type portal_bonus, channel portal (11-Sep-2026) so the recommendation engine does not offer it: the engine has no salary-day condition, and as channel_specific/upi it paid out on every UPI payment at every merchant, every day.",
+    "portal_name": "SalarySe app"
    },
    {
     "rule_name": "Salary Day Bonus: 37.5 SCoins per ₹100 via SalarySe UPI on the 1st and last day of the month (Physical Select + Virtual variant)",
-    "rule_type": "channel_specific",
+    "rule_type": "portal_bonus",
     "merchant_ref": null,
     "category_id": null,
     "category_ref": "SalarySe UPI spends on the 1st and last day of the month",
-    "channel": "upi",
+    "channel": "portal",
     "reward_type": "points_per_spend",
     "reward_rate": 37.5,
     "reward_unit_spend": 100.0,
@@ -20599,8 +20600,9 @@
     "conditions_json": null,
     "confidence": "medium",
     "source_quote": "Salary Day Bonus. Physical + Virtual: 37.5 SCoins per ₹100. Applicable only through SalarySe UPI on: 1st day of every month, Last day of every month. Requires ₹5,000 spending on non-Salary-Day dates to unlock. Maximum eligible Salary Day spending: ₹15,000 per billing cycle. Maximum Salary Day rewards: Physical + Virtual: 5,625 SCoins",
-    "_note": "Condition stated by the issuer: days: 1st day and last day of every month only; unlock_spend: 5000; unlock_note: Requires ₹5,000 of spending on non-Salary-Day dates to unlock.; max_eligible_spend_per_cycle: 15000; over_and_above: Earned over and above the normal 10%-of-credit-limit monthly reward cap.; variant: Physical (Select) + Virtual. Held as prose because the engine's conditions_json is a match_all DSL over fields a phone can observe, and this condition is not one of them. Source: Siddhant Bhoite's KredMe data validation pack, 7-Sep-2026. Confidence is medium rather than high because no issuer URL was captured for this line; the validator checked it against the issuer's documents.",
-    "source_fetched_on": "2026-09-07"
+    "_note": "Condition stated by the issuer: days: 1st day and last day of every month only; unlock_spend: 5000; unlock_note: Requires ₹5,000 of spending on non-Salary-Day dates to unlock.; max_eligible_spend_per_cycle: 15000; over_and_above: Earned over and above the normal 10%-of-credit-limit monthly reward cap.; variant: Physical (Select) + Virtual. Held as prose because the engine's conditions_json is a match_all DSL over fields a phone can observe, and this condition is not one of them. Source: Siddhant Bhoite's KredMe data validation pack, 7-Sep-2026. Confidence is medium rather than high because no issuer URL was captured for this line; the validator checked it against the issuer's documents. Stored as rule_type portal_bonus, channel portal (11-Sep-2026) so the recommendation engine does not offer it: the engine has no salary-day condition, and as channel_specific/upi it paid out on every UPI payment at every merchant, every day.",
+    "source_fetched_on": "2026-09-07",
+    "portal_name": "SalarySe app"
    },
    {
     "rule_name": "Accelerated Rewards: 5 SCoins per ₹100 on SalarySe UPI, online and in-store spends up to ₹20,000 per billing cycle",
@@ -25054,7 +25056,7 @@
     "_note": "The 1,000 CashPoint ceiling is one shared pool across all ten bonus merchants, not 1,000 at each. Uber qualifies only under MCC 4121; any of the ten billed under MCC 6540 drops to the 1% category."
    },
    {
-    "rule_name": "5% cashback as CashPoints [bookmyshow]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "bookmyshow",
     "category_id": null,
@@ -25064,7 +25066,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25077,7 +25079,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [cultfit]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "cultfit",
     "category_id": null,
@@ -25087,7 +25089,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25100,7 +25102,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [flipkart]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "flipkart",
     "category_id": null,
@@ -25110,7 +25112,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25123,7 +25125,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [myntra]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "myntra",
     "category_id": null,
@@ -25133,7 +25135,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25146,7 +25148,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [sony_liv]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "sony_liv",
     "category_id": null,
@@ -25156,7 +25158,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25169,7 +25171,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [swiggy]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "swiggy",
     "category_id": null,
@@ -25179,7 +25181,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25192,7 +25194,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [tata_cliq]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "tata_cliq",
     "category_id": null,
@@ -25202,7 +25204,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25215,7 +25217,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [uber]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "uber",
     "category_id": null,
@@ -25225,7 +25227,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
@@ -25238,7 +25240,7 @@
     "source_doc_type": "tnc"
    },
    {
-    "rule_name": "5% cashback as CashPoints [zomato]",
+    "rule_name": "5% cashback as CashPoints",
     "rule_type": "merchant_specific",
     "merchant_ref": "zomato",
     "category_id": null,
@@ -25248,7 +25250,7 @@
     "reward_rate": 0.05,
     "reward_unit_spend": null,
     "cap_amount": 1000,
-    "cap_period": "cycle",
+    "cap_period": "month",
     "min_txn_amount": null,
     "priority": 90,
     "effective_date": null,
