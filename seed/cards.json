@@ -16,6 +16,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_bank_ca_metal.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -26,7 +27,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -251,6 +261,7 @@
    "forex_markup_pct": 0.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_bank_nomo.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Physical card",
@@ -261,7 +272,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -463,6 +483,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_bank_spont.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -473,7 +494,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -575,6 +605,7 @@
    "forex_markup_pct": 2.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_bank_vetta.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -585,7 +616,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -865,6 +905,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_bank_zenith.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -875,7 +916,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -1144,6 +1194,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_bank_(co-branded_with_aditya_birla_finance_limited)_aditya_birla_au_bank_credit_cards.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/abc-nxt-and-abc-flex-credit-cards",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -1154,7 +1205,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/abc-nxt-and-abc-flex-credit-cards",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -1536,6 +1596,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_altura.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -1546,7 +1607,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -1727,6 +1797,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_altura_plus.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -1737,7 +1808,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -2088,6 +2168,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/au_small_finance_bank_instapay.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -2098,7 +2179,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -2183,6 +2273,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/au_small_finance_bank_ixigo_au.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -2193,7 +2284,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 200,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -2704,6 +2804,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/au_small_finance_bank_kosmo.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -2714,7 +2815,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -2824,6 +2934,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_lit.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -2834,7 +2945,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -3128,6 +3248,7 @@
    "forex_markup_pct": 0.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_traverse.png",
+   "apply_url": "https://www.au.bank.in/premium-banking/credit-cards/traverse-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -3138,7 +3259,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 200,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/premium-banking/credit-cards/traverse-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -3357,6 +3487,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_xcite_ace.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -3367,7 +3498,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -3481,6 +3621,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_xcite.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -3491,7 +3632,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -3675,6 +3825,7 @@
    "forex_markup_pct": 3.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_xcite_ultra.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -3685,7 +3836,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -3908,6 +4068,7 @@
    "forex_markup_pct": 0.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/au_small_finance_bank_zenith.png",
+   "apply_url": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -3918,7 +4079,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -4950,6 +5120,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/amex_platinum.png",
+   "apply_url": "https://www.americanexpress.com/in/charge-cards/platinum-card/",
    "metadata": {
     "contactless": true,
     "material": "Metal",
@@ -4960,7 +5131,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.americanexpress.com/in/charge-cards/platinum-card/",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -5224,6 +5404,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/amex_platinum_reserve.png",
+   "apply_url": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -5234,7 +5415,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -5522,6 +5712,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/amex_platinum_travel.png",
+   "apply_url": "https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -5532,7 +5723,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -6287,6 +6487,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/axis_bank_airtel_axis_bank.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -6297,7 +6498,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -6693,6 +6903,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_ace.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -6703,7 +6914,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -7019,6 +7239,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_atlas.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -7038,6 +7259,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "Stored as EDGE Miles per rupee: 2 ÷ 100 = 0.02. The division is ours. No issuer figure exists for what one EDGE Mile is worth outside the travel portal, so rp_value_standard is deliberately null — see the PR."
+    },
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -7276,6 +7504,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_aura.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -7286,7 +7515,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -7663,6 +7901,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_cashback.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/cashback-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -7673,7 +7912,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/cashback-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -7876,6 +8124,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_freecharge.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -7886,7 +8135,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -8036,6 +8294,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_freecharge_plus.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -8046,7 +8305,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -8229,6 +8497,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_horizon.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -8239,7 +8508,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -8419,6 +8697,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_magnus.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
    "metadata": {
     "contactless": true,
     "material": "Metal",
@@ -8429,7 +8708,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -8675,6 +8963,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_miles_more.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/miles-more-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -8685,7 +8974,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/miles-more-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -8811,6 +9109,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_my_wings.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/my-wings-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -8821,7 +9120,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/my-wings-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -8920,6 +9228,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/axis_bank_my_zone.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -8930,7 +9239,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": 300,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -9211,6 +9529,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/axis_bank_neo.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -9221,7 +9540,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -9382,6 +9710,7 @@
    "forex_markup_pct": 1.8,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_olympus.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -9392,7 +9721,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -9570,6 +9908,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_platinum.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/lic-axis-bank-platinum-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -9580,7 +9919,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/lic-axis-bank-platinum-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -9698,6 +10046,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_pride_platinum.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -9708,7 +10057,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -9814,6 +10172,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_pride_signature.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -9824,7 +10183,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -9968,6 +10336,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_primus.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -9978,7 +10347,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -10126,6 +10504,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_privilege.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -10136,7 +10515,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -10326,6 +10714,7 @@
    "forex_markup_pct": 1.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_reserve.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/reserve-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -10336,7 +10725,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/reserve-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -10544,6 +10942,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_rewards.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/rewards-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -10554,7 +10953,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": 300,
-   "points_clawback_on_default": true
+   "points_clawback_on_default": true,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/rewards-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -10915,6 +11323,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_select.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -10925,7 +11334,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -11302,6 +11720,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_shoppers_stop.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -11312,7 +11731,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -11480,6 +11908,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_titanium_smart_traveler.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/titanium-smart-traveler-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -11490,7 +11919,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/titanium-smart-traveler-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -11710,6 +12148,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_vistara.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -11720,7 +12159,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -11830,6 +12278,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_vistara_infinite.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -11840,7 +12289,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -12027,6 +12485,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_vistara_signature.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -12037,7 +12496,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -12207,6 +12675,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_my_zone_easy.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -12217,7 +12686,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -12324,6 +12802,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_flipkart_axis_bank.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -12334,7 +12813,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -12685,6 +13173,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_flipkart_axis_bank_super_elite.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -12712,6 +13201,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "DELETED, not written. The file previously carried 1.0, an aggregator estimate. The program owner states affirmatively that a SuperCoin has no assigned monetary value, so there is no honest number to store. WARNING: with this field null the app substitutes an invented ₹0.25 per coin, so every percentage this card shows is that fabrication multiplied by an issuer-quoted coin count."
+    },
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -12907,6 +13403,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/axis_bank_google_pay_flex_axis_bank.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -12917,7 +13414,16 @@
    "is_travel": 0,
    "points_expiry_months": 12,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -13253,6 +13759,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_indianoil_axis_bank_rupay.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -13263,7 +13770,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 300,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -13464,6 +13980,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_indianoil_axis_bank_premium.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -13499,6 +14016,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "The issuer states the mile's rupee value inline in the base earn sentence, unconditionally — not scoped to a travel portal."
+    },
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -13743,6 +14267,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/axis_bank_indigo_axis_bank.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -13753,7 +14278,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -13939,6 +14473,7 @@
    "forex_markup_pct": 2.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_indigo_axis_bank_premium.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -13949,7 +14484,16 @@
    "is_travel": 0,
    "points_expiry_months": 6,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -14181,6 +14725,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_samsung_axis_bank_infinite.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -14191,7 +14736,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -14499,6 +15053,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_samsung_axis_bank_signature.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -14509,7 +15064,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -14731,6 +15295,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_spicejet_axis_bank_voyage_black.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -14741,7 +15306,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -14934,6 +15508,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/axis_bank_spicejet_axis_bank_voyage.png",
+   "apply_url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -14944,7 +15519,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -15129,6 +15713,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_card_cashback.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-cashback",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -15139,7 +15724,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-cashback",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -15587,6 +16181,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_card_select.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/select",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -15597,7 +16192,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/select",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -15774,6 +16378,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_icai_exclusive_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -15784,7 +16389,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -15972,6 +16586,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_indian_army_yoddha_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/indian-army-yoddha",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -15982,7 +16597,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/indian-army-yoddha",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -16120,6 +16744,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_credit_cards_reward_points.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/empower",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -16130,7 +16755,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/empower",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -16382,6 +17016,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_easy.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-one",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -16392,7 +17027,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-one",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -16563,6 +17207,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_eterna.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/eterna",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -16573,7 +17218,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 1000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/eterna",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -16949,6 +17603,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_premier.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/premier",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -16959,7 +17614,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 1000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/premier",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -17555,6 +18219,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_cma_one_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/cma-one",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -17565,7 +18230,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/cma-one",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -17727,6 +18401,7 @@
    "forex_markup_pct": 1.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_etihad_guest.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -17737,7 +18412,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -17830,6 +18514,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_etihad_guest_premium.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -17840,7 +18525,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -18014,6 +18708,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_card_tiara.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/tiara",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -18024,7 +18719,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/tiara",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -18224,6 +18928,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_hpcl_energie_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/hpcl-energie",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -18234,7 +18939,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/hpcl-energie",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -18423,6 +19137,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_snapdeal_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -18433,7 +19148,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -18560,6 +19284,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/bobcard_(bank_of_baroda)_in_partnership_with_uni_app_card_uni_goldx.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -18570,7 +19295,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -19006,6 +19740,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_limited_card_icsi_diamond.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/icsi-diamond",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -19016,7 +19751,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/icsi-diamond",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -19205,6 +19949,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_limited_irctc_rupay_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/irctc-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -19215,7 +19960,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/irctc-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -19406,6 +20160,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_limited_(bank_of_baroda)_indian_navy_varunah_bob.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/indian-navy-varunah",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -19416,7 +20171,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/indian-navy-varunah",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -19588,6 +20352,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/bobcard_limited_(bank_of_baroda)_card_sentinel.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-one",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -19598,7 +20363,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-one",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -19736,6 +20510,7 @@
    "forex_markup_pct": 1.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/city_union_bank_cub_salaryse_level_up.png",
+   "apply_url": "https://www.cityunionbank.com/",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -19746,7 +20521,16 @@
    "is_travel": 0,
    "points_expiry_months": 18,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.cityunionbank.com/",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -20092,6 +20876,7 @@
    "forex_markup_pct": 1.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/fpl_technologies_pvt._ltd._onecard_metal.png",
+   "apply_url": "https://www.getonecard.app/credit-card/",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -20102,7 +20887,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.getonecard.app/credit-card/",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -20916,6 +21710,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/federal_bank_/_bobcard_(scapia)_scapia.png",
+   "apply_url": "https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -20926,7 +21721,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -22237,6 +23041,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_rupay_irctc.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/irctc-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -22247,7 +23052,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 100,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/irctc-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -22779,6 +23593,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_diners_club_black_metal_edition.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card",
    "metadata": {
     "contactless": true,
     "material": "Metal",
@@ -22789,7 +23604,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -23555,6 +24379,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_easy_emi.png",
+   "apply_url": "https://www.hdfc.bank.in/millennia-cards/easy-emi-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -23565,7 +24390,16 @@
    "is_travel": 0,
    "points_expiry_months": 12,
    "min_redemption_points": 2500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/millennia-cards/easy-emi-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -23786,6 +24620,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_infinia_metal.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/infinia-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -23796,7 +24631,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/infinia-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -24139,6 +24983,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_millennia.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/millennia-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -24149,7 +24994,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/millennia-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -24992,6 +25846,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_pixel_go.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -25002,7 +25857,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -25188,6 +26052,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_pixel_play.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -25198,7 +26063,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 1000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -25938,6 +26812,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_regalia_gold.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -25948,7 +26823,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -27170,6 +28054,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_freedom.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/freedom-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -27180,7 +28065,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 3334,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/freedom-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -28011,6 +28905,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_solitaire.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/solitaire-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -28021,7 +28916,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/solitaire-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -28205,6 +29109,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_superia.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -28215,7 +29120,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -29561,6 +30475,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_marriott_bonvoy_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -29571,7 +30486,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -30504,6 +31428,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_phonepe_hdfc_bank_ultimo.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -30514,7 +31439,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 500,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -30906,6 +31840,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_phonepe_hdfc_bank_uno.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -30916,7 +31851,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -31309,6 +32253,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_shoppers_stop_black_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -31319,7 +32264,16 @@
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -31617,6 +32571,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_shoppers_stop_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -31627,7 +32582,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -31828,6 +32792,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_swiggy_blck_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -31838,7 +32803,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -32502,6 +33476,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_swiggy_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -32512,7 +33487,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -33073,6 +34057,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_swiggy_ornge_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -33083,7 +34068,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 0,
-   "points_clawback_on_default": true
+   "points_clawback_on_default": true,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -34128,6 +35122,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/hdfc_bank_tata_neu_infinity_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -34155,6 +35150,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "1 NeuCoin = ₹1 is the only channel the issuer names, and it is conditional on the brand accepting NeuCoins."
+    },
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -34637,6 +35639,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/hdfc_bank_tata_neu_plus_hdfc_bank.png",
+   "apply_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -34664,6 +35667,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "1 NeuCoin = ₹1 is the only channel the issuer names, and it is conditional on the brand accepting NeuCoins."
+    },
+    "apply_url": {
+     "source_url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -38998,6 +40008,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_adani_one_icici_bank_platinum.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -39008,7 +40019,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -39238,6 +40258,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_adani_one_icici_bank_signature.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -39248,7 +40269,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -39468,6 +40498,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_amazon_pay_icici_bank.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -39478,7 +40509,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -40010,6 +41050,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_chennai_super_kings_icici_bank.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -40020,7 +41061,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -40227,6 +41277,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_emirates_skywards_icici_bank_emeralde.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-emeralde-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -40237,7 +41288,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-emeralde-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -40354,6 +41414,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_emirates_skywards_icici_bank_rubyx.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-rubyx-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -40364,7 +41425,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-rubyx-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -40478,6 +41548,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_emirates_skywards_icici_bank_sapphiro.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-sapphiro",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -40488,7 +41559,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-sapphiro",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -40974,6 +42054,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/icici_bank_coral.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -40984,7 +42065,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -41454,6 +42544,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_emeralde.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -41464,7 +42555,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -41659,6 +42759,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_emeralde_private_metal.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -41669,7 +42770,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -42315,6 +43425,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_hpcl_coral.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -42325,7 +43436,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -42444,6 +43564,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_hpcl_platinum.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -42454,7 +43575,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -42584,6 +43714,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_manchester_united_platinum.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/manchester-platinum-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -42594,7 +43725,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/manchester-platinum-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -42788,6 +43928,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_parakram.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -42798,7 +43939,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -42965,6 +44115,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_parakram_select.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -42975,7 +44126,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -43208,6 +44368,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_platinum_chip.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -43218,7 +44379,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -43382,6 +44552,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_rubyx.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -43392,7 +44563,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -43647,6 +44827,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_sapphiro.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -43657,7 +44838,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -43901,6 +45091,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_visa_signature.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -43911,7 +45102,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -44231,6 +45431,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/icici_bank_hpcl_super_saver.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -44241,7 +45442,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -44827,6 +46037,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_manchester_united_signature.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/manchester-signature-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -44837,7 +46048,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/manchester-signature-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -45638,6 +46858,7 @@
    "forex_markup_pct": 0.99,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/icici_bank_makemytrip_icici_bank.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -45648,7 +46869,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -46004,6 +47234,7 @@
    "forex_markup_pct": 1.49,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/icici_bank_times_black_icici_bank.png",
+   "apply_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -46014,7 +47245,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -46326,6 +47566,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idbi_bank_aspire_platinum.png",
+   "apply_url": "https://www.idbi.bank.in/aspire-credit-card.aspx",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -46336,7 +47577,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idbi.bank.in/aspire-credit-card.aspx",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -46483,6 +47733,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idbi_bank_bank_imperium_platinum.png",
+   "apply_url": "https://www.idbi.bank.in/Imperium-credit-card.aspx",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -46493,7 +47744,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idbi.bank.in/Imperium-credit-card.aspx",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -46603,6 +47863,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idbi_bank_bank_royale_signature.png",
+   "apply_url": "https://www.idbi.bank.in/royal-credit-card.aspx",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -46613,7 +47874,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idbi.bank.in/royal-credit-card.aspx",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -46890,6 +48160,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idbi_bank_euphoria_world.png",
+   "apply_url": "https://www.idbi.bank.in/Euphoria-credit-card.aspx",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -46900,7 +48171,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idbi.bank.in/Euphoria-credit-card.aspx",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -47065,6 +48345,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_bank_bank_first_swyp.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -47075,7 +48356,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [
@@ -47211,6 +48501,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_hello_cashback.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -47230,6 +48521,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "This card pays true cashback, so the 'point value' is ₹1 by definition."
+    },
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -47612,6 +48910,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_diamond_reserve.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -47622,7 +48921,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -47972,6 +49280,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_classic.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/classic",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -47982,7 +49291,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/classic",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -48149,6 +49467,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_millennia.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/millennia",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -48176,6 +49495,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "The issuer prices a point at ₹0.25 on the standard channel and repeats the same ₹0.25 in the travel T&C, so there is no travel uplift to argue about on this card."
+    },
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/millennia",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -48474,6 +49800,7 @@
    "forex_markup_pct": 1.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_wealth.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/wealth",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -48484,7 +49811,16 @@
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/wealth",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -48914,6 +50250,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/idfc_first_bank_wow_black.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -48924,7 +50261,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -49229,6 +50575,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_wow.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/wow",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -49239,7 +50586,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/wow",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -49473,6 +50829,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_hpcl_first_power.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -49483,7 +50840,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -49708,6 +51074,7 @@
    "forex_markup_pct": 1.49,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/idfc_first_bank_indigo_idfc_first.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -49718,7 +51085,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -49978,6 +51354,7 @@
    "forex_markup_pct": 1.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_ashva_metal.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -49988,7 +51365,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -50630,6 +52016,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/idfc_first_bank_earn.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -50640,7 +52027,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -50793,6 +52189,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_gaj.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
    "metadata": {
     "contactless": null,
     "material": "Metal",
@@ -50803,7 +52200,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -51220,6 +52626,7 @@
    "forex_markup_pct": 0.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_private.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -51230,7 +52637,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -51494,6 +52910,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_first_bank_select.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/select",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -51504,7 +52921,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/select",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -51675,6 +53101,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/idfc_first_bank_hpcl_first_power_plus.png",
+   "apply_url": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -51685,7 +53112,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -52699,6 +54135,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/indusind_bank_eazydiner_indusind_bank.png",
+   "apply_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -52709,7 +54146,16 @@
    "is_travel": 0,
    "points_expiry_months": 12,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -52930,6 +54376,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/indusind_bank_eazydiner_indusind_platinum.png",
+   "apply_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -52940,7 +54387,16 @@
    "is_travel": 0,
    "points_expiry_months": 12,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -53504,6 +54960,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/indusind_bank_avios_visa_infinite.png",
+   "apply_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -53514,7 +54971,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -55848,6 +57314,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/indusind_bank_platinum.png",
+   "apply_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-rupay-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -55858,7 +57325,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-rupay-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -56965,6 +58441,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/indusind_bank_platinum_aura_edge.png",
+   "apply_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -56975,7 +58452,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -57459,6 +58945,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/indusind_bank_jiobp_mobility.png",
+   "apply_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -57469,7 +58956,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -57660,6 +59156,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_cashback.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -57670,7 +59167,16 @@
    "is_travel": 0,
    "points_expiry_months": 12,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -58262,6 +59768,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/kotak_mahindra_bank_indianoil_kotak.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -58289,6 +59796,13 @@
      "source_fetched_on": "2026-08-20",
      "confidence": "high",
      "_note": "Cash is the unconditional channel. The kotakrewards.com catalogue pays 25 paise but is governed by a separate T&C, so it is not the ranking number."
+    },
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
     }
    }
   },
@@ -58662,6 +60176,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/kotak_mahindra_bank_indigo_kotak.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -58672,7 +60187,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -58929,6 +60453,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/kotak_mahindra_bank_indigo_kotak_xl.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -58939,7 +60464,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -59412,6 +60946,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_air.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -59422,7 +60957,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": 1000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -59721,6 +61265,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_bank_fortune_gold.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-gold-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -59731,7 +61276,16 @@
    "is_travel": 0,
    "points_expiry_months": 3,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-gold-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -59820,6 +61374,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_essentia_platinum.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-platinum-credit-card.html",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -59830,7 +61385,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-platinum-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -59965,6 +61529,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_league_platinum.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -59975,7 +61540,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -60753,6 +62327,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_royale_signature.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/royale-signature-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -60763,7 +62338,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/royale-signature-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -61170,6 +62754,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_veer_platinum.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-platinum-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -61180,7 +62765,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-platinum-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -61741,6 +63335,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_white.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -61751,7 +63346,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -61873,6 +63477,7 @@
    "forex_markup_pct": 2.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_white_reserve.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -61883,7 +63488,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -62041,6 +63655,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/kotak_mahindra_bank_zen_signature.png",
+   "apply_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -62051,7 +63666,16 @@
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -69272,6 +70896,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_aditya_birla_sbi_card_select.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/rewards/aditya-birla-sbi-card-select.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -69282,7 +70907,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/rewards/aditya-birla-sbi-card-select.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -69436,6 +71070,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_aditya_birla_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/rewards/aditya-birla-sbi-card.page",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -69446,7 +71081,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/rewards/aditya-birla-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -69647,6 +71291,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_air_india_sbi_platinum.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -69657,7 +71302,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": 5000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -69763,6 +71417,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_air_india_sbi_signature.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/air-india-sbi-signature-card.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -69773,7 +71428,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": 10000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/air-india-sbi-signature-card.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -69889,6 +71553,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_apollo_sbi.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/rewards/apollo-sbi-card.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -69899,7 +71564,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/rewards/apollo-sbi-card.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -70130,6 +71804,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_apollo_sbi_select.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -70140,7 +71815,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -70590,6 +72274,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_bpcl_sbi_octane.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -70600,7 +72285,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -70891,6 +72585,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_bpcl_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -70901,7 +72596,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -71193,6 +72897,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_cashback_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -71203,7 +72908,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -71668,6 +73382,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_club_vistara_sbi_card_prime.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/club-vistara-sbi-card-prime.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -71678,7 +73393,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/club-vistara-sbi-card-prime.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -71832,6 +73556,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_club_vistara_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/travel/club-vistara-sbi-card.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -71842,7 +73567,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/travel/club-vistara-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [],
   "exclusion_rules": [],
@@ -72206,6 +73940,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_doctors_ima_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/doctors-ima-sbi-card.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -72216,7 +73951,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/doctors-ima-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -72798,6 +74542,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_fabindia_sbi_card_select.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -72808,7 +74553,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 100,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -72990,6 +74744,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_fabindia_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -73000,7 +74755,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 100,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -73172,6 +74936,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_flipkart_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -73182,7 +74947,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -73429,6 +75203,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_indigo_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -73439,7 +75214,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -73656,6 +75440,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_indigo_sbi_elite.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -73666,7 +75451,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -73893,6 +75687,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_irctc_rupay_sbi.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/irctc-rupay-sbi-card.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -73903,7 +75698,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/irctc-rupay-sbi-card.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -74033,6 +75837,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_irctc_sbi_card_premier.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -74043,7 +75848,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -74401,6 +76215,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_krisflyer_sbi_card_apex.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/travel/krisflyer-sbi-card-apex.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -74411,7 +76226,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/travel/krisflyer-sbi-card-apex.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -74578,6 +76402,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_krisflyer_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -74588,7 +76413,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -74747,6 +76581,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_landmark_rewards_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -74757,7 +76592,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -74929,6 +76773,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_landmark_rewards_sbi_prime.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -74939,7 +76784,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -75115,6 +76969,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_landmark_rewards_sbi_select.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -75125,7 +76980,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -75275,6 +77139,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_lifestyle_home_centre_sbi_card_prime.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/city-union-bank-sbi-card-prime.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -75285,7 +77150,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/city-union-bank-sbi-card-prime.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -75656,6 +77530,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_max_sbi_card_select.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/shopping/max-sbi-card-select.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -75666,7 +77541,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/shopping/max-sbi-card-select.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -76182,6 +78066,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_natures_basket_sbi_card_elite.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/karur-vysya-bank-sbi-card-elite.html",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -76192,7 +78077,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/karur-vysya-bank-sbi-card-elite.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -76599,6 +78493,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_ola_money_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/ola-money-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -76609,7 +78504,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/ola-money-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -76745,6 +78649,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_paytm_sbi_credit_card_select.png",
+   "apply_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/paytm-sbi-card-select.dcr",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -76755,7 +78660,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/eapply/eapply-form.page?path=personal/credit-cards/travel/paytm-sbi-card-select.dcr",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -76892,6 +78806,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_paytm_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/travel/paytm-sbi-card.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -76902,7 +78817,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 100,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/travel/paytm-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -77060,6 +78984,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_phonepe_sbi_purple.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -77070,7 +78995,16 @@
    "is_travel": 0,
    "points_expiry_months": 12,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -77302,6 +79236,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_phonepe_sbi_select_black.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -77312,7 +79247,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -77773,6 +79717,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_reliance_sbi_card_prime.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -77783,7 +79728,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -77991,6 +79945,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_reliance_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -78001,7 +79956,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -78217,6 +80181,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_aurum.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html",
    "metadata": {
     "contactless": null,
     "material": "Metal with black finish and golden stripes",
@@ -78227,7 +80192,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -78438,6 +80412,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_miles_elite.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -78448,7 +80423,16 @@
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": 2000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -78624,6 +80608,7 @@
    "forex_markup_pct": 2.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_miles_prime.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-prime.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -78634,7 +80619,16 @@
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-prime.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -78825,6 +80819,7 @@
    "forex_markup_pct": 3.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_miles.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -78835,7 +80830,16 @@
    "is_travel": 1,
    "points_expiry_months": 24,
    "min_redemption_points": 2000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -79281,6 +81285,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_pulse.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -79291,7 +81296,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 4000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -79660,6 +81674,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_elite.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -79670,7 +81685,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -80000,6 +82024,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_prime.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -80010,7 +82035,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -80314,6 +82348,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_simplyclick.png",
+   "apply_url": "https://www.sbicard.com/hi/personal/credit-cards/shopping/simplyclick-sbi-card.page",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -80324,7 +82359,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/hi/personal/credit-cards/shopping/simplyclick-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -80815,6 +82859,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_simplysave_upi_rupay.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/psb-simplysave-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -80825,7 +82870,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": 2000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/psb-simplysave-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -81149,6 +83203,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_unnati.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -81159,7 +83214,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -81256,6 +83320,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_shaurya.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -81266,7 +83331,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -81459,6 +83533,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_shaurya_select.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-select-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -81469,7 +83544,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-select-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -81694,6 +83778,7 @@
    "forex_markup_pct": 1.99,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_tata_neu_infinity_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -81704,7 +83789,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -82320,6 +84414,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_tata_neu_plus_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -82330,7 +84425,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -83228,6 +85332,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/sbi_card_titan_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -83238,7 +85343,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -83432,6 +85546,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/sbi_card_yatra_sbi.png",
+   "apply_url": "https://www.sbicard.com/en/personal/credit-cards/travel/yatra-sbi-card.page",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -83442,7 +85557,16 @@
    "is_travel": 0,
    "points_expiry_months": 24,
    "min_redemption_points": 1000,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.sbicard.com/en/personal/credit-cards/travel/yatra-sbi-card.page",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -85990,6 +88114,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 1,
    "image_asset": "assets/cards/yes_bank_pop_club.png",
+   "apply_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/pop-club-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -86000,7 +88125,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/pop-club-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -86251,6 +88385,7 @@
    "forex_markup_pct": 3.5,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/yes_bank_byoc.png",
+   "apply_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card",
    "metadata": {
     "contactless": null,
     "material": [
@@ -86265,7 +88400,16 @@
    "is_travel": 0,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -87412,6 +89556,7 @@
    "forex_markup_pct": 2.75,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/yes_bank_yes_elite.png",
+   "apply_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card",
    "metadata": {
     "contactless": null,
     "material": null,
@@ -87422,7 +89567,16 @@
    "is_travel": 0,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -88025,6 +90179,7 @@
    "forex_markup_pct": 2.75,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/yes_bank_select.png",
+   "apply_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -88035,7 +90190,16 @@
    "is_travel": 1,
    "points_expiry_months": null,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
@@ -88918,6 +91082,7 @@
    "forex_markup_pct": 1.0,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/yes_bank_marquee.png",
+   "apply_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card",
    "metadata": {
     "contactless": true,
     "material": null,
@@ -88928,7 +91093,16 @@
    "is_travel": 1,
    "points_expiry_months": 36,
    "min_redemption_points": null,
-   "points_clawback_on_default": null
+   "points_clawback_on_default": null,
+   "_provenance": {
+    "apply_url": {
+     "source_url": "https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card",
+     "source_doc_type": "issuer_product_page",
+     "fetch_date": "2026-08-31",
+     "confidence": "high",
+     "controls": "HTTP 200 on the issuer domain, no offsite redirect, page carries an apply action, not a PDF"
+    }
+   }
   },
   "reward_rules": [
    {
