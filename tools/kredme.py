@@ -1011,23 +1011,36 @@ def scan_rule_integrity(cards: list) -> dict:
             # primary key would genuinely collapse them, is declared and never
             # read or written outside generated Drift code.
             #
+            # The SAME argument holds for a cap pooled across a CATEGORY list.
+            # An issuer that pools one cap over several categories ("2% back on
+            # dining and grocery spends ... capped at 800 points per cycle") is
+            # expressed as one row per category_id, all carrying the same
+            # rule_name for the same reason. The engine indexes those by
+            # category_id (recommendation_engine.dart:181), so all of them fire,
+            # and wallet_insights' ruleByName map computes the same number from
+            # whichever it keeps, because they differ ONLY in category_id.
+            # merchant_ref and category_id are therefore both SCOPE, not maths:
+            # a rule may set one or the other, never both (the engine asserts
+            # this at recommendation_engine.dart:234), so widening the pooling
+            # key to the pair cannot mask a genuine merchant collision.
+            #
             # So flag a repeat only when it is genuinely ambiguous: the rows
-            # collide on the same merchant_ref, or they disagree on the maths,
-            # in which case which one the user gets is undefined.
+            # collide on the same scope, or they disagree on the maths, in
+            # which case which one the user gets is undefined.
             full = f"{cid}::{(r.get('rule_name') or '').strip()}"
             maths = (r.get("rule_type"), r.get("reward_type"), _fnum(r.get("reward_rate")),
                      _fnum(r.get("reward_unit_spend")), _fnum(r.get("cap_amount")),
-                     r.get("cap_period"), r.get("category_id"), r.get("channel"))
-            mref = r.get("merchant_ref")
+                     r.get("cap_period"), r.get("channel"))
+            scope = (r.get("merchant_ref"), r.get("category_id"))
             prev = seen.get(full)
             if prev is not None:
-                prev_maths, prev_mrefs = prev
-                if maths != prev_maths or mref is None or mref in prev_mrefs:
+                prev_maths, prev_scopes = prev
+                if maths != prev_maths or scope == (None, None) or scope in prev_scopes:
                     dup_rule_names.append(key)
                 else:
-                    prev_mrefs.add(mref)
+                    prev_scopes.add(scope)
             else:
-                seen[full] = (maths, {mref})
+                seen[full] = (maths, {scope})
 
             # _checkCap returns null unless BOTH are set, so a cap with no
             # period is never enforced at all.
