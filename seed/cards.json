@@ -51169,11 +51169,11 @@
    },
    {
     "rule_name": "Save 2.5% as Rewards on IDFC FASTag recharge up to a maximum of ₹2,000 per month",
-    "rule_type": "category_bonus",
+    "rule_type": "portal_bonus",
     "merchant_ref": null,
-    "category_id": "fuel",
+    "category_id": null,
     "category_ref": "idfc fastag recharge",
-    "channel": null,
+    "channel": "portal",
     "reward_type": "points_per_spend",
     "reward_rate": 15.0,
     "reward_unit_spend": 150.0,
@@ -51188,7 +51188,9 @@
     "source_url": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/Savings-Maximiser-FIRST-Power.pdf",
     "source_quote": "Applicable structure: 15 Reward points per ₹150 recharge on IDFC FIRST FASTag (1 Reward point = ₹0.25)",
     "source_fetched_on": "2026-08-21",
-    "source_doc_type": "product_guide"
+    "source_doc_type": "product_guide",
+    "portal_name": "IDFC FIRST Bank Mobile Banking App or FIRST Forward App",
+    "_note": "Same defect as the Power+ twin: an IDFC FASTag recharge row tagged category_id \"fuel\" paid 2.5% at every fuel pump we ship. A FASTag recharge is not a fuel-station spend. Re-filed as portal_bonus on channel portal. rule_name unchanged."
    }
   ],
   "exclusion_rules": [],
@@ -53416,11 +53418,11 @@
    },
    {
     "rule_name": "Save up to 5% as rewards on IDFC FIRST FASTag recharge (30 rewards for every ₹150 spent), max cap ₹1,000 per month",
-    "rule_type": "category_bonus",
+    "rule_type": "portal_bonus",
     "merchant_ref": null,
-    "category_id": "fuel",
+    "category_id": null,
     "category_ref": "idfc first fastag recharge",
-    "channel": null,
+    "channel": "portal",
     "reward_type": "cashback_pct",
     "reward_rate": 0.05,
     "reward_unit_spend": null,
@@ -53432,7 +53434,8 @@
     "expiry_date": null,
     "conditions_json": null,
     "cap_kind": "spend",
-    "_note": "Lata (12-Sep-2026): only IDFC FIRST FASTag recharges made through the IDFC FIRST Bank Mobile Banking App or the FIRST Forward App qualify. Maximum eligible recharge Rs.1,000 per statement cycle, maximum reward 200 Reward Points = Rs.50."
+    "_note": "Lata (12-Sep-2026): \"Only IDFC FIRST FASTag recharges through the IDFC FIRST Bank Mobile Banking App or FIRST Forward App qualify.\" A FASTag recharge is not a spend at a fuel station. Tagged category_id \"fuel\" this row paid 5% at every fuel pump we ship - BPCL, Shell, Indian Oil, Jio-bp, Nayara - so the app told an HPCL cardholder that Rs.1,000 at BPCL earns Rs.50. Re-filed as portal_bonus on channel portal, which the engine never fires, the same treatment CUB SalarySe needed. rule_name is unchanged so no user cap progress is reset.",
+    "portal_name": "IDFC FIRST Bank Mobile Banking App or FIRST Forward App"
    },
    {
     "rule_name": "3X Reward Points on UPI transactions across all categories except Fuel, Insurance, and EMI. No cap on UPI reward points.",
@@ -66320,11 +66323,11 @@
    },
    {
     "rule_name": "3 Reward Points per ₹200 spent on FASTag Recharge from RBL Bank Digital Channels/NCMC Reload/UTS App",
-    "rule_type": "category_bonus",
+    "rule_type": "portal_bonus",
     "merchant_ref": null,
-    "category_id": "fuel",
+    "category_id": null,
     "category_ref": "fastag recharge from rbl bank digital channels / ncmc reload / uts app",
-    "channel": null,
+    "channel": "portal",
     "reward_type": "points_per_spend",
     "reward_rate": 3.0,
     "reward_unit_spend": 200.0,
@@ -66339,7 +66342,9 @@
     "source_url": "https://webassets.rbl.bank.in/document/credit-cards/tnc-irctc-rbl-bank-rupay-credit-card.pdf",
     "source_quote": "3 Reward Points for every INR 200 spent on FASTag Recharge from RBL Bank Digital Channels/ NCMC Reload / UTS App purchases except the defined exclusion category. The Cardmember can earn up to a maximum of 1000 rewards points in one month.",
     "source_fetched_on": "2026-08-21",
-    "source_doc_type": "tnc"
+    "source_doc_type": "tnc",
+    "portal_name": "RBL Bank Digital Channels / NCMC Reload / UTS App",
+    "_note": "Same defect: a FASTag recharge row tagged category_id \"fuel\" paid 1.5% at every fuel pump we ship. The rule name itself restricts it to RBL Bank Digital Channels, NCMC Reload and the UTS App, which no field on the row can hold. Re-filed as portal_bonus on channel portal. rule_name unchanged."
    },
    {
     "rule_name": "2 Reward Points per ₹200 spent on flights, hotels, or cruise ticket bookings from the IRCTC Website or Mobile App",
