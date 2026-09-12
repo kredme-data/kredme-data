@@ -3,55 +3,55 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "f313ceeb324bc02f8b58376e8188fbed2e904fe7d22ce66d31c550e64a4d49c0",
-      "fetched_at": "2026-09-11T07:24:14Z",
+      "fetched_at": "2026-09-12T07:16:51Z",
       "note": "",
       "status": "done",
       "text_chars": 103892,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "c1289927b11f5f76b1795f5b2a96dc26d4fcbb03c68b5d1021227e3250ffd65c",
-      "fetched_at": "2026-09-11T07:22:48Z",
+      "content_sha256": "0e5e0f59ae535c591e7e708f8fdad5ac15021371a0caa105e917bb0baf865c86",
+      "fetched_at": "2026-09-12T07:15:22Z",
       "note": "",
       "status": "done",
-      "text_chars": 164848,
+      "text_chars": 164614,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
       "content_sha256": "bed9b910370a921805b3546737905b995a3f97328f9e4f936d3aedabd6fe040a",
-      "fetched_at": "2026-09-11T07:22:48Z",
+      "fetched_at": "2026-09-12T07:15:22Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
       "url": "https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf"
     },
     "__watch__hsbc": {
-      "content_sha256": "973ef65ef35f353aae899c45ff683cf7ea0c24d83179af34d9ad804aa40ff08c",
-      "fetched_at": "2026-09-11T07:24:31Z",
+      "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
+      "fetched_at": "2026-09-12T07:17:03Z",
       "note": "",
       "status": "done",
-      "text_chars": 4503,
+      "text_chars": 4556,
       "url": "https://www.hsbc.co.in/credit-cards/"
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-09-11T07:23:31Z",
+      "fetched_at": "2026-09-12T07:16:07Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
       "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"
     },
     "__watch__idfc": {
-      "content_sha256": "01ff3d488a2d2aebd3dda4b2924c8b9438e3f14f3ec966ddab5a653369aa4647",
-      "fetched_at": "2026-09-11T07:23:51Z",
+      "content_sha256": "6c74e3d61731b1172f56169fdbbf79314ac571c89a6e3c8d717c9df5a648b76d",
+      "fetched_at": "2026-09-12T07:16:25Z",
       "note": "",
       "status": "done",
-      "text_chars": 200758,
+      "text_chars": 241225,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
       "content_sha256": "7340e9e6f2a5849e271002c87755d9b6340f3d330df943f261707c8f727d40c2",
-      "fetched_at": "2026-09-11T07:24:07Z",
+      "fetched_at": "2026-09-12T07:16:40Z",
       "note": "",
       "status": "done",
       "text_chars": 51250,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "6ef325d1dc99b584531ee5de1aed0d10a6057501b9cfe8a88d2983ff70846b9f",
-      "fetched_at": "2026-09-11T07:24:20Z",
+      "fetched_at": "2026-09-12T07:16:56Z",
       "note": "",
       "status": "done",
       "text_chars": 47687,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "6b374fba69654f8e88d9b216bc70c1658d7d342d35f8b8189b64eb13a8ce14ea",
-      "fetched_at": "2026-09-11T07:24:28Z",
+      "fetched_at": "2026-09-12T07:17:01Z",
       "note": "",
       "status": "done",
       "text_chars": 106605,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-09-11T07:23:26Z",
+      "fetched_at": "2026-09-12T07:16:02Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-09-11T07:24:09Z",
+      "fetched_at": "2026-09-12T07:16:41Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
