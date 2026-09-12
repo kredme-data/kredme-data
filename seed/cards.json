@@ -48344,7 +48344,7 @@
    "rp_value_standard": 0.25,
    "rp_value_travel": null,
    "rp_value_transfer": null,
-   "forex_markup_pct": 3.5,
+   "forex_markup_pct": 1.99,
    "has_rupay_upi": 0,
    "image_asset": "assets/cards/idfc_bank_bank_first_swyp.png",
    "apply_url": "https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card",
@@ -48369,7 +48369,31 @@
     }
    }
   },
-  "reward_rules": [],
+  "reward_rules": [
+   {
+    "rule_name": "100 Reward Points for every Rs.5,000 of UPI spend in a statement month",
+    "rule_type": "channel_specific",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": "upi spends",
+    "channel": "upi",
+    "reward_type": "points_per_spend",
+    "reward_rate": 100.0,
+    "reward_unit_spend": 5000.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 45,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "medium",
+    "source_quote": "100 Reward Points for every Rs.5,000 UPI spend in a statement month when the SWYP card is activated for UPI. Fuel and cash transactions are excluded from the UPI Rewards Programme.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-09-12",
+    "_note": "Lata (12-Sep-2026): UPI rewards are separate from the monthly SWYP milestone programme. Fuel and cash transactions are excluded."
+   }
+  ],
   "exclusion_rules": [
    {
     "exclusion_type": "other",
@@ -48379,13 +48403,182 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "utilities",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:utility spends"
+    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "mcc",
     "exclusion_value": "5541",
     "also_excludes_from_threshold": 1
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7993",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7994",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7995",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "emi-converted transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "fees and finance charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "cancelled, reversed or refunded transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "fuel and cash transactions are excluded from the upi rewards programme",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [
@@ -48470,6 +48663,38 @@
      "cardinsider": "Pay With Points"
     },
     "confidence": "low"
+   },
+   {
+    "rule_name": "Travel & Shop flights and hotels",
+    "channel_type": "travel",
+    "point_value_inr": 0.25,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": 99.0,
+    "channel_description": "Up to 70% of booking value including taxes can be paid with points; balance on the SWYP card",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "Travel & Shop flights/hotels | 1 RP = Rs.0.25 | Up to 70% of booking value incl. taxes can be paid with points; balance by SWYP card; Rs.99 + GST fee."
+    },
+    "confidence": "medium"
+   },
+   {
+    "rule_name": "In-store Pay with Reward Points",
+    "channel_type": "other",
+    "point_value_inr": 0.25,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": 99.0,
+    "channel_description": "Available at select Pine Labs terminals",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "In-store Pay with Reward Points | 1 RP = Rs.0.25 | Available at select Pine Labs terminals; Rs.99 + GST fee."
+    },
+    "confidence": "medium"
    }
   ],
   "_provenance": [
@@ -53165,7 +53390,9 @@
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "cap_kind": "spend",
+    "_note": "Lata (12-Sep-2026): maximum eligible spend Rs.2,000 per statement cycle, maximum reward 400 Reward Points = Rs.100."
    },
    {
     "rule_name": "Save up to 5% as rewards on grocery and utility expenses up to ₹2,000 per month [utilities]",
@@ -53183,7 +53410,9 @@
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "cap_kind": "spend",
+    "_note": "Lata (12-Sep-2026): maximum eligible spend Rs.2,000 per statement cycle, maximum reward 400 Reward Points = Rs.100."
    },
    {
     "rule_name": "Save up to 5% as rewards on IDFC FIRST FASTag recharge (30 rewards for every ₹150 spent), max cap ₹1,000 per month",
@@ -53201,7 +53430,9 @@
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "cap_kind": "spend",
+    "_note": "Lata (12-Sep-2026): only IDFC FIRST FASTag recharges made through the IDFC FIRST Bank Mobile Banking App or the FIRST Forward App qualify. Maximum eligible recharge Rs.1,000 per statement cycle, maximum reward 200 Reward Points = Rs.50."
    },
    {
     "rule_name": "3X Reward Points on UPI transactions across all categories except Fuel, Insurance, and EMI. No cap on UPI reward points.",
@@ -53225,6 +53456,28 @@
     "source_quote": "UPI Rewards 3X Rewards ... Applicable structure: 3 Reward points per ₹150 (1 Reward point = ₹0.25)",
     "source_doc_type": "product_guide",
     "source_fetched_on": "2026-08-20"
+   },
+   {
+    "rule_name": "3 Reward Points per Rs.150 on other eligible retail spends - 0.5% at Rs.0.25 a point, no spend cap",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 3.0,
+    "reward_unit_spend": 150.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": null,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "medium",
+    "source_quote": "3 Reward Points per Rs.150 on other eligible retail spends, with no spend cap. 1 Reward Point = Rs.0.25.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-09-12"
    }
   ],
   "exclusion_rules": [
@@ -53247,17 +53500,176 @@
     "exclusion_type": "other",
     "exclusion_value": "emi (excluded from upi rewards)",
     "also_excludes_from_threshold": 0
-   }
-  ],
-  "milestone_rules": [],
-  "fuel_surcharge_rules": [
+   },
    {
-    "waiver_pct": 1.0,
-    "min_txn_amount": 400.0,
-    "max_txn_amount": 5000.0,
-    "monthly_cap": 400.0
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4899",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "insurance",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "lpg spends, excluded from the 3X other-retail bucket",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "hpcl fuel beyond the Rs.10,000 eligible spend cap per statement cycle - the excess does not enter the 3X bucket",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "grocery and utility beyond the Rs.2,000 eligible spend cap per statement cycle - the excess does not enter the 3X bucket",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "idfc first fastag beyond the Rs.1,000 cap per statement cycle - the excess does not enter the 3X bucket",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "emi transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "cancelled, reversed or refunded transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "fees and finance charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "commercial or resale use",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "non-hpcl fuel (mcc 5172, 5541, 5542, 5983) - not written as mcc rows because the app checks exclusions before any reward rule, so they would also kill this card own HPCL fuel rate",
+    "also_excludes_from_threshold": 0
    }
   ],
+  "milestone_rules": [
+   {
+    "milestone_name": "Annual Fee Waiver",
+    "spend_target": 150000.0,
+    "period": "year",
+    "bonus_type": "fee_waiver",
+    "bonus_value": 499.0,
+    "bonus_description": "Annual fee of Rs.499 waived on Rs.1.5 lakh eligible annual spend",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
+  "fuel_surcharge_rules": [],
   "redemption_rules": [
    {
     "rule_name": "General",
@@ -59208,13 +59620,14 @@
     "reward_type": "cashback_pct",
     "reward_rate": 0.05,
     "reward_unit_spend": null,
-    "cap_amount": 500,
+    "cap_amount": 750,
     "cap_period": "cycle",
     "min_txn_amount": null,
     "priority": 50,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "_note": "Lata (12-Sep-2026): Kotak caps the 5% and 3% accelerated categories at 750 Reward Points per billing cycle as ONE shared pool, and pays 0% on those categories for the rest of the cycle once it is hit. The three rows pay different rates so they cannot share a rule_name, and the app therefore gives each its own 750-point ceiling. Renaming them to share one pool would wipe every user cap progress."
    },
    {
     "rule_name": "5% accelerated cashback on online entertainment spends, capped at 500 Reward Points per statement cycle (shared cap with food & grocery)",
@@ -59226,13 +59639,14 @@
     "reward_type": "cashback_pct",
     "reward_rate": 0.05,
     "reward_unit_spend": null,
-    "cap_amount": 500,
+    "cap_amount": 750,
     "cap_period": "cycle",
     "min_txn_amount": null,
     "priority": 50,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "_note": "Lata (12-Sep-2026): Kotak caps the 5% and 3% accelerated categories at 750 Reward Points per billing cycle as ONE shared pool, and pays 0% on those categories for the rest of the cycle once it is hit. The three rows pay different rates so they cannot share a rule_name, and the app therefore gives each its own 750-point ceiling. Renaming them to share one pool would wipe every user cap progress."
    },
    {
     "rule_name": "3% accelerated cashback on fuel spends, capped at 500 Reward Points per statement cycle (shared cap with food, grocery & entertainment)",
@@ -59244,21 +59658,21 @@
     "reward_type": "cashback_pct",
     "reward_rate": 0.03,
     "reward_unit_spend": null,
-    "cap_amount": 500,
+    "cap_amount": 750,
     "cap_period": "cycle",
     "min_txn_amount": null,
     "priority": 55,
     "effective_date": null,
     "expiry_date": null,
-    "conditions_json": null
+    "conditions_json": null,
+    "_note": "Lata (12-Sep-2026): Kotak caps the 5% and 3% accelerated categories at 750 Reward Points per billing cycle as ONE shared pool, and pays 0% on those categories for the rest of the cycle once it is hit. The three rows pay different rates so they cannot share a rule_name, and the app therefore gives each its own 750-point ceiling. Renaming them to share one pool would wipe every user cap progress."
    }
   ],
   "exclusion_rules": [
    {
     "exclusion_type": "category",
     "exclusion_value": "rent",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:rent payments"
+    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "other",
@@ -59278,20 +59692,17 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "education",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:education-related payments"
+    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "government",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:government-related payments"
+    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:wallet reloads"
+    "also_excludes_from_threshold": 0
    },
    {
     "exclusion_type": "other",
@@ -59302,9 +59713,125 @@
     "exclusion_type": "other",
     "exclusion_value": "any transaction converted to emi",
     "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4812",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4814",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4900",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6300",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "post-purchase emi - cashback is reversed on conversion",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "cancelled, reversed or refunded transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "transactions whose cashback is below a whole Rs.1 - cashback accrues only in multiples of Rs.1",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "commercial, resale or business use",
+    "also_excludes_from_threshold": 0
    }
   ],
-  "milestone_rules": [],
+  "milestone_rules": [
+   {
+    "milestone_name": "Annual Fee Waiver",
+    "spend_target": 200000.0,
+    "period": "year",
+    "bonus_type": "fee_waiver",
+    "bonus_value": 750.0,
+    "bonus_description": "Annual fee of Rs.750 waived on Rs.2 lakh retail spends in a year",
+    "is_progressive": 0,
+    "conditions_json": null
+   }
+  ],
   "fuel_surcharge_rules": [
    {
     "waiver_pct": 1.0,
@@ -72355,7 +72882,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 10.0,
     "reward_unit_spend": 100.0,
-    "cap_amount": 7500,
+    "cap_amount": 5000,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 55,
@@ -72366,7 +72893,8 @@
     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
     "source_quote": "2. 10X Reward Points on every `100 spent on Groceries, Departmental stores, Movies & Dining. 3. Cumulative 10X Reward Points accrued per `100 spent on Groceries, Departmental Stores, Movies & Dining with your BPCL SBI Card OCTANE will have a maximum cap of 7,500 Reward Points per month.",
     "source_fetched_on": "2026-08-21",
-    "source_doc_type": "tnc"
+    "source_doc_type": "tnc",
+    "_note": "Lata (12-Sep-2026): 5X accelerated Reward Points on Grocery, Departmental Stores, Dining and Movies are capped at 5,000 Reward Points per month, shared across all four. The four rows carry separate names so the app gives each its own 5,000 ceiling; renaming them to share one would wipe every user's cap progress."
    },
    {
     "rule_name": "10 Reward Points per Rs. 100 spent at departmental stores",
@@ -72378,7 +72906,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 10.0,
     "reward_unit_spend": 100.0,
-    "cap_amount": 7500,
+    "cap_amount": 5000,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 55,
@@ -72389,7 +72917,8 @@
     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
     "source_quote": "2. 10X Reward Points on every `100 spent on Groceries, Departmental stores, Movies & Dining. 3. Cumulative 10X Reward Points accrued per `100 spent on Groceries, Departmental Stores, Movies & Dining with your BPCL SBI Card OCTANE will have a maximum cap of 7,500 Reward Points per month.",
     "source_fetched_on": "2026-08-21",
-    "source_doc_type": "tnc"
+    "source_doc_type": "tnc",
+    "_note": "Lata (12-Sep-2026): 5X accelerated Reward Points on Grocery, Departmental Stores, Dining and Movies are capped at 5,000 Reward Points per month, shared across all four. The four rows carry separate names so the app gives each its own 5,000 ceiling; renaming them to share one would wipe every user's cap progress."
    },
    {
     "rule_name": "10 Reward Points per Rs. 100 spent on movie ticket purchases",
@@ -72401,7 +72930,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 10.0,
     "reward_unit_spend": 100.0,
-    "cap_amount": 7500,
+    "cap_amount": 5000,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 55,
@@ -72412,7 +72941,8 @@
     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
     "source_quote": "2. 10X Reward Points on every `100 spent on Groceries, Departmental stores, Movies & Dining. 3. Cumulative 10X Reward Points accrued per `100 spent on Groceries, Departmental Stores, Movies & Dining with your BPCL SBI Card OCTANE will have a maximum cap of 7,500 Reward Points per month.",
     "source_fetched_on": "2026-08-21",
-    "source_doc_type": "tnc"
+    "source_doc_type": "tnc",
+    "_note": "Lata (12-Sep-2026): 5X accelerated Reward Points on Grocery, Departmental Stores, Dining and Movies are capped at 5,000 Reward Points per month, shared across all four. The four rows carry separate names so the app gives each its own 5,000 ceiling; renaming them to share one would wipe every user's cap progress."
    },
    {
     "rule_name": "10 Reward Points per Rs. 100 spent on groceries",
@@ -72424,7 +72954,7 @@
     "reward_type": "points_per_spend",
     "reward_rate": 10.0,
     "reward_unit_spend": 100.0,
-    "cap_amount": 7500,
+    "cap_amount": 5000,
     "cap_period": "month",
     "min_txn_amount": null,
     "priority": 55,
@@ -72435,7 +72965,8 @@
     "source_url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
     "source_quote": "2. 10X Reward Points on every `100 spent on Groceries, Departmental stores, Movies & Dining. 3. Cumulative 10X Reward Points accrued per `100 spent on Groceries, Departmental Stores, Movies & Dining with your BPCL SBI Card OCTANE will have a maximum cap of 7,500 Reward Points per month.",
     "source_fetched_on": "2026-08-21",
-    "source_doc_type": "tnc"
+    "source_doc_type": "tnc",
+    "_note": "Lata (12-Sep-2026): 5X accelerated Reward Points on Grocery, Departmental Stores, Dining and Movies are capped at 5,000 Reward Points per month, shared across all four. The four rows carry separate names so the app gives each its own 5,000 ceiling; renaming them to share one would wipe every user's cap progress."
    }
   ],
   "exclusion_rules": [
@@ -72447,8 +72978,112 @@
    {
     "exclusion_type": "category",
     "exclusion_value": "wallet_load",
-    "also_excludes_from_threshold": 0,
-    "_retyped_from": "other:mobile wallet uploads"
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5816",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7993",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7994",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "balance transfer / balance transfer on emi",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "flexipay / emi conversion",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "easymoney / encash / dial-a-draft",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "financial charges and fees, including late fees, dishonoured-cheque charges, service fees and transaction charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "the portion of a transaction paid using points + pay",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "card protection plan charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "cancelled, reversed or refunded transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "transactions charged before card enrolment",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "non-bpcl fuel (mcc 5172, 5541, 5542, 5983) - not written as mcc rows because the app checks exclusions before any reward rule, so they would also kill this card own BPCL fuel rate",
+    "also_excludes_from_threshold": 0
    }
   ],
   "milestone_rules": [
@@ -72545,6 +73180,22 @@
      "cardinsider": "Products and Vouchers with SBI"
     },
     "confidence": "low"
+   },
+   {
+    "rule_name": "BPCL fuel e-voucher",
+    "channel_type": "voucher",
+    "point_value_inr": 0.25,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": 99.0,
+    "channel_description": "BPCL fuel e-voucher, addable to SmartDrive in HelloBPCL and usable for BPCL fuel; cannot be converted to cash",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "BPCL fuel e-voucher | Rs.1 face value per Rs.1 voucher value | Can be added to SmartDrive in HelloBPCL and used for BPCL fuel; voucher cannot be converted to cash."
+    },
+    "confidence": "medium"
    }
   ],
   "_provenance": [
@@ -95079,5 +95730,397 @@
    }
   ],
   "_note": "Every number here is from Siddhant Bhoite's manual validation document, read against the issuer's terms and conditions on 2026-08-30, and accepted as final by the founder. This repo did not re-fetch the pages: au.bank.in returns HTTP 403 to us and yesbank.in does not resolve, which is why both cards were missing until now. source_url is the issuer page the validation was performed against."
+ },
+ {
+  "card": {
+   "id": "indusind_bank_cred_rupay",
+   "card_name": "CRED IndusInd Bank RuPay Credit Card",
+   "issuer": "IndusInd Bank",
+   "network": "rupay",
+   "card_tier": "entry",
+   "annual_fee": 499.0,
+   "fee_waiver_spend": null,
+   "base_reward_rate": 0.01,
+   "reward_currency": "reward_points",
+   "rp_value_standard": 1.0,
+   "rp_value_travel": 1.0,
+   "rp_value_transfer": null,
+   "forex_markup_pct": null,
+   "has_rupay_upi": 1,
+   "image_asset": "assets/cards/indusind_bank_cred_rupay.png",
+   "metadata": {
+    "contactless": null,
+    "material": null,
+    "invite_only": false,
+    "no_preset_limit": false
+   },
+   "is_active": 1,
+   "is_travel": 0,
+   "points_expiry_months": 24,
+   "min_redemption_points": null,
+   "points_clawback_on_default": null
+  },
+  "reward_rules": [
+   {
+    "rule_name": "1% back as CRED Reward Points on all other eligible transactions",
+    "rule_type": "base_rate",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": null,
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 1.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": null,
+    "cap_period": null,
+    "min_txn_amount": 100.0,
+    "priority": 20,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "medium",
+    "source_quote": "1% back as CRED Reward Points on all other eligible transactions. Minimum transaction value for earning rewards: Rs.100.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-09-12"
+   },
+   {
+    "rule_name": "5% back on eligible e-commerce transactions, capped at 5,000 Reward Points per statement cycle",
+    "rule_type": "category_bonus",
+    "merchant_ref": null,
+    "category_id": "online_shopping",
+    "category_ref": "e-commerce",
+    "channel": null,
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": 5000,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 55,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "medium",
+    "source_quote": "5% back as CRED Reward Points on eligible e-commerce transactions. The accelerated 5% rate is capped at 5,000 CRED Reward Points in a statement cycle. Transactions below Rs.100 do not earn Reward Points.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-09-12",
+    "cap_kind": "reward",
+    "cap_unit": "points"
+   },
+   {
+    "rule_name": "5% back as CRED Reward Points inside the CRED app - CRED Pay, CRED Travel, CRED Store, CRED online Gift Cards and online UPI payments through CRED",
+    "rule_type": "portal_bonus",
+    "merchant_ref": null,
+    "category_id": null,
+    "category_ref": "CRED ecosystem",
+    "channel": "portal",
+    "reward_type": "points_per_spend",
+    "reward_rate": 5.0,
+    "reward_unit_spend": 100.0,
+    "cap_amount": 5000,
+    "cap_period": "cycle",
+    "min_txn_amount": 100.0,
+    "priority": 50,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "medium",
+    "source_quote": "5% back as CRED Reward Points on eligible CRED transactions including CRED Pay, CRED Travel, CRED Store, CRED online Gift Cards and online UPI payments through CRED. Gift Cards and Travel outside CRED earn only the standard 1% reward rate.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-09-12",
+    "cap_kind": "reward",
+    "portal_name": "CRED app",
+    "_note": "Filed as portal_bonus on channel portal, which the engine never fires, because the rate is paid only when the transaction is routed through the CRED app. Lata: \"Gift Cards and Travel outside CRED earn only the standard 1% reward rate\" and \"Scan & Pay transactions outside CRED do not earn CRED Reward Points\". A phone cannot tell whether a payment went through CRED, so ranking on 5% would be wrong on most purchases.",
+    "cap_unit": "points"
+   }
+  ],
+  "exclusion_rules": [
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4111",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4131",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "4784",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "7523",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5541",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5542",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8220",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8241",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8244",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8249",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "8299",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9211",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9222",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9311",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9399",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "9405",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6540",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6513",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5944",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5094",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6010",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "6011",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "fuel",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "education",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "government",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "wallet_load",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "rent",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "category",
+    "exclusion_value": "jewellery",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "transportation and tolls",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "loan and emi payments - no single universal merchant mcc applies",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "cred scan & pay done outside cred",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "other",
+    "exclusion_value": "cred utility and insurance transactions made outside cred do not earn the cred-specific 1% rate",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "transactions below Rs.100 - the minimum transaction value for earning rewards",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "fees, finance charges and bank charges",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "cancelled, reversed or refunded transactions",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "txn_type",
+    "exclusion_value": "cash advance transactions",
+    "also_excludes_from_threshold": 0
+   }
+  ],
+  "milestone_rules": [],
+  "fuel_surcharge_rules": [
+   {
+    "waiver_pct": 1.0,
+    "min_txn_amount": 500.0,
+    "max_txn_amount": 5000.0,
+    "monthly_cap": null
+   }
+  ],
+  "redemption_rules": [
+   {
+    "rule_name": "CRED Flights & Hotels",
+    "channel_type": "travel",
+    "point_value_inr": 1.0,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Up to 70% of booking value can be paid using points per transaction",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "CRED Flights & Hotels | 1 RP = Rs.1 | Up to 70% of booking value can be paid using points per transaction."
+    },
+    "confidence": "medium"
+   },
+   {
+    "rule_name": "CRED Store",
+    "channel_type": "merchandise",
+    "point_value_inr": 1.0,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Up to 70% of eligible transaction value can be paid using points",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "CRED Store | 1 RP = Rs.1 | Up to 70% of eligible transaction value can be paid using points."
+    },
+    "confidence": "medium"
+   },
+   {
+    "rule_name": "Eligible CRED Pay merchants",
+    "channel_type": "other",
+    "point_value_inr": 1.0,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Up to 70% of transaction value can be paid using points; merchant eligibility is determined by CRED",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "Eligible CRED Pay merchants | 1 RP = Rs.1 | Up to 70% of transaction value can be paid using points; merchant eligibility is determined by CRED."
+    },
+    "confidence": "medium"
+   },
+   {
+    "rule_name": "CRED card bill payment",
+    "channel_type": "cashback",
+    "point_value_inr": 0.5,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Up to 100% of available points can be used per transaction",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "CRED card bill payment | 1 RP = Rs.0.50 | Up to 100% of available points can be used per transaction; CRED Cashback is treated separately."
+    },
+    "confidence": "medium"
+   },
+   {
+    "rule_name": "Utility bill payment within CRED",
+    "channel_type": "cashback",
+    "point_value_inr": 0.5,
+    "min_points": null,
+    "max_points": null,
+    "redemption_fee_inr": null,
+    "channel_description": "Up to 100% of available points can be used per transaction",
+    "_sources": [
+     "manual_validation"
+    ],
+    "_source_quotes": {
+     "manual_validation": "Utility bill payment within CRED | 1 RP = Rs.0.50 | Up to 100% of available points can be used per transaction."
+    },
+    "confidence": "medium"
+   }
+  ]
  }
 ]

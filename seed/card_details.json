@@ -33478,7 +33478,18 @@
    },
    "emi_conversion": {
     "description": "Convert spends into flexible EMIs starting from 3 months tenure, minimum transaction ₹2,500, flat fee starting from ₹49 + GST"
-   }
+   },
+   "summary": [
+    "The monthly milestone programme pays 200 Reward Points at Rs.5,000 of eligible spend, 500 in total at Rs.10,000, 1,000 in total at Rs.15,000, and a further 400 on Rs.20,000 of eligible rental spend, for a maximum of 1,400 Reward Points (Rs.350) per billing cycle.",
+    "Fuel and cash transactions are excluded from the UPI Rewards Programme, and UPI rewards are separate from the monthly SWYP milestone programme.",
+    "25% off movie tickets up to Rs.100 per month through the District app is a discount, not an earn rate, so it does not affect the reward ranking.",
+    "The highest monthly milestone requires the rental milestone, and rent itself carries a 1% surcharge with a Rs.249 minimum.",
+    "Monthly redeemable Reward Point cap 1,00,000; annual redeemable cap 2,00,000.",
+    "IDFC FIRST Bank describes its Reward Points as never expiring; the SWYP redemption terms reviewed do not specify a normal expiry.",
+    "The reviewed public material does not establish a permanent Visa or Mastercard network variant; SWYP can be enabled for UPI through the RuPay credit-card-on-UPI functionality.",
+    "4 complimentary railway lounge visits per quarter were part of the published SWYP proposition; verify the current spend and access condition before relying on it.",
+    "Source: manual validation by Lata against IDFC FIRST Bank official credit-card pages, fee schedule and MITC material and SWYP-specific official communications, September 2026."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -33524,35 +33535,38 @@
   ],
   "pros_cons": {
    "pros": [
-    "Numerous welcome benefits including free Lenskart Gold membership, 1,000 Reward Points, and Free Times Prime membership",
-    "Affordable joining/annual charge of Rs. 499",
-    "No interest charges - pay full amount or convert to EMI",
-    "Complimentary railway lounge access up to 16 times a year",
-    "Multiple partner discounts on popular brands",
-    "Referral program with benefits up to ₹11,299",
-    "UPI enabled credit card",
-    "Roadside assistance included"
+    "Up to 1,400 Reward Points per billing cycle through milestones",
+    "UPI reward structure of 100 points per Rs.5,000 UPI spend when enabled",
+    "Rs.499 annual fee is relatively low for the feature set",
+    "Never-expiring Reward Points under the IDFC FIRST Bank reward framework",
+    "25% monthly movie discount up to Rs.100",
+    "Partner discounts across dining, shopping and travel",
+    "1.99% forex markup is competitive for a mass-market card",
+    "EMI conversion proposition with a flat monthly fee"
    ],
    "cons": [
-    "No airport lounge access unless referral criteria are fulfilled",
-    "Must pay full amount due by due date or convert to EMI - paying minimum amount due is not an option",
-    "Milestone-based rewards are not incremental",
-    "UPI enablement requires additional annual charge of ₹199 + GST"
+    "Rs.0.25 per Reward Point is a modest base value",
+    "Rs.99 + GST redemption fee reduces value on small redemptions",
+    "The highest monthly milestone requires the rental milestone, which carries a surcharge",
+    "Utility spend above Rs.20,000 per statement cycle attracts a 1% surcharge",
+    "Fuel and UPI rewards have category-specific exclusions and caps",
+    "Several lifestyle benefits are promotional and can change",
+    "Railway lounge access should be verified against current spend and access terms"
    ],
-   "best_for": "Students, young professionals, frequent railway travelers, and those who prefer EMI conversion over interest payments",
-   "not_for": "Those seeking airport lounge access or traditional minimum due payment flexibility"
+   "best_for": "Digital and young spenders who can optimise the monthly milestones and UPI",
+   "not_for": "Anyone who cannot hit the monthly milestone thresholds, where the card earns almost nothing"
   },
   "highlights": [
-   "No interest charges - must pay full amount or convert to EMI",
-   "EMI conversion starting from ₹49 + GST flat fee, minimum tenure 3 months, minimum transaction ₹2,500",
-   "16 free railway lounge accesses per year (4 per quarter)",
-   "Milestone-based Reward Points on monthly spends (200/500/1,000 RPs at ₹5K/₹10K/₹15K)",
-   "1 Reward Point = ₹0.25",
-   "UPI enabled credit card",
-   "Multiple partner discounts on Zomato, Dominos, Nykaa, Sugar, Zepto, Tata CLiQ, EaseMyTrip, Goibibo",
-   "Referral program with up to ₹11,299 in benefits",
-   "Roadside assistance worth ₹1,399 four times a year via Global Assure",
-   "Low joining and annual fee of ₹499 + GST"
+   "Joining Fee Rs.499 + GST; Annual Fee Rs.499 + GST",
+   "Welcome offer: 2,000 Reward Points worth Rs.500, subject to qualifying spend and offer terms",
+   "Up to 1,400 Reward Points every billing cycle through the SWYP monthly milestone programme",
+   "100 Reward Points for every Rs.5,000 UPI spend in a statement month when the SWYP card is activated for UPI",
+   "25% discount on movie tickets up to Rs.100 per month through the District app",
+   "1% fuel-surcharge waiver, capped at Rs.200",
+   "4 complimentary railway lounge visits per quarter were advertised; current access is subject to prevailing lounge terms",
+   "1.99% forex markup",
+   "Reward Points are valued at Rs.0.25 each",
+   "EMIfy eligible purchases above Rs.2,500 at a flat monthly EMI conversion fee, advertised from Rs.49 + GST"
   ],
   "similar_cards": [
    {
@@ -33570,6 +33584,22 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 499,
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": 1.99,
+   "fuel_surcharge": "1% waiver, capped at Rs.200",
+   "cash_advance": "Rs.199 + GST per withdrawal under the SWYP cash proposition",
+   "other_lines": [
+    "Annual-fee waiver may be available under referral terms",
+    "Rent (MCC 6513): 1%, minimum Rs.249 per eligible rental transaction",
+    "Utilities (MCC 4814, 4816, 4899, 4900): nil surcharge up to Rs.20,000 aggregate in a statement cycle; 1% above Rs.20,000",
+    "Education via third-party platforms: 1%, minimum Rs.249; direct institution website or POS exempt",
+    "Reward redemption: Rs.99 + GST per redemption",
+    "EMI conversion: from Rs.49 + GST per month on eligible transactions above Rs.2,500; fee varies by amount and tenure"
+   ]
   }
  },
  "idfc_first_bank_diamond_reserve": {
@@ -35353,6 +35383,17 @@
    ],
    "travel_memberships": [
     "Complimentary Roadside Assistance worth ₹1,399 four times a year"
+   ],
+   "summary": [
+    "HPCL fuel rewards apply only at authorised HPCL fuel stations identified through the Merchant IDs shared by HPCL and configured with IDFC FIRST Bank. An HPCL-branded station whose MID is not configured does not qualify.",
+    "Using HP Pay Pay by QR with this card can additionally earn 6 Happy Coins per Rs.100 of fuel spend, worth 1.5%, subject to the HP Pay terms and a Rs.10,000 monthly cap. Combined maximum headline savings through the HP Pay route is up to 6.5%.",
+    "Fuel rewards do not apply to UPI transactions under the current Savings Maximiser document.",
+    "Grocery and utility eligibility is determined by the MCC received with the transaction data. A merchant not classified under an eligible grocery or utility MCC does not earn the accelerated reward.",
+    "Only IDFC FIRST FASTag recharges through the IDFC FIRST Bank Mobile Banking App or the FIRST Forward App qualify for the 5% FASTag rate.",
+    "The separate 1% fuel-surcharge waiver was discontinued; fuel value is now embedded in the reward structure.",
+    "Complimentary lounge access requires a minimum Rs.20,000 spend in the previous calendar month to activate the next month benefit.",
+    "Complimentary roadside assistance worth Rs.1,399, personal accident cover of Rs.2 lakh and lost-card liability cover of Rs.25,000, subject to policy terms.",
+    "Source: manual validation by Lata against the IDFC FIRST Bank official FIRST Power+ Savings Maximiser, the official Power+ update communications and the current MITC, September 2026."
    ]
   },
   "eligibility": {
@@ -35403,26 +35444,41 @@
   ],
   "pros_cons": {
    "pros": [
-    "With this credit card, you also get rewards on UPI transactions",
-    "The joining fee is quite affordable (₹499)"
+    "Up to 6.5% headline savings on eligible HPCL fuel via HP Pay: 5% Reward Points plus 1.5% Happy Coins",
+    "5% Reward Points on eligible grocery and utility spends",
+    "5% Reward Points on IDFC FIRST FASTag recharge through qualifying IDFC channels",
+    "3X rewards on other eligible retail spends with no cap",
+    "RuPay plus UPI capability",
+    "One complimentary domestic airport lounge visit per quarter, subject to Rs.20,000 previous-month spend",
+    "25% monthly movie discount",
+    "Rs.1.5 lakh annual spend can waive the Rs.499 annual fee",
+    "0% interest on eligible ATM cash withdrawals until the due date, subject to the Rs.199 + GST cash-advance fee"
    ],
    "cons": [
-    "For global travellers, this card doesn't provide any international lounge access"
+    "HPCL fuel 5% Reward Points are capped at Rs.10,000 spend per statement cycle",
+    "5% grocery and utility rewards are capped at only Rs.2,000 per statement cycle",
+    "5% FASTag reward is capped at Rs.1,000 per statement cycle",
+    "Fuel rewards depend on authorised HPCL Merchant IDs; an HPCL-branded station may not qualify if its MID is not configured",
+    "The separate 1% fuel-surcharge waiver was discontinued",
+    "Insurance, non-HPCL fuel, EMI and ATM cash withdrawals do not earn Reward Points",
+    "Utility spend above Rs.20,000 per billing cycle can attract a 1% commercial-usage fee",
+    "Rent attracts a 1% fee with a Rs.249 minimum",
+    "Rs.499 annual fee applies unless the Rs.1.5 lakh waiver threshold is met"
    ],
-   "best_for": "Fuel",
-   "not_for": "Global travellers needing international lounge access"
+   "best_for": "HPCL fuel plus grocery, utility, FASTag and UPI users",
+   "not_for": "Anyone who fuels away from HPCL, or whose grocery and utility spend far exceeds the small monthly caps"
   },
   "highlights": [
-   "Save up to 6.5% on fuel spends at HPCL stations",
-   "Estimated annual savings of ₹18,500 (175+ liters of free fuel)",
-   "30X Reward Points on HPCL Fuel",
-   "5% rewards on grocery, utility, and FASTag recharges",
-   "3X rewards on all other retail and UPI transactions with no cap on UPI",
-   "Complimentary domestic airport lounge access per quarter (min ₹20,000 monthly spend)",
-   "25% off on movie tickets via District by Zomato",
-   "Complimentary roadside assistance worth ₹1,399 four times a year",
-   "Available on RuPay network with UPI linking support",
-   "First co-branded credit card by IDFC First Bank with HPCL"
+   "Up to 6.5% savings on eligible HPCL fuel using the HP Pay App: 5% as Reward Points plus 1.5% as HPCL Happy Coins",
+   "30 Reward Points per Rs.150 on eligible HPCL fuel, capped at Rs.10,000 fuel spends per statement cycle (2,400 Reward Points = Rs.600)",
+   "5% as Reward Points on eligible Grocery and Utility transactions, capped at Rs.2,000 spends / 400 Reward Points per statement cycle",
+   "5% as Reward Points on IDFC FIRST FASTag recharges made through the IDFC FIRST Bank Mobile Banking App or FIRST Forward App, capped at Rs.1,000 / 200 Reward Points per statement cycle",
+   "3 Reward Points per Rs.150 on other eligible retail spends, with no spend cap",
+   "1 Reward Point = Rs.0.25",
+   "RuPay co-branded card, enabled for UPI",
+   "1 complimentary domestic airport lounge visit per quarter, subject to minimum Rs.20,000 spend in the previous calendar month",
+   "25% off on movie tickets once a month",
+   "Rs.499 joining fee and Rs.499 annual fee; annual fee waiver at Rs.1.5 lakh eligible annual spend"
   ],
   "similar_cards": null,
   "customer_service": {
@@ -35431,6 +35487,20 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 499,
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": 150000,
+   "fuel_surcharge": "None. The separate fuel-surcharge waiver was removed and replaced by equivalent fuel Reward Points.",
+   "cash_advance": "Rs.199 + GST per transaction; 0% interest on eligible ATM cash withdrawals until the payment due date",
+   "other_lines": [
+    "Add-on Card: Rs.499 joining and annual fee under the current MITC",
+    "Rent / Property Management (MCC 6513): 1% of transaction value, minimum Rs.249 per transaction",
+    "Utility - commercial usage (MCC 4814, 4816, 4899, 4900): 1% of transaction value when aggregate utility spend exceeds Rs.20,000 in a billing cycle; personal usage is nil",
+    "Forex: as per the prevailing IDFC FIRST Bank fee schedule",
+    "EMI conversion: applicable fee and interest according to the selected EMI programme"
+   ]
   }
  },
  "idfc_first_bank_indigo_idfc_first": {
@@ -40818,7 +40888,16 @@
    "insurance": null,
    "concierge": null,
    "partner_offers": null,
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "The 5% and 3% accelerated categories share ONE cap of 750 Reward Points per billing cycle. Once it is reached, accelerated-category spends earn 0% Cashback for the rest of that billing cycle. The app tracks the three accelerated rules separately, so it can show more accelerated headroom than Kotak actually pays.",
+    "On the RuPay variant, UPI-on-Credit-Card spends earn unlimited 0.50% Cashback, including spends that fall in accelerated categories. Excluded MCCs remain ineligible; an electricity bill under MCC 4900 earns no Cashback. This benefit applies only to the RuPay variant.",
+    "The grocery MCCs Kotak publishes for the 5% online food and grocery delivery rate are 5411, 5422, 5441, 5451, 5462 and 5499. The online entertainment MCCs are 5968, 7832, 7922, 4899 and 7829. The fuel MCCs for the 3% rate are 5172, 5541 and 5983.",
+    "Cashback is accrued only in multiples of Rs.1; fractional Cashback is not credited.",
+    "Cashback accrued before a transaction is converted to EMI is reversed, and on card cancellation or default unused Cashback can cease to be valid.",
+    "Do not assume a particular network for a non-RuPay Cashback+ card unless it is shown on the issued card.",
+    "Source: manual validation by Lata against the Kotak Mahindra Bank official Cashback+ Terms & Conditions including its MCC annexure, and the current Kotak fee schedule, September 2026."
+   ]
   },
   "eligibility": {
    "min_income_salaried": null,
@@ -40856,31 +40935,38 @@
   ],
   "pros_cons": {
    "pros": [
-    "Entry-level credit card suited for those with mediocre spends",
-    "5% cashback on online food, grocery delivery, and entertainment",
-    "3% cashback on fuel spends",
-    "Unlimited 0.5% cashback on all other eligible spends",
-    "1 Reward Point = ₹1 simple redemption",
-    "Fuel surcharge waiver on transactions between ₹500 and ₹4,000"
+    "5% Cashback on online food and grocery delivery and online entertainment",
+    "3% Cashback on fuel",
+    "Unlimited 0.5% Cashback on other eligible spending",
+    "RuPay variant adds unlimited 0.5% Cashback on eligible UPI-on-credit-card spends",
+    "Annual fee is waived at Rs.2 lakh retail spend",
+    "Fuel surcharge waiver programme includes Cashback+ and allows Cashback on the card fuel transactions",
+    "Straightforward Cashback redemption through Kotak Rewards"
    ],
    "cons": [
-    "No renewal or welcome benefits associated with this card",
-    "Accelerated cashback categories capped at 500 Reward Points per statement cycle",
-    "No lounge access",
-    "No travel or insurance benefits",
-    "No dining or entertainment privileges"
+    "Accelerated Cashback cap of only 750 Reward Points per billing cycle, shared across all accelerated categories",
+    "After the accelerated cap, 5% and 3% categories earn 0% for the remainder of that billing cycle",
+    "Reward Points expire after one year",
+    "Large categories are excluded: rent, B2B, utilities, insurance, education, government, wallet loads, skill gaming and EMI",
+    "3.5% forex markup is high compared with many competing cashback cards",
+    "Annual fee of Rs.750 requires Rs.2 lakh retail spend for waiver",
+    "Cash-advance facility is unavailable",
+    "The UPI 0.5% benefit applies only to the RuPay variant"
    ],
-   "best_for": "Those beginning their credit card journey with moderate online spends on food, groceries, and entertainment",
-   "not_for": "Seasoned credit card users who need higher earnings and more flexible redemption options"
+   "best_for": "Online food, grocery and entertainment plus fuel and RuPay UPI users",
+   "not_for": "Anyone with large rent, utility, insurance or education spends, all of which earn nothing"
   },
   "highlights": [
-   "5% cashback on online food & grocery delivery and online entertainment",
-   "3% cashback on fuel spends",
-   "Unlimited 0.5% cashback on all other eligible spends",
-   "1 Reward Point = ₹1",
-   "Potential savings of up to ₹6,000 per year from accelerated categories",
-   "Spend-based annual fee waiver at ₹2 Lakh",
-   "Joining fee currently Nil (limited time offer)"
+   "5% Cashback on eligible Online Food & Grocery Delivery and Online Entertainment transactions",
+   "3% Cashback on eligible Fuel transactions across fuel stations",
+   "0.50% unlimited Cashback on other eligible spends",
+   "Accelerated 5% and 3% Cashback is capped at 750 Reward Points per billing cycle, shared; after the cap those categories earn 0% for the rest of the cycle",
+   "On the RuPay variant, UPI-on-Credit-Card spends earn unlimited 0.50% Cashback, including spends in accelerated categories, except excluded MCCs",
+   "Joining Fee Rs.750 + applicable taxes; Annual Fee Rs.750 + applicable taxes",
+   "Annual fee waiver on Rs.2 lakh retail spends in a year",
+   "Cashback accrues as Reward Points and is redeemable as Cashback through Kotak Rewards",
+   "Reward Points expire one year from the date of accrual",
+   "Cashback is earned only in whole Rs.1 multiples"
   ],
   "similar_cards": [
    {
@@ -40894,6 +40980,23 @@
    "email": null,
    "app_name": null,
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 750,
+   "annual_fee": 750,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "Kotak lists Cashback+ as eligible for its fuel-surcharge waiver programme, and Cashback+ is specifically carved out as an exception to the rule that no Reward Points are earned where a surcharge waiver applies",
+   "cash_advance": "Cash-advance facility is not available on Kotak Cashback+",
+   "other_lines": [
+    "Dynamic Currency Conversion: 3.50%",
+    "Over-limit fee: Rs.500 where the over-limit amount is Rs.500 or more",
+    "Rent fee: 1% + GST on MCC 6513",
+    "Utility fee: 1% on cumulative utility spends exceeding the applicable statement-cycle threshold (MCC 4812, 4814, 4900)",
+    "Education fee: 1% on education payments via third-party apps (MCC 8211, 8220, 8241, 8299)",
+    "Wallet loading fee: 1% on cumulative wallet loading above Rs.10,000 per statement cycle (MCC 6540)",
+    "Online skill-based gaming fee: 1% on cumulative spends above Rs.10,000 per statement cycle (MCC 5816)"
+   ]
   }
  },
  "kotak_mahindra_bank_essentia_platinum": {
@@ -48319,7 +48422,17 @@
      "frequency": "annual"
     }
    ],
-   "travel_memberships": null
+   "travel_memberships": null,
+   "summary": [
+    "25 Reward Points per Rs.100 on Bharatgas is paid only on spends made through the BPCL website and app. Other Bharatgas payment channels should not be assumed to qualify for the 25X rate.",
+    "Launch communication described the BPCL fuel rate as 25X Reward Points and approximately 7.25% value back including the 1% fuel-surcharge waiver.",
+    "BPCL fuel transactions are subject to the product reward terms and to fuel MCC and network identification.",
+    "The accelerated 5X categories are Departmental Stores (MCC 5311), Grocery Stores and Supermarkets (5411), Dining (5812, 5813, 5814) and Movies (7832). Combined accelerated rewards are capped at 5,000 Reward Points per month; standard Reward Points continue after the cap.",
+    "The Rs.3 lakh milestone has historically been offered as an e-gift voucher from selected brands such as Aditya Birla Fashion, Yatra, Urban Ladder, Hush Puppies or Bata. Verify the live voucher catalogue before valuing the benefit.",
+    "Complimentary domestic airport lounge access is subject to the prevailing SBI Card lounge programme, spend criteria and quarterly limits.",
+    "Network variant can depend on the card issued; do not assume Visa, Mastercard or RuPay without checking the physical card.",
+    "Source: manual validation by Lata against SBI Card current MITC and cardholder-agreement material and the BPCL SBI Card OCTANE official terms, September 2026."
+   ]
   },
   "eligibility": {
    "min_income_salaried": 30000,
@@ -48382,26 +48495,37 @@
   ],
   "pros_cons": {
    "pros": [
-    "Welcome benefit of 6,000 Reward Points worth Rs. 1,500",
-    "Enjoy 10 Reward Points on spend of Rs. 100 at dining, movies and departmental stores"
+    "Very strong 25 RP/Rs.100 earning on eligible BPCL fuel and lubricants",
+    "25 RP/Rs.100 on Bharatgas website and app spends",
+    "10 RP/Rs.100 on four useful accelerated categories: dining, grocery, departmental stores and movies",
+    "Rs.3 lakh annual milestone can provide a Rs.2,000 voucher",
+    "Rs.2 lakh annual spend waives the Rs.1,499 renewal fee",
+    "Strong fit for customers with high BPCL fuel expenditure",
+    "1% fuel-surcharge waiver adds additional value to BPCL fuel spends",
+    "Domestic lounge access and fraud-liability cover add travel and security benefits"
    ],
    "cons": [
-    "There is a reward redemption fee of Rs. 99",
-    "No insurance benefits are included with this account"
+    "Rs.1,499 annual fee is high compared with entry-level fuel cards",
+    "25X fuel reward is restricted to eligible BPCL fuel and lubricant transactions; non-BPCL fuel earns no reward",
+    "5X accelerated rewards are capped at 5,000 Reward Points per month",
+    "Rent, wallet loads, government, digital gaming, cash advances and several financing transactions do not earn points",
+    "Rent and high utility spends can attract additional processing fees",
+    "Reward redemption can attract a Rs.99 + taxes fee",
+    "Milestone voucher value is meaningful but requires Rs.3 lakh annual spend"
    ],
-   "best_for": "Travel, Fuel, Food",
-   "not_for": null
+   "best_for": "High BPCL fuel plus lifestyle spending",
+   "not_for": "Anyone whose fuel spend is not at BPCL, or who cannot cover the Rs.1,499 fee"
   },
   "highlights": [
-   "7.25% value back on fuel at BPCL stations (6.25% as reward points + 1% fuel surcharge waiver)",
-   "25X reward points on fuel at BPCL stations",
-   "10X reward points on dining, groceries, departmental stores and movie tickets",
-   "4 complimentary domestic airport lounge accesses per year (1 per quarter)",
-   "6,000 bonus reward points as welcome benefit on fee payment",
-   "Gift voucher worth Rs. 2,000 on Rs. 3 lakh annual spend",
-   "Annual fee waiver on Rs. 2 lakh spend",
-   "1% fuel surcharge waiver at all petrol pumps across India",
-   "Annual savings of up to Rs. 1,200 from fuel surcharge waiver alone"
+   "25 Reward Points per Rs.100 on BPCL fuel and lubricants and on Bharatgas LPG spends made through the BPCL website or app",
+   "10 Reward Points per Rs.100 on Dining, Movies, Grocery and Departmental Store spends",
+   "1 Reward Point per Rs.100 on other eligible retail spends, excluding mobile-wallet loads and non-BPCL fuel spends",
+   "5X accelerated Reward Points on Grocery, Departmental Stores, Dining and Movies are capped at 5,000 Reward Points per month; standard points continue after the cap",
+   "1% fuel-surcharge waiver on eligible BPCL fuel transactions",
+   "Rs.2,000 milestone e-gift voucher on annual spends of Rs.3 lakh",
+   "Annual and renewal fee Rs.1,499; renewal fee waived on annual spends of Rs.2 lakh or more in the preceding year",
+   "Complimentary domestic airport lounge access, subject to the current spend and access programme and quarterly conditions",
+   "Fraud liability cover of Rs.1 lakh"
   ],
   "similar_cards": [
    {
@@ -48415,6 +48539,22 @@
    "email": null,
    "app_name": "Shop & Smile",
    "chat": null
+  },
+  "fees": {
+   "joining_fee": 1499,
+   "annual_fee": 1499,
+   "annual_fee_waiver_spend": 200000,
+   "forex_markup_pct": 3.5,
+   "fuel_surcharge": "1% waiver at BPCL fuel stations, subject to the current product terms and applicable maximum waiver",
+   "cash_advance": "2.5% of the amount withdrawn or Rs.500, whichever is higher",
+   "other_lines": [
+    "Reward redemption fee: Rs.99 + taxes for applicable physical-product, statement-credit and physically delivered voucher redemptions",
+    "Rent processing fee: Rs.199 + taxes per rent transaction (MCC 6513); a reversal or cancellation does not reverse the processing fee",
+    "Utility fee: 1% of total utility payments (MCC 4900) when aggregate utility spend exceeds Rs.50,000 in a billing cycle",
+    "Education via third-party apps: 1% of the transaction amount; direct school or college website and POS payments are exempt",
+    "Wallet load fee: 1% on applicable wallet-load transactions above Rs.1,000 (MCC 6540, 6541)",
+    "Dynamic Currency Conversion: 3.5%"
+   ]
   }
  },
  "sbi_card_bpcl_sbi": {
@@ -60349,6 +60489,155 @@
    "fee": 0,
    "expiry_months": null,
    "notes": "Cashback is real money rather than points: ₹1 of cashback is worth ₹1. Withdraw it with Withdraw Cashback in the Roarbank app and it is credited to your Roarbank card balance. The minimum withdrawal is ₹250 and there is no redemption fee. Earning is capped at ₹2,500 per calendar month, and anything above that is neither credited nor carried forward. No fixed validity period is specified, but any unredeemed cashback is forfeited when the card is closed."
+  }
+ },
+ "indusind_bank_cred_rupay": {
+  "highlights": [
+   "5% back as CRED Reward Points on eligible e-commerce transactions",
+   "5% back as CRED Reward Points on eligible CRED transactions including CRED Pay, CRED Travel, CRED Store, CRED online Gift Cards and online UPI payments through CRED",
+   "1% back as CRED Reward Points on CRED Scan & Pay, on insurance and utility bills paid via CRED, on all other eligible transactions and on international transactions",
+   "5% accelerated earning is capped at 5,000 CRED Reward Points per statement cycle",
+   "Minimum transaction value for earning rewards: Rs.100",
+   "1 CRED Reward Point = Rs.1 for eligible CRED Flights/Hotels, CRED Store and eligible CRED Pay merchants",
+   "1 CRED Reward Point = Rs.0.50 for CRED card-bill payments and utility-bill payments made within CRED",
+   "1% fuel-surcharge waiver on fuel transactions between Rs.500 and Rs.5,000",
+   "RuPay credit card enabled for UPI",
+   "Joining Fee: NIL. Annual Fee: Rs.499 + applicable taxes"
+  ],
+  "benefits": {
+   "welcome": null,
+   "lounge_domestic": null,
+   "lounge_international": null,
+   "railway_lounge": null,
+   "dining": null,
+   "entertainment": null,
+   "golf": null,
+   "insurance": {
+    "air_accident": null,
+    "purchase_protection": null,
+    "credit_shield": null,
+    "travel_medical": null,
+    "baggage": null,
+    "flight_delay": null,
+    "description": "Total Protect covers unauthorised transactions following loss or theft and counterfeit fraud, up to an amount equal to the credit limit on the card, and is also available on add-on cards, subject to the applicable insurance policy terms."
+   },
+   "concierge": null,
+   "partner_offers": null,
+   "travel_memberships": null,
+   "summary": [
+    "The 5% CRED-ecosystem rate is paid only when the transaction is routed through the CRED app. CRED Pay, CRED Travel, CRED Store, CRED online Gift Cards and online UPI payments through CRED qualify; Gift Cards and Travel bought outside CRED earn only the standard 1%.",
+    "CRED Scan & Pay through the CRED app earns 1% back. Scan & Pay transactions done outside CRED earn no CRED Reward Points at all.",
+    "Insurance and utility bills paid via CRED earn 1% back. The same bills paid outside CRED do not earn the CRED-specific 1% rate.",
+    "No transaction under Rs.100 earns any Reward Points.",
+    "Reward Points earned during a billing cycle are transferred to the CRED app within 2 to 3 days after statement generation, and expire 24 months from the date of issuance.",
+    "Source: manual validation by Lata against IndusInd Bank official CRED IndusInd Bank RuPay Credit Card material and the IndusInd MITC dated February 2026, September 2026."
+   ]
+  },
+  "fees": {
+   "joining_fee": 0,
+   "annual_fee": 499,
+   "annual_fee_waiver_spend": null,
+   "forex_markup_pct": null,
+   "fuel_surcharge": "1% surcharge waiver on fuel transactions between Rs.500 and Rs.5,000",
+   "cash_advance": "2.5% of amount withdrawn, minimum Rs.300, unless a card-specific revised charge applies",
+   "other_lines": [
+    "Add-on Card Fee: NIL",
+    "Interest rate: 3.95% per month / 47.40% p.a. for the card group, as listed in the current IndusInd MITC",
+    "Over-limit fee: 2.5% of over-limit amount, minimum Rs.500",
+    "Rent via a third-party merchant (MCC 6513): an issuer-level 1% fee plus GST may apply under the current IndusInd fee framework",
+    "Utility above the issuer threshold (MCC 4900): an issuer-level fee may apply under the current IndusInd fee framework; this is not the same as the CRED reward exclusion",
+    "Education via a third-party platform: an issuer-level fee may apply under the current IndusInd fee framework",
+    "Foreign currency: the current product page confirms 1% reward points on international transactions but does not state a card-specific forex markup",
+    "Reward redemption: current CRED redemption terms apply; redemption is performed in the CRED app"
+   ]
+  },
+  "eligibility": {
+   "min_income_salaried": null,
+   "min_income_self_employed": null,
+   "age_min": 18,
+   "age_max": null,
+   "documents": "PAN and Aadhaar details, with Video KYC used in the digital application process",
+   "cities": null,
+   "invite_only": false,
+   "additional_criteria": "Final eligibility is based on income, credit history, occupation and the bank internal assessment. The CRED card is co-branded and application availability is subject to the bank and CRED current eligibility and application flow."
+  },
+  "redemption": {
+   "channels": [
+    {
+     "channel": "CRED Flights & Hotels",
+     "point_value": 1.0
+    },
+    {
+     "channel": "CRED Store",
+     "point_value": 1.0
+    },
+    {
+     "channel": "Eligible CRED Pay merchants",
+     "point_value": 1.0
+    },
+    {
+     "channel": "CRED card bill payment",
+     "point_value": 0.5
+    },
+    {
+     "channel": "Utility bill payment within CRED",
+     "point_value": 0.5
+    }
+   ],
+   "expiry_months": 24,
+   "min_points": null,
+   "fee": 0,
+   "notes": "Up to 70% of a booking or transaction can be paid with points on CRED Flights/Hotels, CRED Store and eligible CRED Pay merchants. Up to 100% of available points can be used on CRED card-bill and utility-bill payments. Points reach the CRED app within 2 to 3 days after statement generation."
+  },
+  "faqs": [
+   {
+    "question": "What is a CRED Reward Point worth?",
+    "answer": "Rs.1 on CRED Flights and Hotels, CRED Store and eligible CRED Pay merchants, and Rs.0.50 on CRED card-bill payments and utility-bill payments made within CRED. Do not value the points at Rs.1 universally."
+   },
+   {
+    "question": "Is there a cap on the 5% rewards?",
+    "answer": "Yes. The 5% accelerated earning is capped at 5,000 CRED Reward Points per statement cycle."
+   },
+   {
+    "question": "Do my points expire?",
+    "answer": "Yes, 24 months from the date of issuance."
+   },
+   {
+    "question": "Does fuel earn rewards?",
+    "answer": "No. Fuel is expressly excluded from rewards, although a separate 1% fuel-surcharge waiver applies on transactions between Rs.500 and Rs.5,000."
+   }
+  ],
+  "pros_cons": {
+   "pros": [
+    "5% back on broad e-commerce spending rather than a small merchant list",
+    "5% back across key CRED ecosystem transactions",
+    "1% reward rate on other eligible spending and international transactions",
+    "RuPay network enables UPI linkage",
+    "1% fuel-surcharge waiver on Rs.500 to Rs.5,000 fuel transactions even though fuel does not earn rewards",
+    "Rs.1 per point redemption available across CRED Flights/Hotels, CRED Store and eligible CRED Pay merchants",
+    "Nil joining fee",
+    "Total Protect fraud and counterfeit-fraud programme, subject to policy terms"
+   ],
+   "cons": [
+    "5% accelerated rewards are capped at 5,000 points per statement cycle",
+    "Minimum transaction value of Rs.100 for earning rewards",
+    "Fuel, rent, wallet loads, jewellery, government, loan and EMI, transportation and tolls and online education are excluded from rewards",
+    "Rewards are highly dependent on whether a transaction is processed inside the CRED ecosystem",
+    "Utility and insurance transactions outside CRED do not earn the CRED-specific 1% reward rate",
+    "Bill-payment and utility redemption value is only Rs.0.50 per point",
+    "Annual fee of Rs.499 applies",
+    "Reward Points expire after 24 months"
+   ],
+   "best_for": "High online and e-commerce spenders who already live inside the CRED app",
+   "not_for": "Anyone whose spending is mostly fuel, rent, utilities or offline categories this card excludes"
+  },
+  "similar_cards": [],
+  "customer_service": {
+   "helpline": "1860 267 7777",
+   "toll_free": null,
+   "email": null,
+   "app_name": "CRED",
+   "chat": null
   }
  }
 }
