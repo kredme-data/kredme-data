@@ -1,15 +1,15 @@
 {
-  "version": "5.2.2",
-  "updated_at": "2026-09-11T15:58:01Z",
+  "version": "5.3.2",
+  "updated_at": "2026-09-12T18:55:10Z",
   "min_app_version": "1.1.0",
   "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
-  "_note": "Two fixes before the first publish of the Siddhant load. (1) CUB SalarySe Level Up: both Salary Day Bonus rows (37.5 SCoins per Rs.100 on the physical variant, 25 on the virtual-only variant) are paid only via SalarySe UPI on the 1st and last day of the month, but were filed as channel_specific/upi, so the engine paid them on every UPI payment at every merchant: CUB entered the top 3 on 231 of 273 merchants at 7.5%. They are now portal_bonus / channel portal / portal_name 'SalarySe app', which the engine and the SMS tracker never fire; name, rate, cap and sources are unchanged. CUB is back to 0.20% (top 3 on 0 merchants, as on prod 5.1.38). (2) HDFC Millennia: the issuer's 1,000-CashPoint cap is ONE pool across ten merchants per calendar month (Siddhant's document, and the issuer T&C quoted on the Amazon row). Nine of the ten rows had been renamed '5% cashback as CashPoints [merchant]', which gave ten separate Rs.1,000 caps. All ten share the name again, as they do on prod, with cap_period 'month' on all ten. validate_cards.py L5.CHANNEL_TEXT_VS_FIELD now exempts a portal_bonus row filed under channel 'portal', with a test; the exemption covers exactly these two rows today.",
+  "_note": "Three FASTag-recharge reward rules were tagged category_id 'fuel', so the engine paid their accelerated rate at every fuel merchant in merchants.json (indian_oil, bpcl, hpcl, shell, jio_bp, nayara_energy). The founder caught it on IDFC FIRST HPCL Power+, where the app said Rs.1,000 spent at BPCL earns Rs.50 - the 5% FASTag rate, on a competitor's fuel, on a card whose own terms exclude non-HPCL fuel from rewards entirely. Also on IDFC FIRST HPCL Power (2.5%) and IRCTC RBL (1.5%). A FASTag recharge is not a fuel-station spend, and all three are gated to the issuer's own app or channel, so all three are now portal_bonus on channel portal with a portal_name, which the engine never fires. No rule_name changed, so no user's cap progress is reset.",
   "stats": {
-    "total_cards": 385,
-    "total_reward_rules": 1446,
-    "total_redemption_rules": 952,
-    "total_exclusion_rules": 2790,
-    "total_milestone_rules": 457,
+    "total_cards": 386,
+    "total_reward_rules": 1451,
+    "total_redemption_rules": 960,
+    "total_exclusion_rules": 2940,
+    "total_milestone_rules": 459,
     "total_fuel_surcharge_rules": 363,
     "total_travel_cards": 82,
     "issuers": 25,
@@ -19,8 +19,8 @@
     {
       "name": "cards.json",
       "path": "seed/cards.json",
-      "checksum": "1f2ce8f8862d7909d07617f3e4c0040d267b741f9f5742e702ab26ee9d9a6151",
-      "size_bytes": 3248153
+      "checksum": "3723d6df56e778aee86a0a865582ebb48dda15cb4c1a51b08f902627d612efb1",
+      "size_bytes": 3282026
     },
     {
       "name": "merchants.json",
@@ -31,8 +31,8 @@
     {
       "name": "card_details.json",
       "path": "seed/card_details.json",
-      "checksum": "baff7290ab5c1c1e6da044d2bab6f8fa2dfe19fb97e8d8d33ebe36aebcbfdb1c",
-      "size_bytes": 2203083
+      "checksum": "f6b12399fa0287b34e105447e61830f8ebd221a5b080fa762a2658e9a425bfa2",
+      "size_bytes": 2224861
     }
   ],
   "delta_file": null,
