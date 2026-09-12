@@ -1,14 +1,14 @@
 {
- "version": "5.3.0",
- "updated_at": "2026-09-12T17:44:17Z",
+ "version": "5.3.1",
+ "updated_at": "2026-09-12T18:24:58Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "Lata's five validated card documents, loaded in full on the founder's instruction (\"put cc data in Data validation/Lata to kredme-data dev, no verification required\"). One NEW card: CRED IndusInd Bank RuPay (indusind_bank_cred_rupay), which users could not add at all before. Four existing cards rewritten from her documents: BPCL SBI Card OCTANE, IDFC FIRST HPCL Power+, IDFC FIRST SWYP and Kotak Cashback+. Where her document disagreed with dev, her document won: Octane's 5X cap 7,500 -> 5,000 RP/month; Kotak's accelerated cap 500 -> 750 RP/cycle; SWYP's forex 3.5% -> 1.99%; IDFC Power+ loses its fuel-surcharge waiver entirely (her document records that IDFC withdrew it and replaced it with fuel Reward Points) and gains the 3 RP/Rs.150 base rate it never had, so its base_reward_rate falls 0.02 -> 0.005 to match. SWYP had ZERO reward rules and now earns on UPI. Every MCC her exclusion tables publish is written as its own row: exclusion rows 2,790 -> 2,919. The 5% CRED-ecosystem rate is filed as portal_bonus on channel portal, which the engine never fires, because it is paid only inside the CRED app - the same treatment CUB SalarySe needed. No existing rule_name was renamed, so no user's cap progress is reset.",
+ "_note": "Adds MCC 5172 and 5983 as real exclusion rows on BPCL SBI OCTANE and IDFC FIRST HPCL Power+. Lata's exclusion tables list non-BPCL / non-HPCL fuel as 5172, 5541, 5542, 5983. 5.3.0 held back all four because seed/merchants.json maps the bpcl and hpcl merchants to 5541 and 5542, and the app checks exclusions before any reward rule, so writing those two zeroes each card's own headline fuel rate (L6.RULE_EXCLUDED_BY_OWN_CARD). That reasoning only covers 5541 and 5542. No fuel merchant we ship carries 5172 (wholesale petroleum) or 5983 (fuel dealers), so those two are now written as enforceable mcc rows and the remaining two are named, with the reason, in an adjacent row.",
  "stats": {
   "total_cards": 386,
   "total_reward_rules": 1451,
   "total_redemption_rules": 960,
-  "total_exclusion_rules": 2936,
+  "total_exclusion_rules": 2940,
   "total_milestone_rules": 459,
   "total_fuel_surcharge_rules": 363,
   "total_travel_cards": 82,
@@ -19,8 +19,8 @@
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "749142fd65e55bc3d81396438830ec3630adf2009448a2b7feac669407864fd9",
-   "size_bytes": 3280057
+   "checksum": "d1dfd1937a0be64936e38721d1963cf43450f1560cf61bc3e343ae4b17fd9838",
+   "size_bytes": 3280927
   },
   {
    "name": "merchants.json",

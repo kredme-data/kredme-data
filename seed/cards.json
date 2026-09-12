@@ -53482,6 +53482,16 @@
   ],
   "exclusion_rules": [
    {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
     "exclusion_type": "other",
     "exclusion_value": "hpcl fuel and lpg expenses beyond the maximum monthly capped amount",
     "also_excludes_from_threshold": 0
@@ -53653,7 +53663,7 @@
    },
    {
     "exclusion_type": "other",
-    "exclusion_value": "non-hpcl fuel (mcc 5172, 5541, 5542, 5983) - not written as mcc rows because the app checks exclusions before any reward rule, so they would also kill this card own HPCL fuel rate",
+    "exclusion_value": "non-hpcl fuel: mcc 5541 and 5542 are NOT written as exclusion rows because seed/merchants.json maps the hpcl merchant itself to exactly those two codes, and the app checks exclusions before any reward rule - excluding them would zero this card's own hpcl fuel rate. 5172 and 5983 ARE written above; they are the wholesale-petroleum and fuel-dealer codes and no fuel merchant we ship carries them.",
     "also_excludes_from_threshold": 0
    }
   ],
@@ -72971,6 +72981,16 @@
   ],
   "exclusion_rules": [
    {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5172",
+    "also_excludes_from_threshold": 0
+   },
+   {
+    "exclusion_type": "mcc",
+    "exclusion_value": "5983",
+    "also_excludes_from_threshold": 0
+   },
+   {
     "exclusion_type": "other",
     "exclusion_value": "fuel purchases at non-bpcl fuel stations",
     "also_excludes_from_threshold": 0
@@ -73082,7 +73102,7 @@
    },
    {
     "exclusion_type": "other",
-    "exclusion_value": "non-bpcl fuel (mcc 5172, 5541, 5542, 5983) - not written as mcc rows because the app checks exclusions before any reward rule, so they would also kill this card own BPCL fuel rate",
+    "exclusion_value": "non-bpcl fuel: mcc 5541 and 5542 are NOT written as exclusion rows because seed/merchants.json maps the bpcl merchant itself to exactly those two codes, and the app checks exclusions before any reward rule - excluding them would zero this card's own bpcl fuel rate. 5172 and 5983 ARE written above; they are the wholesale-petroleum and fuel-dealer codes and no fuel merchant we ship carries them.",
     "also_excludes_from_threshold": 0
    }
   ],
