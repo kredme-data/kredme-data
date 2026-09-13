@@ -48392,6 +48392,29 @@
     "source_doc_type": "manual_validation",
     "source_fetched_on": "2026-09-13",
     "_note": "Lata updated document (13-Sep-2026): UPI runs on a SEPARATE linked FIRST Digital UPI Credit Card (Rs.199 + GST joining fee, Rs.199 + GST annual fee from year 2), not on SWYP itself, so has_rupay_upi stays 0 and this rule does not fire - that is correct. Fuel and cash are excluded from UPI rewards; UPI spends are excluded from the SWYP milestone programme."
+   },
+   {
+    "rule_name": "10% off Zomato orders above Rs.299, up to Rs.100 per order, twice a calendar month",
+    "rule_type": "merchant_specific",
+    "merchant_ref": "zomato",
+    "category_id": null,
+    "category_ref": "zomato feature-partner instant discount",
+    "channel": null,
+    "reward_type": "cashback_pct",
+    "reward_rate": 0.1,
+    "reward_unit_spend": null,
+    "cap_amount": 100.0,
+    "cap_period": "month",
+    "min_txn_amount": 299.0,
+    "priority": 90,
+    "effective_date": null,
+    "expiry_date": null,
+    "conditions_json": null,
+    "confidence": "medium",
+    "source_quote": "Zomato: 10% off up to Rs.100. Orders above Rs.299; 2 times per calendar month. Zomato is currently 10% off up to Rs.100, twice a month.",
+    "source_doc_type": "manual_validation",
+    "source_fetched_on": "2026-09-13",
+    "_note": "Lata, IDFC_SWYP_Credit_Card_Updated_MCC (13-Sep-2026); she corroborated it against IDFC FIRST Bank's feature-partner document and product page. This is an INSTANT DISCOUNT, not earned rewards; it is ranked at the founder's request (13-Sep-2026, 'still not showing 10% for zomato'), as Fi Magnifi's and Airtel Axis's Zomato discounts already are. True limit: Rs.100 per order, 2 orders a month (Rs.200 a month). Stored as Rs.100 a MONTH because the engine reads any cap as a calendar-month total and has no per-order cap or use count: a single order is never overstated, but the second order in a month shows Rs.0 once the first is logged. min_txn_amount 299 is stored but the engine does not check it, so an order under Rs.299 still shows 10%. The bank can change or withdraw the offer without notice."
    }
   ],
   "exclusion_rules": [
