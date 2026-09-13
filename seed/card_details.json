@@ -33381,13 +33381,15 @@
      "Comfortable sitting area with AC",
      "Free WIFI",
      "One free buffet meal"
-    ]
+    ],
+    "spend_to_unlock": "Spend ₹20,000 in the current calendar month to unlock the following month's railway lounge benefit (July 2026 bank communication)"
    },
    "dining": [
-    "25% off up to ₹100 on movie tickets via District by Zomato app using promo code IDFCCCFM, once per month"
+    "Zomato: 10% off up to ₹100 on orders above ₹299, 2 times per calendar month",
+    "Domino's: 20% off up to ₹80 on orders above ₹299, 2 times per calendar month"
    ],
    "entertainment": [
-    "25% off up to ₹100 on movie tickets via District by Zomato app using promo code IDFCCCFM, once per month"
+    "25% off movie tickets up to ₹100 once every month through the District by Zomato mobile app (promo code IDFCCCFM); the July 2026 communication says the benefit continues subject to the applicable eligibility and usage conditions"
    ],
    "golf": null,
    "insurance": {
@@ -33397,49 +33399,33 @@
     "travel_medical": null,
     "baggage": null,
     "flight_delay": null,
-    "description": "Complimentary Insurance Covers are Provided (details not specified)"
+    "description": "Lost-card liability protection up to ₹25,000 and personal accident cover up to ₹2,00,000, as listed on the current product page"
    },
    "concierge": null,
    "partner_offers": [
     {
-     "partner": "Dominos",
-     "offer": "20% discount",
+     "partner": "Zomato",
+     "offer": "10% off",
+     "discount": "up to ₹100",
+     "cap": 100,
+     "min_order": 299,
+     "frequency": "2 times per calendar month"
+    },
+    {
+     "partner": "Domino's",
+     "offer": "20% off",
      "discount": "up to ₹80",
      "cap": 80,
      "min_order": 299,
-     "frequency": "Twice a month"
+     "frequency": "2 times per calendar month"
     },
     {
-     "partner": "EaseMyTrip",
-     "offer": "10% discount on hotels and flights",
-     "discount": "up to ₹500",
-     "cap": 500,
-     "min_order": 5000,
-     "frequency": "Once each quarter"
-    },
-    {
-     "partner": "Sugar",
-     "offer": "20% off",
-     "discount": "up to ₹270",
-     "cap": 270,
-     "min_order": 1250,
-     "frequency": "Once per month on Sugar Cosmetics website/app and once per month on Sugar brand offline outlets"
-    },
-    {
-     "partner": "Tata CLiQ Fashion",
-     "offer": "Instant 10% discount",
-     "discount": "up to ₹100",
-     "cap": 100,
-     "min_order": 999,
-     "frequency": "Once each month"
-    },
-    {
-     "partner": "Zomato",
-     "offer": "10% discount",
-     "discount": "up to ₹100",
-     "cap": 100,
-     "min_order": 299,
-     "frequency": "Twice a month"
+     "partner": "Zepto",
+     "offer": "10% off",
+     "discount": "up to ₹50",
+     "cap": 50,
+     "min_order": 499,
+     "frequency": "Once per month"
     },
     {
      "partner": "Nykaa",
@@ -33447,48 +33433,78 @@
      "discount": "up to ₹500",
      "cap": 500,
      "min_order": 3000,
-     "frequency": "Once each month"
+     "frequency": "Once per month on each eligible platform"
     },
     {
-     "partner": "Zepto",
+     "partner": "Myntra FWD",
+     "offer": "10% off",
+     "discount": "up to ₹350",
+     "cap": 350,
+     "min_order": 850,
+     "frequency": "Once per month"
+    },
+    {
+     "partner": "Tata CLiQ Fashion",
      "offer": "10% instant discount",
-     "discount": "up to ₹50",
-     "cap": 50,
-     "min_order": 499,
-     "frequency": "Once a month"
+     "discount": "up to ₹100",
+     "cap": 100,
+     "min_order": 999,
+     "frequency": "Once per month"
     },
     {
-     "partner": "Goibibo",
-     "offer": "Up to 20% off on domestic hotels and flights",
-     "discount": "up to 20%",
-     "cap": null,
-     "min_order": null,
-     "frequency": "Once per category each month"
+     "partner": "Goibibo (domestic flights)",
+     "offer": "10% off on domestic flights",
+     "discount": "up to ₹500",
+     "cap": 500,
+     "min_order": 5000,
+     "frequency": "Once per month"
+    },
+    {
+     "partner": "Goibibo (domestic hotels)",
+     "offer": "20% off on domestic hotels",
+     "discount": "up to ₹5,000",
+     "cap": 5000,
+     "min_order": 2000,
+     "frequency": "Once per month"
+    },
+    {
+     "partner": "EaseMyTrip",
+     "offer": "10% off on flights and hotels",
+     "discount": "up to ₹500",
+     "cap": 500,
+     "min_order": 5000,
+     "frequency": "Once per month"
     }
    ],
    "travel_memberships": [
     "MakeMyTrip discount coupons worth ₹1,500 (welcome benefit)",
     "EaseMyTrip discount coupons worth ₹2,100 (welcome benefit)"
    ],
-   "renewal_benefit": "2,000 Reward Points on realization of annual charges, must spend ₹5,000 within 45 days of annual fee levy",
+   "renewal_benefit": "From the 2nd year onward, 2,000 Reward Points (worth ₹500) on spending ₹5,000 within 45 days of the annual-fee levy",
    "roadside_assistance": {
     "provider": "Global Assure",
     "value": 1399,
-    "frequency": "4 times a year"
+    "frequency": "4 times a year",
+    "description": "Complimentary 24/7 roadside assistance, stated at ₹1,399 value"
    },
    "emi_conversion": {
-    "description": "Convert spends into flexible EMIs starting from 3 months tenure, minimum transaction ₹2,500, flat fee starting from ₹49 + GST"
+    "description": "Eligible transactions and balances can be converted into EMI through IDFC FIRST Bank's channels at the applicable flat monthly conversion fee (advertised from ₹49 + GST on transactions above ₹2,500)"
    },
    "summary": [
-    "The monthly milestone programme pays 200 Reward Points at Rs.5,000 of eligible spend, 500 in total at Rs.10,000, 1,000 in total at Rs.15,000, and a further 400 on Rs.20,000 of eligible rental spend, for a maximum of 1,400 Reward Points (Rs.350) per billing cycle.",
-    "Fuel and cash transactions are excluded from the UPI Rewards Programme, and UPI rewards are separate from the monthly SWYP milestone programme.",
-    "25% off movie tickets up to Rs.100 per month through the District app is a discount, not an earn rate, so it does not affect the reward ranking.",
-    "The highest monthly milestone requires the rental milestone, and rent itself carries a 1% surcharge with a Rs.249 minimum.",
-    "Monthly redeemable Reward Point cap 1,00,000; annual redeemable cap 2,00,000.",
-    "IDFC FIRST Bank describes its Reward Points as never expiring; the SWYP redemption terms reviewed do not specify a normal expiry.",
-    "The reviewed public material does not establish a permanent Visa or Mastercard network variant; SWYP can be enabled for UPI through the RuPay credit-card-on-UPI functionality.",
-    "4 complimentary railway lounge visits per quarter were part of the published SWYP proposition; verify the current spend and access condition before relying on it.",
-    "Source: manual validation by Lata against IDFC FIRST Bank official credit-card pages, fee schedule and MITC material and SWYP-specific official communications, September 2026."
+    "Rewards are milestone-based, not a reward rate on every rupee. Eligible spend in a billing cycle earns 200 Reward Points at ₹5,000, 500 in total at ₹10,000, 1,000 in total at ₹15,000, 2,000 in total at ₹30,000 and 4,000 in total (worth ₹1,000) at ₹60,000.",
+    "Milestone rewards are NOT incremental: ₹16,000 of eligible spend earns 1,000 Reward Points, not 1,000 plus the lower milestones.",
+    "From 18 June 2026, Reward Points are earned only on spends up to the assigned credit limit in a billing cycle. Repaid-and-reused limit beyond the credit limit does not generate additional Reward Points.",
+    "Education, FASTag recharges, cash withdrawals, fuel and railway spends do not count toward the regular monthly milestones, and neither do UPI transactions.",
+    "Separate milestone for Education, FASTag Recharge and Railway spends: 400 Reward Points at ₹20,000 or more in a billing cycle, 800 in total at ₹40,000 or more.",
+    "UPI works through the linked FIRST Digital UPI Credit Card, a separate card (₹199 + GST joining fee, ₹199 + GST annual fee from the 2nd year). It earns 100 Reward Points per ₹5,000 UPI spend in a statement month; fuel and cash are excluded, and UPI spends do not count toward SWYP milestones.",
+    "Zero forex markup applies when an international transaction is charged in the local currency; dynamic currency conversion or merchant-side conversion charges may still apply.",
+    "Railway lounge: 4 complimentary visits per quarter, unlocked by spending ₹20,000 in the current calendar month for the following month's benefit.",
+    "Travel booked through FIRST Rewards Gallery can earn bonus Reward Points over base rewards: 25% on eligible hotel bookings and 12% on eligible flight bookings, subject to the travel terms. Reward Points can pay for up to 70% of an eligible flight or hotel booking.",
+    "Feature-partner discounts are instant discounts, not an earn rate, so they do not affect the reward ranking. The bank can modify or withdraw them without notice.",
+    "Monthly redemption cap 1,00,000 Reward Points; annual redemption cap 2,00,000 Reward Points; ₹99 + applicable taxes per redemption; Reward Points have no expiry date.",
+    "MCCs are assigned by the merchant, acquirer and network, so the same kind of purchase can occasionally get a different MCC. IDFC FIRST Bank publishes MCCs for Fuel (5172, 5541, 5542, 5983), Cash (6010, 6011, 7280), Utility (4814, 4816, 4899, 4900), Rent (6513), Education (8299, 8211, 8241, 8244, 8249, 8220), Tolls (4784) and Railway (4111, 4112), but not an exhaustive SWYP-specific list for every rewards exclusion.",
+    "The primary SWYP card network can vary by issuance.",
+    "Source: manual validation by Lata (IDFC_SWYP_Credit_Card_Updated_MCC, 13-Sep-2026) against the current FIRST SWYP product page and feature-partner information, the FIRST SWYP update applicable from July 2026 (including the 18 June 2026 rewards changes), the FIRST SWYP Rewards Structure T&Cs and IDFC FIRST Bank MITC/product documents. The Zomato offer was corroborated against the bank feature-partner document and product page."
    ]
   },
   "eligibility": {
@@ -33503,17 +33519,26 @@
   "redemption": {
    "channels": [
     {
+     "channel": "Online purchases / general redemption (Pay With Points)",
+     "point_value": 0.25
+    },
+    {
+     "channel": "Flights & hotels via FIRST Rewards Gallery (up to 70% of booking value)",
+     "point_value": 0.25
+    },
+    {
      "channel": "IDFC First Rewards portal",
      "point_value": 0.25
     },
     {
-     "channel": "Pay With Points",
+     "channel": "In-store Pay with Reward Points (select Pine Labs terminals)",
      "point_value": 0.25
     }
    ],
    "expiry_months": null,
    "min_points": null,
-   "fee": 99
+   "fee": 99,
+   "notes": "Reward Points have no expiry date. Monthly redemption cap 1,00,000 Reward Points; annual cap 2,00,000. ₹99 + applicable taxes per redemption transaction."
   },
   "faqs": [
    {
@@ -33522,7 +33547,7 @@
    },
    {
     "question": "Can the FIRST SWYP Credit Card be linked to UPI?",
-    "answer": "Yes, you can enable UPI transactions on your FIRST SWYP Credit Card for an annual charge of Rs. 199 + GST."
+    "answer": "UPI is available through the linked FIRST Digital UPI Credit Card, a separate card with a ₹199 + GST joining fee and a ₹199 + GST annual fee from the 2nd year. It earns 100 Reward Points for every ₹5,000 UPI spend in a statement month; UPI spends do not count toward SWYP monthly milestones."
    },
    {
     "question": "What are the fees for converting our spends into EMI?",
@@ -33535,38 +33560,36 @@
   ],
   "pros_cons": {
    "pros": [
-    "Up to 1,400 Reward Points per billing cycle through milestones",
-    "UPI reward structure of 100 points per Rs.5,000 UPI spend when enabled",
-    "Rs.499 annual fee is relatively low for the feature set",
-    "Never-expiring Reward Points under the IDFC FIRST Bank reward framework",
-    "25% monthly movie discount up to Rs.100",
-    "Partner discounts across dining, shopping and travel",
-    "1.99% forex markup is competitive for a mass-market card",
-    "EMI conversion proposition with a flat monthly fee"
+    "Strong everyday partner discounts, especially Zomato: 10% off up to ₹100 twice a month",
+    "Up to ₹1,000 worth of monthly milestone rewards on ₹60,000 eligible spend",
+    "Reward Points never expire",
+    "Zero forex markup on international spends when charged in local currency",
+    "Useful railway lounge benefit with 4 visits per quarter, subject to spend eligibility",
+    "Flexible EMI conversion structure rather than conventional revolving-credit positioning",
+    "UPI rewards available through the linked FIRST Digital UPI Credit Card"
    ],
    "cons": [
-    "Rs.0.25 per Reward Point is a modest base value",
-    "Rs.99 + GST redemption fee reduces value on small redemptions",
-    "The highest monthly milestone requires the rental milestone, which carries a surcharge",
-    "Utility spend above Rs.20,000 per statement cycle attracts a 1% surcharge",
-    "Fuel and UPI rewards have category-specific exclusions and caps",
-    "Several lifestyle benefits are promotional and can change",
-    "Railway lounge access should be verified against current spend and access terms"
+    "Reward structure is milestone-based rather than a simple reward rate on every rupee spent",
+    "Fuel, education, FASTag, railway and cash spends do not count toward the regular monthly milestone",
+    "₹99 + GST redemption fee per redemption transaction",
+    "The ₹499 + GST annual fee is not waived by an annual-spend threshold; instead there is an annual-fee benefit of 2,000 Reward Points on ₹5,000 spend within 45 days of the fee levy",
+    "Feature-partner offers, including Zomato and other merchant discounts, are subject to change",
+    "MCC classification is controlled by the payment ecosystem, so a transaction may not get the expected treatment from the merchant name alone"
    ],
-   "best_for": "Digital and young spenders who can optimise the monthly milestones and UPI",
+   "best_for": "Everyday spenders who use the partner discounts (especially Zomato) and can plan spends around the monthly milestones",
    "not_for": "Anyone who cannot hit the monthly milestone thresholds, where the card earns almost nothing"
   },
   "highlights": [
-   "Joining Fee Rs.499 + GST; Annual Fee Rs.499 + GST",
-   "Welcome offer: 2,000 Reward Points worth Rs.500, subject to qualifying spend and offer terms",
-   "Up to 1,400 Reward Points every billing cycle through the SWYP monthly milestone programme",
-   "100 Reward Points for every Rs.5,000 UPI spend in a statement month when the SWYP card is activated for UPI",
-   "25% discount on movie tickets up to Rs.100 per month through the District app",
-   "1% fuel-surcharge waiver, capped at Rs.200",
-   "4 complimentary railway lounge visits per quarter were advertised; current access is subject to prevailing lounge terms",
-   "1.99% forex markup",
-   "Reward Points are valued at Rs.0.25 each",
-   "EMIfy eligible purchases above Rs.2,500 at a flat monthly EMI conversion fee, advertised from Rs.49 + GST"
+   "Joining Fee ₹499 + GST",
+   "Annual Fee ₹499 + GST; from the 2nd year, 2,000 Reward Points (worth ₹500) on spending ₹5,000 within 45 days of the annual-fee levy",
+   "Zero forex markup on international spends charged in the local currency; DCC/merchant-side conversion charges may still apply",
+   "Monthly milestone rewards of up to 4,000 Reward Points (worth ₹1,000) on eligible spends",
+   "Reward Points never expire",
+   "UPI through the linked FIRST Digital UPI Credit Card: 100 Reward Points for every ₹5,000 UPI spend in a statement month, subject to exclusions",
+   "4 complimentary railway lounge visits per quarter, subject to the applicable spend condition",
+   "Year-round instant discounts with feature partners including Zomato, Zepto, Nykaa, Myntra FWD, Tata CLiQ Fashion, Goibibo and EaseMyTrip",
+   "25% off movie tickets up to ₹100 once a month through District by Zomato, subject to the applicable eligibility condition",
+   "1% fuel surcharge waiver on eligible fuel transactions of ₹200–₹5,000, capped at ₹200 per statement cycle"
   ],
   "similar_cards": [
    {
@@ -33589,16 +33612,19 @@
    "joining_fee": 499,
    "annual_fee": 499,
    "annual_fee_waiver_spend": null,
-   "forex_markup_pct": 1.99,
-   "fuel_surcharge": "1% waiver, capped at Rs.200",
+   "forex_markup_pct": 0.0,
+   "fuel_surcharge": "1% waiver on eligible fuel transactions of ₹200–₹5,000, capped at ₹200 per statement cycle",
    "cash_advance": "Rs.199 + GST per withdrawal under the SWYP cash proposition",
    "other_lines": [
-    "Annual-fee waiver may be available under referral terms",
-    "Rent (MCC 6513): 1%, minimum Rs.249 per eligible rental transaction",
-    "Utilities (MCC 4814, 4816, 4899, 4900): nil surcharge up to Rs.20,000 aggregate in a statement cycle; 1% above Rs.20,000",
-    "Education via third-party platforms: 1%, minimum Rs.249; direct institution website or POS exempt",
-    "Reward redemption: Rs.99 + GST per redemption",
-    "EMI conversion: from Rs.49 + GST per month on eligible transactions above Rs.2,500; fee varies by amount and tenure"
+    "Annual-fee benefit from the 2nd year: 2,000 Reward Points (worth ₹500) on spending ₹5,000 within 45 days of the annual-fee levy; annual-fee waiver may also be available under referral terms",
+    "Forex: zero markup when charged in the local currency; DCC/merchant-side conversion charges may still apply",
+    "Rent / property-management fee (MCC 6513): 1% of transaction value, minimum ₹249 per domestic transaction",
+    "Utilities (MCC 4814, 4816, 4899, 4900): commercial/usage surcharge rules may apply above the applicable threshold (earlier documented as 1% above ₹20,000 aggregate in a statement cycle)",
+    "Education via third-party apps (MCC 8299, 8211, 8241, 8244, 8249, 8220): 1%, minimum ₹249; direct institution website or POS exempt",
+    "Tolls & Bridges (MCC 4784): applicable transaction-fee rules may apply above the stated threshold",
+    "Reward redemption: ₹99 + applicable taxes per redemption transaction",
+    "EMI conversion: applicable flat monthly conversion fee, advertised from ₹49 + GST on eligible transactions above ₹2,500",
+    "FIRST Digital UPI Credit Card (optional, separate): ₹199 + GST joining fee and ₹199 + GST annual fee from the 2nd year"
    ]
   }
  },
