@@ -2796,7 +2796,13 @@ class TestOnlyWholeStringsMatch(unittest.TestCase):
         values = live_exclusion_values()
         if values is None:
             self.skipTest("no live catalogue")
+        # MCC 6513's published name. Its only live row (HSBC TravelOne) became a
+        # real `mcc` 6513 row when Siddhant's document loaded in seed 5.4.0, so no
+        # prose row carries it today; the pattern stays for the next scraped one.
+        no_live_row_expected = {r"real ?estate agents and managers"}
         for cat, conf, pat in V.SYNONYMS:
+            if pat in no_live_row_expected:
+                continue
             with self.subTest(pattern=pat):
                 self.assertTrue(any(re.fullmatch(pat, v) for v in values),
                                 f"{cat}: no row in the file matches this pattern")
