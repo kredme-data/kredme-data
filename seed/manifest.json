@@ -1,26 +1,26 @@
 {
- "version": "5.6.0",
- "updated_at": "2026-09-17T10:06:08Z",
+ "version": "5.4.0",
+ "updated_at": "2026-09-13T16:19:20Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "69 more cards added from SaveSage (savesage.club, extracted 13 Sep 2026) on the founder's instruction, 17 Sep 2026: the listings the 5.5.0 match could not settle - 45 other-network versions of cards KredMe already carries, 10 OneCard/Scapia partner-bank listings, 14 unclear. Existing cards untouched; each new card names the network in its title. Not checked against the banks.",
+ "_note": "Siddhant's 28 card documents received 10-11 Sep loaded in full on the founder's instruction (no validation): 26 existing cards replaced, 2 new cards added (Kotak Air+, IndiGo Kotak Premium).",
  "stats": {
-  "total_cards": 735,
-  "total_reward_rules": 2606,
+  "total_cards": 388,
+  "total_reward_rules": 1504,
   "total_redemption_rules": 1117,
-  "total_exclusion_rules": 5166,
-  "total_milestone_rules": 904,
+  "total_exclusion_rules": 3502,
+  "total_milestone_rules": 498,
   "total_fuel_surcharge_rules": 362,
-  "total_travel_cards": 103,
-  "issuers": 43,
+  "total_travel_cards": 83,
+  "issuers": 25,
   "total_merchants": 273
  },
  "files": [
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "3d19da6960cfb5ef465bc9e016eb57afbe8428d174e3edd9b12118d8c2f62b81",
-   "size_bytes": 5297381
+   "checksum": "fd3808c038b378734a4170d5e199089fcd8b859093fd0be89d6ba4a5a1be5d93",
+   "size_bytes": 3614879
   },
   {
    "name": "merchants.json",
@@ -31,8 +31,8 @@
   {
    "name": "card_details.json",
    "path": "seed/card_details.json",
-   "checksum": "a5934fd72f196d6074bb78998902aaeedc07756b4334ed21438c56df09825e32",
-   "size_bytes": 3089808
+   "checksum": "ef19b13133790854b614a313ed669b5a23839b27e1fad5c5978be0b6a78df6f1",
+   "size_bytes": 2374823
   }
  ],
  "delta_file": null,
