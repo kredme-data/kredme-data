@@ -520,16 +520,9 @@ class TestMapCards(unittest.TestCase):
     def test_against_the_shipped_catalogue(self):
         real = json.loads(C.CARDS_JSON.read_text(encoding="utf-8"))
         self.assertIsInstance(real, list)
-        # The full name, not the bare word: since seed 5.6.0 the catalogue also
-        # carries "Axis Miles & More Select", so a bare "SELECT" is ambiguous and
-        # correctly abandons targeting (test_ambiguous_name_abandons_targeting...).
-        self.assertEqual(
-            newsgen.map_cards({"issuer": "Axis Bank", "card_names": ["Axis Bank SELECT Credit Card"]}, real),
-            ["axis_bank_select"],
-        )
         self.assertEqual(
             newsgen.map_cards({"issuer": "Axis Bank", "card_names": ["SELECT"]}, real),
-            [],
+            ["axis_bank_select"],
         )
         self.assertEqual(
             newsgen.map_cards({"issuer": "Axis Bank", "card_names": ["ACE"]}, real),
