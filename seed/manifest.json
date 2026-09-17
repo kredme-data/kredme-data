@@ -1,26 +1,26 @@
 {
- "version": "5.5.0",
- "updated_at": "2026-09-17T07:10:10Z",
+ "version": "5.6.0",
+ "updated_at": "2026-09-17T10:06:08Z",
  "min_app_version": "1.1.0",
  "source": "CardInsider extraction pipeline (v3.1.1 baseline) + redemption_rules transform v1",
- "_note": "278 new cards added from SaveSage (savesage.club, extracted 13 Sep 2026) on the founder's instruction, 17 Sep 2026. Not checked against the banks; every new rule is confidence low with the SaveSage page as its source. The 388 existing cards are untouched.",
+ "_note": "69 more cards added from SaveSage (savesage.club, extracted 13 Sep 2026) on the founder's instruction, 17 Sep 2026: the listings the 5.5.0 match could not settle - 45 other-network versions of cards KredMe already carries, 10 OneCard/Scapia partner-bank listings, 14 unclear. Existing cards untouched; each new card names the network in its title. Not checked against the banks.",
  "stats": {
-  "total_cards": 666,
-  "total_reward_rules": 2366,
+  "total_cards": 735,
+  "total_reward_rules": 2606,
   "total_redemption_rules": 1117,
-  "total_exclusion_rules": 4675,
-  "total_milestone_rules": 800,
+  "total_exclusion_rules": 5166,
+  "total_milestone_rules": 904,
   "total_fuel_surcharge_rules": 362,
-  "total_travel_cards": 94,
-  "issuers": 42,
+  "total_travel_cards": 103,
+  "issuers": 43,
   "total_merchants": 273
  },
  "files": [
   {
    "name": "cards.json",
    "path": "seed/cards.json",
-   "checksum": "5586d394fc2528a4e7d1a97f59fd0907e5931bf0f353fe7ccdedfe7617481942",
-   "size_bytes": 4912612
+   "checksum": "3d19da6960cfb5ef465bc9e016eb57afbe8428d174e3edd9b12118d8c2f62b81",
+   "size_bytes": 5297381
   },
   {
    "name": "merchants.json",
@@ -31,8 +31,8 @@
   {
    "name": "card_details.json",
    "path": "seed/card_details.json",
-   "checksum": "a0fed0ed66278392af18c8eb2321d523380a3a2c8f496b30a142ee2ad1d4ee5b",
-   "size_bytes": 2937126
+   "checksum": "a5934fd72f196d6074bb78998902aaeedc07756b4334ed21438c56df09825e32",
+   "size_bytes": 3089808
   }
  ],
  "delta_file": null,
