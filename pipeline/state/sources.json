@@ -2,24 +2,24 @@
   "schema_version": 1,
   "sources": {
     "__watch__au": {
-      "content_sha256": "ee5935d0fcb5e9272620ce8846b4a45607f384a6db41c9398454faf0323c2576",
-      "fetched_at": "2026-09-24T07:43:49Z",
+      "content_sha256": "f88c3536665cb2b14dfa86a12e1e768b453c55b7da27f6045f0f825c331f5e76",
+      "fetched_at": "2026-09-25T08:03:57Z",
       "note": "",
       "status": "done",
-      "text_chars": 103727,
+      "text_chars": 103733,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "ced787574320fd9c10afd4f94f2f9da8dacf6d418270db6909b264de31fbd2c5",
-      "fetched_at": "2026-09-24T07:42:29Z",
+      "content_sha256": "ccdcb10d110f5b22bb1687ad129ff4a42df6523559f0aa66e469bd27284b96b1",
+      "fetched_at": "2026-09-25T08:02:23Z",
       "note": "",
       "status": "done",
-      "text_chars": 164809,
+      "text_chars": 164708,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
       "content_sha256": "7a5b949caaff8433c739d1bbeaab0c59b141fdf11336d456b9457dd52c852f49",
-      "fetched_at": "2026-09-24T07:42:30Z",
+      "fetched_at": "2026-09-25T08:02:23Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-09-24T07:44:08Z",
+      "fetched_at": "2026-09-25T08:04:18Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-09-24T07:43:01Z",
+      "fetched_at": "2026-09-25T08:03:06Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "6c74e3d61731b1172f56169fdbbf79314ac571c89a6e3c8d717c9df5a648b76d",
-      "fetched_at": "2026-09-24T07:43:21Z",
+      "fetched_at": "2026-09-25T08:03:26Z",
       "note": "",
       "status": "done",
       "text_chars": 241225,
@@ -51,23 +51,23 @@
     },
     "__watch__indusind": {
       "content_sha256": "7340e9e6f2a5849e271002c87755d9b6340f3d330df943f261707c8f727d40c2",
-      "fetched_at": "2026-09-24T07:43:37Z",
+      "fetched_at": "2026-09-25T08:03:44Z",
       "note": "",
       "status": "done",
       "text_chars": 51250,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "66c1486070ae3e93c1c1ab0de9dad9f97aedad3f2d56844677ff28779374b87f",
-      "fetched_at": "2026-09-24T07:43:55Z",
+      "content_sha256": "3b373c7910fa2e76faef3bd328825988d4244026a2bd69ec0ec4a7e418cc74d5",
+      "fetched_at": "2026-09-25T08:04:02Z",
       "note": "",
       "status": "done",
-      "text_chars": 48002,
+      "text_chars": 47993,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
       "content_sha256": "fa444f505faaf159da4eb6815a152e1e393ee622797fdebf05e658d48695e814",
-      "fetched_at": "2026-09-24T07:44:06Z",
+      "fetched_at": "2026-09-25T08:04:11Z",
       "note": "",
       "status": "done",
       "text_chars": 106617,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-09-24T07:42:56Z",
+      "fetched_at": "2026-09-25T08:03:01Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "b1f8adf30ba3b5d5d3f5393d77d523f92ec67777e220e153cb97052071abd541",
-      "fetched_at": "2026-09-24T07:43:39Z",
+      "fetched_at": "2026-09-25T08:03:46Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
