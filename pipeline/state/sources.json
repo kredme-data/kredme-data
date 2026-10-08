@@ -3,7 +3,7 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "38ead6111e116af28cc95c5f4180d08b293e30faa9609bda913e5016584a6cb6",
-      "fetched_at": "2026-10-07T09:01:08Z",
+      "fetched_at": "2026-10-08T09:15:34Z",
       "note": "",
       "status": "done",
       "text_chars": 103598,
@@ -11,7 +11,7 @@
     },
     "__watch__axis": {
       "content_sha256": "92b59ccf9767b5011683a4410ef2d45b11339b56d2973857428807a3508a4110",
-      "fetched_at": "2026-10-07T08:59:29Z",
+      "fetched_at": "2026-10-08T09:14:04Z",
       "note": "",
       "status": "done",
       "text_chars": 164761,
@@ -19,7 +19,7 @@
     },
     "__watch__hdfc": {
       "content_sha256": "bdfbf1cbaa181c0eb511a7cd5359e7308711c0d92ba6846e168e5099ece6ee48",
-      "fetched_at": "2026-10-07T08:59:30Z",
+      "fetched_at": "2026-10-08T09:14:04Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-10-07T09:01:23Z",
+      "fetched_at": "2026-10-08T09:15:49Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,23 +35,23 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-10-07T09:00:16Z",
+      "fetched_at": "2026-10-08T09:14:43Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
       "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"
     },
     "__watch__idfc": {
-      "content_sha256": "6c74e3d61731b1172f56169fdbbf79314ac571c89a6e3c8d717c9df5a648b76d",
-      "fetched_at": "2026-10-07T09:00:37Z",
+      "content_sha256": "9f666e7ac372bd8bcdf008cbde468f68abe0b233808491a1c2044c07f01f9d09",
+      "fetched_at": "2026-10-08T09:15:07Z",
       "note": "",
       "status": "done",
-      "text_chars": 241225,
+      "text_chars": 245245,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
       "content_sha256": "e4d365eadec901ba8e3e016231c77ab888f07737905ac00f3b13ce380eac6b3b",
-      "fetched_at": "2026-10-07T09:00:54Z",
+      "fetched_at": "2026-10-08T09:15:24Z",
       "note": "",
       "status": "done",
       "text_chars": 52714,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "3b373c7910fa2e76faef3bd328825988d4244026a2bd69ec0ec4a7e418cc74d5",
-      "fetched_at": "2026-10-07T09:01:14Z",
+      "fetched_at": "2026-10-08T09:15:39Z",
       "note": "",
       "status": "done",
       "text_chars": 47993,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "31554f6b5955c26f4709ce16aeb151a4110923d5f541a88b32e0681b2ddf5aaf",
-      "fetched_at": "2026-10-07T09:01:21Z",
+      "fetched_at": "2026-10-08T09:15:47Z",
       "note": "",
       "status": "done",
       "text_chars": 106625,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-10-07T09:00:09Z",
+      "fetched_at": "2026-10-08T09:14:38Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-10-07T09:00:55Z",
+      "fetched_at": "2026-10-08T09:15:24Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
