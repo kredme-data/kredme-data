@@ -2,16 +2,16 @@
   "schema_version": 1,
   "sources": {
     "__watch__au": {
-      "content_sha256": "4e4d4ec772d7fb8ec5d02fce20ede2f5bd420c3de9d697931bf3b965c92b6cbe",
-      "fetched_at": "2026-10-17T07:06:52Z",
+      "content_sha256": "7436b6a45607aeb3c1af738737e02e3a107c257bb8efdd646c9c3ee5afca1c6f",
+      "fetched_at": "2026-10-18T07:21:26Z",
       "note": "",
       "status": "done",
-      "text_chars": 103609,
+      "text_chars": 103543,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
       "content_sha256": "b0f39254c8f023892fa9368d945d7dd80b0af7b1d72a9d257e80a1550deb2515",
-      "fetched_at": "2026-10-17T07:05:22Z",
+      "fetched_at": "2026-10-18T07:19:56Z",
       "note": "",
       "status": "done",
       "text_chars": 164761,
@@ -19,7 +19,7 @@
     },
     "__watch__hdfc": {
       "content_sha256": "c651ed79a2434c2533b3678561f3f212f99080292dde5fc24d96489cfdd8062c",
-      "fetched_at": "2026-10-17T07:05:22Z",
+      "fetched_at": "2026-10-18T07:19:56Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-10-17T07:07:05Z",
+      "fetched_at": "2026-10-18T07:21:44Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-10-17T07:06:01Z",
+      "fetched_at": "2026-10-18T07:20:36Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "27abbc4c74353bb2bc95e6a07bb724b91a14598d11206316366e12ff2f0a8b95",
-      "fetched_at": "2026-10-17T07:06:20Z",
+      "fetched_at": "2026-10-18T07:20:57Z",
       "note": "",
       "status": "done",
       "text_chars": 245677,
@@ -51,7 +51,7 @@
     },
     "__watch__indusind": {
       "content_sha256": "e4d365eadec901ba8e3e016231c77ab888f07737905ac00f3b13ce380eac6b3b",
-      "fetched_at": "2026-10-17T07:06:38Z",
+      "fetched_at": "2026-10-18T07:21:14Z",
       "note": "",
       "status": "done",
       "text_chars": 52714,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "e9e9afc61d80b5de6aa41e5c73edd363a599df060adeab3594d98e2fe94e6630",
-      "fetched_at": "2026-10-17T07:06:57Z",
+      "fetched_at": "2026-10-18T07:21:32Z",
       "note": "",
       "status": "done",
       "text_chars": 48005,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "165f8626f022490de757091b19815e2a02a6458ae09f3d33805d876b283b6918",
-      "fetched_at": "2026-10-17T07:07:03Z",
+      "fetched_at": "2026-10-18T07:21:41Z",
       "note": "",
       "status": "done",
       "text_chars": 106641,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6014b31dcd1f675ee023d4c1288e5d85a9bcb206ca166c1ba72c44fc1d3c729c",
-      "fetched_at": "2026-10-17T07:05:57Z",
+      "fetched_at": "2026-10-18T07:20:31Z",
       "note": "",
       "status": "done",
       "text_chars": 130310,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-10-17T07:06:39Z",
+      "fetched_at": "2026-10-18T07:21:15Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
