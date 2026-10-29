@@ -3,23 +3,23 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "7436b6a45607aeb3c1af738737e02e3a107c257bb8efdd646c9c3ee5afca1c6f",
-      "fetched_at": "2026-10-28T08:48:41Z",
+      "fetched_at": "2026-10-29T08:44:31Z",
       "note": "",
       "status": "done",
       "text_chars": 103543,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "b0f39254c8f023892fa9368d945d7dd80b0af7b1d72a9d257e80a1550deb2515",
-      "fetched_at": "2026-10-28T08:47:22Z",
+      "content_sha256": "2b006e6a61e483989d012fe8f6fd3b8b4aa947f4015c026509c563b1874bbfdd",
+      "fetched_at": "2026-10-29T08:43:00Z",
       "note": "",
       "status": "done",
-      "text_chars": 164761,
+      "text_chars": 164818,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
       "content_sha256": "52be3265ed7dbaf87e64136bf04fb39c26b83d2e10625efb12422d030f0ae227",
-      "fetched_at": "2026-10-28T08:47:23Z",
+      "fetched_at": "2026-10-29T08:43:00Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-10-28T08:48:57Z",
+      "fetched_at": "2026-10-29T08:44:46Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,39 +35,39 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-10-28T08:47:58Z",
+      "fetched_at": "2026-10-29T08:43:42Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
       "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"
     },
     "__watch__idfc": {
-      "content_sha256": "27abbc4c74353bb2bc95e6a07bb724b91a14598d11206316366e12ff2f0a8b95",
-      "fetched_at": "2026-10-28T08:48:16Z",
+      "content_sha256": "1f2773939f2e392a9b4bab0fe20cea8fdc8ec7c3d7455f32b60da008788d3fc8",
+      "fetched_at": "2026-10-29T08:44:00Z",
       "note": "",
       "status": "done",
-      "text_chars": 245677,
+      "text_chars": 245678,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
       "content_sha256": "e4d365eadec901ba8e3e016231c77ab888f07737905ac00f3b13ce380eac6b3b",
-      "fetched_at": "2026-10-28T08:48:30Z",
+      "fetched_at": "2026-10-29T08:44:16Z",
       "note": "",
       "status": "done",
       "text_chars": 52714,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "e9e9afc61d80b5de6aa41e5c73edd363a599df060adeab3594d98e2fe94e6630",
-      "fetched_at": "2026-10-28T08:48:47Z",
+      "content_sha256": "c96944ddde888a5a208da80fdcbbb6c2280628bfdc974aa3e6933fb2f892e3be",
+      "fetched_at": "2026-10-29T08:44:37Z",
       "note": "",
       "status": "done",
-      "text_chars": 48005,
+      "text_chars": 48104,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
       "content_sha256": "4dfb475c3e94ef284efd1d7d824548c6d6f79e84cfa67d325e57be5cba3c2653",
-      "fetched_at": "2026-10-28T08:48:55Z",
+      "fetched_at": "2026-10-29T08:44:43Z",
       "note": "",
       "status": "done",
       "text_chars": 106626,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "c7ccea865fdc335b631e55748330191169cb30966391c17525beb9a850aa9e77",
-      "fetched_at": "2026-10-28T08:47:53Z",
+      "fetched_at": "2026-10-29T08:43:35Z",
       "note": "",
       "status": "done",
       "text_chars": 130756,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-10-28T08:48:32Z",
+      "fetched_at": "2026-10-29T08:44:18Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
