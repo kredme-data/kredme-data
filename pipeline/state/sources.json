@@ -3,23 +3,23 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "7436b6a45607aeb3c1af738737e02e3a107c257bb8efdd646c9c3ee5afca1c6f",
-      "fetched_at": "2026-10-30T08:50:46Z",
+      "fetched_at": "2026-10-31T08:38:12Z",
       "note": "",
       "status": "done",
       "text_chars": 103543,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
-      "content_sha256": "2b006e6a61e483989d012fe8f6fd3b8b4aa947f4015c026509c563b1874bbfdd",
-      "fetched_at": "2026-10-30T08:49:23Z",
+      "content_sha256": "9478174523cf4937449d7dabec99fd44c63d6756c89b31a46cf02930d6f46365",
+      "fetched_at": "2026-10-31T08:36:43Z",
       "note": "",
       "status": "done",
-      "text_chars": 164818,
+      "text_chars": 164728,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
-      "content_sha256": "52be3265ed7dbaf87e64136bf04fb39c26b83d2e10625efb12422d030f0ae227",
-      "fetched_at": "2026-10-30T08:49:24Z",
+      "content_sha256": "cd799758c1b1062d1b75073a93e3b834517986664c34ebe628cb8408071ef392",
+      "fetched_at": "2026-10-31T08:36:43Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-10-30T08:51:01Z",
+      "fetched_at": "2026-10-31T08:38:24Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-10-30T08:50:01Z",
+      "fetched_at": "2026-10-31T08:37:25Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "1f2773939f2e392a9b4bab0fe20cea8fdc8ec7c3d7455f32b60da008788d3fc8",
-      "fetched_at": "2026-10-30T08:50:18Z",
+      "fetched_at": "2026-10-31T08:37:42Z",
       "note": "",
       "status": "done",
       "text_chars": 245678,
@@ -51,7 +51,7 @@
     },
     "__watch__indusind": {
       "content_sha256": "e4d365eadec901ba8e3e016231c77ab888f07737905ac00f3b13ce380eac6b3b",
-      "fetched_at": "2026-10-30T08:50:31Z",
+      "fetched_at": "2026-10-31T08:37:57Z",
       "note": "",
       "status": "done",
       "text_chars": 52714,
@@ -59,7 +59,7 @@
     },
     "__watch__kotak": {
       "content_sha256": "c96944ddde888a5a208da80fdcbbb6c2280628bfdc974aa3e6933fb2f892e3be",
-      "fetched_at": "2026-10-30T08:50:51Z",
+      "fetched_at": "2026-10-31T08:38:17Z",
       "note": "",
       "status": "done",
       "text_chars": 48104,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "4dfb475c3e94ef284efd1d7d824548c6d6f79e84cfa67d325e57be5cba3c2653",
-      "fetched_at": "2026-10-30T08:50:59Z",
+      "fetched_at": "2026-10-31T08:38:21Z",
       "note": "",
       "status": "done",
       "text_chars": 106626,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "c7ccea865fdc335b631e55748330191169cb30966391c17525beb9a850aa9e77",
-      "fetched_at": "2026-10-30T08:49:56Z",
+      "fetched_at": "2026-10-31T08:37:19Z",
       "note": "",
       "status": "done",
       "text_chars": 130756,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-10-30T08:50:34Z",
+      "fetched_at": "2026-10-31T08:37:58Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
