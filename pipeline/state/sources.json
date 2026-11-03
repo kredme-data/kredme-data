@@ -3,7 +3,7 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "7436b6a45607aeb3c1af738737e02e3a107c257bb8efdd646c9c3ee5afca1c6f",
-      "fetched_at": "2026-11-02T09:44:55Z",
+      "fetched_at": "2026-11-03T09:48:14Z",
       "note": "",
       "status": "done",
       "text_chars": 103543,
@@ -11,15 +11,15 @@
     },
     "__watch__axis": {
       "content_sha256": "9478174523cf4937449d7dabec99fd44c63d6756c89b31a46cf02930d6f46365",
-      "fetched_at": "2026-11-02T09:43:38Z",
+      "fetched_at": "2026-11-03T09:46:46Z",
       "note": "",
       "status": "done",
       "text_chars": 164728,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
-      "content_sha256": "cd799758c1b1062d1b75073a93e3b834517986664c34ebe628cb8408071ef392",
-      "fetched_at": "2026-11-02T09:43:39Z",
+      "content_sha256": "a3530736545037e4835e7dca0a18fe0f6c37d736de997de89a4358cbf1ee8093",
+      "fetched_at": "2026-11-03T09:46:46Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-11-02T09:45:12Z",
+      "fetched_at": "2026-11-03T09:48:32Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-11-02T09:44:13Z",
+      "fetched_at": "2026-11-03T09:47:28Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,47 +43,47 @@
     },
     "__watch__idfc": {
       "content_sha256": "1f2773939f2e392a9b4bab0fe20cea8fdc8ec7c3d7455f32b60da008788d3fc8",
-      "fetched_at": "2026-11-02T09:44:29Z",
+      "fetched_at": "2026-11-03T09:47:45Z",
       "note": "",
       "status": "done",
       "text_chars": 245678,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
-      "content_sha256": "e4d365eadec901ba8e3e016231c77ab888f07737905ac00f3b13ce380eac6b3b",
-      "fetched_at": "2026-11-02T09:44:43Z",
+      "content_sha256": "e6d527e5b2977d813791b258ffb589eacca2c35b0a86739369810422c2e19217",
+      "fetched_at": "2026-11-03T09:48:01Z",
       "note": "",
       "status": "done",
-      "text_chars": 52714,
+      "text_chars": 52804,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "c96944ddde888a5a208da80fdcbbb6c2280628bfdc974aa3e6933fb2f892e3be",
-      "fetched_at": "2026-11-02T09:45:00Z",
+      "content_sha256": "1de284b86c4e6ed4d94db6a0b6a099acd7372c1ad16f6831592c7f8065690a81",
+      "fetched_at": "2026-11-03T09:48:20Z",
       "note": "",
       "status": "done",
-      "text_chars": 48104,
+      "text_chars": 48426,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
-      "content_sha256": "4dfb475c3e94ef284efd1d7d824548c6d6f79e84cfa67d325e57be5cba3c2653",
-      "fetched_at": "2026-11-02T09:45:10Z",
+      "content_sha256": "d5c93528836bca29a1e3adb68657aa9cf48d28f145489add9b21726b56874023",
+      "fetched_at": "2026-11-03T09:48:27Z",
       "note": "",
       "status": "done",
-      "text_chars": 106626,
+      "text_chars": 106688,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
-      "content_sha256": "c7ccea865fdc335b631e55748330191169cb30966391c17525beb9a850aa9e77",
-      "fetched_at": "2026-11-02T09:44:07Z",
+      "content_sha256": "34b7bc6dbcfd9560302b45c6e17f56bbae99e37ce7730137219d5902b1388382",
+      "fetched_at": "2026-11-03T09:47:21Z",
       "note": "",
       "status": "done",
-      "text_chars": 130756,
+      "text_chars": 130746,
       "url": "https://www.sbicard.com/en/customer-notices.page"
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-11-02T09:44:45Z",
+      "fetched_at": "2026-11-03T09:48:02Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
