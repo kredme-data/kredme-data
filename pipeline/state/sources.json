@@ -3,7 +3,7 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "6804b814a4b3ada6d313b327135673a26981b3420596b8609868a9f3b5478412",
-      "fetched_at": "2026-11-04T09:35:14Z",
+      "fetched_at": "2026-11-05T09:42:37Z",
       "note": "",
       "status": "done",
       "text_chars": 103544,
@@ -11,7 +11,7 @@
     },
     "__watch__axis": {
       "content_sha256": "9478174523cf4937449d7dabec99fd44c63d6756c89b31a46cf02930d6f46365",
-      "fetched_at": "2026-11-04T09:33:49Z",
+      "fetched_at": "2026-11-05T09:41:14Z",
       "note": "",
       "status": "done",
       "text_chars": 164728,
@@ -19,7 +19,7 @@
     },
     "__watch__hdfc": {
       "content_sha256": "a3530736545037e4835e7dca0a18fe0f6c37d736de997de89a4358cbf1ee8093",
-      "fetched_at": "2026-11-04T09:33:49Z",
+      "fetched_at": "2026-11-05T09:41:14Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-11-04T09:35:29Z",
+      "fetched_at": "2026-11-05T09:42:53Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-11-04T09:34:28Z",
+      "fetched_at": "2026-11-05T09:41:52Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "1f2773939f2e392a9b4bab0fe20cea8fdc8ec7c3d7455f32b60da008788d3fc8",
-      "fetched_at": "2026-11-04T09:34:45Z",
+      "fetched_at": "2026-11-05T09:42:09Z",
       "note": "",
       "status": "done",
       "text_chars": 245678,
@@ -51,7 +51,7 @@
     },
     "__watch__indusind": {
       "content_sha256": "e6d527e5b2977d813791b258ffb589eacca2c35b0a86739369810422c2e19217",
-      "fetched_at": "2026-11-04T09:35:00Z",
+      "fetched_at": "2026-11-05T09:42:23Z",
       "note": "",
       "status": "done",
       "text_chars": 52804,
@@ -59,23 +59,23 @@
     },
     "__watch__kotak": {
       "content_sha256": "0ad5c1e6593bb187b0ce24a7c5e14bc552a5260aa0255803ebc289d38313de83",
-      "fetched_at": "2026-11-04T09:35:20Z",
+      "fetched_at": "2026-11-05T09:42:42Z",
       "note": "",
       "status": "done",
       "text_chars": 44621,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
-      "content_sha256": "e9ad7e5140523e45a2de50d0682935ece60d72ecccb1aa77755bb772eb099257",
-      "fetched_at": "2026-11-04T09:35:26Z",
+      "content_sha256": "663fddb25875a4c43228cc91723b51051929fe38cb86e471558712f1d0e9eba5",
+      "fetched_at": "2026-11-05T09:42:50Z",
       "note": "",
       "status": "done",
-      "text_chars": 106675,
+      "text_chars": 106731,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
       "content_sha256": "34b7bc6dbcfd9560302b45c6e17f56bbae99e37ce7730137219d5902b1388382",
-      "fetched_at": "2026-11-04T09:34:21Z",
+      "fetched_at": "2026-11-05T09:41:46Z",
       "note": "",
       "status": "done",
       "text_chars": 130746,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-11-04T09:35:01Z",
+      "fetched_at": "2026-11-05T09:42:25Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
