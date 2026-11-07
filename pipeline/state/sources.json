@@ -2,16 +2,16 @@
   "schema_version": 1,
   "sources": {
     "__watch__au": {
-      "content_sha256": "417730978fab9b9da0199961aa54580fdb90e140f3fe6e8d03f6982e1e5307a1",
-      "fetched_at": "2026-11-06T09:37:29Z",
+      "content_sha256": "a7ca8a20d9fe96906f91dd8910948b31034877072027f024462657dfd74c2585",
+      "fetched_at": "2026-11-07T09:01:10Z",
       "note": "",
       "status": "done",
-      "text_chars": 103597,
+      "text_chars": 97019,
       "url": "https://www.au.bank.in/notice-board"
     },
     "__watch__axis": {
       "content_sha256": "eff8365ba43d6f7b892952dff803307f2d592d03571db05abde7ab425e787982",
-      "fetched_at": "2026-11-06T09:35:53Z",
+      "fetched_at": "2026-11-07T08:59:52Z",
       "note": "",
       "status": "done",
       "text_chars": 163282,
@@ -19,7 +19,7 @@
     },
     "__watch__hdfc": {
       "content_sha256": "a3530736545037e4835e7dca0a18fe0f6c37d736de997de89a4358cbf1ee8093",
-      "fetched_at": "2026-11-06T09:35:54Z",
+      "fetched_at": "2026-11-07T08:59:52Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-11-06T09:37:46Z",
+      "fetched_at": "2026-11-07T09:01:22Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,47 +35,47 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-11-06T09:36:39Z",
+      "fetched_at": "2026-11-07T09:00:27Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
       "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges"
     },
     "__watch__idfc": {
-      "content_sha256": "1f2773939f2e392a9b4bab0fe20cea8fdc8ec7c3d7455f32b60da008788d3fc8",
-      "fetched_at": "2026-11-06T09:36:56Z",
+      "content_sha256": "d87907825b25b22cd45f891c07dd4a7aab1d80c7b6a96d981aa6fa257b3be900",
+      "fetched_at": "2026-11-07T09:00:43Z",
       "note": "",
       "status": "done",
-      "text_chars": 245678,
+      "text_chars": 245675,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
       "content_sha256": "e6d527e5b2977d813791b258ffb589eacca2c35b0a86739369810422c2e19217",
-      "fetched_at": "2026-11-06T09:37:11Z",
+      "fetched_at": "2026-11-07T09:00:59Z",
       "note": "",
       "status": "done",
       "text_chars": 52804,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "0ad5c1e6593bb187b0ce24a7c5e14bc552a5260aa0255803ebc289d38313de83",
-      "fetched_at": "2026-11-06T09:37:35Z",
+      "content_sha256": "694f7935887161bfc902589f9b865e5178b4f13470c7b5cac36d83f8dbae91fe",
+      "fetched_at": "2026-11-07T09:01:15Z",
       "note": "",
       "status": "done",
-      "text_chars": 44621,
+      "text_chars": 44609,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
       "content_sha256": "663fddb25875a4c43228cc91723b51051929fe38cb86e471558712f1d0e9eba5",
-      "fetched_at": "2026-11-06T09:37:44Z",
+      "fetched_at": "2026-11-07T09:01:20Z",
       "note": "",
       "status": "done",
-      "text_chars": 106731,
+      "text_chars": 106733,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
-      "content_sha256": "34b7bc6dbcfd9560302b45c6e17f56bbae99e37ce7730137219d5902b1388382",
-      "fetched_at": "2026-11-06T09:36:32Z",
+      "content_sha256": "6975706a3844f16adc052cf151fffe71e7727bdd7f1f30fc71e86cf772603cf1",
+      "fetched_at": "2026-11-07T09:00:22Z",
       "note": "",
       "status": "done",
       "text_chars": 130746,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-11-06T09:37:14Z",
+      "fetched_at": "2026-11-07T09:01:00Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
