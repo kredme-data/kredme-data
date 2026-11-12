@@ -3,7 +3,7 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "a7ca8a20d9fe96906f91dd8910948b31034877072027f024462657dfd74c2585",
-      "fetched_at": "2026-11-11T09:41:26Z",
+      "fetched_at": "2026-11-12T10:01:30Z",
       "note": "",
       "status": "done",
       "text_chars": 97019,
@@ -11,7 +11,7 @@
     },
     "__watch__axis": {
       "content_sha256": "eff8365ba43d6f7b892952dff803307f2d592d03571db05abde7ab425e787982",
-      "fetched_at": "2026-11-11T09:40:04Z",
+      "fetched_at": "2026-11-12T10:00:01Z",
       "note": "",
       "status": "done",
       "text_chars": 163282,
@@ -19,7 +19,7 @@
     },
     "__watch__hdfc": {
       "content_sha256": "a3530736545037e4835e7dca0a18fe0f6c37d736de997de89a4358cbf1ee8093",
-      "fetched_at": "2026-11-11T09:40:05Z",
+      "fetched_at": "2026-11-12T10:00:02Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-11-11T09:42:26Z",
+      "fetched_at": "2026-11-12T10:01:46Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "3ee95c62b81df38e93bbcf4381c771c916efaf8e2ebafaa4d3b5b67d0c015e74",
-      "fetched_at": "2026-11-11T09:40:41Z",
+      "fetched_at": "2026-11-12T10:00:37Z",
       "note": "",
       "status": "done",
       "text_chars": 99455,
@@ -43,23 +43,23 @@
     },
     "__watch__idfc": {
       "content_sha256": "d87907825b25b22cd45f891c07dd4a7aab1d80c7b6a96d981aa6fa257b3be900",
-      "fetched_at": "2026-11-11T09:40:58Z",
+      "fetched_at": "2026-11-12T10:00:55Z",
       "note": "",
       "status": "done",
       "text_chars": 245675,
       "url": "https://www.idfcfirst.bank.in/credit-card/mitc"
     },
     "__watch__indusind": {
-      "content_sha256": "e6d527e5b2977d813791b258ffb589eacca2c35b0a86739369810422c2e19217",
-      "fetched_at": "2026-11-11T09:41:13Z",
+      "content_sha256": "c5b5a59223f70016b45d4f78efd0f21401f0da4b4f0e3955146a599342a57198",
+      "fetched_at": "2026-11-12T10:01:10Z",
       "note": "",
       "status": "done",
-      "text_chars": 52804,
+      "text_chars": 51787,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
       "content_sha256": "694f7935887161bfc902589f9b865e5178b4f13470c7b5cac36d83f8dbae91fe",
-      "fetched_at": "2026-11-11T09:41:32Z",
+      "fetched_at": "2026-11-12T10:01:36Z",
       "note": "",
       "status": "done",
       "text_chars": 44609,
@@ -67,7 +67,7 @@
     },
     "__watch__rbl": {
       "content_sha256": "663fddb25875a4c43228cc91723b51051929fe38cb86e471558712f1d0e9eba5",
-      "fetched_at": "2026-11-11T09:42:24Z",
+      "fetched_at": "2026-11-12T10:01:43Z",
       "note": "",
       "status": "done",
       "text_chars": 106733,
@@ -75,7 +75,7 @@
     },
     "__watch__sbi": {
       "content_sha256": "6975706a3844f16adc052cf151fffe71e7727bdd7f1f30fc71e86cf772603cf1",
-      "fetched_at": "2026-11-11T09:40:36Z",
+      "fetched_at": "2026-11-12T10:00:32Z",
       "note": "",
       "status": "done",
       "text_chars": 130746,
@@ -83,7 +83,7 @@
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-11-11T09:41:16Z",
+      "fetched_at": "2026-11-12T10:01:14Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
