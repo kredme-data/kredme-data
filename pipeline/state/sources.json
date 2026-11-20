@@ -3,7 +3,7 @@
   "sources": {
     "__watch__au": {
       "content_sha256": "8145e1c169a5845243e2bcdd70588fdb679250025f1e9ff9fba25fd33cd188cc",
-      "fetched_at": "2026-11-19T10:34:44Z",
+      "fetched_at": "2026-11-20T10:15:53Z",
       "note": "",
       "status": "done",
       "text_chars": 97796,
@@ -11,15 +11,15 @@
     },
     "__watch__axis": {
       "content_sha256": "f5d5a56f09012585788efe67d84fe0173eeae021ad13cc45f1307c13f3e4c2d0",
-      "fetched_at": "2026-11-19T10:33:40Z",
+      "fetched_at": "2026-11-20T10:14:52Z",
       "note": "",
       "status": "done",
       "text_chars": 163282,
       "url": "https://www.axis.bank.in/important-links/credit-card/important-announcement-on-credit-card"
     },
     "__watch__hdfc": {
-      "content_sha256": "5e22b4e4646873900440fcca1f1d81c26bda22a3e2c979a0ce1fc66334643c46",
-      "fetched_at": "2026-11-19T10:33:40Z",
+      "content_sha256": "43f8cc6f885f11f6acbd94f33bbd0c6029174e1b3df983c4641228c023812f26",
+      "fetched_at": "2026-11-20T10:14:53Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
@@ -27,7 +27,7 @@
     },
     "__watch__hsbc": {
       "content_sha256": "cc111aea7cf33d813722b72b661b5a17869bf25c792027da7a534e88275c57e6",
-      "fetched_at": "2026-11-19T10:35:02Z",
+      "fetched_at": "2026-11-20T10:16:08Z",
       "note": "",
       "status": "done",
       "text_chars": 4556,
@@ -35,7 +35,7 @@
     },
     "__watch__icici": {
       "content_sha256": "41dcd234b076f2f893690a89c68b269d9eeabba3831883c0e13311c2c5966663",
-      "fetched_at": "2026-11-19T10:34:05Z",
+      "fetched_at": "2026-11-20T10:15:17Z",
       "note": "",
       "status": "done",
       "text_chars": 113533,
@@ -43,7 +43,7 @@
     },
     "__watch__idfc": {
       "content_sha256": "d87907825b25b22cd45f891c07dd4a7aab1d80c7b6a96d981aa6fa257b3be900",
-      "fetched_at": "2026-11-19T10:34:21Z",
+      "fetched_at": "2026-11-20T10:15:33Z",
       "note": "",
       "status": "done",
       "text_chars": 245675,
@@ -51,39 +51,39 @@
     },
     "__watch__indusind": {
       "content_sha256": "6225f45044e75174f675eabbfaefdcc9ecf0406bfdfe75639863b2b181440f60",
-      "fetched_at": "2026-11-19T10:34:34Z",
+      "fetched_at": "2026-11-20T10:15:47Z",
       "note": "",
       "status": "done",
       "text_chars": 64311,
       "url": "https://www.indusind.bank.in/in/personal/cards/credit-card.html"
     },
     "__watch__kotak": {
-      "content_sha256": "86a4c2013a0cc18bda06c7bc3f31aa3f7f61b97e2df7696decb48032880edce0",
-      "fetched_at": "2026-11-19T10:34:53Z",
+      "content_sha256": "15c85a2fe7c0f75295990b630f327d4d241a4635a3d261446a19542336eeda5c",
+      "fetched_at": "2026-11-20T10:15:58Z",
       "note": "",
       "status": "done",
-      "text_chars": 134625,
+      "text_chars": 134679,
       "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html"
     },
     "__watch__rbl": {
       "content_sha256": "663fddb25875a4c43228cc91723b51051929fe38cb86e471558712f1d0e9eba5",
-      "fetched_at": "2026-11-19T10:34:59Z",
+      "fetched_at": "2026-11-20T10:16:07Z",
       "note": "",
       "status": "done",
       "text_chars": 106733,
       "url": "https://www.rbl.bank.in/service-charges"
     },
     "__watch__sbi": {
-      "content_sha256": "a0a0785a5f4b2ea1b05a3bd319ab47532eba89144ada77a07fee84fa9084ab77",
-      "fetched_at": "2026-11-19T10:34:00Z",
+      "content_sha256": "1427ace0a56fe21128ef23de7866353b40bad9c06c6888b4ef5b16796c458159",
+      "fetched_at": "2026-11-20T10:15:11Z",
       "note": "",
       "status": "done",
-      "text_chars": 136975,
+      "text_chars": 136929,
       "url": "https://www.sbicard.com/en/customer-notices.page"
     },
     "__watch__yes": {
       "content_sha256": "913522af780c0633c5264d76bd3670c8b99e4edd83976092c174791f1838faa9",
-      "fetched_at": "2026-11-19T10:34:36Z",
+      "fetched_at": "2026-11-20T10:15:48Z",
       "note": "",
       "status": "done",
       "text_chars": 90000,
